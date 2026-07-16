@@ -19,6 +19,8 @@ For measurement/performance/prediction work, route through `mm_calendar/measurem
 
 **Builder rule (encoding):** `.cursor/rules/mm_calendar_builder.mdc`
 
+**Operational-task handoff:** `mm_calendar/ops_board_schema.md` → `mm_calendar/ops_task_construction.md` → `.cursor/rules/ops_task_builder.mdc`. Ops production tasks are subitems under the matching day on Monday board `2109172490`; build/write only when Itay explicitly requests a day.
+
 **GitHub (team read-only):** `https://github.com/ppuregoldz-arch/slotomania-mm-calendar` — after **any** change under `.cursor/rules/`, agents **commit + push** in the same session (see `.cursor/rules/git_sync_rules.mdc`).
 
 ---

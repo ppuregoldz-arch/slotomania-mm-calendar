@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Operational task agent foundation
+
+- **Goal:** Learn the live `Operation - Monetization` board and create a safe agent that turns approved calendar days into Ops tasks.
+- **Done:** Documented the main/subitem board contracts, statuses, templates, historical task anatomy, descriptions, comments, and QA conventions. Added construction guidelines and a persistent Cursor rule. Built a review-spec generator and dry-run-first writer that targets subitems under the exact day, blocks unresolved live writes, never deletes, and requires explicit commit/day creation.
+- **Files:** `mm_calendar/ops_board_schema.md`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/README.md`, `scripts/build_ops_tasks_from_plan.py`, `scripts/upload_ops_task_monday.py`, `.cursor/rules/ops_task_builder.mdc`, `AGENTS.md`, `mm_calendar/BUILD_CALENDAR_ROUTER.md`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, August 1 spec generation ✓ (9 review tasks; stale Album row safely skipped), live-board day/subitem read ✓, writer dry run ✓, Monday sync n/a (no writes).
+- **Notes for next agent:** Board `2109172490`; view `57490550`; subitems board `2109172677`. August day parents do not exist yet. Review every TBD before use; live write is blocked unless explicitly overridden, and creating a day needs separate `--create-day` authorization.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Correct exact RYD reuse art
 
 - **Goal:** Replace the incorrect RYD reuse reference that did not show the required 5★ Gold Card.

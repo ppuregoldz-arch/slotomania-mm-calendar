@@ -1,0 +1,17 @@
+---
+description: Build execution-ready Slotomania Ops tasks from approved MM calendar days
+globs: "{scripts/*ops_task*.py,mm_calendar/ops_*.md,mm_calendar/data/ops_tasks/**}"
+alwaysApply: false
+---
+
+# Ops Task Builder
+
+- Read `mm_calendar/00_GUIDELINES_ITAY.md`, `mm_calendar/ops_board_schema.md`, and `mm_calendar/ops_task_construction.md` first.
+- Source board: `Operation - Monetization` (`2109172490`); `57490550` is its view ID. Production tasks belong as subitems under the exact `YYYY-MM-DD` day parent.
+- Build only from an approved calendar day and only when Itay explicitly requests it. Dry-run is the default; live writing requires explicit `--commit`.
+- The MM calendar Name is authoritative over a conflicting Description. Keep missing execution details as `TBD - owner required`; never infer rewards, segments, parameters, IDs, owners, files, or links.
+- August Promo Time is 11:00 UTC. A calendar date range is inclusive and ends at 11:00 UTC on the following day after its final date.
+- Generate tasks only when Ops must configure/open/schedule/award/target/publish/QA/close something. Exclude calendar-only rows that need no config (Status Boost, Lotto/LBP rotation, Shiny Collection comms, X2 Extreme Stamp, X2 GGS, Clan-Dash).
+- New drafts use Operation Status `To Do`, or the exact missing-dependency status. Never claim `Scheduled`, `QA Done`, `Done`, or successful QA before it occurs.
+- One day at a time. Match within that day by normalized task name. Add/update only; never delete, move, archive, comment, attach, relate, or assign unless explicitly authorized.
+- If the day parent is missing, stop unless Itay explicitly authorized creating it. Show the full proposed payload and every TBD before writing.
