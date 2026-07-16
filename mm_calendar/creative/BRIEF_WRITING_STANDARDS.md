@@ -51,6 +51,10 @@ Do not add an `N/A` row for a denom that does not exist.
 
 When no product-specific schema exists: `Task` · `Keep` · optional `Theme / Art Guidelines` · optional `Numbers / Prizes / Amounts` · `Reference` · `Reference Link`.
 
+### MGAP UI
+
+Every real MGAP promotion has a separate `MGAP UI - <variant>` parent in addition to the regular promo brief/Reuse row. Keep only UI-related subitems. The UI table is: `Task` · `Keep` · `Mechanic` · optional `Reference` · `Reference Link`. Apply this to embedded MGAP mechanics such as a Rolling MGAP ladder; do not apply it to RLAP/Stash Booster.
+
 ## Row rules
 
 - **Main Messages:** one-sentence takeaway for this asset, not literal headline copy.

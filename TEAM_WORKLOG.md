@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Add standalone MGAP UI briefs
+
+- **Goal:** Ensure every real MGAP promotion has a separate Creative task dedicated to changing the MGAP UI.
+- **Done:** Added three standalone MGAP UI tasks for August 5 BOGO, August 11 Rolling MGAP ladder, and August 28 Generic Bigger Multipliers. Each task has only one UI-related subitem, Traffic-derived dates/owners, blank Status Creative, and Status MM `Brief Done`. RLAP/Stash Booster days were correctly excluded.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `mm_calendar/creative/CREATIVE_LABEL_RULES.md`, `mm_calendar/creative/overrides.yaml`, `scripts/apply_selected_august_creative_briefs.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** historical MGAP UI pattern audit ✓, dry run ✓, three live task creations ✓, parent/subitem/date/team/status verification ✓, Python compile/lints ✓, full MM calendar sync n/a.
+- **Notes for next agent:** Standalone MGAP UI work is additional to the regular promo brief or Reuse-summary row. Include embedded MGAP such as Rolling ladders; exclude RLAP/Stash Booster.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Merge best Creative brief standards
 
 - **Goal:** Combine the reviewer handbook's writing, CRM3, product, and safety standards with the existing Creative Label and consolidated-Reuse workflow.

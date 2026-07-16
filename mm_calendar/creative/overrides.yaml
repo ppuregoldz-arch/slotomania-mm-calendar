@@ -28,6 +28,9 @@ global:
   incomplete_new_promo_status_mm: "MM work in progress"
   reuse_status_creative: "done"
   reuse_status_mm: "Ready - no action needed"
+  standalone_mgap_ui_task_required: true
+  standalone_mgap_ui_includes_embedded_mgap: true
+  standalone_mgap_ui_excludes: ["RLAP", "Stash Booster"]
   active_art_copy_status: null
   active_art_status: null
 

@@ -67,6 +67,8 @@ Theme change wins when theme and prize both change. Dynamic configuration that i
 
 For **Reuse**, create one bare day-level item named `REUSE - No Creative Action`. Its single parent update lists every Reuse promotion for that day with promotion title, reuse-from date, and the exact Creative reference. When that reference is unavailable but Ops confirms the promo went live, use the Ops task link and live date. Do not duplicate templates, create per-promo Reuse items, or create asset subitems for Reuse.
 
+For **every real MGAP promotion**, also create a separate parent named `MGAP UI - <variant>` in the same day group, regardless of whether the regular MGAP promo is active or listed in Reuse. The MGAP UI parent is additional work, never a replacement for the regular task/summary row. Keep only UI-related subitems and remove other duplicated assets. This also applies when MGAP is embedded in another offer, such as a Rolling MGAP ladder. Do not create it for RLAP/Stash Booster; Stash replaces the daily MGAP promo.
+
 For every non-Reuse promo:
 
 1. Find template on board (Coins Sale, Dynamic JP, Buy All, Daily Deal, RYD, Rolling Offer, PYP, MES, etc.)
@@ -99,6 +101,7 @@ For every non-Reuse promo:
 - Seasonal parent title must include the exact required reward; never leave it only as “Season”.
 - Parent brief has exactly two rows: `Creative Label` and `Change`. `Change` states `source → required`; there is no parent reference, asset list, or skeleton row.
 - Every subitem body is only one HTML table. Follow the asset-specific schema in `BRIEF_WRITING_STANDARDS.md`; add no prose before or after it.
+- Standalone MGAP UI tasks use Product `MGAP`, blank Status Creative, Status MM `Brief Done`, the day’s Creative Traffic assignments, and exactly the UI-related subitem(s).
 - Theme cells contain the theme name only. Never include colors, motifs, mood, composition, copy suggestions, or quoted headlines.
 - Do not keep no-action subitems in new briefs; request only the assets that need work.
 - A Link field contains only the URL or exact CRM3 file path—no commentary, provenance prose, or folder instructions.

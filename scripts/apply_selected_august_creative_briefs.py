@@ -85,6 +85,27 @@ REUSE_LIVE_OVERRIDES = {
     },
 }
 
+MGAP_UI_OVERRIDES = {
+    "12464188536": {
+        "name": "MGAP UI - BOGO",
+        "source_id": "12093534228",
+        "change": "Existing MGAP BOGO UI → current MGAP BOGO UI.",
+        "mechanic": "BOGO MGAP.",
+    },
+    "12547639977": {
+        "name": "MGAP UI - Rolling MGAP Ladder",
+        "source_id": "12466613934",
+        "change": "Existing MGAP UI → Rolling denom 3 MGAP ladder UI for cycles 2–4.",
+        "mechanic": "Three MGAP configs: lower, mid, and higher.",
+    },
+    "12511214687": {
+        "name": "MGAP UI - Bigger Multipliers - Generic",
+        "source_id": "12148706201",
+        "change": "Existing MGAP Bigger Multipliers UI → Generic Bigger Multipliers MGAP UI.",
+        "mechanic": "Bigger Multipliers, Generic theme.",
+    },
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -94,6 +115,11 @@ def parse_args() -> argparse.Namespace:
         "--allow-in-flight",
         action="store_true",
         help="Edit items with non-blank Status MM only after explicit Itay approval",
+    )
+    parser.add_argument(
+        "--mgap-ui-only",
+        action="store_true",
+        help="Create only the separate MGAP UI tasks for the selected dates",
     )
     return parser.parse_args()
 
@@ -333,13 +359,14 @@ def source_reference_path(source: dict[str, Any]) -> str:
 def load_source_assets(
     rows_by_date: dict[str, list[dict[str, str]]],
     catalog: dict[str, dict[str, Any]],
+    extra_source_ids: set[str] | None = None,
 ) -> None:
     source_ids = sorted(
-        {
+        ({
             str(source_for(row, catalog)["id"])
             for rows in rows_by_date.values()
             for row in rows
-        }
+        } | (extra_source_ids or set()))
     )
     query = """
     query($ids:[ID!]!) {
@@ -775,6 +802,173 @@ def is_old_reuse_item(
     return False
 
 
+def mgap_ui_specs(
+    rows_by_date: dict[str, list[dict[str, str]]],
+) -> dict[str, list[dict[str, str]]]:
+    result: dict[str, list[dict[str, str]]] = {}
+    for target, rows in rows_by_date.items():
+        result[target] = []
+        for row in rows:
+            configured = MGAP_UI_OVERRIDES.get(row["id"])
+            if not configured:
+                continue
+            result[target].append(
+                {
+                    **configured,
+                    "source_mm_item_id": row["id"],
+                    "source_row_name": row["name"],
+                }
+            )
+    return result
+
+
+def mgap_ui_values(
+    spec: dict[str, str],
+    target: str,
+    assignment: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "name": spec["name"],
+        "date4": {"date": target},
+        "date_mkwep612": {"date": adjusted_due(target, 2)},
+        "color_mkws3h8e": {"label": "Medium"},
+        "color_mky3swe2": {"label": "MGAP"},
+        "text_mkwe4jsr": "",
+        "status": None,
+        "color_mkwes65f": {"label": "Brief Done"},
+        **assignment_values(assignment),
+    }
+
+
+def mgap_ui_parent_body(spec: dict[str, str]) -> str:
+    return table(
+        [
+            ("Creative Label", "Prize Change"),
+            ("Change", esc(spec["change"])),
+        ]
+    )
+
+
+def mgap_ui_subitem_body(
+    spec: dict[str, str],
+    source: dict[str, Any],
+    asset_name: str,
+) -> str:
+    rows = [
+        ("Task", esc(f"Apply the parent Change to {asset_name}.")),
+        ("Keep", "Keep the existing MGAP UI structure."),
+        ("Mechanic", esc(spec["mechanic"])),
+    ]
+    reference_png = reference_png_html(source, asset_name)
+    if reference_png:
+        rows.append(("Reference", reference_png))
+    rows.append(("Reference Link", reference_link_html(source, asset_name)))
+    return table(rows)
+
+
+def write_mgap_ui_task(
+    spec: dict[str, str],
+    target: str,
+    assignment: dict[str, Any],
+    group_id: str,
+    existing: dict[str, dict[str, Any]],
+    catalog: dict[str, dict[str, Any]],
+) -> tuple[str, int]:
+    existing_item = existing.get(spec["name"])
+    if existing_item:
+        return str(existing_item["id"]), 0
+    source = catalog[spec["source_id"]]
+    item_id = duplicate_item(spec["source_id"])
+    set_columns(BOARD, item_id, {"name": spec["name"]})
+    move_item(item_id, group_id)
+    time.sleep(4)
+    query = """
+    query($ids:[ID!]!) {
+      items(ids:$ids) {
+        updates(limit:1) { id body }
+        subitems { id name updates(limit:1) { id body } }
+      }
+    }
+    """
+    item = gql(query, {"ids": [item_id]})["items"][0]
+    subitems = item.get("subitems") or []
+    if not subitems:
+        time.sleep(4)
+        item = gql(query, {"ids": [item_id]})["items"][0]
+        subitems = item.get("subitems") or []
+    ui_subitems = [
+        subitem for subitem in subitems
+        if "ui" in subitem["name"].lower()
+    ]
+    if not ui_subitems:
+        subitem_id = create_subitem(item_id, "MGAP UI")
+        ui_subitems = [{"id": subitem_id, "name": "MGAP UI", "updates": []}]
+    keep_ids = {str(subitem["id"]) for subitem in ui_subitems}
+    for subitem in subitems:
+        if str(subitem["id"]) not in keep_ids:
+            delete_item(str(subitem["id"]))
+    set_columns(BOARD, item_id, mgap_ui_values(spec, target, assignment))
+    upsert_update(item_id, item.get("updates") or [], mgap_ui_parent_body(spec))
+    for subitem in ui_subitems:
+        clear_subitem_fields(str(subitem["id"]))
+        upsert_update(
+            str(subitem["id"]),
+            subitem.get("updates") or [],
+            mgap_ui_subitem_body(spec, source, subitem["name"]),
+        )
+    time.sleep(10)
+    item = gql(query, {"ids": [item_id]})["items"][0]
+    for subitem in item.get("subitems") or []:
+        if "ui" not in subitem["name"].lower():
+            delete_item(str(subitem["id"]))
+    set_columns(BOARD, item_id, mgap_ui_values(spec, target, assignment))
+    return item_id, len(ui_subitems)
+
+
+def apply_mgap_ui_tasks(
+    specs_by_date: dict[str, list[dict[str, str]]],
+    assignments: dict[str, dict[str, Any]],
+    groups: dict[str, str],
+    catalog: dict[str, dict[str, Any]],
+    commit: bool,
+) -> int:
+    total = 0
+    for target, specs in specs_by_date.items():
+        if not specs:
+            continue
+        group_id = groups.get(target)
+        existing = {
+            item["name"]: item
+            for item in items_in_group(group_id)
+        } if group_id else {}
+        for spec in specs:
+            action = "SKIP existing" if spec["name"] in existing else "CREATE"
+            if not commit:
+                print(
+                    f"{target} {action}: {spec['name']} "
+                    f"<- {spec['source_row_name']}"
+                )
+                continue
+            if not group_id:
+                group_id = create_group(target)
+                groups[target] = group_id
+            item_id, ui_count = write_mgap_ui_task(
+                spec,
+                target,
+                assignments[target],
+                group_id,
+                existing,
+                catalog,
+            )
+            print(f"{target} {action}: {spec['name']} ({item_id}); UI subitems={ui_count}")
+            existing = {
+                item["name"]: item
+                for item in items_in_group(group_id)
+            }
+            total += 1
+    return total
+
+
 def write_brief(
     row: dict[str, str],
     target: str,
@@ -825,9 +1019,31 @@ def main() -> None:
     rows_by_date = fetch_rows(dates)
     assignments = traffic_assignments(dates)
     catalog = source_catalog()
-    load_source_assets(rows_by_date, catalog)
+    mgap_specs = mgap_ui_specs(rows_by_date)
+    load_source_assets(
+        rows_by_date,
+        catalog,
+        {
+            spec["source_id"]
+            for specs in mgap_specs.values()
+            for spec in specs
+        },
+    )
     groups = group_map()
     total = 0
+    if args.mgap_ui_only:
+        created = apply_mgap_ui_tasks(
+            mgap_specs,
+            assignments,
+            groups,
+            catalog,
+            args.commit,
+        )
+        if not args.commit:
+            print("DRY RUN - no Monday changes made.")
+        else:
+            print(f"CREATED/SKIPPED {created} standalone MGAP UI task(s).")
+        return
     if not args.commit:
         for target in dates:
             reuse_rows = [row for row in rows_by_date[target] if row["label"] == "Reuse"]
@@ -849,6 +1065,8 @@ def main() -> None:
             for row in active_rows:
                 source = source_for(row, catalog)
                 print(f"  {row['label']:<19} {normalize_name(row['name'])} <- {source_date(source)} {source['name']}")
+        print("\nStandalone MGAP UI tasks:")
+        apply_mgap_ui_tasks(mgap_specs, assignments, groups, catalog, False)
         print("\nDRY RUN - no Monday changes made.")
         return
     for target in dates:
@@ -953,6 +1171,7 @@ def main() -> None:
                         "color_mkwes65f": {"label": status_mm_label(match)},
                     },
                 )
+    apply_mgap_ui_tasks(mgap_specs, assignments, groups, catalog, True)
     print(f"CONSOLIDATED Reuse and created/updated {total} active Creative briefs across {len(dates)} dates.")
 
 

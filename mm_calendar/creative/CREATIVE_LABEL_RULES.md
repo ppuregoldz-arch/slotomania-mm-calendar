@@ -40,6 +40,7 @@
 - **Prize Change:** state the exact visible delta once in the parent Change row; each affected asset subitem points to that parent Change.
 - **New theme for promo:** state the exact theme delta once in the parent Change row; each affected asset subitem points to it and keeps the reference for everything else.
 - **New promo:** leave mechanics and direction for Itay; attach only clearly relevant inspiration.
+- **MGAP UI:** every real MGAP promotion also gets a separate parent task named `MGAP UI - <variant>` in the same day group, in addition to its regular promo brief or Reuse-summary row. The separate task keeps only MGAP UI subitems. This includes MGAP embedded in another offer (for example a Rolling MGAP ladder), but excludes RLAP/Stash Booster because it replaces the MGAP promo.
 - Theme change takes precedence over simultaneous prize change.
 - Active art-only work leaves both Copy Status and Art Status empty.
 - Brief Due Date and people ownership come from `Creative Traffic` board `18041947639`: `Brief Date`, `Creative Owner`, `Monetization`, `MM TL`, and `TL Owner`. Map them to `Brief Due Date`, `Artist`, `MM`, `MM TL`, and `Creative TL` on Monetization-Art.
