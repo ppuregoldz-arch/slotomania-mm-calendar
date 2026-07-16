@@ -51,6 +51,10 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 ## Brief standards
 
 - HTML tables in updates when template expects rows (Background, Main Messages, Art guidelines, Reference, Reference Link, CTA, etc.)
+- Before writing any Creative instruction, read the latest comparable parent brief and all relevant subitem updates. Derive the required asset scope and wording from what was actually requested/delivered last time—not from the duplicated template alone.
+- Every actionable subitem must include **Historical execution pattern**, **What changes now**, and **What stays unchanged**. Carry forward evidenced Versions, Main Message structure, CTA/destination, Timer, FP, badge, and channel behavior.
+- If the latest comparable execution used only a subset of template assets, request only that subset. Mark the other duplicated subitems Completed/No Action unless Itay explicitly expands scope.
+- Never infer a missing CTA, version, timer, FP, message, or asset. Use an older matching execution only when the latest task lacks that asset, and document the fallback; otherwise leave it for Itay.
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
 - Every subitem must state the exact Creative action for that asset. Never use a generic “prepare/adapt” instruction.

@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Briefs follow historical execution
+
+- **Goal:** Require Creative instructions to follow how the same promo was actually briefed and delivered previously.
+- **Done:** Added mandatory historical-pattern and asset-scope checks to the Monetization-Art rule. Updated 01/08 Win Master to Banner-only based on the two latest comparable executions and completed the seven unsupported template assets. Expanded Win Master Banner and backup coupon briefs with historical pattern, exact current delta, and unchanged CTA/Timer/FP/scope details.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, targeted Monday parent/subitem updates ✓, status/scope/content verification ✓, full Monday sync n/a.
+- **Notes for next agent:** A duplicated template is not evidence that every subitem is required; actual prior execution scope controls unless Itay explicitly expands it.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Exact creative deltas and latest references
 
 - **Goal:** Make every creative change explicit and ensure references use the newest relevant Creative attachment from the latest prior task.

@@ -39,6 +39,10 @@ class Promo:
     change_from: str | None = None
     change_to: str | None = None
     change_from_by_asset: dict[str, str] = field(default_factory=dict)
+    historical_scope: str = ""
+    required_assets: frozenset[str] = field(default_factory=frozenset)
+    historical_patterns: dict[str, str] = field(default_factory=dict)
+    unchanged_by_asset: dict[str, str] = field(default_factory=dict)
     actions: dict[str, str] = field(default_factory=dict)
     references: dict[str, Reference | tuple[Reference, ...]] = field(default_factory=dict)
 
@@ -76,32 +80,22 @@ PROMOS: dict[str, Promo] = {
         r"Q:\Slotomania\CRM3\Generic Promotions\Win_Master\2026\2026_03_27_Generic_Wheel_Master",
         change_from="3★ Ace Card",
         change_to="3★ Regular Card + PAB",
+        historical_scope="Banner only. The latest Win Master 3★ Ace task contained only a Banner; the 2026-07-05 parent brief also explicitly documented Banner-only scope.",
+        required_assets=frozenset({"Banner"}),
         change_from_by_asset={
-            "Main Inapp": "4★ Regular Card (latest matching Main Inapp attachment: 2026-01-04)",
-            "Journey Inapp": "Generic Win Master structure; no attached reward reference",
-            "Winners Inapp": "4★ Regular Card (latest matching Winners Inapp attachment: 2026-01-04)",
             "Banner": "3★ Ace Card (latest Win Master task attachment: 2026-07-20)",
-            "UI (Loot)": "Generic Win Master UI; no fixed reward",
-            "Widget": "Generic Win Master widget; no fixed reward",
-            "Externals": "Generic Win Master structure; no attached reward reference",
-            "Comufy": "Generic Win Master structure; no attached reward reference",
+        },
+        historical_patterns={
+            "Banner": "Latest execution: generic Win Master Banner only; Creative changed only the prize callout to 3★ Ace. Established structure: Win Master in-app banner, Generic theme, CTA/destination to Win Master MES.",
+        },
+        unchanged_by_asset={
+            "Banner": "Generic Win Master composition and theme; Win Master in-app banner message structure; CTA/destination to Win Master MES.",
         },
         actions={
-            "Main Inapp": "Replace 4★ Regular Card → 3★ Regular Card + PAB in the central reward. Keep the approved generic Win Master layout, hierarchy, CTA and mechanic unchanged.",
-            "Journey Inapp": "Add 3★ Regular Card + PAB to the generic Win Master Journey entry. Do not introduce a machine or event theme.",
-            "Winners Inapp": "Replace 4★ Regular Card → 3★ Regular Card + PAB in the winner state. Preserve the approved winner layout and CTA.",
-            "Banner": "Replace only the reward callout: 3★ Ace Card → 3★ Regular Card + PAB. Keep the latest generic Win Master composition and destination.",
-            "UI (Loot)": "Add the 3★ Regular Card + PAB loot token/icon and reward copy to the generic UI. Do not alter mission logic or UI structure.",
-            "Widget": "Keep the generic Win Master widget. Add 3★ Regular Card + PAB only if the reward is visible in this asset.",
-            "Externals": "Produce the required external sizes from the approved generic Win Master layout with 3★ Regular Card + PAB.",
-            "Comufy": "Adapt the approved generic external layout to Comufy with 3★ Regular Card + PAB.",
+            "Banner": "Banner only. Replace the prize callout 3★ Ace Card → 3★ Regular Card + PAB. Keep the latest generic Win Master composition, Win Master in-app banner message structure, and CTA/destination to Win Master MES unchanged.",
         },
         references={
-            "Main Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/2637741876/Shougan_Bear_Spin%20Challenge_Inapp.png", r"Q:\Slotomania\CRM3\New Games\Shougan Bear\2025_10_09_Shougan_Bear_Spin Challenge\Inapp\Dynamic_Inapp\Shougan_Bear_Spin Challenge_Inapp.png", "Latest matching Main Inapp attachment — 2026-01-04, pulse 10838704639"),
-            "Winners Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/2637745010/Holiday_Spins_Winners_Inapp_03%20%281%29.png", r"Q:\Slotomania\CRM3\New Games\holiday spins\Holiday_Spins_Winners_Inapp_03 (1).png", "Latest matching Winners Inapp attachment — 2026-01-04, pulse 10838704639"),
             "Banner": r("https://playtika.monday.com/protected_static/7996532/resources/3108370668/Win_Master_Generic_Banner.png", r"Q:\Slotomania\CRM3\Features\MES\2026_03_24_Win_Master\Banner\Win_Master_Generic_Banner.png", "Latest Creative Banner attachment — update 5371897882, pulse 12515008775"),
-            "UI (Loot)": r("https://playtika.monday.com/protected_static/7996532/resources/2852976122/token.png", r"Q:\Slotomania\CRM3\Generic Promotions\Win_Master\2026\2026_03_27_Generic_Wheel_Master\UI\token.png", "Latest matching generic UI attachment — 2026-03-23, pulse 11493027412"),
-            "Widget": r("https://playtika.monday.com/protected_static/7996532/resources/2926990403/MES_Widget.png", r"Q:\Slotomania\CRM3\Generic Promotions\Win_Master\2026\2026_03_27_Generic_Wheel_Master\Widget\MES_Widget.png", "Latest matching generic Widget attachment — 2026-03-23, pulse 11493027412"),
         },
     ),
     "Daily Deal - 3* Reg Card + Hammers Wheel | High Pricing": Promo(
@@ -161,8 +155,16 @@ PROMOS: dict[str, Promo] = {
         r"Q:\Slotomania\CRM3\Features\Coupon Center\2026\2026_08_01_Coin_Coupon_30_50_Status_Boost",
         change_from="30% PU + 55% PRAS; Crazy Train machine skin",
         change_to="30% PU + 50% PRAS; Status Boost styling",
+        historical_scope="One main Inapp with two versions: PU and PRAS.",
+        required_assets=frozenset({"Inapp"}),
+        historical_patterns={
+            "Inapp": "Latest execution used one coupon Inapp with two versions (PU and PRAS), CTA to store, Timer yes, and FP once per player. The previous theme and message were Wacky Weeds-specific.",
+        },
+        unchanged_by_asset={
+            "Inapp": "One Inapp with two versions (PU and PRAS); CTA to store; Timer yes; FP once per player.",
+        },
         actions={
-            "Inapp": "BACKUP only. Prize: 30% PU + 55% PRAS → 30% PU + 50% PRAS. Art treatment: Crazy Train machine skin → Status Boost styling. Produce only if MM activates the backup.",
+            "Inapp": "BACKUP only. Keep the established one-Inapp/two-version structure, CTA to store, Timer yes, and FP once per player. Change PU 30% → PU 30% (unchanged), PRAS 55% → PRAS 50%, and Wacky Weeds/Crazy Train treatment → Status Boost styling. Remove all machine-specific copy; exact replacement headline remains for Itay/Copy. Produce only if MM activates the backup.",
         },
         references={
             "Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/3061558852/The_Craziest_Games_Coupon_Inapp_PU.png", r"Q:\Slotomania\CRM3\New Games\Crazy_Train_Games\Crazy_Train_Celebration\2026\2026_01_22_Celebration\Coupon\The_Craziest_Games_Coupon_Inapp_PU.png"),
@@ -211,7 +213,8 @@ def table(rows: list[tuple[str, str]]) -> str:
 def add_parent_requirements(body: str, promo: Promo) -> str:
     keys = (
         "Brief Due Date", "Art Due Date", "Priority", "Reuse Source",
-        "Current / Source", "Required / New", "Creative Request", "Completion",
+        "Historical Execution Scope", "Required Asset Scope", "Current / Source",
+        "Required / New", "Creative Request", "Completion",
     )
     for key in keys:
         body = re.sub(
@@ -221,11 +224,11 @@ def add_parent_requirements(body: str, promo: Promo) -> str:
             flags=re.S,
         )
     source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}"
-    request = (
-        f"No creative action. Reuse the approved package from {esc(promo.source_date)} unchanged."
-        if promo.label == "Reuse"
-        else "Creative action required for the asset-level prize changes listed in each subitem."
-    )
+    if promo.label == "Reuse":
+        request = f"No creative action. Reuse the approved package from {esc(promo.source_date)} unchanged."
+    else:
+        scope = ", ".join(sorted(promo.required_assets)) if promo.required_assets else ", ".join(sorted(promo.actions))
+        request = f"Creative action required only for: <strong>{esc(scope)}</strong>. All other duplicated template assets are No Action."
     rows = [
         ("Brief Due Date", BRIEF_DUE),
         ("Art Due Date", ART_DUE),
@@ -235,6 +238,8 @@ def add_parent_requirements(body: str, promo: Promo) -> str:
         rows.append(("Reuse Source", f'{esc(promo.source_date)} — <a href="{source_url}">source item</a>'))
     else:
         rows.extend([
+            ("Historical Execution Scope", esc(promo.historical_scope)),
+            ("Required Asset Scope", esc(", ".join(sorted(promo.required_assets)))),
             ("Current / Source", esc(promo.change_from)),
             ("Required / New", esc(promo.change_to)),
         ])
@@ -249,9 +254,18 @@ def add_parent_requirements(body: str, promo: Promo) -> str:
     return body.replace("</tbody></table>", extra + "</tbody></table>", 1)
 
 
+def asset_requires_creative(promo: Promo, asset_name: str) -> bool:
+    if promo.label == "Reuse":
+        return False
+    return asset_name in (promo.required_assets or frozenset(promo.actions))
+
+
 def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
+    required = asset_requires_creative(promo, asset_name)
     configured = promo.references.get(asset_name)
     references = configured if isinstance(configured, tuple) else ((configured,) if configured else ())
+    if not required and promo.label != "Reuse":
+        references = ()
     current_source = promo.change_from_by_asset.get(asset_name, promo.change_from)
     if promo.label == "Reuse":
         action = (
@@ -259,9 +273,21 @@ def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
             f"from {esc(promo.source_date)} unchanged. Do not alter theme, composition, rewards, copy, CTA or timing."
         )
         completion = "<strong>Completed — no Creative action</strong>"
+        historical_pattern = f"Reuse the evidenced {asset_name} execution from {promo.source_date} unchanged."
+        unchanged = "Everything: asset scope, composition, theme, reward, message, CTA, Timer and FP."
+    elif not required:
+        action = (
+            f"No Creative action. The latest comparable execution was {esc(promo.historical_scope)} "
+            f"This duplicated <strong>{esc(asset_name)}</strong> subitem is outside the evidenced scope."
+        )
+        completion = "<strong>Completed — no Creative action</strong>"
+        historical_pattern = f"Latest comparable execution did not request {asset_name}."
+        unchanged = "Reuse standard product behavior; do not create or adapt this asset."
     else:
         action = esc(promo.actions[asset_name])
         completion = "<strong>Creative action required</strong>"
+        historical_pattern = promo.historical_patterns[asset_name]
+        unchanged = promo.unchanged_by_asset[asset_name]
 
     if references:
         preview = "<br>".join(
@@ -290,13 +316,15 @@ def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
         ("Asset", f"<strong>{esc(asset_name)}</strong>"),
         ("Creative Label", f"<strong>{esc(promo.label)}</strong>"),
     ]
-    if promo.label != "Reuse":
+    if required:
         rows.extend([
             ("Current / Source", esc(current_source)),
             ("Required / New", esc(promo.change_to)),
         ])
     rows.extend([
+        ("Historical Execution Pattern", esc(historical_pattern)),
         ("Exact Creative Action", action),
+        ("What Stays Unchanged", esc(unchanged)),
         ("Reference Art", preview),
         ("Reference Link", ref_link),
         ("Reference Provenance", provenance),
@@ -350,10 +378,11 @@ def main() -> None:
         gql(edit_update, {"id": parent_update["id"], "body": add_parent_requirements(parent_update["body"], promo)})
 
         for subitem in item["subitems"]:
-            if promo.label != "Reuse" and subitem["name"] not in promo.actions:
+            required = asset_requires_creative(promo, subitem["name"])
+            if required and subitem["name"] not in promo.actions:
                 raise RuntimeError(f"Missing exact action for {name} / {subitem['name']}")
             sub_values: dict[str, object] = {"status": {"label": "Done"}}
-            if promo.label == "Reuse":
+            if not required:
                 sub_values["color_mkwerpn6"] = {"label": "Done"}
             gql(change_values, {"board": SUBITEM_BOARD, "item": subitem["id"], "values": json.dumps(sub_values)})
             gql(edit_update, {"id": subitem["updates"][0]["id"], "body": subitem_body(name, subitem["name"], promo)})
@@ -412,7 +441,7 @@ def main() -> None:
             body = subitem["updates"][0]["body"]
             if "Exact Creative Action" not in body or f'alt="{html.escape(subitem["name"], quote=True)} reference"' not in body and "No matching asset-type preview" not in body:
                 errors.append(f"{item['name']} / {subitem['name']}: brief/reference")
-            if promo.label == "Reuse":
+            if not asset_requires_creative(promo, subitem["name"]):
                 subcolumns = {column["id"]: column.get("text") or "" for column in subitem["column_values"]}
                 if subcolumns.get("status") != "Done" or subcolumns.get("color_mkwerpn6") != "Done":
                     errors.append(f"{item['name']} / {subitem['name']}: completion")
