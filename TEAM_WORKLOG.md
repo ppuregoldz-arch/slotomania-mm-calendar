@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Open five August Creative and Ops days
+
+- **Goal:** Open rule-compliant Creative briefs and Operation - Monetization tasks for August 5, 6, 11, 28, and 29.
+- **Done:** Created five Monetization-Art day groups with 44 parent briefs and 154 briefed subitems; excluded standalone Lotto Peak/LBP timing-only Creative briefs. Created five Ops day parents with 42 operational subitems. Kept Operation Status blank, used dependency-specific M&M statuses, removed scheduling text from descriptions, and applied compensated UTC payloads. Paired Night Plan tasks run on the following date from 00:00–11:00.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `scripts/build_ops_tasks_from_live_days.py`, `mm_calendar/data/ops_tasks/2026-08-05.json`, `2026-08-06.json`, `2026-08-11.json`, `2026-08-28.json`, `2026-08-29.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, Creative dry run ✓, live Creative write/repair ✓, 44-parent/154-subitem Creative verification ✓, Ops dry run ✓, five live Ops writes ✓, 42-task live status/date/description verification ✓, full MM calendar sync n/a.
+- **Notes for next agent:** Ops parent IDs are `12549912026`, `12549919634`, `12549939082`, `12549956857`, and `12550013159`. Creative group titles are the five ISO dates. The generic New Promo template is used for Sticker Sources skeletons; missing mechanics remain for Itay/Creative rather than being inferred.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Canonical Creative Label guidance
 
 - **Goal:** Persist all Creative Label, promo-definition, brief, status, due-date, and reference-selection guidance in Git and the CRM3 team folder.
