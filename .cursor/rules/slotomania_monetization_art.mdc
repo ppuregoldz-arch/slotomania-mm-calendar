@@ -72,7 +72,7 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 - End every parent brief with **Creative Request**: exact deliverables, or “No creative action — Completed.”
 - **Reuse**: name the exact source promo/date and asset. Parent Status Creative=`done`; each no-action subitem Copy Status=`Done` and Art Status=`Done`.
 - Never set Copy Status=`Done` merely because the brief was written.
-- Art-only required asset: Copy Status=`No Need`, Art Status=`Working on it`, parent Status Creative=`Design in progress`.
+- Art-only required asset: leave Copy Status empty, Art Status=`Working on it`, parent Status Creative=`Design in progress`.
 - If copy work is explicitly required, use the real active Copy status; set `Done` only after the copy itself is completed.
 - Due dates: Brief Due = promo date − 7 calendar days minimum; Art Due = promo date − 2 calendar days minimum. If either lands Friday/Saturday, move it backward to Thursday.
 - Priority default: Critical for business-critical launch with no fallback; High for new promo/theme or broad anchor package; Medium for prize/mission changes; Low for Reuse, backup, or no-action work. Override only with explicit business context.

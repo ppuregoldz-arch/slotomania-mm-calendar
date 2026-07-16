@@ -324,7 +324,7 @@ def main() -> None:
                 raise RuntimeError(f"Missing exact action for {name} / {subitem['name']}")
             if required:
                 sub_values: dict[str, object] = {
-                    "status": {"label": "No Need"},
+                    "status": None,
                     "color_mkwerpn6": {"label": "Working on it"},
                 }
             else:
@@ -396,7 +396,7 @@ def main() -> None:
             if not asset_requires_creative(promo, subitem["name"]):
                 if subcolumns.get("status") != "Done" or subcolumns.get("color_mkwerpn6") != "Done":
                     errors.append(f"{item['name']} / {subitem['name']}: completion")
-            elif subcolumns.get("status") != "No Need" or subcolumns.get("color_mkwerpn6") != "Working on it":
+            elif subcolumns.get("status") or subcolumns.get("color_mkwerpn6") != "Working on it":
                 errors.append(f"{item['name']} / {subitem['name']}: active art status")
     if errors:
         raise RuntimeError("Verification failed:\n- " + "\n- ".join(errors))
