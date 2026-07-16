@@ -51,11 +51,11 @@ def r(url: str, path: str, provenance: str = "") -> Reference:
 
 
 PROMOS: dict[str, Promo] = {
-    "ADS PO - Coins": Promo(
+    "ADS PO - Coins | Reuse from 2026-03-19": Promo(
         "Reuse", "Low", "2026-03-19", "11534434371",
         r"Q:\Slotomania\CRM3\Generic Promotions\Rewarded_Video\Coins\PO\New_Version",
     ),
-    "Shiny Show - Joker All Cards": Promo(
+    "Shiny Show - Joker All Cards | Reuse from 2026-05-10": Promo(
         "Reuse", "Low", "2026-05-10", "11849785302",
         r"Q:\Slotomania\CRM3\Features\SlotoCards\X_SlotoCard_FEATURES\The_Shiny_Show\Joker Promotions\2026_03_24_SS_All_Cards",
         references={
@@ -66,7 +66,7 @@ PROMOS: dict[str, Promo] = {
             "Tooltip": r("https://playtika.monday.com/protected_static/7996532/resources/2926453256/Shiny_Show_Tool_Tip_Cards.png", r"Q:\Slotomania\CRM3\Features\SlotoCards\X_SlotoCard_FEATURES\The_Shiny_Show\Joker Promotions\2026_03_24_SS_All_Cards\Tooltip\Shiny_Show_Tool_Tip_Cards.png"),
         },
     ),
-    "Custom Pod - X1000": Promo(
+    "Custom Pod - X1000 | Reuse from 2025-11-07": Promo(
         "Reuse", "Low", "2025-11-07", "10944964121",
         r"Q:\Slotomania\CRM3\Features\Mega_Pods\2025\2025_11_07_Generic_Pod",
         references={
@@ -97,14 +97,14 @@ PROMOS: dict[str, Promo] = {
             "Banner": r("https://playtika.monday.com/protected_static/7996532/resources/3108370668/Win_Master_Generic_Banner.png", r"Q:\Slotomania\CRM3\Features\MES\2026_03_24_Win_Master\Banner\Win_Master_Generic_Banner.png", "Latest Creative Banner attachment — update 5371897882, pulse 12515008775"),
         },
     ),
-    "Daily Deal - 3* Reg Card + Hammers Wheel | High Pricing": Promo(
+    "Daily Deal - 3* Reg Card + Hammers Wheel | High Pricing | Reuse from 2025-12-10": Promo(
         "Reuse", "Low", "2025-12-10", "10679163597",
         r"Q:\Slotomania\CRM3\Features\Daily_Deal\2025\2025_07_31_DD_Hammer_wheel\DD",
         references={
             "DD (in store)": r("https://playtika.monday.com/protected_static/7996532/resources/2591589595/Daily_Deal_100Hammers.png", r"Q:\Slotomania\CRM3\Features\Daily_Deal\2025\2025_07_31_DD_Hammer_wheel\DD\Daily_Deal_100Hammers.png"),
         },
     ),
-    "Status Boost": Promo(
+    "Status Boost | Reuse from 2026-04-17": Promo(
         "Reuse", "Low", "2026-04-17", "11334801875",
         r"Q:\Slotomania\CRM3\Generic Promotions\Status_Boost\2026\2026_04_17_Status_Boost_Rebrand",
         references={
@@ -128,7 +128,7 @@ PROMOS: dict[str, Promo] = {
             "Denom": r("https://playtika.monday.com/protected_static/7996532/resources/2905066438/DD_Dice_SB.png", r"Q:\Slotomania\CRM3\Features\Daily_Deal\2026\2026_02_25_Dice_SB\DD_Dice_SB.png"),
         },
     ),
-    "1st of Month - Biggest Store Denom": Promo(
+    "1st of Month - Biggest Store Denom | Reuse from 2025-01-12": Promo(
         "Reuse", "Low", "2025-01-12", "12212758850",
         r"Q:\Slotomania\CRM3\Features\Daily_Deal\2025\2025_01_12_Bigger_Coin_Packages",
         references={
@@ -137,7 +137,7 @@ PROMOS: dict[str, Promo] = {
             "Banner": r("https://playtika.monday.com/protected_static/7996532/resources/3026218437/BiggerCoinsPackages_EQ_Banner.jpg", r"Q:\Slotomania\CRM3\Features\Daily_Deal\2025\2025_01_08_NY_Bigger_Coin_Packages\Banner\BiggerCoinsPackages_EQ_Banner.jpg"),
         },
     ),
-    "LBP - 30% Bigger Balls (Night Plan Peak)": Promo(
+    "LBP - 30% Bigger Balls (Night Plan Peak) | Reuse from 2025-12-16": Promo(
         "Reuse", "Low", "2025-12-16", "10770988191",
         r"Q:\Slotomania\CRM3\Features\Lotto_Bonus\2025\2025_12_16_Bigger_30or50",
         references={
@@ -145,7 +145,7 @@ PROMOS: dict[str, Promo] = {
             "UI": r("https://playtika.monday.com/protected_static/7996532/resources/2618636651/Multi_Ball_UI_4_Balls_30_Bigger.png", r"Q:\Slotomania\CRM3\Features\Lotto_Bonus\2024\2024_09_21_30_Bigger_4_Balls\UI\Multi_Ball_UI_4_Balls_30_Bigger.png"),
         },
     ),
-    "Lotto - Peak (Night Plan)": Promo(
+    "Lotto - Peak (Night Plan) | Reuse from 2026-07-11": Promo(
         "Reuse", "Low", "2026-07-11", "12420670025",
         r"Q:\Slotomania\CRM3\Features\Lotto_Bonus",
     ),
@@ -169,7 +169,7 @@ PROMOS: dict[str, Promo] = {
             "Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/3061558852/The_Craziest_Games_Coupon_Inapp_PU.png", r"Q:\Slotomania\CRM3\New Games\Crazy_Train_Games\Crazy_Train_Celebration\2026\2026_01_22_Celebration\Coupon\The_Craziest_Games_Coupon_Inapp_PU.png"),
         },
     ),
-    "RYD - 5* Gold Card + 100% SB | High Price": Promo(
+    "RYD - 5* Gold Card + 100% SB | High Price | Reuse from 2026-04-28": Promo(
         "Reuse", "Low", "2026-04-28", "12097773981",
         r"Q:\Slotomania\CRM3\Features\Reveal_Your_Deal\2026\2026_04_28_RYD_100SB_5GoldCard",
         references={
@@ -179,7 +179,7 @@ PROMOS: dict[str, Promo] = {
             "Denom Off": r("https://playtika.monday.com/protected_static/7996532/resources/3020403792/RYD_SB_5Gold_Denom.png", "https://playtika.monday.com/boards/18112190666/pulses/12097773981"),
         },
     ),
-    "Blast - Short Term Season (Cozy)": Promo(
+    "Blast - Short Term Season (Cozy) | Reward: Wild Ordinary | Reuse from 2026-06-26": Promo(
         "Reuse", "Low", "2026-06-26", "12334017665",
         r"Q:\Slotomania\CRM3\Features\X_Blast\2026\2026_06_26_Cozy_Blast",
         references={
@@ -187,7 +187,7 @@ PROMOS: dict[str, Promo] = {
             "2nd Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/3057046436/Cozy_Blast_Inapp_01_UV.png", r"Q:\Slotomania\CRM3\Features\X_Blast\2026\2026_06_26_Cozy_Blast\Inapp\Cozy_Blast_Inapp_01_UV.png"),
         },
     ),
-    "Blast - Wild Ordinary | Cozy": Promo(
+    "Blast - Wild Ordinary | Cozy | Reuse from 2025-12-15": Promo(
         "Reuse", "Low", "2025-12-15", "10719474051",
         r"Q:\Slotomania\CRM3\Features\X_Blast\2025\2024_01_26_Cozy_Blast",
         references={
@@ -213,19 +213,15 @@ def table(rows: list[tuple[str, str]]) -> str:
 def add_parent_requirements(body: str, promo: Promo) -> str:
     source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}"
     if promo.label == "Reuse":
-        scope = "Reuse only"
-        change = "None"
-        request = "No action. Completed."
-    else:
-        scope = ", ".join(sorted(promo.required_assets)) if promo.required_assets else ", ".join(sorted(promo.actions))
-        change = f"{promo.change_from} → {promo.change_to}"
-        request = f"{scope} only."
+        return table([
+            ("Source", f'<a href="{source_url}">{source_url}</a>'),
+            ("Creative Ask", "Reuse. No action."),
+        ])
+    scope = ", ".join(sorted(promo.required_assets)) if promo.required_assets else ", ".join(sorted(promo.actions))
     return table([
-        ("Creative Label", f"<strong>{esc(promo.label)}</strong>"),
         ("Source", f'<a href="{source_url}">{source_url}</a>'),
         ("Scope", esc(scope)),
-        ("Change", esc(change)),
-        ("Creative Ask", esc(request)),
+        ("Change", esc(f"{promo.change_from} → {promo.change_to}")),
     ])
 
 
@@ -243,13 +239,10 @@ def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
         references = ()
     if promo.label == "Reuse":
         action = f"Reuse from {promo.source_date}. No changes."
-        completion = "<strong>Completed</strong>"
     elif not required:
         action = "No action — not used in the latest comparable execution."
-        completion = "<strong>Completed</strong>"
     else:
         action = promo.actions[asset_name]
-        completion = "<strong>Creative action required</strong>"
         unchanged = promo.unchanged_by_asset[asset_name]
 
     source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}"
@@ -268,9 +261,7 @@ def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
             for link in links
         )
 
-    rows = [
-        ("Asset", f"<strong>{esc(asset_name)}</strong>"),
-    ]
+    rows: list[tuple[str, str]] = []
     if required:
         rows.extend([
             ("Change", esc(action)),
@@ -283,7 +274,6 @@ def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
             ("Reference PNG", preview),
             ("Reference Link", ref_link),
         ])
-    rows.append(("Status", completion))
     return table(rows)
 
 

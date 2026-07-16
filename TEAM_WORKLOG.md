@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Reuse source and reward in titles
+
+- **Goal:** Put reuse provenance and seasonal reward directly in item titles while simplifying brief bodies further.
+- **Done:** Renamed all 11 Reuse parents with `Reuse from YYYY-MM-DD`; added `Reward: Wild Ordinary` to the Cozy seasonal title. Reduced parent briefs to 2–3 rows and asset briefs to 1–4 rows without repeating asset name or status already visible in Monday.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, 13 parent + 74 subitem targeted updates ✓, title/reward/row-count verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Reuse source belongs in the title; seasonal shells must name the exact reward.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Operational task agent foundation
 
 - **Goal:** Learn the live `Operation - Monetization` board and create a safe agent that turns approved calendar days into Ops tasks.

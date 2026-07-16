@@ -52,6 +52,8 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 ## Brief standards
 
 - Keep briefs short. Do not repeat Promo Date, due dates, priority, category, history, or status details already stored in columns.
+- Reuse parent title must end with `| Reuse from YYYY-MM-DD`.
+- Seasonal parent title must include the exact required reward; never leave it only as “Season”.
 - Parent brief: maximum five useful rows—Creative Label, Source, Scope, Change, Creative Ask.
 - Actionable subitem: Asset, Change, Keep, Reference PNG, Reference Link, Status. No long explanations.
 - No-action subitem: Asset, Action, optional real reference, Status.
