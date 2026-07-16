@@ -34,10 +34,14 @@
       "m_and_m_status": "Missing Config",
       "times_per_player": null,
       "reuse": true,
-      "recent_ops_reference": "2026-08-04 item 12549707552 (ADS PO - Gems)",
+      "recent_ops_reference": "2026-08-06 item 12549944836 (ADS PO - Gems)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Platform: ADS PO (SPO) — reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Dice.\nContext: Short-term SNL · Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4–5★ Ace on ADS; prize must match active Short/Mid Term (see label).\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464458658\nRecent Ops reference: Ops item 12549707552"
+      "description": "Set up ADS PO - 2 Dice for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nPlatform: ADS PO (SPO) — reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Dice.\nContext: Short-term SNL · Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4–5★ Ace on ADS; prize must match active Short/Mid Term (see label).\n\nDuplicate from: ADS PO - Gems, 2026-08-06 (https://playtika.monday.com/boards/2109172490/pulses/12549944836).\nChange: ADS PO - Gems → ADS PO - 2 Dice.\n\nNeeded before scheduling:\n- Config: Config needed.",
+      "template_source": {
+        "group_id": "group_mm15y5em",
+        "group_title": "PO ADS"
+      }
     },
     {
       "parent_day": "2026-08-28",
@@ -61,11 +65,11 @@
       "due_date": "2026-08-26",
       "m_and_m_status": "Missing Art+Config",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-22 item 12032700554 (Prize Mania - lucy's carnival theme)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Prize mania\n4★ Gold pack  \nDice booster 6 HR\n1 GGS, \n4 RDS, \nCoins, \nGems \nH price\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464547149\nRecent Ops reference: Ops item 12032700554"
+      "description": "Set up Prize mania H price.\n\nPrize mania\n4★ Gold pack\nDice booster 6 HR\n1 GGS,\n4 RDS,\nCoins,\nGems\nH price\n\nDuplicate from: Prize Mania - lucy's carnival theme, 2026-05-22 (https://playtika.monday.com/boards/2109172490/pulses/12032700554).\nChange: Prize Mania - lucy's carnival theme → Prize mania H price.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-28",
@@ -89,11 +93,11 @@
       "due_date": "2026-08-26",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": false,
-      "recent_ops_reference": "2026-05-31 item 12117377695 (MES - Ace Heist)",
+      "reuse": true,
+      "recent_ops_reference": "2026-08-11 item 12549909409 (Ace Heist - 4* Ace card)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Gameplay Core — coin-sink challenge; complete missions/tasks for prize in title.\nAce Heist — 5★ Ace card\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12475100661\nRecent Ops reference: Ops item 12117377695"
+      "description": "Set up Ace Heist - 5* Ace card.\n\nGameplay Core — coin-sink challenge; complete missions/tasks for prize in title.\nAce Heist — 5★ Ace card\n\nDuplicate from: Ace Heist - 4* Ace card, 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549909409).\nChange: Ace Heist - 4* Ace card → Ace Heist - 5* Ace card.\n\nNeeded before scheduling:\n- Config: MCP needed."
     },
     {
       "parent_day": "2026-08-28",
@@ -117,11 +121,15 @@
       "due_date": "2026-08-26",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": false,
-      "recent_ops_reference": "2026-05-02 item 11826817855 (Daily Deal - SB & Cards wheel H price ONCE)",
+      "reuse": true,
+      "recent_ops_reference": "2026-08-11 item 12549908584 (Daily Deal - 4* Reg card + Hammers Wheel | High Pricing)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12475750417\nRecent Ops reference: Ops item 11826817855"
+      "description": "Set up a High-price Daily Deal.\n\nDuplicate from: Daily Deal - 4* Reg card + Hammers Wheel | High Pricing, 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549908584).\nChange: Daily Deal - 4* Reg card + Hammers Wheel | High Pricing → Daily Deal - 4* gold card + SB wheel 300% H price.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change.",
+      "template_source": {
+        "group_id": "group_mkv1971m",
+        "group_title": "Daily Deal"
+      }
     },
     {
       "parent_day": "2026-08-28",
@@ -145,11 +153,11 @@
       "due_date": "2026-08-26",
       "m_and_m_status": "Missing art",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-28 item 12037022658 (MES - Spin zone - Sweet Ambrosia-)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12511094836\nRecent Ops reference: Ops item 12037022658"
+      "description": "Set up MES spin zone - sticker + hammer wheel in M.E.S.\n\nDuplicate from: MES - Spin zone - Sweet Ambrosia-, 2026-05-28 (https://playtika.monday.com/boards/2109172490/pulses/12037022658).\nChange: MES - Spin zone - Sweet Ambrosia- → MES spin zone - sticker + hammer wheel.\n\nNeeded before scheduling:\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-28",
@@ -177,7 +185,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-27)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12511095622\nRecent Ops reference: No recent Ops precedent found"
+      "description": "Set up Gems coupon 20%/40%.\n\nNo verified recent task to duplicate.\n\nNeeded before scheduling:\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-28",
@@ -205,7 +213,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-27)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: 1. Shiny show - finish shiny show\n2.Mega pods challenge - get 3 pods\n3. Spin zone\n4. SNL challenge - use X shields\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: New promo.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12511132473\nRecent Ops reference: No recent Ops precedent found"
+      "description": "Publish Stickers Sources inapp Day 3/5 with the approved source list and art.\n\n1. Shiny show - finish shiny show\n2.Mega pods challenge - get 3 pods\n3. Spin zone\n4. SNL challenge - use X shields\n\nNo verified recent task to duplicate.\n\nNeeded before scheduling:\n- Art: New promo."
     },
     {
       "parent_day": "2026-08-28",
@@ -229,11 +237,15 @@
       "due_date": "2026-08-26",
       "m_and_m_status": "Missing art",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-21 item 12032581579 (Night Plan - Lucy's Carnival Themed MGAP - Bigger Multipliers)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: New theme for promo.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12511214687\nRecent Ops reference: Ops item 12032581579"
+      "description": "Set up MGAP bigger multipliers Gemeric theme.\n\nDuplicate from: Night Plan - Lucy's Carnival Themed MGAP - Bigger Multipliers, 2026-05-21 (https://playtika.monday.com/boards/2109172490/pulses/12032581579).\nChange: Night Plan - Lucy's Carnival Themed MGAP - Bigger Multipliers → MGAP bigger multipliers Gemeric theme.\n\nNeeded before scheduling:\n- Art: New theme for promo.",
+      "template_source": {
+        "group_id": "group_mkv1vqxx",
+        "group_title": "MGAP"
+      }
     },
     {
       "parent_day": "2026-08-28",
@@ -257,11 +269,11 @@
       "due_date": "2026-08-26",
       "m_and_m_status": "Night Plan",
       "times_per_player": null,
-      "reuse": false,
-      "recent_ops_reference": "2026-05-15 item 11978782808 (Night Plan - LBP 4 balls)",
+      "reuse": true,
+      "recent_ops_reference": "2026-08-11 item 12549946548 (LBP - 2 Extreme Stamps (Night Plan))",
       "requires_review": false,
       "warnings": [],
-      "description": "Night Plan\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12511233794\nRecent Ops reference: Ops item 11978782808"
+      "description": "Open LBP Extreme stamp on LBP.\n\nDuplicate from: LBP - 2 Extreme Stamps (Night Plan), 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549946548).\nChange: LBP - 2 Extreme Stamps (Night Plan) → LBP Extreme stamp on LBP.\n\nRun this as the approved Night Plan action."
     },
     {
       "parent_day": "2026-08-28",
@@ -285,11 +297,11 @@
       "due_date": "2026-08-26",
       "m_and_m_status": "Night Plan",
       "times_per_player": null,
-      "reuse": true,
+      "reuse": false,
       "recent_ops_reference": "2026-05-15 item 11978782808 (Night Plan - LBP 4 balls)",
       "requires_review": false,
       "warnings": [],
-      "description": "Night Plan\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12511106454\nRecent Ops reference: Ops item 11978782808"
+      "description": "Open LBP peak.\n\nStructure reference only: Night Plan - LBP 4 balls, 2026-05-15 (https://playtika.monday.com/boards/2109172490/pulses/11978782808); do not duplicate until the variant is confirmed.\n\nRun this as the approved Night Plan action."
     }
   ]
 }

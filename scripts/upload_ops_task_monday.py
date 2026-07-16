@@ -41,6 +41,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Allow live write with unresolved TBD/requires_review fields",
     )
+    parser.add_argument(
+        "--description-only",
+        action="store_true",
+        help="Update only long_text on existing matched tasks; never create or rename",
+    )
     return parser.parse_args()
 
 
@@ -224,6 +229,19 @@ def commit(spec: dict[str, Any], parent: dict[str, Any] | None, args: argparse.N
     for task in spec["tasks"]:
         key = normalized_name(task["task_name"])
         match = existing.get(key)
+        if args.description_only:
+            if not match:
+                raise SystemExit(
+                    f"Description-only update requires existing task: {task['task_name']}"
+                )
+            set_columns(
+                board_id=SUBITEM_BOARD_ID,
+                item_id=match["id"],
+                values={"long_text": {"text": task["description"]}},
+            )
+            updated += 1
+            print(f"UPDATED DESCRIPTION: {task['task_name']} ({match['id']})")
+            continue
         if match and not args.update_existing:
             print(f"SKIP existing: {task['task_name']} ({match['id']})")
             skipped += 1
@@ -259,6 +277,8 @@ def main() -> None:
     args = parse_args()
     if args.create_day and not args.commit:
         raise SystemExit("--create-day is valid only with --commit")
+    if args.description_only and (not args.commit or not args.update_existing):
+        raise SystemExit("--description-only requires --commit --update-existing")
     spec = json.loads(args.spec.read_text(encoding="utf-8"))
     if args.commit:
         validate_spec(spec, allow_tbd=args.allow_tbd)

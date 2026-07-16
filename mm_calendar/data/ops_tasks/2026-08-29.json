@@ -34,10 +34,14 @@
       "m_and_m_status": "Missing Config",
       "times_per_player": null,
       "reuse": true,
-      "recent_ops_reference": "2026-08-04 item 12549707552 (ADS PO - Gems)",
+      "recent_ops_reference": "2026-08-28 item 12549942842 (ADS PO - 2 Dice)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: ADS Personal Offer prize: Hammers. The MM row title is authoritative.\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464458902\nRecent Ops reference: Ops item 12549707552"
+      "description": "Set up ADS PO - Hammers for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nADS Personal Offer prize: Hammers. The MM row title is authoritative.\n\nDuplicate from: ADS PO - 2 Dice, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549942842).\nChange: ADS PO - 2 Dice → ADS PO - Hammers.\n\nNeeded before scheduling:\n- Config: Config needed.",
+      "template_source": {
+        "group_id": "group_mm15y5em",
+        "group_title": "PO ADS"
+      }
     },
     {
       "parent_day": "2026-08-29",
@@ -61,11 +65,15 @@
       "due_date": "2026-08-27",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": false,
-      "recent_ops_reference": "2026-08-01 item 12548933537 (Daily Deal - 3* Reg Card + Hammers Wheel - High Price)",
+      "reuse": true,
+      "recent_ops_reference": "2026-08-28 item 12549943103 (Daily Deal - 4* gold card + SB wheel 300% H price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12475732350\nRecent Ops reference: Ops item 12548933537"
+      "description": "Set up a High-price Daily Deal.\n\nDuplicate from: Daily Deal - 4* gold card + SB wheel 300% H price, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549943103).\nChange: Daily Deal - 4* gold card + SB wheel 300% H price → Daily Deal 5* gold card + multiwheel + sticker H price.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change.",
+      "template_source": {
+        "group_id": "group_mkv1971m",
+        "group_title": "Daily Deal"
+      }
     },
     {
       "parent_day": "2026-08-29",
@@ -89,11 +97,11 @@
       "due_date": "2026-08-27",
       "m_and_m_status": "More Info required",
       "times_per_player": null,
-      "reuse": false,
-      "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-28)",
+      "reuse": true,
+      "recent_ops_reference": "2026-08-06 item 12549926496 (RLAP)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12511214801\nRecent Ops reference: No recent Ops precedent found"
+      "description": "Set up RLAP using the approved Stash Booster / RLAP configuration.\n\nDuplicate from: RLAP, 2026-08-06 (https://playtika.monday.com/boards/2109172490/pulses/12549926496)."
     },
     {
       "parent_day": "2026-08-29",
@@ -117,11 +125,11 @@
       "due_date": "2026-08-27",
       "m_and_m_status": "Missing art",
       "times_per_player": null,
-      "reuse": false,
-      "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-28)",
+      "reuse": true,
+      "recent_ops_reference": "2026-08-28 item 12549920348 (Stickers Sources inapp Day 3/5)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Sources for stickers:\n1. Shiny show - finish shiny show\n2. make any RDS purchase\n3. win master\n5. Daily Deal\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: New promo.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12511234146\nRecent Ops reference: No recent Ops precedent found"
+      "description": "Publish Stickers Sources inapp Day 4/5 with the approved source list and art.\n\nSources for stickers:\n1. Shiny show - finish shiny show\n2. make any RDS purchase\n3. win master\n5. Daily Deal\n\nDuplicate from: Stickers Sources inapp Day 3/5, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549920348).\nChange: Stickers Sources inapp Day 3/5 → Stickers Sources inapp Day 4/5.\n\nNeeded before scheduling:\n- Art: New promo."
     },
     {
       "parent_day": "2026-08-29",
@@ -146,10 +154,10 @@
       "m_and_m_status": "Night Plan",
       "times_per_player": null,
       "reuse": true,
-      "recent_ops_reference": "2026-08-01 item 12549253002 (NIGHT PLAN - Lotto Peak)",
+      "recent_ops_reference": "2026-08-11 item 12549938995 (Lotto - peak (Night Plan))",
       "requires_review": false,
       "warnings": [],
-      "description": "Night Plan\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Platform: Lotto Bonus — Night Plan revenue peak (not a coin VFM offer).\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464420247\nRecent Ops reference: Ops item 12549253002"
+      "description": "Open Lotto - peak (Night Plan).\n\nPlatform: Lotto Bonus — Night Plan revenue peak (not a coin VFM offer).\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).\n\nDuplicate from: Lotto - peak (Night Plan), 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549938995).\n\nNeeded before scheduling:\n- Config: Config needed.\n\nRun this as the approved Night Plan action."
     },
     {
       "parent_day": "2026-08-29",
@@ -173,11 +181,11 @@
       "due_date": "2026-08-27",
       "m_and_m_status": "Missing Config",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-27 item 12091524626 (Dice booster - dice deluxe from 6 and star)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Platform: Dice Deluxe — weekly timed dice offer (coins/gems + dice SKU); ≤1×/week.\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464438805\nRecent Ops reference: Ops item 12091524626"
+      "description": "Set up Dice Deluxe - 1×/week.\n\nPlatform: Dice Deluxe — weekly timed dice offer (coins/gems + dice SKU); ≤1×/week.\n\nDuplicate from: Dice booster - dice deluxe from 6 and star, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12091524626).\nChange: Dice booster - dice deluxe from 6 and star → Dice Deluxe - 1×/week.\n\nNeeded before scheduling:\n- Config: Config needed."
     },
     {
       "parent_day": "2026-08-29",
@@ -201,11 +209,15 @@
       "due_date": "2026-08-27",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": false,
-      "recent_ops_reference": "2026-05-04 item 11865340102 (RYD 100% SB - M price)",
+      "reuse": true,
+      "recent_ops_reference": "2026-08-01 item 12548932892 (RYD - 5* Gold Card + 100% SB - High Price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Required mechanic/config details are missing from the MM source.\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464444105\nRecent Ops reference: Ops item 11865340102"
+      "description": "Set up RYD - shiny card + 100% SB H price at High price.\nThe player reveals the largest personalized offer and can purchase it.\n\nDuplicate from: RYD - 5* Gold Card + 100% SB - High Price, 2026-08-01 (https://playtika.monday.com/boards/2109172490/pulses/12548932892).\nChange: RYD - 5* Gold Card + 100% SB - High Price → RYD - shiny card + 100% SB H price.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change.",
+      "template_source": {
+        "group_id": "group_mkv1q8yw",
+        "group_title": "RYD"
+      }
     },
     {
       "parent_day": "2026-08-29",
@@ -230,10 +242,10 @@
       "m_and_m_status": "Night Plan",
       "times_per_player": null,
       "reuse": false,
-      "recent_ops_reference": "2026-05-15 item 11978782808 (Night Plan - LBP 4 balls)",
+      "recent_ops_reference": "2026-08-28 item 12549909890 (LBP peak)",
       "requires_review": false,
       "warnings": [],
-      "description": "Night Plan\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Platform: LBP (Lotto Bonus Peak) — timed Lotto boost on Night Plan.\nMechanic (this instance): Two multiball activations during the peak.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464563980\nRecent Ops reference: Ops item 11978782808"
+      "description": "Open LBP - 2 multiballs (Night Plan peak).\n\nPlatform: LBP (Lotto Bonus Peak) — timed Lotto boost on Night Plan.\nMechanic (this instance): Two multiball activations during the peak.\n\nStructure reference only: LBP peak, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549909890); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: Config needed.\n\nRun this as the approved Night Plan action."
     },
     {
       "parent_day": "2026-08-29",
@@ -257,11 +269,11 @@
       "due_date": "2026-08-27",
       "m_and_m_status": "Missing Config",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-17 item 11976760739 (Globez-Opening)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: SALE day (weekend coin sale).\n\nSeason rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 3 (Shiny MS3)\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12475699550\nRecent Ops reference: Ops item 11976760739"
+      "description": "Open Globez Season.\n\nSALE day (weekend coin sale).\n\nSeason rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 3 (Shiny MS3)\n\nDuplicate from: Globez-Opening, 2026-05-17 (https://playtika.monday.com/boards/2109172490/pulses/11976760739).\nChange: Globez-Opening → Globez Season.\n\nNeeded before scheduling:\n- Config: Config needed."
     },
     {
       "parent_day": "2026-08-29",
@@ -289,7 +301,7 @@
       "recent_ops_reference": "2026-05-24 item 11959743030 (Winovate Season)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: SALE day (weekend coin sale).\n\nSeason rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 3 (Shiny MS3)\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12475751102\nRecent Ops reference: Ops item 11959743030"
+      "description": "Open Winovate Season.\n\nSALE day (weekend coin sale).\n\nSeason rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 3 (Shiny MS3)\n\nDuplicate from: Winovate Season, 2026-05-24 (https://playtika.monday.com/boards/2109172490/pulses/11959743030).\n\nNeeded before scheduling:\n- Config: Config needed."
     }
   ]
 }

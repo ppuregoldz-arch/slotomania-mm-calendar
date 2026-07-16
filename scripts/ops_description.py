@@ -14,9 +14,16 @@ def normalize_name(value: str) -> str:
     return re.sub(r"\s+", " ", value.replace("—", "-").replace("–", "-"))
 
 
+def has_alias(text: str, alias: str) -> bool:
+    escaped = re.escape(alias.strip()).replace(r"\ ", r"\s+")
+    return bool(re.search(rf"(?<![a-z0-9]){escaped}(?![a-z0-9])", text))
+
+
 def promo_family(name: str, product: str = "", detail: str = "") -> str:
     text = f" {normalize_name(name)} {product} {detail[:300]} ".lower()
     rules: list[tuple[str, tuple[str, ...]]] = [
+        ("rlap", ("rlap", "stash booster")),
+        ("stickers_sources", ("sticker sources", "stickers sources")),
         ("ads_personal_offer", ("ads po", "po ads", "ads personal offer")),
         ("daily_deal", ("daily deal", "daily_deal")),
         ("rolling_offer", ("rolling offer", "buy more for less", "buy x get y", "bmfl", "bxgy")),
@@ -28,7 +35,6 @@ def promo_family(name: str, product: str = "", detail: str = "") -> str:
         ("mgap", ("mgap", "make good any purchase")),
         ("clan_dash", ("clan dash", "clan-dash", "dash pass")),
         ("shiny_show", ("shiny show",)),
-        ("season_blast", ("blast", "mid term", "short term", "album handover")),
         ("lbp_lotto", (" lbp ", "lotto bonus premium", "lotto peak", "lotto - peak")),
         ("mes", ("m.e.s", " mes ", "mission event system", "win master")),
         (
@@ -45,18 +51,21 @@ def promo_family(name: str, product: str = "", detail: str = "") -> str:
                 " core ",
             ),
         ),
+        ("season_blast", ("blast", "mid term", "short term", "album handover")),
         (
             "sales_store",
             ("coin sale", "gems sale", "gem sale", "coupon", "store denom", "biggest store"),
         ),
     ]
     for family_name, aliases in rules:
-        if any(alias in text for alias in aliases):
+        if any(has_alias(text, alias) for alias in aliases):
             return family_name
     return "other"
 
 
 def clean_detail(value: str) -> str:
+    if value.strip() == "Required mechanic/config details are missing from the MM source.":
+        return ""
     lines: list[str] = []
     for raw_line in (value or "").splitlines():
         line = raw_line.strip()
@@ -101,16 +110,15 @@ def price_label(value: str | None) -> str:
 
 def reference_parts(reference: str | None) -> dict[str, str]:
     value = reference or ""
-    match = re.search(
-        r"(?P<date>20\d{2}-\d{2}-\d{2})\s+item\s+(?P<id>\d+)(?:\s+\((?P<name>.*?)\))?",
-        value,
-    )
+    match = re.search(r"(?P<date>20\d{2}-\d{2}-\d{2})\s+item\s+(?P<id>\d+)", value)
     if not match:
         return {}
+    remainder = value[match.end() :].strip()
+    name = remainder[1:-1].strip() if remainder.startswith("(") and remainder.endswith(")") else ""
     return {
         "date": match.group("date"),
         "id": match.group("id"),
-        "name": (match.group("name") or "").strip(),
+        "name": name,
     }
 
 
@@ -158,6 +166,10 @@ def opening_line(family: str, task_name: str, pricing: str | None) -> str:
         return f"Set up {name}{f' at {price} price' if price else ''}."
     if family == "ads_personal_offer":
         return f"Set up {name} for the eligible ADS audience."
+    if family == "rlap":
+        return f"Set up {name} using the approved Stash Booster / RLAP configuration."
+    if family == "stickers_sources":
+        return f"Publish {name} with the approved source list and art."
     if family == "mes":
         return f"Set up {name} in M.E.S."
     if family == "clan_dash":
@@ -218,6 +230,11 @@ def compose_description(
         lines.append("Eligible players watch an ad and receive the configured prize.")
     elif family == "ryd":
         lines.append("The player reveals the largest personalized offer and can purchase it.")
+    elif family == "mes" and "win master" in task_name.lower():
+        lines.append("Players complete the configured win requirement and receive the listed rewards.")
+        lines.append("Use the complete Win Master M.E.S task and asset/config set.")
+    elif family == "season_blast" and "cozy" in task_name.lower():
+        lines.append("Use the Cozy theme and Wild Ordinary reward in one Blast season task.")
     cleaned_detail = clean_detail(detail)
     if cleaned_detail:
         lines.extend(["", cleaned_detail])

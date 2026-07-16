@@ -33,11 +33,11 @@
       "due_date": "2026-08-03",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-27 item 12099067459 (Night Plan - Piggy - break the piggy for 100% SB)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Prize on break: 3★ Reg card\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464175428\nRecent Ops reference: Ops item 12099067459"
+      "description": "Set up Piggy - break for 3* Reg card.\n\nPrize on break: 3★ Reg card\n\nDuplicate from: Night Plan - Piggy - break the piggy for 100% SB, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12099067459).\nChange: Night Plan - Piggy - break the piggy for 100% SB → Piggy - break for 3* Reg card.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-05",
@@ -61,11 +61,15 @@
       "due_date": "2026-08-03",
       "m_and_m_status": "Missing Art+Config",
       "times_per_player": null,
-      "reuse": false,
-      "recent_ops_reference": "2026-05-30 item 11869421571 (MGAP BOGO UI)",
+      "reuse": true,
+      "recent_ops_reference": "2026-05-30 item 11869424484 (MGAP BOGO Extreme OR Epic)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: BOGO — buy-one-get-one multipliers on MGAP tiers.\nLiveOps: open BOGO config task.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464188536\nRecent Ops reference: Ops item 11869421571"
+      "description": "Set up MGAP BOGO.\n\nBOGO — buy-one-get-one multipliers on MGAP tiers.\nLiveOps: open BOGO config task.\n\nDuplicate from: MGAP BOGO Extreme OR Epic, 2026-05-30 (https://playtika.monday.com/boards/2109172490/pulses/11869424484).\nChange: MGAP BOGO Extreme OR Epic → MGAP BOGO.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: Prize Change.",
+      "template_source": {
+        "group_id": "group_mkv1vqxx",
+        "group_title": "MGAP"
+      }
     },
     {
       "parent_day": "2026-08-05",
@@ -93,7 +97,11 @@
       "recent_ops_reference": "2026-05-29 item 12113633298 (Ads PO -  3* Reg)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Prize: 2★ Reg card · Blast · Quest\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464189091\nRecent Ops reference: Ops item 12113633298"
+      "description": "Set up ADS PO - 2* Reg card for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nPrize: 2★ Reg card · Blast · Quest\n\nDuplicate from: Ads PO -  3* Reg, 2026-05-29 (https://playtika.monday.com/boards/2109172490/pulses/12113633298).\nChange: Ads PO - 3* Reg → ADS PO - 2* Reg card.\n\nNeeded before scheduling:\n- Config: MCP needed.",
+      "template_source": {
+        "group_id": "group_mm15y5em",
+        "group_title": "PO ADS"
+      }
     },
     {
       "parent_day": "2026-08-05",
@@ -117,11 +125,11 @@
       "due_date": "2026-08-03",
       "m_and_m_status": "Missing Art+Config",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-27 item 12093000683 (Spinner clash)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Spinner Clash — tournament Core coin sink; house adds % of wins to prize pot.\nCollector's Album phase 2 (Shiny Series 2) — rank prizes:\n  1st: 5★ Ace Pack\n  2nd: 4★ Ace Pack\n  3rd: 3★ Ace Card\nConfigure ranks in LiveOps per nivi_collector_album_prizes.md.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12475065098\nRecent Ops reference: Ops item 12093000683"
+      "description": "Set up Spinner Clash.\n\nSpinner Clash — tournament Core coin sink; house adds % of wins to prize pot.\nCollector's Album phase 2 (Shiny Series 2) — rank prizes:\n1st: 5★ Ace Pack\n2nd: 4★ Ace Pack\n3rd: 3★ Ace Card\nConfigure ranks in LiveOps per nivi_collector_album_prizes.md.\n\nDuplicate from: Spinner clash, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12093000683).\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-05",
@@ -145,11 +153,15 @@
       "due_date": "2026-08-03",
       "m_and_m_status": "Missing art",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-08-04 item 12549700518 (Daily Deal - 8 Hammers - High Price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Central reward: 100% SB + 6 Hammers (High pricing).\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12486310516\nRecent Ops reference: Ops item 12549700518"
+      "description": "Set up a High-price Daily Deal.\n\nCentral reward: 100% SB + 6 Hammers (High pricing).\n\nDuplicate from: Daily Deal - 8 Hammers - High Price, 2026-08-04 (https://playtika.monday.com/boards/2109172490/pulses/12549700518).\nChange: Daily Deal - 8 Hammers - High Price → Daily Deal - 100% SB + 6 Hammers | H Pricing.\n\nNeeded before scheduling:\n- Art: Prize Change.",
+      "template_source": {
+        "group_id": "group_mkv1971m",
+        "group_title": "Daily Deal"
+      }
     },
     {
       "parent_day": "2026-08-05",
@@ -173,11 +185,15 @@
       "due_date": "2026-08-03",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": true,
+      "reuse": false,
       "recent_ops_reference": "2026-05-31 item 12104594749 (Rolling Offer 6 Cycles - M Price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Rolling — Buy X Get Y (5 cycles) | M Pricing\nShort Term: Blast · Mid Term: Winovate (season start)\nRe-use: Supersized · 4★ Gold on Cycle 2 denom 3 (free slot)\n\nCycle 1\n\t1\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t2\tFree\t 100% SB\n\t3\tFree\t supersized 1%\n\t4\tFree\t 3 Hammers\n\t5\tFree\t 3 RDS\n\t6\tFree\t 1 GGS\n\nCycle 2\n\t7\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t8\tFree\t 150% SB\n\t9\tFree\t 4★ Gold card\n\t10\tFree\t 5 Hammers\n\t11\tFree\t 3 RDS\n\t12\tFree\t 1 GGS\n\nCycle 3\n\t13\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t14\tFree\t 200% SB\n\t15\tFree\t supersized 3%\n\t16\tFree\t 7 Hammers\n\t17\tFree\t 3 RDS\n\t18\tFree\t 1 GGS\n\nCycle 4\n\t19\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t20\tFree\t 250% SB\n\t21\tFree\t 3 Picks\n\t22\tFree\t 10 Hammers\n\t23\tFree\t 3 RDS\n\t24\tFree\t 1 GGS\n\nCycle 5\n\t25\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t26\tFree\t 300% SB\n\t27\tFree\t supersized 5%\n\t28\tFree\t 12 Hammers\n\t29\tFree\t 3 RDS\n\t30\tFree\t 1 GGS\n\nDuration: all day.\nPricing: Mid\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12510879320\nRecent Ops reference: Ops item 12104594749"
+      "description": "Set up Rolling Offer - Supersized (5 cycles) | M Pricing at Mid price.\n\nRolling — Buy X Get Y (5 cycles) | M Pricing\nShort Term: Blast · Mid Term: Winovate (season start)\nRe-use: Supersized · 4★ Gold on Cycle 2 denom 3 (free slot)\n\nCycle 1\n1\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n2\tFree\t 100% SB\n3\tFree\t supersized 1%\n4\tFree\t 3 Hammers\n5\tFree\t 3 RDS\n6\tFree\t 1 GGS\n\nCycle 2\n7\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n8\tFree\t 150% SB\n9\tFree\t 4★ Gold card\n10\tFree\t 5 Hammers\n11\tFree\t 3 RDS\n12\tFree\t 1 GGS\n\nCycle 3\n13\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n14\tFree\t 200% SB\n15\tFree\t supersized 3%\n16\tFree\t 7 Hammers\n17\tFree\t 3 RDS\n18\tFree\t 1 GGS\n\nCycle 4\n19\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n20\tFree\t 250% SB\n21\tFree\t 3 Picks\n22\tFree\t 10 Hammers\n23\tFree\t 3 RDS\n24\tFree\t 1 GGS\n\nCycle 5\n25\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n26\tFree\t 300% SB\n27\tFree\t supersized 5%\n28\tFree\t 12 Hammers\n29\tFree\t 3 RDS\n30\tFree\t 1 GGS\n\nStructure reference only: Rolling Offer 6 Cycles - M Price, 2026-05-31 (https://playtika.monday.com/boards/2109172490/pulses/12104594749); do not duplicate until the variant is confirmed.\nIf no exact dated task exists, start from the Rolling Offer template group.\n\nNeeded before scheduling:\n- Config: MCP needed.",
+      "template_source": {
+        "group_id": "group_mkv1b6ky",
+        "group_title": "Rolling Offer"
+      }
     }
   ]
 }

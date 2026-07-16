@@ -193,6 +193,8 @@ For more real examples, start at `documentation/ops_task_refs/README.md`. These 
 | Limited Personal Offer | Same offer type; fallback `Limited PO` (`group_mm4h2685`) | Verified limited-offer shell | Reward, price, eligibility, cap/timer |
 | MGAP | Newest exact mechanic (Matched/BOGO/Bigger/etc.); fallback `MGAP` (`group_mkv1vqxx`) | Only the same mechanic's flow | Eligible tiers, mapping, UI, reward, frequency |
 | ADS Personal Offer | Same prize type; fallback `PO ADS` (`group_mm15y5em`) | Ad-watch grant flow | Prize, eligibility, frequency, season context |
+| RLAP / Stash Booster | Newest exact RLAP task | Stash Booster configuration and verified purchase flow | Reward pool, price/segment, art/config version |
+| Sticker Sources | Previous source-list day only when the inapp structure matches | Inapp layout and source-list structure | Exact daily sources, order, art, album phase |
 | M.E.S | Newest exact M.E.S mechanic from a dated day task | Banner→M.E.S entry and only verified completion behavior | Mission, parameters, reward, audience, full config/asset set |
 | Clan Dash | Newest task for the same Clan Dash component | Only the same bar/wheel/pass component | Reward SKU, bar placement, segment, attached economy config |
 | Core / gameplay | Newest exact feature and variant | Feature-specific triggers/actions only | Machines, exclusions, effort, min bet, rewards, winner flow |
@@ -331,3 +333,4 @@ Never pre-write a success claim or fake a spot-check count.
 - Do not create a missing day parent unless `--create-day` is explicitly supplied with `--commit`.
 - Creating/updating a task does not authorize comments, assignees, links, files, or statuses beyond the reviewed spec.
 - Show warnings for every TBD and unsupported calendar row.
+- For an approved description-only repair of existing tasks, use `upload_ops_task_monday.py --commit --update-existing --description-only`; this updates only `long_text` and refuses missing tasks.

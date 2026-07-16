@@ -37,7 +37,7 @@
       "recent_ops_reference": "2026-08-01 item 12548939630 (Shiny Show - Joker All Cards)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Variant: Joker All Cards\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464312473\nRecent Ops reference: Ops item 12548939630"
+      "description": "Open Shiny Show - Joker All Cards.\n\nVariant: Joker All Cards\n\nDuplicate from: Shiny Show - Joker All Cards, 2026-08-01 (https://playtika.monday.com/boards/2109172490/pulses/12548939630).\n\nNeeded before scheduling:\n- Config: Config needed."
     },
     {
       "parent_day": "2026-08-11",
@@ -61,11 +61,15 @@
       "due_date": "2026-08-09",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-29 item 12113633298 (Ads PO -  3* Reg)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Prize: 3★ Reg card · SNL · Globez\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464318775\nRecent Ops reference: Ops item 12113633298"
+      "description": "Set up ADS PO - 3* Reg card for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nPrize: 3★ Reg card · SNL · Globez\n\nDuplicate from: Ads PO -  3* Reg, 2026-05-29 (https://playtika.monday.com/boards/2109172490/pulses/12113633298).\nChange: Ads PO - 3* Reg → ADS PO - 3* Reg card.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change.",
+      "template_source": {
+        "group_id": "group_mm15y5em",
+        "group_title": "PO ADS"
+      }
     },
     {
       "parent_day": "2026-08-11",
@@ -89,11 +93,11 @@
       "due_date": "2026-08-09",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-31 item 12117377695 (MES - Ace Heist)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Ace Heist — 4★ Ace card\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12467506589\nRecent Ops reference: Ops item 12117377695"
+      "description": "Set up Ace Heist - 4* Ace card.\n\nAce Heist — 4★ Ace card\n\nDuplicate from: MES - Ace Heist, 2026-05-31 (https://playtika.monday.com/boards/2109172490/pulses/12117377695).\nChange: MES - Ace Heist → Ace Heist - 4* Ace card.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-11",
@@ -121,7 +125,7 @@
       "recent_ops_reference": "2026-05-15 item 11978782808 (Night Plan - LBP 4 balls)",
       "requires_review": false,
       "warnings": [],
-      "description": "Night Plan\nAudience: No segment override is stated in the MM source.\nMechanic / contents: LBP - 2 Extreme Stamps (Night Plan)\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464175520\nRecent Ops reference: Ops item 11978782808"
+      "description": "Open LBP - 2 Extreme Stamps (Night Plan).\n\nLBP - 2 Extreme Stamps (Night Plan)\n\nStructure reference only: Night Plan - LBP 4 balls, 2026-05-15 (https://playtika.monday.com/boards/2109172490/pulses/11978782808); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: Config needed.\n\nRun this as the approved Night Plan action."
     },
     {
       "parent_day": "2026-08-11",
@@ -149,7 +153,7 @@
       "recent_ops_reference": "2026-05-27 item 12099095247 (INTERNAL SNL test #2 - wild ordinary)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Season rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nShort Term (SNL): Short-term board (~3d): cycle prizes — (1) Wild Gold · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464266351\nRecent Ops reference: Ops item 12099095247"
+      "description": "Open SNL - Wild Gold | Finish all boards for Diner Cash (nostalgic machine).\n\nSeason rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nShort Term (SNL): Short-term board (~3d): cycle prizes — (1) Wild Gold · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md\n\nStructure reference only: INTERNAL SNL test #2 - wild ordinary, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12099095247); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-11",
@@ -177,7 +181,7 @@
       "recent_ops_reference": "2026-08-01 item 12549253002 (NIGHT PLAN - Lotto Peak)",
       "requires_review": false,
       "warnings": [],
-      "description": "Night Plan\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Night Plan Lotto peak (pair one LBP row this day).\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464343864\nRecent Ops reference: Ops item 12549253002"
+      "description": "Open Lotto - peak (Night Plan).\n\nNight Plan Lotto peak (pair one LBP row this day).\n\nDuplicate from: NIGHT PLAN - Lotto Peak, 2026-08-01 (https://playtika.monday.com/boards/2109172490/pulses/12549253002).\nChange: NIGHT PLAN - Lotto Peak → Lotto - peak (Night Plan).\n\nNeeded before scheduling:\n- Config: Config needed.\n\nRun this as the approved Night Plan action."
     },
     {
       "parent_day": "2026-08-11",
@@ -201,11 +205,15 @@
       "due_date": "2026-08-09",
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-08-01 item 12548933537 (Daily Deal - 3* Reg Card + Hammers Wheel - High Price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Central reward: 4★ Reg card + Hammers Wheel.\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12476427941\nRecent Ops reference: Ops item 12548933537"
+      "description": "Set up a High-price Daily Deal.\n\nCentral reward: 4★ Reg card + Hammers Wheel.\n\nDuplicate from: Daily Deal - 3* Reg Card + Hammers Wheel - High Price, 2026-08-01 (https://playtika.monday.com/boards/2109172490/pulses/12548933537).\nChange: Daily Deal - 3* Reg Card + Hammers Wheel - High Price → Daily Deal - 4* Reg card + Hammers Wheel | High Pricing.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change.",
+      "template_source": {
+        "group_id": "group_mkv1971m",
+        "group_title": "Daily Deal"
+      }
     },
     {
       "parent_day": "2026-08-11",
@@ -233,7 +241,11 @@
       "recent_ops_reference": "2026-05-31 item 12104594749 (Rolling Offer 6 Cycles - M Price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Platform: Rolling Offer — Buy X Get Y (4 cycles) | H Pricing\nShort Term: SNL (season start) · Mid Term: Globez (through 14/8)\nSame day: X2 Extreme Stamp — cycles 2–4 use Extreme Stamp on Pay + stamp step (cycle 1 unchanged)\nHammers: only in this Rolling (single hammer source this day)\n\nRDS/GGS: cycle 1 — Pay 1 RDS + 1 GGS · step 5 = 2 RDS · step 6 = 1 GGS\nCycles 2–4 — Pay 1 Extreme Stamp + 1 GGS · step 5 = 1 Extreme Stamp · step 6 = 1 GGS\nMGAP: denom 3 only · cycles 2–4 · no separate MGAP board row this day\nCycle 1: NO MGAP\n\nCycle 1:\n  1 Pay — Coins + Gems + 1 RDS + 1 GGS\n  2 — 100% SlotoBucks\n  3 — 4 SNL Dice\n  4 — 5 Hammers\n  5 — 2 RDS\n  6 — 1 GGS\n\nCycle 2:\n  1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n  2 — 150% SlotoBucks\n  3 — MGAP — different config (lower)\n  4 — 8 Hammers\n  5 — 1 Extreme Stamp\n  6 — 1 GGS\n\nCycle 3:\n  1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n  2 — 200% SlotoBucks\n  3 — MGAP — different config (mid)\n  4 — 10 Hammers\n  5 — 1 Extreme Stamp\n  6 — 1 GGS\n\nCycle 4:\n  1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n  2 — 300% SlotoBucks\n  3 — MGAP — different config (higher)\n  4 — 12 Hammers\n  5 — 1 Extreme Stamp\n  6 — 1 GGS\n\nConfig: three MGAP configs on Rolling denom 3 (economist/Nivi). No Decoy paired with Popup Store on 12/8.\nQA: Spin Zone / other offers — hammers only from this Rolling on 11/8.\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: New theme for promo.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12547639977\nRecent Ops reference: Ops item 12104594749"
+      "description": "Set up Rolling Offer - 4 cycles (Buy X Get Y) · MGAP ladder (configs) | H Pricing at High price.\n\nPlatform: Rolling Offer — Buy X Get Y (4 cycles) | H Pricing\nShort Term: SNL (season start) · Mid Term: Globez (through 14/8)\nSame day: X2 Extreme Stamp — cycles 2–4 use Extreme Stamp on Pay + stamp step (cycle 1 unchanged)\nHammers: only in this Rolling (single hammer source this day)\n\nRDS/GGS: cycle 1 — Pay 1 RDS + 1 GGS · step 5 = 2 RDS · step 6 = 1 GGS\nCycles 2–4 — Pay 1 Extreme Stamp + 1 GGS · step 5 = 1 Extreme Stamp · step 6 = 1 GGS\nMGAP: denom 3 only · cycles 2–4 · no separate MGAP board row this day\nCycle 1: NO MGAP\n\nCycle 1:\n1 Pay — Coins + Gems + 1 RDS + 1 GGS\n2 — 100% SlotoBucks\n3 — 4 SNL Dice\n4 — 5 Hammers\n5 — 2 RDS\n6 — 1 GGS\n\nCycle 2:\n1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n2 — 150% SlotoBucks\n3 — MGAP — different config (lower)\n4 — 8 Hammers\n5 — 1 Extreme Stamp\n6 — 1 GGS\n\nCycle 3:\n1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n2 — 200% SlotoBucks\n3 — MGAP — different config (mid)\n4 — 10 Hammers\n5 — 1 Extreme Stamp\n6 — 1 GGS\n\nCycle 4:\n1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n2 — 300% SlotoBucks\n3 — MGAP — different config (higher)\n4 — 12 Hammers\n5 — 1 Extreme Stamp\n6 — 1 GGS\n\nConfig: three MGAP configs on Rolling denom 3 (economist/Nivi). No Decoy paired with Popup Store on 12/8.\nQA: Spin Zone / other offers — hammers only from this Rolling on 11/8.\n\nStructure reference only: Rolling Offer 6 Cycles - M Price, 2026-05-31 (https://playtika.monday.com/boards/2109172490/pulses/12104594749); do not duplicate until the variant is confirmed.\nIf no exact dated task exists, start from the Rolling Offer template group.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: New theme for promo.",
+      "template_source": {
+        "group_id": "group_mkv1b6ky",
+        "group_title": "Rolling Offer"
+      }
     }
   ]
 }

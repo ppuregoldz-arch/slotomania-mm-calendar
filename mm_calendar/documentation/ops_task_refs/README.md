@@ -1,6 +1,6 @@
 # Operation task description references
 
-Generated read-only from board `2109172490` on 2026-07-16T13:52:11.655880+00:00.
+Generated read-only from board `2109172490` on 2026-07-16T14:29:21.528088+00:00.
 Target date: `2026-08-01`; dated-history window starts `2026-05-01`.
 
 These are writing and duplication references, not permission to copy blindly.
@@ -17,6 +17,8 @@ Use the newest exact promo/variant in the valid window; otherwise use the templa
 | Limited Personal Offer | 2 | [limited_po.md](limited_po.md) |
 | MGAP | 6 | [mgap.md](mgap.md) |
 | ADS Personal Offer | 6 | [ads_personal_offer.md](ads_personal_offer.md) |
+| RLAP / Stash Booster | 1 | [rlap.md](rlap.md) |
+| Sticker Sources | 0 | [stickers_sources.md](stickers_sources.md) |
 | M.E.S | 6 | [mes.md](mes.md) |
 | Clan Dash | 1 | [clan_dash.md](clan_dash.md) |
 | Gameplay / Core | 6 | [gameplay.md](gameplay.md) |

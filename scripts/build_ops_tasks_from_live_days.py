@@ -112,6 +112,8 @@ def variant_tags(value: str) -> set[str]:
         "matched": r"\bmatched\b",
         "bigger": r"\bbigger\b|% bigger",
         "golden_balls": r"\bgolden balls?\b",
+        "extreme_stamp": r"\bextreme stamps?\b",
+        "multiball": r"\bmultiballs?\b",
         "joker": r"\bjoker\b",
         "all_cards": r"\ball cards\b",
         "wild_symbol": r"\bwild symbols?\b",
@@ -122,6 +124,9 @@ def variant_tags(value: str) -> set[str]:
     cycle = re.search(r"\b([1-6])\s*cycles?\b", text)
     if cycle:
         tags.add(f"cycles_{cycle.group(1)}")
+    ball_count = re.search(r"\b([2-6])\s+balls?\b", text)
+    if ball_count:
+        tags.add(f"balls_{ball_count.group(1)}")
     return tags
 
 
@@ -148,6 +153,8 @@ def compatible_variant(current: str, candidate: str, family_name: str) -> bool:
         {"supersized"},
         {"matched"},
         {"bigger", "golden_balls"},
+        {"extreme_stamp"},
+        {"multiball"},
         {"joker"},
         {"all_cards"},
         {"wild_symbol"},
@@ -161,11 +168,15 @@ def compatible_variant(current: str, candidate: str, family_name: str) -> bool:
     candidate_cycle = {tag for tag in candidate_tags if tag.startswith("cycles_")}
     if current_cycle and current_cycle != candidate_cycle:
         return False
+    current_balls = {tag for tag in current_tags if tag.startswith("balls_")}
+    candidate_balls = {tag for tag in candidate_tags if tag.startswith("balls_")}
+    if current_balls != candidate_balls:
+        return False
     current_price, candidate_price = pricing_tag(current), pricing_tag(candidate)
     if current_price and candidate_price and current_price != candidate_price:
         return False
     score = similarity(current, candidate)
-    shell_families = {"daily deal", "ryd", "buy all", "ads", "decoy"}
+    shell_families = {"daily deal", "ryd", "buy all", "ads", "decoy", "win master"}
     threshold = 0.1 if family_name in shell_families else 0.25
     if family_name in {"blast", "snl"}:
         threshold = 0.5
@@ -380,6 +391,9 @@ def build_task(row: dict[str, Any], target: str, history: list[dict[str, str]]) 
         "source_calendar_day": target,
         "source_row_name": row["name"],
         "source_mm_item_id": row["id"],
+        "source_detail": detail,
+        "config_status": row.get("config_status") or None,
+        "creative_label": row.get("creative_label") or None,
         "task_name": normalize_name(row["name"]),
         "product": row.get("product"),
         "pricing": row.get("pricing") or None,
@@ -442,7 +456,11 @@ def main() -> None:
         target = spec["day"]
         path = args.output_dir / f"{target}.json"
         path.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print(f"{path.relative_to(ROOT)}: {spec['task_count']} task(s)")
+        try:
+            display_path = path.relative_to(ROOT)
+        except ValueError:
+            display_path = path
+        print(f"{display_path}: {spec['task_count']} task(s)")
 
 
 if __name__ == "__main__":

@@ -37,7 +37,7 @@
       "recent_ops_reference": "2026-05-27 item 12103914682 (Soft Launch - Golden Spin - test group only)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Golden Spin — timed gem feature.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: New theme for promo.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464239902\nRecent Ops reference: Ops item 12103914682"
+      "description": "Set up Golden Spin | 30% Bigger | Betty Boop theme.\n\nGolden Spin — timed gem feature.\n\nStructure reference only: Soft Launch - Golden Spin - test group only, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12103914682); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: New theme for promo."
     },
     {
       "parent_day": "2026-08-06",
@@ -61,11 +61,11 @@
       "due_date": "2026-08-04",
       "m_and_m_status": "Missing Config",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-23 item 12033283669 (Gems Sale store assets - 40%/60% -  Lucy's Carnival)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Gems Sale — 30% store / 20% offers.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464258404\nRecent Ops reference: Ops item 12033283669"
+      "description": "Set up Gems Sale - 30% store / 20% offers.\n\nGems Sale — 30% store / 20% offers.\n\nDuplicate from: Gems Sale store assets - 40%/60% -  Lucy's Carnival, 2026-05-23 (https://playtika.monday.com/boards/2109172490/pulses/12033283669).\nChange: Gems Sale store assets - 40%/60% - Lucy's Carnival → Gems Sale - 30% store / 20% offers.\n\nNeeded before scheduling:\n- Config: Config needed."
     },
     {
       "parent_day": "2026-08-06",
@@ -93,7 +93,7 @@
       "recent_ops_reference": "2026-05-22 item 12032700554 (Prize Mania - lucy's carnival theme)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Bundle: 3★ Reg pack | Coins, Gems, 4 RDS, 1 GGS, 100% SB\nPricing: High\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464260280\nRecent Ops reference: Ops item 12032700554"
+      "description": "Set up Prize Mania - 3* Reg pack | Coins, Gems.\n\nBundle: 3★ Reg pack | Coins, Gems, 4 RDS, 1 GGS, 100% SB\n\nStructure reference only: Prize Mania - lucy's carnival theme, 2026-05-22 (https://playtika.monday.com/boards/2109172490/pulses/12032700554); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-06",
@@ -121,7 +121,11 @@
       "recent_ops_reference": "2026-08-04 item 12549707552 (ADS PO - Gems)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Prize: Gems · Battlesheep · Quest\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12464261622\nRecent Ops reference: Ops item 12549707552"
+      "description": "Set up ADS PO - Gems for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nPrize: Gems · Battlesheep · Quest\n\nDuplicate from: ADS PO - Gems, 2026-08-04 (https://playtika.monday.com/boards/2109172490/pulses/12549707552).\n\nNeeded before scheduling:\n- Config: Config needed.",
+      "template_source": {
+        "group_id": "group_mm15y5em",
+        "group_title": "PO ADS"
+      }
     },
     {
       "parent_day": "2026-08-06",
@@ -149,7 +153,7 @@
       "recent_ops_reference": "2026-05-28 item 12037081168 (Battlesheep - single offer)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: wild gold instead of any\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Prize Change.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12486216467\nRecent Ops reference: Ops item 12037081168"
+      "description": "Set up Battlesheep - Wild Gold | Betty Theme.\n\nwild gold instead of any\n\nStructure reference only: Battlesheep - single offer, 2026-05-28 (https://playtika.monday.com/boards/2109172490/pulses/12037081168); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: Prize Change."
     },
     {
       "parent_day": "2026-08-06",
@@ -173,11 +177,11 @@
       "due_date": "2026-08-04",
       "m_and_m_status": "Missing Config",
       "times_per_player": null,
-      "reuse": false,
+      "reuse": true,
       "recent_ops_reference": "2026-05-21 item 11936048378 (MES - Spin zone - 3* reg - Test)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Spin Zone — 4★ Ace card chase.\nTopper: 3★ Ace card (Nivi Ace_3 bank).\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: Config needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12486219042\nRecent Ops reference: Ops item 11936048378"
+      "description": "Set up MES - Spin Zone + Option to purchase to progress | 4* & 3* Ace in M.E.S.\n\nSpin Zone — 4★ Ace card chase.\nTopper: 3★ Ace card (Nivi Ace_3 bank).\n\nDuplicate from: MES - Spin zone - 3* reg - Test, 2026-05-21 (https://playtika.monday.com/boards/2109172490/pulses/11936048378).\nChange: MES - Spin zone - 3* reg - Test → MES - Spin Zone + Option to purchase to progress | 4* & 3* Ace.\n\nNeeded before scheduling:\n- Config: Config needed."
     },
     {
       "parent_day": "2026-08-06",
@@ -202,10 +206,14 @@
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
       "reuse": true,
-      "recent_ops_reference": "2026-08-01 item 12548933537 (Daily Deal - 3* Reg Card + Hammers Wheel - High Price)",
+      "recent_ops_reference": "2026-05-14 item 12009893284 (Daily Deal - SPB test)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Central reward: 3★ Reg card (on purchase) + 2 Parasheep (Mid pricing).\nPricing: Mid\n\nReuse: YES - reuse the verified recent operational shell; apply the current MM mechanic and contents.\n\nDependencies:\n- Config status from MM: MCP needed.\n- Creative handoff: Reuse.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12486225802\nRecent Ops reference: Ops item 12548933537"
+      "description": "Set up a Mid-price Daily Deal.\n\nCentral reward: 3★ Reg card (on purchase) + 2 Parasheep (Mid pricing).\n\nDuplicate from: Daily Deal - SPB test, 2026-05-14 (https://playtika.monday.com/boards/2109172490/pulses/12009893284).\nChange: Daily Deal - SPB test → Daily Deal - 3* Reg card + 2 Parasheep | M Pricing.\n\nNeeded before scheduling:\n- Config: MCP needed.",
+      "template_source": {
+        "group_id": "group_mkv1971m",
+        "group_title": "Daily Deal"
+      }
     },
     {
       "parent_day": "2026-08-06",
@@ -233,7 +241,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-05)",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nAudience: No segment override is stated in the MM source.\nMechanic / contents: Stash Booster — live (2 configs + 2 comms). Replaces MGAP calendar promo this day.\nTriggers: Daily Deal — 3★ Reg + 2 Parasheep (M) + Prize Mania — 3★ Reg pack (main offer).\nCZ 0–159.99: UP TO x24 Coins (full cycle purchase)\nCZ 160+: UP TO x36 Coins (full cycle purchase)\nAssets: Banner, In-App, Pop-up Banner, Offer (both segments) — Promo Manager Purchase Tools\nQA: DD + main offer buttons show Stash Booster (not Extreme MGAP); other MGAP-eligible purchases unchanged\nDrain: this day + following days include balance-draining promos\nDo not combine: Rolling Offer same day.\n\nReuse: NO - no exact recent operational reuse was verified.\n\nDependencies:\n- Config status from MM: not specified.\n- Creative handoff: not specified.\n- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.\n\nSource: MM calendar item 12528935397\nRecent Ops reference: No recent Ops precedent found"
+      "description": "Set up RLAP using the approved Stash Booster / RLAP configuration.\n\nStash Booster — live (2 configs + 2 comms). Replaces MGAP calendar promo this day.\nTriggers: Daily Deal — 3★ Reg + 2 Parasheep (M) + Prize Mania — 3★ Reg pack (main offer).\nCZ 0–159.99: UP TO x24 Coins (full cycle purchase)\nCZ 160+: UP TO x36 Coins (full cycle purchase)\nAssets: Banner, In-App, Pop-up Banner, Offer (both segments) — Promo Manager Purchase Tools\nQA: DD + main offer buttons show Stash Booster (not Extreme MGAP); other MGAP-eligible purchases unchanged\nDrain: this day + following days include balance-draining promos\nDo not combine: Rolling Offer same day.\n\nNo verified recent task to duplicate."
     }
   ]
 }

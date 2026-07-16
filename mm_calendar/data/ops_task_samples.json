@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T13:52:11.655880+00:00",
+  "generated_at": "2026-07-16T14:29:21.528088+00:00",
   "board_id": "2109172490",
   "target_date": "2026-08-01",
   "history_start": "2026-05-01",
@@ -825,6 +825,26 @@
         "url": "https://playtika.monday.com/boards/2109172490/pulses/12510743066"
       }
     ],
+    "rlap": [
+      {
+        "id": "12453272955",
+        "name": "RLAP FULLL LAUNCH",
+        "family": "rlap",
+        "family_title": "RLAP / Stash Booster",
+        "description": "Stash Booster (RLAP) \nwill be triggered from: Daily deal + RYD\n\n2 configs are atached \nCZ 0-159.99 \nCZ 160+ \n\narts in PM, segmented as well",
+        "promo_date": "2026-07-13",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12287983149",
+        "parent_name": "2026-07-13",
+        "statuses": [
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12453272955"
+      }
+    ],
+    "stickers_sources": [],
     "mes": [
       {
         "id": "12117377695",

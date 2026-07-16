@@ -25,6 +25,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Refresh August Ops and Creative references
+
+- **Goal:** Apply the promo-aware Ops writing rules to the relevant August dates and split Creative reference art from reference links.
+- **Done:** Refreshed all 52 local Ops descriptions for August 1, 5, 6, 11, 28, and 29. Updated 42 active Monday Ops tasks across August 5/6/11/28/29 using description-only writes; verified exact text and blank Operation Status. Updated 73 existing Creative parent/subitem bodies so every one has a separate Reference Link and every Reference row contains a real embedded image (66 images; unavailable exact assets were omitted).
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `.cursor/rules/slotomania_monetization_art.mdc`, `mm_calendar/creative/CREATIVE_LABEL_RULES.md`, `mm_calendar/ops_task_construction.md`, six `mm_calendar/data/ops_tasks/*.json` specs, `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `scripts/refresh_ops_task_descriptions.py`, `scripts/upload_ops_task_monday.py`, `scripts/apply_selected_august_creative_briefs.py`, `scripts/repair_creative_reference_rows.py`, Ops reference cache/docs, `TEAM_WORKLOG.md`.
+- **Commands run:** read-only history/reference research ✓, six-spec validation ✓, 42 description-only Ops updates ✓, 42/42 live verification ✓, 73 Creative update-body edits ✓, Creative Reference/Link verification ✓, Python compile/lints ✓, CRM3 sync ✓, Git commit/push ✓.
+- **Notes for next agent:** The ten August 1 Ops items are inactive/orphaned on Monday and reject column changes; their local spec is updated, but Monday could not be changed without recreating/reactivating those tasks. Do not create replacements without Itay's explicit instruction.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Promo-aware Ops descriptions
 
 - **Goal:** Make Operation - Monetization descriptions understandable by promo type and identify the exact task/template to duplicate.
