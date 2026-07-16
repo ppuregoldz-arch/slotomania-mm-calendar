@@ -7,6 +7,14 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+---
+
+### 2026-07-16 — Agent — Git sync mandatory for `.cursor/rules/`
+
+- **Goal:** Every rules change must land on GitHub for the team.
+- **Done:** Added `.cursor/rules/git_sync_rules.mdc` (alwaysApply); note in `AGENTS.md`.
+- **Commands run:** git commit + `github_push_origin.py` (this session)
+
 ### 2026-07-16 — Agent — Sync Desktop → CRM studio share
 
 - **Goal:** Push recent Popup / Rolling MGAP / RYD backup work to team canonical folder.
