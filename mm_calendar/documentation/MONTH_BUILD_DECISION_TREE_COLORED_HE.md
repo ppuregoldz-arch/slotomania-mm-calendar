@@ -4,7 +4,8 @@
 **במילים:** מדריך **אחד** שמסביר **באיזה סדר** ממלאים חודש — מהרגע שמגיעים **הדגשים שלך**, **תאריכי השקה של פיצ'רים**, ו**גבולות מהכלכלה** — ועד לוח מוכן לביצוע.
 
 **עודכן:** יולי 2026  
-**גרסה מפורטת בטקסט (ללא צבעים):** [MONTH_BUILD_DECISION_TREE_HE.md](./MONTH_BUILD_DECISION_TREE_HE.md)
+**גרסה מפורטת בטקסט:** [MONTH_BUILD_DECISION_TREE_HE.md](./MONTH_BUILD_DECISION_TREE_HE.md)  
+**גיידליינים עומדים (ADS ≠ DD):** `00_GUIDELINES_ITAY.md`, `day_planning_template.md`, `rules_cheatsheet.md`
 
 ---
 

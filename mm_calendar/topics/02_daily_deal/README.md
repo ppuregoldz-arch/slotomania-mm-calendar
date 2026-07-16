@@ -20,6 +20,7 @@ Bundle יומי רכישה — **פלטפורמה**: Coins + Gems + SKU מרכז
 | מסונן / חלונות | Finishers/Non-Finishers · Night plan 00:00–06:00 |
 
 ## כללים קריטיים
+- **ADS PO** — מוצר **נפרד** (לא DD). מתכננים **בסוף היום**; ראה `day_planning_template.md` § ADS.
 - תמחור DD **≠** תמחור second offer (כששניהם ממוחרים)
 - Gold רק ברכישה · קלפים מבנק השבוע
 - DD signals היסטוריים: SB Wheel/Wild Supreme נראים טוב יותר בחלק מהחתכים; **Clan Pack אסור** והיסטורי בלבד. בדוק confidence במסמך ה-variant.

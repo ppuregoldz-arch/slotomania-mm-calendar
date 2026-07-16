@@ -20,7 +20,7 @@
 - **Daily Deal** ≥1 (Coins+Gems+SKU). ברירת מחדל **multiple** (רכישה חוזרת). **DD עם Wild או Shiny Limited = once-per-player** → חובה לשבץ **DD multiple נוסף** שמחליף אותו לאחר הרכישה (ללא Wild/Shiny; רצוי SB Wheel/Hammers).
 - **הצעה שנייה** אמיתית מעבר ל-DD (Buy All/Bonanza/Rolling/RYD/Coin Sale/MGAP). טופרים לא נספרים.
 - **שני תמחורים שונים ביום** (DD + הצעה שנייה, ברמות Pricing שונות).
-- **ADS PO** יומי - **פרסים נמוכים בלבד** (Coins/Gems/Clan Pack/reg נמוך/season). אסור Gold/Shiny Limited/Ace גבוה/Wild.
+- **ADS PO** יומי — **מוצר נפרד** מ-Daily Deal ב-Monday (Product = ADS). **מתכננים רק בסוף היום**, אחרי DD + הצעה 2 + מגבירים + Core/Clan. **לא** בוחרים פרס ADS בזמן DD; **לא** אותם כללי תמחור DD↔הצעה 2. פרסים **נמוכים בלבד** (Coins/Gems/reg נמוך/season). אסור Gold/Shiny Limited/Ace גבוה/Wild.
 - **Core** (coin sink) ≥1 - צ'אלנג' עם פרס בסוף.
 
 ## עוגנים שבועיים (HARD)
@@ -105,7 +105,8 @@
 - **Monday label:** **RLAP** rows = Stash Booster task · `stash_booster.md`.
 
 ## סדר בניית יום
-1. הצעות (DD + Other offers) → 2. מחזקי רבניו (Amplifiers/toppers) → 3. Gameplay → 4. כל השאר → 5. **ADS** (אחרון).
+1. הצעות (DD + Other offers) → 2. מחזקי רבניו → 3. Gameplay → 4. כל השאר → 5. **ADS** (אחרון, **Product נפרד — לא DD**).
+> **ADS:** מתכננים רק אחרי ששלבים 1–4 סגורים; לא מחברים ל-DD.
 > פתרון התנגשויות: לוותר מהתחתית כלפי מעלה; לעולם לא לפגוע בהצעות.
 
 ## תעדוף לפי ביצועים (3 צירים: הכנסה · ג'מס · PU)

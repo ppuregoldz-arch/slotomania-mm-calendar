@@ -30,7 +30,7 @@
 
 ```
 monthly_guidelines → עונות + שלב אלבום → עוגנים (sale/MGAP/Dash/…)
-  → DD + ledger קלפים → הצעה שנייה + תמחור → Core (coin sink) + Shiny/Winovate (gem sink) + Clan → מגבירים → ADS
+  → DD + ledger קלפים → הצעה שנייה + תמחור → Core + Shiny/Winovate + Clan → מגבירים → **ADS (מוצר נפרד, בסוף)**
   → validate (builder + audit)
 ```
 

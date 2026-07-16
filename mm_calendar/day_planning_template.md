@@ -15,7 +15,9 @@
 2. **מחזקי רבניו (Amplifiers)** - Boosted Gemback / GGS / Extreme Stamp / Jumbo Giveaway / Counter PO (toppers על-גבי ההצעות).
 3. **Gameplay** - Core challenges / Shiny Show / Clan-Dash.
 4. **כל השאר**.
-5. **ADS** - אחרון.
+5. **ADS** - **אחרון**, **שורה נפרדת** (Product ADS — **לא** Daily Deal).
+
+> **ADS ≠ DD:** ADS PO הוא מוצר שונה ב-Monday. לא «ממשיכים» את DD ל-ADS ולא בוחרים פרס ADS בשלב שמתכננים DD. קודם סוגרים רכישה + משחק; **רק אז** מוסיפים ADS עם פרס נמוך.
 
 > זהו סדר הבנייה. סדר החשיבות לפתרון התנגשויות/קיצוצים: לוותר מהתחתית כלפי מעלה (ADS -> השאר -> Gameplay), ולעולם לא לפגוע בהצעות.
 
@@ -41,6 +43,9 @@
 5. Album/Shiny לפי הקצב (3 Shiny Show/שבוע).
 
 ## ADS PO - יומי, אבל עם הפרסים ה**פחות טובים** ⭐
+
+**מוצר נפרד:** ב-Monday שורת ADS היא **Product = ADS**, לא Daily Deal ולא Offers. **מתכננים ADS רק אחרי** ש-DD, הצעה שנייה, מגבירים, Core/Shiny ו-Clan ליום כבר מוכנים.
+
 ADS PO רץ **כל יום**, אבל הוא המסלול **הכי פחות חשוב** - ולכן מקבל את הפרסים **הנמוכים** בלבד:
 - **מותר על ADS**: Coins, Gems, קלפי reg נמוכים (1★/2★/3★), season SKUs (picks/Battlesheep/Figz/Globez). **לא Clan Pack** (הוסר לחלוטין).
 - ⚠️ **אסור על ADS**: הפרסים הטובים - **Gold, Shiny Limited, Shiny Card, Ace גבוה (4★/5★), Wild**. אלה שמורים לערוצים ב**תשלום** (DD, Offers, Piggy, Core-purchase) ול-Shiny Show/Album.

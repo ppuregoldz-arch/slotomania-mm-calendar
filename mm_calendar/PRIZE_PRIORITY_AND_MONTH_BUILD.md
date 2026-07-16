@@ -150,7 +150,9 @@ From `rules_cheatsheet.md` — when conflicts arise, **cut from bottom up**:
 | 2 | **Revenue amplifiers** | MGAP, Extreme Stamp, Gemback, HH, Price Cut |
 | 3 | **Gameplay / coin sink** | PYP, Win Master, MES, Spin Zone, Custom Pod |
 | 4 | **Everything else** | Piggy, Lotto, LBP, features |
-| 5 | **ADS** | Always last; low prizes only |
+| 5 | **ADS** | Always **last**; **separate Monday Product** (not Daily Deal); low prizes only |
+
+**ADS vs Daily Deal:** Plan ADS only after steps 1–4 for that day. ADS does not share DD’s pricing-separation rule or premium-prize checklist.
 
 **Density:** normal day ~6–9 board rows; big event 15–25.
 

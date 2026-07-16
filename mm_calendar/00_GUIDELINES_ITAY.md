@@ -29,6 +29,7 @@ If two sources conflict, do not silently choose. Follow the higher authority and
 - **Rolling BXGY 5/6 cycles:** follow `rolling_offer.md`; do not use the old builder helper's Free1/Free2 stamp model.
 - **Daily VFM:** every day needs at least one real second offer beyond Daily Deal. Clan-Dash and Dash Pass do not count.
 - **Pricing separation:** when Daily Deal and the second offer are both priced, they must use different pricing levels.
+- **ADS PO (separate product — Itay Jul 2026):** **ADS is not Daily Deal.** On Monday, ADS is its own **Product** row. Plan ADS **only after** the rest of the day is set (Daily Deal, second offer, amplifiers, gameplay, clan, anchors). Do not pick ADS prizes while designing DD; do not merge ADS into DD copy or pricing rules. ADS = low-tier prizes only (see `day_planning_template.md` § ADS PO). Prize-bank questions for DD/offers/core are **not** the ADS checklist.
 - **Monday:** use a light second offer except on approved MFL anchors; do not rely on a large revenue stack.
 - **Board density:** no more than one Core gameplay item and one Shiny Show item per day; no Shiny Show on Monday; merge paired Daily Deal once/repeatable rows for board presentation.
 - **Coin sink versus gem sink:** Core/MES/Spin Zone/PYP/Custom Pod drive machine play and coin wager. Shiny Show and Winovate drive gem usage. Do not group them under one sink KPI.

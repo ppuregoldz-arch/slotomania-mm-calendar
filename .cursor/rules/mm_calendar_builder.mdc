@@ -65,7 +65,8 @@ alwaysApply: false
    - Mid Term: Winovate (8-9d) + Mega Pods (Mon-Mon) + רוטציית Quest/Globez/Figz.
    - Album: ודא מחזור פעיל; שבץ מעברי מחזור אם רלוונטי.
 2. עוגנים חוזרים + אירועים: שבץ את העוגנים מ-`recurring_events.md` (Dash Day בשני, **Golden Spin בחמישי**, Piggy ברביעי, פיקי Lotto שלישי/שבת בלילה, MGAP שבועי, Rolling/Extreme Stamp/יום Gems/Black Diamond שבועי, Sale בסופ"ש, Price Cut x2/חודש, Machine Launch x2/חודש, ו~פעם ב-1.5 שבועות: Dice/Prize Mania/Mystery Buy All/Counter PO). שבץ אירועים/חגים, אבני דרך אלבום (Album Last X Days, Gold Trading Day, Shiny Limited שבועי). יישם מטרות חודשיות (`learnings.md`).
-3. מילוי מוניטיזציה - **סדר בניית יום**: (1) הצעות (Daily Deal + Buy All/Bonanza/Rolling/RYD/Coin Sale/MGAP) -> (2) מחזקי רבניו (Gemback/GGS/Extreme Stamp/Jumbo/Counter PO - toppers) -> (3) Gameplay (Core/Shiny Show/Clan-Dash) -> (4) כל השאר -> (5) ADS (אחרון).
+3. מילוי מוניטיזציה - **סדר בניית יום**: (1) הצעות (Daily Deal + Buy All/Bonanza/Rolling/RYD/Coin Sale/MGAP) -> (2) מחזקי רבניו (Gemback/GGS/Extreme Stamp/Jumbo/Counter PO - toppers) -> (3) Gameplay (Core/Shiny Show/Clan-Dash) -> (4) כל השאר -> (5) **ADS (אחרון — Product נפרד, לא DD)**.
+   **ADS ≠ DD:** אל תשבץ/תתאר ADS כהמשך של Daily Deal; פרס ADS נקבע **רק** בשלב 5, עם כללי פרס נמוך (לא checklist של DD/Decoy).
    **מילוי תוכן להצעה = פלטפורמה + מאגר**: לכל הצעה בחר את הפלטפורמה, קבע את מטרת היום (coin/gem sink / קלפים / SB / winback), ואז מלא כל slot מהמאגר המשותף (`offer_construction.md`) - אל תיצמד ל"מתכון" קבוע; גוון תוכן בין ימים ובין הצעות מאותו סוג.
    בכל יום ציין את **העונות הפתוחות** (Short Term / Winovate+Mega Pods+רוטציה / Album phase).
    תעדף לפי תרומת הכנסה (performance_benchmarks). הגן על נוכחות מנועי ההכנסה המובילים.
