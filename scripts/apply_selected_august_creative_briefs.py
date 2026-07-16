@@ -90,6 +90,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--date", action="append", required=True, help="YYYY-MM-DD")
     parser.add_argument("--commit", action="store_true", help="Write to Monday")
+    parser.add_argument(
+        "--allow-in-flight",
+        action="store_true",
+        help="Edit items with non-blank Status MM only after explicit Itay approval",
+    )
     return parser.parse_args()
 
 
@@ -505,6 +510,43 @@ def set_columns(board: str, item: str, values: dict[str, Any]) -> None:
     gql(mutation, {"board": board, "item": item, "values": json.dumps(values)})
 
 
+def assert_brief_editable(item_id: str, allow_in_flight: bool = False) -> str:
+    query = """
+    query($ids:[ID!]!) {
+      items(ids:$ids) {
+        column_values(ids:["color_mkwes65f"]) { text }
+      }
+    }
+    """
+    items = gql(query, {"ids": [item_id]})["items"]
+    status = ""
+    if items and items[0]["column_values"]:
+        status = (items[0]["column_values"][0].get("text") or "").strip()
+    if status == "—":
+        status = ""
+    if status and not allow_in_flight:
+        raise RuntimeError(
+            f"Refusing to edit item {item_id}: Status MM={status!r}. "
+            "Ask Itay first, then rerun with --allow-in-flight."
+        )
+    if status:
+        print(f"WARNING: approved in-flight override for {item_id} (Status MM={status!r})")
+    return status
+
+
+def clear_subitem_fields(subitem_id: str) -> None:
+    set_columns(
+        SUBITEM_BOARD,
+        subitem_id,
+        {
+            "status": None,
+            "color_mkwerpn6": None,
+            "color_mkwe6hz": None,
+            "long_text_mkwyvrm1": "",
+        },
+    )
+
+
 def move_item(item: str, group: str) -> None:
     mutation = "mutation($item:ID!,$group:String!){move_item_to_group(item_id:$item,group_id:$group){id}}"
     gql(mutation, {"item": item, "group": group})
@@ -530,6 +572,76 @@ def upsert_update(item_id: str, updates: list[dict[str, Any]], body: str) -> Non
 def delete_item(item_id: str) -> None:
     mutation = "mutation($item:ID!){delete_item(item_id:$item){id}}"
     gql(mutation, {"item": item_id})
+
+
+def create_subitem(parent_id: str, name: str) -> str:
+    mutation = """
+    mutation($parent:ID!,$name:String!) {
+      create_subitem(parent_item_id:$parent,item_name:$name){id}
+    }
+    """
+    return gql(mutation, {"parent": parent_id, "name": name})["create_subitem"]["id"]
+
+
+def canonical_subitem_order(names: list[str]) -> list[str]:
+    def rank(name: str, index: int) -> tuple[int, int]:
+        key = name.strip().lower()
+        if "inapp" in key and "winners" not in key:
+            return (0, index)
+        if key in {"background", "bg", "theme/bo", "theme / bo"}:
+            return (1, index)
+        if key == "df":
+            return (2, index)
+        if (
+            key == "dd (in store)"
+            or key.startswith("denom")
+            or key.startswith("big denom")
+            or key.startswith("store denom")
+        ):
+            return (3, index)
+        if key == "banner":
+            return (4, index)
+        if key == "pp banner":
+            return (5, index)
+        return (6, index)
+
+    return [
+        name
+        for _, name in sorted(
+            enumerate(names),
+            key=lambda pair: rank(pair[1], pair[0]),
+        )
+    ]
+
+
+def reorder_subitems(parent_id: str) -> None:
+    query = """
+    query($ids:[ID!]!) {
+      items(ids:$ids) {
+        subitems { id name updates(limit:1) { body } }
+      }
+    }
+    """
+    subitems = gql(query, {"ids": [parent_id]})["items"][0]["subitems"]
+    current = [subitem["name"] for subitem in subitems]
+    desired = canonical_subitem_order(current)
+    if current == desired:
+        return
+    by_name = {subitem["name"]: subitem for subitem in subitems}
+    if len(by_name) != len(subitems):
+        raise RuntimeError(f"Cannot safely reorder duplicate subitem names on {parent_id}: {current}")
+    new_ids: list[str] = []
+    for name in desired:
+        subitem_id = create_subitem(parent_id, name)
+        new_ids.append(subitem_id)
+        updates = by_name[name].get("updates") or []
+        if updates and updates[0].get("body"):
+            create_update(subitem_id, updates[0]["body"])
+        clear_subitem_fields(subitem_id)
+        time.sleep(0.4)
+    for subitem in subitems:
+        delete_item(str(subitem["id"]))
+    print(f"REORDERED {parent_id}: {current} -> {desired}; new subitems={new_ids}")
 
 
 def brief_name(row: dict[str, str], source: dict[str, Any]) -> str:
@@ -564,7 +676,7 @@ def parent_values(
         "date4": {"date": target},
         "date_mkwep612": {"date": adjusted_due(target, 2)},
         "color_mkws3h8e": {"label": priority(row["label"])},
-        "text_mkwe4jsr": art_path(row, source, target),
+        "text_mkwe4jsr": "",
         "status": None,
         "color_mkwes65f": {"label": status_mm_label(row)},
         **assignment_values(assignment),
@@ -598,31 +710,13 @@ def concise_requirement(row: dict[str, str]) -> str:
 
 
 def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) -> str:
-    rows = [
-        ("Creative Label", esc(row["label"])),
-        ("Change", esc(f"{source['name']} → {concise_requirement(row)}")),
-    ]
-    reference_png = reference_png_html(source)
-    if reference_png:
-        rows.append(("Reference", reference_png))
-    rows.extend(
+    del assets
+    return table(
         [
-            (
-                "Reference Link",
-                reference_link_html(source, allow_missing_path=row["label"] == "New promo"),
-            ),
-            ("Reference Date", esc(source_date(source))),
-            ("Assets", esc(", ".join(assets) if assets else "No asset scope yet")),
+            ("Creative Label", esc(row["label"])),
+            ("Change", esc(f"{source['name']} → {concise_requirement(row)}")),
         ]
     )
-    if row["label"] == "New promo":
-        rows.append(
-            (
-                "Skeleton",
-                "Itay must complete missing mechanic and art direction. Do not invent copy, values, CTA, timer, or theme.",
-            )
-        )
-    return table(rows)
 
 
 def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
@@ -630,6 +724,13 @@ def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str
         ("Task", esc(f"Apply the parent Change to {asset}.")),
         ("Keep", "Match the reference for everything else."),
     ]
+    if row["label"] == "New promo":
+        rows.append(
+            (
+                "Skeleton",
+                "Itay must complete missing mechanic, prizes, and format requirements. Do not invent them.",
+            )
+        )
     reference_png = reference_png_html(source, asset)
     if reference_png:
         rows.append(("Reference", reference_png))
@@ -681,12 +782,14 @@ def write_brief(
     group_id: str,
     existing: dict[str, dict[str, Any]],
     catalog: dict[str, dict[str, Any]],
+    allow_in_flight: bool = False,
 ) -> tuple[str, int]:
     source = source_for(row, catalog)
     name = brief_name(row, source)
     item = existing.get(name)
     if item:
         item_id = str(item["id"])
+        assert_brief_editable(item_id, allow_in_flight)
     else:
         item_id = duplicate_item(str(source["id"]))
         set_columns(BOARD, item_id, {"name": name})
@@ -706,13 +809,13 @@ def write_brief(
         parent_body(row, source, [subitem["name"] for subitem in subitems]),
     )
     for subitem in subitems:
-        sub_values = {"status": None, "color_mkwerpn6": None}
-        set_columns(SUBITEM_BOARD, str(subitem["id"]), sub_values)
+        clear_subitem_fields(str(subitem["id"]))
         upsert_update(
             str(subitem["id"]),
             subitem.get("updates") or [],
             subitem_body(row, source, subitem["name"]),
         )
+    reorder_subitems(item_id)
     return item_id, len(subitems)
 
 
@@ -758,6 +861,7 @@ def main() -> None:
         reuse_item = next((item for item in current_items if item["name"] == REUSE_TASK_NAME), None)
         if reuse_item:
             reuse_item_id = str(reuse_item["id"])
+            assert_brief_editable(reuse_item_id, args.allow_in_flight)
         else:
             reuse_item_id = create_bare_item(group_id, REUSE_TASK_NAME)
             reuse_item = {"id": reuse_item_id, "name": REUSE_TASK_NAME, "updates": [], "subitems": []}
@@ -771,6 +875,7 @@ def main() -> None:
             if str(item["id"]) == reuse_item_id:
                 continue
             if is_old_reuse_item(item, reuse_rows):
+                assert_brief_editable(str(item["id"]), args.allow_in_flight)
                 delete_item(str(item["id"]))
                 deleted += 1
         print(
@@ -795,10 +900,10 @@ def main() -> None:
                 None,
             )
             if existing_item:
+                assert_brief_editable(str(existing_item["id"]), args.allow_in_flight)
                 source = source_for(row, catalog)
                 for subitem in existing_item.get("subitems") or []:
-                    sub_values = {"status": None, "color_mkwerpn6": None}
-                    set_columns(SUBITEM_BOARD, str(subitem["id"]), sub_values)
+                    clear_subitem_fields(str(subitem["id"]))
                     upsert_update(
                         str(subitem["id"]),
                         subitem.get("updates") or [],
@@ -818,6 +923,7 @@ def main() -> None:
                         [subitem["name"] for subitem in existing_item.get("subitems") or []],
                     ),
                 )
+                reorder_subitems(str(existing_item["id"]))
                 print(f"{target} UPDATED existing {existing_item['id']} {name}")
                 total += 1
                 continue
@@ -828,6 +934,7 @@ def main() -> None:
                 group_id,
                 existing,
                 catalog,
+                args.allow_in_flight,
             )
             total += 1
             print(f"{target} {item_id} {row['label']:<19} subitems={subitem_count} {brief_name(row, source_for(row, catalog))}")

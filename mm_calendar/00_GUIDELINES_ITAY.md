@@ -33,7 +33,7 @@ If two sources conflict, do not silently choose. Follow the higher authority and
 - **Monday:** use a light second offer except on approved MFL anchors; do not rely on a large revenue stack.
 - **Board density:** no more than one Core gameplay item and one Shiny Show item per day; no Shiny Show on Monday; merge paired Daily Deal once/repeatable rows for board presentation.
 - **Coin sink versus gem sink:** Core/MES/Spin Zone/PYP/Custom Pod drive machine play and coin wager. Shiny Show and Winovate drive gem usage. Do not group them under one sink KPI.
-- **Creative Labels and art briefs:** use `creative/CREATIVE_LABEL_RULES.md`, `creative/PROMOTION_GLOSSARY.md`, and `creative/overrides.yaml`. These classify required Creative work; canceled tasks are not evidence, and unknown promotions must be clarified with Itay one at a time.
+- **Creative Labels and art briefs:** classify with `creative/CREATIVE_LABEL_RULES.md`, `creative/PROMOTION_GLOSSARY.md`, and `creative/overrides.yaml`; then build with `creative/BRIEF_WRITING_STANDARDS.md`, `creative/CRM3_REFERENCE_MAP.md`, and `creative/PRODUCT_PLAYBOOK.md`. Canceled tasks are not evidence, and unknown promotions must be clarified with Itay one at a time.
 - **Cards:** card rewards must come from the current weekly bank. Gold is purchase-only; Core rewards are Reg/Ace/Shiny/Wild as allowed by the bank.
 - **Monday safety:** never create, change, delete, or synchronize Monday rows without explicit approval.
 - **August 2026 (days 1–15):** live Monday board rows are committed planning truth for UI/forecasts (`monday_board_live_by_date.json`, `august_2026_monday_days_1-15.json`). Do not overwrite via builder or sync without Itay’s explicit approval for that date range.

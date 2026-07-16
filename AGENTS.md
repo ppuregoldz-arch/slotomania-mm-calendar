@@ -21,6 +21,8 @@ For measurement/performance/prediction work, route through `mm_calendar/measurem
 
 **Operational-task handoff:** `mm_calendar/ops_board_schema.md` → `mm_calendar/ops_task_construction.md` → `.cursor/rules/ops_task_builder.mdc`. Ops production tasks are subitems under the matching day on Monday board `2109172490`; build/write only when Itay explicitly requests a day.
 
+**Creative-brief handoff:** `mm_calendar/creative/CREATIVE_LABEL_RULES.md` → `mm_calendar/creative/PROMOTION_GLOSSARY.md` + `overrides.yaml` → `BRIEF_WRITING_STANDARDS.md` → `CRM3_REFERENCE_MAP.md` → `PRODUCT_PLAYBOOK.md` → `.cursor/rules/slotomania_monetization_art.mdc`. Keep Reuse consolidated; active parents use only Creative Label + Change.
+
 **GitHub (team read-only):** `https://github.com/ppuregoldz-arch/slotomania-mm-calendar` — after **any** change under `.cursor/rules/`, agents **commit + push** in the same session (see `.cursor/rules/git_sync_rules.mdc`).
 
 ---

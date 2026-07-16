@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Merge best Creative brief standards
+
+- **Goal:** Combine the reviewer handbook's writing, CRM3, product, and safety standards with the existing Creative Label and consolidated-Reuse workflow.
+- **Done:** Added a hybrid two-row parent contract, concise no-art-direction writing law, CRM3 mechanic map, per-product asset playbook, in-flight edit guard, four-field subitem reset, and canonical subitem ordering. Hardened the August Creative builder while preserving one day-level Reuse summary.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `mm_calendar/00_GUIDELINES_ITAY.md`, `mm_calendar/BUILD_CALENDAR_ROUTER.md`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `mm_calendar/creative/CRM3_REFERENCE_MAP.md`, `mm_calendar/creative/PRODUCT_PLAYBOOK.md`, `scripts/apply_selected_august_creative_briefs.py`, `AGENTS.md`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python syntax compile ✓, canonical-order test ✓, August 5 dry run ✓, lints ✓, August 1 dry run ✗ (existing missing Creative Label for Cozy Blast), Monday sync n/a.
+- **Notes for next agent:** Reuse remains consolidated. Non-Reuse parents contain only Creative Label + Change; all references and asset detail live in concise table-only subitems. Use `--allow-in-flight` only after explicit Itay approval.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Apply Creative Traffic ownership and status rules
 
 - **Goal:** Source Creative due dates and ownership from Creative Traffic, correct status ownership, and accept confirmed live Ops execution as Reuse evidence.
@@ -175,16 +185,6 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
-### 2026-07-16 — GPT-5.6 Sol — Operational task agent foundation
-
-- **Goal:** Learn the live `Operation - Monetization` board and create a safe agent that turns approved calendar days into Ops tasks.
-- **Done:** Documented the main/subitem board contracts, statuses, templates, historical task anatomy, descriptions, comments, and QA conventions. Added construction guidelines and a persistent Cursor rule. Built a review-spec generator and dry-run-first writer that targets subitems under the exact day, blocks unresolved live writes, never deletes, and requires explicit commit/day creation.
-- **Files:** `mm_calendar/ops_board_schema.md`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/README.md`, `scripts/build_ops_tasks_from_plan.py`, `scripts/upload_ops_task_monday.py`, `.cursor/rules/ops_task_builder.mdc`, `AGENTS.md`, `mm_calendar/BUILD_CALENDAR_ROUTER.md`, `TEAM_WORKLOG.md`.
-- **Commands run:** Python compile ✓, August 1 spec generation ✓ (9 review tasks; stale Album row safely skipped), live-board day/subitem read ✓, writer dry run ✓, Monday sync n/a (no writes).
-- **Notes for next agent:** Board `2109172490`; view `57490550`; subitems board `2109172677`. August day parents do not exist yet. Review every TBD before use; live write is blocked unless explicitly overridden, and creating a day needs separate `--create-day` authorization.
-
----
-
 ### 2026-07-16 — GPT-5.6 Sol — Correct exact RYD reuse art
 
 - **Goal:** Replace the incorrect RYD reuse reference that did not show the required 5★ Gold Card.
@@ -202,6 +202,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 - **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
 - **Commands run:** Python compile ✓, targeted update of 13 parents + 74 subitems ✓, row-count/link/PNG verification ✓, full Monday sync n/a.
 - **Notes for next agent:** Never fill a brief with template boilerplate; omit unsupported rows and assets.
+
+---
+
+### 2026-07-16 — GPT-5.6 Sol — Operational task agent foundation
+
+- **Goal:** Learn the live `Operation - Monetization` board and create a safe agent that turns approved calendar days into Ops tasks.
+- **Done:** Documented the main/subitem board contracts, statuses, templates, historical task anatomy, descriptions, comments, and QA conventions. Added construction guidelines and a persistent Cursor rule. Built a review-spec generator and dry-run-first writer that targets subitems under the exact day, blocks unresolved live writes, never deletes, and requires explicit commit/day creation.
+- **Files:** `mm_calendar/ops_board_schema.md`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/README.md`, `scripts/build_ops_tasks_from_plan.py`, `scripts/upload_ops_task_monday.py`, `.cursor/rules/ops_task_builder.mdc`, `AGENTS.md`, `mm_calendar/BUILD_CALENDAR_ROUTER.md`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, August 1 spec generation ✓ (9 review tasks; stale Album row safely skipped), live-board day/subitem read ✓, writer dry run ✓, Monday sync n/a (no writes).
+- **Notes for next agent:** Board `2109172490`; view `57490550`; subitems board `2109172677`. August day parents do not exist yet. Review every TBD before use; live write is blocked unless explicitly overridden, and creating a day needs separate `--create-day` authorization.
 
 ---
 
@@ -232,6 +242,26 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 - **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
 - **Commands run:** Python compile ✓, targeted Monday update for group `2026-08-01` ✓, parent/subitem verification ✓, full Monday sync n/a.
 - **Notes for next agent:** Monday subitem automations can overwrite parent status; always apply final parent `done`/`Copy Done` after subitem status updates and verify after a delay.
+
+---
+
+### 2026-07-16 — GPT-5.6 Sol — Dedicated RLAP art references
+
+- **Goal:** Give RLAP / Stash Booster a dedicated art-reference folder and ensure it is available in the shared studio workspace.
+- **Done:** Classified RLAP separately from generic purchase offers; added canonical Stash Booster rules, art guidance, full historical subitem brief, CRM3 paths, and Monday pulse link under `monetization_art_refs/rlap/`. Linked the canonical `stash_booster.md` back to the art references.
+- **Files:** `scripts/pull_monetization_art_board.py`, `mm_calendar/stash_booster.md`, `mm_calendar/documentation/monetization_art_refs/`, `TEAM_WORKLOG.md`.
+- **Commands run:** `python3 scripts/pull_monetization_art_board.py --from-cache` ✓, lint/content checks ✓, shared-folder sync + byte-for-byte verification ✓, Monday sync n/a.
+- **Notes for next agent:** `stash_booster.md` remains the rule authority; the RLAP folder combines those rules with observed art evidence. RYD/Bonanza logo swaps in the historical brief are instance-specific.
+
+---
+
+### 2026-07-16 — GPT-5.6 Sol — Monetization-Art reference library
+
+- **Goal:** Export the full Monetization-Art / DayByDay Monday board into readable promotion-type reference folders with complete parent and subitem briefs.
+- **Done:** Added a resumable, read-only Monday exporter and generated references for 1,759 included items (1,776 pulled; 17 Cancelled/Automations excluded), 6,782 subitems, and 10,909 subitem updates. References are classified into 31 promotion/special folders and split into monthly brief files; 121 low-confidence items remain explicitly under `_unclassified`.
+- **Files:** `scripts/pull_monetization_art_board.py`, `mm_calendar/data/monetization_art_board_full.json`, `mm_calendar/documentation/monetization_art_refs/`, `TEAM_WORKLOG.md`.
+- **Commands run:** `python3 scripts/pull_monetization_art_board.py --fresh` ✓, `python3 scripts/pull_monetization_art_board.py --from-cache` ✓, syntax/lint + count/content spot-checks ✓, Monday sync n/a (read-only queries only).
+- **Notes for next agent:** Start at `mm_calendar/documentation/monetization_art_refs/README.md`; use `--from-cache` for taxonomy/writer changes without re-querying Monday. `_templates` is preserved as its own high-value source folder.
 
 ---
 

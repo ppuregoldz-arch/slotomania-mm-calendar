@@ -11,8 +11,20 @@ Before classifying or briefing a promo, read:
 - `mm_calendar/creative/CREATIVE_LABEL_RULES.md`
 - `mm_calendar/creative/PROMOTION_GLOSSARY.md`
 - `mm_calendar/creative/overrides.yaml`
+- `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`
+- `mm_calendar/creative/CRM3_REFERENCE_MAP.md`
+- `mm_calendar/creative/PRODUCT_PLAYBOOK.md`
 
 Those files contain Itay's canonical label definitions, promo meanings, and explicit exceptions.
+
+## Prime directives
+
+1. **Theme name + prizes + mechanic + reference. Nothing else.** Do not prescribe colors, motifs, mood, composition, headline copy, or button copy.
+2. **Keep it short.** Use the shortest unambiguous sentence in each cell and do not repeat column data.
+3. **Embed the actual matching reference image** in every actionable asset subitem when one exists. A path alone is not a preview.
+4. **Use a hybrid parent:** exactly `Creative Label` and `Change` rows. Put references, asset scope, and art instructions in subitems.
+5. **Never silently edit an in-flight brief.** If `Status MM` is non-blank, stop and ask Itay before any mutation.
+6. **Reuse remains consolidated:** one day-level `REUSE - No Creative Action` item, not one brief per Reuse promotion.
 
 ## Authentication & tools
 
@@ -26,7 +38,7 @@ Those files contain Itay's canonical label definitions, promo meanings, and expl
 - Default group example: `group_mm3fs1q5` (“2026-11-11 - test”) — user may specify another
 - Columns:
   - `date4` — promo date `{"date": "YYYY-MM-DD"}`
-  - `text_mkwe4jsr` — art folder link (`Q:\Slotomania\CRM3\...`)
+  - `text_mkwe4jsr` — art folder link; leave blank on new briefs (Creative owns the delivery folder)
   - `color_mky3swe2` — Product (labels must match board exactly; many Coin Sale items leave Product empty)
   - `date_mkwj8wwp` — Brief Due Date
   - `date_mkwep612` — Art Due Date
@@ -59,11 +71,12 @@ For every non-Reuse promo:
 
 1. Find template on board (Coins Sale, Dynamic JP, Buy All, Daily Deal, RYD, Rolling Offer, PYP, MES, etc.)
 2. `duplicate_item(board_id, item_id)` — do not invent `create_item` + duplicate id
-3. `change_multiple_column_values` — name, promo date, art path; Product only if label exists
+3. `change_multiple_column_values` — name, promo date, due dates, team, and blank art path; Product only if label exists
 4. `move_item_to_group` — user’s group (duplicate often lands in Templates)
-5. `create_update` on parent — theme, mechanics, art folder, CRM3 note
+5. `create_update` on parent — exactly two rows: Creative Label and Change
 6. `create_update` on **every subitem** — briefs live in updates, not description (duplication does not copy subitem updates)
-7. Wait 2–3s after duplicate if subitems empty, then re-query subitems before posting briefs
+7. Clear every surviving subitem's Copy Status, Art Status, TL Approval, and Subject Line
+8. Wait for board automation, then re-query; remove strays and verify dates/team
 
 ## References
 
@@ -84,8 +97,9 @@ For every non-Reuse promo:
 - Keep briefs short. Do not repeat Promo Date, due dates, priority, category, history, or status details already stored in columns.
 - Reuse is consolidated into the single day-level `REUSE - No Creative Action` item; do not create separate Reuse parent tasks.
 - Seasonal parent title must include the exact required reward; never leave it only as “Season”.
-- Parent brief uses only useful rows—Creative Label, Change, optional Reference preview, Reference Link, Reference Date, Assets, and Skeleton only for a New promo.
-- Actionable subitem: Task, Keep, Reference, Reference Link. Keep each instruction to one clear line.
+- Parent brief has exactly two rows: `Creative Label` and `Change`. `Change` states `source → required`; there is no parent reference, asset list, or skeleton row.
+- Every subitem body is only one HTML table. Follow the asset-specific schema in `BRIEF_WRITING_STANDARDS.md`; add no prose before or after it.
+- Theme cells contain the theme name only. Never include colors, motifs, mood, composition, copy suggestions, or quoted headlines.
 - Do not keep no-action subitems in new briefs; request only the assets that need work.
 - A Link field contains only the URL or exact CRM3 file path—no commentary, provenance prose, or folder instructions.
 - A PNG/reference-art field contains only a real attached image for that exact asset type. If no real matching image exists, omit the row; never create a placeholder or made-up template.
@@ -98,17 +112,24 @@ For every non-Reuse promo:
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
 - Every subitem must name its asset and point to the parent's exact Change; the parent carries the full delta so it is not repeated in every asset brief.
 - **Prize Change**: state `Current/source prize → Required prize` once in the parent, including exact quantity, tier, mission, percentage, and currency. Asset subitems point to that Change.
-- **New theme for promo**: state `Current/source theme → Required theme` once in the parent, including exact motifs, palette, logo, machine/event treatment, and elements that must remain unchanged.
+- **New theme for promo**: state `Current/source theme → Required theme` once in the parent. Do not prescribe motifs, palette, mood, composition, logo treatment, or copy; the reference carries the visual cue.
 - **New promo**: do not invent mechanics, prizes, copy, or art direction. Create a clearly marked skeleton for **Itay to complete**; attach only clearly relevant latest references as optional inspiration.
-- The parent **Change** and **Assets** rows are the Creative request; do not add a second repetitive Creative Request row.
+- The parent **Change** row is the shared Creative request; do not add a second repetitive Creative Request or Assets row.
 - **Reuse**: the day summary names each exact source promo/date and includes the exact Creative reference or Ops live evidence. The summary has no subitems, Status Creative=`done`, and Status MM=`Ready - no action needed`.
 - Never set Copy Status=`Done` merely because the brief was written.
 - For every non-Reuse item, leave parent Status Creative empty. Monetization only writes Status MM: `Brief Done` for a complete brief or `MM work in progress` for an incomplete New promo skeleton.
 - Art-only required asset: leave both Copy Status and Art Status empty.
 - If copy work is explicitly required, use the real active Copy status; set `Done` only after the copy itself is completed.
-- Due dates: Brief Due comes from Creative Traffic `Brief Date`. Art Due = promo date − 2 calendar days minimum; if it lands Friday/Saturday, move it backward to Thursday.
+- Due dates: use Creative Traffic `Brief Date` when available. If unavailable, use the Israeli Sun–Sat fallback: promo Wed–Sat → Art Due Monday of that week; promo Sun–Tue → Art Due Wednesday of the prior week; Brief Due = Art Due − 7 days, shifted from Friday/Saturday back to Thursday. Never invent an invalid date.
 - Priority default: Critical for business-critical launch with no fallback; High for new promo/theme or broad anchor package; Medium for prize/mission changes; Low for Reuse, backup, or no-action work. Override only with explicit business context.
 - If CRM3 not mounted: set paths and note “upload previews when CRM3 available”
+
+## Mutation guard and subitem reset
+
+- Before renaming, re-finalizing, changing columns, replacing updates/references, deleting/recreating/reordering subitems, or otherwise editing an existing brief, query `color_mkwes65f` (`Status MM`).
+- A non-blank Status MM means the brief is in flight. Stop, report the item and status, and ask Itay. Override only after explicit approval and log that approval.
+- After writing each surviving subitem, blank all four fields on subitem board `18112200937`: `status` (Copy Status), `color_mkwerpn6` (Art Status), `color_mkwe6hz` (TL Approval), and `long_text_mkwyvrm1` (Subject Line).
+- Do not mark Copy or Art Done merely because the brief was authored.
 
 ## User request handling
 
