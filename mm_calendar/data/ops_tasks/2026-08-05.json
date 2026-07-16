@@ -37,7 +37,7 @@
       "recent_ops_reference": "2026-05-27 item 12099067459 (Night Plan - Piggy - break the piggy for 100% SB)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Piggy - break for 3* Reg card.\n\nPrize on break: 3★ Reg card\n\nDuplicate from: Night Plan - Piggy - break the piggy for 100% SB, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12099067459).\nChange: Night Plan - Piggy - break the piggy for 100% SB → Piggy - break for 3* Reg card.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change."
+      "description": "Segment: All Users\nTriggers: Player breaks the Piggy\nActions: Give 3* Reg card\n\nDuplicate from: Night Plan - Piggy - break the piggy for 100% SB, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12099067459)."
     },
     {
       "parent_day": "2026-08-05",
@@ -65,7 +65,7 @@
       "recent_ops_reference": "2026-05-30 item 11869424484 (MGAP BOGO Extreme OR Epic)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up MGAP BOGO.\n\nBOGO — buy-one-get-one multipliers on MGAP tiers.\nLiveOps: open BOGO config task.\n\nDuplicate from: MGAP BOGO Extreme OR Epic, 2026-05-30 (https://playtika.monday.com/boards/2109172490/pulses/11869424484).\nChange: MGAP BOGO Extreme OR Epic → MGAP BOGO.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: Prize Change.",
+      "description": "Segment: All Users\nTriggers: Player purchases an eligible MGAP tier\nActions: Grant the BOGO reward according to the approved MGAP config\n\nDuplicate from: MGAP BOGO Extreme OR Epic, 2026-05-30 (https://playtika.monday.com/boards/2109172490/pulses/11869424484).",
       "template_source": {
         "group_id": "group_mkv1vqxx",
         "group_title": "MGAP"
@@ -97,7 +97,7 @@
       "recent_ops_reference": "2026-05-29 item 12113633298 (Ads PO -  3* Reg)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up ADS PO - 2* Reg card for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nPrize: 2★ Reg card · Blast · Quest\n\nDuplicate from: Ads PO -  3* Reg, 2026-05-29 (https://playtika.monday.com/boards/2109172490/pulses/12113633298).\nChange: Ads PO - 3* Reg → ADS PO - 2* Reg card.\n\nNeeded before scheduling:\n- Config: MCP needed.",
+      "description": "Segment: All Users\nTriggers: Eligible player watches an ad\nActions: Give 2* Reg card\n\nDuplicate from: Ads PO -  3* Reg, 2026-05-29 (https://playtika.monday.com/boards/2109172490/pulses/12113633298).",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"
@@ -129,7 +129,7 @@
       "recent_ops_reference": "2026-05-27 item 12093000683 (Spinner clash)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Spinner Clash.\n\nSpinner Clash — tournament Core coin sink; house adds % of wins to prize pot.\nCollector's Album phase 2 (Shiny Series 2) — rank prizes:\n1st: 5★ Ace Pack\n2nd: 4★ Ace Pack\n3rd: 3★ Ace Card\nConfigure ranks in LiveOps per nivi_collector_album_prizes.md.\n\nDuplicate from: Spinner clash, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12093000683).\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: Prize Change."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Spinner clash, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12093000683)."
     },
     {
       "parent_day": "2026-08-05",
@@ -157,7 +157,7 @@
       "recent_ops_reference": "2026-08-04 item 12549700518 (Daily Deal - 8 Hammers - High Price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up a High-price Daily Deal.\n\nCentral reward: 100% SB + 6 Hammers (High pricing).\n\nDuplicate from: Daily Deal - 8 Hammers - High Price, 2026-08-04 (https://playtika.monday.com/boards/2109172490/pulses/12549700518).\nChange: Daily Deal - 8 Hammers - High Price → Daily Deal - 100% SB + 6 Hammers | H Pricing.\n\nNeeded before scheduling:\n- Art: Prize Change.",
+      "description": "Segment: All Users\nPrizes by denom: Central reward: 100% SB + 6 Hammers (High pricing).\nPricing: High\n\nDuplicate from: Daily Deal - 8 Hammers - High Price, 2026-08-04 (https://playtika.monday.com/boards/2109172490/pulses/12549700518).",
       "template_source": {
         "group_id": "group_mkv1971m",
         "group_title": "Daily Deal"
@@ -189,7 +189,7 @@
       "recent_ops_reference": "2026-05-31 item 12104594749 (Rolling Offer 6 Cycles - M Price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Rolling Offer - Supersized (5 cycles) | M Pricing at Mid price.\n\nRolling — Buy X Get Y (5 cycles) | M Pricing\nShort Term: Blast · Mid Term: Winovate (season start)\nRe-use: Supersized · 4★ Gold on Cycle 2 denom 3 (free slot)\n\nCycle 1\n1\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n2\tFree\t 100% SB\n3\tFree\t supersized 1%\n4\tFree\t 3 Hammers\n5\tFree\t 3 RDS\n6\tFree\t 1 GGS\n\nCycle 2\n7\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n8\tFree\t 150% SB\n9\tFree\t 4★ Gold card\n10\tFree\t 5 Hammers\n11\tFree\t 3 RDS\n12\tFree\t 1 GGS\n\nCycle 3\n13\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n14\tFree\t 200% SB\n15\tFree\t supersized 3%\n16\tFree\t 7 Hammers\n17\tFree\t 3 RDS\n18\tFree\t 1 GGS\n\nCycle 4\n19\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n20\tFree\t 250% SB\n21\tFree\t 3 Picks\n22\tFree\t 10 Hammers\n23\tFree\t 3 RDS\n24\tFree\t 1 GGS\n\nCycle 5\n25\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n26\tFree\t 300% SB\n27\tFree\t supersized 5%\n28\tFree\t 12 Hammers\n29\tFree\t 3 RDS\n30\tFree\t 1 GGS\n\nStructure reference only: Rolling Offer 6 Cycles - M Price, 2026-05-31 (https://playtika.monday.com/boards/2109172490/pulses/12104594749); do not duplicate until the variant is confirmed.\nIf no exact dated task exists, start from the Rolling Offer template group.\n\nNeeded before scheduling:\n- Config: MCP needed.",
+      "description": "Segment: All Users\nPrizes by denom:\nRolling — Buy X Get Y (5 cycles) | M Pricing\n\nCycle 1\n1\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n2\tFree\t 100% SB\n3\tFree\t supersized 1%\n4\tFree\t 3 Hammers\n5\tFree\t 3 RDS\n6\tFree\t 1 GGS\n\nCycle 2\n7\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n8\tFree\t 150% SB\n9\tFree\t 4★ Gold card\n10\tFree\t 5 Hammers\n11\tFree\t 3 RDS\n12\tFree\t 1 GGS\n\nCycle 3\n13\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n14\tFree\t 200% SB\n15\tFree\t supersized 3%\n16\tFree\t 7 Hammers\n17\tFree\t 3 RDS\n18\tFree\t 1 GGS\n\nCycle 4\n19\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n20\tFree\t 250% SB\n21\tFree\t 3 Picks\n22\tFree\t 10 Hammers\n23\tFree\t 3 RDS\n24\tFree\t 1 GGS\n\nCycle 5\n25\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n26\tFree\t 300% SB\n27\tFree\t supersized 5%\n28\tFree\t 12 Hammers\n29\tFree\t 3 RDS\n30\tFree\t 1 GGS\nPricing: Mid\nConfig: Structure reference only: Rolling Offer 6 Cycles - M Price, 2026-05-31 (https://playtika.monday.com/boards/2109172490/pulses/12104594749); do not duplicate until the variant is confirmed. If no exact dated task exists, start from the Rolling Offer template group. Status: MCP needed.",
       "template_source": {
         "group_id": "group_mkv1b6ky",
         "group_title": "Rolling Offer"

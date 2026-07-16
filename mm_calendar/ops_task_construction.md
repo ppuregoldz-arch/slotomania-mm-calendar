@@ -109,74 +109,43 @@ Normalize symbols only for readability (`★` may remain `★`). Do not prepend 
 
 ## How to write the Description
 
-Descriptions must read like a direct handoff from Monetization to Ops, not like a database export.
+Do not explain what the product is. Use only the execution fields below plus the verified duplicate source.
 
-1. Open with one plain sentence saying what Ops must set up.
-2. Add only the promo facts that change execution: contents, reward, price, audience, cycles, trigger, or feature behavior.
-3. For a verified reuse, say **Duplicate from** and name the exact dated task/link. Follow with **Change** and **Keep** only when useful.
-4. Add flow steps only for a journey, challenge, grant, or UI transition. A simple offer does not need empty Trigger/Action headings.
-5. End with concrete dependencies only: config, art, MCP, economy task, list, or attached file.
-6. Do not repeat the calendar source ID in prose; the `MM calendar` relation is the source connection.
-7. Do not write `Production`, `Reuse: YES/NO`, generic ownership disclaimers, or filler such as “apply the current mechanic.”
-
-### Natural description patterns
-
-#### Daily Deal / simple purchase offer
+### Offers except Rolling Offer
 
 ```text
-Set up a High-price Daily Deal with Coins, Gems, a 3★ Regular Card and a Hammers Wheel.
+Segment: <confirmed segment; if none, All Users>
+Prizes by denom: <exact prizes/contents by denom>
+Pricing: <High / Mid / Max / Low>
 
-Duplicate from: Daily Deal - 8 Hammers, 2026-05-25 (item 11967559266).
-Change: replace the 8 Hammers reward with the 3★ Regular Card + Hammers Wheel.
-
-MCP required for the card.
+Duplicate from: <exact dated task/link>
 ```
 
-#### Rolling / RYD / Buy All / Decoy
+This schema covers Daily Deal, RYD, Buy All, Decoy/Bonanza, Equal Offer, Limited Personal Offer, and sales/store offers.
+
+### Rolling Offer
 
 ```text
-Set up a 6-cycle Mid-price Rolling Offer.
-
-Duplicate from: Rolling Offer 6 Cycles - M Price, 2026-05-31 (item 12104594749).
-Keep: 12-hour timer, login + banner triggers, X button and banner removal after purchase.
-Change: use the current six-cycle config and approved rewards.
-
-Config is attached; art is in PM.
+Segment: <confirmed segment; if none, All Users>
+Prizes by denom:
+<exact cycle/denom table>
+Pricing: <High / Mid / Max / Low>
+Config: <exact duplicate source/template and config status>
 ```
 
-#### M.E.S / gameplay challenge
+### Every other promotion
 
 ```text
-Set up Win Master in M.E.S for all eligible players.
-Players complete the configured win requirement to receive a 3★ Regular Card + Pick a Boom.
+Segment: <who receives it; if none, All Users>
+Triggers: <what the player must do to receive the reward>
+Actions: <winner inapp, reward grant, and next mission when linear>
 
-Banner opens M.E.S. Remove it after the challenge is completed and show the winner inapp.
-Duplicate the full latest matching Win Master M.E.S task; update the mission and reward across the complete asset/config set.
-
-MCP required for the card.
+Duplicate from: <exact dated task/link>
 ```
 
-#### Grant / segmented benefit
+Do not add product introductions, product explanations, `Production`, date/time text, generic Journey blocks, `Reuse: YES/NO`, or dependency boilerplate. Start/End and Once/Multiple remain only in their dedicated columns. If Trigger or Action is not confirmed, write `Not specified in MM source` instead of inventing it.
 
-```text
-Give 10 Parasheep Tokens directly to the balance of eligible Black Diamond players.
-
-Trigger: player logs in.
-Condition: Black Diamond segment.
-Action: grant 10 tokens and show the attached winner inapp.
-```
-
-#### LBP / Night Plan
-
-```text
-Open Lotto Bonus Premium with every ball value increased by 30%.
-
-Duplicate from: LBP - all balls 40% bigger, 2026-05-09 (item 11936779021).
-Change: 40% → 30%.
-Keep: the existing Bigger Balls config and matching UI by segment.
-```
-
-For more real examples, start at `documentation/ops_task_refs/README.md`. These examples preserve the team's writing voice; old dates/times shown in source examples must not be copied into new Descriptions.
+For real source examples, start at `documentation/ops_task_refs/README.md`. Use them only to identify the exact duplicate and execution facts; do not copy their legacy formatting.
 
 ## Duplicate-from source map
 

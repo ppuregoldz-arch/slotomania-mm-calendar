@@ -37,7 +37,7 @@
       "recent_ops_reference": "2026-08-28 item 12549942842 (ADS PO - 2 Dice)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up ADS PO - Hammers for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nADS Personal Offer prize: Hammers. The MM row title is authoritative.\n\nDuplicate from: ADS PO - 2 Dice, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549942842).\nChange: ADS PO - 2 Dice → ADS PO - Hammers.\n\nNeeded before scheduling:\n- Config: Config needed.",
+      "description": "Segment: All Users\nTriggers: Eligible player watches an ad\nActions: Give Hammers\n\nDuplicate from: ADS PO - 2 Dice, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549942842).",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"
@@ -69,7 +69,7 @@
       "recent_ops_reference": "2026-08-28 item 12549943103 (Daily Deal - 4* gold card + SB wheel 300% H price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up a High-price Daily Deal.\n\nDuplicate from: Daily Deal - 4* gold card + SB wheel 300% H price, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549943103).\nChange: Daily Deal - 4* gold card + SB wheel 300% H price → Daily Deal 5* gold card + multiwheel + sticker H price.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change.",
+      "description": "Segment: All Users\nPrizes by denom: 5* gold card + multiwheel + sticker H price\nPricing: High\n\nDuplicate from: Daily Deal - 4* gold card + SB wheel 300% H price, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549943103).",
       "template_source": {
         "group_id": "group_mkv1971m",
         "group_title": "Daily Deal"
@@ -101,7 +101,7 @@
       "recent_ops_reference": "2026-08-06 item 12549926496 (RLAP)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up RLAP using the approved Stash Booster / RLAP configuration.\n\nDuplicate from: RLAP, 2026-08-06 (https://playtika.monday.com/boards/2109172490/pulses/12549926496)."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: RLAP, 2026-08-06 (https://playtika.monday.com/boards/2109172490/pulses/12549926496)."
     },
     {
       "parent_day": "2026-08-29",
@@ -129,7 +129,7 @@
       "recent_ops_reference": "2026-08-28 item 12549920348 (Stickers Sources inapp Day 3/5)",
       "requires_review": false,
       "warnings": [],
-      "description": "Publish Stickers Sources inapp Day 4/5 with the approved source list and art.\n\nSources for stickers:\n1. Shiny show - finish shiny show\n2. make any RDS purchase\n3. win master\n5. Daily Deal\n\nDuplicate from: Stickers Sources inapp Day 3/5, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549920348).\nChange: Stickers Sources inapp Day 3/5 → Stickers Sources inapp Day 4/5.\n\nNeeded before scheduling:\n- Art: New promo."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Show the approved daily Sticker Sources in the inapp\n\nDuplicate from: Stickers Sources inapp Day 3/5, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549920348)."
     },
     {
       "parent_day": "2026-08-29",
@@ -157,7 +157,7 @@
       "recent_ops_reference": "2026-08-11 item 12549938995 (Lotto - peak (Night Plan))",
       "requires_review": false,
       "warnings": [],
-      "description": "Open Lotto - peak (Night Plan).\n\nPlatform: Lotto Bonus — Night Plan revenue peak (not a coin VFM offer).\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).\n\nDuplicate from: Lotto - peak (Night Plan), 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549938995).\n\nNeeded before scheduling:\n- Config: Config needed.\n\nRun this as the approved Night Plan action."
+      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply Lotto - peak\n\nDuplicate from: Lotto - peak (Night Plan), 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549938995)."
     },
     {
       "parent_day": "2026-08-29",
@@ -185,7 +185,7 @@
       "recent_ops_reference": "2026-05-27 item 12091524626 (Dice booster - dice deluxe from 6 and star)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Dice Deluxe - 1×/week.\n\nPlatform: Dice Deluxe — weekly timed dice offer (coins/gems + dice SKU); ≤1×/week.\n\nDuplicate from: Dice booster - dice deluxe from 6 and star, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12091524626).\nChange: Dice booster - dice deluxe from 6 and star → Dice Deluxe - 1×/week.\n\nNeeded before scheduling:\n- Config: Config needed."
+      "description": "Segment: All Users\nPrizes by denom: Dice Deluxe - 1×/week\nPricing: High\n\nDuplicate from: Dice booster - dice deluxe from 6 and star, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12091524626)."
     },
     {
       "parent_day": "2026-08-29",
@@ -210,10 +210,10 @@
       "m_and_m_status": "Missing MCP",
       "times_per_player": null,
       "reuse": true,
-      "recent_ops_reference": "2026-08-01 item 12548932892 (RYD - 5* Gold Card + 100% SB - High Price)",
+      "recent_ops_reference": "2026-05-18 item 11977017447 (RYD 100% SB + 3000 globez | H Pricing)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up RYD - shiny card + 100% SB H price at High price.\nThe player reveals the largest personalized offer and can purchase it.\n\nDuplicate from: RYD - 5* Gold Card + 100% SB - High Price, 2026-08-01 (https://playtika.monday.com/boards/2109172490/pulses/12548932892).\nChange: RYD - 5* Gold Card + 100% SB - High Price → RYD - shiny card + 100% SB H price.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change.",
+      "description": "Segment: All Users\nPrizes by denom: shiny card + 100% SB H price\nPricing: High\n\nDuplicate from: RYD 100% SB + 3000 globez | H Pricing, 2026-05-18 (https://playtika.monday.com/boards/2109172490/pulses/11977017447).",
       "template_source": {
         "group_id": "group_mkv1q8yw",
         "group_title": "RYD"
@@ -245,7 +245,7 @@
       "recent_ops_reference": "2026-08-28 item 12549909890 (LBP peak)",
       "requires_review": false,
       "warnings": [],
-      "description": "Open LBP - 2 multiballs (Night Plan peak).\n\nPlatform: LBP (Lotto Bonus Peak) — timed Lotto boost on Night Plan.\nMechanic (this instance): Two multiball activations during the peak.\n\nStructure reference only: LBP peak, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549909890); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: Config needed.\n\nRun this as the approved Night Plan action."
+      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply LBP - 2 multiballs\n\nStructure reference only: LBP peak, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549909890); do not duplicate until the variant is confirmed."
     },
     {
       "parent_day": "2026-08-29",
@@ -273,7 +273,7 @@
       "recent_ops_reference": "2026-05-17 item 11976760739 (Globez-Opening)",
       "requires_review": false,
       "warnings": [],
-      "description": "Open Globez Season.\n\nSALE day (weekend coin sale).\n\nSeason rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 3 (Shiny MS3)\n\nDuplicate from: Globez-Opening, 2026-05-17 (https://playtika.monday.com/boards/2109172490/pulses/11976760739).\nChange: Globez-Opening → Globez Season.\n\nNeeded before scheduling:\n- Config: Config needed."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Globez-Opening, 2026-05-17 (https://playtika.monday.com/boards/2109172490/pulses/11976760739)."
     },
     {
       "parent_day": "2026-08-29",
@@ -301,7 +301,7 @@
       "recent_ops_reference": "2026-05-24 item 11959743030 (Winovate Season)",
       "requires_review": false,
       "warnings": [],
-      "description": "Open Winovate Season.\n\nSALE day (weekend coin sale).\n\nSeason rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 3 (Shiny MS3)\n\nDuplicate from: Winovate Season, 2026-05-24 (https://playtika.monday.com/boards/2109172490/pulses/11959743030).\n\nNeeded before scheduling:\n- Config: Config needed."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Winovate Season, 2026-05-24 (https://playtika.monday.com/boards/2109172490/pulses/11959743030)."
     }
   ]
 }

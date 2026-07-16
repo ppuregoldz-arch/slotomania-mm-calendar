@@ -45,6 +45,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Minimal Ops description schema
+
+- **Goal:** Remove product explanations and reduce Ops descriptions to the exact execution fields Itay specified.
+- **Done:** Offers now contain only Segment, Prizes by denom, Pricing, and duplicate source. Rolling adds Config. Every other promo contains only Segment, Triggers, Actions, and duplicate source. Regenerated all 52 local August descriptions and updated/verified 42 active Monday tasks for August 5/6/11/28/29 using description-only writes.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/ops_board_schema.md`, six `mm_calendar/data/ops_tasks/*.json` specs, `scripts/ops_description.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** six-spec schema validation ✓, 42 description-only Monday updates ✓, 42/42 exact live verification ✓, Operation Status blank verification ✓, Python compile/lints ✓, CRM3 sync ✗ (share unmounted), Git commit/push ✓.
+- **Notes for next agent:** Default Segment is `All Users`. Never explain the product. August 1 remains local-only because its ten Monday Ops items are inactive/orphaned. Mirror this final minimal-schema update to CRM3 when the studio share is mounted again.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Refresh August Ops and Creative references
 
 - **Goal:** Apply the promo-aware Ops writing rules to the relevant August dates and split Creative reference art from reference links.

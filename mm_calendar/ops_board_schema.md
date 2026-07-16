@@ -116,37 +116,24 @@ Historical descriptions often repeat dates, times, and Once/Multiple. New tasks 
 ### Standard offer/config task
 
 ```text
-Set up a High-price Daily Deal with Coins, Gems, 8 Hammers and 1 GGS.
+Segment: All Users
+Prizes by denom: Coins + Gems + 8 Hammers + 1 GGS
+Pricing: High
 
 Duplicate from: <exact dated task/link>.
-Change: <current reward or pricing delta>.
-
-MCP: <confirmed ID or TBD>.
 ```
 
 ### Journey/challenge task
 
 ```text
-Set up <promo/mechanic> for <confirmed audience>.
-Players <plain-language requirement> to receive <exact reward>.
+Segment: <confirmed audience or All Users>
+Triggers: <what the player must do>
+Actions: <reward/winner inapp/next mission when linear>
 
-Journey:
-Trigger: <event>
-Condition: <eligibility, if any>
-Action 1: <system action>
-Action 2: <reward / UI transition>
-
-Surfaces and CTA:
-- Login / banner / news feed / widget
-- CTA target or parameter
-
-Dependencies:
-- Config: attached / missing
-- Art: linked / missing
-- MCP, list, economy or BA task: <confirmed link/status>
+Duplicate from: <exact dated task/link>.
 ```
 
-Do not fill unknown audience, parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Mark them as `TBD - owner required` and use `More Info required` when the missing field blocks execution. Omit a Journey block entirely when the promo is a simple offer with no confirmed flow.
+Do not explain the product in Description. Do not fill unknown parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Use `Not specified in MM source` for an unconfirmed Trigger or Action.
 
 ## Updates/comments
 

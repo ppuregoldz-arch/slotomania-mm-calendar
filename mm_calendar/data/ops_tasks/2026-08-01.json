@@ -46,7 +46,7 @@
       "recent_ops_reference": "2026-05-18 item 11977017447 (RYD 100% SB + 3000 globez | H Pricing)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up RYD - 5* Gold Card + 100% SB - High Price at High price.\nThe player reveals the largest personalized offer and can purchase it.\n\nDuplicate from: RYD 100% SB + 3000 globez | H Pricing, 2026-05-18 (https://playtika.monday.com/boards/2109172490/pulses/11977017447).\nChange: RYD 100% SB + 3000 globez | H Pricing → RYD - 5* Gold Card + 100% SB - High Price.\n\nNeeded before scheduling:\n- Config: MCP needed.",
+      "description": "Segment: All Users\nPrizes by denom: 5* Gold Card + 100% SB\nPricing: High\n\nDuplicate from: RYD 100% SB + 3000 globez | H Pricing, 2026-05-18 (https://playtika.monday.com/boards/2109172490/pulses/11977017447).",
       "template_source": {
         "group_id": "group_mkv1q8yw",
         "group_title": "RYD"
@@ -78,7 +78,7 @@
       "recent_ops_reference": "2026-05-09 item 11936779021 (LBP - all balls 40% bigger NIGT PLAN)",
       "requires_review": false,
       "warnings": [],
-      "description": "Open NIGHT PLAN - LBP - 30% Bigger Balls.\n\nDuplicate from: LBP - all balls 40% bigger NIGT PLAN, 2026-05-09 (https://playtika.monday.com/boards/2109172490/pulses/11936779021).\nChange: LBP - all balls 40% bigger NIGT PLAN → NIGHT PLAN - LBP - 30% Bigger Balls.\n\nNeeded before scheduling:\n- Config: Config needed.\n\nRun this as the approved Night Plan action."
+      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply NIGHT PLAN - LBP - 30% Bigger Balls\n\nDuplicate from: LBP - all balls 40% bigger NIGT PLAN, 2026-05-09 (https://playtika.monday.com/boards/2109172490/pulses/11936779021)."
     },
     {
       "parent_day": "2026-08-01",
@@ -106,7 +106,7 @@
       "recent_ops_reference": "2026-05-23 item 12032641195 (combined LBP peak task; reuse Lotto peak scope only)",
       "requires_review": false,
       "warnings": [],
-      "description": "Open NIGHT PLAN - Lotto Peak.\n\nNight Plan Lotto peak (pair one LBP row this day).\n\nDuplicate from: combined LBP peak task; reuse Lotto peak scope only, 2026-05-23 (https://playtika.monday.com/boards/2109172490/pulses/12032641195).\nChange: combined LBP peak task; reuse Lotto peak scope only → NIGHT PLAN - Lotto Peak.\n\nRun this as the approved Night Plan action."
+      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply NIGHT PLAN - Lotto Peak\n\nDuplicate from: combined LBP peak task; reuse Lotto peak scope only, 2026-05-23 (https://playtika.monday.com/boards/2109172490/pulses/12032641195)."
     },
     {
       "parent_day": "2026-08-01",
@@ -134,7 +134,7 @@
       "recent_ops_reference": "2026-05-27 item 12091440866 (Ads PO - Coins)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up ADS PO - Coins for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nPrize: Coins · Blast · Quest\n\nDuplicate from: Ads PO - Coins, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12091440866).\n\nNeeded before scheduling:\n- Config: Config needed.",
+      "description": "Segment: All Users\nTriggers: Eligible player watches an ad\nActions: Give Coins\n\nDuplicate from: Ads PO - Coins, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12091440866).",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"
@@ -166,7 +166,7 @@
       "recent_ops_reference": "2026-05-12 item 11879878314 (Generic Custom pod)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Custom Pod - X1000.\n\nCustom Pod — X1000\n\nDuplicate from: Generic Custom pod, 2026-05-12 (https://playtika.monday.com/boards/2109172490/pulses/11879878314).\nChange: Generic Custom pod → Custom Pod - X1000.\n\nNeeded before scheduling:\n- Config: Config needed."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Generic Custom pod, 2026-05-12 (https://playtika.monday.com/boards/2109172490/pulses/11879878314)."
     },
     {
       "parent_day": "2026-08-01",
@@ -194,7 +194,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-07-31)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up 1st of Month - Biggest Store Denom.\n\nAdded to the store denom,\ngives both coins & gems like the american denom in 4th of july\n\nNo verified recent task to duplicate.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: New promo."
+      "description": "Segment: All Users\nPrizes by denom: Added to the store denom,\ngives both coins & gems like the american denom in 4th of july\nPricing: Not specified in MM source\n\nNo verified recent task to duplicate."
     },
     {
       "parent_day": "2026-08-01",
@@ -222,7 +222,7 @@
       "recent_ops_reference": "2026-05-25 item 11967559266 (Daily Deal - 8 Hammers | H Pricing)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up a High-price Daily Deal.\n\nCentral reward (this instance): 3★ Reg card + Hammers Wheel.\n\nDuplicate from: Daily Deal - 8 Hammers | H Pricing, 2026-05-25 (https://playtika.monday.com/boards/2109172490/pulses/11967559266).\nChange: Daily Deal - 8 Hammers | H Pricing → Daily Deal - 3* Reg Card + Hammers Wheel - High Price.\n\nNeeded before scheduling:\n- Config: MCP needed.",
+      "description": "Segment: All Users\nPrizes by denom: Central reward (this instance): 3★ Reg card + Hammers Wheel.\nPricing: High\n\nDuplicate from: Daily Deal - 8 Hammers | H Pricing, 2026-05-25 (https://playtika.monday.com/boards/2109172490/pulses/11967559266).",
       "template_source": {
         "group_id": "group_mkv1971m",
         "group_title": "Daily Deal"
@@ -254,7 +254,7 @@
       "recent_ops_reference": "2026-05-10 item 11850428511 (Shiny Show Joker - all cards)",
       "requires_review": false,
       "warnings": [],
-      "description": "Open Shiny Show - Joker All Cards.\n\nVariant: Joker All Cards\n\nDuplicate from: Shiny Show Joker - all cards, 2026-05-10 (https://playtika.monday.com/boards/2109172490/pulses/11850428511).\nChange: Shiny Show Joker - all cards → Shiny Show - Joker All Cards.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: New theme for promo."
+      "description": "Segment: All Users\nTriggers: Player completes the configured Shiny Show requirement\nActions: Grant the configured rewards and show the matching winner state\n\nDuplicate from: Shiny Show Joker - all cards, 2026-05-10 (https://playtika.monday.com/boards/2109172490/pulses/11850428511)."
     },
     {
       "parent_day": "2026-08-01",
@@ -282,7 +282,7 @@
       "recent_ops_reference": "2026-05-03 item 11788880396 (MES - Win master | Full launch)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Win Master - 3* Reg Card + PAB in M.E.S.\nPlayers complete the configured win requirement and receive the listed rewards.\nUse the complete Win Master M.E.S task and asset/config set.\n\nWin Master — 3★ Reg card + PAB\n\nDuplicate from: MES - Win master | Full launch, 2026-05-03 (https://playtika.monday.com/boards/2109172490/pulses/11788880396).\nChange: MES - Win master | Full launch → Win Master - 3* Reg Card + PAB.\n\nNeeded before scheduling:\n- Config: MCP needed."
+      "description": "Segment: All Users\nTriggers: Player completes the configured win requirement\nActions: Give 3* Reg Card + PAB; show the winner inapp; if the configuration is linear, give the next mission\n\nDuplicate from: MES - Win master | Full launch, 2026-05-03 (https://playtika.monday.com/boards/2109172490/pulses/11788880396)."
     },
     {
       "parent_day": "2026-08-01",
@@ -310,7 +310,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-07-31)",
       "requires_review": false,
       "warnings": [],
-      "description": "Open Cozy Blast - New Season - Wild Ordinary.\nUse the Cozy theme and Wild Ordinary reward in one Blast season task.\n\nCozy Blast like refrence.\n\nNo verified recent task to duplicate.\n\nNeeded before scheduling:\n- Config: Config needed."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nNo verified recent task to duplicate."
     }
   ]
 }

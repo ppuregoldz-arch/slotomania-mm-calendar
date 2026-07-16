@@ -13,7 +13,7 @@ alwaysApply: false
 - Connect every Ops subitem's `MM calendar` relation (`board_relation_mkzvrve9`) to its exact `source_mm_item_id`. Verify with `BoardRelationValue.linked_items`; Monday's generic relation `text`/`value` fields may stay null even when the link exists.
 - Historical execution references are limited to the 3 calendar months before the target date. Use the newest matching promo/variant first; never copy older tasks when no recent precedent exists.
 - `Reuse` requires a verified recent Ops source: record its date/item ID, reused scope, and current delta. The MM Creative Label alone is not proof of operational reuse.
-- Write the Description as a concise human handoff: start with what Ops must set up, then only the execution facts, exact duplicate source/current delta, and concrete dependencies. Do not emit generic `Production`, empty Journey/CTA blocks, `Reuse: YES/NO`, or source-ID boilerplate.
+- Description schema is fixed and contains no product explanation. Offers except Rolling: `Segment`, `Prizes by denom`, `Pricing`, then exact `Duplicate from`. Rolling: the same fields plus `Config`. Every other promo: `Segment`, `Triggers`, `Actions`, then exact `Duplicate from`. If no segment is stated, use `All Users`; never invent an unknown Trigger or Action.
 - Duplicate only the newest exact promo/variant inside the valid three-month window. If only a generic template exists, name its template group and keep unsupported fields as TBD; never present it as verified reuse.
 - August Promo Time is 11:00 UTC. A calendar date range is inclusive and ends at 11:00 UTC on the following day after its final date.
 - Never fill `Operation Status` (`dup__of_m_m_status1`); Ops owns it. The agent owns and may set only `M&M Status`.

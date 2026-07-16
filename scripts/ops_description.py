@@ -208,6 +208,155 @@ def dependency_lines(
     return lines
 
 
+OFFER_FAMILIES = {
+    "daily_deal",
+    "ryd",
+    "buy_all",
+    "decoy_offer",
+    "equal_offer",
+    "limited_po",
+    "sales_store",
+}
+
+
+def segment_value(task_name: str, detail: str) -> str:
+    text = f"{task_name}\n{detail}"
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        match = re.match(r"^(?:segment|audience|open to)\s*:?\s*(.+)$", line, re.I)
+        if match and match.group(1).strip():
+            return match.group(1).strip().rstrip(".")
+        if re.search(r"\b(?:all players|all users|all eligible players)\b", line, re.I):
+            return "All Users"
+    segment_tokens = re.findall(r"\b(?:DPU|NPU|PU|PRAS|IC|BD|Black Diamond)\b", task_name, re.I)
+    if segment_tokens:
+        return " / ".join(dict.fromkeys(token.upper() for token in segment_tokens))
+    return "All Users"
+
+
+def name_payload(task_name: str, family: str) -> str:
+    value = normalize_name(task_name)
+    prefixes = {
+        "daily_deal": r"^daily deal\s*[-|:]?\s*",
+        "ryd": r"^(?:ryd|reveal your deal)\s*[-|:]?\s*",
+        "buy_all": r"^buy all\s*[-|:]?\s*",
+        "decoy_offer": r"^(?:decoy|bonanza)\s*[-|:]?\s*",
+        "limited_po": r"^limited (?:po|personal offer)\s*[-|:]?\s*",
+        "ads_personal_offer": r"^(?:ads po|po ads)\s*[-|:]?\s*",
+    }
+    value = re.sub(prefixes.get(family, r"$^"), "", value, flags=re.I)
+    value = re.sub(
+        r"\s*(?:\||-)\s*(?:high|mid|max|low|h|m|l)\s*(?:price|pricing)\b.*$",
+        "",
+        value,
+        flags=re.I,
+    )
+    return value.strip(" -|") or "Not specified in MM source"
+
+
+def offer_prizes(task_name: str, family: str, detail: str) -> str:
+    cleaned = clean_detail(detail)
+    kept: list[str] = []
+    for line in cleaned.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            if kept and kept[-1]:
+                kept.append("")
+            continue
+        if re.match(
+            r"^(?:platform|season context|short term|mid term|album context|purchase rule|"
+            r"trigger|condition|action\d*|flow|config|art|re-use|reuse)\s*:",
+            stripped,
+            re.I,
+        ):
+            continue
+        if re.fullmatch(r"(?:daily deal|ryd|rolling offer|buy all)", stripped, re.I):
+            continue
+        kept.append(stripped)
+    while kept and not kept[-1]:
+        kept.pop()
+    result = "\n".join(kept).strip()
+    return result or name_payload(task_name, family)
+
+
+def labeled_values(detail: str, labels: tuple[str, ...]) -> list[str]:
+    values: list[str] = []
+    pattern = "|".join(re.escape(label) for label in labels)
+    for line in (detail or "").splitlines():
+        match = re.match(rf"^\s*(?:{pattern})\s*\d*\s*[:\-]\s*(.+)$", line, re.I)
+        if match and match.group(1).strip():
+            values.append(match.group(1).strip().rstrip("."))
+    return values
+
+
+def trigger_value(task_name: str, family: str, detail: str) -> str:
+    triggers = labeled_values(detail, ("trigger", "triggers", "condition"))
+    if triggers:
+        return "; ".join(dict.fromkeys(triggers))
+    lower = task_name.lower()
+    if family == "ads_personal_offer":
+        return "Eligible player watches an ad"
+    if "piggy" in lower and "break" in lower:
+        return "Player breaks the Piggy"
+    if family == "mes" and "win master" in lower:
+        return "Player completes the configured win requirement"
+    if family == "mgap":
+        return "Player purchases an eligible MGAP tier"
+    if family == "shiny_show":
+        return "Player completes the configured Shiny Show requirement"
+    if family == "lbp_lotto":
+        return "Eligible player participates during the scheduled Lotto/LBP window"
+    return "Not specified in MM source"
+
+
+def action_value(task_name: str, family: str, detail: str) -> str:
+    actions = labeled_values(detail, ("action", "actions"))
+    if actions:
+        return "; ".join(dict.fromkeys(actions))
+    lower = task_name.lower()
+    payload = name_payload(task_name, family)
+    if family == "ads_personal_offer":
+        return f"Give {payload}"
+    if "piggy" in lower and " for " in lower:
+        return f"Give {task_name.split(' for ', 1)[1]}"
+    if family == "mes" and "win master" in lower:
+        reward = task_name.split(" - ", 1)[1] if " - " in task_name else "the listed rewards"
+        return (
+            f"Give {reward}; show the winner inapp; "
+            "if the configuration is linear, give the next mission"
+        )
+    if family == "mgap":
+        if "bogo" in lower:
+            return "Grant the BOGO reward according to the approved MGAP config"
+        if "bigger" in lower:
+            return "Apply the approved bigger multipliers and show the matching winner state"
+    if family == "shiny_show":
+        return "Grant the configured rewards and show the matching winner state"
+    if family == "lbp_lotto":
+        mechanic = re.sub(r"\s*\(night plan(?: peak)?\)", "", task_name, flags=re.I)
+        return f"Apply {mechanic}"
+    if family == "stickers_sources":
+        return "Show the approved daily Sticker Sources in the inapp"
+    return "Not specified in MM source"
+
+
+def config_value(
+    reference: str | None,
+    reuse: bool | None,
+    template_source: dict[str, str] | None,
+    config_status: str | None,
+) -> str:
+    source = duplicate_line(reference, reuse)
+    fallback = template_line(template_source, reuse)
+    status = config_status or ""
+    parts = [source]
+    if fallback:
+        parts.append(fallback)
+    if status and status not in {"Config not needed", "No config needed"}:
+        parts.append(f"Status: {status}.")
+    return " ".join(parts)
+
+
 def compose_description(
     *,
     task_name: str,
@@ -222,39 +371,36 @@ def compose_description(
     creative_label: str | None = None,
     night_plan: bool = False,
 ) -> str:
-    """Compose a concise Ops handoff without inventing execution details."""
-
+    """Compose the minimum execution fields requested by Monetization."""
     family = promo_family(task_name, product, detail)
-    lines = [opening_line(family, task_name, pricing)]
-    if family == "ads_personal_offer":
-        lines.append("Eligible players watch an ad and receive the configured prize.")
-    elif family == "ryd":
-        lines.append("The player reveals the largest personalized offer and can purchase it.")
-    elif family == "mes" and "win master" in task_name.lower():
-        lines.append("Players complete the configured win requirement and receive the listed rewards.")
-        lines.append("Use the complete Win Master M.E.S task and asset/config set.")
-    elif family == "season_blast" and "cozy" in task_name.lower():
-        lines.append("Use the Cozy theme and Wild Ordinary reward in one Blast season task.")
-    cleaned_detail = clean_detail(detail)
-    if cleaned_detail:
-        lines.extend(["", cleaned_detail])
+    segment = segment_value(task_name, detail)
+    if family in OFFER_FAMILIES:
+        lines = [
+            f"Segment: {segment}",
+            f"Prizes by denom: {offer_prizes(task_name, family, detail)}",
+            f"Pricing: {price_label(pricing) or 'Not specified in MM source'}",
+            "",
+            duplicate_line(reference, reuse),
+        ]
+        return "\n".join(lines).strip()
 
-    lines.extend(["", duplicate_line(reference, reuse)])
-    delta = change_line(task_name, reference, reuse)
-    if delta:
-        lines.append(delta)
-    fallback = template_line(template_source, reuse)
-    if fallback:
-        lines.append(fallback)
+    if family == "rolling_offer":
+        lines = [
+            f"Segment: {segment}",
+            "Prizes by denom:",
+            offer_prizes(task_name, family, detail),
+            f"Pricing: {price_label(pricing) or 'Not specified in MM source'}",
+            f"Config: {config_value(reference, reuse, template_source, config_status)}",
+        ]
+        return "\n".join(lines).strip()
 
-    dependencies = dependency_lines(missing, config_status, creative_label)
-    if dependencies:
-        lines.extend(["", "Needed before scheduling:"])
-        lines.extend(f"- {sentence(entry)}" for entry in dependencies)
-
-    if night_plan:
-        lines.extend(["", "Run this as the approved Night Plan action."])
-
+    lines = [
+        f"Segment: {segment}",
+        f"Triggers: {trigger_value(task_name, family, detail)}",
+        f"Actions: {action_value(task_name, family, detail)}",
+        "",
+        duplicate_line(reference, reuse),
+    ]
     return "\n".join(lines).strip()
 
 

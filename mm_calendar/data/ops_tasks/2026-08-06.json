@@ -37,7 +37,7 @@
       "recent_ops_reference": "2026-05-27 item 12103914682 (Soft Launch - Golden Spin - test group only)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Golden Spin | 30% Bigger | Betty Boop theme.\n\nGolden Spin — timed gem feature.\n\nStructure reference only: Soft Launch - Golden Spin - test group only, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12103914682); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: New theme for promo."
+      "description": "Segment: All Users\nPrizes by denom: Golden Spin — timed gem feature.\nPricing: Not specified in MM source\n\nStructure reference only: Soft Launch - Golden Spin - test group only, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12103914682); do not duplicate until the variant is confirmed."
     },
     {
       "parent_day": "2026-08-06",
@@ -65,7 +65,7 @@
       "recent_ops_reference": "2026-05-23 item 12033283669 (Gems Sale store assets - 40%/60% -  Lucy's Carnival)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Gems Sale - 30% store / 20% offers.\n\nGems Sale — 30% store / 20% offers.\n\nDuplicate from: Gems Sale store assets - 40%/60% -  Lucy's Carnival, 2026-05-23 (https://playtika.monday.com/boards/2109172490/pulses/12033283669).\nChange: Gems Sale store assets - 40%/60% - Lucy's Carnival → Gems Sale - 30% store / 20% offers.\n\nNeeded before scheduling:\n- Config: Config needed."
+      "description": "Segment: All Users\nPrizes by denom: Gems Sale — 30% store / 20% offers.\nPricing: Not specified in MM source\n\nDuplicate from: Gems Sale store assets - 40%/60% -  Lucy's Carnival, 2026-05-23 (https://playtika.monday.com/boards/2109172490/pulses/12033283669)."
     },
     {
       "parent_day": "2026-08-06",
@@ -93,7 +93,7 @@
       "recent_ops_reference": "2026-05-22 item 12032700554 (Prize Mania - lucy's carnival theme)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Prize Mania - 3* Reg pack | Coins, Gems.\n\nBundle: 3★ Reg pack | Coins, Gems, 4 RDS, 1 GGS, 100% SB\n\nStructure reference only: Prize Mania - lucy's carnival theme, 2026-05-22 (https://playtika.monday.com/boards/2109172490/pulses/12032700554); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: MCP needed.\n- Art: Prize Change."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nStructure reference only: Prize Mania - lucy's carnival theme, 2026-05-22 (https://playtika.monday.com/boards/2109172490/pulses/12032700554); do not duplicate until the variant is confirmed."
     },
     {
       "parent_day": "2026-08-06",
@@ -121,7 +121,7 @@
       "recent_ops_reference": "2026-08-04 item 12549707552 (ADS PO - Gems)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up ADS PO - Gems for the eligible ADS audience.\nEligible players watch an ad and receive the configured prize.\n\nPrize: Gems · Battlesheep · Quest\n\nDuplicate from: ADS PO - Gems, 2026-08-04 (https://playtika.monday.com/boards/2109172490/pulses/12549707552).\n\nNeeded before scheduling:\n- Config: Config needed.",
+      "description": "Segment: All Users\nTriggers: Eligible player watches an ad\nActions: Give Gems\n\nDuplicate from: ADS PO - Gems, 2026-08-04 (https://playtika.monday.com/boards/2109172490/pulses/12549707552).",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"
@@ -153,7 +153,7 @@
       "recent_ops_reference": "2026-05-28 item 12037081168 (Battlesheep - single offer)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up Battlesheep - Wild Gold | Betty Theme.\n\nwild gold instead of any\n\nStructure reference only: Battlesheep - single offer, 2026-05-28 (https://playtika.monday.com/boards/2109172490/pulses/12037081168); do not duplicate until the variant is confirmed.\n\nNeeded before scheduling:\n- Config: Config needed.\n- Art: Prize Change."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nStructure reference only: Battlesheep - single offer, 2026-05-28 (https://playtika.monday.com/boards/2109172490/pulses/12037081168); do not duplicate until the variant is confirmed."
     },
     {
       "parent_day": "2026-08-06",
@@ -181,7 +181,7 @@
       "recent_ops_reference": "2026-05-21 item 11936048378 (MES - Spin zone - 3* reg - Test)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up MES - Spin Zone + Option to purchase to progress | 4* & 3* Ace in M.E.S.\n\nSpin Zone — 4★ Ace card chase.\nTopper: 3★ Ace card (Nivi Ace_3 bank).\n\nDuplicate from: MES - Spin zone - 3* reg - Test, 2026-05-21 (https://playtika.monday.com/boards/2109172490/pulses/11936048378).\nChange: MES - Spin zone - 3* reg - Test → MES - Spin Zone + Option to purchase to progress | 4* & 3* Ace.\n\nNeeded before scheduling:\n- Config: Config needed."
+      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: MES - Spin zone - 3* reg - Test, 2026-05-21 (https://playtika.monday.com/boards/2109172490/pulses/11936048378)."
     },
     {
       "parent_day": "2026-08-06",
@@ -209,7 +209,7 @@
       "recent_ops_reference": "2026-05-14 item 12009893284 (Daily Deal - SPB test)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up a Mid-price Daily Deal.\n\nCentral reward: 3★ Reg card (on purchase) + 2 Parasheep (Mid pricing).\n\nDuplicate from: Daily Deal - SPB test, 2026-05-14 (https://playtika.monday.com/boards/2109172490/pulses/12009893284).\nChange: Daily Deal - SPB test → Daily Deal - 3* Reg card + 2 Parasheep | M Pricing.\n\nNeeded before scheduling:\n- Config: MCP needed.",
+      "description": "Segment: All Users\nPrizes by denom: Central reward: 3★ Reg card (on purchase) + 2 Parasheep (Mid pricing).\nPricing: Mid\n\nDuplicate from: Daily Deal - SPB test, 2026-05-14 (https://playtika.monday.com/boards/2109172490/pulses/12009893284).",
       "template_source": {
         "group_id": "group_mkv1971m",
         "group_title": "Daily Deal"
@@ -241,7 +241,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-05)",
       "requires_review": false,
       "warnings": [],
-      "description": "Set up RLAP using the approved Stash Booster / RLAP configuration.\n\nStash Booster — live (2 configs + 2 comms). Replaces MGAP calendar promo this day.\nTriggers: Daily Deal — 3★ Reg + 2 Parasheep (M) + Prize Mania — 3★ Reg pack (main offer).\nCZ 0–159.99: UP TO x24 Coins (full cycle purchase)\nCZ 160+: UP TO x36 Coins (full cycle purchase)\nAssets: Banner, In-App, Pop-up Banner, Offer (both segments) — Promo Manager Purchase Tools\nQA: DD + main offer buttons show Stash Booster (not Extreme MGAP); other MGAP-eligible purchases unchanged\nDrain: this day + following days include balance-draining promos\nDo not combine: Rolling Offer same day.\n\nNo verified recent task to duplicate."
+      "description": "Segment: All Users\nTriggers: Daily Deal — 3★ Reg + 2 Parasheep (M) + Prize Mania — 3★ Reg pack (main offer)\nActions: Not specified in MM source\n\nNo verified recent task to duplicate."
     }
   ]
 }
