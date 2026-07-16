@@ -101,7 +101,7 @@ These are the columns an automated task writer uses.
 | `connect_boards` | Economy Tasks | board relation | Link when economy/config approval exists |
 | `connect_boards65` | BA Lists | board relation | Link when a BA list is required |
 | `connect_boards__1` | Payment requests list | board relation | Link for payout work |
-| `board_relation_mkzvrve9` | MM calendar | board relation | Read existing links; direct API writes were ignored on 16 July 2026, so retain source MM item IDs/links in Description |
+| `board_relation_mkzvrve9` | MM calendar | board relation | Connect every Ops subitem to its exact source MM calendar item with `{"item_ids":[<source item ID>]}`; verify through `BoardRelationValue.linked_items` because generic `text`/`value` may remain null |
 
 Operation Status labels: `In Progress`, `Done`, `Missing Config`, `To Do`, `Risk`, `More Info required`, `QA Done`, `Scheduled`, `QA in Progress`, `Ready for QA`, `On hold`, `Missing art`, `Internal`, `Ready for Payment`, `Canceled`, `QA'd, needs ATTN`, `Ready to publish`, `Missing Art+config`, `No Action required`, `Missing List`, `Payment canceled`, `Missing MCP`, `General Issue with Promo`.
 

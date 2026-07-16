@@ -70,6 +70,7 @@ When a calendar day contains both Lotto peak and LBP for Night Plan, create **tw
 Before a task is ready for Ops, confirm:
 
 - Correct parent day.
+- `MM calendar` relation connected to the exact approved source row, not merely mentioned in Description.
 - Exact name/mechanic.
 - Production Start and End in UTC.
 - Audience and exclusions, or `All eligible players`.
@@ -259,6 +260,7 @@ Never pre-write a success claim or fake a spot-check count.
 - One day at a time.
 - Add/update only; never delete or archive.
 - Match within the parent day by normalized task name.
+- Write and verify `board_relation_mkzvrve9` against the task's `source_mm_item_id`; query `BoardRelationValue.linked_items` for verification because the generic column `text` and `value` fields can be null even when the relation is connected.
 - Do not create a missing day parent unless `--create-day` is explicitly supplied with `--commit`.
 - Creating/updating a task does not authorize comments, assignees, links, files, or statuses beyond the reviewed spec.
 - Show warnings for every TBD and unsupported calendar row.

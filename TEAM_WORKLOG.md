@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Connect Ops tasks to exact MM rows
+
+- **Goal:** Correct the missing `MM calendar` board relations on the five newly opened Ops days.
+- **Done:** Added relation writes to the Ops uploader, connected all 42 Ops subitems to their exact `source_mm_item_id`, and verified every link through `BoardRelationValue.linked_items`. Confirmed Operation Status remains blank.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_board_schema.md`, `mm_calendar/ops_task_construction.md`, `scripts/upload_ops_task_monday.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** single-task relation payload test ✓, five-day targeted Ops update ✓, 42/42 exact-link verification ✓, Python compile/lints ✓, full MM calendar sync n/a.
+- **Notes for next agent:** Monday's generic relation `text` and `value` fields can return null even when the link is present. Verify this column through the typed `BoardRelationValue.linked_items` field.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Open five August Creative and Ops days
 
 - **Goal:** Open rule-compliant Creative briefs and Operation - Monetization tasks for August 5, 6, 11, 28, and 29.

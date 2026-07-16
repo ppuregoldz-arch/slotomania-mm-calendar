@@ -175,6 +175,10 @@ def column_values(task: dict[str, Any]) -> dict[str, Any]:
         values["times_per_player__1"] = {"labels": [task["times_per_player"]]}
     if task.get("due_date"):
         values["date_mkp4d99c"] = {"date": task["due_date"]}
+    if task.get("source_mm_item_id"):
+        values["board_relation_mkzvrve9"] = {
+            "item_ids": [int(task["source_mm_item_id"])]
+        }
     return values
 
 
