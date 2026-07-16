@@ -206,6 +206,18 @@ BMFL is exactly 3 cycles and High pricing. Never substitute the deprecated Free1
 - Full progression: triggers, actions, widget states, winner inapp, banner/news-feed behavior, CTA parameter.
 - Unknown parameters stay TBD; do not invent them from a different Core mechanic.
 
+### Ace Heist / PYP mission source
+
+- Ace Heist uses a linear three-mission flow: each completion advances the progress/winner inapp and widget; final completion grants the prize and closes the active journey surfaces.
+- The flow is reusable, but the mission content and values are not. For both Ace Heist and PYP, read the exact current missions from the approved Monday row.
+- Put those current missions in `Trigger` in their approved order. Never copy historical values such as Spin 30/50/100 or Open 5/8 Pods as defaults.
+- If the current Monday row does not define the missions, omit Trigger and flag the handoff as incomplete; do not infer from an older task.
+
+### Golden Spin
+
+- Golden Spin is a coin-value feature, not a Gems feature.
+- Keep that classification internal; Description still contains only Prizes, Segment, and a confirmed Trigger if one exists.
+
 ### ADS PO
 
 - Exact low-tier prize and active season context.

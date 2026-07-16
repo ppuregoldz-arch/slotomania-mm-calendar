@@ -20,10 +20,10 @@ def has_alias(text: str, alias: str) -> bool:
 
 
 def promo_family(name: str, product: str = "", detail: str = "") -> str:
-    text = f" {normalize_name(name)} {product} {detail[:300]} ".lower()
     rules: list[tuple[str, tuple[str, ...]]] = [
         ("rlap", ("rlap", "stash booster")),
         ("stickers_sources", ("sticker sources", "stickers sources")),
+        ("golden_spin", ("golden spin",)),
         ("ads_personal_offer", ("ads po", "po ads", "ads personal offer")),
         ("daily_deal", ("daily deal", "daily_deal")),
         ("rolling_offer", ("rolling offer", "buy more for less", "buy x get y", "bmfl", "bxgy")),
@@ -42,6 +42,7 @@ def promo_family(name: str, product: str = "", detail: str = "") -> str:
             (
                 "spin zone",
                 "pick your path",
+                "pyp",
                 "custom pod",
                 "battlesheep",
                 "spinner clash",
@@ -57,9 +58,14 @@ def promo_family(name: str, product: str = "", detail: str = "") -> str:
             ("coin sale", "gems sale", "gem sale", "coupon", "store denom", "biggest store"),
         ),
     ]
-    for family_name, aliases in rules:
-        if any(has_alias(text, alias) for alias in aliases):
-            return family_name
+    texts = [
+        f" {normalize_name(name)} {product} ".lower(),
+        f" {detail[:300]} ".lower(),
+    ]
+    for text in texts:
+        for family_name, aliases in rules:
+            if any(has_alias(text, alias) for alias in aliases):
+                return family_name
     return "other"
 
 
@@ -291,7 +297,38 @@ def labeled_values(detail: str, labels: tuple[str, ...]) -> list[str]:
     return values
 
 
+def mission_values(detail: str) -> list[str]:
+    missions: list[str] = []
+    in_missions = False
+    for raw_line in (detail or "").splitlines():
+        line = raw_line.strip()
+        if re.match(r"^missions?\s*:", line, re.I):
+            in_missions = True
+            remainder = line.split(":", 1)[1].strip()
+            if remainder:
+                missions.append(remainder)
+            continue
+        if not in_missions:
+            continue
+        if not line:
+            if missions:
+                break
+            continue
+        if re.match(r"^[A-Za-z][A-Za-z /&_-]+\s*:", line) and not re.match(
+            r"^(?:mission\s*\d+|[·•*-]|\d+[.)])", line, re.I
+        ):
+            break
+        cleaned = re.sub(r"^(?:[·•*-]|\d+[.)])\s*", "", line).strip()
+        if cleaned:
+            missions.append(cleaned)
+    return missions
+
+
 def trigger_value(task_name: str, family: str, detail: str) -> str:
+    if family == "gameplay" and re.search(r"\b(?:ace heist|pyp|pick your path)\b", task_name, re.I):
+        missions = mission_values(detail)
+        if missions:
+            return " → ".join(missions)
     triggers = labeled_values(detail, ("trigger", "triggers", "condition"))
     if triggers:
         return "; ".join(dict.fromkeys(triggers))
@@ -369,6 +406,9 @@ def promotion_prizes(task_name: str, family: str, detail: str) -> str:
             return "Matching BOGO reward according to config"
         if "bigger" in task_name.lower():
             return "Bigger multipliers according to config"
+    if family == "golden_spin":
+        parts = [part.strip() for part in task_name.split("|")]
+        return parts[1] if len(parts) > 1 else "Coins"
     labeled = labeled_values(detail, ("prize", "prizes", "reward", "rewards", "contents"))
     if labeled:
         return "; ".join(dict.fromkeys(labeled))
@@ -378,6 +418,8 @@ def promotion_prizes(task_name: str, family: str, detail: str) -> str:
     feature_prefixes = (
         "win master",
         "ace heist",
+        "pyp",
+        "pick your path",
         "shiny show",
         "lbp",
         "lotto",

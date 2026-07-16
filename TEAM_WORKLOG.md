@@ -45,6 +45,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Learn Ace Heist flow
+
+- **Goal:** Learn the standard Ace Heist Core flow and correct Golden Spin classification.
+- **Done:** Confirmed Ace Heist is a linear three-mission Core challenge with progress/winner inapps, widget progression, and final reward/cleanup. Ace Heist and PYP now read mission content from the exact current Monday row rather than historical defaults. Classified Golden Spin as a coin-value feature and removed the incorrect Gems wording from its August 6 Ops description.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/2026-08-06.json`, `scripts/ops_description.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** full historical Ops read ✓, Creative/history cross-check ✓, mission extraction tests ✓, Golden Spin targeted Monday update ✓, live description/status verification ✓, Python compile/lints ✓, CRM3 sync ✗ (share unmounted), Git commit/push ✓.
+- **Notes for next agent:** Flow is fixed; mission values/types are instance-specific and must come from Monday. Current August Ace Heist MM rows do not include missions, so Trigger remains omitted rather than inferred.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Correct ADS audience
 
 - **Goal:** Ensure ADS Personal Offers never default to All Users.
