@@ -97,7 +97,7 @@
       "recent_ops_reference": "2026-05-29 item 12113633298 (Ads PO -  3* Reg)",
       "requires_review": false,
       "warnings": [],
-      "description": "Prizes: 2* Reg card\nSegment: All Users\nTrigger: Eligible player watches an ad",
+      "description": "Prizes: 2* Reg card\nSegment: ADS Segment\nTrigger: Eligible player watches an ad",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"

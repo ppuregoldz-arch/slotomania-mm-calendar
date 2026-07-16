@@ -45,6 +45,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Correct ADS audience
+
+- **Goal:** Ensure ADS Personal Offers never default to All Users.
+- **Done:** Changed the Ops description default for ADS to `ADS Segment`; refreshed all six local August ADS descriptions and updated/verified the five active Monday ADS tasks using description-only writes.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/ops_board_schema.md`, six `mm_calendar/data/ops_tasks/*.json` specs, `scripts/ops_description.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** six local ADS checks ✓, five targeted Monday updates ✓, five live description/status checks ✓, Python compile/lints ✓, CRM3 sync ✗ (share unmounted), Git commit/push ✓.
+- **Notes for next agent:** ADS always uses `ADS Segment`; never use `All Users`. August 1 remains local-only because its Ops items are inactive.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Remove labels from Ops descriptions
 
 - **Goal:** Keep Ops Description limited to Prizes, Segment, offer Pricing, and Trigger only when confirmed.

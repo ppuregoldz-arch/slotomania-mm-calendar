@@ -113,7 +113,7 @@ Do not explain the product and do not mention Reuse, Prize Change, source tasks,
 
 ```text
 Prizes: <exact reward/contents; by denom for offers>
-Segment: <confirmed segment; if none, All Users>
+Segment: <confirmed segment; if none, All Users; ADS always uses ADS Segment>
 Pricing: <High / Mid / Max / Low — offers only>
 Trigger: <what the player must do — only when confirmed>
 ```

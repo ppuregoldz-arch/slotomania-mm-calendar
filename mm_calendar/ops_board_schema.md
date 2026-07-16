@@ -129,7 +129,7 @@ Segment: <confirmed audience or All Users>
 Trigger: <what the player must do — omit if unknown>
 ```
 
-Do not explain the product or mention Reuse/Prize Change in Description. Do not fill unknown parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Omit Trigger when unconfirmed.
+Do not explain the product or mention Reuse/Prize Change in Description. Default an unstated Segment to `All Users`, except ADS always uses `ADS Segment`. Do not fill unknown parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Omit Trigger when unconfirmed.
 
 ## Updates/comments
 

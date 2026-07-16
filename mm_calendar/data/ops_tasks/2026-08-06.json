@@ -121,7 +121,7 @@
       "recent_ops_reference": "2026-08-04 item 12549707552 (ADS PO - Gems)",
       "requires_review": false,
       "warnings": [],
-      "description": "Prizes: Gems\nSegment: All Users\nTrigger: Eligible player watches an ad",
+      "description": "Prizes: Gems\nSegment: ADS Segment\nTrigger: Eligible player watches an ad",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"

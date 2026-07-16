@@ -219,7 +219,7 @@ OFFER_FAMILIES = {
 }
 
 
-def segment_value(task_name: str, detail: str) -> str:
+def segment_value(task_name: str, detail: str, family: str = "") -> str:
     text = f"{task_name}\n{detail}"
     for raw_line in text.splitlines():
         line = raw_line.strip()
@@ -231,6 +231,8 @@ def segment_value(task_name: str, detail: str) -> str:
     segment_tokens = re.findall(r"\b(?:DPU|NPU|PU|PRAS|IC|BD|Black Diamond)\b", task_name, re.I)
     if segment_tokens:
         return " / ".join(dict.fromkeys(token.upper() for token in segment_tokens))
+    if family == "ads_personal_offer":
+        return "ADS Segment"
     return "All Users"
 
 
@@ -410,7 +412,7 @@ def compose_description(
 ) -> str:
     """Compose the minimum execution fields requested by Monetization."""
     family = promo_family(task_name, product, detail)
-    segment = segment_value(task_name, detail)
+    segment = segment_value(task_name, detail, family)
     lines = [
         f"Prizes: {promotion_prizes(task_name, family, detail)}",
         f"Segment: {segment}",
