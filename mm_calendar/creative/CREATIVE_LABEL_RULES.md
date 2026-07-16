@@ -34,9 +34,9 @@
 
 ## Brief behavior
 
-- **Reuse:** title includes `| Reuse from YYYY-MM-DD`; parent and no-action assets are Completed.
-- **Prize Change:** state the exact visible delta for every affected asset.
-- **New theme for promo:** state the exact theme delta and what remains unchanged.
+- **Reuse:** create exactly one day-level Monday item named `REUSE - No Creative Action`. List every Reuse promotion in that item with its promotion title, reuse-from date, Monday source pulse, and CRM3 reference path. Do not create separate per-promo Reuse items or asset subitems. Set the summary item to Completed.
+- **Prize Change:** state the exact visible delta once in the parent Change row; each affected asset subitem points to that parent Change.
+- **New theme for promo:** state the exact theme delta once in the parent Change row; each affected asset subitem points to it and keeps the reference for everything else.
 - **New promo:** leave mechanics and direction for Itay; attach only clearly relevant inspiration.
 - Theme change takes precedence over simultaneous prize change.
 - Active art-only work leaves both Copy Status and Art Status empty.

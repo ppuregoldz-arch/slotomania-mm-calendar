@@ -44,7 +44,11 @@ Those files contain Itay's canonical label definitions, promo meanings, and expl
 
 Theme change wins when theme and prize both change. Dynamic configuration that is not embedded in art may remain Reuse. A missing reference does not change the label.
 
-## Mandatory workflow (every new promo)
+## Mandatory workflow
+
+For **Reuse**, create one bare day-level item named `REUSE - No Creative Action`. Its single parent update lists every Reuse promotion for that day with promotion title, reuse-from date, Monday source pulse, and CRM3 path. Do not duplicate templates, create per-promo Reuse items, or create asset subitems for Reuse.
+
+For every non-Reuse promo:
 
 1. Find template on board (Coins Sale, Dynamic JP, Buy All, Daily Deal, RYD, Rolling Offer, PYP, MES, etc.)
 2. `duplicate_item(board_id, item_id)` — do not invent `create_item` + duplicate id
@@ -70,11 +74,11 @@ Theme change wins when theme and prize both change. Dynamic configuration that i
 ## Brief standards
 
 - Keep briefs short. Do not repeat Promo Date, due dates, priority, category, history, or status details already stored in columns.
-- Reuse parent title must end with `| Reuse from YYYY-MM-DD`.
+- Reuse is consolidated into the single day-level `REUSE - No Creative Action` item; do not create separate Reuse parent tasks.
 - Seasonal parent title must include the exact required reward; never leave it only as “Season”.
-- Parent brief: maximum five useful rows—Creative Label, Source, Scope, Change, Creative Ask.
-- Actionable subitem: Asset, Change, Keep, Reference PNG, Reference Link, Status. No long explanations.
-- No-action subitem: Asset, Action, optional real reference, Status.
+- Parent brief: maximum five useful rows—Creative Label, Change, Reference (Monday source + source date + CRM3 path), Assets, and Skeleton only for a New promo.
+- Actionable subitem: Task, Keep, Reference. Keep each instruction to one clear line.
+- Do not keep no-action subitems in new briefs; request only the assets that need work.
 - A Link field contains only the URL or exact CRM3 file path—no commentary, provenance prose, or folder instructions.
 - A PNG/reference-art field contains only a real attached image for that exact asset type. If no real matching image exists, omit the row; never create a placeholder or made-up template.
 - Before writing any Creative instruction, read the latest comparable parent brief and all relevant subitem updates. Derive the required asset scope and wording from what was actually requested/delivered last time—not from the duplicated template alone.
@@ -84,12 +88,12 @@ Theme change wins when theme and prize both change. Dynamic configuration that i
 - Never infer a missing CTA, version, timer, FP, message, or asset. Use an older matching execution only when the latest task lacks that asset, and document the fallback; otherwise leave it for Itay.
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
-- Every subitem must state the exact Creative action for that asset. Never use a generic “prepare/adapt” instruction.
+- Every subitem must name its asset and point to the parent's exact Change; the parent carries the full delta so it is not repeated in every asset brief.
 - **Prize Change**: state `Current/source prize → Required prize` for every affected asset, including exact quantity, tier, mission, percentage, and currency. Never write only “update prize.”
 - **New theme for promo**: state `Current/source theme → Required theme` and the exact motifs, palette, logo, machine/event treatment, and elements that must remain unchanged.
 - **New promo**: do not invent mechanics, prizes, copy, or art direction. Create a clearly marked skeleton for **Itay to complete**; attach only clearly relevant latest references as optional inspiration.
-- End every parent brief with **Creative Request**: exact deliverables, or “No creative action — Completed.”
-- **Reuse**: name the exact source promo/date and asset. Parent Status Creative=`done`; each no-action subitem Copy Status=`Done` and Art Status=`Done`.
+- The parent **Change** and **Assets** rows are the Creative request; do not add a second repetitive Creative Request row.
+- **Reuse**: the day summary names each exact source promo/date and includes both the Monday source and CRM3 path. The summary has no subitems and Status Creative=`done`.
 - Never set Copy Status=`Done` merely because the brief was written.
 - Art-only required asset: leave both Copy Status and Art Status empty; parent Status Creative=`Design in progress`.
 - If copy work is explicitly required, use the real active Copy status; set `Done` only after the copy itself is completed.
@@ -107,10 +111,12 @@ Return: Monday pulse URL, item name, date, art path, subitems briefed.
 
 ```graphql
 mutation { duplicate_item(board_id: ID!, item_id: ID!) { id } }
+mutation { create_item(board_id: ID!, group_id: String!, item_name: String!) { id } }
 mutation { change_multiple_column_values(board_id: ID!, item_id: ID!, column_values: JSON!) { id } }
 mutation { move_item_to_group(item_id: ID!, group_id: String!) { id } }
 mutation { create_update(item_id: ID!, body: String!) { id } }
 mutation { edit_update(id: ID!, body: String!) { id } }
+mutation { delete_item(item_id: ID!) { id } }
 ```
 
 Per-promo scripts: `scripts/add_*_monday.py` sourcing `.cursor/monday.env`.

@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Consolidate Reuse Creative briefs
+
+- **Goal:** Make Creative handoffs easier to scan and remove unnecessary per-asset work for Reuse promotions.
+- **Done:** Replaced 23 per-promo Reuse items with five day-level `REUSE - No Creative Action` tasks. Each summary lists promotion title, reuse-from date, Monday source, and CRM3 path, with no subitems. Rewrote 21 active parent briefs and all retained asset briefs into the concise Change/Reference/Assets and Task/Keep/Reference formats.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `mm_calendar/creative/CREATIVE_LABEL_RULES.md`, `scripts/apply_selected_august_creative_briefs.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, five-day dry run ✓, live consolidation/cleanup ✓, 5 summaries + 23 Reuse rows + 21 active briefs verification ✓, lints ✓, full MM calendar sync n/a.
+- **Notes for next agent:** Reuse is now one bare item per day, never a duplicated per-promo template. Non-Reuse briefs keep only actionable asset subitems and use short parent/subitem tables.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Promo-aware Ops descriptions
 
 - **Goal:** Make Operation - Monetization descriptions understandable by promo type and identify the exact task/template to duplicate.

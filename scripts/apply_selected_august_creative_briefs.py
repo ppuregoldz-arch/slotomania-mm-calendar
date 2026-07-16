@@ -18,6 +18,7 @@ SNAPSHOT = ROOT / "mm_calendar" / "data" / "monday_board_live_by_date.json"
 ART_CACHE = ROOT / "mm_calendar" / "data" / "monetization_art_board_full.json"
 BOARD = "18112190666"
 SUBITEM_BOARD = "18112200937"
+REUSE_TASK_NAME = "REUSE - No Creative Action"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from monday_client import gql  # noqa: E402
@@ -222,6 +223,34 @@ def source_date(source: dict[str, Any]) -> str:
     return match.group(0) if match else "reference-missing"
 
 
+def source_reference_path(source: dict[str, Any]) -> str:
+    if source.get("art_link"):
+        return str(source["art_link"])
+    texts = [update.get("text_body") or "" for update in source.get("updates") or []]
+    for subitem in source.get("subitems") or []:
+        texts.extend(update.get("text_body") or "" for update in subitem.get("updates") or [])
+    for text in texts:
+        for line in text.splitlines():
+            line = line.strip()
+            if line.startswith(("Q:\\", "/Volumes/CRM3/")):
+                return line
+    raise RuntimeError(f"No CRM3 reference path found for source {source['id']} {source['name']}")
+
+
+def reference_html(source: dict[str, Any], allow_missing_path: bool = False) -> str:
+    source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{source['id']}"
+    try:
+        path = f"<code>{esc(source_reference_path(source))}</code>"
+    except RuntimeError:
+        if not allow_missing_path:
+            raise
+        path = "No valid prior CRM3 art reference — new structure."
+    return (
+        f'<a href="{source_url}">Monday source</a><br>'
+        f"{path}"
+    )
+
+
 def create_group(title: str) -> str:
     mutation = "mutation($board:ID!,$name:String!){create_group(board_id:$board,group_name:$name){id}}"
     return gql(mutation, {"board": BOARD, "name": title})["create_group"]["id"]
@@ -238,7 +267,11 @@ def items_in_group(group_id: str) -> list[dict[str, Any]]:
       boards(ids:[18112190666]) {
         groups(ids:$groups) {
           items_page(limit:100) {
-            items { id name subitems { id name updates(limit:1) { id } } }
+            items {
+              id name
+              updates(limit:1) { id body }
+              subitems { id name updates(limit:1) { id body } }
+            }
           }
         }
       }
@@ -251,6 +284,15 @@ def items_in_group(group_id: str) -> list[dict[str, Any]]:
 def duplicate_item(source_id: str) -> str:
     mutation = "mutation($board:ID!,$item:ID!){duplicate_item(board_id:$board,item_id:$item){id}}"
     return gql(mutation, {"board": BOARD, "item": source_id})["duplicate_item"]["id"]
+
+
+def create_bare_item(group_id: str, name: str) -> str:
+    mutation = """
+    mutation($board:ID!,$group:String!,$name:String!) {
+      create_item(board_id:$board,group_id:$group,item_name:$name){id}
+    }
+    """
+    return gql(mutation, {"board": BOARD, "group": group_id, "name": name})["create_item"]["id"]
 
 
 def set_columns(board: str, item: str, values: dict[str, Any]) -> None:
@@ -272,11 +314,26 @@ def create_update(item: str, body: str) -> None:
     gql(mutation, {"item": item, "body": body})
 
 
+def edit_update(update_id: str, body: str) -> None:
+    mutation = "mutation($id:ID!,$body:String!){edit_update(id:$id,body:$body){id}}"
+    gql(mutation, {"id": update_id, "body": body})
+
+
+def upsert_update(item_id: str, updates: list[dict[str, Any]], body: str) -> None:
+    if updates:
+        edit_update(str(updates[0]["id"]), body)
+    else:
+        create_update(item_id, body)
+
+
+def delete_item(item_id: str) -> None:
+    mutation = "mutation($item:ID!){delete_item(item_id:$item){id}}"
+    gql(mutation, {"item": item_id})
+
+
 def brief_name(row: dict[str, str], source: dict[str, Any]) -> str:
-    name = normalize_name(row["name"])
-    if row["label"] == "Reuse":
-        return f"{name} | Reuse from {source_date(source)}"
-    return name
+    del source
+    return normalize_name(row["name"])
 
 
 def parent_values(row: dict[str, str], source: dict[str, Any], target: str) -> dict[str, Any]:
@@ -291,56 +348,80 @@ def parent_values(row: dict[str, str], source: dict[str, Any], target: str) -> d
     }
 
 
-def parent_body(row: dict[str, str], source: dict[str, Any]) -> str:
-    source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{source['id']}"
-    mm_url = f"https://playtika.monday.com/boards/18388590642/pulses/{row['id']}"
+def concise_requirement(row: dict[str, str]) -> str:
+    title = normalize_name(row["name"])
+    lines = [re.sub(r"\s+", " ", line).strip() for line in row["description"].splitlines()]
+    first_block: list[str] = []
+    for line in lines:
+        if not line and first_block:
+            break
+        if line:
+            first_block.append(line)
+    details = " · ".join(first_block)
+    if details and details.lower() not in title.lower():
+        return f"{title} — {details}"[:700]
+    return title
+
+
+def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) -> str:
     rows = [
         ("Creative Label", esc(row["label"])),
-        ("Source", f'<a href="{source_url}">{source_url}</a>'),
-        ("Scope", esc(row["description"] or normalize_name(row["name"]))),
+        ("Change", esc(f"{source['name']} → {concise_requirement(row)}")),
+        (
+            "Reference",
+            f"{reference_html(source, row['label'] == 'New promo')}<br>"
+            f"Reference date: {esc(source_date(source))}",
+        ),
+        ("Assets", esc(", ".join(assets) if assets else "No asset scope yet")),
     ]
-    if row["label"] != "Reuse":
-        rows.append(("Change", esc(f"{source['name']} → {normalize_name(row['name'])}")))
-        ask = "Apply only the exact visible mechanic/reward/theme stated in the MM source."
-        if row["label"] == "New promo":
-            ask = "New promo skeleton — Itay must complete missing mechanic and art direction; do not invent them."
-    else:
-        ask = "Reuse. No Creative action."
-    rows.extend(
-        [
-            ("Creative Ask", esc(ask)),
-            ("MM Source", f'<a href="{mm_url}">{mm_url}</a>'),
-        ]
-    )
+    if row["label"] == "New promo":
+        rows.append(
+            (
+                "Skeleton",
+                "Itay must complete missing mechanic and art direction. Do not invent copy, values, CTA, timer, or theme.",
+            )
+        )
     return table(rows)
 
 
 def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
-    source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{source['id']}"
-    if row["label"] == "Reuse":
-        rows = [
-            ("Action", esc(f"Reuse {asset} from {source_date(source)}. No changes.")),
-            ("Reference Link", f'<a href="{source_url}">{source_url}</a>'),
-            ("Status", "Completed"),
+    return table(
+        [
+            ("Task", esc(f"Apply the parent Change to {asset}.")),
+            ("Keep", "Match the reference for everything else."),
+            ("Reference", reference_html(source, row["label"] == "New promo")),
         ]
-    elif row["label"] == "New promo":
-        rows = [
-            ("Asset", esc(asset)),
-            ("Change", "New structure. Use only the MM source; Itay must complete missing direction."),
-            ("Keep", "Do not invent copy, CTA, timer, values, theme, or mechanic."),
-            ("Reference Link", f'<a href="{source_url}">{source_url}</a>'),
-            ("Status", "Pending Creative input"),
-        ]
-    else:
-        required = row["description"] or normalize_name(row["name"])
-        rows = [
-            ("Asset", esc(asset)),
-            ("Change", esc(f"{source['name']} → {required}")),
-            ("Keep", esc(f"Keep the established {asset} structure; do not invent CTA, timer, or extra rewards.")),
-            ("Reference Link", f'<a href="{source_url}">{source_url}</a>'),
-            ("Status", "Pending Creative work"),
-        ]
-    return table(rows)
+    )
+
+
+def reuse_body(rows: list[dict[str, str]], catalog: dict[str, dict[str, Any]]) -> str:
+    header = (
+        "<thead><tr><th><p><strong>Promotion</strong></p></th>"
+        "<th><p><strong>Reuse from</strong></p></th>"
+        "<th><p><strong>Reference</strong></p></th></tr></thead>"
+    )
+    body = []
+    for row in rows:
+        source = source_for(row, catalog)
+        body.append(
+            "<tr>"
+            f"<td><p>{esc(normalize_name(row['name']))}</p></td>"
+            f"<td><p>{esc(source_date(source))}</p></td>"
+            f"<td><p>{reference_html(source)}</p></td>"
+            "</tr>"
+        )
+    return "<table>" + header + "<tbody>" + "".join(body) + "</tbody></table>"
+
+
+def is_old_reuse_item(
+    item: dict[str, Any],
+    reuse_rows: list[dict[str, str]],
+) -> bool:
+    for row in reuse_rows:
+        base = normalize_name(row["name"])
+        if item["name"] == base or item["name"].startswith(base + " | Reuse from "):
+            return True
+    return False
 
 
 def write_brief(
@@ -360,20 +441,27 @@ def write_brief(
         set_columns(BOARD, item_id, {"name": name})
         move_item(item_id, group_id)
         time.sleep(3)
-    set_columns(BOARD, item_id, parent_values(row, source, target))
-    create_update(item_id, parent_body(row, source))
-    query = "query($ids:[ID!]!){items(ids:$ids){subitems{id name}}}"
-    subitems = gql(query, {"ids": [item_id]})["items"][0].get("subitems") or []
+    query = "query($ids:[ID!]!){items(ids:$ids){updates(limit:1){id body} subitems{id name updates(limit:1){id body}}}}"
+    live_item = gql(query, {"ids": [item_id]})["items"][0]
+    subitems = live_item.get("subitems") or []
     if not subitems:
         time.sleep(4)
-        subitems = gql(query, {"ids": [item_id]})["items"][0].get("subitems") or []
+        live_item = gql(query, {"ids": [item_id]})["items"][0]
+        subitems = live_item.get("subitems") or []
+    set_columns(BOARD, item_id, parent_values(row, source, target))
+    upsert_update(
+        item_id,
+        live_item.get("updates") or [],
+        parent_body(row, source, [subitem["name"] for subitem in subitems]),
+    )
     for subitem in subitems:
-        if row["label"] == "Reuse":
-            sub_values = {"status": {"label": "Done"}, "color_mkwerpn6": {"label": "Done"}}
-        else:
-            sub_values = {"status": None, "color_mkwerpn6": None}
+        sub_values = {"status": None, "color_mkwerpn6": None}
         set_columns(SUBITEM_BOARD, str(subitem["id"]), sub_values)
-        create_update(str(subitem["id"]), subitem_body(row, source, subitem["name"]))
+        upsert_update(
+            str(subitem["id"]),
+            subitem.get("updates") or [],
+            subitem_body(row, source, subitem["name"]),
+        )
     return item_id, len(subitems)
 
 
@@ -386,16 +474,70 @@ def main() -> None:
     total = 0
     if not args.commit:
         for target in dates:
-            print(f"\n{target}: {len(rows_by_date[target])} Creative brief(s)")
-            for row in rows_by_date[target]:
+            reuse_rows = [row for row in rows_by_date[target] if row["label"] == "Reuse"]
+            active_rows = [row for row in rows_by_date[target] if row["label"] != "Reuse"]
+            group_id = groups.get(target)
+            existing = items_in_group(group_id) if group_id else []
+            old_reuse = [item for item in existing if is_old_reuse_item(item, reuse_rows)]
+            print(
+                f"\n{target}: one consolidated Reuse task ({len(reuse_rows)} promotions), "
+                f"{len(active_rows)} active brief(s), delete {len(old_reuse)} old Reuse item(s)"
+            )
+            for row in reuse_rows:
                 source = source_for(row, catalog)
-                print(f"  {row['label']:<19} {normalize_name(row['name'])} <- {source['promo_date']} {source['name']}")
+                print(
+                    f"  REUSE {normalize_name(row['name'])} <- {source_date(source)} "
+                    f"{source_reference_path(source)}"
+                )
+            for row in active_rows:
+                source = source_for(row, catalog)
+                print(f"  {row['label']:<19} {normalize_name(row['name'])} <- {source_date(source)} {source['name']}")
         print("\nDRY RUN - no Monday changes made.")
         return
     for target in dates:
         group_id = groups.get(target) or create_group(target)
-        existing = {item["name"]: item for item in items_in_group(group_id)}
-        for row in rows_by_date[target]:
+        current_items = items_in_group(group_id)
+        reuse_rows = [row for row in rows_by_date[target] if row["label"] == "Reuse"]
+        active_rows = [row for row in rows_by_date[target] if row["label"] != "Reuse"]
+
+        reuse_item = next((item for item in current_items if item["name"] == REUSE_TASK_NAME), None)
+        if reuse_item:
+            reuse_item_id = str(reuse_item["id"])
+        else:
+            reuse_item_id = create_bare_item(group_id, REUSE_TASK_NAME)
+            reuse_item = {"id": reuse_item_id, "name": REUSE_TASK_NAME, "updates": [], "subitems": []}
+        set_columns(
+            BOARD,
+            reuse_item_id,
+            {
+                "name": REUSE_TASK_NAME,
+                "date4": {"date": target},
+                "color_mkws3h8e": {"label": "Low"},
+                "status": {"label": "done"},
+            },
+        )
+        upsert_update(reuse_item_id, reuse_item.get("updates") or [], reuse_body(reuse_rows, catalog))
+        for subitem in reuse_item.get("subitems") or []:
+            delete_item(str(subitem["id"]))
+
+        deleted = 0
+        for item in current_items:
+            if str(item["id"]) == reuse_item_id:
+                continue
+            if is_old_reuse_item(item, reuse_rows):
+                delete_item(str(item["id"]))
+                deleted += 1
+        print(
+            f"{target} {reuse_item_id} consolidated {len(reuse_rows)} Reuse promotion(s); "
+            f"deleted {deleted} old Reuse item(s)"
+        )
+
+        existing = {
+            item["name"]: item
+            for item in items_in_group(group_id)
+            if item["name"] != REUSE_TASK_NAME
+        }
+        for row in active_rows:
             name = brief_name(row, source_for(row, catalog))
             base_name = normalize_name(row["name"])
             existing_item = existing.get(name) or next(
@@ -407,20 +549,26 @@ def main() -> None:
                 None,
             )
             if existing_item:
-                if existing_item["name"] != name:
-                    set_columns(BOARD, str(existing_item["id"]), {"name": name})
                 source = source_for(row, catalog)
-                set_columns(BOARD, str(existing_item["id"]), parent_values(row, source, target))
                 for subitem in existing_item.get("subitems") or []:
-                    if subitem.get("updates"):
-                        continue
-                    if row["label"] == "Reuse":
-                        sub_values = {"status": {"label": "Done"}, "color_mkwerpn6": {"label": "Done"}}
-                    else:
-                        sub_values = {"status": None, "color_mkwerpn6": None}
+                    sub_values = {"status": None, "color_mkwerpn6": None}
                     set_columns(SUBITEM_BOARD, str(subitem["id"]), sub_values)
-                    create_update(str(subitem["id"]), subitem_body(row, source, subitem["name"]))
-                print(f"{target} SKIPPED existing {existing_item['id']} {name}")
+                    upsert_update(
+                        str(subitem["id"]),
+                        subitem.get("updates") or [],
+                        subitem_body(row, source, subitem["name"]),
+                    )
+                set_columns(BOARD, str(existing_item["id"]), parent_values(row, source, target))
+                upsert_update(
+                    str(existing_item["id"]),
+                    existing_item.get("updates") or [],
+                    parent_body(
+                        row,
+                        source,
+                        [subitem["name"] for subitem in existing_item.get("subitems") or []],
+                    ),
+                )
+                print(f"{target} UPDATED existing {existing_item['id']} {name}")
                 total += 1
                 continue
             item_id, subitem_count = write_brief(row, target, group_id, existing, catalog)
@@ -428,10 +576,21 @@ def main() -> None:
             print(f"{target} {item_id} {row['label']:<19} subitems={subitem_count} {brief_name(row, source_for(row, catalog))}")
         time.sleep(10)
         for item in items_in_group(group_id):
+            if item["name"] == REUSE_TASK_NAME:
+                set_columns(
+                    BOARD,
+                    str(item["id"]),
+                    {
+                        "date4": {"date": target},
+                        "color_mkws3h8e": {"label": "Low"},
+                        "status": {"label": "done"},
+                    },
+                )
+                continue
             match = next((row for row in rows_by_date[target] if brief_name(row, source_for(row, catalog)) == item["name"]), None)
             if match:
                 set_columns(BOARD, str(item["id"]), {"status": {"label": "done" if match["label"] == "Reuse" else "Design in progress"}})
-    print(f"CREATED/UPDATED {total} Creative briefs across {len(dates)} dates.")
+    print(f"CONSOLIDATED Reuse and created/updated {total} active Creative briefs across {len(dates)} dates.")
 
 
 if __name__ == "__main__":
