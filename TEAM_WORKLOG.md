@@ -5,12 +5,11 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
-### 2026-07-16 — Agent — Colored month-build decision tree (HE)
+### 2026-07-16 — Agent — Decision tree: plain Hebrew, no code
 
-- **Goal:** Single colored decision tree from Itay highlights + feature launches + economy guidelines through validation/Monday.
-- **Done:** `documentation/MONTH_BUILD_DECISION_TREE_COLORED_HE.md` (Mermaid + legend + VFM sub-tree); links from `MONTH_BUILD_DECISION_TREE_HE.md`, `BUILD_CALENDAR_ROUTER.md`, `AGENTS.md`.
+- **Goal:** Expand colored month-build tree for team; simple language, no scripts/paths.
+- **Done:** Rewrote `MONTH_BUILD_DECISION_TREE_COLORED_HE.md` (long form + mermaid).
 - **Commands run:** n/a
-- **Notes:** Open colored file in GitHub/Cursor preview for diagrams.
 
 ---
 

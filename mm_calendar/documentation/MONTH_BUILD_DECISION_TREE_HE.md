@@ -6,7 +6,8 @@
 
 **GitHub:** [קובץ זה](https://github.com/ppuregoldz-arch/slotomania-mm-calendar/blob/main/mm_calendar/documentation/MONTH_BUILD_DECISION_TREE_HE.md)
 
-> **עץ החלטות אחד בצבעים:** [MONTH_BUILD_DECISION_TREE_COLORED_HE.md](./MONTH_BUILD_DECISION_TREE_COLORED_HE.md) — highlights, השקות, guidelines → Monday.
+> **עץ החלטות אחד בצבעים (מפורט, שפה פשוטה):**  
+> **[MONTH_BUILD_DECISION_TREE_COLORED_HE.md](./MONTH_BUILD_DECISION_TREE_COLORED_HE.md)**
 
 ---
 
