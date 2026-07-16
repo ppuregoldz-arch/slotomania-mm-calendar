@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Final Creative brief execution rules
+
+- **Goal:** Make 01/08 Monetization-Art briefs execution-ready with completed Reuse work, asset-type references, exact per-asset instructions, due dates, source dates, and priority.
+- **Done:** Updated all 13 parent briefs and 74 subitems; 11 Reuse promos are `done` with Copy/Art `Done`, while Win Master and the backup coupon remain actionable Prize Changes. Set Brief Due 2026-07-23, Art Due 2026-07-30, asset-matched previews only, exact Creative Request/Completion rows, and Low/Medium priorities. Added the standards to the Monetization-Art Cursor rule and an idempotent application/audit script.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, targeted Monday update for group `2026-08-01` ✓, parent/subitem verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Monday subitem automations can overwrite parent status; always apply final parent `done`/`Copy Done` after subitem status updates and verify after a delay.
+
+---
+
 ### 2026-07-16 — Agent — Decision tree: plain Hebrew, no code
 
 - **Goal:** Expand colored month-build tree for team; simple language, no scripts/paths.

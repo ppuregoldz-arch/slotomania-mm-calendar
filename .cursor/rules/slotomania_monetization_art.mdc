@@ -21,6 +21,10 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
   - `date4` — promo date `{"date": "YYYY-MM-DD"}`
   - `text_mkwe4jsr` — art folder link (`Q:\Slotomania\CRM3\...`)
   - `color_mky3swe2` — Product (labels must match board exactly; many Coin Sale items leave Product empty)
+  - `date_mkwj8wwp` — Brief Due Date
+  - `date_mkwep612` — Art Due Date
+  - `color_mkws3h8e` — Priority: Critical ⚠️️ / High / Medium / Low
+  - `status` — Status Creative; board label `done` means Completed
 - Item name via `name` in `change_multiple_column_values`
 
 ## Mandatory workflow (every new promo)
@@ -37,6 +41,8 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 
 - **Reference Link** = full file path: `Q:\Slotomania\CRM3\...\filename.png` (not folder-only)
 - **Reference** = embedded preview: upload from CRM3 via `add_file_to_update` → `/v2/file`, then optional `edit_update` with `https://playtika.monday.com/protected_static/7996532/resources/{asset_id}/{filename}`
+- Reference art must match the subitem asset type: Inapp→Inapp, Banner→Banner, Widget→Widget, etc. Never reuse one generic preview across unlike assets.
+- If no matching historical asset exists, say so explicitly and leave the preview empty; never attach a misleading reference.
 - For art briefs use the promo date the user wants (not “exclude incomplete today” analytics rules)
 
 ## Brief standards
@@ -44,6 +50,11 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 - HTML tables in updates when template expects rows (Background, Main Messages, Art guidelines, Reference, Reference Link, CTA, etc.)
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
+- Every subitem must state the exact Creative action for that asset. Never use a generic “prepare/adapt” instruction.
+- End every parent brief with **Creative Request**: exact deliverables, or “No creative action — Completed.”
+- **Reuse**: name the exact source promo/date and asset. Parent Status Creative=`done`; each no-action subitem Copy Status=`Done` and Art Status=`Done`.
+- Due dates: Brief Due = promo date − 7 calendar days minimum; Art Due = promo date − 2 calendar days minimum. If either lands Friday/Saturday, move it backward to Thursday.
+- Priority default: Critical for business-critical launch with no fallback; High for new promo/theme or broad anchor package; Medium for prize/mission changes; Low for Reuse, backup, or no-action work. Override only with explicit business context.
 - If CRM3 not mounted: set paths and note “upload previews when CRM3 available”
 
 ## User request handling
