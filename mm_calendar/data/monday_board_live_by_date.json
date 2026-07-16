@@ -2,12 +2,12 @@
   "meta": {
     "board_id": "18388590642",
     "board_url": "https://playtika.monday.com/boards/18388590642",
-    "pulled_at_utc": "2026-07-14T14:37:05Z",
+    "pulled_at_utc": "2026-07-16T08:12:11Z",
     "read_only": true,
-    "item_count": 3024,
-    "dated_items": 2686,
-    "undated_items": 338,
-    "august_2026_dated": 353
+    "item_count": 3026,
+    "dated_items": 2689,
+    "undated_items": 337,
+    "august_2026_dated": 355
   },
   "authority_note": "Itay 2026-07-12 — live Monday board is the updated schedule truth for agents; read-only snapshot; prefer this over august_2026_plan.json for what is scheduled on the board. Days 2026-08-01 … 2026-08-15 are committed — do not change via builder/upload without explicit approval.",
   "by_date": {
@@ -15899,7 +15899,7 @@
         "name": "Limited PO - DPU",
         "product": "Offers & coin sale",
         "pricing": "",
-        "config_status": "Config needed",
+        "config_status": "On Hold",
         "description": ""
       },
       {
@@ -16813,7 +16813,7 @@
         "name": "Shiny show - different prizes with Joker 2026-07-15",
         "product": "Album",
         "pricing": "",
-        "config_status": "Config needed",
+        "config_status": "Done",
         "description": ""
       },
       {
@@ -16911,7 +16911,7 @@
         "name": "MES - Rich's Riches Jackpot Challenge",
         "product": "Core",
         "pricing": "",
-        "config_status": "Config needed",
+        "config_status": "Done",
         "description": "MES - 24 hours \n\nwin X jackpots with min bet to win Shiny Card, AS, 2 parasheeps"
       },
       {
@@ -16993,7 +16993,7 @@
         "name": "Spin Zone for 3* reg & AS / 17/7",
         "product": "Core",
         "pricing": "",
-        "config_status": "Config needed",
+        "config_status": "Done",
         "description": ""
       },
       {
@@ -17040,7 +17040,7 @@
     "2026-07-18": [
       {
         "id": "12224452870",
-        "name": "Shiny Show - different prizes with Joker",
+        "name": "Shiny Show - different prizes with Joker - 18/7",
         "product": "Album",
         "pricing": "",
         "config_status": "Config needed",
@@ -17056,10 +17056,10 @@
       },
       {
         "id": "12224422925",
-        "name": "MES - 48 hours",
+        "name": "MES - 48 hours - 18/07",
         "product": "Core",
         "pricing": "",
-        "config_status": "Config needed",
+        "config_status": "Done",
         "description": "48 hours MES challenge \nworld cup theme \n3 milestones \n\n1st milestone: \nSpin x times in min bet \nfinish the shiny show \nmake any purchase\nprize - AS & 2 parasheeps\n\n\n2nd milestone: \nWin x times in min bet \nOpen X pods higher rarity \nmake any purchase\nprize - 3* reg & 3 hammers \n\n3rd milestone \nWin x mega wins or more\nMake a red diamond stamp purchase \nPrize - hammer wheel, dice booster 6 hours, AS"
       },
       {
@@ -17112,7 +17112,7 @@
       },
       {
         "id": "12224636089",
-        "name": "Scratch N Win - up to 700% SB",
+        "name": "Scratch N Win - up to 700% SB - 18/07",
         "product": "Offers & coin sale",
         "pricing": "",
         "config_status": "Config needed",
@@ -17347,6 +17347,14 @@
         "pricing": "",
         "config_status": "Config needed",
         "description": "Players will need to open X mega pods to win the prize - shiny card, PAB, dice booster 6 hours"
+      },
+      {
+        "id": "12540004375",
+        "name": "Quest season 2/3/4* ace",
+        "product": "Mid Term",
+        "pricing": "",
+        "config_status": "Config needed",
+        "description": ""
       },
       {
         "id": "12464461387",
@@ -18272,13 +18280,13 @@
         "product": "Offers & coin sale",
         "pricing": "",
         "config_status": "",
-        "description": "Top store denom visibility (Status Boost)."
+        "description": "30/50% coin coupon — stacks on Status Boost / top store denom.\nBACKUP row if the coupon promo is not live."
       },
       {
         "id": "12464095650",
         "name": "2026-08-01 | RYD - 5* Gold Card + 100% SB - High Price",
         "product": "RYD",
-        "pricing": "Max",
+        "pricing": "High",
         "config_status": "MCP needed",
         "description": "Hook: 2026-08-01 | RYD - 5* Gold Card + 100% SB - High Price"
       },
@@ -18346,7 +18354,7 @@
         "product": "Offers & coin sale",
         "pricing": "High",
         "config_status": "MCP needed",
-        "description": "d1 (coin+RDS base): Coins + 4 RDS + PAB\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 1 GGS + PAB + Quest Booster + 100% SB + 5★ Reg"
+        "description": "d1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 1 GGS + Superboom + Quest Booster + 100% SB + 5★ Reg"
       }
     ],
     "2026-08-03": [
@@ -18396,7 +18404,7 @@
         "product": "Clan-Dash",
         "pricing": "",
         "config_status": "",
-        "description": "Time Limited Prize — timed clan reward window"
+        "description": "Time Limited Prize — 4★ Regular Card.\nTimed clan reward window (Monday Dash Day)."
       },
       {
         "id": "12511356491",
@@ -18404,7 +18412,7 @@
         "product": "Clan-Dash",
         "pricing": "",
         "config_status": "MCP needed",
-        "description": "Time Limited Prize — timed clan reward window"
+        "description": "Time Limited Prize — 4★ Regular Card.\nTimed clan reward window (Monday Dash Day)."
       },
       {
         "id": "12488297934",
@@ -18416,11 +18424,11 @@
       },
       {
         "id": "12486308528",
-        "name": "2026-08-03 | Daily Deal - Shiny Card (multiple) | Max Pricing",
+        "name": "2026-08-03 | Daily Deal - Shiny Card (multiple) | High Pricing",
         "product": "Daily deal",
-        "pricing": "Max",
+        "pricing": "High",
         "config_status": "Config needed",
-        "description": "Central reward: Shiny Card (multiple) (Max pricing).\nMultiple purchases."
+        "description": "Central reward: Shiny Card (multiple) (High pricing).\nMultiple purchases."
       },
       {
         "id": "10644921689",
@@ -18444,7 +18452,7 @@
         "product": "Rolling offer",
         "pricing": "High",
         "config_status": "Config needed",
-        "description": "Rolling Offer — Buy More for Less\nCycle 1: Coins (low tier) + Gems | 100% SB  | 2 Hammers | 3 RDS | 1 GGS\nCycle 2: Coins (mid tier) + Gems | 200% SB  | 4 Hammers | 3 RDS | 1 GGS\nCycle 3: Coins (high tier) + Gems | 300% SB  | 6 Hammers | 3 RDS | 2 GGS"
+        "description": "Rolling Offer — Buy More for Less\nCycle 1: Coins + Gems | 100% SB  | 2 Hammers | 3 RDS | 1 GGS\nCycle 2: Coins + Gems | 200% SB  | 4 Hammers | 3 RDS | 1 GGS\nCycle 3: Coins + Gems | 300% SB  | 6 Hammers | 3 RDS | 2 GGS"
       }
     ],
     "2026-08-04": [
@@ -18478,7 +18486,7 @@
         "product": "Album",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Variant: All Cards"
+        "description": "Variant: Crazy with Aces"
       },
       {
         "id": "12464214893",
@@ -18494,7 +18502,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "MCP needed",
-        "description": "Missions:\n· Reach act 18 — Shiny Show\n· Spin 100 times — Gem Machine\n· Open 5 pods\n· Use Superboom"
+        "description": "Missions:\n· Reach act 18 — Shiny Show\n· Spin 100 times — Gem Machine\n· Open 5 pods\n· Use Quest Booster"
       },
       {
         "id": "12486296317",
@@ -18526,7 +18534,7 @@
         "product": "Gems",
         "pricing": "",
         "config_status": "",
-        "description": "Doubles GGS earned in offers (3h post 11:00 UTC)."
+        "description": "Doubles GGS earned in offers — 3h window post 11:00 UTC.\nBACKUP row (use only if primary x2 GGS slot is not scheduled)."
       },
       {
         "id": "12475665380",
@@ -18646,7 +18654,7 @@
       },
       {
         "id": "12486219042",
-        "name": "2026-08-06 | MES - Spin Zone + Option to purchase to progress | 4* Ace Card + 3* Ace topper",
+        "name": "2026-08-06 | MES - Spin Zone + Option to purchase to progress | 4* & 3* Ace",
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
@@ -18776,7 +18784,7 @@
       },
       {
         "id": "12486134021",
-        "name": "Betty Boop Theme",
+        "name": "Betty Boop Theme - All Game",
         "product": "Event",
         "pricing": "",
         "config_status": "",
@@ -18796,7 +18804,7 @@
         "product": "Mid Term",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Season rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Winovate): Winovate scene milestones by album phase — nivi_collector_album_prizes.md\n\nWinovate season start (8d cycle). Through 2026-08-12."
+        "description": "Season rhythm: Short Term: Battlesheep · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Winovate): Winovate scene milestones by album phase — nivi_collector_album_prizes.md\n\nWinovate season start (8d cycle). Through 2026-08-12."
       },
       {
         "id": "12486197991",
@@ -18838,7 +18846,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "MCP needed",
-        "description": "Betty theme loot — 48 hours (Fri 8/8 through Sat 9/8).\nReplaces 24h window; aligns with Betty's Birthday weekend.\nDice Loot removed from 9/8 (now 13/8)."
+        "description": "Betty Boop: Sassy, Classy & Chic — Kiss Loot (ONLY IN machine)\n48 hours: Fri 2026-08-08 → Sat 2026-08-09 (Betty's Birthday weekend).\n\nMechanic: LAND KISSES FOR UNLIMITED EXTRA PRIZES while spinning Betty machine.\n\nPrize ladder (config):\n• 3 Kiss symbols → Parasheep  (reference art shows Pick — use Parasheep)\n• 4 Kiss symbols → Hammers\n• 5 Kiss symbols → Airstrike  (reference art shows Pick a Boom / PAB — use Airstrike)\n\nPlan note: Dice Loot removed from 9/8 (now 13/8). Art ref attached in Updates."
       },
       {
         "id": "12488378134",
@@ -18878,7 +18886,7 @@
         "product": "Gems",
         "pricing": "",
         "config_status": "",
-        "description": "Doubles GGS earned in offers (3h post 11:00 UTC)."
+        "description": "Doubles GGS earned in offers — 18:00–20:00 UTC this day."
       },
       {
         "id": "12487327616",
@@ -18947,12 +18955,20 @@
         "description": "Night Plan"
       },
       {
-        "id": "12510648211",
-        "name": "Daily Deal BOGO - 3 Hammers + 3000 Globez Coins | High",
+        "id": "12486541138",
+        "name": "2026-08-09 | Daily Deal - 3* Reg card (on purchase) + AS (BOGO - task config) | Size Large | High Pricing",
         "product": "Daily deal",
         "pricing": "High",
         "config_status": "MCP needed",
-        "description": "Central reward: Daily Deal BOGO - 3 Hammers + 3000 Globez Coins | High."
+        "description": "Platform: Daily Deal — Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3★ Reg card (on purchase) + AS (BOGO — task config).\nPricing: High — SKU generosity scales with tier (High ≈ up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nReg HW bank full — Reg DD (no Hammer Wheel)\n\nConfig: Daily Deal offer size must be **Large** (Size Large in Monday title / Smart Calendar)."
+      },
+      {
+        "id": "12510648211",
+        "name": "Daily Deal BOGO - 3 Hammers + 3000 Globez Coins | Size Large | High",
+        "product": "Daily deal",
+        "pricing": "High",
+        "config_status": "MCP needed",
+        "description": "Central reward: 3 Hammers + 3000 Globez Coins (High pricing).\n\nConfig: Daily Deal offer size must be **Large** (Size Large in Monday title / Smart Calendar)."
       },
       {
         "id": "10644921515",
@@ -18964,7 +18980,7 @@
       },
       {
         "id": "12486541198",
-        "name": "2026-08-09 | Betty's Birthday",
+        "name": "2026-08-09 | Betty's Day",
         "product": "Event",
         "pricing": "",
         "config_status": "Config needed",
@@ -19002,7 +19018,7 @@
         "product": "Buy all",
         "pricing": "High",
         "config_status": "MCP needed",
-        "description": "Coins denom: Coins+4 RDS + 2 Parasheep + AS\nGems denom: Gems + 1 GGS + 3000 Hero Coins"
+        "description": "Coins denom: Coins+RDS + 2 Parasheep + AS\nGems denom: Gems + 1 GGS + 3000 Hero Coins"
       },
       {
         "id": "12464253806",
@@ -19034,7 +19050,7 @@
         "product": "Clan-Dash",
         "pricing": "",
         "config_status": "",
-        "description": "Time Limited Prize — timed clan reward window"
+        "description": "Time Limited Prize — Shiny Card.\nTimed clan reward window (Monday Dash Day)."
       },
       {
         "id": "12488329633",
@@ -19050,7 +19066,7 @@
         "product": "Daily deal",
         "pricing": "High",
         "config_status": "MCP needed",
-        "description": "Central reward: 3* Gold Card + 2 Parasheep (High pricing)."
+        "description": "Central reward: 3★ Gold Card + 2 Parasheep (High pricing)."
       },
       {
         "id": "10644919662",
@@ -19135,14 +19151,6 @@
         "description": "Doubles Extreme Stamps in offers today (RDS → Extreme)."
       },
       {
-        "id": "12464285114",
-        "name": "2026-08-11 | Decoy Bonanza - d3: 5* Gold + bundle | Max Pricing",
-        "product": "Offers & coin sale",
-        "pricing": "Max",
-        "config_status": "MCP needed",
-        "description": "Cohort: Popup Store off-test segment (via Popup Store shell).\nd1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Hero Coins\nd3 (bundle): Coins + Gems + 4 RDS + 1 GGS + 2 Dice + 3000 Hero Coins + 100% SB + 5★ Gold"
-      },
-      {
         "id": "12464175520",
         "name": "2026-08-11 | LBP - 2 Extreme Stamps (Night Plan)",
         "product": "Offers & coin sale",
@@ -19159,12 +19167,12 @@
         "description": "Night Plan Lotto peak (pair one LBP row this day)."
       },
       {
-        "id": "12470189724",
-        "name": "2026-08-11 | Popup Store - TEST · Soft launch (1/3)",
-        "product": "Offers & coin sale",
-        "pricing": "",
+        "id": "12547639977",
+        "name": "2026-08-11 | Rolling Offer — 4 cycles (Buy X Get Y) · MGAP ladder (configs) | H Pricing",
+        "product": "Rolling offer",
+        "pricing": "High",
         "config_status": "Config needed",
-        "description": "Product: Popup Store · TEST · Soft launch (11 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18–24/8). Surfaces the paired purchase offer for the off-test cohort."
+        "description": "Platform: Rolling Offer — Buy X Get Y (4 cycles) | H Pricing\nShort Term: SNL (season start) · Mid Term: Globez (through 14/8)\nSame day: X2 Extreme Stamp — cycles 2–4 use Extreme Stamp on Pay + stamp step (cycle 1 unchanged)\nHammers: only in this Rolling (single hammer source this day)\n\nRDS/GGS: cycle 1 — Pay 1 RDS + 1 GGS · step 5 = 2 RDS · step 6 = 1 GGS\nCycles 2–4 — Pay 1 Extreme Stamp + 1 GGS · step 5 = 1 Extreme Stamp · step 6 = 1 GGS\nMGAP: denom 3 only · cycles 2–4 · no separate MGAP board row this day\nCycle 1: NO MGAP\n\nCycle 1:\n  1 Pay — Coins + Gems + 1 RDS + 1 GGS\n  2 — 100% SlotoBucks\n  3 — 4 SNL Dice\n  4 — 5 Hammers\n  5 — 2 RDS\n  6 — 1 GGS\n\nCycle 2:\n  1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n  2 — 150% SlotoBucks\n  3 — MGAP — different config (lower)\n  4 — 8 Hammers\n  5 — 1 Extreme Stamp\n  6 — 1 GGS\n\nCycle 3:\n  1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n  2 — 200% SlotoBucks\n  3 — MGAP — different config (mid)\n  4 — 10 Hammers\n  5 — 1 Extreme Stamp\n  6 — 1 GGS\n\nCycle 4:\n  1 Pay — Coins + Gems + 1 Extreme Stamp + 1 GGS\n  2 — 300% SlotoBucks\n  3 — MGAP — different config (higher)\n  4 — 12 Hammers\n  5 — 1 Extreme Stamp\n  6 — 1 GGS\n\nConfig: three MGAP configs on Rolling denom 3 (economist/Nivi). No Decoy paired with Popup Store on 12/8.\nQA: Spin Zone / other offers — hammers only from this Rolling on 11/8."
       },
       {
         "id": "12464266351",
@@ -19172,7 +19180,7 @@
         "product": "Short Term",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Season rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nShort Term (SNL): Short-term board (~3d): cycle prizes — (1) Wild Gold · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md\n\nPlan notes: Popup Store TEST (Soft launch).\n\nShort Term season start: SNL. Through 2026-08-13 (promo-time)."
+        "description": "Season rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nShort Term (SNL): Short-term board (~3d): cycle prizes — (1) Wild Gold · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md\n\nShort Term season start: SNL. Through 2026-08-13 (promo-time)."
       }
     ],
     "2026-08-12": [
@@ -19194,7 +19202,7 @@
       },
       {
         "id": "12475173953",
-        "name": "2026-08-12 | Spin Zone - Hammers Wheel (single hammer source)",
+        "name": "2026-08-12 | Spin Zone - Hammers Wheel",
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
@@ -19230,7 +19238,7 @@
         "product": "Gems",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Boosted Gemback 300% — exclude DD."
+        "description": "Boosted Gemback 300% for 5 hours post 11:00 UTC — exclude DD."
       },
       {
         "id": "12464390129",
@@ -19247,6 +19255,14 @@
         "pricing": "Mid",
         "config_status": "Config needed",
         "description": ""
+      },
+      {
+        "id": "12470189724",
+        "name": "2026-08-12 | Popup Store - TEST · Soft launch (1/3)",
+        "product": "Offers & coin sale",
+        "pricing": "",
+        "config_status": "Config needed",
+        "description": "Product: Popup Store · TEST · Soft launch (12 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18–24/8). Surfaces the paired purchase offer for the off-test cohort.\nNo separate Decoy Bonanza row — Popup shell only (no parallel Decoy on this day)."
       },
       {
         "id": "12487357536",
@@ -19296,7 +19312,7 @@
         "product": "Daily deal",
         "pricing": "High",
         "config_status": "Config needed",
-        "description": "Central reward: 5★ Reg card + SB Wheel (High pricing)."
+        "description": "Central reward: 5★ Reg card + Despicable Wolf MG (High pricing)."
       },
       {
         "id": "10644921682",
@@ -19328,7 +19344,7 @@
         "product": "Mid Term",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Anchor / banner: Nostalgic Weekend.\n\nSALE day (weekend coin sale).\n\nSeason rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Quest): Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands).\n\nMid Term season start: Quest. Through 2026-08-19."
+        "description": "Season rhythm: Short Term: Blast · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Quest): Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands).\n\nMid Term season start: Quest. Through 2026-08-19."
       },
       {
         "id": "12470171455",
@@ -19370,7 +19386,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Spin Zone — 4★ Reg card + 2 Dice + hrs Dice\n\nGhost Motel gives more\nother machines give regular"
+        "description": "Win Master — 4★ Reg card + 2 Dice + 6 Hrs Dice.\nStarts Night Plan with timer & communications.\n\nGhost Motel gives more; other machines give regular."
       },
       {
         "id": "12486541655",
@@ -19378,23 +19394,23 @@
         "product": "Core",
         "pricing": "",
         "config_status": "MCP needed",
-        "description": "Complete 3 out of 4 challenges to win:\nCasino Caper Machine\n\nAlso every challenge the player will get another prize:\n1st - 100 Dash Points, Shiny Show\n2nd - 5* Reg\n3rd - 4* Ace\n\nChallenges:\n- Complete 3 Dashes\n- Complete 4 Super Dashes\n- Finish Shiny Show\n- Use 5 Dice (Blast board; economy consideration)"
+        "description": "Complete 3 out of 4 challenges to win:\nCasino Caper Machine\n\nAlso every challenge the player will get another prize:\n1st - 100 Dash Points, Shiny Card\n2nd - 5* Reg\n3rd - 4* Ace\n\nChallenges:\n- Complete 3 Dashes\n- Complete 4 Super Dashes\n- Finish Shiny Show\n- Use 5 Dice (Blast board; economy consideration)"
       },
       {
         "id": "12486481216",
-        "name": "2026-08-14 | Daily Deal - 100% SB + 8 Hammers (multiple) | High Pricing",
+        "name": "2026-08-14 | Daily Deal - 100% SB + 6 Hammers (multiple) | Size Large | High Pricing",
         "product": "Daily deal",
         "pricing": "High",
         "config_status": "Config needed",
-        "description": "Central reward: 100% SB + 8 Hammers (multiple).\nMultiple purchases."
+        "description": "Central reward: 100% SB + 6 Hammers (multiple).\nMultiple purchases.\n\nConfig: Daily Deal offer size must be **Large** (Size Large in Monday title / Smart Calendar)."
       },
       {
         "id": "12475698268",
-        "name": "2026-08-14 | Daily Deal - Shiny Limited - Once | Max Pricing",
+        "name": "2026-08-14 | Daily Deal - Shiny Limited - Once | Size Large | Max Pricing",
         "product": "Daily deal",
         "pricing": "Max",
         "config_status": "Config needed",
-        "description": "Central reward: Shiny Limited - Once.\nOnce-per-player — pair with DD multiple same day."
+        "description": "Central reward: Shiny Limited - Once.\nOnce-per-player — pair with DD multiple same day.\n\nConfig: Daily Deal offer size must be **Large** (Size Large in Monday title / Smart Calendar)."
       },
       {
         "id": "10644919645",
@@ -19434,7 +19450,7 @@
         "product": "Gems",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Doubles GGS earned in offers (3h post 11:00 UTC)."
+        "description": "Doubles GGS earned in offers — 3h window post 11:00 UTC."
       },
       {
         "id": "12464372390",
@@ -19470,11 +19486,11 @@
       },
       {
         "id": "12476428575",
-        "name": "2026-08-14 | RYD - 4* Reg + Shield + 100% SB - High Price",
+        "name": "2026-08-14 | RYD - 4* Reg + Superboom + 100% SB - High Price",
         "product": "RYD",
         "pricing": "High",
         "config_status": "MCP needed",
-        "description": "Hook: RYD - 4* Reg + PAB + 100% SB - High Price"
+        "description": "Hook: 2026-08-14 | RYD - 4* Reg + Superboom + 100% SB - High Price"
       }
     ],
     "2026-08-15": [
@@ -19488,11 +19504,11 @@
       },
       {
         "id": "12488192936",
-        "name": "2026-08-15 | Mystery Buy All | H Pricing",
+        "name": "2026-08-15 | Mystery Buy All | Max Pricing",
         "product": "Buy all",
         "pricing": "High",
         "config_status": "Config needed",
-        "description": "Mystery Buy All — same rewards as Buy All; each prize on its own line (not split into coin/gem denoms).\nCoins\nGems\n4 RDS\n1 GGS\n4★ Reg\n2 Dice\n4★ Reg\nQuest Booster"
+        "description": "Mystery Buy All — same rewards as Buy All; each prize on its own line (not split into coin/gem denoms).\nCoins\nGems\n4 RDS & Coins\n1 GGS & Gems\n4★ Reg\n2 Dice\nQuest Booster"
       },
       {
         "id": "12488231400",
@@ -19770,7 +19786,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Puzzle day 1 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (18/8 · Tue).\nSeparate from Popup Store (11/19/26). Control segment keeps the day's Core challenge."
+        "description": "Puzzle day 1 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (18/8 · Tue).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge."
       },
       {
         "id": "12488298507",
@@ -19860,7 +19876,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Puzzle day 2 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (19/8 · Wed).\nSeparate from Popup Store (11/19/26). Control segment keeps the day's Core challenge."
+        "description": "Puzzle day 2 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (19/8 · Wed).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge."
       },
       {
         "id": "12475076410",
@@ -19900,7 +19916,7 @@
         "product": "Offers & coin sale",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Product: Popup Store · TEST · 2nd soft launch (11 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18–24/8). Surfaces the paired purchase offer for the off-test cohort."
+        "description": "Product: Popup Store · TEST · 2nd soft launch (12 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18–24/8). Surfaces the paired purchase offer for the off-test cohort.\nNo separate Decoy Bonanza row on this day."
       },
       {
         "id": "12464383424",
@@ -19958,7 +19974,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Puzzle day 3 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (20/8 · Thu).\nSeparate from Popup Store (11/19/26). Control segment keeps the day's Core challenge."
+        "description": "Puzzle day 3 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (20/8 · Thu).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge."
       },
       {
         "id": "12475065805",
@@ -20064,7 +20080,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Puzzle day 4 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (21/8 · Fri).\nSeparate from Popup Store (11/19/26). Control segment keeps the day's Core challenge."
+        "description": "Puzzle day 4 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (21/8 · Fri).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge."
       },
       {
         "id": "12475072011",
@@ -20170,7 +20186,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Puzzle day 5 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (22/8 · Sat).\nSeparate from Popup Store (11/19/26). Control segment keeps the day's Core challenge."
+        "description": "Puzzle day 5 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (22/8 · Sat).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge."
       },
       {
         "id": "12475729112",
@@ -20276,7 +20292,7 @@
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Puzzle day 6 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (23/8 · Sun).\nSeparate from Popup Store (11/19/26). Control segment keeps the day's Core challenge."
+        "description": "Puzzle day 6 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (23/8 · Sun).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge."
       },
       {
         "id": "12475167837",
@@ -20382,7 +20398,15 @@
         "product": "Core",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Puzzle day 7 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (24/8 · Mon).\nSeparate from Popup Store (11/19/26). Control segment keeps the day's Core challenge."
+        "description": "Puzzle day 7 of 7 · Soft Launch 20% · ~20% cohort.\nCore — Puzzle M.E.S gameplay · window 18–24/8 (24/8 · Mon).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge."
+      },
+      {
+        "id": "12538433895",
+        "name": "MES Gems mission",
+        "product": "Core",
+        "pricing": "",
+        "config_status": "Config needed",
+        "description": "MES Gems missions\n- Spin in gems machine\n- Upgrade items in winnovate\n- Reach the final act in Shiny Show\n- Open X Mega Pods\nHammer wheel, 5* ace card, final prize - Shiny limited"
       },
       {
         "id": "12475698861",
@@ -20566,11 +20590,11 @@
       },
       {
         "id": "12475723064",
-        "name": "2026-08-26 | Daily Deal BOGO - hammer wheel + 2 Dice SNL",
+        "name": "2026-08-26 | Daily Deal BOGO - hammer wheel + 2 Dice SNL | Size Large",
         "product": "Daily deal",
         "pricing": "High",
         "config_status": "",
-        "description": ""
+        "description": "Config: Daily Deal offer size must be **Large** (Size Large in Monday title / Smart Calendar)."
       },
       {
         "id": "10644901759",
@@ -20610,15 +20634,15 @@
         "product": "Offers & coin sale",
         "pricing": "",
         "config_status": "Config needed",
-        "description": "Product: Popup Store · LAUNCH · Full launch (11 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18–24/8). Surfaces the paired purchase offer for the off-test cohort."
+        "description": "Product: Popup Store · LAUNCH · Full launch (12 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18–24/8). Surfaces the paired purchase offer for the off-test cohort.\nShell only — no paired Decoy row. Primary VFM this day; RYD row (if kept) is BACKUP cap if LAUNCH slips."
       },
       {
         "id": "12511213888",
-        "name": "2026-08-26 |  RYD - shiny card + 100% SB H price",
+        "name": "2026-08-26 | RYD - shiny card + 100% SB H price · BACKUP cap (if Popup Store LAUNCH slips)",
         "product": "RYD",
         "pricing": "",
         "config_status": "MCP needed",
-        "description": ""
+        "description": "Platform: RYD — Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): Shiny card + 100% SB.\nBACKUP cap — live/configure only if Popup Store LAUNCH (26/8) does not ship on time. Not a parallel VFM offer when Popup Store is live.\nStamps: RDS on reveal · SB% on top (standard tiers only — never 155% SB)."
       }
     ],
     "2026-08-27": [
@@ -20664,11 +20688,11 @@
       },
       {
         "id": "12475725998",
-        "name": "2026-08-27 | Daily Deal - Wild Gold card + Shield | High Pricing",
+        "name": "2026-08-27 | Daily Deal - Wild Gold card + Shield | Size Large | High Pricing",
         "product": "Daily deal",
         "pricing": "High",
         "config_status": "MCP needed",
-        "description": ""
+        "description": "Config: Daily Deal offer size must be **Large** (Size Large in Monday title / Smart Calendar)."
       },
       {
         "id": "10644901651",
@@ -23363,14 +23387,6 @@
         "pricing": "Max",
         "config_status": "Config needed",
         "description": "Central reward: 100% SB + 8 Hammers."
-      },
-      {
-        "id": "12486541138",
-        "name": "2026-08-09 | Daily Deal - 3* Reg card (on purchase) + AS (BOGO - task config) | High Pricing",
-        "product": "Daily deal",
-        "pricing": "High",
-        "config_status": "MCP needed",
-        "description": "Platform: Daily Deal — Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3★ Reg card (on purchase) + AS (BOGO — task config).\nPricing: High — SKU generosity scales with tier (High ≈ up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nReg HW bank full — Reg DD (no Hammer Wheel)"
       },
       {
         "id": "12488300711",

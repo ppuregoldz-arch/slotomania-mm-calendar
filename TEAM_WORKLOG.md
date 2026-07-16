@@ -5,6 +5,14 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — Agent — Monday Description ← title (Aug 1–14)
+
+- **Goal:** Itay — **Name/title is truth**; fix Description (not titles) where mismatched in first two weeks of August.
+- **Done:** `scripts/apply_monday_desc_match_title_aug_1-14.py` (22 rows: DD/RYD/TLP/PYP/x2 GGS/Win Master/Winovate rhythm/Rolling H pricing/Quest season text + 2× Pricing→High). Policy in `00_GUIDELINES_ITAY.md`, `board_schema.md`, `mm_calendar_builder.mdc`.
+- **Files:** script above + guideline/schema/rule edits; refreshed `monday_board_live_by_date.json`.
+- **Commands run:** `apply_monday_desc_match_title_aug_1-14.py` ✓, `pull_monday_live_snapshot.py` ✓
+- **Notes for next agent:** When auditing Monday, align **Description** (and **Pricing** if title states tier) to **Name**; do not “correct” titles from plan JSON without Itay.
+
 ---
 
 ---

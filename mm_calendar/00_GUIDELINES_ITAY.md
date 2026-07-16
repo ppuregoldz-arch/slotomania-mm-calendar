@@ -35,6 +35,7 @@ If two sources conflict, do not silently choose. Follow the higher authority and
 - **Cards:** card rewards must come from the current weekly bank. Gold is purchase-only; Core rewards are Reg/Ace/Shiny/Wild as allowed by the bank.
 - **Monday safety:** never create, change, delete, or synchronize Monday rows without explicit approval.
 - **August 2026 (days 1–15):** live Monday board rows are committed planning truth for UI/forecasts (`monday_board_live_by_date.json`, `august_2026_monday_days_1-15.json`). Do not overwrite via builder or sync without Itay’s explicit approval for that date range.
+- **Monday title vs Description:** when they disagree, the **row title (Name)** is correct. Update **Description** (and **Pricing** when the title states High/Mid/Max) to match the title; do not “fix” the title from builder JSON or plan text unless Itay asks.
 
 ## Evidence and measurement rules
 

@@ -30,7 +30,7 @@
 | `color_mky9aesm` | **Pricing** | status | עומק תמחור: High / Max / Mid / Low |
 | `date_mky27nx7` | Date | date | תאריך יחיד (פרומו של יום) |
 | `timerange_mkz3t5qy` | Date | timeline | טווח תאריכים (פיצ'רים/עונות) |
-| `long_text_mkxzgg1v` | Description | long_text | תיאור הפרומו/בריף |
+| `long_text_mkxzgg1v` | Description | long_text | תיאור הפרומו/בריף — **חייב להתאים ל-Name (כותרת)**; אם יש סתירה, מתקנים Description (ולעיתים Pricing) לפי הכותרת, לא להפך |
 | `person` | MM | people | מנהל מוניטיזציה אחראי |
 | `multiple_person_mky0jahx` | Economiest | people | אחראי כלכלה |
 | `color_mky0czxd` | Economy status | status | Comment / Approved / Not approved / No need / Approved day / Event |

@@ -147,6 +147,7 @@ alwaysApply: false
 השתמש ב-`scripts/monday_client.py` (GraphQL v2). **בורד ייצור = `18388590642` (רק באישור מפורש); ברירת מחדל לבדיקות = sandbox `18413621867`:**
 1. `create_item(board_id: <BID>, group_id: "group_mky2rn6g", item_name)`
 2. `change_multiple_column_values` - `status` (Product), `color_mky9aesm` (Pricing), `date_mky27nx7`/`timerange_mkz3t5qy`, `long_text_mkxzgg1v`.
+   **כותרת (Name) = מקור אמת:** אם Description או Pricing סותרים את הכותרת — מתקנים Description/Pricing לפי הכותרת, לא משנים כותרת מהבילדר/JSON.
 תוויות status חייבות להתאים בדיוק. אל תמחק/תשנה פריטים קיימים ללא אישור מפורש — **מלבד** סנכרון מלא מאושר: מחיקת **יתומים** (פריטים בתאריך שלא בתוכנית) ו-Popup Store מחוץ לחלון הטסט, כמו ב-`upload_mm_calendar_day_monday.py`.
 
 ## כללי זהירות
