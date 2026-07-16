@@ -1,5 +1,6 @@
 .cursor/monday.env
 .cursor/mcp.json
+.cursor/github.env
 
 # Python / OS
 __pycache__/

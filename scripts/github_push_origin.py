@@ -10,8 +10,20 @@ OWNER = "ppuregoldz-arch"
 REPO = "slotomania-mm-calendar"
 
 
+def _load_local_token() -> str | None:
+    root = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
+    env_path = os.path.join(root, ".cursor", "github.env")
+    if not os.path.isfile(env_path):
+        return None
+    for line in open(env_path, encoding="utf-8"):
+        line = line.strip()
+        if line.startswith("GITHUB_TOKEN="):
+            return line.split("=", 1)[1].strip().strip('"').strip("'")
+    return None
+
+
 def main() -> None:
-    token = os.environ.get("GITHUB_TOKEN")
+    token = os.environ.get("GITHUB_TOKEN") or _load_local_token()
     if not token:
         print("Set GITHUB_TOKEN to a PAT with Contents: write on this repo.", file=sys.stderr)
         sys.exit(1)
