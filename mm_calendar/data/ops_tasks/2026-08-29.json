@@ -37,7 +37,7 @@
       "recent_ops_reference": "2026-08-28 item 12549942842 (ADS PO - 2 Dice)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player watches an ad\nActions: Give Hammers\n\nDuplicate from: ADS PO - 2 Dice, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549942842).",
+      "description": "Prizes: Hammers\nSegment: All Users\nTrigger: Eligible player watches an ad",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"
@@ -69,7 +69,7 @@
       "recent_ops_reference": "2026-08-28 item 12549943103 (Daily Deal - 4* gold card + SB wheel 300% H price)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: 5* gold card + multiwheel + sticker H price\nPricing: High\n\nDuplicate from: Daily Deal - 4* gold card + SB wheel 300% H price, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549943103).",
+      "description": "Prizes: 5* gold card + multiwheel + sticker H price\nSegment: All Users\nPricing: High",
       "template_source": {
         "group_id": "group_mkv1971m",
         "group_title": "Daily Deal"
@@ -101,7 +101,7 @@
       "recent_ops_reference": "2026-08-06 item 12549926496 (RLAP)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: RLAP, 2026-08-06 (https://playtika.monday.com/boards/2109172490/pulses/12549926496)."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-29",
@@ -129,7 +129,7 @@
       "recent_ops_reference": "2026-08-28 item 12549920348 (Stickers Sources inapp Day 3/5)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Show the approved daily Sticker Sources in the inapp\n\nDuplicate from: Stickers Sources inapp Day 3/5, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549920348)."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-29",
@@ -157,7 +157,7 @@
       "recent_ops_reference": "2026-08-11 item 12549938995 (Lotto - peak (Night Plan))",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply Lotto - peak\n\nDuplicate from: Lotto - peak (Night Plan), 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549938995)."
+      "description": "Prizes: peak (Night Plan)\nSegment: All Users\nTrigger: Eligible player participates during the scheduled Lotto/LBP window"
     },
     {
       "parent_day": "2026-08-29",
@@ -185,7 +185,7 @@
       "recent_ops_reference": "2026-05-27 item 12091524626 (Dice booster - dice deluxe from 6 and star)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: Dice Deluxe - 1×/week\nPricing: High\n\nDuplicate from: Dice booster - dice deluxe from 6 and star, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12091524626)."
+      "description": "Prizes: Dice Deluxe - 1×/week\nSegment: All Users\nPricing: High"
     },
     {
       "parent_day": "2026-08-29",
@@ -213,7 +213,7 @@
       "recent_ops_reference": "2026-05-18 item 11977017447 (RYD 100% SB + 3000 globez | H Pricing)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: shiny card + 100% SB H price\nPricing: High\n\nDuplicate from: RYD 100% SB + 3000 globez | H Pricing, 2026-05-18 (https://playtika.monday.com/boards/2109172490/pulses/11977017447).",
+      "description": "Prizes: shiny card + 100% SB H price\nSegment: All Users\nPricing: High",
       "template_source": {
         "group_id": "group_mkv1q8yw",
         "group_title": "RYD"
@@ -245,7 +245,7 @@
       "recent_ops_reference": "2026-08-28 item 12549909890 (LBP peak)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply LBP - 2 multiballs\n\nStructure reference only: LBP peak, 2026-08-28 (https://playtika.monday.com/boards/2109172490/pulses/12549909890); do not duplicate until the variant is confirmed."
+      "description": "Prizes: 2 multiballs (Night Plan peak)\nSegment: All Users\nTrigger: Eligible player participates during the scheduled Lotto/LBP window"
     },
     {
       "parent_day": "2026-08-29",
@@ -273,7 +273,7 @@
       "recent_ops_reference": "2026-05-17 item 11976760739 (Globez-Opening)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Globez-Opening, 2026-05-17 (https://playtika.monday.com/boards/2109172490/pulses/11976760739)."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-29",
@@ -301,7 +301,7 @@
       "recent_ops_reference": "2026-05-24 item 11959743030 (Winovate Season)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Winovate Season, 2026-05-24 (https://playtika.monday.com/boards/2109172490/pulses/11959743030)."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     }
   ]
 }

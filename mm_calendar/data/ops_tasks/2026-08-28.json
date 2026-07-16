@@ -37,7 +37,7 @@
       "recent_ops_reference": "2026-08-06 item 12549944836 (ADS PO - Gems)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player watches an ad\nActions: Give 2 Dice\n\nDuplicate from: ADS PO - Gems, 2026-08-06 (https://playtika.monday.com/boards/2109172490/pulses/12549944836).",
+      "description": "Prizes: 2 Dice\nSegment: All Users\nTrigger: Eligible player watches an ad",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"
@@ -69,7 +69,7 @@
       "recent_ops_reference": "2026-05-22 item 12032700554 (Prize Mania - lucy's carnival theme)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Prize Mania - lucy's carnival theme, 2026-05-22 (https://playtika.monday.com/boards/2109172490/pulses/12032700554)."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-28",
@@ -97,7 +97,7 @@
       "recent_ops_reference": "2026-08-11 item 12549909409 (Ace Heist - 4* Ace card)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Ace Heist - 4* Ace card, 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549909409)."
+      "description": "Prizes: 5* Ace card\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-28",
@@ -125,7 +125,7 @@
       "recent_ops_reference": "2026-08-11 item 12549908584 (Daily Deal - 4* Reg card + Hammers Wheel | High Pricing)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: 4* gold card + SB wheel 300% H price\nPricing: High\n\nDuplicate from: Daily Deal - 4* Reg card + Hammers Wheel | High Pricing, 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549908584).",
+      "description": "Prizes: 4* gold card + SB wheel 300% H price\nSegment: All Users\nPricing: High",
       "template_source": {
         "group_id": "group_mkv1971m",
         "group_title": "Daily Deal"
@@ -157,7 +157,7 @@
       "recent_ops_reference": "2026-05-28 item 12037022658 (MES - Spin zone - Sweet Ambrosia-)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: MES - Spin zone - Sweet Ambrosia-, 2026-05-28 (https://playtika.monday.com/boards/2109172490/pulses/12037022658)."
+      "description": "Prizes: MES spin zone - sticker + hammer wheel\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-28",
@@ -185,7 +185,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-27)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: Gems coupon 20%/40%\nPricing: Not specified in MM source\n\nNo verified recent task to duplicate."
+      "description": "Prizes: Gems coupon 20%/40%\nSegment: All Users\nPricing: Not specified in MM source"
     },
     {
       "parent_day": "2026-08-28",
@@ -213,7 +213,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-27)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Show the approved daily Sticker Sources in the inapp\n\nNo verified recent task to duplicate."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-28",
@@ -241,7 +241,7 @@
       "recent_ops_reference": "2026-05-21 item 12032581579 (Night Plan - Lucy's Carnival Themed MGAP - Bigger Multipliers)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Player purchases an eligible MGAP tier\nActions: Apply the approved bigger multipliers and show the matching winner state\n\nDuplicate from: Night Plan - Lucy's Carnival Themed MGAP - Bigger Multipliers, 2026-05-21 (https://playtika.monday.com/boards/2109172490/pulses/12032581579).",
+      "description": "Prizes: Bigger multipliers according to config\nSegment: All Users\nTrigger: Player purchases an eligible MGAP tier",
       "template_source": {
         "group_id": "group_mkv1vqxx",
         "group_title": "MGAP"
@@ -273,7 +273,7 @@
       "recent_ops_reference": "2026-08-11 item 12549946548 (LBP - 2 Extreme Stamps (Night Plan))",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply LBP Extreme stamp on LBP\n\nDuplicate from: LBP - 2 Extreme Stamps (Night Plan), 2026-08-11 (https://playtika.monday.com/boards/2109172490/pulses/12549946548)."
+      "description": "Prizes: LBP Extreme stamp on LBP\nSegment: All Users\nTrigger: Eligible player participates during the scheduled Lotto/LBP window"
     },
     {
       "parent_day": "2026-08-28",
@@ -301,7 +301,7 @@
       "recent_ops_reference": "2026-05-15 item 11978782808 (Night Plan - LBP 4 balls)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply LBP peak\n\nStructure reference only: Night Plan - LBP 4 balls, 2026-05-15 (https://playtika.monday.com/boards/2109172490/pulses/11978782808); do not duplicate until the variant is confirmed."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users\nTrigger: Eligible player participates during the scheduled Lotto/LBP window"
     }
   ]
 }

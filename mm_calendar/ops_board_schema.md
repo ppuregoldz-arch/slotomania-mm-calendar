@@ -116,24 +116,20 @@ Historical descriptions often repeat dates, times, and Once/Multiple. New tasks 
 ### Standard offer/config task
 
 ```text
+Prizes: Coins + Gems + 8 Hammers + 1 GGS
 Segment: All Users
-Prizes by denom: Coins + Gems + 8 Hammers + 1 GGS
 Pricing: High
-
-Duplicate from: <exact dated task/link>.
 ```
 
 ### Journey/challenge task
 
 ```text
+Prizes: <exact reward>
 Segment: <confirmed audience or All Users>
-Triggers: <what the player must do>
-Actions: <reward/winner inapp/next mission when linear>
-
-Duplicate from: <exact dated task/link>.
+Trigger: <what the player must do — omit if unknown>
 ```
 
-Do not explain the product in Description. Do not fill unknown parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Use `Not specified in MM source` for an unconfirmed Trigger or Action.
+Do not explain the product or mention Reuse/Prize Change in Description. Do not fill unknown parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Omit Trigger when unconfirmed.
 
 ## Updates/comments
 

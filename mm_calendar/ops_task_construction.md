@@ -109,43 +109,16 @@ Normalize symbols only for readability (`★` may remain `★`). Do not prepend 
 
 ## How to write the Description
 
-Do not explain what the product is. Use only the execution fields below plus the verified duplicate source.
-
-### Offers except Rolling Offer
+Do not explain the product and do not mention Reuse, Prize Change, source tasks, or current deltas in Description. Those belong in M&M Status/reference metadata.
 
 ```text
+Prizes: <exact reward/contents; by denom for offers>
 Segment: <confirmed segment; if none, All Users>
-Prizes by denom: <exact prizes/contents by denom>
-Pricing: <High / Mid / Max / Low>
-
-Duplicate from: <exact dated task/link>
+Pricing: <High / Mid / Max / Low — offers only>
+Trigger: <what the player must do — only when confirmed>
 ```
 
-This schema covers Daily Deal, RYD, Buy All, Decoy/Bonanza, Equal Offer, Limited Personal Offer, and sales/store offers.
-
-### Rolling Offer
-
-```text
-Segment: <confirmed segment; if none, All Users>
-Prizes by denom:
-<exact cycle/denom table>
-Pricing: <High / Mid / Max / Low>
-Config: <exact duplicate source/template and config status>
-```
-
-### Every other promotion
-
-```text
-Segment: <who receives it; if none, All Users>
-Triggers: <what the player must do to receive the reward>
-Actions: <winner inapp, reward grant, and next mission when linear>
-
-Duplicate from: <exact dated task/link>
-```
-
-Do not add product introductions, product explanations, `Production`, date/time text, generic Journey blocks, `Reuse: YES/NO`, or dependency boilerplate. Start/End and Once/Multiple remain only in their dedicated columns. If Trigger or Action is not confirmed, write `Not specified in MM source` instead of inventing it.
-
-For real source examples, start at `documentation/ops_task_refs/README.md`. Use them only to identify the exact duplicate and execution facts; do not copy their legacy formatting.
+Use the same concise schema for Rolling Offer; list its cycle/denom rewards under Prizes. Do not add Config, Actions, Duplicate from, product introductions, `Production`, date/time text, Journey blocks, or dependency boilerplate. Start/End and Once/Multiple remain only in their dedicated columns. Omit Trigger entirely when it is not confirmed.
 
 ## Duplicate-from source map
 

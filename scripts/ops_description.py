@@ -270,7 +270,7 @@ def offer_prizes(task_name: str, family: str, detail: str) -> str:
             re.I,
         ):
             continue
-        if re.fullmatch(r"(?:daily deal|ryd|rolling offer|buy all)", stripped, re.I):
+        if re.match(r"^(?:daily deal|ryd|rolling\b|buy all)\b", stripped, re.I):
             continue
         kept.append(stripped)
     while kept and not kept[-1]:
@@ -357,6 +357,43 @@ def config_value(
     return " ".join(parts)
 
 
+def promotion_prizes(task_name: str, family: str, detail: str) -> str:
+    if family in OFFER_FAMILIES or family == "rolling_offer":
+        return offer_prizes(task_name, family, detail)
+    if family == "ads_personal_offer":
+        return name_payload(task_name, family)
+    if family == "mgap":
+        if "bogo" in task_name.lower():
+            return "Matching BOGO reward according to config"
+        if "bigger" in task_name.lower():
+            return "Bigger multipliers according to config"
+    labeled = labeled_values(detail, ("prize", "prizes", "reward", "rewards", "contents"))
+    if labeled:
+        return "; ".join(dict.fromkeys(labeled))
+    lower = task_name.lower()
+    if "piggy" in lower and " for " in lower:
+        return task_name.split(" for ", 1)[1]
+    feature_prefixes = (
+        "win master",
+        "ace heist",
+        "shiny show",
+        "lbp",
+        "lotto",
+        "mgap",
+        "prize mania",
+        "battlesheep",
+    )
+    if lower.startswith(feature_prefixes) and " - " in task_name:
+        return task_name.split(" - ", 1)[1]
+    if re.search(
+        r"\b(?:card|pack|wheel|hammer|dice|stamp|multiball|pab|pick|sb|coins|gems)\b|%",
+        task_name,
+        re.I,
+    ):
+        return normalize_name(task_name)
+    return "Not specified in MM source"
+
+
 def compose_description(
     *,
     task_name: str,
@@ -374,33 +411,15 @@ def compose_description(
     """Compose the minimum execution fields requested by Monetization."""
     family = promo_family(task_name, product, detail)
     segment = segment_value(task_name, detail)
-    if family in OFFER_FAMILIES:
-        lines = [
-            f"Segment: {segment}",
-            f"Prizes by denom: {offer_prizes(task_name, family, detail)}",
-            f"Pricing: {price_label(pricing) or 'Not specified in MM source'}",
-            "",
-            duplicate_line(reference, reuse),
-        ]
-        return "\n".join(lines).strip()
-
-    if family == "rolling_offer":
-        lines = [
-            f"Segment: {segment}",
-            "Prizes by denom:",
-            offer_prizes(task_name, family, detail),
-            f"Pricing: {price_label(pricing) or 'Not specified in MM source'}",
-            f"Config: {config_value(reference, reuse, template_source, config_status)}",
-        ]
-        return "\n".join(lines).strip()
-
     lines = [
+        f"Prizes: {promotion_prizes(task_name, family, detail)}",
         f"Segment: {segment}",
-        f"Triggers: {trigger_value(task_name, family, detail)}",
-        f"Actions: {action_value(task_name, family, detail)}",
-        "",
-        duplicate_line(reference, reuse),
     ]
+    if family in OFFER_FAMILIES or family == "rolling_offer":
+        lines.append(f"Pricing: {price_label(pricing) or 'Not specified in MM source'}")
+    trigger = trigger_value(task_name, family, detail)
+    if trigger != "Not specified in MM source":
+        lines.append(f"Trigger: {trigger}")
     return "\n".join(lines).strip()
 
 

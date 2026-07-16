@@ -37,7 +37,7 @@
       "recent_ops_reference": "2026-05-27 item 12103914682 (Soft Launch - Golden Spin - test group only)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: Golden Spin — timed gem feature.\nPricing: Not specified in MM source\n\nStructure reference only: Soft Launch - Golden Spin - test group only, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12103914682); do not duplicate until the variant is confirmed."
+      "description": "Prizes: Golden Spin — timed gem feature.\nSegment: All Users\nPricing: Not specified in MM source"
     },
     {
       "parent_day": "2026-08-06",
@@ -65,7 +65,7 @@
       "recent_ops_reference": "2026-05-23 item 12033283669 (Gems Sale store assets - 40%/60% -  Lucy's Carnival)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: Gems Sale — 30% store / 20% offers.\nPricing: Not specified in MM source\n\nDuplicate from: Gems Sale store assets - 40%/60% -  Lucy's Carnival, 2026-05-23 (https://playtika.monday.com/boards/2109172490/pulses/12033283669)."
+      "description": "Prizes: Gems Sale — 30% store / 20% offers.\nSegment: All Users\nPricing: Not specified in MM source"
     },
     {
       "parent_day": "2026-08-06",
@@ -93,7 +93,7 @@
       "recent_ops_reference": "2026-05-22 item 12032700554 (Prize Mania - lucy's carnival theme)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nStructure reference only: Prize Mania - lucy's carnival theme, 2026-05-22 (https://playtika.monday.com/boards/2109172490/pulses/12032700554); do not duplicate until the variant is confirmed."
+      "description": "Prizes: 3* Reg pack | Coins, Gems\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-06",
@@ -121,7 +121,7 @@
       "recent_ops_reference": "2026-08-04 item 12549707552 (ADS PO - Gems)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player watches an ad\nActions: Give Gems\n\nDuplicate from: ADS PO - Gems, 2026-08-04 (https://playtika.monday.com/boards/2109172490/pulses/12549707552).",
+      "description": "Prizes: Gems\nSegment: All Users\nTrigger: Eligible player watches an ad",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"
@@ -153,7 +153,7 @@
       "recent_ops_reference": "2026-05-28 item 12037081168 (Battlesheep - single offer)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nStructure reference only: Battlesheep - single offer, 2026-05-28 (https://playtika.monday.com/boards/2109172490/pulses/12037081168); do not duplicate until the variant is confirmed."
+      "description": "Prizes: Wild Gold | Betty Theme\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-06",
@@ -181,7 +181,7 @@
       "recent_ops_reference": "2026-05-21 item 11936048378 (MES - Spin zone - 3* reg - Test)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: MES - Spin zone - 3* reg - Test, 2026-05-21 (https://playtika.monday.com/boards/2109172490/pulses/11936048378)."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-06",
@@ -209,7 +209,7 @@
       "recent_ops_reference": "2026-05-14 item 12009893284 (Daily Deal - SPB test)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: Central reward: 3★ Reg card (on purchase) + 2 Parasheep (Mid pricing).\nPricing: Mid\n\nDuplicate from: Daily Deal - SPB test, 2026-05-14 (https://playtika.monday.com/boards/2109172490/pulses/12009893284).",
+      "description": "Prizes: Central reward: 3★ Reg card (on purchase) + 2 Parasheep (Mid pricing).\nSegment: All Users\nPricing: Mid",
       "template_source": {
         "group_id": "group_mkv1971m",
         "group_title": "Daily Deal"
@@ -241,7 +241,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-08-05)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Daily Deal — 3★ Reg + 2 Parasheep (M) + Prize Mania — 3★ Reg pack (main offer)\nActions: Not specified in MM source\n\nNo verified recent task to duplicate."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users\nTrigger: Daily Deal — 3★ Reg + 2 Parasheep (M) + Prize Mania — 3★ Reg pack (main offer)"
     }
   ]
 }

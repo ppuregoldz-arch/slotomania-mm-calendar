@@ -45,6 +45,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Remove labels from Ops descriptions
+
+- **Goal:** Keep Ops Description limited to Prizes, Segment, offer Pricing, and Trigger only when confirmed.
+- **Done:** Removed Reuse, Prize Change, duplicate sources, deltas, Config, Actions, dependencies, and product explanations from generated descriptions. Regenerated all 52 local August tasks and updated/verified 42 active Monday tasks for August 5/6/11/28/29 using description-only writes.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/ops_board_schema.md`, six `mm_calendar/data/ops_tasks/*.json` specs, `scripts/ops_description.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** six-spec schema validation ✓, 42 description-only Monday updates ✓, 42/42 exact live verification ✓, Operation Status blank verification ✓, Python compile/lints ✓, CRM3 sync ✗ (share unmounted), Git commit/push ✓.
+- **Notes for next agent:** Segment defaults to `All Users`; omit Trigger when unconfirmed. August 1 remains local-only because its Monday items are inactive/orphaned. Mirror to CRM3 when mounted.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Minimal Ops description schema
 
 - **Goal:** Remove product explanations and reduce Ops descriptions to the exact execution fields Itay specified.

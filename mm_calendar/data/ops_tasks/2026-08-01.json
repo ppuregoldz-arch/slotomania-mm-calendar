@@ -46,7 +46,7 @@
       "recent_ops_reference": "2026-05-18 item 11977017447 (RYD 100% SB + 3000 globez | H Pricing)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: 5* Gold Card + 100% SB\nPricing: High\n\nDuplicate from: RYD 100% SB + 3000 globez | H Pricing, 2026-05-18 (https://playtika.monday.com/boards/2109172490/pulses/11977017447).",
+      "description": "Prizes: 5* Gold Card + 100% SB\nSegment: All Users\nPricing: High",
       "template_source": {
         "group_id": "group_mkv1q8yw",
         "group_title": "RYD"
@@ -78,7 +78,7 @@
       "recent_ops_reference": "2026-05-09 item 11936779021 (LBP - all balls 40% bigger NIGT PLAN)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply NIGHT PLAN - LBP - 30% Bigger Balls\n\nDuplicate from: LBP - all balls 40% bigger NIGT PLAN, 2026-05-09 (https://playtika.monday.com/boards/2109172490/pulses/11936779021)."
+      "description": "Prizes: NIGHT PLAN - LBP - 30% Bigger Balls\nSegment: All Users\nTrigger: Eligible player participates during the scheduled Lotto/LBP window"
     },
     {
       "parent_day": "2026-08-01",
@@ -106,7 +106,7 @@
       "recent_ops_reference": "2026-05-23 item 12032641195 (combined LBP peak task; reuse Lotto peak scope only)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player participates during the scheduled Lotto/LBP window\nActions: Apply NIGHT PLAN - Lotto Peak\n\nDuplicate from: combined LBP peak task; reuse Lotto peak scope only, 2026-05-23 (https://playtika.monday.com/boards/2109172490/pulses/12032641195)."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users\nTrigger: Eligible player participates during the scheduled Lotto/LBP window"
     },
     {
       "parent_day": "2026-08-01",
@@ -134,7 +134,7 @@
       "recent_ops_reference": "2026-05-27 item 12091440866 (Ads PO - Coins)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Eligible player watches an ad\nActions: Give Coins\n\nDuplicate from: Ads PO - Coins, 2026-05-27 (https://playtika.monday.com/boards/2109172490/pulses/12091440866).",
+      "description": "Prizes: Coins\nSegment: All Users\nTrigger: Eligible player watches an ad",
       "template_source": {
         "group_id": "group_mm15y5em",
         "group_title": "PO ADS"
@@ -166,7 +166,7 @@
       "recent_ops_reference": "2026-05-12 item 11879878314 (Generic Custom pod)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nDuplicate from: Generic Custom pod, 2026-05-12 (https://playtika.monday.com/boards/2109172490/pulses/11879878314)."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     },
     {
       "parent_day": "2026-08-01",
@@ -194,7 +194,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-07-31)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: Added to the store denom,\ngives both coins & gems like the american denom in 4th of july\nPricing: Not specified in MM source\n\nNo verified recent task to duplicate."
+      "description": "Prizes: Added to the store denom,\ngives both coins & gems like the american denom in 4th of july\nSegment: All Users\nPricing: Not specified in MM source"
     },
     {
       "parent_day": "2026-08-01",
@@ -222,7 +222,7 @@
       "recent_ops_reference": "2026-05-25 item 11967559266 (Daily Deal - 8 Hammers | H Pricing)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nPrizes by denom: Central reward (this instance): 3★ Reg card + Hammers Wheel.\nPricing: High\n\nDuplicate from: Daily Deal - 8 Hammers | H Pricing, 2026-05-25 (https://playtika.monday.com/boards/2109172490/pulses/11967559266).",
+      "description": "Prizes: Central reward (this instance): 3★ Reg card + Hammers Wheel.\nSegment: All Users\nPricing: High",
       "template_source": {
         "group_id": "group_mkv1971m",
         "group_title": "Daily Deal"
@@ -254,7 +254,7 @@
       "recent_ops_reference": "2026-05-10 item 11850428511 (Shiny Show Joker - all cards)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Player completes the configured Shiny Show requirement\nActions: Grant the configured rewards and show the matching winner state\n\nDuplicate from: Shiny Show Joker - all cards, 2026-05-10 (https://playtika.monday.com/boards/2109172490/pulses/11850428511)."
+      "description": "Prizes: Joker All Cards\nSegment: All Users\nTrigger: Player completes the configured Shiny Show requirement"
     },
     {
       "parent_day": "2026-08-01",
@@ -282,7 +282,7 @@
       "recent_ops_reference": "2026-05-03 item 11788880396 (MES - Win master | Full launch)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Player completes the configured win requirement\nActions: Give 3* Reg Card + PAB; show the winner inapp; if the configuration is linear, give the next mission\n\nDuplicate from: MES - Win master | Full launch, 2026-05-03 (https://playtika.monday.com/boards/2109172490/pulses/11788880396)."
+      "description": "Prizes: 3* Reg Card + PAB\nSegment: All Users\nTrigger: Player completes the configured win requirement"
     },
     {
       "parent_day": "2026-08-01",
@@ -310,7 +310,7 @@
       "recent_ops_reference": "No recent Ops precedent found (2026-05-01 through 2026-07-31)",
       "requires_review": false,
       "warnings": [],
-      "description": "Segment: All Users\nTriggers: Not specified in MM source\nActions: Not specified in MM source\n\nNo verified recent task to duplicate."
+      "description": "Prizes: Not specified in MM source\nSegment: All Users"
     }
   ]
 }
