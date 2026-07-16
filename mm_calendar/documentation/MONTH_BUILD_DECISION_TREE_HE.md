@@ -1,238 +1,208 @@
-# עץ פעולות / החלטות — שיבוץ חודש MM Calendar
+# איך משבצים חודש MM Calendar — מדריך החלטות (פשוט)
 
-**קהל:** Itay, המחלקה, סוכני Cursor  
-**מקורות:** `BUILD_CALENDAR_ROUTER.md`, `PRIZE_PRIORITY_AND_MONTH_BUILD.md`, `mm_calendar_builder.mdc`, `build_august_2026_plan.py`  
-**עודכן:** יולי 2026
+**למי:** Itay, המחלקה, סוכן Cursor  
+**מטרה:** להבין **באיזה סדר** בונים, **מה שואלים** בכל צומת, ו**מה אסור לוותר**.  
+**לא מחליף:** `monthly_guidelines/YYYY-MM.md`, `constraints.md` — רק **מפת דרכים**.
+
+**GitHub:** [קובץ זה](https://github.com/ppuregoldz-arch/slotomania-mm-calendar/blob/main/mm_calendar/documentation/MONTH_BUILD_DECISION_TREE_HE.md)
 
 ---
 
-## 0. כניסה — מה קורה לפני שמתחילים?
+## מילון קצר (3 שורות)
 
-```mermaid
-flowchart TD
-  A[בקשת משתמש / בניית חודש] --> B{הוראה חיה מאיתי?}
-  B -->|כן| C[מיישמים — גובר על כל מסמך]
-  B -->|לא| D[קרא 00_GUIDELINES_ITAY.md]
-  D --> E{יש monthly_guidelines/YYYY-MM.md?}
-  E -->|לא| F[STOP — שאלה אחת: caps + בנק קלפים מהכלכלה]
-  E -->|כן| G{סוג קלנדר?}
-  G -->|MM ראשי| H[Pipeline חודש §1]
-  G -->|DPU / סגמנט| I[dpu_calendar.md]
-  G -->|אוגוסט 1–15/2026| J[Monday live = מקור אמת — לא builder/sync בלי אישור]
-  H --> K[Pipeline חודש]
-  J --> L[קריאה / תיקון נקודתי ב-Monday בלבד]
-```
-
-| שאלה | החלטה |
+| מונח | משמעות |
 |------|--------|
-| מי מנצח בסתירה? | **Itay חי** → `00_GUIDELINES_ITAY` → **guidelines חודש** (caps + בנק קלפים HARD) → `constraints` / cheatsheet → learnings → performance |
-| אפשר להמציא מספר/כלל? | **לא** — חסר = שאלה / `MISSING_DATA_REGISTER`, לא ניחוש |
-| לעדכן Monday? | **רק** אם המשתמש ביקש במפורש (`upload_mm_calendar_day_monday.py`) |
+| **DD** | Daily Deal — ההצעה היומית המרכזית |
+| **הצעה שנייה / VFM** | עוד הצעת רכישה «שווה» ביום (RYD, Buy All, Decoy, Rolling, Prize Mania) — **Clan-Dash לא נספר** |
+| **בנק קלפים** | טבלה שבועית ב-guidelines — **רק** קלפים מהטבלה מותרים באותו שבוע |
 
 ---
 
-## 1. Pipeline חודש — סדר מחייב
+# חלק א — לפני שמתחילים (3 שאלות)
 
-```mermaid
-flowchart LR
-  subgraph prep [הכנה]
-    M1[monthly_guidelines]
-    M2[עונות + שלב Album]
-  end
-  subgraph anchors [עוגנים]
-    A1[always-on ST/MT/Album]
-    A2[recurring_events + אירועים]
-  end
-  subgraph money [מוניטיזציה]
-    D1[DD + ledger קלפים]
-    D2[הצעה שנייה VFM + תמחור]
-    D3[MGAP / Gems / מגבירים]
-  end
-  subgraph sinks [ניקוז]
-    S1[Core coin sink]
-    S2[Shiny / Winovate gem sink]
-    S3[Clan-Dash]
-  end
-  subgraph tail [סיום]
-    T1[ADS]
-    T2[validate + audit]
-    T3[Markdown + JSON]
-  end
-  M1 --> M2 --> A1 --> A2 --> D1 --> D2 --> D3 --> S1 --> S2 --> S3 --> T1 --> T2 --> T3
-```
+ענה **בסדר**. אם נעצרת — לא בונים עד שיש תשובה.
 
-| שלב | פעולה | קבצים |
-|-----|--------|--------|
-| 1 | תקרות חודש + **בנק קלפים לפי שבוע** (HARD) | `monthly_guidelines/`, `topics/07_seasons_album_cards/` |
-| 2 | Short Term 5d, Mid (Quest/Globez/Figz + Winovate + Mega Pods), Album phase | `lanes.md`, `recurring_events.md` |
-| 3 | עוגנים: שני Dash, חמישי Golden Spin, רביעי Piggy, Lotto peak, MGAP 2/שבוע, Sale שישי–שבת, Price Cut×2, BMFL/Rolling cooldown | `topics/08_anchors_timing/` |
-| 4 | **לכל יום:** DD (+ once Wild/Shiny → חובה DD multiple) | `topics/02_daily_deal/`, `offer_construction.md` |
-| 5 | הצעה שנייה אמיתית (לא Clan-Dash): RYD / Buy All / Decoy / Rolling / PM — **ללא אותו משפחה ביומיים רצופים** | `topics/04_second_offers/` |
-| 6 | MGAP, Extreme, Gemback, GGS, Price Cut — **VFM קוינס: עד אחד heavy/day** (חריג: אירוע ענק) | `topics/05_mgap_gems_amplifiers/` |
-| 7 | Core ≥1 (שני: Dash Pass מספיק), Shiny ~3/שבוע, Clan template | `topics/06`, `topics/11` |
-| 8 | ADS — פרס נמוך, אחרון | `constraints.md` |
-| 9 | `build_*_plan.py` exit 0 + `audit_*` | builder + `constraints.md` |
-| 10 | Monday / dashboard | **רק אחרי אישור** (אוגוסט 1–15: Monday קודם) |
+| # | שאלה | אם כן | אם לא |
+|---|------|-------|-------|
+| **1** | יש **הוראה חיה מאיתי** על החודש/יום? | עושים **רק** את זה (גובר על הכל) | ממשיכים ל-2 |
+| **2** | יש קובץ **`monthly_guidelines/YYYY-MM.md`** (תקרות + בנק קלפים)? | ממשיכים ל-3 | **עוצרים** — מבקשים מהכלכלה |
+| **3** | זה **אוגוסט 2026, ימים 1–15**? | **Monday על הלוח = האמת** — לא מריצים builder/sync שמוחקים שיבוץ בלי אישור Itay | בונים לפי חלק ב |
 
-**קידוד אוגוסט 2026:** `scripts/build_august_2026_plan.py` → `data/august_2026_plan.json`.
+**כלל זהב:** לא ממציאים מספרים, קלפים או כללים. חסר = שאלה, לא ניחוש.
+
+**Monday:** מעלים ללוח **רק** אם Itay ביקש במפורש.
 
 ---
 
-## 2. בניית יום — עדיפות ומה לחתוך
+# חלק ב — בניית **כל החודש** (10 שלבים, תמיד באותו סדר)
 
-```mermaid
-flowchart TD
-  subgraph layers [שכבות יום — מלמעלה למטה בחשיבות]
-    L1[1. DD + הצעה שנייה VFM]
-    L2[2. מגבירי רבניו MGAP Extreme Gemback HH Price Cut]
-    L3[3. Gameplay Core MES Spin Zone Custom Pod]
-    L4[4. Piggy Lotto LBP features]
-    L5[5. ADS]
-  end
-  conflict{עומס / קונפליקט?} --> cut[חתוך מלמטה: ADS → features → gameplay → מגבירים]
-  cut --> protect[לעולם לא לוותר על DD + הצעה שנייה אמיתית]
+חשוב על זה כמו **שכבות**: קודם שלד, אחר כך כסף, אחר כך משחק, בסוף ADS ובדיקות.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  שלב 1–2: שלד (guidelines + עונות + אלבום)              │
+│  שלב 3:   עוגנים קבועים (שני/רביעי/שישי/…)              │
+│  שלב 4–6: כסף (DD → הצעה 2 → MGAP/מגבירים)              │
+│  שלב 7–8: משחק + ADS                                    │
+│  שלב 9–10: בדיקות → קובץ JSON → Monday רק באישור       │
+└─────────────────────────────────────────────────────────┘
 ```
 
-| כלל | החלטה |
+| שלב | מה עושים (במילים פשוטות) | מה **מחליטים** כאן |
+|-----|---------------------------|---------------------|
+| **1** | פותחים guidelines החודש | Hammers, MGAP, GGS, Gems Sale, **שורת קלפים לכל שבוע** |
+| **2** | משרטטים עונות על ציר הזמן | Short Term ~5 ימים (Blast / Battlesheep / SNL), Mid (Quest/Globez/Figz + Winovate + Mega Pods), שלב Album |
+| **3** | שמים «עוגנים» שלא זזים | שני Dash · חמישי Golden Spin · רביעי Piggy · Lotto peak · **2 MGAP בשבוע** · מכירת סופ"ש **שישי+שבת** · Price Cut פעמיים בחודש · Rolling BMFL בימי MFL |
+| **4** | **לכל יום** — Daily Deal | איזה קלף/פרס מרכזי; אם DD **Once** (Wild/Shiny) → **חובה** DD **Multiple** באותו יום |
+| **5** | **לכל יום** — הצעה שנייה (VFM) | RYD / Buy All / Decoy / Rolling / PM — ראה **חלק ג**; **לא** אותו סוג כמו אתמול |
+| **6** | מגבירים ורכישות נוספות | MGAP, Extreme Stamp, Gemback, x2 GGS, Price Cut — **לא לערום** כמה «מנועי קוינס כבדים» באותו יום |
+| **7** | ניקוז | **Core** (קוינס) — לפחות משהו ביום (בשני Dash Pass מספיק); **Shiny Show** ~3 בשבוע; Clan לפי יום בשבוע |
+| **8** | ADS | פרס **נמוך** (מטבעות / ג'מס / reg נמוך) — **אחרון** ברשימה |
+| **9** | בדיקה | `build_*_plan.py` חייב לצאת **0** + `audit_*` — תיקון ב-**builder**, לא «לתקן JSON ידנית» |
+| **10** | פרסום | Markdown + JSON; Monday / dashboard **רק** אחרי אישור |
+
+**אוגוסט בקוד:** `scripts/build_august_2026_plan.py` → `mm_calendar/data/august_2026_plan.json`
+
+---
+
+# חלק ג — בניית **יום אחד** (תבנית קבועה)
+
+## ג.1 — מה חייב להיות ביום «רגיל» (לא אירוע ענק)
+
+| # | חובה? | מה |
+|---|--------|-----|
+| 1 | **כן** | Daily Deal |
+| 2 | **כן** | **לפחות הצעה שנייה אחת** (או Popup / Rolling MFL שממלאים את התפקיד — ראה טבלה למטה) |
+| 3 | **כן** | משהו לניקוז קoינס (Core / MES / …) — **בשני:** Dash Pass מספיק |
+| 4 | **כן** | ADS עם פרס נמוך |
+| 5 | לפי שבוע | MGAP אם «נשאר מכסה» לשבוע (מקס **2**) |
+| 6 | לפי template | Clan-Dash (לא נחשב VFM) |
+
+**אם היום צפוף מדי:** מוחקים **מלמטה למעלה**: ADS מיותר → Lotto/Piggy → Core שני → מגבירים → **לא** נוגעים ב-DD וב-VFM.
+
+---
+
+## ג.2 — «מי מחליט» על ההצעה השנייה? (עץ פשוט)
+
+עבור על השורות **מלמעלה למטה** — **השורה הראשונה שמתאימה** מנצחת.
+
+| סדר | תנאי על היום | מה שמים כ-VFM |
+|-----|----------------|----------------|
+| 1 | **יום שני** + יום **Rolling MFL** (3/16/25 באוגוסט) | **Buy More for Less** בלבד — **בלי** VFM נוסף |
+| 2 | **יום שני** (לא MFL) | RYD **או** Buy All **קל** — **בלי** MGAP / Coin Sale / Prize Mania כבד |
+| 3 | **Popup Store** 12/8 או 19/8 | ה-VFM **בתוך** Popup (Decoy וכו') — **בלי** Decoy נפרד באותו יום |
+| 4 | **Popup Store** 26/8 LAUNCH | **Popup** = ה-VFM; שורת RYD רק **BACKUP** אם LAUNCH לא עולה — **לא** לרוץ במקביל |
+| 5 | **אירוע BTS** (22/8) | אשכול אירוע — **לא** second «רגיל» מלא |
+| 6 | **Counter PO** | RYD (כלל builder) |
+| 7 | **שישי/שבת sale** | Rolling **או** RYD **ליד** Coin Sale |
+| 8 | **יום Extreme Stamp** | Decoy **או** RYD (לא אותו סוג כמו אתמול) |
+| 9 | **כל השאר** | בוחרים מ-pool (Decoy / RYD / Rolling / Buy All / PM) + רוטציה חודשית + **לא** כמו אתמול |
+
+---
+
+## ג.3 — איך בוחרים **קלף / פרס** (4 שאלות)
+
+| # | שאלה | תשובה → פעולה |
+|---|------|----------------|
+| **א** | זה **ADS**? | רק Coins / Gems / reg נמוך — **לא** Wild, Gold, Shiny, Ace גבוה |
+| **ב** | הקלף **מופיע בבנק השבוע** ב-guidelines? | **לא** → עוצרים / שואלים · **כן** → ממשיכים |
+| **ג** | זה **משחק** (Core/MES) או **רכישה** (DD/RYD/Decoy/…)? | משחק → **אין Gold** · רכישה → Gold מותר, Wild **לכל היותר 1** למקור הצעה |
+| **ד** | יום **יוקרה** (sale / BTS / Decoy d3 / Counter PO)? | **כן** → Wild / Shiny Limited / 5★ · **לא** → reg/ace/gold לפי בנק + **SKU של העונה החיה** |
+
+**SKU קצר (Short Term):** Blast→Superboom · Battlesheep→Parasheep · SNL→Dice×2/3, Multiwheel, Shield  
+**יום Extreme:** בחותמות — Extreme במקום RDS; **בלי Wild** באותן הצעות  
+**Hammers:** רק **מוצר אחד** ביום נותן Hammers
+
+---
+
+## ג.4 — תמחור (Pricing) באותו יום
+
+| כלל | פירוש |
 |-----|--------|
-| צפифות Monday (HARD) | ≤1 Core משחקי, ≤1 Shiny (לא בשני), DD בשורה אחת, 5–9 פריטים ממוקדים |
-| שני (Dash Day) | DD + second קל (RYD/Buy All); **אין** MGAP/Coin Sale/PM כבד; Rolling רק BMFL anchor |
-| DD + second pricing | **שני tiers שונים** באותו יום (אם שניהם מתומחרים) |
-| Popup Store | רק **12 / 19 / 26**; 12/19 VFM ב-inner offer; **26 LAUNCH shell** + RYD = **BACKUP cap** בלבד |
+| DD + הצעה שנייה **שניהם** עם pricing | **חייבים רמות שונות** (למשל DD High + second Medium) |
+| ברירת מחדל | High לימים חזקים; לא לרצף ארוך של Max |
 
 ---
 
-## 3. עץ החלטות — קלף / פרס
+# חלק ד — MGAP ומגבירים (צ'קlist קצר)
 
-```
-האם הפרס ביום רכישה (DD on-purchase, RYD, Buy All, Decoy, PM, Counter PO)?
-├─ לא → Gold אסור ב-Core/MES/ADS gameplay
-├─ כן → Gold מותר; Wild ≤1 per offer source
-│
-האם סוג הקלף בבנק השבוע (monthly_guidelines)?
-├─ לא → STOP — לא להמציא; שאל / חריג מאיתי
-└─ כן → המשך
-    │
-    יום premium (sale / BTS / Counter PO / Decoy d3)?
-    ├─ כן → Wild / Shiny Limited / 5★ / top bank
-    └─ לא → Reg/Ace/Gold לפי bank + season SKU
-        │
-        ADS?
-        └─ כן → Coins/Gems/low Reg בלבד — לא Wild/Gold/Shiny/Ace גבוה
-```
+| # | שאלה | אם כן |
+|---|------|-------|
+| 1 | כבר **2 MGAP** השבוע? | **לא** שמים MGAP |
+| 2 | **יום שני**? | **לא** MGAP |
+| 3 | **יום sale** + רוצים BOGO? | BOGO **לא** על sale (כלל אוגוסט) |
+| 4 | כבר יש היום **VFM כבד** (Coin Sale, Price Cut, Extreme, BMFL, …)? | **לא** מוסיפים עוד VFM כבד |
+| 5 | MGAP + Bucks? | **אסור** (חלש) |
 
-**ערך (August economy):** Wild Gold/Ord/Shiny Ltd > Shiny Card > 5★ > 4★ > 3★  
-**SKU עונה קצרה:** Blast→Superboom/PAB · Battlesheep→Parasheep/Airstrike · SNL→Dice×2/3/Multiwheel/Shield  
-**Extreme Stamp day:** RDS→Extreme; 4 RDS → 2 Extreme; **אין Wild** באותן הצעות  
-**Hammers:** **מוצר אחד ביום** נותן Hammers (Rolling spread בתוך המוצר)
+**x2 GGS:** עד 2 בשבוע · 3 שעות · אחרי 11:00 UTC · לא יום-אחרי-יום · לא עם Gems Sale.
 
 ---
 
-## 4. עץ החלטות — הצעה שנייה (VFM)
+# חלק ה — דוגמאות מספריות (אוגוסט 2026)
 
-```mermaid
-flowchart TD
-  start[יום d] --> mon{d == Monday?}
-  mon -->|כן| mfl{d in Rolling MFL anchor?}
-  mfl -->|כן| rollMFL[Rolling BMFL = VFM — אין second נוסף]
-  mfl -->|לא| monLight[RYD או Buy All קל]
-  mon -->|no| pop{d in Popup Store?}
-  pop -->|12/19 + inner Decoy| none1[אין standalone second — VFM בתוך Popup]
-  pop -->|26 LAUNCH| backup[RYD backup cap בלבד אם Popup slips]
-  pop -->|לא| sale{d sale Fri-Sat?}
-  sale -->|כן| salePair[Rolling או RYD — משלים Coin Sale]
-  sale -->|לא| ext{d in Extreme?}
-  ext -->|כן| decoyRYD[Decoy אם אתמול RYD ולהפך]
-  ext -->|לא| pool[בחירה מ-pool + caps חודשיים + lift tie-break]
-  pool --> consec[אסור אותו label ב-yesterday]
-```
+### דוגמה 1 — יום שלישי «רגיל» (לא Popup, לא MFL)
 
-| מצב | החלטה |
-|-----|--------|
-| Rolling MFL (3/16/25 אוגוסט) | BMFL High, 3 cycles — **ה-VFM של היום** |
-| Popup 12/19 | Decoy (או inner) — **לא** Decoy Bonanza נפרד + Popup |
-| Popup 26 | Shell LAUNCH; RYD בשם **BACKUP cap** — לא VFM מקביל |
-| BTS / event 22 | ללא second מלא — event stack |
-| Counter PO day | RYD forced (לא PM למחר) |
+1. DD עם פרס מהבנק  
+2. הצעה שנייה (למשל Decoy **או** RYD — לא מה שהיה אתמול)  
+3. MGAP אם נשאר slot בשבוע  
+4. Core אחד  
+5. Shiny אם מגיע תור בשבוע  
+6. Clan לפי יום  
+7. ADS  
 
----
+### דוגמה 2 — יום שני 11/8 (SNL + MGAP Rolling)
 
-## 5. MGAP / מגבירים — gates
+1. DD  
+2. **Rolling 4 cycles MGAP ladder** = ה-VFM — **לא** Decoy נוסף כ-second  
+3. **לא** Popup (Popup ב-12/8)  
+4. Dash / Clan  
+5. ADS  
 
-```
-שבוע w כבר יש 2 MGAP?
-├─ כן → לא MGAP נוסף (HARD)
-└─ לא → בחר variant (BOGO / Bigger / Matched) לפי rotation + learnings
-    │
-    יום שני? → אסור MGAP
-    יום sale? → BOGO אסור על sale (אוגוסט builder)
-    MGAP + Bucks? → אסור (חלש)
-    │
-    VFM heavy כבר היום (Coin Sale / Price Cut / Extreme / Matched / BMFL)?
-    └─ אל תערום שני heavy coin VFM (Soft/HARD לפי constraints)
-```
+### דוגמה 3 — יום 12/8 (Popup soft 1/3)
 
-**GGS:** ≤2/שבוע, 3h post 11:00 UTC, לא consecutive days, לא עם Gems Sale (learnings).
+1. DD  
+2. **Popup Store TEST** + תוכן VFM **בתוך** Popup (Decoy לקohorte)  
+3. **ללא** Decoy Bonanza **נפרד**  
+4. Rolling 6 cycles (לפי מה שסוכם)  
+5. שאר שכבות — Gemback וכו' לפי לוח  
+
+### דוגמה 4 — יום 26/8 (Popup LAUNCH)
+
+1. DD  
+2. **Popup LAUNCH** = VFM עיקרי  
+3. RYD בשם **BACKUP cap** — רק אם LAUNCH לא עולה; **לא** לרוץ במקביל ל-Popup  
+4. MGAP / Price Cut וכו' לפי לוח — בלי לשבור caps  
 
 ---
 
-## 6. ולידציה — gates לפני “סיימנו”
+# חלק ו — סיום: מתי «סיימנו»?
 
-```mermaid
-flowchart TD
-  V1[build_*_plan.py exit 0] --> V2[validate_august_plan / validate_calendar]
-  V2 --> V3[audit daily weekly monthly]
-  V3 --> V4{HARD = 0?}
-  V4 -->|לא| fix[תקן builder/guidelines — לא hand-edit JSON לכסות]
-  V4 -->|כן| V5{Monday sync requested?}
-  V5 -->|לא| done[Markdown + JSON + worklog]
-  V5 -->|כן| V6[upload day-by-day — לא --all בלי רשימה]
-  V6 --> V7[verify Smart Calendar read-only אם נדרש]
-```
-
-**דגשים audit:** VFM כל יום (Popup shell = VFM ב-26), DD once+multiple, Popup רק 12/19/26, Rolling stamps ≤4 RDS / ≤2 GGS per cycle.
+| ✓ | בדיקה |
+|---|--------|
+| ☐ | `python3 scripts/build_august_2026_plan.py` → exit **0** |
+| ☐ | `python3 scripts/audit_august_2026_plan.py` → אין הפרות HARD (או מתועדות ומאושרות) |
+| ☐ | Popup רק **12 / 19 / 26** |
+| ☐ | Rolling: ≤4 RDS / ≤2 GGS per cycle (BMFL/BXGY) |
+| ☐ | רשומה ב-`TEAM_WORKLOG.md` אם נגענו בקבצים |
+| ☐ | Monday sync **רק** אם Itay ביקש |
 
 ---
 
-## 7. Router משימה → תיעוד (קצר)
+# חלק ז — איפה קוראים עומק
 
-| אתה עושה | קרא |
-|----------|-----|
-| DD | `topics/02_daily_deal/README.md` |
-| Rolling / BMFL | `topics/03_rolling_offer/`, `rolling_offer.md` |
-| RYD / Decoy / Buy All | `topics/04_second_offers/` |
-| MGAP / Gems | `topics/05_mgap_gems_amplifiers/` |
-| Core / MES | `topics/06_core_coin_sink/` |
-| בנק קלפים | `topics/07_seasons_album_cards/` + שורת שבוע ב-guidelines |
-| Monday columns | `topics/09_monday_board/`, `board_schema.md` |
-| ביצועים / baseline | `measurement/`, `performance/` |
-
-**נקודת כניסה תמיד:** `BUILD_CALENDAR_ROUTER.md`
+| נושא | קובץ |
+|------|------|
+| נקודת כניסה | `mm_calendar/BUILD_CALENDAR_ROUTER.md` |
+| עדיפות פרסים | `mm_calendar/PRIZE_PRIORITY_AND_MONTH_BUILD.md` |
+| כללי builder | `.cursor/rules/mm_calendar_builder.mdc` |
+| DD | `mm_calendar/topics/02_daily_deal/README.md` |
+| Rolling | `mm_calendar/rolling_offer.md` |
+| הצעה שנייה | `mm_calendar/topics/04_second_offers/README.md` |
 
 ---
 
-## 8. פלט ו-Git
+## סיכום במשפט אחד
 
-| פלט | נתיב |
-|-----|------|
-| JSON תוכנית | `mm_calendar/data/*_plan.json` |
-| קלנדר אנושי | `mm_calendar/examples/YYYY-MM_calendar.md` |
-| Dashboard | `build_calendar_html.py` |
-| שינוי `.cursor/rules/` | **commit + push** (`git_sync_rules.mdc`) |
-| ידע למחלקה | https://github.com/ppuregoldz-arch/slotomania-mm-calendar |
+**קודם guidelines ועונות → עוגנים → לכל יום DD + VFM → מגבירים → Core/Shiny → ADS → validate → Monday רק באישור; בקונפליקט חותכים מלמטה ולא נוגעים ב-DD+VFM.**
 
----
-
-## 9. תזכורת אוגוסט 2026 (מצב נוכחי)
-
-| נושא | החלטה שסוכמה |
-|------|----------------|
-| Popup Store | **12 / 19 / 26** (TEST→TEST→LAUNCH) |
-| Rolling MGAP ladder | **11/8** — 4 cycles BXGY, MGAP configs 2–4 |
-| 12/8 | Popup + Rolling 6 — **ללא** Decoy Bonanza |
-| 26/8 | Popup LAUNCH; RYD = **BACKUP cap** בכותרת |
-| 1–15/8 | **Monday** = authority; builder לא דורס בלי אישור Itay |
-
----
-
-*מסמך זה מסכם את **תהליך ההחלטות** — לא מחליף `monthly_guidelines` או `constraints.md`.*
+*עודכן: יולי 2026*
