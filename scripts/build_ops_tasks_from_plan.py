@@ -68,6 +68,13 @@ def inclusive_end_date(start_iso: str, until_iso: str) -> str:
     return (until + timedelta(days=1)).isoformat()
 
 
+def three_month_history_start(target_iso: str) -> str:
+    target = date.fromisoformat(target_iso)
+    month_index = target.year * 12 + (target.month - 1) - 3
+    year, zero_based_month = divmod(month_index, 12)
+    return date(year, zero_based_month + 1, 1).isoformat()
+
+
 def times_per_player(name: str, description: str) -> str | None:
     text = f"{name}\n{description}".lower()
     text = re.sub(r"unless marked once[- ]per[- ]player", "", text)
@@ -157,7 +164,14 @@ def operational_description(
     )
     lines.extend(f"- {entry}" for entry in missing)
     lines.append("- Source files / links: TBD - owner required")
-    lines.extend(["", f"Source: MM calendar {day_iso} - {normalize_task_name(row['name'])}"])
+    lines.extend(
+        [
+            "",
+            f"Source: MM calendar {day_iso} - {normalize_task_name(row['name'])}",
+            "Recent Ops reference: TBD - owner required (3-month window)",
+            "Reuse: TBD - verify exact recent execution and current delta",
+        ]
+    )
     return "\n".join(lines)
 
 
@@ -172,6 +186,7 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "Audience is not defined in the calendar source.",
         "Journey triggers/actions require Ops-owner review.",
         "Source files/links are not present in the calendar source.",
+        "Recent Ops reference/reuse must be verified within the 3-month window.",
     ]
     if not frequency:
         warnings.append("Times per player is not defined.")
@@ -192,6 +207,8 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "operation_status": operation_status,
         "m_and_m_status": None,
         "times_per_player": frequency,
+        "reuse": None,
+        "recent_ops_reference": None,
         "description": operational_description(
             day_iso=start_iso,
             row=row,
@@ -228,6 +245,11 @@ def build_day_spec(day: dict[str, Any]) -> dict[str, Any]:
         "day": day["iso"],
         "parent_day": day["iso"],
         "promo_time": PROMO_TIME,
+        "history_window": {
+            "start": three_month_history_start(day["iso"]),
+            "end": (date.fromisoformat(day["iso"]) - timedelta(days=1)).isoformat(),
+            "rule": "Newest relevant matching execution within the previous 3 calendar months",
+        },
         "requires_review": True,
         "task_count": len(tasks),
         "skipped_misaligned_rows": skipped_misaligned,

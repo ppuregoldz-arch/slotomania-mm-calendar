@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — August 1 Ops tasks
+
+- **Goal:** Build the 1 August 2026 operational handoff on `Operation - Monetization` using only fresh execution evidence.
+- **Done:** Added the `2026-08-01` day parent and 9 operational subitems with dates, due dates, M&M/Operation statuses, full descriptions, recent source IDs, and explicit reuse/deltas. Limited references to 1 May–31 July; rejected stale or mismatched Win Master/Cozy Blast references. Updated the Ops rule, guidelines, builder, and writer to enforce three-month freshness and reassert statuses after Monday automations.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/ops_board_schema.md`, `mm_calendar/data/ops_tasks/2026-08-01.json`, `scripts/build_ops_tasks_from_plan.py`, `scripts/upload_ops_task_monday.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, live MM/Ops research ✓, dry run ✓, targeted Monday creation ✓ (parent `12549023366`, 9 subitems), delayed field verification ✓, full board sync n/a.
+- **Notes for next agent:** Parent URL: `https://playtika.monday.com/boards/2109172490/pulses/12549023366`. Direct API writes to the `MM calendar` relation column were silently ignored; source MM IDs/links are retained in every Description.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Leave Art Status empty
 
 - **Goal:** Keep both subitem workflow statuses blank for pending art-only work.

@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from pathlib import Path
 from typing import Any
 
@@ -64,6 +65,10 @@ def validate_spec(spec: dict[str, Any], *, allow_tbd: bool) -> None:
             raise SystemExit(f"Task parent {task.get('parent_day')} differs from spec parent {day}")
         if task.get("requires_review") or "TBD - owner required" in task["description"]:
             unresolved.append(task["task_name"])
+        if task.get("reuse") is None:
+            unresolved.append(f"{task['task_name']} (reuse not verified)")
+        if task.get("reuse") is True and not task.get("recent_ops_reference"):
+            unresolved.append(f"{task['task_name']} (reuse source missing)")
     if unresolved and not allow_tbd:
         joined = ", ".join(unresolved)
         raise SystemExit(
@@ -166,6 +171,8 @@ def column_values(task: dict[str, Any]) -> dict[str, Any]:
         values["times_per_player__1"] = {"labels": [task["times_per_player"]]}
     if task.get("m_and_m_status"):
         values["status"] = {"label": task["m_and_m_status"]}
+    if task.get("due_date"):
+        values["date_mkp4d99c"] = {"date": task["due_date"]}
     return values
 
 
@@ -182,7 +189,10 @@ def print_dry_run(spec: dict[str, Any], parent: dict[str, Any] | None) -> None:
             f"\n[{index}/{len(spec['tasks'])}] {action}: {task['task_name']}"
             f"\n  Status: {task['operation_status']}"
             f"\n  Window: {task['start_at']} -> {task['end_at']}"
+            f"\n  Due: {task.get('due_date') or 'not set'}"
             f"\n  Review: {task.get('requires_review', False)}"
+            f"\n  Reuse: {task.get('reuse')}"
+            f"\n  Recent Ops reference: {task.get('recent_ops_reference') or 'not resolved'}"
         )
         for warning in task.get("warnings") or []:
             print(f"  WARNING: {warning}")
@@ -225,6 +235,17 @@ def commit(spec: dict[str, Any], parent: dict[str, Any] | None, args: argparse.N
             board_id=SUBITEM_BOARD_ID,
             item_id=item_id,
             values=column_values(task),
+        )
+        # M&M-status automations can clear Operation Status during the same update.
+        # Re-assert operational ownership after they settle.
+        time.sleep(0.25)
+        final_values: dict[str, Any] = {
+            "dup__of_m_m_status1": {"label": task["operation_status"]}
+        }
+        set_columns(
+            board_id=SUBITEM_BOARD_ID,
+            item_id=item_id,
+            values=final_values,
         )
         print(f"{action}: {task['task_name']} ({item_id})")
     print(f"Done: created {created}, updated {updated}, skipped {skipped}; deleted 0.")

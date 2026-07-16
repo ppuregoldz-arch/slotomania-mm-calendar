@@ -13,10 +13,20 @@ Authority order:
 1. Itay's live instruction.
 2. Approved live MM calendar row (Name is authoritative when it conflicts with Description).
 3. Current plan JSON and monthly guidelines.
-4. Same-promo historical Ops execution.
+4. Same-promo historical Ops execution from the **latest 3 months only**, newest relevant task first.
 5. Generic template.
 
 Never infer a missing business rule, parameter, segment, reward, ID, owner, file, or status. A draft may contain `TBD - owner required`; an executable task may not.
+
+## Historical-reference freshness
+
+- Search only the 3 calendar months immediately before the target task date. For 1 August 2026, valid references start on 1 May 2026.
+- Within that window, use the newest task matching the same promo, variant, pricing, audience, and intended behavior.
+- A newer exact-variant task overrides an older generic template.
+- Do not combine mechanics, parameters, files, or journeys from several old tasks into a synthetic task.
+- If no relevant task exists in the 3-month window, write `No recent Ops precedent found (3-month window)` and keep unsupported fields as TBD.
+- A task marked `Reuse` must state the exact source task date, item ID/link, what is reused, and what changes in the current instance.
+- Never describe a task as Reuse solely because the MM Creative Label says `Reuse`; verify a recent matching Ops execution.
 
 ## Placement model
 
@@ -120,6 +130,8 @@ Dependencies:
 - MCP / Economy / BA list / Payment: <IDs or TBD>
 
 Source: MM calendar <date> - <source row name>
+Recent Ops reference: <date + item ID/link, or no recent precedent>
+Reuse: <Yes/No> - <exact reused scope and current changes>
 ```
 
 For simple offer tasks, omit journey blocks that are genuinely unnecessary. Do not add generic triggers or CTA behavior merely to fill the template.
