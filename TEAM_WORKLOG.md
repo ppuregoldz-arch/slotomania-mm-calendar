@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Correct visible Ops UTC schedule
+
+- **Goal:** Make Monday's visible Start/End values match the intended UTC schedule and identify Night Plan work correctly.
+- **Done:** Added a UTC+3 board-display compensation layer to the Ops writer/spec. Standard tasks now visibly show 11:00→11:00, while LBP visibly shows 00:00→11:00 and uses M&M Status `Night Plan`. Operation Status remains blank.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/2026-08-01.json`, `scripts/build_ops_tasks_from_plan.py`, `scripts/upload_ops_task_monday.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, payload validation ✓, targeted Monday update of 9 existing subitems ✓, live visible-date/status verification ✓, full Monday sync n/a.
+- **Notes for next agent:** For this Ops board, submit API date-times three hours earlier than the intended visible UTC label; otherwise Monday displays 11:00 as 14:00.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Ops descriptions and blocker statuses
 
 - **Goal:** Remove scheduling data from Ops descriptions and correct M&M ownership/status semantics.

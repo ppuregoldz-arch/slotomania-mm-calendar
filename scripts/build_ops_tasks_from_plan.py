@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PLAN_FILE = ROOT / "mm_calendar" / "data" / "august_2026_plan.json"
 OUTPUT_DIR = ROOT / "mm_calendar" / "data" / "ops_tasks"
 PROMO_TIME = "11:00 UTC"
+MONDAY_DISPLAY_OFFSET_HOURS = 3
 
 # build_rows is the canonical filter for which approved calendar rows need config.
 from upload_mm_calendar_day_monday import build_rows  # noqa: E402
@@ -66,6 +67,12 @@ def inclusive_end_date(start_iso: str, until_iso: str) -> str:
     if until < start:
         raise ValueError(f"Invalid task range: {start_iso}..{until_iso}")
     return (until + timedelta(days=1)).isoformat()
+
+
+def monday_api_date_time(date_iso: str, time_value: str) -> tuple[str, str]:
+    intended = datetime.fromisoformat(f"{date_iso}T{time_value}")
+    api_value = intended - timedelta(hours=MONDAY_DISPLAY_OFFSET_HOURS)
+    return api_value.date().isoformat(), api_value.time().isoformat()
 
 
 def three_month_history_start(target_iso: str) -> str:
@@ -178,6 +185,8 @@ def operational_description(
 def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     start_iso = row["date_start"]
     end_iso = inclusive_end_date(start_iso, row["date_until"])
+    monday_start_date, monday_start_time = monday_api_date_time(start_iso, "11:00:00")
+    monday_end_date, monday_end_time = monday_api_date_time(end_iso, "11:00:00")
     detail = source_description(day, row)
     frequency = times_per_player(row["name"], detail)
     missing = missing_dependencies(row, detail)
@@ -206,6 +215,11 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "end_at": f"{end_iso} {PROMO_TIME}",
         "start_time": "11:00:00",
         "end_time": "11:00:00",
+        "monday_start_date": monday_start_date,
+        "monday_start_time": monday_start_time,
+        "monday_end_date": monday_end_date,
+        "monday_end_time": monday_end_time,
+        "monday_display_offset_hours": MONDAY_DISPLAY_OFFSET_HOURS,
         "m_and_m_status": m_and_m_status(row, missing),
         "times_per_player": frequency,
         "reuse": None,

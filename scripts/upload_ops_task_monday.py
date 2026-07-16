@@ -159,12 +159,12 @@ def rename_subitem(item_id: str, name: str) -> None:
 def column_values(task: dict[str, Any]) -> dict[str, Any]:
     values: dict[str, Any] = {
         "date_mm0f8tdb": {
-            "date": task["start_date"],
-            "time": task.get("start_time") or "11:00:00",
+            "date": task.get("monday_start_date") or task["start_date"],
+            "time": task.get("monday_start_time") or task.get("start_time") or "11:00:00",
         },
         "date_mm0fr8sp": {
-            "date": task["end_date"],
-            "time": task.get("end_time") or "11:00:00",
+            "date": task.get("monday_end_date") or task["end_date"],
+            "time": task.get("monday_end_time") or task.get("end_time") or "11:00:00",
         },
         "long_text": {"text": task["description"]},
         "status": {"label": task["m_and_m_status"]},
