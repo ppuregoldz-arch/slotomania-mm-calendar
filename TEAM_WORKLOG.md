@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Short Creative briefs only
+
+- **Goal:** Remove unnecessary detail, prose-heavy link fields, and unsupported template content from Creative briefs.
+- **Done:** Reduced all 13 parent briefs to five rows and all 74 asset briefs to the minimum Action/Change/Keep/reference/status content. Links now contain only URLs or exact CRM3 file paths; PNG rows contain only real matching attachments and are omitted when none exists. Due dates and priority remain in board columns rather than repeated in updates.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, targeted update of 13 parents + 74 subitems ✓, row-count/link/PNG verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Never fill a brief with template boilerplate; omit unsupported rows and assets.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Briefs follow historical execution
 
 - **Goal:** Require Creative instructions to follow how the same promo was actually briefed and delivered previously.

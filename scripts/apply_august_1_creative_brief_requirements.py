@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import html
 import json
-import re
 import sys
 import time
 from dataclasses import dataclass, field
@@ -92,7 +91,7 @@ PROMOS: dict[str, Promo] = {
             "Banner": "Generic Win Master composition and theme; Win Master in-app banner message structure; CTA/destination to Win Master MES.",
         },
         actions={
-            "Banner": "Banner only. Replace the prize callout 3★ Ace Card → 3★ Regular Card + PAB. Keep the latest generic Win Master composition, Win Master in-app banner message structure, and CTA/destination to Win Master MES unchanged.",
+            "Banner": "3★ Ace Card → 3★ Regular Card + PAB.",
         },
         references={
             "Banner": r("https://playtika.monday.com/protected_static/7996532/resources/3108370668/Win_Master_Generic_Banner.png", r"Q:\Slotomania\CRM3\Features\MES\2026_03_24_Win_Master\Banner\Win_Master_Generic_Banner.png", "Latest Creative Banner attachment — update 5371897882, pulse 12515008775"),
@@ -164,7 +163,7 @@ PROMOS: dict[str, Promo] = {
             "Inapp": "One Inapp with two versions (PU and PRAS); CTA to store; Timer yes; FP once per player.",
         },
         actions={
-            "Inapp": "BACKUP only. Keep the established one-Inapp/two-version structure, CTA to store, Timer yes, and FP once per player. Change PU 30% → PU 30% (unchanged), PRAS 55% → PRAS 50%, and Wacky Weeds/Crazy Train treatment → Status Boost styling. Remove all machine-specific copy; exact replacement headline remains for Itay/Copy. Produce only if MM activates the backup.",
+            "Inapp": "PU 30% unchanged; PRAS 55% → 50%; machine theme → Status Boost. Headline: Itay/Copy.",
         },
         references={
             "Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/3061558852/The_Craziest_Games_Coupon_Inapp_PU.png", r"Q:\Slotomania\CRM3\New Games\Crazy_Train_Games\Crazy_Train_Celebration\2026\2026_01_22_Celebration\Coupon\The_Craziest_Games_Coupon_Inapp_PU.png"),
@@ -211,47 +210,22 @@ def table(rows: list[tuple[str, str]]) -> str:
 
 
 def add_parent_requirements(body: str, promo: Promo) -> str:
-    keys = (
-        "Brief Due Date", "Art Due Date", "Priority", "Reuse Source",
-        "Historical Execution Scope", "Required Asset Scope", "Current / Source",
-        "Required / New", "Creative Request", "Completion",
-    )
-    for key in keys:
-        body = re.sub(
-            rf"<tr><td><p><strong>{re.escape(key)}</strong></p></td>.*?</tr>",
-            "",
-            body,
-            flags=re.S,
-        )
     source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}"
     if promo.label == "Reuse":
-        request = f"No creative action. Reuse the approved package from {esc(promo.source_date)} unchanged."
+        scope = "Reuse only"
+        change = "None"
+        request = "No action. Completed."
     else:
         scope = ", ".join(sorted(promo.required_assets)) if promo.required_assets else ", ".join(sorted(promo.actions))
-        request = f"Creative action required only for: <strong>{esc(scope)}</strong>. All other duplicated template assets are No Action."
-    rows = [
-        ("Brief Due Date", BRIEF_DUE),
-        ("Art Due Date", ART_DUE),
-        ("Priority", f"<strong>{esc(promo.priority)}</strong>"),
-    ]
-    if promo.label == "Reuse":
-        rows.append(("Reuse Source", f'{esc(promo.source_date)} — <a href="{source_url}">source item</a>'))
-    else:
-        rows.extend([
-            ("Historical Execution Scope", esc(promo.historical_scope)),
-            ("Required Asset Scope", esc(", ".join(sorted(promo.required_assets)))),
-            ("Current / Source", esc(promo.change_from)),
-            ("Required / New", esc(promo.change_to)),
-        ])
-    rows.extend([
-        ("Creative Request", request),
-        ("Completion", "<strong>Completed</strong>" if promo.label == "Reuse" else "<strong>Creative deliverables required</strong>"),
+        change = f"{promo.change_from} → {promo.change_to}"
+        request = f"{scope} only."
+    return table([
+        ("Creative Label", f"<strong>{esc(promo.label)}</strong>"),
+        ("Source", f'<a href="{source_url}">{source_url}</a>'),
+        ("Scope", esc(scope)),
+        ("Change", esc(change)),
+        ("Creative Ask", esc(request)),
     ])
-    extra = "".join(
-        f"<tr><td><p><strong>{esc(key)}</strong></p></td><td><p>{value}</p></td></tr>"
-        for key, value in rows
-    )
-    return body.replace("</tbody></table>", extra + "</tbody></table>", 1)
 
 
 def asset_requires_creative(promo: Promo, asset_name: str) -> bool:
@@ -266,73 +240,49 @@ def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
     references = configured if isinstance(configured, tuple) else ((configured,) if configured else ())
     if not required and promo.label != "Reuse":
         references = ()
-    current_source = promo.change_from_by_asset.get(asset_name, promo.change_from)
     if promo.label == "Reuse":
-        action = (
-            f"No new creative production. Reuse the approved <strong>{esc(asset_name)}</strong> "
-            f"from {esc(promo.source_date)} unchanged. Do not alter theme, composition, rewards, copy, CTA or timing."
-        )
-        completion = "<strong>Completed — no Creative action</strong>"
-        historical_pattern = f"Reuse the evidenced {asset_name} execution from {promo.source_date} unchanged."
-        unchanged = "Everything: asset scope, composition, theme, reward, message, CTA, Timer and FP."
+        action = f"Reuse from {promo.source_date}. No changes."
+        completion = "<strong>Completed</strong>"
     elif not required:
-        action = (
-            f"No Creative action. The latest comparable execution was {esc(promo.historical_scope)} "
-            f"This duplicated <strong>{esc(asset_name)}</strong> subitem is outside the evidenced scope."
-        )
-        completion = "<strong>Completed — no Creative action</strong>"
-        historical_pattern = f"Latest comparable execution did not request {asset_name}."
-        unchanged = "Reuse standard product behavior; do not create or adapt this asset."
+        action = "No action — not used in the latest comparable execution."
+        completion = "<strong>Completed</strong>"
     else:
-        action = esc(promo.actions[asset_name])
+        action = promo.actions[asset_name]
         completion = "<strong>Creative action required</strong>"
-        historical_pattern = promo.historical_patterns[asset_name]
         unchanged = promo.unchanged_by_asset[asset_name]
 
+    source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}"
     if references:
         preview = "<br>".join(
             f'<a href="{esc(reference.url)}"><img src="{esc(reference.url)}" alt="{esc(asset_name)} reference" width="600"></a>'
             for reference in references
         )
-        ref_link = "<br>".join(f"<code>{esc(reference.path)}</code>" for reference in references)
-        provenance = "<br>".join(
-            esc(reference.provenance) if reference.provenance else
-            f'Latest relevant attachment from {esc(promo.source_date)} — <a href="https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}">source item</a>.'
-            for reference in references
-        )
-    else:
-        preview = "No matching asset-type preview is attached; a different asset type must not be used as a substitute."
-        ref_link = (
-            f"<code>{esc(promo.source_folder)}</code> — use the existing {esc(asset_name)} from this source package; "
-            "exact filename is not documented in Monday."
-        )
-        provenance = (
-            f'No matching attached deliverable in the latest source task — '
-            f'<a href="https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}">source item</a>.'
+        links: list[str] = []
+        for reference in references:
+            link = reference.path if reference.path.startswith(("Q:\\", "/Volumes/", "https://", "http://")) else source_url
+            if link not in links:
+                links.append(link)
+        ref_link = "<br>".join(
+            f'<a href="{esc(link)}">{esc(link)}</a>' if link.startswith(("https://", "http://")) else f"<code>{esc(link)}</code>"
+            for link in links
         )
 
     rows = [
-        ("Promo", esc(parent_name)),
         ("Asset", f"<strong>{esc(asset_name)}</strong>"),
-        ("Creative Label", f"<strong>{esc(promo.label)}</strong>"),
     ]
     if required:
         rows.extend([
-            ("Current / Source", esc(current_source)),
-            ("Required / New", esc(promo.change_to)),
+            ("Change", esc(action)),
+            ("Keep", esc(unchanged)),
         ])
-    rows.extend([
-        ("Historical Execution Pattern", esc(historical_pattern)),
-        ("Exact Creative Action", action),
-        ("What Stays Unchanged", esc(unchanged)),
-        ("Reference Art", preview),
-        ("Reference Link", ref_link),
-        ("Reference Provenance", provenance),
-        ("Brief Due Date", BRIEF_DUE),
-        ("Art Due Date", ART_DUE),
-        ("Priority", f"<strong>{esc(promo.priority)}</strong>"),
-        ("Creative Completion", completion),
-    ])
+    else:
+        rows.append(("Action", esc(action)))
+    if references:
+        rows.extend([
+            ("Reference PNG", preview),
+            ("Reference Link", ref_link),
+        ])
+    rows.append(("Status", completion))
     return table(rows)
 
 
@@ -435,12 +385,17 @@ def main() -> None:
             errors.append(f"{item['name']}: due dates")
         if columns.get("color_mkws3h8e") != promo.priority:
             errors.append(f"{item['name']}: priority")
-        if "Creative Request" not in item["updates"][0]["body"]:
+        if "Creative Ask" not in item["updates"][0]["body"]:
             errors.append(f"{item['name']}: parent request")
         for subitem in item["subitems"]:
             body = subitem["updates"][0]["body"]
-            if "Exact Creative Action" not in body or f'alt="{html.escape(subitem["name"], quote=True)} reference"' not in body and "No matching asset-type preview" not in body:
-                errors.append(f"{item['name']} / {subitem['name']}: brief/reference")
+            required = asset_requires_creative(promo, subitem["name"])
+            if required and ("Change" not in body or "Keep" not in body):
+                errors.append(f"{item['name']} / {subitem['name']}: actionable brief")
+            if not required and "Action" not in body:
+                errors.append(f"{item['name']} / {subitem['name']}: no-action brief")
+            if len(body) > 3500:
+                errors.append(f"{item['name']} / {subitem['name']}: brief too long")
             if not asset_requires_creative(promo, subitem["name"]):
                 subcolumns = {column["id"]: column.get("text") or "" for column in subitem["column_values"]}
                 if subcolumns.get("status") != "Done" or subcolumns.get("color_mkwerpn6") != "Done":

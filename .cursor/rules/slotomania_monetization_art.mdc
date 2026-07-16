@@ -50,9 +50,14 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 
 ## Brief standards
 
-- HTML tables in updates when template expects rows (Background, Main Messages, Art guidelines, Reference, Reference Link, CTA, etc.)
+- Keep briefs short. Do not repeat Promo Date, due dates, priority, category, history, or status details already stored in columns.
+- Parent brief: maximum five useful rows—Creative Label, Source, Scope, Change, Creative Ask.
+- Actionable subitem: Asset, Change, Keep, Reference PNG, Reference Link, Status. No long explanations.
+- No-action subitem: Asset, Action, optional real reference, Status.
+- A Link field contains only the URL or exact CRM3 file path—no commentary, provenance prose, or folder instructions.
+- A PNG/reference-art field contains only a real attached image for that exact asset type. If no real matching image exists, omit the row; never create a placeholder or made-up template.
 - Before writing any Creative instruction, read the latest comparable parent brief and all relevant subitem updates. Derive the required asset scope and wording from what was actually requested/delivered last time—not from the duplicated template alone.
-- Every actionable subitem must include **Historical execution pattern**, **What changes now**, and **What stays unchanged**. Carry forward evidenced Versions, Main Message structure, CTA/destination, Timer, FP, badge, and channel behavior.
+- Use history to determine the instruction, but do not paste the research into the brief. Summarize it only as concise **Change** and **Keep** rows.
 - If the latest comparable execution used only a subset of template assets, request only that subset. Mark the other duplicated subitems Completed/No Action unless Itay explicitly expands scope.
 - Never infer a missing CTA, version, timer, FP, message, or asset. Use an older matching execution only when the latest task lacks that asset, and document the fallback; otherwise leave it for Itay.
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
