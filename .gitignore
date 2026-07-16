@@ -13,3 +13,6 @@ __pycache__/
 # Local credentials (never commit)
 **/credentials*.json
 **/*secret*
+
+# Timestamped Monday month backups (local; regenerate with scripts/backup_august_mm_calendar_local.py)
+mm_calendar/backups/

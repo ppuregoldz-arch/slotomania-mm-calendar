@@ -3,10 +3,10 @@
     "authority": "Itay 2026-07-12 — live Monday board is the updated schedule truth for agents; read-only snapshot; prefer this over august_2026_plan.json for what is scheduled on the board. Days 2026-08-01 … 2026-08-15 are committed — do not change via builder/upload without explicit approval.",
     "board_id": "18388590642",
     "board_url": "https://playtika.monday.com/boards/18388590642",
-    "pulled_at_utc": "2026-07-16T08:12:11Z",
+    "pulled_at_utc": "2026-07-16T08:46:18Z",
     "read_only": true,
-    "item_count": 3026,
-    "dated_items": 2689,
+    "item_count": 3027,
+    "dated_items": 2690,
     "undated_items": 337,
     "august_2026_dated": 355
   },
@@ -41098,6 +41098,22 @@
       "mm_owner": "Roy Vaygue",
       "economist": "",
       "ops_status": "Day"
+    },
+    {
+      "id": "12548027175",
+      "name": "2026-09-01 | Rolling Offer - 6 cycles | H Pricing | Blast (Picks / PAB / Superboom)",
+      "group_id": "group_mky2rn6g",
+      "product": "Rolling offer",
+      "date": "2026-09-01",
+      "timeline": "2026-09-01 - 2026-09-01",
+      "description": "Short-term: Blast - hooks Picks, PAB, Superboom only.\n\nRolling Cycle 1\n\t1\t1\t  Coins + Gems + 1 RDS + 1 GGS\n\t2\t2\t  100% SB\n\t3\t3\t  2 Picks\n\t4\t4\t  5 Hammers\n\t5\t5\t  2 RDS\n\t6\t6\t  1 GGS\n\nRolling Cycle 2\n\t7\t1\t  Coins + Gems + 1 RDS + 1 GGS\n\t8\t2\t  150% SB\n\t9\t3\t  PAB\n\t10\t4\t  5 Hammers\n\t11\t5\t  3 RDS\n\t12\t6\t  1 GGS\n\nRolling Cycle 3\n\t13\t1\t  Coins + Gems + 1 RDS + 1 GGS\n\t14\t2\t  200% SB\n\t15\t3\t  Superboom\n\t16\t4\t  10 Hammers\n\t17\t5\t  3 RDS\n\t18\t6\t  1 GGS\n\nRolling Cycle 4\n\t19\t1\t  Coins + Gems + 1 RDS + 1 GGS\n\t20\t2\t  250% SB\n\t21\t3\t  2 PAB\n\t22\t4\t  10 Hammers\n\t23\t5\t  3 RDS\n\t24\t6\t  1 GGS\n\nRolling Cycle 5\n\t25\t1\t  Coins + Gems + 1 RDS + 1 GGS\n\t26\t2\t  300% SB\n\t27\t3\t  Superboom + PAB\n\t28\t4\t  12 Hammers\n\t29\t5\t  3 RDS\n\t30\t6\t  1 GGS\n\nRolling Cycle 6\n\t31\t1\t  Coins + Gems + 1 RDS + 1 GGS\n\t32\t2\t  300% SB\n\t33\t3\t  3 Picks\n\t34\t4\t  15 Hammers\n\t35\t5\t  3 RDS\n\t36\t6\t  1 GGS",
+      "pricing": "High",
+      "economy_status": "",
+      "config_status": "Config needed",
+      "creative_label": "Reuse",
+      "mm_owner": "Itay Goldshtein",
+      "economist": "Nivi Manor",
+      "ops_status": ""
     },
     {
       "id": "10644901880",
