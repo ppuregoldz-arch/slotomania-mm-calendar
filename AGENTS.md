@@ -19,6 +19,8 @@ For measurement/performance/prediction work, route through `mm_calendar/measurem
 
 **Builder rule (encoding):** `.cursor/rules/mm_calendar_builder.mdc`
 
+**GitHub (team read-only):** `https://github.com/ppuregoldz-arch/slotomania-mm-calendar` — after **any** change under `.cursor/rules/`, agents **commit + push** in the same session (see `.cursor/rules/git_sync_rules.mdc`).
+
 ---
 
 ## August 2026 — source of truth

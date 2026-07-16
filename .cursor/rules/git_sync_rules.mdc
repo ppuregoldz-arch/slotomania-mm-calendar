@@ -1,0 +1,28 @@
+---
+description: After any .cursor/rules change, commit and push to GitHub so the team repo stays current.
+alwaysApply: true
+---
+
+# Git sync — Cursor rules (mandatory)
+
+When this session **creates or edits** anything under **`.cursor/rules/`** (`.mdc` rule files):
+
+1. **Do not commit secrets** — `.cursor/github.env`, `.cursor/monday.env`, `.cursor/mcp.json` stay gitignored.
+2. **Stage only** the rule files (and related doc updates in the same task, e.g. `AGENTS.md` if you changed workflow there).
+3. **Commit** with a clear message, e.g. `Update Cursor rules: <short topic>`.
+4. **Push** to `origin` on `main`:
+   ```bash
+   cd "<repo root>"
+   git add .cursor/rules/ AGENTS.md   # only paths you actually changed
+   git commit -m "Update Cursor rules: …"
+   python3 scripts/github_push_origin.py
+   ```
+   (`github_push_origin.py` reads `GITHUB_TOKEN` from env or `.cursor/github.env`.)
+
+5. If push fails (no token / network), say so and list **unpushed commits**; do not claim the team repo is updated.
+
+**Scope:** This rule is about **`.cursor/rules/`**. Other work (builders, `mm_calendar/`, Monday) — push when the user asks or at session end if they expect GitHub to mirror the team share; **rules changes always push in the same session.**
+
+**Remote:** `https://github.com/ppuregoldz-arch/slotomania-mm-calendar` (public read; write only with owner token).
+
+Also append **`TEAM_WORKLOG.md`** when the session changed repo files (existing team handoff), including rule sync notes.
