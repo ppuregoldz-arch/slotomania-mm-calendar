@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Correct exact RYD reuse art
+
+- **Goal:** Replace the incorrect RYD reuse reference that did not show the required 5★ Gold Card.
+- **Done:** Replaced all four 01/08 RYD references with exact 100% SB + 5★ Gold assets: Background, Banner, Denom On, and Denom Off. Updated the reuse source to the later exact package and added a rule that Reuse must be verified in the final image, not inferred from task text.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, targeted RYD parent/subitem update ✓, exact filename/source/image verification ✓, full Monday sync n/a.
+- **Notes for next agent:** A brief instruction saying “add 5★ Gold” is not proof that the attached image contains it; inspect/use the later final deliverable.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Short Creative briefs only
 
 - **Goal:** Remove unnecessary detail, prose-heavy link fields, and unsupported template content from Creative briefs.

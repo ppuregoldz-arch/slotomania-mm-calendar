@@ -170,12 +170,13 @@ PROMOS: dict[str, Promo] = {
         },
     ),
     "RYD - 5* Gold Card + 100% SB | High Price": Promo(
-        "Reuse", "Low", "2026-03-28", "11350945008",
-        r"Q:\Slotomania\CRM3\Features\Reveal_Your_Deal\2026\2026_03_28_RYD_100SB_5GoldCard",
+        "Reuse", "Low", "2026-04-28", "12097773981",
+        r"Q:\Slotomania\CRM3\Features\Reveal_Your_Deal\2026\2026_04_28_RYD_100SB_5GoldCard",
         references={
-            "Background": r("https://playtika.monday.com/protected_static/7996532/resources/2781130702/RYD_Wild_BG.png", r"Q:\Slotomania\CRM3\Features\Reveal_Your_Deal\2026\2026_03_28_RYD_100SB_5GoldCard\BG\RYD_Wild_BG.png"),
-            "Denom On": r("https://playtika.monday.com/protected_static/7996532/resources/2781121571/Denom_100.png", r"Q:\Slotomania\CRM3\Features\Reveal_Your_Deal\2026\2026_03_28_RYD_100SB_5GoldCard\Denom\Denom_100.png"),
-            "Denom Off": r("https://playtika.monday.com/protected_static/7996532/resources/2781121571/Denom_100.png", r"Q:\Slotomania\CRM3\Features\Reveal_Your_Deal\2026\2026_03_28_RYD_100SB_5GoldCard\Denom\Denom_100.png"),
+            "Background": r("https://playtika.monday.com/protected_static/7996532/resources/3009694093/RYD_SB_5Gold_Card.png", r"Q:\Slotomania\CRM3\Features\Reveal_Your_Deal\2026\2026_04_28_RYD_100SB_5GoldCard\BG\RYD_SB_5Gold_Card.png"),
+            "Banner": r("https://playtika.monday.com/protected_static/7996532/resources/3009693789/RYD_SB_5GoldCard_Banner.jpg", r"Q:\Slotomania\CRM3\Features\Reveal_Your_Deal\2026\2026_04_28_RYD_100SB_5GoldCard\Banner\RYD_SB_5GoldCard_Banner.jpg"),
+            "Denom On": r("https://playtika.monday.com/protected_static/7996532/resources/3020403792/RYD_SB_5Gold_Denom.png", "https://playtika.monday.com/boards/18112190666/pulses/12097773981"),
+            "Denom Off": r("https://playtika.monday.com/protected_static/7996532/resources/3020403792/RYD_SB_5Gold_Denom.png", "https://playtika.monday.com/boards/18112190666/pulses/12097773981"),
         },
     ),
     "Blast - Short Term Season (Cozy)": Promo(

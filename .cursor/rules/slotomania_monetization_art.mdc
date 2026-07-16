@@ -42,6 +42,7 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 - **Reference Link** = full file path: `Q:\Slotomania\CRM3\...\filename.png` (not folder-only)
 - **Reference** = embedded preview: upload from CRM3 via `add_file_to_update` → `/v2/file`, then optional `edit_update` with `https://playtika.monday.com/protected_static/7996532/resources/{asset_id}/{filename}`
 - Reference art must match the subitem asset type: Inapp→Inapp, Banner→Banner, Widget→Widget, etc. Never reuse one generic preview across unlike assets.
+- A Reuse reference must visibly contain the exact current prize/theme. A matching task name or instruction to “add” the prize is not enough; verify the final attached image itself.
 - Use the newest previous matching promo task. Within its matching subitem, use the latest update that actually contains Creative attachments and the latest relevant attachment(s) from that update.
 - Creative's latest attached deliverable outranks an older attachment, an old `Reference Link`, or art merely mentioned in brief text. Record source promo date, pulse/update, and asset.
 - If the latest Creative update contains multiple required variants, show all of them. Use an older asset only with an explicit reason.
