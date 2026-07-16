@@ -325,7 +325,7 @@ def main() -> None:
             if required:
                 sub_values: dict[str, object] = {
                     "status": None,
-                    "color_mkwerpn6": {"label": "Working on it"},
+                    "color_mkwerpn6": None,
                 }
             else:
                 sub_values = {"status": {"label": "Done"}}
@@ -396,7 +396,7 @@ def main() -> None:
             if not asset_requires_creative(promo, subitem["name"]):
                 if subcolumns.get("status") != "Done" or subcolumns.get("color_mkwerpn6") != "Done":
                     errors.append(f"{item['name']} / {subitem['name']}: completion")
-            elif subcolumns.get("status") or subcolumns.get("color_mkwerpn6") != "Working on it":
+            elif subcolumns.get("status") or subcolumns.get("color_mkwerpn6"):
                 errors.append(f"{item['name']} / {subitem['name']}: active art status")
     if errors:
         raise RuntimeError("Verification failed:\n- " + "\n- ".join(errors))

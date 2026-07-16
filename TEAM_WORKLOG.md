@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Leave Art Status empty
+
+- **Goal:** Keep both subitem workflow statuses blank for pending art-only work.
+- **Done:** Cleared Copy Status and Art Status on Win Master Banner and backup Coupon Inapp; updated the rule and script.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, targeted status clear ✓, delayed blank-status verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Do not pre-set Copy or Art status for pending art-only work.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Leave Copy Status empty
 
 - **Goal:** Keep Copy Status blank for art-only work.
