@@ -26,6 +26,7 @@ ART_DUE = "2026-07-30"
 class Reference:
     url: str
     path: str
+    provenance: str = ""
 
 
 @dataclass(frozen=True)
@@ -35,12 +36,15 @@ class Promo:
     source_date: str
     source_pulse: str
     source_folder: str
+    change_from: str | None = None
+    change_to: str | None = None
+    change_from_by_asset: dict[str, str] = field(default_factory=dict)
     actions: dict[str, str] = field(default_factory=dict)
-    references: dict[str, Reference] = field(default_factory=dict)
+    references: dict[str, Reference | tuple[Reference, ...]] = field(default_factory=dict)
 
 
-def r(url: str, path: str) -> Reference:
-    return Reference(url, path)
+def r(url: str, path: str, provenance: str = "") -> Reference:
+    return Reference(url, path, provenance)
 
 
 PROMOS: dict[str, Promo] = {
@@ -68,24 +72,36 @@ PROMOS: dict[str, Promo] = {
         },
     ),
     "Win Master - 3* Reg Card + PAB": Promo(
-        "Prize Change", "Medium", "2026-01-04", "10838704639",
+        "Prize Change", "Medium", "2026-07-20", "12515008775",
         r"Q:\Slotomania\CRM3\Generic Promotions\Win_Master\2026\2026_03_27_Generic_Wheel_Master",
+        change_from="3★ Ace Card",
+        change_to="3★ Regular Card + PAB",
+        change_from_by_asset={
+            "Main Inapp": "4★ Regular Card (latest matching Main Inapp attachment: 2026-01-04)",
+            "Journey Inapp": "Generic Win Master structure; no attached reward reference",
+            "Winners Inapp": "4★ Regular Card (latest matching Winners Inapp attachment: 2026-01-04)",
+            "Banner": "3★ Ace Card (latest Win Master task attachment: 2026-07-20)",
+            "UI (Loot)": "Generic Win Master UI; no fixed reward",
+            "Widget": "Generic Win Master widget; no fixed reward",
+            "Externals": "Generic Win Master structure; no attached reward reference",
+            "Comufy": "Generic Win Master structure; no attached reward reference",
+        },
         actions={
-            "Main Inapp": "Update the central reward to 3★ Regular Card + PAB. Keep the approved generic Win Master layout, hierarchy, CTA and mechanic unchanged.",
-            "Journey Inapp": "Create/update the Journey entry with 3★ Regular Card + PAB. Use generic Win Master styling; do not introduce a machine or event theme.",
-            "Winners Inapp": "Update the winner-state reward to 3★ Regular Card + PAB while preserving the approved winner layout and CTA.",
-            "Banner": "Swap only the reward callout to 3★ Regular Card + PAB. Keep the generic Win Master composition and destination.",
-            "UI (Loot)": "Update the loot token/icon and reward copy to 3★ Regular Card + PAB. Do not alter mission logic or UI structure.",
-            "Widget": "Keep the generic Win Master widget. Update the reward indication only if it is visible in this asset.",
-            "Externals": "Produce the required external sizes from the approved Win Master layout with the exact 3★ Regular Card + PAB message.",
-            "Comufy": "Adapt the approved external layout to Comufy with the exact 3★ Regular Card + PAB message.",
+            "Main Inapp": "Replace 4★ Regular Card → 3★ Regular Card + PAB in the central reward. Keep the approved generic Win Master layout, hierarchy, CTA and mechanic unchanged.",
+            "Journey Inapp": "Add 3★ Regular Card + PAB to the generic Win Master Journey entry. Do not introduce a machine or event theme.",
+            "Winners Inapp": "Replace 4★ Regular Card → 3★ Regular Card + PAB in the winner state. Preserve the approved winner layout and CTA.",
+            "Banner": "Replace only the reward callout: 3★ Ace Card → 3★ Regular Card + PAB. Keep the latest generic Win Master composition and destination.",
+            "UI (Loot)": "Add the 3★ Regular Card + PAB loot token/icon and reward copy to the generic UI. Do not alter mission logic or UI structure.",
+            "Widget": "Keep the generic Win Master widget. Add 3★ Regular Card + PAB only if the reward is visible in this asset.",
+            "Externals": "Produce the required external sizes from the approved generic Win Master layout with 3★ Regular Card + PAB.",
+            "Comufy": "Adapt the approved generic external layout to Comufy with 3★ Regular Card + PAB.",
         },
         references={
-            "Main Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/2637741876/Shougan_Bear_Spin%20Challenge_Inapp.png", r"Q:\Slotomania\CRM3\New Games\Shougan Bear\2025_10_09_Shougan_Bear_Spin Challenge\Inapp\Dynamic_Inapp\Shougan_Bear_Spin Challenge_Inapp.png"),
-            "Winners Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/2637745010/Holiday_Spins_Winners_Inapp_03%20%281%29.png", r"Q:\Slotomania\CRM3\New Games\holiday spins\Holiday_Spins_Winners_Inapp_03 (1).png"),
-            "Banner": r("https://playtika.monday.com/protected_static/7996532/resources/2637741894/Shougan_Bear_Spin-Challenge_Banner.png", r"Q:\Slotomania\CRM3\New Games\Shougan Bear\2025_10_09_Shougan_Bear_Spin Challenge\Banner\Shougan_Bear_Spin-Challenge_Banner.png"),
-            "UI (Loot)": r("https://playtika.monday.com/protected_static/7996532/resources/2852976122/token.png", r"Q:\Slotomania\CRM3\Generic Promotions\Win_Master\2026\2026_03_27_Generic_Wheel_Master\UI\token.png"),
-            "Widget": r("https://playtika.monday.com/protected_static/7996532/resources/2926990403/MES_Widget.png", r"Q:\Slotomania\CRM3\Generic Promotions\Win_Master\2026\2026_03_27_Generic_Wheel_Master\Widget\MES_Widget.png"),
+            "Main Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/2637741876/Shougan_Bear_Spin%20Challenge_Inapp.png", r"Q:\Slotomania\CRM3\New Games\Shougan Bear\2025_10_09_Shougan_Bear_Spin Challenge\Inapp\Dynamic_Inapp\Shougan_Bear_Spin Challenge_Inapp.png", "Latest matching Main Inapp attachment — 2026-01-04, pulse 10838704639"),
+            "Winners Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/2637745010/Holiday_Spins_Winners_Inapp_03%20%281%29.png", r"Q:\Slotomania\CRM3\New Games\holiday spins\Holiday_Spins_Winners_Inapp_03 (1).png", "Latest matching Winners Inapp attachment — 2026-01-04, pulse 10838704639"),
+            "Banner": r("https://playtika.monday.com/protected_static/7996532/resources/3108370668/Win_Master_Generic_Banner.png", r"Q:\Slotomania\CRM3\Features\MES\2026_03_24_Win_Master\Banner\Win_Master_Generic_Banner.png", "Latest Creative Banner attachment — update 5371897882, pulse 12515008775"),
+            "UI (Loot)": r("https://playtika.monday.com/protected_static/7996532/resources/2852976122/token.png", r"Q:\Slotomania\CRM3\Generic Promotions\Win_Master\2026\2026_03_27_Generic_Wheel_Master\UI\token.png", "Latest matching generic UI attachment — 2026-03-23, pulse 11493027412"),
+            "Widget": r("https://playtika.monday.com/protected_static/7996532/resources/2926990403/MES_Widget.png", r"Q:\Slotomania\CRM3\Generic Promotions\Win_Master\2026\2026_03_27_Generic_Wheel_Master\Widget\MES_Widget.png", "Latest matching generic Widget attachment — 2026-03-23, pulse 11493027412"),
         },
     ),
     "Daily Deal - 3* Reg Card + Hammers Wheel | High Pricing": Promo(
@@ -99,11 +115,23 @@ PROMOS: dict[str, Promo] = {
         "Reuse", "Low", "2026-04-17", "11334801875",
         r"Q:\Slotomania\CRM3\Generic Promotions\Status_Boost\2026\2026_04_17_Status_Boost_Rebrand",
         references={
-            "Main Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/2776806786/image.png", "Monday source asset: Main Inapp"),
-            "Second Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/2776699449/Status_Boost_EQ_Inapp_From_Banner_BD_IC.png", "Monday source asset: Second Inapp"),
-            "Coupon": r("https://playtika.monday.com/protected_static/7996532/resources/2894509855/Coupon_PU_50_percent_FP_Inapp.png", r"Q:\Slotomania\CRM3\Features\Coupon Center\2025\2025_06_29_Coupon_50_75percent\Inapp\Coupon_PU_50_percent_FP_Inapp.png"),
-            "LBP/Dice New theme": r("https://playtika.monday.com/protected_static/7996532/resources/2894509544/PlasmaBall_Inapp.png", r"Q:\Slotomania\CRM3\Features\Lotto_Bonus\2025\2025_12_13_LBP_4Balls\Inapp\PlasmaBall_Inapp.png"),
-            "Benefit animations": r("https://playtika.monday.com/protected_static/7996532/resources/2898720445/Intro_Animation_RD.png", "Monday source asset: Benefit animations"),
+            "Coupon": (
+                r("https://playtika.monday.com/protected_static/7996532/resources/2894509855/Coupon_PU_50_percent_FP_Inapp.png", r"Q:\Slotomania\CRM3\Features\Coupon Center\2025\2025_06_29_Coupon_50_75percent\Inapp\Coupon_PU_50_percent_FP_Inapp.png"),
+                r("https://playtika.monday.com/protected_static/7996532/resources/2894509999/Coupon_IC_75_percent_FP_Inapp.png", r"Q:\Slotomania\CRM3\Features\Coupon Center\2025\2025_06_29_Coupon_50_75percent\Inapp\Coupon_IC_75_percent_FP_Inapp.png"),
+            ),
+            "LBP/Dice New theme": (
+                r("https://playtika.monday.com/protected_static/7996532/resources/2902543452/image.png", "Monday source update 5102000666: latest LBP/Dice attachment"),
+                r("https://playtika.monday.com/protected_static/7996532/resources/2902552299/image.png", "Monday source update 5102000666: latest LBP/Dice attachment"),
+            ),
+            "Benefit animations": (
+                r("https://playtika.monday.com/protected_static/7996532/resources/2898720445/Intro_Animation_RD.png", "Monday source update 5097717225: RD"),
+                r("https://playtika.monday.com/protected_static/7996532/resources/2898720447/Intro_Animation_Boosted_BD.png", "Monday source update 5097717225: Boosted BD"),
+                r("https://playtika.monday.com/protected_static/7996532/resources/2898720453/Intro_Animation_SILVER.png", "Monday source update 5097717225: Silver"),
+                r("https://playtika.monday.com/protected_static/7996532/resources/2898720455/Intro_Animation_DIAMOND.png", "Monday source update 5097717225: Diamond"),
+                r("https://playtika.monday.com/protected_static/7996532/resources/2898720457/Intro_Animation_BD.png", "Monday source update 5097717225: BD"),
+                r("https://playtika.monday.com/protected_static/7996532/resources/2898720641/Intro_Animation_GOLD.png", "Monday source update 5097717225: Gold"),
+                r("https://playtika.monday.com/protected_static/7996532/resources/2898720649/Intro_Animation_PLATINUM.png", "Monday source update 5097717225: Platinum"),
+            ),
             "Denom": r("https://playtika.monday.com/protected_static/7996532/resources/2905066438/DD_Dice_SB.png", r"Q:\Slotomania\CRM3\Features\Daily_Deal\2026\2026_02_25_Dice_SB\DD_Dice_SB.png"),
         },
     ),
@@ -131,8 +159,10 @@ PROMOS: dict[str, Promo] = {
     "BACKUP - Coin Coupon 30%/50% on Status Boost": Promo(
         "Prize Change", "Low", "2026-07-07", "12337081885",
         r"Q:\Slotomania\CRM3\Features\Coupon Center\2026\2026_08_01_Coin_Coupon_30_50_Status_Boost",
+        change_from="30% PU + 55% PRAS; Crazy Train machine skin",
+        change_to="30% PU + 50% PRAS; Status Boost styling",
         actions={
-            "Inapp": "BACKUP only: change the coupon to 30% PU + 50% PRAS, use Status Boost styling, and remove the previous machine skin. Produce this asset only if MM activates the backup.",
+            "Inapp": "BACKUP only. Prize: 30% PU + 55% PRAS → 30% PU + 50% PRAS. Art treatment: Crazy Train machine skin → Status Boost styling. Produce only if MM activates the backup.",
         },
         references={
             "Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/3061558852/The_Craziest_Games_Coupon_Inapp_PU.png", r"Q:\Slotomania\CRM3\New Games\Crazy_Train_Games\Crazy_Train_Celebration\2026\2026_01_22_Celebration\Coupon\The_Craziest_Games_Coupon_Inapp_PU.png"),
@@ -179,7 +209,10 @@ def table(rows: list[tuple[str, str]]) -> str:
 
 
 def add_parent_requirements(body: str, promo: Promo) -> str:
-    keys = ("Brief Due Date", "Art Due Date", "Priority", "Reuse Source", "Creative Request", "Completion")
+    keys = (
+        "Brief Due Date", "Art Due Date", "Priority", "Reuse Source",
+        "Current / Source", "Required / New", "Creative Request", "Completion",
+    )
     for key in keys:
         body = re.sub(
             rf"<tr><td><p><strong>{re.escape(key)}</strong></p></td>.*?</tr>",
@@ -200,6 +233,11 @@ def add_parent_requirements(body: str, promo: Promo) -> str:
     ]
     if promo.label == "Reuse":
         rows.append(("Reuse Source", f'{esc(promo.source_date)} — <a href="{source_url}">source item</a>'))
+    else:
+        rows.extend([
+            ("Current / Source", esc(promo.change_from)),
+            ("Required / New", esc(promo.change_to)),
+        ])
     rows.extend([
         ("Creative Request", request),
         ("Completion", "<strong>Completed</strong>" if promo.label == "Reuse" else "<strong>Creative deliverables required</strong>"),
@@ -212,7 +250,9 @@ def add_parent_requirements(body: str, promo: Promo) -> str:
 
 
 def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
-    reference = promo.references.get(asset_name)
+    configured = promo.references.get(asset_name)
+    references = configured if isinstance(configured, tuple) else ((configured,) if configured else ())
+    current_source = promo.change_from_by_asset.get(asset_name, promo.change_from)
     if promo.label == "Reuse":
         action = (
             f"No new creative production. Reuse the approved <strong>{esc(asset_name)}</strong> "
@@ -223,28 +263,49 @@ def subitem_body(parent_name: str, asset_name: str, promo: Promo) -> str:
         action = esc(promo.actions[asset_name])
         completion = "<strong>Creative action required</strong>"
 
-    if reference:
-        preview = f'<a href="{esc(reference.url)}"><img src="{esc(reference.url)}" alt="{esc(asset_name)} reference" width="600"></a>'
-        ref_link = f"<code>{esc(reference.path)}</code>"
+    if references:
+        preview = "<br>".join(
+            f'<a href="{esc(reference.url)}"><img src="{esc(reference.url)}" alt="{esc(asset_name)} reference" width="600"></a>'
+            for reference in references
+        )
+        ref_link = "<br>".join(f"<code>{esc(reference.path)}</code>" for reference in references)
+        provenance = "<br>".join(
+            esc(reference.provenance) if reference.provenance else
+            f'Latest relevant attachment from {esc(promo.source_date)} — <a href="https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}">source item</a>.'
+            for reference in references
+        )
     else:
         preview = "No matching asset-type preview is attached; a different asset type must not be used as a substitute."
         ref_link = (
             f"<code>{esc(promo.source_folder)}</code> — use the existing {esc(asset_name)} from this source package; "
             "exact filename is not documented in Monday."
         )
+        provenance = (
+            f'No matching attached deliverable in the latest source task — '
+            f'<a href="https://playtika.monday.com/boards/{BOARD}/pulses/{promo.source_pulse}">source item</a>.'
+        )
 
-    return table([
+    rows = [
         ("Promo", esc(parent_name)),
         ("Asset", f"<strong>{esc(asset_name)}</strong>"),
         ("Creative Label", f"<strong>{esc(promo.label)}</strong>"),
+    ]
+    if promo.label != "Reuse":
+        rows.extend([
+            ("Current / Source", esc(current_source)),
+            ("Required / New", esc(promo.change_to)),
+        ])
+    rows.extend([
         ("Exact Creative Action", action),
         ("Reference Art", preview),
         ("Reference Link", ref_link),
+        ("Reference Provenance", provenance),
         ("Brief Due Date", BRIEF_DUE),
         ("Art Due Date", ART_DUE),
         ("Priority", f"<strong>{esc(promo.priority)}</strong>"),
         ("Creative Completion", completion),
     ])
+    return table(rows)
 
 
 def main() -> None:

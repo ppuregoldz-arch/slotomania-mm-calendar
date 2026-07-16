@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Exact creative deltas and latest references
+
+- **Goal:** Make every creative change explicit and ensure references use the newest relevant Creative attachment from the latest prior task.
+- **Done:** Added mandatory From→To rules for Prize Change and theme changes, plus Itay-owned skeleton behavior for New promo. Updated 01/08 Win Master and backup coupon with exact old/new rewards; updated Win Master Banner to the latest 20/07 Creative attachment with older asset-specific fallbacks documented. Replaced Status Boost references with the latest attached Creative variants and removed stale/non-Creative previews.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, targeted Monday brief/reference updates ✓, provenance and From→To verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Reference selection is two-stage: newest prior matching task, then newest relevant Creative attachment in the matching asset subitem; document any older asset-specific fallback.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Final Creative brief execution rules
 
 - **Goal:** Make 01/08 Monetization-Art briefs execution-ready with completed Reuse work, asset-type references, exact per-asset instructions, due dates, source dates, and priority.

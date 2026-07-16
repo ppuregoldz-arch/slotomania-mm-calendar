@@ -42,6 +42,9 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 - **Reference Link** = full file path: `Q:\Slotomania\CRM3\...\filename.png` (not folder-only)
 - **Reference** = embedded preview: upload from CRM3 via `add_file_to_update` → `/v2/file`, then optional `edit_update` with `https://playtika.monday.com/protected_static/7996532/resources/{asset_id}/{filename}`
 - Reference art must match the subitem asset type: Inapp→Inapp, Banner→Banner, Widget→Widget, etc. Never reuse one generic preview across unlike assets.
+- Use the newest previous matching promo task. Within its matching subitem, use the latest update that actually contains Creative attachments and the latest relevant attachment(s) from that update.
+- Creative's latest attached deliverable outranks an older attachment, an old `Reference Link`, or art merely mentioned in brief text. Record source promo date, pulse/update, and asset.
+- If the latest Creative update contains multiple required variants, show all of them. Use an older asset only with an explicit reason.
 - If no matching historical asset exists, say so explicitly and leave the preview empty; never attach a misleading reference.
 - For art briefs use the promo date the user wants (not “exclude incomplete today” analytics rules)
 
@@ -51,6 +54,9 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
 - Every subitem must state the exact Creative action for that asset. Never use a generic “prepare/adapt” instruction.
+- **Prize Change**: state `Current/source prize → Required prize` for every affected asset, including exact quantity, tier, mission, percentage, and currency. Never write only “update prize.”
+- **New theme for promo**: state `Current/source theme → Required theme` and the exact motifs, palette, logo, machine/event treatment, and elements that must remain unchanged.
+- **New promo**: do not invent mechanics, prizes, copy, or art direction. Create a clearly marked skeleton for **Itay to complete**; attach only clearly relevant latest references as optional inspiration.
 - End every parent brief with **Creative Request**: exact deliverables, or “No creative action — Completed.”
 - **Reuse**: name the exact source promo/date and asset. Parent Status Creative=`done`; each no-action subitem Copy Status=`Done` and Art Status=`Done`.
 - Due dates: Brief Due = promo date − 7 calendar days minimum; Art Due = promo date − 2 calendar days minimum. If either lands Friday/Saturday, move it backward to Thursday.
