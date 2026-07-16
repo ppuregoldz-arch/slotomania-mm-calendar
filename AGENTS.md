@@ -13,7 +13,7 @@ Open this folder in **Cursor → File → Open Folder** (not a single file). Age
 2. **Builders (`scripts/`)** — Python pipelines: generate plan JSON, validate, dashboard HTML, optional Monday sync, revenue calibration.
 3. **SM data assistant** — Optional Vertica/DWH analysis via MCP (see `.cursor/mcp.json`); separate from calendar building unless the task asks for data pulls.
 
-**Start reading for calendar work:** `mm_calendar/00_GUIDELINES_ITAY.md` → `mm_calendar/BUILD_CALENDAR_ROUTER.md` → `mm_calendar/topics/README.md` (pick domain) → target `mm_calendar/monthly_guidelines/YYYY-MM.md` → `mm_calendar/rules_cheatsheet.md` → `mm_calendar/PRIZE_PRIORITY_AND_MONTH_BUILD.md`.
+**Start reading for calendar work:** `mm_calendar/00_GUIDELINES_ITAY.md` → `mm_calendar/BUILD_CALENDAR_ROUTER.md` → **`mm_calendar/documentation/MONTH_BUILD_DECISION_TREE_COLORED_HE.md`** (month build flow) → `mm_calendar/topics/README.md` (pick domain) → target `mm_calendar/monthly_guidelines/YYYY-MM.md` → `mm_calendar/rules_cheatsheet.md` → `mm_calendar/PRIZE_PRIORITY_AND_MONTH_BUILD.md`.
 
 For measurement/performance/prediction work, route through `mm_calendar/measurement/`, `mm_calendar/performance/`, and `mm_calendar/prediction/`. Raw sources are immutable; low-confidence evidence is not a confirmed learning.
 
