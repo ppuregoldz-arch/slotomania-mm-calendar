@@ -234,6 +234,61 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def build_night_plan_task(day: dict[str, Any], item: dict[str, Any]) -> dict[str, Any]:
+    start_iso = day["iso"]
+    end_iso = (date.fromisoformat(start_iso) + timedelta(days=1)).isoformat()
+    monday_start_date, monday_start_time = monday_api_date_time(start_iso, "00:00:00")
+    monday_end_date, monday_end_time = monday_api_date_time(end_iso, "00:00:00")
+    is_lotto_peak = bool(re.search(r"lotto\s*[—-]\s*peak", item["name"], re.I))
+    task_name = (
+        "NIGHT PLAN - Lotto Peak"
+        if is_lotto_peak
+        else f"NIGHT PLAN - {normalize_task_name(item['name']).replace(' (Night Plan peak)', '')}"
+    )
+    return {
+        "parent_day": start_iso,
+        "source_calendar_day": day["iso"],
+        "source_row_name": item["name"],
+        "task_name": task_name,
+        "product": item.get("status"),
+        "pricing": item.get("pricing"),
+        "template_source": None,
+        "start_date": start_iso,
+        "end_date": end_iso,
+        "start_at": f"{start_iso} 00:00 UTC",
+        "end_at": f"{end_iso} 00:00 UTC",
+        "start_time": "00:00:00",
+        "end_time": "00:00:00",
+        "monday_start_date": monday_start_date,
+        "monday_start_time": monday_start_time,
+        "monday_end_date": monday_end_date,
+        "monday_end_time": monday_end_time,
+        "monday_display_offset_hours": MONDAY_DISPLAY_OFFSET_HOURS,
+        "m_and_m_status": "Night Plan",
+        "times_per_player": None,
+        "reuse": None,
+        "recent_ops_reference": None,
+        "description": "\n".join(
+            [
+                "Night Plan",
+                f"Mechanic / contents: {item.get('desc') or 'TBD - owner required'}",
+                "",
+                "Dependencies:",
+                "- Config / source files: TBD - owner required",
+                "",
+                f"Source: MM calendar item - {normalize_task_name(item['name'])}",
+                "Recent Ops reference: TBD - owner required (3-month window)",
+                "Reuse: TBD - verify exact recent execution and current delta",
+            ]
+        ),
+        "requires_review": True,
+        "warnings": [
+            "Night Plan requires a separate Ops task for this Lotto/LBP component.",
+            "Recent Ops reference/reuse must be verified within the 3-month window.",
+        ],
+    }
+
+
 def build_day_spec(day: dict[str, Any]) -> dict[str, Any]:
     rows = build_rows(day)
     config_rows = [
@@ -247,6 +302,12 @@ def build_day_spec(day: dict[str, Any]) -> dict[str, Any]:
         if row.get("config") and row.get("date_start") != day["iso"]
     ]
     tasks = [build_task(day, row) for row in config_rows]
+    night_plan_items = [
+        item
+        for item in day.get("items") or []
+        if re.search(r"lotto\s*[—-]\s*peak|^lbp\s*[—-]", item["name"], re.I)
+    ]
+    tasks.extend(build_night_plan_task(day, item) for item in night_plan_items)
     return {
         "schema_version": 1,
         "generated_at": datetime.now(timezone.utc).isoformat(),

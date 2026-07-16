@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Separate Lotto and LBP Night Plan tasks
+
+- **Goal:** Represent Lotto peak and LBP as separate Ops actions and use the full overnight date range.
+- **Done:** Added a separate `NIGHT PLAN - Lotto Peak` subitem under the August 1 parent, retained the distinct LBP task, and set both visible windows to August 1 00:00 through August 2 00:00 with M&M Status `Night Plan`. Updated the builder and guidance so future paired rows always create two tasks. Added post-creation field reassertion to survive Monday's delayed subitem-date automation.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `AGENTS.md`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/2026-08-01.json`, `scripts/build_ops_tasks_from_plan.py`, `scripts/upload_ops_task_monday.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, generic/curated payload validation ✓, one targeted Lotto task creation + nine updates ✓, delayed live verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Both Night Plan components belong under the starting calendar day even though their End date is the following day.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Correct visible Ops UTC schedule
 
 - **Goal:** Make Monday's visible Start/End values match the intended UTC schedule and identify Night Plan work correctly.

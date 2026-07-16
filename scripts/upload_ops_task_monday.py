@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from pathlib import Path
 from typing import Any
 
@@ -18,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BOARD_ID = "2109172490"
 SUBITEM_BOARD_ID = "2109172677"
 DAY_GROUP_ID = "group_mm0t6mxh"
+AUTOMATION_SETTLE_SECONDS = 7
 
 
 def parse_args() -> argparse.Namespace:
@@ -227,15 +229,24 @@ def commit(spec: dict[str, Any], parent: dict[str, Any] | None, args: argparse.N
             rename_subitem(item_id, task["task_name"])
             updated += 1
             action = "UPDATED"
+            is_new = False
         else:
             item_id = create_subitem(parent["id"], task["task_name"])
             created += 1
             action = "CREATED"
+            is_new = True
         set_columns(
             board_id=SUBITEM_BOARD_ID,
             item_id=item_id,
             values=column_values(task),
         )
+        if is_new:
+            time.sleep(AUTOMATION_SETTLE_SECONDS)
+            set_columns(
+                board_id=SUBITEM_BOARD_ID,
+                item_id=item_id,
+                values=column_values(task),
+            )
         print(f"{action}: {task['task_name']} ({item_id})")
     print(f"Done: created {created}, updated {updated}, skipped {skipped}; deleted 0.")
 

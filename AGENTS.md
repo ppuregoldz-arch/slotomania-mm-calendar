@@ -74,7 +74,7 @@ python3 scripts/upload_mm_calendar_day_monday.py --day 17
 - **Every day:** at least one **VFM second offer** (RYD / Rolling / Buy All / Decoy / Prize Mania). **Clan-Dash / Dash Pass do not count.** Mondays get a light second offer (RYD or Buy All), except MFL Mondays where Rolling is the VFM offer.
 - **DD pricing ≠ second-offer pricing** on the same day (when both are priced).
 - **Monday upload mapping:** `scripts/upload_mm_calendar_day_monday.py` — only rows that appear in `build_rows()` matter for the board; test with a single day before `--all`.
-- **Lotto peak + LBP:** upload leaves **Config Status empty** (no LiveOps config task; promo is the row name + rotation per `lotto_bonus.md`).
+- **Lotto peak + LBP:** MM calendar upload leaves **Config Status empty**. The separate Ops handoff must still create two tasks under the calendar day: one Lotto peak task and one LBP task.
 - **LBP timing:** **00:00 UTC → 11:00 UTC (Promo Time)** on the calendar day — not 2h post 12:00 UTC (see `promo_duration_note` in builder).
 
 Season SKU alignment: `scripts/validate_season_skus.py` (imported from the August builder validation).
