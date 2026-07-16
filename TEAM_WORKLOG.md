@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Ops field ownership corrections
+
+- **Goal:** Correct field ownership and timing on the 1 August Ops handoff.
+- **Done:** Cleared Operation Status on all 9 tasks and removed that write path permanently. Kept Once/Multiple only in its dedicated column, removed it from descriptions, and added exact UTC times to Start/End date values (11:00→11:00; LBP 00:00→11:00). Kept M&M Status agent-owned. Reduced Blast to the single specific MM source and confirmed it has no Economy-task relation.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/ops_board_schema.md`, `mm_calendar/data/ops_tasks/2026-08-01.json`, `scripts/build_ops_tasks_from_plan.py`, `scripts/upload_ops_task_monday.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** targeted Monday update ✓, all Operation Status values cleared ✓, UTC date-time values verified ✓, descriptions verified ✓, Blast source/economy relation verified ✓.
+- **Notes for next agent:** Monday renders UTC date-column times in the viewer timezone; stored `11:00:00` UTC displays as 14:00 for UTC+3 users.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — August 1 Ops tasks
 
 - **Goal:** Build the 1 August 2026 operational handoff on `Operation - Monetization` using only fresh execution evidence.

@@ -9,7 +9,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import time
 from pathlib import Path
 from typing import Any
 
@@ -58,7 +57,7 @@ def validate_spec(spec: dict[str, Any], *, allow_tbd: bool) -> None:
         raise SystemExit("Spec contains no tasks")
     unresolved: list[str] = []
     for task in spec["tasks"]:
-        for field in ("task_name", "start_date", "end_date", "description", "operation_status"):
+        for field in ("task_name", "start_date", "end_date", "description", "m_and_m_status"):
             if not task.get(field):
                 raise SystemExit(f"Task missing required field {field}: {task.get('task_name')}")
         if task.get("parent_day") != day:
@@ -108,10 +107,7 @@ def create_day_parent(day: str) -> dict[str, Any]:
     set_columns(
         board_id=BOARD_ID,
         item_id=parent["id"],
-        values={
-            "date4": {"date": day},
-            "color_mkv5jjn5": {"label": "To Do"},
-        },
+        values={"date4": {"date": day}},
     )
     parent["subitems"] = []
     return parent
@@ -162,15 +158,19 @@ def rename_subitem(item_id: str, name: str) -> None:
 
 def column_values(task: dict[str, Any]) -> dict[str, Any]:
     values: dict[str, Any] = {
-        "date_mm0f8tdb": {"date": task["start_date"]},
-        "date_mm0fr8sp": {"date": task["end_date"]},
-        "dup__of_m_m_status1": {"label": task["operation_status"]},
+        "date_mm0f8tdb": {
+            "date": task["start_date"],
+            "time": task.get("start_time") or "11:00:00",
+        },
+        "date_mm0fr8sp": {
+            "date": task["end_date"],
+            "time": task.get("end_time") or "11:00:00",
+        },
         "long_text": {"text": task["description"]},
+        "status": {"label": task["m_and_m_status"]},
     }
     if task.get("times_per_player"):
         values["times_per_player__1"] = {"labels": [task["times_per_player"]]}
-    if task.get("m_and_m_status"):
-        values["status"] = {"label": task["m_and_m_status"]}
     if task.get("due_date"):
         values["date_mkp4d99c"] = {"date": task["due_date"]}
     return values
@@ -187,7 +187,7 @@ def print_dry_run(spec: dict[str, Any], parent: dict[str, Any] | None) -> None:
         action = "UPDATE" if match else "CREATE"
         print(
             f"\n[{index}/{len(spec['tasks'])}] {action}: {task['task_name']}"
-            f"\n  Status: {task['operation_status']}"
+            f"\n  M&M Status: {task['m_and_m_status']}"
             f"\n  Window: {task['start_at']} -> {task['end_at']}"
             f"\n  Due: {task.get('due_date') or 'not set'}"
             f"\n  Review: {task.get('requires_review', False)}"
@@ -235,17 +235,6 @@ def commit(spec: dict[str, Any], parent: dict[str, Any] | None, args: argparse.N
             board_id=SUBITEM_BOARD_ID,
             item_id=item_id,
             values=column_values(task),
-        )
-        # M&M-status automations can clear Operation Status during the same update.
-        # Re-assert operational ownership after they settle.
-        time.sleep(0.25)
-        final_values: dict[str, Any] = {
-            "dup__of_m_m_status1": {"label": task["operation_status"]}
-        }
-        set_columns(
-            board_id=SUBITEM_BOARD_ID,
-            item_id=item_id,
-            values=final_values,
         )
         print(f"{action}: {task['task_name']} ({item_id})")
     print(f"Done: created {created}, updated {updated}, skipped {skipped}; deleted 0.")

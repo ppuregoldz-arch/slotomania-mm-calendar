@@ -13,7 +13,10 @@ alwaysApply: false
 - Historical execution references are limited to the 3 calendar months before the target date. Use the newest matching promo/variant first; never copy older tasks when no recent precedent exists.
 - `Reuse` requires a verified recent Ops source: record its date/item ID, reused scope, and current delta. The MM Creative Label alone is not proof of operational reuse.
 - August Promo Time is 11:00 UTC. A calendar date range is inclusive and ends at 11:00 UTC on the following day after its final date.
+- Never fill `Operation Status` (`dup__of_m_m_status1`); Ops owns it. The agent owns and may set only `M&M Status`.
+- Put Once/Multiple only in the dedicated `Times per player` column; never repeat it in Description.
+- Start/End date columns must include clock time. Standard promo: 11:00 UTC to next-day 11:00 UTC; time-limited/Night Plan tasks use their exact approved hours.
 - Generate tasks only when Ops must configure/open/schedule/award/target/publish/QA/close something. Exclude calendar-only rows that need no config (Status Boost, Lotto/LBP rotation, Shiny Collection comms, X2 Extreme Stamp, X2 GGS, Clan-Dash).
-- New drafts use Operation Status `To Do`, or the exact missing-dependency status. Never claim `Scheduled`, `QA Done`, `Done`, or successful QA before it occurs.
+- Choose `M&M Status` from the completeness of the Monetization handoff; never claim successful Ops/QA execution.
 - One day at a time. Match within that day by normalized task name. Add/update only; never delete, move, archive, comment, attach, relate, or assign unless explicitly authorized.
 - If the day parent is missing, stop unless Itay explicitly authorized creating it. Show the full proposed payload and every TBD before writing.

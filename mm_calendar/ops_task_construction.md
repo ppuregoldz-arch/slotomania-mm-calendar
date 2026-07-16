@@ -88,6 +88,8 @@ The plan-driven builder can draft only what exists in the source plan. Missing e
 - Night Plan uses `00:00 UTC` only when the source explicitly says Night Plan.
 - Never copy the historical March `12:00 UTC` convention into August.
 - Write the same dates into `date_mm0f8tdb` and `date_mm0fr8sp`; the Description carries exact UTC times.
+- Include the exact clock time in both Monday date columns (`date` + `time`), not only in Description.
+- Standard promo window: 11:00 UTC to 11:00 UTC the next day. Time-limited and Night Plan tasks use their exact approved hours.
 
 ## Naming
 
@@ -113,7 +115,6 @@ Audience: <confirmed audience or All eligible players>
 Mechanic: <execution instruction>
 Pricing: <High / Max / Mid / Low, if applicable>
 Prize / contents: <exact source text>
-Times per player: <Once / Multiple / TBD>
 
 Journey / flow:
 Trigger: <confirmed trigger or TBD>
@@ -149,7 +150,6 @@ For simple offer tasks, omit journey blocks that are genuinely unnecessary. Do n
 ```text
 Daily Deal: Coins + Gems + <central reward>.
 Pricing: High.
-Times per player: Multiple.
 ```
 
 ### Rolling Offer
@@ -216,20 +216,14 @@ BMFL is exactly 3 cycles and High pricing. Never substitute the deprecated Free1
 - Communication/store-asset scope.
 - Do not infer percentages from a generic `Coin Sale` calendar row; mark them TBD.
 
-## Status defaults
+## Status ownership
 
-For generated review specs:
-
-| Condition | Operation Status |
-|---|---|
-| Complete draft, not started | `To Do` |
-| Required config absent | `Missing Config` |
-| Required art absent | `Missing art` |
-| Both absent | `Missing Art+config` |
-| Card/reward MCP absent | `Missing MCP` |
-| Audience/parameter/reward unclear | `More Info required` |
-
-The builder does not mark `Scheduled`, `QA Done`, `Done`, or `M&M Completed` as an operational fact. Those are human/automation lifecycle outcomes.
+- **Never write Operation Status** (`dup__of_m_m_status1`). Leave it blank; Ops owns this lifecycle.
+- The agent owns `M&M Status` and may set it according to handoff completeness.
+- Use `M&M Completed` only when Monetization supplied an execution-ready definition.
+- Use `MM Work in Progress` when required mechanic, audience, reward, parameter, or source material is still missing.
+- Never use M&M Status to claim that Ops configured, scheduled, QA'd, or completed the promo.
+- Put `Once` / `Multiple` only in the dedicated `Times per player` column. Do not repeat it in Description.
 
 ## Comments and QA
 

@@ -119,17 +119,16 @@ def template_source(row: dict[str, Any]) -> dict[str, str] | None:
     return {"group_id": value[0], "group_title": value[1]}
 
 
-def dependency_status(row: dict[str, Any], description: str) -> tuple[str, list[str]]:
+def missing_dependencies(row: dict[str, Any], description: str) -> list[str]:
     config = row.get("config") or ""
     missing: list[str] = []
     if config == "MCP needed":
         missing.append("MCP / Economy task: TBD - owner required")
-        return "Missing MCP", missing
+        return missing
     missing.append("Config: TBD - owner required")
     if re.search(r"\bart\b|\bwidget\b|\bbanner\b|\binapp\b", description, re.I):
         missing.append("Art: TBD - owner required")
-        return "Missing Art+config", missing
-    return "Missing Config", missing
+    return missing
 
 
 def operational_description(
@@ -138,7 +137,6 @@ def operational_description(
     row: dict[str, Any],
     detail: str,
     end_iso: str,
-    frequency: str | None,
     missing: list[str],
 ) -> str:
     lines = [
@@ -151,7 +149,6 @@ def operational_description(
     ]
     if row.get("pricing"):
         lines.append(f"Pricing: {row['pricing']}")
-    lines.append(f"Times per player: {frequency or 'TBD - owner required'}")
     lines.extend(
         [
             "",
@@ -180,7 +177,7 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     end_iso = inclusive_end_date(start_iso, row["date_until"])
     detail = source_description(day, row)
     frequency = times_per_player(row["name"], detail)
-    operation_status, missing = dependency_status(row, detail)
+    missing = missing_dependencies(row, detail)
     template = template_source(row)
     warnings = [
         "Audience is not defined in the calendar source.",
@@ -204,8 +201,9 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "end_date": end_iso,
         "start_at": f"{start_iso} {PROMO_TIME}",
         "end_at": f"{end_iso} {PROMO_TIME}",
-        "operation_status": operation_status,
-        "m_and_m_status": None,
+        "start_time": "11:00:00",
+        "end_time": "11:00:00",
+        "m_and_m_status": "MM Work in Progress",
         "times_per_player": frequency,
         "reuse": None,
         "recent_ops_reference": None,
@@ -214,7 +212,6 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
             row=row,
             detail=detail,
             end_iso=end_iso,
-            frequency=frequency,
             missing=missing,
         ),
         "requires_review": True,
