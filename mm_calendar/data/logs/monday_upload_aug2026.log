@@ -1,0 +1,251 @@
+Indexing existing August items on board...
+2026-08-01: +1 ~12 (rows 13)
+2026-08-02: +4 ~0 (rows 4)
+2026-08-03: +10 ~0 (rows 10)
+2026-08-04: +12 ~0 (rows 12)
+2026-08-05: +9 ~0 (rows 9)
+Indexing existing August items on board...
+2026-08-06: +9 ~1 (rows 10)
+2026-08-31: +11 ~0 (rows 11)
+Done. Created 20, updated 1.
+Indexing existing August items on board...
+2026-08-07: +9 ~0 (rows 9)
+2026-08-08: +8 ~0 (rows 8)
+2026-08-09: +6 ~0 (rows 6)
+Indexing existing August items on board...
+2026-08-09: +0 ~6 (rows 6)
+2026-08-10: +13 ~0 (rows 13)
+Traceback (most recent call last):
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 525, in <module>
+    
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 516, in main
+    day = next(d for d in days if d["date"] == n)
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 481, in sync_day
+    rename_item(eid, row["name"])
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 414, in apply_row
+    vals["color_mkztqb24"] = {"label": row["config"]}
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 382, in set_columns
+    change_multiple_column_values(board_id: $board, item_id: $item, column_values: $vals) { id }
+  File "/Users/itayg/Desktop/Cursor Work/scripts/monday_client.py", line 51, in gql
+    raise RuntimeError(json.dumps(body["errors"], indent=2))
+RuntimeError: [
+  {
+    "message": "This status label doesn't exist, possible statuses are: {0: Rolling offer, 1: Short Term, 2: RYD, 3: Daily deal, 4: Buy all, 5: , 6: Mid Term, 7: Gems, 8: Event, 9: Core, 10: SlotoBucks, 11: MGAP, 12: Day, 13: Clan-Dash, 14: Counter PO, 15: Extreme stamp, 16: Album, 17: Offers & coin sale, 18: Black Diamond, 19: DTC, 101: ADS, 102: Prize Mania}",
+    "locations": [
+      {
+        "line": 1,
+        "column": 51
+      }
+    ],
+    "path": [
+      "change_multiple_column_values"
+    ],
+    "extensions": {
+      "code": "ColumnValueException",
+      "status_code": 200,
+      "error_data": {
+        "column_type": "color",
+        "column_id": "status",
+        "column_value": "{\"label\" => \"Segmented test\"}",
+        "column_validation_error_code": "missingLabel",
+        "column_name": "Product"
+      },
+      "service": "monolith"
+    }
+  }
+]
+2026-08-10: +9 ~4 (rows 13)
+Traceback (most recent call last):
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 528, in <module>
+    main()
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 519, in main
+    c, u = sync_day(day, ex)
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 484, in sync_day
+    apply_row(row)
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 417, in apply_row
+    set_columns(item_id, vals)
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 385, in set_columns
+    gql(q, {"board": str(BOARD_ID), "item": item_id, "vals": json.dumps(values)})
+  File "/Users/itayg/Desktop/Cursor Work/scripts/monday_client.py", line 51, in gql
+    raise RuntimeError(json.dumps(body["errors"], indent=2))
+RuntimeError: [
+  {
+    "message": "This status label doesn't exist, possible statuses are: {0: Rolling offer, 1: Short Term, 2: RYD, 3: Daily deal, 4: Buy all, 5: , 6: Mid Term, 7: Gems, 8: Event, 9: Core, 10: SlotoBucks, 11: MGAP, 12: Day, 13: Clan-Dash, 14: Counter PO, 15: Extreme stamp, 16: Album, 17: Offers & coin sale, 18: Black Diamond, 19: DTC, 101: ADS, 102: Prize Mania}",
+    "locations": [
+      {
+        "line": 1,
+        "column": 51
+      }
+    ],
+    "path": [
+      "change_multiple_column_values"
+    ],
+    "extensions": {
+      "code": "ColumnValueException",
+      "status_code": 200,
+      "error_data": {
+        "column_type": "color",
+        "column_id": "status",
+        "column_value": "{\"label\" => \"Segmented test\"}",
+        "column_validation_error_code": "missingLabel",
+        "column_name": "Product"
+      },
+      "service": "monolith"
+    }
+  }
+]
+Indexing existing August items on board...
+2026-08-01: +1 ~12 -0 dup (rows 13)
+2026-08-02: +0 ~4 -0 dup (rows 4)
+2026-08-03: +0 ~10 -0 dup (rows 10)
+2026-08-04: +0 ~12 -1 dup (rows 12)
+2026-08-05: +0 ~9 -0 dup (rows 9)
+2026-08-06: +0 ~10 -0 dup (rows 10)
+2026-08-07: +0 ~9 -0 dup (rows 9)
+2026-08-08: +0 ~8 -0 dup (rows 8)
+2026-08-09: +0 ~6 -0 dup (rows 6)
+2026-08-10: +0 ~13 -9 dup (rows 13)
+2026-08-11: +0 ~11 -0 dup (rows 11)
+Traceback (most recent call last):
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 570, in <module>
+    main()
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 559, in main
+    c, u, r = sync_day(day, ex)
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 518, in sync_day
+    new_id = apply_row(row)
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 430, in apply_row
+    set_columns(item_id, vals)
+  File "/Users/itayg/Desktop/Cursor Work/scripts/upload_mm_calendar_day_monday.py", line 399, in set_columns
+    gql(q, {"board": str(BOARD_ID), "item": item_id, "vals": json.dumps(values)})
+  File "/Users/itayg/Desktop/Cursor Work/scripts/monday_client.py", line 51, in gql
+    raise RuntimeError(json.dumps(body["errors"], indent=2))
+RuntimeError: [
+  {
+    "message": "This status label doesn't exist, possible statuses are: {0: Rolling offer, 1: Short Term, 2: RYD, 3: Daily deal, 4: Buy all, 5: , 6: Mid Term, 7: Gems, 8: Event, 9: Core, 10: SlotoBucks, 11: MGAP, 12: Day, 13: Clan-Dash, 14: Counter PO, 15: Extreme stamp, 16: Album, 17: Offers & coin sale, 18: Black Diamond, 19: DTC, 101: ADS, 102: Prize Mania}",
+    "locations": [
+      {
+        "line": 1,
+        "column": 51
+      }
+    ],
+    "path": [
+      "change_multiple_column_values"
+    ],
+    "extensions": {
+      "code": "ColumnValueException",
+      "status_code": 200,
+      "error_data": {
+        "column_type": "color",
+        "column_id": "status",
+        "column_value": "{\"label\" => \"Popup Store\"}",
+        "column_validation_error_code": "missingLabel",
+        "column_name": "Product"
+      },
+      "service": "monolith"
+    }
+  }
+]
+Indexing existing August items on board...
+2026-08-12: +8 ~2 -0 dup (rows 10)
+2026-08-13: +11 ~0 -0 dup (rows 11)
+2026-08-14: +11 ~0 -0 dup (rows 11)
+2026-08-15: +10 ~0 -0 dup (rows 10)
+2026-08-16: +9 ~0 -0 dup (rows 9)
+2026-08-17: +10 ~0 -0 dup (rows 10)
+2026-08-18: +10 ~0 -0 dup (rows 10)
+2026-08-19: +9 ~0 -0 dup (rows 9)
+2026-08-20: +9 ~0 -0 dup (rows 9)
+2026-08-21: +11 ~0 -0 dup (rows 11)
+2026-08-22: +12 ~0 -0 dup (rows 12)
+2026-08-23: +5 ~0 -0 dup (rows 5)
+2026-08-24: +11 ~0 -0 dup (rows 11)
+2026-08-25: +14 ~0 -0 dup (rows 14)
+2026-08-26: +10 ~0 -0 dup (rows 10)
+2026-08-27: +10 ~0 -0 dup (rows 10)
+2026-08-28: +7 ~0 -0 dup (rows 7)
+2026-08-29: +10 ~0 -0 dup (rows 10)
+2026-08-30: +9 ~0 -0 dup (rows 9)
+2026-08-31: +0 ~11 -0 dup (rows 11)
+Done. Created 186, updated 13, removed dupes 0.
+Indexing existing August items on board...
+2026-08-01: +1 ~12 -0 dup (rows 13)
+2026-08-02: +0 ~4 -0 dup (rows 4)
+2026-08-03: +0 ~10 -0 dup (rows 10)
+2026-08-04: +0 ~12 -1 dup (rows 12)
+2026-08-05: +0 ~9 -0 dup (rows 9)
+2026-08-06: +0 ~10 -0 dup (rows 10)
+2026-08-07: +0 ~9 -0 dup (rows 9)
+2026-08-08: +0 ~8 -0 dup (rows 8)
+2026-08-09: +0 ~6 -0 dup (rows 6)
+2026-08-10: +0 ~13 -0 dup (rows 13)
+2026-08-11: +0 ~11 -0 dup (rows 11)
+2026-08-12: +0 ~10 -0 dup (rows 10)
+2026-08-13: +0 ~11 -0 dup (rows 11)
+2026-08-14: +0 ~11 -0 dup (rows 11)
+2026-08-15: +0 ~10 -0 dup (rows 10)
+2026-08-16: +0 ~9 -0 dup (rows 9)
+2026-08-17: +0 ~10 -0 dup (rows 10)
+2026-08-18: +0 ~10 -0 dup (rows 10)
+2026-08-19: +0 ~9 -0 dup (rows 9)
+2026-08-20: +0 ~9 -0 dup (rows 9)
+2026-08-21: +0 ~11 -0 dup (rows 11)
+2026-08-22: +0 ~12 -0 dup (rows 12)
+2026-08-23: +0 ~5 -0 dup (rows 5)
+2026-08-24: +0 ~11 -0 dup (rows 11)
+2026-08-25: +0 ~14 -0 dup (rows 14)
+2026-08-26: +0 ~10 -0 dup (rows 10)
+2026-08-27: +0 ~10 -0 dup (rows 10)
+2026-08-28: +0 ~7 -0 dup (rows 7)
+2026-08-29: +0 ~10 -0 dup (rows 10)
+2026-08-30: +0 ~9 -0 dup (rows 9)
+2026-08-31: +0 ~11 -0 dup (rows 11)
+Done. Created 1, updated 303, removed dupes 1.
+2026-08-04: +1 ~11 -2 dup (rows 12)
+Done. Created 1, updated 11, removed dupes 2.
+2026-08-08: +0 ~8 -0 dup (rows 8)
+Done. Created 0, updated 8, removed dupes 0.
+2026-08-11: +0 ~10 -0 dup (rows 10)
+Done. Created 0, updated 10, removed dupes 0.
+2026-08-15: +1 ~9 -0 dup (rows 10)
+Done. Created 1, updated 9, removed dupes 0.
+2026-08-18: +0 ~9 -0 dup (rows 9)
+Done. Created 0, updated 9, removed dupes 0.
+2026-08-22: +0 ~12 -0 dup (rows 12)
+Done. Created 0, updated 12, removed dupes 0.
+2026-08-25: +0 ~14 -0 dup (rows 14)
+Done. Created 0, updated 14, removed dupes 0.
+2026-08-29: +0 ~8 -0 dup (rows 8)
+Done. Created 0, updated 8, removed dupes 0.
+Indexing existing August items on board...
+2026-08-01: +1 ~13 -0 dup (rows 14)
+2026-08-02: +0 ~4 -0 dup (rows 4)
+2026-08-03: +1 ~10 -0 dup (rows 11)
+2026-08-04: +0 ~12 -0 dup (rows 12)
+2026-08-05: +0 ~7 -0 dup (rows 7)
+2026-08-06: +1 ~8 -0 dup (rows 9)
+2026-08-07: +0 ~9 -0 dup (rows 9)
+2026-08-08: +0 ~8 -0 dup (rows 8)
+2026-08-09: +0 ~6 -0 dup (rows 6)
+2026-08-10: +2 ~13 -0 dup (rows 15)
+2026-08-11: +0 ~10 -0 dup (rows 10)
+2026-08-12: +1 ~8 -0 dup (rows 9)
+2026-08-13: +2 ~8 -0 dup (rows 10)
+2026-08-14: +1 ~10 -0 dup (rows 11)
+2026-08-15: +0 ~10 -0 dup (rows 10)
+2026-08-16: +1 ~8 -0 dup (rows 9)
+2026-08-17: +2 ~10 -0 dup (rows 12)
+2026-08-18: +0 ~9 -0 dup (rows 9)
+2026-08-19: +0 ~8 -0 dup (rows 8)
+2026-08-20: +2 ~7 -0 dup (rows 9)
+2026-08-21: +0 ~11 -0 dup (rows 11)
+2026-08-22: +0 ~12 -0 dup (rows 12)
+2026-08-23: +0 ~5 -0 dup (rows 5)
+2026-08-24: +0 ~11 -0 dup (rows 11)
+2026-08-25: +0 ~14 -0 dup (rows 14)
+2026-08-26: +0 ~8 -0 dup (rows 8)
+2026-08-27: +1 ~9 -0 dup (rows 10)
+2026-08-28: +0 ~7 -0 dup (rows 7)
+2026-08-29: +0 ~8 -0 dup (rows 8)
+2026-08-30: +1 ~7 -0 dup (rows 8)
+2026-08-31: +1 ~10 -0 dup (rows 11)
+Done. Created 17, updated 280, removed dupes 0.

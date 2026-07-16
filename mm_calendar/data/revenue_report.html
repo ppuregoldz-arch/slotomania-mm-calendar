@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Revenue by Promo — מאי-יוני 2026</title><style>
+  :root{--bg:#0b0f17;--card:#141b2b;--card2:#1b2436;--stroke:#26314a;--txt:#e7ecf5;--mut:#8b96ad;--g:#22c55e;--r:#ef4444;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:linear-gradient(180deg,#0b0f17,#0d1320);color:var(--txt);font-family:-apple-system,"Segoe UI",Rubik,Arial,sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 20px 60px;}
+  h1{font-size:24px;margin:0 0 4px;}
+  .sub{color:var(--mut);font-size:12.5px;margin-bottom:22px;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+  .kpi{background:var(--card);border:1px solid var(--stroke);border-radius:14px;padding:14px 16px;}
+  .kpi .v{font-size:20px;font-weight:700;}
+  .kpi .l{color:var(--mut);font-size:11.5px;margin-top:2px;}
+  .card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:20px 22px;margin-bottom:22px;}
+  .card h2{font-size:16px;margin:0 0 4px;}
+  .card .note{color:var(--mut);font-size:12px;margin-bottom:16px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{text-align:right;color:var(--mut);font-weight:600;font-size:11px;padding:6px 8px;border-bottom:1px solid var(--stroke);}
+  td{padding:8px;border-bottom:1px solid #1e2740;}
+  td.num{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .nm{font-weight:600;white-space:nowrap;}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-left:7px;vertical-align:middle;}
+  .track{width:42%;}
+  .bar{position:relative;height:15px;background:#0e1524;border-radius:8px;overflow:hidden;}
+  .bar .fill{position:absolute;right:0;top:0;height:100%;border-radius:8px;}
+  .barc{position:relative;height:15px;background:#0e1524;border-radius:8px;}
+  .barc .fill{position:absolute;height:100%;}
+  .barc .fill.pos{right:50%;border-radius:8px 0 0 8px;}
+  .barc .fill.neg{left:50%;border-radius:0 8px 8px 0;}
+  .g{color:var(--g);}.r{color:var(--r);}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;font-size:11px;color:var(--mut);}
+  .legend span{display:inline-flex;align-items:center;gap:5px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .ins{background:var(--card2);border:1px solid var(--stroke);border-radius:12px;padding:14px 16px;}
+  .ins h3{margin:0 0 6px;font-size:14px;}
+  .ins p{margin:0;color:#c3ccdd;font-size:13px;line-height:1.5;}
+  .warn{background:#2a1e12;border:1px solid #5a3d1a;color:#f0c890;border-radius:12px;padding:11px 15px;font-size:12px;line-height:1.5;margin-top:6px;}
+</style></head><body><div class="wrap"><h1>Revenue — הכנסה לפי פרומו</h1>
+    <div class="sub">avg הכנסה יומית לפי וריאציית פרומו · ימי "solo" (רץ סוג אחד מהמסלול) · מקור: Revenue By Product.csv × בורד MM calendar</div>
+    <div class="kpis">
+      <div class="kpi"><div class="v" style="color:#ec4899">$235K</div><div class="l">MGAP Bigger Multipliers (#1)</div></div>
+      <div class="kpi"><div class="v" style="color:#22c55e">$133K</div><div class="l">DD Hammers (העוגן, n=21)</div></div>
+      <div class="kpi"><div class="v" style="color:#4f9cff">$132K</div><div class="l">Rolling Buy More for Less</div></div>
+      <div class="kpi"><div class="v">מאי-יוני</div><div class="l">טווח (מדגם קצר)</div></div>
+    </div>
+    <div class="card"><h2>דירוג פרומואים לפי הכנסה/יום</h2>
+    <div class="note">מיון לפי avg $/יום. צבע = מסלול. ⭐ מנצח · ⛔ Clan Pack הוסר (מוצג לרפרנס בלבד).</div>
+    <table><thead><tr><th>פרומו</th><th class="num">מסלול</th><th class="num">ימים</th><th class="num">$/יום</th><th class="track">חוזק</th></tr></thead>
+    <tbody><tr>
+          <td class="nm"><span class="dot" style="background:#ec4899"></span>MGAP Bigger Multipliers</td>
+          <td class="num" style="color:#ec4899">MGAP</td>
+          <td class="num">3</td>
+          <td class="num g">$235,387</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:100.0%;background:#ec4899"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#ec4899"></span>MGAP BOGO</td>
+          <td class="num" style="color:#ec4899">MGAP</td>
+          <td class="num">7</td>
+          <td class="num g">$190,992</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:81.1%;background:#ec4899"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#ec4899"></span>MGAP Matched</td>
+          <td class="num" style="color:#ec4899">MGAP</td>
+          <td class="num">5</td>
+          <td class="num g">$183,760</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:78.1%;background:#ec4899"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#ec4899"></span>MGAP Wild Symbols</td>
+          <td class="num" style="color:#ec4899">MGAP</td>
+          <td class="num">2</td>
+          <td class="num g">$178,453</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:75.8%;background:#ec4899"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#22c55e"></span>DD Clan Pack ⛔</td>
+          <td class="num" style="color:#22c55e">Daily Deal</td>
+          <td class="num">4</td>
+          <td class="num g">$151,389</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:64.3%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#22c55e"></span>DD Superboom</td>
+          <td class="num" style="color:#22c55e">Daily Deal</td>
+          <td class="num">2</td>
+          <td class="num g">$132,904</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:56.5%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#22c55e"></span>DD Hammers ⭐</td>
+          <td class="num" style="color:#22c55e">Daily Deal</td>
+          <td class="num">21</td>
+          <td class="num g">$132,528</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:56.3%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#4f9cff"></span>Rolling Buy More for Less ⭐</td>
+          <td class="num" style="color:#4f9cff">Rolling</td>
+          <td class="num">4</td>
+          <td class="num g">$131,689</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:55.9%;background:#4f9cff"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#22c55e"></span>DD Wild Supreme</td>
+          <td class="num" style="color:#22c55e">Daily Deal</td>
+          <td class="num">2</td>
+          <td class="num g">$129,187</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:54.9%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#22c55e"></span>DD SB Wheel</td>
+          <td class="num" style="color:#22c55e">Daily Deal</td>
+          <td class="num">4</td>
+          <td class="num g">$127,011</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:54.0%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#22c55e"></span>DD Wild Any</td>
+          <td class="num" style="color:#22c55e">Daily Deal</td>
+          <td class="num">7</td>
+          <td class="num g">$106,075</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:45.1%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#22c55e"></span>DD Parasheep/AS</td>
+          <td class="num" style="color:#22c55e">Daily Deal</td>
+          <td class="num">8</td>
+          <td class="num g">$104,774</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:44.5%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#4f9cff"></span>Rolling bar/cycles</td>
+          <td class="num" style="color:#4f9cff">Rolling</td>
+          <td class="num">2</td>
+          <td class="num g">$104,080</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:44.2%;background:#4f9cff"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#4f9cff"></span>Rolling Supersized</td>
+          <td class="num" style="color:#4f9cff">Rolling</td>
+          <td class="num">2</td>
+          <td class="num g">$73,745</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:31.3%;background:#4f9cff"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#a855f7"></span>RYD 100% SB</td>
+          <td class="num" style="color:#a855f7">RYD</td>
+          <td class="num">2</td>
+          <td class="num g">$71,672</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:30.4%;background:#a855f7"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#06b6d4"></span>Buy All Coins</td>
+          <td class="num" style="color:#06b6d4">Buy All</td>
+          <td class="num">2</td>
+          <td class="num g">$70,232</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:29.8%;background:#06b6d4"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#06b6d4"></span>Buy All Decoy Bonanza</td>
+          <td class="num" style="color:#06b6d4">Buy All</td>
+          <td class="num">1</td>
+          <td class="num g">$56,650</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:24.1%;background:#06b6d4"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#06b6d4"></span>Buy All Wild</td>
+          <td class="num" style="color:#06b6d4">Buy All</td>
+          <td class="num">4</td>
+          <td class="num g">$55,461</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:23.6%;background:#06b6d4"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#eab308"></span>Gems Boosted Gemback</td>
+          <td class="num" style="color:#eab308">Gems</td>
+          <td class="num">2</td>
+          <td class="num g">$42,848</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:18.2%;background:#eab308"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#a855f7"></span>RYD Wild Gold</td>
+          <td class="num" style="color:#a855f7">RYD</td>
+          <td class="num">1</td>
+          <td class="num g">$36,368</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:15.5%;background:#a855f7"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#eab308"></span>Gems GGS</td>
+          <td class="num" style="color:#eab308">Gems</td>
+          <td class="num">5</td>
+          <td class="num g">$34,111</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:14.5%;background:#eab308"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#eab308"></span>Gems Sale</td>
+          <td class="num" style="color:#eab308">Gems</td>
+          <td class="num">5</td>
+          <td class="num g">$32,918</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:14.0%;background:#eab308"></div></div></td>
+        </tr><tr>
+          <td class="nm"><span class="dot" style="background:#a855f7"></span>RYD 150% SB</td>
+          <td class="num" style="color:#a855f7">RYD</td>
+          <td class="num">6</td>
+          <td class="num g">$31,750</td>
+          <td class="track"><div class="bar"><div class="fill" style="width:13.5%;background:#a855f7"></div></div></td>
+        </tr></tbody></table><div class="legend"><span><i class="dot" style="background:#ec4899;display:inline-block;width:9px;height:9px;border-radius:3px"></i>MGAP</span><span><i class="dot" style="background:#4f9cff;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Rolling</span><span><i class="dot" style="background:#22c55e;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Daily Deal</span><span><i class="dot" style="background:#eab308;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Gems</span><span><i class="dot" style="background:#06b6d4;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Buy All</span><span><i class="dot" style="background:#a855f7;display:inline-block;width:9px;height:9px;border-radius:3px"></i>RYD</span></div></div>
+    <div class="grid2">
+      <div class="ins"><h3 style="color:#ec4899">מנועי ההכנסה</h3><p><b>MGAP Bigger Multipliers</b> (~$235K) החזק ביותר, ואחריו <b>BOGO</b> (~$191K, n=7 יציב). <b>DD Hammers</b> העוגן (~$133K על 21 ימים) ו-<b>Rolling Buy More for Less</b> (~$132K).</p></div>
+      <div class="ins"><h3 style="color:#ef4444">חלשים יחסית</h3><p><b>Rolling Supersized</b> (~$74K מול $132K ל-BMFL) · <b>DD Wild Any / Parasheep</b> (~$105K מול $133K ל-Hammers). RYD 150% נמוך (~$32K).</p></div>
+    </div>
+    <div class="warn">⚠️ <b>מדגם קצר</b> (מאי-יוני) · סוגים עם n<3 = רעש · ייחוס DD חלקי (Sticky Bundle PP proxy) · קורלציה לא סיבתיות.</div></div></body></html>

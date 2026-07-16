@@ -1,0 +1,81 @@
+{
+  "offer_declined_flow_example": {
+    "description": "Example of paid offer decline flow - Events 1,2,3 only",
+    "flow_sequence": "Purchase → FROZEN → READY_TO_PLAY → OFFER_DECLINED (End)",
+    
+    "event_1_frozen": {
+      "eventType": "FROZEN",
+      "userId": 789012,
+      "sessionId": "sess-decline-001",
+      "gameType": "coins_regular", 
+      "gameId": "aviator-decline-uuid-001",
+      "configId": "s3-config-uuid-003",
+      "segmentId": 15,
+      "aviatorTransactionId": "aviator-decline-txn-111",
+      "originTransactionId": "purchase-decline-txn-222",
+      "eventTs": 1746734700000,
+      "historyData": {
+        "pbeTransactionId": "pbe-decline-001",
+        "sourceName": "Premium Pack $19.99",
+        "pbeBaseAmount": "25000.00"
+      },
+      "entryPath": "PAID",
+      "bonusGameSequenceIdx": 0,
+      "parentGameId": null,
+      "baseAmount": "25000.00",
+      "totalRounds": 2,
+      "growthFormula": {
+        "type": "exponential",
+        "params": {
+          "baseMultiplier": 2.0,
+          "initialGrowthStep": 0.2,
+          "accelRate": 0.35
+        }
+      }
+    },
+    
+    "event_2_ready_to_play": {
+      "eventType": "READY_TO_PLAY",
+      "userId": 789012,
+      "sessionId": "sess-decline-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-decline-uuid-001", 
+      "configId": "s3-config-uuid-003",
+      "segmentId": 15,
+      "aviatorTransactionId": "aviator-decline-txn-111",
+      "originTransactionId": "purchase-decline-txn-222",
+      "eventTs": 1746734703000,
+      "historyData": {
+        "pbeTransactionId": "pbe-decline-001",
+        "sourceName": "Premium Pack $19.99",
+        "pbeBaseAmount": "25000.00"
+      }
+    },
+    
+    "event_3_offer_declined": {
+      "eventType": "OFFER_DECLINED",
+      "userId": 789012,
+      "sessionId": "sess-decline-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-decline-uuid-001",
+      "configId": "s3-config-uuid-003", 
+      "segmentId": 15,
+      "aviatorTransactionId": "aviator-decline-txn-111",
+      "originTransactionId": "purchase-decline-txn-222",
+      "eventTs": 1746734710000,
+      "historyData": {
+        "pbeTransactionId": "pbe-decline-001",
+        "sourceName": "Premium Pack $19.99", 
+        "pbeBaseAmount": "25000.00"
+      }
+    },
+    
+    "flow_notes": {
+      "outcome": "Player declined to play Aviator after purchase",
+      "events_emitted": 3,
+      "no_gameplay_events": "No ROUND_STARTED, ROUND_ENDED, or USER_REWARDED events",
+      "transaction_status": "Purchase completed but Aviator not played",
+      "analytical_impact": "Counts as conversion failure for Aviator feature"
+    }
+  }
+}

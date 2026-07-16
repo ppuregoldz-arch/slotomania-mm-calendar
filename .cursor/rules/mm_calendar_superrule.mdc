@@ -1,0 +1,19 @@
+---
+description: Highest-level routing and evidence rules for MM Calendar work
+alwaysApply: true
+---
+
+# MM Calendar Superrule
+
+For any Slotomania monetization, promotion, measurement, performance, prediction, or MM Calendar task:
+
+1. A live explicit instruction from Itay overrides every project document.
+2. Read `mm_calendar/00_GUIDELINES_ITAY.md` first.
+3. Route through `mm_calendar/BUILD_CALENDAR_ROUTER.md`.
+4. Month-specific economy ceilings and card banks remain HARD unless Itay explicitly approves that exception.
+5. Never change or sync Monday without explicit approval.
+6. Never delete or overwrite raw sources.
+7. Never infer missing business rules or numeric results.
+8. Low-confidence evidence is not a confirmed learning.
+9. Every numeric KPI result needs source, baseline method, calculation date, confidence, and validation status.
+10. Main KPI is a family default with documented variant/instance overrides when intended player action differs.

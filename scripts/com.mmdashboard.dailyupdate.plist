@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.mmdashboard.dailyupdate</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/itayg/Desktop/Cursor Work/scripts/daily_update.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/itayg/Desktop/Cursor Work</string>
+
+    <!-- Runs once a day at 10:00 local time, after the previous day's DWH data is expected to land. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>10</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- Run once immediately when the job is (re)loaded, so you can verify it's wired up
+         without waiting until 06:00. -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- If the Mac was asleep at 06:00, launchd runs the missed job as soon as it wakes —
+         no day is silently skipped. -->
+    <key>StandardOutPath</key>
+    <string>/Users/itayg/Desktop/Cursor Work/mm_calendar/data/logs/launchd_stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/itayg/Desktop/Cursor Work/mm_calendar/data/logs/launchd_stderr.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin</string>
+    </dict>
+</dict>
+</plist>

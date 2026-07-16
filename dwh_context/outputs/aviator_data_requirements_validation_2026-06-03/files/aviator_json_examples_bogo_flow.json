@@ -1,0 +1,275 @@
+{
+  "bogo_flow_examples": {
+    "description": "Complete JSON examples for BOGO (Buy One, Get One) Aviator flow - 1 Main + 2 Bonus games",
+    "flow_sequence": "Purchase → Main Game (Events 1,2,4,5,4,5,6) → Bonus Game 1 (Events 1,2,4,5,4,5,6) → Bonus Game 2 (Events 1,2,4,5,4,5,6)",
+    
+    "main_game": {
+      "description": "Paid main game from purchase",
+      
+      "event_1_frozen_main": {
+        "eventType": "FROZEN",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-main-uuid-001",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": "aviator-bogo-txn-999",
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734500000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        },
+        "entryPath": "PAID",
+        "bonusGameSequenceIdx": 0,
+        "parentGameId": null,
+        "baseAmount": "10000.00",
+        "totalRounds": 2,
+        "growthFormula": {
+          "type": "exponential",
+          "params": {
+            "baseMultiplier": 1.8,
+            "initialGrowthStep": 0.15,
+            "accelRate": 0.3
+          }
+        }
+      },
+      
+      "event_2_ready_to_play_main": {
+        "eventType": "READY_TO_PLAY",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-main-uuid-001",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": "aviator-bogo-txn-999",
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734502000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        }
+      },
+      
+      "event_6_user_rewarded_main": {
+        "eventType": "USER_REWARDED",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-main-uuid-001",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": "aviator-bogo-txn-999",
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734540000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        },
+        "gameResult": {
+          "coins": "32000.00",
+          "bundleIds": [2001, 2002, 2005],
+          "appliedOnTopMultiplier": 1.5,
+          "winningRoundIdx": 1,
+          "winningRawMultiplier": 4.2
+        }
+      }
+    },
+    
+    "bonus_game_1": {
+      "description": "First bonus game - linked to main game",
+      
+      "event_1_frozen_bonus1": {
+        "eventType": "FROZEN",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-bonus1-uuid-002",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": null,
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734550000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        },
+        "entryPath": "BONUS",
+        "bonusGameSequenceIdx": 1,
+        "parentGameId": "aviator-main-uuid-001",
+        "baseAmount": "10000.00",
+        "totalRounds": 2,
+        "growthFormula": {
+          "type": "exponential",
+          "params": {
+            "baseMultiplier": 1.8,
+            "initialGrowthStep": 0.15,
+            "accelRate": 0.3
+          }
+        }
+      },
+      
+      "event_2_ready_to_play_bonus1": {
+        "eventType": "READY_TO_PLAY",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-bonus1-uuid-002",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": null,
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734550000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        }
+      },
+      
+      "event_6_user_rewarded_bonus1": {
+        "eventType": "USER_REWARDED",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-bonus1-uuid-002",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": null,
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734580000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        },
+        "gameResult": {
+          "coins": "18000.00",
+          "bundleIds": [2001],
+          "appliedOnTopMultiplier": null,
+          "winningRoundIdx": 0,
+          "winningRawMultiplier": 1.8
+        }
+      }
+    },
+    
+    "bonus_game_2": {
+      "description": "Second bonus game - also linked to main game",
+      
+      "event_1_frozen_bonus2": {
+        "eventType": "FROZEN",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-bonus2-uuid-003",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": null,
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734590000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        },
+        "entryPath": "BONUS",
+        "bonusGameSequenceIdx": 2,
+        "parentGameId": "aviator-main-uuid-001",
+        "baseAmount": "10000.00",
+        "totalRounds": 2,
+        "growthFormula": {
+          "type": "exponential",
+          "params": {
+            "baseMultiplier": 1.8,
+            "initialGrowthStep": 0.15,
+            "accelRate": 0.3
+          }
+        }
+      },
+      
+      "event_2_ready_to_play_bonus2": {
+        "eventType": "READY_TO_PLAY",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-bonus2-uuid-003",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": null,
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734590000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        }
+      },
+      
+      "event_6_user_rewarded_bonus2": {
+        "eventType": "USER_REWARDED",
+        "userId": 123456,
+        "sessionId": "sess-bogo123-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-bonus2-uuid-003",
+        "configId": "s3-config-uuid-002",
+        "segmentId": 42,
+        "aviatorTransactionId": null,
+        "originTransactionId": "purchase-bogo-txn-888",
+        "eventTs": 1746734620000,
+        "historyData": {
+          "pbeTransactionId": "pbe-bogo-001",
+          "sourceName": "BOGO Coin Pack $9.99",
+          "pbeBaseAmount": "10000.00"
+        },
+        "gameResult": {
+          "coins": "25000.00",
+          "bundleIds": [2002, 2003],
+          "appliedOnTopMultiplier": null,
+          "winningRoundIdx": 1,
+          "winningRawMultiplier": 2.5
+        }
+      }
+    },
+    
+    "bogo_chain_summary": {
+      "chain_root_id": "aviator-main-uuid-001",
+      "original_purchase_transaction": "purchase-bogo-txn-888",
+      "original_aviator_transaction": "aviator-bogo-txn-999",
+      "total_games_in_chain": 3,
+      "games": [
+        {
+          "game_id": "aviator-main-uuid-001",
+          "parent_game_id": null,
+          "bonus_sequence_idx": 0,
+          "entry_path": "PAID",
+          "aviator_transaction_id": "aviator-bogo-txn-999",
+          "final_reward": "32000.00"
+        },
+        {
+          "game_id": "aviator-bonus1-uuid-002", 
+          "parent_game_id": "aviator-main-uuid-001",
+          "bonus_sequence_idx": 1,
+          "entry_path": "BONUS",
+          "aviator_transaction_id": null,
+          "final_reward": "18000.00"
+        },
+        {
+          "game_id": "aviator-bonus2-uuid-003",
+          "parent_game_id": "aviator-main-uuid-001", 
+          "bonus_sequence_idx": 2,
+          "entry_path": "BONUS",
+          "aviator_transaction_id": null,
+          "final_reward": "25000.00"
+        }
+      ],
+      "total_chain_reward": "75000.00",
+      "total_chain_multiplier": 7.5
+    }
+  }
+}

@@ -1,0 +1,385 @@
+---
+description: Analytical Workspace Documentation and Organization Rule
+globs: 
+alwaysApply: true
+---
+
+# Analytical Workspace Documentation and Organization
+
+name: analytical_workspace_documentation
+description: >
+  Comprehensive documentation and organization rule for ongoing analytical workspaces. This rule ensures structured output management, contextual knowledge capture, and reproducible investigations. It must be followed whenever creating any project artifact: documents, queries, workbooks, analyses, files, or investigations. The rule maintains a dual structure: topic-based outputs for deliverables and domain-based context for business knowledge, enabling seamless project continuation and knowledge discovery.
+
+## Documentation Types and Purposes
+
+This workspace maintains two distinct types of documentation with different purposes and update requirements.
+
+### Context Repository Documentation
+**Purpose:** Long-term reusable knowledge base for future work
+
+**Scope:** Business, technical, analytical, and operational knowledge that supports:
+- Future analyses and investigations
+- Dashboard and query development  
+- Business decisions and feature understanding
+- Technical research and data modeling
+
+**Update Trigger:** Whenever new reusable knowledge is discovered
+
+**Dual Query Structure:** Each squad/feature maintains two query files:
+- `queries.md` - Reusable SQL queries with lasting analytical value (selective storage)
+- `queries-explanation.md` - Business logic, patterns, query intelligence, frameworks
+
+**Context Repository Query Storage Scope:**
+Store queries ONLY when they represent reusable knowledge:
+- **Frequently used analytical patterns** and methodologies
+- **Important business logic** queries (segmentation, configuration, gatekeeping)
+- **Complex or non-trivial joins** likely to be reused
+- **Feature-specific query patterns** with broad applicability
+- **Reusable calculation methodologies** and KPI definitions
+
+**Do NOT store in Context:**
+- **One-off queries** for specific investigations
+- **Temporary troubleshooting** or ad-hoc exploration
+- **Small query revisions** or iterative corrections
+- **Topic-specific analysis** queries without reuse potential
+- **Draft or experimental** queries without proven value
+
+**Examples of Context Repository content:**
+- **Reusable SQL queries** (validated patterns, standard joins, calculation templates)
+- **Query intelligence** (business logic extraction, pattern identification)
+- **Business logic** (segmentation rules, feature mechanics, configuration logic)
+- **Technical knowledge** (table definitions, field meanings, calculation logic)
+- **Analytical patterns** (query templates, dashboard methodologies, reusable joins)
+- **Operational workflows** (experiment processes, KPI definitions)
+- **Data relationships** (table joins, known limitations, data quality notes)
+
+**Examples requiring Context updates:**
+- User provides SQL queries → Store in `queries.md` + extract intelligence to `queries-explanation.md`
+- `rv_segment_opportunistic` segmentation logic discovery → Update explanation files
+- New table or field definitions learned → Update both query storage and explanations
+- Counter PO mechanics understanding → Update business context and query patterns
+- Dashboard methodology insights → Update explanation files with methodology patterns
+- Reusable query pattern identification → Store pattern in explanation files
+
+### Output Topic Documentation  
+**Purpose:** Preserve meaningful deliverables and final outcomes for specific work items
+
+**Scope:** Analyses, investigations, projects, dashboard work, business questions
+
+**Creation Trigger:** Only for genuinely new work or substantial deliverables
+
+**Examples of appropriate Output Topics:**
+- New analysis addressing different business question
+- Investigation with distinct scope or methodology
+- Major dashboard project or redesign
+- Significant business recommendation or finding
+
+## Rule Activation Triggers
+
+Apply this rule whenever:
+- A new document is created
+- A new query is written  
+- A new Tableau workbook is created
+- A new analysis is generated
+- A new file is produced
+- A new investigation starts
+- Any significant project artifact is created
+- New business knowledge is discovered
+- Feature or domain context is updated
+
+## Primary Structure Requirements
+
+### 1. Outputs Structure
+
+ALWAYS maintain a root `/outputs` folder for all project deliverables.
+
+#### Mandatory Topic Creation
+Every time a new topic is introduced in the conversation, create a new topic folder under `/outputs`.
+
+A topic represents a distinct business question, investigation, analysis, dashboard effort, feature workstream, reporting task, or any other analytical subject that should be documented independently.
+
+**Do NOT reuse an existing topic folder unless the work clearly belongs to the same topic.**
+
+#### Output Topic Creation Discipline
+
+**When NOT to Create New Topics:**
+Do NOT create new documents, reports, or topic artifacts for:
+- Minor query revisions or calculation changes
+- Formatting updates or small refinements  
+- Intermediate troubleshooting steps
+- Temporary investigations or draft iterations
+- Small logic corrections or filter additions
+
+**Examples:**
+- Query revised 4 times → Update existing file
+- Dashboard calculation modified → Update existing file  
+- Filter added to analysis → Update existing file
+- Small logic correction → Update existing file
+- Chart formatting adjusted → Update existing file
+
+**When TO Create New Topics:**
+Create new topic ONLY when:
+- Genuinely new analysis (different business question)
+- New investigation scope or methodology
+- New deliverable or business recommendation
+- Substantial change warranting separate documentation
+
+**Default behavior:** Update existing outputs whenever possible to prevent version proliferation
+
+For each new analytical topic, create a dedicated folder:
+```
+outputs/<topic_name>_<YYYY-MM-DD>/
+```
+
+Examples:
+- `outputs/rv_analysis_2026-05-20/`
+- `outputs/counter_po_iteration_2026-05-20/`
+- `outputs/clans_chase_performance_2026-05-23/`
+- `outputs/daily_dash_investigation_2026-05-23/`
+- `outputs/purchase_tools_dashboard_2026-05-23/`
+
+### 2. Required Topic Folder Structure
+
+Inside EVERY topic folder, create these subfolders:
+
+#### `topic/`
+Documents the story behind this specific work:
+- Why the output was created
+- What business question it was intended to answer
+- The context that led to the analysis
+- Key assumptions made during the work
+- Important decisions made during the investigation
+- Interpretation of the results
+- Relevant conclusions and next steps
+- Investigation methodology and approach
+
+PURPOSE: Provide enough information for someone to understand the purpose, scope, and meaning of the output without needing to revisit the original conversation.
+
+UPDATE after:
+- Every significant interaction
+- Every important decision
+- Every major finding  
+- Every new project phase
+
+#### `queries/`
+Contains:
+- SQL queries (analysis, validation, gatekeeping)
+- Investigation queries
+- Tableau custom SQL
+- Query documentation and explanations
+- Parameter definitions
+- Data extraction scripts
+
+#### `tableau_workbooks/`
+Contains:
+- Tableau workbooks (.twbx, .twb files)
+- Tableau calculations and formulas
+- Dashboard documentation
+- Workbook metadata and descriptions
+- Data source configurations
+
+#### `files/`
+Contains generated artifacts:
+- Excel files (.xlsx, .xls)
+- CSV data files
+- PDF reports
+- PowerPoint presentations (.pptx)
+- Images and visualizations
+- Any other generated files
+
+#### `analysis_and_insights/`
+Contains analytical deliverables:
+- Markdown analysis reports
+- Investigation summaries
+- Business recommendations
+- Key findings and insights
+- Methodology explanations
+- Results interpretation
+- Executive summaries
+
+### 3. Skills Structure
+
+ALWAYS maintain a root `/Skills` folder for all custom Cursor skills and workflow automation tools.
+
+#### Skills Organization
+Create skill folders under `/Skills` with descriptive names:
+```
+Skills/<skill-name>/
+```
+
+Examples:
+- `Skills/parameter-validation-skill/`
+- `Skills/data-quality-checker/` 
+- `Skills/tableau-automation/`
+
+#### Required Skill Folder Structure
+Inside EVERY skill folder, create these components:
+
+##### `SKILL.md`
+Main skill definition file containing:
+- Skill purpose and description
+- Usage instructions and examples
+- Activation triggers and conditions
+- Tool requirements and dependencies
+- Input/output specifications
+
+##### `workflow/`
+Contains workflow documentation:
+- Step-by-step procedures
+- Decision trees and logic flows
+- Validation checkpoints
+- Error handling procedures
+- Integration patterns
+
+##### `business-context/`
+Contains domain-specific knowledge:
+- Business rules and logic
+- Parameter definitions and constraints
+- Feature mechanics and relationships
+- Data validation requirements
+- Quality assurance standards
+
+### 4. Business Knowledge Repository (Separate Structure)
+
+The project maintains a separate `/context` structure for business domain knowledge, which is NEVER mixed with topic-level outputs:
+
+This business knowledge repository is maintained elsewhere in the project and serves a different purpose than topic-level documentation.
+
+## File Management Protocol
+
+### Immediate Categorization
+- CATEGORIZE every new file into appropriate folder immediately upon creation
+- NEVER leave files uncategorized in root directory
+- ASK user for clarification if placement is unclear
+- CREATE topic folder structure if it doesn't exist
+
+### Unknown File Types
+When artifact placement is unclear:
+1. DO NOT make assumptions
+2. ASK the user where it should be stored
+3. SUGGEST updating this rule if new category needed
+4. DOCUMENT the decision for future reference
+
+### Naming Conventions
+- Include timestamps: `YYYY-MM-DD_descriptive_name.extension`
+- Use underscores for spaces in filenames
+- Be descriptive but concise
+- Include version numbers when iterating
+- Use consistent prefixes for related files
+
+## Documentation Requirements
+
+### Mandatory Context Repository Updates
+
+When learning new reusable knowledge about:
+- **SQL queries and analytical code** (user-provided queries, validation patterns, gatekeeping logic)
+- **Business logic, feature mechanics, segmentation rules**
+- **Technical architecture** (tables, fields, calculations, relationships)  
+- **Analytical methodologies** (query patterns, dashboard approaches, reusable joins)
+- **Operational processes** (experiments, KPIs, configurations)
+- **Data sources** (limitations, quality issues, usage patterns)
+- **Gatekeeping logic, parameter calculations, configuration rules**
+
+**IMMEDIATELY take these actions:**
+
+1. **EVALUATE query reusability** - Apply Context Repository criteria before storing
+2. **STORE reusable SQL queries** in appropriate `queries.md` files when they meet criteria
+3. **EXTRACT and document query intelligence** in corresponding `queries-explanation.md` files
+4. **UPDATE** relevant context documentation files with business logic and patterns
+5. **CREATE** relevant feature folder and dual query structure if needed
+6. **EXTEND** existing business-context documentation rather than leaving information in conversation history
+7. **ENSURE** valuable reusable knowledge becomes part of permanent knowledge base
+
+**Context Repository Decision Criteria:**
+Before adding queries to Context, evaluate:
+- **Reusability**: Will this be useful in future analyses?
+- **Scope**: Does this affect understanding beyond current topic?
+- **Permanence**: Is this stable knowledge vs temporary exploration?
+- **Complexity**: Does this represent non-trivial logic worth preserving?
+- **Institutional Value**: Does this contribute to organizational knowledge?
+
+**When to Ask for Clarification:**
+- **Uncertain if query pattern has reuse value**
+- **Unclear whether business logic applies broadly** or just to specific analysis
+- **Unsure if technical insight is feature-specific** or has broader applicability
+- **Query seems borderline** between one-off and reusable pattern
+- **Information could belong in either Context or Topic documentation**
+
+**Dual Query Management:**
+- **Selective SQL storage**: `queries.md` files preserve reusable user-provided queries only
+- **Intelligence extraction**: `queries-explanation.md` files capture business logic, patterns, frameworks
+- **Cross-referencing**: Both files reference each other for complete context
+- **Value-focused preservation**: Maintain reusable code and intelligence permanently
+
+**Goal:** Accumulate institutional knowledge continuously - never let reusable knowledge remain only in conversations
+
+**STORE** all reusable information in appropriate context documentation, NOT only in conversation history.
+
+### Topic Documentation  
+For each analytical topic:
+- MAINTAIN comprehensive topic/ documentation
+- UPDATE topic story after each significant development
+- DOCUMENT methodology and assumptions specific to this work
+- LINK related files and dependencies within the topic
+- EXPLAIN the specific context and goals for this investigation
+
+### Cross-Reference Requirements
+- LINK topic outputs to relevant business knowledge repository when applicable
+- REFERENCE previous analyses when building on them
+- MAINTAIN connections between topic-level work and broader business knowledge
+- CREATE index files when topic folders become numerous
+
+## Reproducibility Standards
+
+### Path Management
+- ENSURE all paths are relative to project root
+- DOCUMENT file dependencies and relationships  
+- MAINTAIN consistent folder structures across topics
+
+### Knowledge Preservation
+- CAPTURE tacit knowledge in explicit documentation
+- EXPLAIN non-obvious business logic and decisions
+- DOCUMENT data source nuances and gotchas
+- RECORD configuration and parameter choices
+
+### Handoff Preparation
+- ENABLE project continuation by any future analyst
+- PROVIDE sufficient context for understanding decisions
+- MAINTAIN searchable business knowledge base
+- DOCUMENT environment and tool requirements
+
+## Quality Assurance
+
+### Completeness Checks
+Before concluding any analytical work:
+- ✅ All files properly categorized in topic folder
+- ✅ Topic documentation updated (if new deliverable created)
+- ✅ **Reusable SQL queries evaluated and stored** in appropriate `queries.md` files (when meeting Context criteria)
+- ✅ **Query intelligence extracted** and documented in `queries-explanation.md` files  
+- ✅ **Reusable knowledge captured in Context Repository** (business logic, technical insights, analytical patterns)
+- ✅ **Dual query structure maintained** (selective reusable queries + intelligence explanations)
+- ✅ **Context Repository criteria applied** (reusability, scope, permanence, complexity, institutional value)
+- ✅ Methodology documented in topic/ folder
+- ✅ Results and insights recorded in analysis_and_insights/
+- ✅ Next steps identified in topic/ documentation
+
+### Organization Validation
+- Verify topic folder structure contains only the 5 required subfolders
+- Confirm file naming follows conventions  
+- Check cross-references are maintained appropriately
+- Ensure business knowledge repository is updated separately when needed
+- Validate topic/ documentation enables work handoff and understanding
+
+## Objective
+
+Maintain a workspace that provides:
+- **Fully documented investigations** - Complete context for every analysis
+- **Searchable business knowledge** - Structured domain expertise capture  
+- **Structured analytical outputs** - Consistent deliverable organization
+- **Reproducible methodologies** - Clear analytical approaches
+- **Seamless project continuation** - Enable any analyst to continue work
+- **Historical investigation tracking** - Preserve analytical evolution
+- **Cross-topic knowledge discovery** - Enable insights across analyses
+
+final_note: >
+  This rule maintains two distinct documentation systems: Context Repository for accumulating long-term reusable knowledge, and Output Topics for preserving meaningful deliverables. The Context Repository uses a selective dual query structure (queries.md for reusable SQL patterns + queries-explanation.md for intelligence) ensuring valuable code preservation and business logic extraction without becoming an archive of every query. The approach ensures institutional knowledge grows strategically while avoiding excessive file creation and version proliferation. Context updates happen when reusable knowledge meeting specific criteria is discovered; new topics are created only for genuinely new work or substantial deliverables.

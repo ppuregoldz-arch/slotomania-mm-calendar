@@ -1,0 +1,296 @@
+---
+alwaysApply: true
+---
+
+# Prompt Training Engine - SM Package
+
+## Overview
+This rule provides comprehensive prompt improvement and clarification system for SM data analysis, ensuring clear, actionable requests with systematic quality assessment and continuous learning.
+
+## Mandatory Prompt Assessment
+
+### Pre-Analysis Assessment
+Before processing ANY request, evaluate:
+
+#### Clarity Assessment (1-5 Scale)
+- **1 (Poor)**: Vague, ambiguous, unclear intent
+- **2 (Fair)**: Some clarity but needs improvement
+- **3 (Good)**: Generally clear with minor issues
+- **4 (Very Good)**: Clear and specific
+- **5 (Excellent)**: Crystal clear, unambiguous
+
+#### Scope Assessment (1-5 Scale)
+- **1 (Poor)**: Missing key parameters (timeframe, segments, metrics)
+- **2 (Fair)**: Some parameters defined but incomplete
+- **3 (Good)**: Most parameters defined
+- **4 (Very Good)**: All key parameters clearly defined
+- **5 (Excellent)**: Comprehensive parameter definition
+
+#### Complexity Assessment (1-5 Scale)
+- **1 (Poor)**: Overly complex or too simple for business needs
+- **2 (Fair)**: Some complexity issues
+- **3 (Good)**: Appropriate complexity level
+- **4 (Very Good)**: Well-scoped complexity
+- **5 (Excellent)**: Optimal complexity for business value
+
+#### Actionability Assessment (1-5 Scale)
+- **1 (Poor)**: Results won't drive business decisions
+- **2 (Fair)**: Limited business value
+- **3 (Good)**: Some business value
+- **4 (Very Good)**: Clear business value
+- **5 (Excellent)**: High business impact potential
+
+## Prompt Quality Rubric
+
+### Excellent Prompts (4-5 Score)
+**Characteristics:**
+- Clear, specific business question
+- Defined metrics and KPIs
+- Specified timeframe and user segments
+- Clear business context and objectives
+- Appropriate scope for business needs
+
+**Examples:**
+```
+"Analyze daily revenue trends by CZ deluxe segment for the last 30 days, 
+comparing daily Net revenue and paying users to identify monetization patterns 
+that could inform retention strategies."
+```
+
+```
+"Compare revenue performance between real money purchases and Slotobucks redemption 
+for Q1 2025, focusing on ARPU, conversion rates, and product group distribution 
+to optimize monetization strategies."
+```
+
+### Good Prompts (3-4 Score)
+**Characteristics:**
+- Generally clear but may need minor improvements
+- Most parameters defined
+- Appropriate complexity level
+- Clear business value
+
+**Examples:**
+```
+"Show me revenue by user segment for the last month"
+"Compare DAU between platforms"
+"Analyze churn rates for paying users"
+```
+
+### Fair Prompts (2-3 Score)
+**Characteristics:**
+- Some clarity but needs improvement
+- Missing some key parameters
+- May be too broad or too narrow
+- Limited business context
+
+**Examples:**
+```
+"Show me revenue data"
+"Compare user behavior"
+"Analyze performance"
+```
+
+### Poor Prompts (1-2 Score)
+**Characteristics:**
+- Vague or ambiguous
+- Missing key parameters
+- Inappropriate scope
+- Unclear business value
+
+**Examples:**
+```
+"Show me data"
+"Analyze this"
+"Compare things"
+```
+
+## Prompt Improvement Process
+
+### Step 1: Assessment
+1. **Evaluate current prompt** using rubric
+2. **Identify improvement areas** with specific suggestions
+3. **Assess business value** and actionability
+4. **Determine appropriate scope** for business needs
+
+### Step 2: Clarification Requests
+When prompt quality is below 3, request clarification:
+
+#### Missing Parameters
+```
+"To provide the most valuable analysis, I need clarification on:
+- Timeframe: What specific period should I analyze?
+- User segments: Which user groups should I focus on? (CZ deluxe segments, VIP tiers, etc.)
+- Metrics: What specific KPIs are most important? (Revenue, DAU, spins, etc.)
+- Business context: What decision will this analysis inform?"
+```
+
+#### Scope Issues
+```
+"Your request could benefit from more specific scope:
+- Current scope: [describe current scope]
+- Suggested scope: [provide specific recommendations]
+- Business value: [explain how specific scope adds value]"
+```
+
+#### Complexity Concerns
+```
+"To ensure optimal analysis, consider:
+- Current complexity: [assess current level]
+- Recommended complexity: [suggest appropriate level]
+- Business impact: [explain complexity's effect on value]"
+```
+
+### Step 3: Improved Prompt Examples
+Provide specific examples of improved prompts:
+
+#### Before/After Examples
+**Before:** "Show me revenue data"
+**After:** "Analyze daily Net revenue trends by CZ deluxe segment (0-5, 5-10, 10-20, etc.) for the last 30 days to identify monetization opportunities and inform pricing strategy decisions."
+
+**Before:** "Compare user behavior"
+**After:** "Compare spin frequency, session duration, and balance distribution between paying and non-paying users for Q1 2025 to optimize engagement strategies."
+
+### Step 4: Learning Documentation
+Document prompt evolution and learning:
+
+#### Prompt Evolution Tracking
+```
+**Original Prompt:** [original request]
+**Quality Assessment:** [rubric scores and feedback]
+**Improvement Suggestions:** [specific recommendations]
+**Improved Prompt:** [enhanced version]
+**Business Value:** [explanation of improved value]
+```
+
+## SM-Specific Prompt Guidelines
+
+### Revenue Analysis Prompts
+**Good Structure:**
+```
+"Analyze [metric] by [segment] for [timeframe] to [business objective]"
+```
+
+**Examples:**
+- "Analyze daily Net revenue by CZ deluxe segment for the last 30 days to identify monetization opportunities"
+- "Compare ARPU trends between real money purchases and Slotobucks redemption for Q1 2025 to optimize monetization strategies"
+- "Analyze revenue by product group for the last month to inform product pricing decisions"
+
+### User Engagement Prompts
+**Good Structure:**
+```
+"Analyze [engagement metric] by [segment] for [timeframe] to [business objective]"
+```
+
+**Examples:**
+- "Analyze DAU trends by CZ deluxe segment for the last 30 days to identify retention opportunities"
+- "Compare spin frequency and session duration between VIP tiers for Q1 2025 to optimize engagement strategies"
+- "Analyze churn rates by user segment for the last 90 days to inform retention campaigns"
+
+### Economy Analysis Prompts
+**Good Structure:**
+```
+"Analyze [economy metric] by [segment] for [timeframe] to [business objective]"
+```
+
+**Examples:**
+- "Analyze coin consumption rates by user segment for the last 30 days to optimize economy balance"
+- "Compare balance distribution between paying and non-paying users for Q1 2025 to inform currency injection strategies"
+- "Analyze bonus consumption effectiveness by product group for the last month to optimize bonus campaigns"
+
+### Product Performance Prompts
+**Good Structure:**
+```
+"Analyze [product metric] by [product group/SKU] for [timeframe] to [business objective]"
+```
+
+**Examples:**
+- "Analyze revenue by product group for the last 30 days to identify top-performing products"
+- "Compare value for money metrics by SKU for Q1 2025 to optimize product pricing"
+- "Analyze product performance by CZ deluxe segment for the last month to inform product development priorities"
+
+## Business Context Integration
+
+### Revenue Optimization Focus
+- **ARPU analysis**: Focus on average revenue per user trends
+- **Conversion optimization**: Analyze free-to-paid conversion rates
+- **LTV analysis**: Focus on long-term user value
+- **Product performance**: Monitor SKU and product group performance
+
+### User Engagement Priorities
+- **Retention analysis**: Focus on day 1, 7, 30 retention
+- **Session quality**: Analyze session frequency and duration
+- **Spin activity**: Track spins per user and engagement patterns
+- **Balance health**: Monitor coin balance distribution
+
+### Economy Balance Considerations
+- **Currency flow**: Monitor coin injection vs consumption
+- **Balance distribution**: Ensure healthy balance levels across segments
+- **RTP analysis**: Track return-to-player rates
+- **Bonus effectiveness**: Analyze bonus consumption and impact
+
+## Prompt Training Success Metrics
+
+### Quality Improvement
+- **Prompt clarity**: >85% of prompts achieve 4-5 clarity score
+- **Scope definition**: >90% of prompts include all key parameters
+- **Complexity appropriateness**: >80% of prompts have optimal complexity
+- **Business value**: >90% of prompts drive actionable insights
+
+### Learning Documentation
+- **Prompt evolution tracking**: 100% of improved prompts documented
+- **Best practice sharing**: Regular updates to prompt guidelines
+- **Cross-team learning**: Shared prompt examples and patterns
+- **Continuous improvement**: Regular assessment of prompt quality
+
+### Business Impact
+- **Analysis efficiency**: Reduced time from question to insight
+- **Stakeholder satisfaction**: High confidence in analytical results
+- **Decision support**: Analyses directly inform business decisions
+- **Knowledge transfer**: Reproducible prompt patterns
+
+## Continuous Learning Framework
+
+### Prompt Pattern Recognition
+- **Common improvement areas**: Identify frequent issues
+- **Successful patterns**: Document effective prompt structures
+- **Business context mapping**: Link prompts to business objectives
+- **Complexity optimization**: Balance detail with clarity
+
+### Feedback Integration
+- **Stakeholder feedback**: Incorporate user input
+- **Result quality**: Assess prompt effectiveness through analysis quality
+- **Business impact**: Measure prompt quality through decision outcomes
+- **Process efficiency**: Track time savings from better prompts
+
+### Framework Evolution
+- **Regular assessment**: Monthly review of prompt quality
+- **Guideline updates**: Quarterly updates to prompt guidelines
+- **Best practice sharing**: Continuous improvement through learning
+- **Tool enhancement**: Regular updates to training tools
+
+## Implementation Guidelines
+
+### For Data Analysts
+1. **Always assess prompt quality** before starting analysis
+2. **Request clarification** when prompts are unclear
+3. **Provide improved examples** with business context
+4. **Document learning** for future reference
+
+### For Business Stakeholders
+1. **Be specific** about metrics, timeframes, and segments
+2. **Provide business context** for analysis objectives
+3. **Consider scope** appropriate for business needs
+4. **Focus on actionability** of expected results
+
+### For Team Leaders
+1. **Promote prompt quality** as team standard
+2. **Share best practices** across team members
+3. **Track improvement** in prompt quality over time
+4. **Celebrate success** in prompt optimization
+
+This prompt training engine ensures systematic improvement of SM data analysis requests with clear quality standards and continuous learning capabilities.
+description:
+globs:
+alwaysApply: false
+---

@@ -1,0 +1,130 @@
+---
+description: Analytics WIKI Data Requirements Creator - Use ONLY when explicitly requested for data requirements WIKI creation
+alwaysApply: false
+---
+
+# Analytics WIKI Data Requirements Creator
+
+**Purpose**: Create comprehensive, structured data requirements documentation for new features using the standardized Playtika template workflow.
+
+**Activation**: Use ONLY when explicitly asked to create data requirements WIKI pages. Not for general WIKI or documentation tasks.
+
+## 🎯 Trigger Phrases (When to Use This Role)
+
+This role activates ONLY when user says:
+- "Create data requirements WIKI for [feature name]"
+- "I need to document analytics data requirements"
+- "Use the WIKI data requirements template for [feature]"
+- "Create analytical data requirements documentation"
+
+## 📋 Step-by-Step Workflow
+
+### Step 1: Template Duplication
+- **Always start** with official template: `https://wiki.playtika.com/spaces/SLOT/pages/899952455/DATA+REQ+TEMP`
+- Use `confluence_create_page` with `content_format: "storage"` (preserves tabs)
+- Parent page: "BI-BA Data Requirements" (ID: `899952486`)
+- Title format: `[Feature Name] - Data Requirements`
+- **Critical**: Use raw HTML storage format to preserve Confluence macros
+
+### Step 2: General Info Tab Completion
+**NEVER make changes without explicit user approval**
+
+Present suggestions for each field:
+- **Feature UI**: Usually placeholder for screenshots
+- **Owners**: PM, R&D Architect, BA names
+- **Feature Goal**: Brief feature description
+- **Background**: Context and rationale
+- **KPIs**: Revenue, Transactions, ARPPU, etc.
+- **Business Questions**: Strategic questions
+- **R&D Questions**: Technical questions (often left for R&D team)
+
+### Step 3: Data Requirements Population
+**Source**: Excel files provided by user
+
+**Streaming Tab**: Extract from "streaming" sheet
+- Table columns: Vertica Field Name, Data Type, JSON Field Name, Value Example, BA Comments, R&D Comments
+- Include JSON examples in expandable code blocks
+
+**ETL Tab**: Extract from "ETL" sheet  
+- Table columns: Field Name, Vertica Data Type, Source Table, Comments
+- Maintain exact Excel structure
+
+## 🛠️ Technical Requirements
+
+### Required MCP Servers
+```json
+{
+  "mcpServers": {
+    "user-mcp-atlassian-wiki": {
+      "command": "uvx",
+      "args": ["mcp-atlassian"],
+      "env": {
+        "CONFLUENCE_URL": "https://wiki.playtika.com",
+        "CONFLUENCE_USERNAME": "[USER_EMAIL]",
+        "CONFLUENCE_PERSONAL_TOKEN": "[USER_TOKEN]"
+      }
+    },
+    "excel": {
+      "command": "uvx",
+      "args": ["excel-mcp-server", "stdio"]
+    }
+  }
+}
+```
+
+### Excel Processing
+- **Primary**: Use Excel MCP with `CallMcpTool`
+- **Fallback**: Python with `openpyxl` if MCP unavailable
+- Copy files locally if OneDrive permission issues
+
+### Confluence Operations
+- `confluence_search`: Find pages and verify structure
+- `confluence_get_page`: Get template with `convert_to_markdown: false`
+- `confluence_create_page`: Create with `content_format: "storage"`
+- `confluence_delete_page`: Remove failed attempts
+
+## ⚠️ Critical Guidelines
+
+### User Approval Required
+- Present ALL content before implementation
+- Wait for explicit approval on each section
+- Ask clarifying questions for ambiguous data
+
+### HTML Format Requirements
+- Always use `content_format: "storage"`
+- Preserve Confluence macros: `<ac:structured-macro>`, `<ac:parameter>`
+- Maintain table structures with `class="relative-table wrapped"`
+- Handle HTML entities correctly
+
+### Excel Data Validation
+- Inspect Excel structure first: sheets, headers, rows
+- Verify data matches user expectations
+- Handle empty/placeholder data appropriately
+- Use local file copies for OneDrive issues
+
+### Error Recovery
+- HTML parsing errors: Simplify content, remove special characters
+- Excel MCP unavailable: Use Python fallback
+- Update failures: Delete and recreate page
+- Always verify final result matches requirements
+
+## 📁 File Organization
+- Save working files: `[feature_name]_content.txt`, `inspect_excel.py`
+- Use descriptive names and document deviations
+
+## ✅ Quality Checklist
+Before completion, verify:
+- [ ] All three tabs properly structured (General Info, Streaming, ETL)
+- [ ] Content matches Excel file exactly
+- [ ] Table structures complete and formatted
+- [ ] JSON examples valid and comprehensive
+- [ ] Page located under correct parent
+- [ ] User approved all content changes
+
+## 🚫 When NOT to Use This Role
+- General WIKI page creation
+- Documentation that's not data requirements
+- Non-analytical feature documentation
+- Any task not explicitly requesting "data requirements WIKI"
+
+**Remember**: This role is for analytical data requirements documentation ONLY. Use standard documentation approaches for other WIKI tasks.

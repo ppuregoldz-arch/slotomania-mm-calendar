@@ -1,0 +1,129 @@
+---
+description: SQL Query Structure & Validation Requirements - Mandatory validation process for all analytical queries
+globs:
+  - "*.sql"
+  - "*.py" 
+  - "**/*query*"
+  - "**/*analysis*"
+alwaysApply: true
+---
+
+# SQL Query Structure & Validation
+
+Enforce strict SQL validation methodology and mandatory documented validation process for all analytical queries. Prevent silent errors by requiring manual checks against raw data before trusting aggregated results.
+
+## Rule Activation
+Apply whenever:
+- Writing SQL queries for analysis
+- Creating analytical reports  
+- Building dashboards
+- Performing data aggregations
+- Validating business metrics
+- Conducting investigations
+
+## Simple Summary (Plain Language)
+- Don't use CTEs unless explicitly requested
+- In `GROUP BY`, use positions only: `GROUP BY 1,2,3…`
+- Don't use `COUNT(*)`; count a specific field (or `COUNT(DISTINCT field)` when needed)
+- Show step-by-step math in comments so a human can follow the numbers
+- Handle `NULL` and edge cases explicitly (use `COALESCE`, safe division, etc.)
+- Round outputs consistently (document your precision)
+- Always validate aggregations by manually spot-checking a few concrete entities
+- If validation is missing or fails, the query is **not** ready—treat it as a bug
+- Write queries to be efficient: scan less data, filter early, select only needed columns, avoid unnecessary sorts/joins
+
+## Query Structure Rules
+
+### Basic Structure Requirements
+- **No CTEs unless requested** - Prefer a single, readable statement or nested subqueries
+- **GROUP BY positions only**: `GROUP BY 1,2,3,...` (avoid column names in the GROUP BY clause)
+- **No `COUNT(*)`** - Use `COUNT(<specific_field>)` or `COUNT(DISTINCT <field>)` as appropriate
+- **Explicit NULL/edge-case handling**:
+  - Use `COALESCE(value, 0)` where appropriate
+  - For rates/ratios, guard division: `x / NULLIF(y, 0)` and decide how to handle `NULL` results
+- **Consistent rounding** in the SELECT list (document precision; e.g., currency=2 dp, rates=4 dp, counts=0)
+- **Deterministic filters** (explicit date ranges/time zones; stable IDs). Prefer `BETWEEN 'YYYY-MM-DD' AND 'YYYY-MM-DD'` or half-open intervals `>= start AND < end_plus_1`
+- **Explicit casting** for arithmetic when needed (e.g., `SUM(amount)::numeric`)
+
+## Mandatory Validation Process
+
+### Core Validation Requirements
+- **Validate every aggregation** before considering results reliable
+- **Select 1–3 specific entities** (users, transactions, etc.) with known activity in the query period
+- **Manually calculate expected results** from raw rows for those entities
+- **Run the aggregation filtered** to those entities only
+- **Verify exact matches** between manual math and query output
+- **Document** which entities were used and the results of the check
+
+### Validation Workflow (Do this in order)
+1. **Write** the aggregation query
+2. **Identify** validation candidates (IDs/dates with known events)
+3. **Extract** raw rows for those entities using simple `SELECT` statements
+4. **Manually compute** the expected numbers; write the math in comments
+5. **Execute** the aggregation filtered to each entity; compare with manual math
+6. **Run the full query** only after validation passes
+
+## Documentation Requirements
+
+### Validation Documentation
+**Comment validation details** in the SQL or notebook:
+- Validation entity IDs
+- Raw-row evidence (amounts/dates/events) or a link to it
+- Expected vs. actual results and pass/fail outcome
+- Any discrepancies and how they were resolved
+- **Show step-by-step calculations** in comments or a short doc block in the query file
+
+## Quality Gates
+
+### Validation Enforcement
+- **Reject** queries without explicit validation comments
+- **Require** validation in any analytical work that includes aggregations
+- **Treat** validation failures as critical bugs requiring immediate investigation
+- **No aggregated results** should be trusted without documented validation
+
+## Validation Example Pattern
+
+```sql
+-- Step 1: Aggregation Query (efficient + rounded)
+SELECT
+    user_id,
+    ROUND(SUM(amount)::numeric, 2) AS total_revenue  -- rounding documented
+FROM purchases
+WHERE event_date >= '2025-01-01' AND event_date < '2025-02-01'  -- half-open for partition pruning
+GROUP BY 1;
+
+-- Step 2: Validation - Select test user
+-- User 12345 validation:
+SELECT user_id, amount, event_date
+FROM purchases
+WHERE user_id = 12345
+  AND event_date >= '2025-01-01' AND event_date < '2025-02-01';
+
+-- Results (example): $10 (Jan 5), $20 (Jan 15), $30 (Jan 25)
+-- Manual calculation: 10 + 20 + 30 = 60
+-- NULL handling note: amounts are COALESCE(amount, 0) upstream; no NULLs found here.
+
+-- Step 3: Verify with filtered aggregation
+SELECT
+    user_id,
+    ROUND(SUM(amount)::numeric, 2) AS total_revenue
+FROM purchases
+WHERE user_id = 12345
+  AND event_date >= '2025-01-01' AND event_date < '2025-02-01'
+GROUP BY 1;
+-- Expected result: user_id=12345, total_revenue=60.00
+-- ✅ VALIDATION PASSED: Manual calculation matches query result
+```
+
+## Additional Validation Tips
+
+### Data Reliability Checks
+- **COUNT fields explicitly**: `COUNT(user_id)` or `COUNT(DISTINCT user_id)`—never `COUNT(*)`
+- **Protect divisions**: `metric = SUM(n)::numeric / NULLIF(SUM(d), 0)`; decide how to treat `NULL` results
+- **Round at presentation** points; keep raw metrics unrounded for internal joins/derivations
+- **Time zones**: Document assumptions; prefer UTC in storage and convert only for presentation
+- **Raw data verification**: Always check a sample of raw data before aggregating
+- **Expected vs actual comparisons**: Document business expectations and compare against query results
+
+final_note: >
+  This rule ensures data reliability and prevents silent errors in analytical work. Every aggregation must be validated with manual calculations before results can be trusted. The validation process is not optional - it is a critical quality gate that must be documented and passed for every analytical query.

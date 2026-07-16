@@ -1,0 +1,209 @@
+---
+description: Query Validation Methodology - Mandatory manual validation process for all analytical queries to ensure data reliability
+globs: ["*.sql", "*.py", "*.ipynb", "**/*query*", "**/*analysis*"]
+alwaysApply: true
+---
+
+# Query Validation Methodology
+
+## Purpose and Scope
+Ensure all analytical queries are validated against raw data to prevent calculation errors, logic mistakes, and data integrity issues that could lead to incorrect business decisions. This rule focuses exclusively on validation methodology and documentation.
+
+## Mandatory Validation Process
+
+### Core Validation Requirements
+- **ALWAYS validate every aggregation query** before considering results reliable
+- **SELECT 1-3 specific entities** (users, transactions, etc.) with known activity in the query period
+- **MANUALLY calculate expected results** using raw data for selected entities
+- **RUN the query filtered for validation entities only** to verify mathematical correctness
+- **DOCUMENT the validation process** using the mandatory format below
+
+### Query Development Workflow
+1. **VALIDATE ACTUAL DATA VALUES** before writing query filters and conditions
+2. **WRITE the aggregation query** based on analysis requirements
+3. **IDENTIFY validation candidates** before running the full query
+4. **EXTRACT raw data** for validation entities using simple SELECT statements
+5. **PERFORM manual calculations** to establish expected outcomes
+6. **EXECUTE filtered query** for each validation entity
+7. **VERIFY exact matches** between manual calculations and query results
+8. **DOCUMENT validation status** using mandatory validation section
+
+### Step 1: Data Value Validation (MANDATORY FIRST STEP)
+**CRITICAL**: Always check actual column values before writing filter conditions
+
+**Process**:
+- **Check actual field values** using `SELECT DISTINCT column_name FROM table LIMIT 100`
+- **Verify field names and data types** against assumptions
+- **Test filter logic** with known data samples  
+- **Never assume naming conventions** or value formats
+
+**Common Assumption Failures**:
+```sql
+-- ❌ WRONG: Assumptions without validation
+WHERE placement_trigger IN ('back_to_lobby', 'ROOC', 'ROOG')  -- Assumed values
+
+-- ✅ CORRECT: Validated against actual data first
+SELECT DISTINCT placement_trigger FROM dwh.sm_fact_rv_client_events LIMIT 50;
+-- Results: 'RETURN_TO_LOBBY', 'RUN_OUT_OF_COINS', 'floating-cloud-lobby'
+WHERE placement_trigger IN ('RETURN_TO_LOBBY', 'RUN_OUT_OF_COINS')  -- Real values
+```
+
+**Validation Examples**:
+- Check `placement_trigger` values before writing RV filters
+- Verify `template_id` ranges before offer validation
+- Confirm `event_type` spelling and casing
+- Validate date formats and time zones
+- Check for NULL handling requirements
+
+## Mandatory Validation Documentation
+
+### Required Validation Section
+**EVERY query must include a validation documentation section** in comments within the query file itself, preferably near the top or bottom.
+
+**Template format:**
+```sql
+/*
+VALIDATION DOCUMENTATION
+========================
+Validation Performed: [Yes/No]
+
+[IF YES - Complete all sections below:]
+Validation Entities: [user_ids, transaction_ids, or other specific identifiers checked]
+Validation Date Range: [specific dates or date range used for validation]
+Raw Data Source: [tables/fields examined for manual calculation]
+Expected Result: [manual calculation result]
+Actual Query Result: [what the query returned for validation entities]
+Validation Status: [Passed/Failed]
+Notes: [any discrepancies, edge cases, or additional context]
+
+[IF NO - Complete this section:]
+Reason for No Validation: [clear explanation why validation was not performed]
+Query Status: NOT FULLY VALIDATED
+Risk Assessment: [assessment of reliability without validation]
+*/
+```
+
+### Validation Documentation Examples
+
+#### Example 1: Validated Query
+```sql
+/*
+VALIDATION DOCUMENTATION
+========================
+Validation Performed: Yes
+Validation Entities: user_id 12345, user_id 67890, user_id 11111
+Validation Date Range: 2025-01-01 to 2025-01-31
+Raw Data Source: purchases table - amount and event_date fields
+Expected Result: user 12345: $60 (10+20+30), user 67890: $150 (50+100), user 11111: $25 (25)
+Actual Query Result: user 12345: $60.00, user 67890: $150.00, user 11111: $25.00
+Validation Status: Passed
+Notes: All manual calculations match query results exactly
+*/
+```
+
+#### Example 2: Non-Validated Query
+```sql
+/*
+VALIDATION DOCUMENTATION
+========================
+Validation Performed: No
+Reason for No Validation: Exploratory query for initial data discovery, aggregation logic too simple to require validation
+Query Status: NOT FULLY VALIDATED
+Risk Assessment: Low risk - simple COUNT query with no complex aggregations
+*/
+```
+
+## Quality Assurance
+
+### Validation Enforcement
+- **REJECT queries without validation documentation** as incomplete
+- **REQUIRE the validation section** in every query file
+- **TREAT validation failures** as critical bugs requiring immediate investigation
+- **Mark non-validated queries clearly** with "NOT FULLY VALIDATED" status
+- **No aggregated results** should be trusted without documented validation or clear reason for exception
+
+## Validation Process Examples
+
+### Complete Validated Query Example
+```sql
+/*
+VALIDATION DOCUMENTATION
+========================
+Validation Performed: Yes
+Validation Entities: user_id 12345, user_id 67890
+Validation Date Range: 2025-01-01 to 2025-01-31  
+Raw Data Source: purchases table - amount, event_date fields
+Expected Result: user 12345: $60 (10+20+30), user 67890: $150 (75+75)
+Actual Query Result: user 12345: $60.00, user 67890: $150.00
+Validation Status: Passed
+Notes: Manual calculations verified against raw transaction data
+*/
+
+-- Main aggregation query
+SELECT user_id, SUM(amount) AS total_revenue
+FROM purchases
+WHERE event_date BETWEEN '2025-01-01' AND '2025-01-31'
+GROUP BY user_id;
+
+-- VALIDATION QUERIES (used for verification):
+-- Step 1: Extract raw data for user 12345
+SELECT user_id, amount, event_date
+FROM purchases
+WHERE user_id = 12345 AND event_date BETWEEN '2025-01-01' AND '2025-01-31';
+-- Results: $10 (Jan 5), $20 (Jan 15), $30 (Jan 25)
+-- Manual calculation: $10 + $20 + $30 = $60
+
+-- Step 2: Verify with filtered aggregation
+SELECT user_id, SUM(amount) AS total_revenue
+FROM purchases
+WHERE user_id = 12345 AND event_date BETWEEN '2025-01-01' AND '2025-01-31'
+GROUP BY user_id;
+-- ✅ Result: user_id=12345, total_revenue=60 - MATCHES manual calculation
+```
+
+### ❌ Incorrect: Missing Validation Documentation
+```sql
+-- BAD: No validation documentation
+SELECT user_id, SUM(amount) AS total_revenue
+FROM purchases
+WHERE event_date BETWEEN '2025-01-01' AND '2025-01-31'
+GROUP BY user_id;
+-- Results look reasonable, shipping to production ❌
+```
+
+**Problems:**
+- No validation documentation section
+- No verification against raw data
+- No manual calculations performed
+- Cannot determine reliability of results
+
+## Validation Best Practices
+
+### Entity Selection for Validation
+- **CHOOSE entities with known, predictable activity** in the analysis period
+- **SELECT different activity levels** (low, medium, high volume entities)
+- **AVOID entities with complex edge cases** for initial validation
+- **USE entities with recent, complete data** to minimize data quality issues
+- **DOCUMENT which entities were selected and why**
+
+### Manual Calculation Guidelines
+- **USE simple arithmetic operations** that can be easily verified by hand
+- **SHOW step-by-step calculations** in validation documentation
+- **HANDLE NULL values and edge cases** explicitly in manual calculations
+- **VERIFY calculations match query precision** (rounding, data types)
+
+### Raw Data Verification
+- **EXTRACT raw data** for validation entities using simple SELECT statements
+- **MANUALLY calculate** expected results from the raw data
+- **COMPARE manual calculations** against filtered query results
+- **DOCUMENT discrepancies** and investigate root causes
+
+### Common Validation Scenarios
+- **Revenue calculations**: Sum individual transaction amounts
+- **User activity metrics**: Count sessions, actions, or events manually
+- **Time-based aggregations**: Verify daily/weekly/monthly totals
+- **Conversion rates**: Manually calculate numerator and denominator
+- **Growth metrics**: Verify period-over-period comparison logic
+
+final_note: >
+  This rule focuses exclusively on validation methodology and reliability verification. Query syntax, formatting, and documentation standards are covered in separate SQL rules. Every query must include the mandatory validation documentation section to ensure data reliability and enable future verification. 

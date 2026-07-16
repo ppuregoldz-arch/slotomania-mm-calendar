@@ -1,0 +1,31 @@
+date	dow	weekend	sale	event	mgap	gems	n_items	cores
+2026-06-01	Mon	0	0	1	0	0	16	
+2026-06-02	Tue	0	1	0	1	0	7	Ace/Card Loot
+2026-06-03	Wed	0	0	1	0	0	10	Spin Zone
+2026-06-04	Thu	0	1	1	0	0	10	Win Master
+2026-06-05	Fri	1	1	0	0	1	11	PYP
+2026-06-06	Sat	1	1	1	1	0	8	Spin Zone
+2026-06-07	Sun	1	0	0	1	0	10	Dash Challenge
+2026-06-08	Mon	0	0	0	0	0	10	Win Master
+2026-06-09	Tue	0	0	1	0	1	12	Dash Challenge
+2026-06-10	Wed	0	1	1	0	0	9	PYP
+2026-06-11	Thu	0	1	1	0	0	8	Spinner Clash
+2026-06-12	Fri	1	1	1	1	1	14	MES themed/cards
+2026-06-13	Sat	1	1	1	0	1	17	
+2026-06-14	Sun	1	1	1	1	0	10	Spin Zone
+2026-06-15	Mon	0	0	0	0	0	13	PYP
+2026-06-16	Tue	0	1	1	1	0	13	Spin Zone
+2026-06-17	Wed	0	0	1	0	1	12	Win Master
+2026-06-18	Thu	0	1	0	0	0	9	MES themed/cards
+2026-06-19	Fri	1	1	1	0	0	10	
+2026-06-20	Sat	1	1	1	1	1	15	PYP
+2026-06-21	Sun	1	1	1	1	0	22	Spin Zone|Win Master
+2026-06-22	Mon	0	1	0	0	0	12	Mega Winner|Spin Zone
+2026-06-23	Tue	0	1	1	0	0	13	Ace/Card Loot
+2026-06-24	Wed	0	0	1	1	1	11	
+2026-06-25	Thu	0	1	1	1	0	15	Jackpots MES
+2026-06-26	Fri	1	0	1	1	0	12	PYP
+2026-06-27	Sat	1	1	1	0	1	10	Custom Pod
+2026-06-28	Sun	1	0	1	0	0	6	Spinner Clash
+2026-06-29	Mon	0	1	0	0	0	14	MES themed/cards
+2026-06-30	Tue	0	0	0	0	1	10	

@@ -1,0 +1,95 @@
+---
+description: SQL Syntax & Structure Requirements - Core syntax rules and structure requirements for all SQL queries
+globs: ["*.sql", "**/*query*"]
+alwaysApply: true
+---
+
+# SQL Query Syntax & Structure Requirements
+
+Core SQL syntax rules and structure requirements that must be followed for all analytical queries.
+
+## Syntax Requirements
+
+### CTE Policy
+- **No CTEs unless explicitly requested** - Prefer single statements or nested subqueries
+- Use nested subqueries (derived tables) instead of WITH clauses
+
+### GROUP BY Requirements
+- **GROUP BY positions only**: `GROUP BY 1,2,3,...` 
+- **NEVER use column names** in GROUP BY clause - always use positional references
+
+### COUNT Requirements  
+- **No `COUNT(*)`** - Use `COUNT(<specific_field>)` or `COUNT(DISTINCT <field>)`
+- Always count specific fields to make the logic explicit and avoid counting NULL rows incorrectly
+
+### NULL Handling Requirements
+- **Explicit NULL/edge-case handling**:
+  - Use `COALESCE(value, 0)` where appropriate
+  - For rates/ratios, guard division: `x / NULLIF(y, 0)`
+  - Decide and document how to handle `NULL` results
+
+### Data Type Requirements
+- **Consistent rounding** in SELECT list (document precision: currency=2dp, rates=4dp, counts=0dp)
+- **Explicit casting** for arithmetic: `SUM(amount)::numeric`
+- **Protected divisions**: `SUM(n)::numeric / NULLIF(SUM(d), 0)`
+
+### Filter Requirements
+- **Deterministic filters** with explicit date ranges and time zones
+- **Prefer half-open intervals**: `>= start AND < end_plus_1` for partition efficiency
+- **Use BETWEEN carefully**: Only when both bounds are inclusive and intended
+
+## Structure Requirements
+
+### Query Efficiency
+- **Filter early** in subqueries to reduce data volume
+- **Select only needed columns** - avoid SELECT *
+- **Scan less data** through proper WHERE clauses
+- **Avoid unnecessary sorts/joins**
+
+### Arithmetic Safety
+- **Protect all divisions** from zero denominators
+- **Use explicit casting** when mixing data types
+- **Document precision** choices in comments
+
+## Syntax Example
+
+```sql
+-- Correct syntax following all rules
+select
+    user_id,
+    ROUND(SUM(COALESCE(amount, 0))::numeric, 2) AS total_revenue,  -- explicit casting, NULL handling, documented rounding
+    COUNT(transaction_id) AS transaction_count,  -- count specific field, not COUNT(*)
+    ROUND(SUM(COALESCE(amount, 0))::numeric / NULLIF(COUNT(transaction_id), 0), 2) AS avg_per_transaction  -- protected division
+from purchases
+where event_date >= '2025-01-01' 
+  and event_date < '2025-02-01'  -- half-open interval
+  and amount is not null  -- explicit NULL filtering
+group by 1  -- positional GROUP BY
+having COUNT(transaction_id) > 0;  -- explicit minimum threshold
+```
+
+## Common Syntax Violations
+
+### ❌ Incorrect
+```sql
+-- Multiple violations:
+SELECT user_id, COUNT(*), SUM(amount)/COUNT(user_id) 
+FROM purchases 
+WHERE date BETWEEN '2025-01-01' AND '2025-01-31'
+GROUP BY user_id;  -- column name instead of position
+```
+
+### ✅ Correct  
+```sql
+-- Following all syntax rules:
+SELECT 
+    user_id,
+    COUNT(transaction_id),  -- count specific field
+    ROUND(SUM(COALESCE(amount, 0))::numeric / NULLIF(COUNT(transaction_id), 0), 2)  -- protected division with casting
+FROM purchases 
+WHERE event_date >= '2025-01-01' AND event_date < '2025-02-01'  -- half-open interval
+GROUP BY 1;  -- positional GROUP BY
+```
+
+final_note: >
+  These syntax requirements ensure consistent, safe, and efficient SQL structure. Focus is on core syntax rules, data type handling, and query structure - not on formatting/comments (covered in sql-standards) or validation methodology (covered in query-validation).

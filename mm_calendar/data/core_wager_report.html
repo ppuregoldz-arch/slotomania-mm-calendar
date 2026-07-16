@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Core × Wager — יוני 2026</title>
+<style>
+  :root { --bg:#0b0f17; --card:#141b2b; --card2:#1b2436; --stroke:#26314a; --txt:#e7ecf5; --mut:#8b96ad; --g:#22c55e; --r:#ef4444; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:linear-gradient(180deg,#0b0f17,#0d1320); color:var(--txt); font-family:-apple-system,"Segoe UI",Rubik,Arial,sans-serif; }
+  .wrap { max-width:1100px; margin:0 auto; padding:32px 20px 60px; }
+  h1 { font-size:26px; margin:0 0 4px; letter-spacing:-.3px; }
+  .sub { color:var(--mut); font-size:13px; margin-bottom:22px; }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:26px; }
+  .kpi { background:var(--card); border:1px solid var(--stroke); border-radius:14px; padding:14px 16px; }
+  .kpi .v { font-size:22px; font-weight:700; }
+  .kpi .l { color:var(--mut); font-size:12px; margin-top:2px; }
+  .card { background:var(--card); border:1px solid var(--stroke); border-radius:16px; padding:20px 22px; margin-bottom:22px; }
+  .card h2 { font-size:16px; margin:0 0 4px; }
+  .card .note { color:var(--mut); font-size:12px; margin-bottom:18px; }
+  /* daily chart */
+  .chart { display:flex; gap:5px; align-items:stretch; height:230px; padding-top:8px; position:relative; }
+  .midline { position:absolute; left:0; right:0; top:50%; border-top:1px dashed #33405c; }
+  .daycol { flex:1; display:flex; flex-direction:column; align-items:center; min-width:0; }
+  .barwrap { position:relative; width:100%; flex:1; }
+  .bar { position:absolute; left:15%; width:70%; border-radius:4px; }
+  .dval { font-size:9px; margin-top:3px; font-weight:600; }
+  .ddate { font-size:10px; color:var(--mut); }
+  .dmech { font-size:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+  .g { color:var(--g); } .r { color:var(--r); }
+  /* mechanic table */
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { text-align:right; color:var(--mut); font-weight:600; font-size:11px; padding:6px 8px; border-bottom:1px solid var(--stroke); }
+  td { padding:9px 8px; border-bottom:1px solid #1e2740; }
+  td.num { text-align:center; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  td.rel { text-align:center; }
+  .mname { font-weight:600; white-space:nowrap; }
+  .dot { display:inline-block; width:9px; height:9px; border-radius:3px; margin-left:7px; vertical-align:middle; }
+  .track { width:38%; }
+  .mbar-pos, .mbar-neg { position:relative; height:14px; background:#0e1524; border-radius:7px; overflow:hidden; }
+  .mbar-pos .mfill { position:absolute; right:50%; height:100%; border-radius:7px 0 0 7px; }
+  .mbar-neg .mfill { position:absolute; left:50%; height:100%; border-radius:0 7px 7px 0; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .ins { background:var(--card2); border:1px solid var(--stroke); border-radius:12px; padding:14px 16px; }
+  .ins h3 { margin:0 0 6px; font-size:14px; }
+  .ins p { margin:0; color:#c3ccdd; font-size:13px; line-height:1.5; }
+  ul.top { margin:6px 0 0; padding-inline-start:18px; font-size:13px; line-height:1.7; }
+  .warn { background:#2a1e12; border:1px solid #5a3d1a; color:#f0c890; border-radius:12px; padding:12px 16px; font-size:12.5px; line-height:1.55; }
+  .legend { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; font-size:11px; color:var(--mut); }
+  .legend span { display:inline-flex; align-items:center; gap:5px; }
+</style>
+</head>
+<body><div class="wrap">
+  <h1>Core × Wager — קורלציית פרומואי קוינס</h1>
+  <div class="sub">מכניקות Core (פרומואי הקוינס) מול wager בקוינס · יוני 2026 · מקור: Tableau «Daily Wager W/O Migrated» × בורד MM calendar (Monday)</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v">173.7×10²¹</div><div class="l">Baseline median wager</div></div>
+    <div class="kpi"><div class="v">621</div><div class="l">Baseline median spins</div></div>
+    <div class="kpi"><div class="v">23</div><div class="l">ימי Core עם wager</div></div>
+    <div class="kpi"><div class="v" style="color:#4f9cff">Spin Zone · PYP</div><div class="l">הקורלציה החיובית האמינה (n≥5)</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Wager יומי לפי סוג ה-Core</h2>
+    <div class="note">אחוז שינוי ה-median wager מול הממוצע החודשי. צבע העמודה = מכניקת ה-Core הראשית באותו יום.</div>
+    <div class="chart"><div class="midline"></div><div class="daycol" title="2026-06-04 · +21.0% · Win Master">
+          <div class="barwrap">
+            <div class="bar up" style="height:29.8%;background:#f59e0b;bottom:50%"></div>
+          </div>
+          <div class="dval g">+21%</div>
+          <div class="ddate">04</div>
+          <div class="dmech" style="color:#f59e0b">Win Maste</div>
+        </div><div class="daycol" title="2026-06-05 · +17.5% · PYP">
+          <div class="barwrap">
+            <div class="bar up" style="height:24.7%;background:#22c55e;bottom:50%"></div>
+          </div>
+          <div class="dval g">+17%</div>
+          <div class="ddate">05</div>
+          <div class="dmech" style="color:#22c55e">PYP</div>
+        </div><div class="daycol" title="2026-06-06 · -1.5% · Spin Zone">
+          <div class="barwrap">
+            <div class="bar dn" style="height:2.1%;background:#4f9cff;top:50%"></div>
+          </div>
+          <div class="dval r">-1%</div>
+          <div class="ddate">06</div>
+          <div class="dmech" style="color:#4f9cff">Spin Zone</div>
+        </div><div class="daycol" title="2026-06-07 · -19.4% · Dash Challenge">
+          <div class="barwrap">
+            <div class="bar dn" style="height:27.5%;background:#ef4444;top:50%"></div>
+          </div>
+          <div class="dval r">-19%</div>
+          <div class="ddate">07</div>
+          <div class="dmech" style="color:#ef4444">Dash Chal</div>
+        </div><div class="daycol" title="2026-06-08 · -16.9% · Win Master">
+          <div class="barwrap">
+            <div class="bar dn" style="height:23.9%;background:#f59e0b;top:50%"></div>
+          </div>
+          <div class="dval r">-17%</div>
+          <div class="ddate">08</div>
+          <div class="dmech" style="color:#f59e0b">Win Maste</div>
+        </div><div class="daycol" title="2026-06-09 · -24.4% · Dash Challenge">
+          <div class="barwrap">
+            <div class="bar dn" style="height:34.5%;background:#ef4444;top:50%"></div>
+          </div>
+          <div class="dval r">-24%</div>
+          <div class="ddate">09</div>
+          <div class="dmech" style="color:#ef4444">Dash Chal</div>
+        </div><div class="daycol" title="2026-06-10 · +9.3% · PYP">
+          <div class="barwrap">
+            <div class="bar up" style="height:13.2%;background:#22c55e;bottom:50%"></div>
+          </div>
+          <div class="dval g">+9%</div>
+          <div class="ddate">10</div>
+          <div class="dmech" style="color:#22c55e">PYP</div>
+        </div><div class="daycol" title="2026-06-11 · -9.1% · Spinner Clash">
+          <div class="barwrap">
+            <div class="bar dn" style="height:12.8%;background:#06b6d4;top:50%"></div>
+          </div>
+          <div class="dval r">-9%</div>
+          <div class="ddate">11</div>
+          <div class="dmech" style="color:#06b6d4">Spinner C</div>
+        </div><div class="daycol" title="2026-06-12 · -28.8% · MES themed/cards">
+          <div class="barwrap">
+            <div class="bar dn" style="height:40.8%;background:#a855f7;top:50%"></div>
+          </div>
+          <div class="dval r">-29%</div>
+          <div class="ddate">12</div>
+          <div class="dmech" style="color:#a855f7">MES theme</div>
+        </div><div class="daycol" title="2026-06-13 · -18.3%">
+          <div class="barwrap">
+            <div class="bar dn" style="height:26.0%;background:#64748b;top:50%"></div>
+          </div>
+          <div class="dval r">-18%</div>
+          <div class="ddate">13</div>
+          <div class="dmech" style="color:#64748b">—</div>
+        </div><div class="daycol" title="2026-06-14 · +4.5% · Spin Zone">
+          <div class="barwrap">
+            <div class="bar up" style="height:6.4%;background:#4f9cff;bottom:50%"></div>
+          </div>
+          <div class="dval g">+5%</div>
+          <div class="ddate">14</div>
+          <div class="dmech" style="color:#4f9cff">Spin Zone</div>
+        </div><div class="daycol" title="2026-06-15 · -8.1% · PYP">
+          <div class="barwrap">
+            <div class="bar dn" style="height:11.5%;background:#22c55e;top:50%"></div>
+          </div>
+          <div class="dval r">-8%</div>
+          <div class="ddate">15</div>
+          <div class="dmech" style="color:#22c55e">PYP</div>
+        </div><div class="daycol" title="2026-06-16 · +8.1% · Spin Zone">
+          <div class="barwrap">
+            <div class="bar up" style="height:11.5%;background:#4f9cff;bottom:50%"></div>
+          </div>
+          <div class="dval g">+8%</div>
+          <div class="ddate">16</div>
+          <div class="dmech" style="color:#4f9cff">Spin Zone</div>
+        </div><div class="daycol" title="2026-06-17 · -24.1% · Win Master">
+          <div class="barwrap">
+            <div class="bar dn" style="height:34.2%;background:#f59e0b;top:50%"></div>
+          </div>
+          <div class="dval r">-24%</div>
+          <div class="ddate">17</div>
+          <div class="dmech" style="color:#f59e0b">Win Maste</div>
+        </div><div class="daycol" title="2026-06-18 · -32.9% · MES themed/cards">
+          <div class="barwrap">
+            <div class="bar dn" style="height:46.7%;background:#a855f7;top:50%"></div>
+          </div>
+          <div class="dval r">-33%</div>
+          <div class="ddate">18</div>
+          <div class="dmech" style="color:#a855f7">MES theme</div>
+        </div><div class="daycol" title="2026-06-19 · +7.6%">
+          <div class="barwrap">
+            <div class="bar up" style="height:10.8%;background:#64748b;bottom:50%"></div>
+          </div>
+          <div class="dval g">+8%</div>
+          <div class="ddate">19</div>
+          <div class="dmech" style="color:#64748b">—</div>
+        </div><div class="daycol" title="2026-06-20 · -16.0% · PYP">
+          <div class="barwrap">
+            <div class="bar dn" style="height:22.6%;background:#22c55e;top:50%"></div>
+          </div>
+          <div class="dval r">-16%</div>
+          <div class="ddate">20</div>
+          <div class="dmech" style="color:#22c55e">PYP</div>
+        </div><div class="daycol" title="2026-06-21 · -6.7% · Spin Zone, Win Master">
+          <div class="barwrap">
+            <div class="bar dn" style="height:9.5%;background:#4f9cff;top:50%"></div>
+          </div>
+          <div class="dval r">-7%</div>
+          <div class="ddate">21</div>
+          <div class="dmech" style="color:#4f9cff">Spin Zone</div>
+        </div><div class="daycol" title="2026-06-22 · +15.9% · Mega Winner, Spin Zone">
+          <div class="barwrap">
+            <div class="bar up" style="height:22.5%;background:#eab308;bottom:50%"></div>
+          </div>
+          <div class="dval g">+16%</div>
+          <div class="ddate">22</div>
+          <div class="dmech" style="color:#eab308">Mega Winn</div>
+        </div><div class="daycol" title="2026-06-23 · +30.8% · Ace/Card Loot, Other">
+          <div class="barwrap">
+            <div class="bar up" style="height:43.6%;background:#ec4899;bottom:50%"></div>
+          </div>
+          <div class="dval g">+31%</div>
+          <div class="ddate">23</div>
+          <div class="dmech" style="color:#ec4899">Ace/Card </div>
+        </div><div class="daycol" title="2026-06-24 · -12.9%">
+          <div class="barwrap">
+            <div class="bar dn" style="height:18.3%;background:#64748b;top:50%"></div>
+          </div>
+          <div class="dval r">-13%</div>
+          <div class="ddate">24</div>
+          <div class="dmech" style="color:#64748b">—</div>
+        </div><div class="daycol" title="2026-06-25 · +18.4% · Jackpots (MES)">
+          <div class="barwrap">
+            <div class="bar up" style="height:26.0%;background:#14b8a6;bottom:50%"></div>
+          </div>
+          <div class="dval g">+18%</div>
+          <div class="ddate">25</div>
+          <div class="dmech" style="color:#14b8a6">Jackpots </div>
+        </div><div class="daycol" title="2026-06-26 · +12.3% · PYP">
+          <div class="barwrap">
+            <div class="bar up" style="height:17.4%;background:#22c55e;bottom:50%"></div>
+          </div>
+          <div class="dval g">+12%</div>
+          <div class="ddate">26</div>
+          <div class="dmech" style="color:#22c55e">PYP</div>
+        </div><div class="daycol" title="2026-06-27 · -11.8% · Custom Pod">
+          <div class="barwrap">
+            <div class="bar dn" style="height:16.8%;background:#8b5cf6;top:50%"></div>
+          </div>
+          <div class="dval r">-12%</div>
+          <div class="ddate">27</div>
+          <div class="dmech" style="color:#8b5cf6">Custom Po</div>
+        </div><div class="daycol" title="2026-06-28 · +29.3% · Spinner Clash">
+          <div class="barwrap">
+            <div class="bar up" style="height:41.5%;background:#06b6d4;bottom:50%"></div>
+          </div>
+          <div class="dval g">+29%</div>
+          <div class="ddate">28</div>
+          <div class="dmech" style="color:#06b6d4">Spinner C</div>
+        </div><div class="daycol" title="2026-06-29 · +35.3% · MES themed/cards">
+          <div class="barwrap">
+            <div class="bar up" style="height:50.0%;background:#a855f7;bottom:50%"></div>
+          </div>
+          <div class="dval g">+35%</div>
+          <div class="ddate">29</div>
+          <div class="dmech" style="color:#a855f7">MES theme</div>
+        </div><div class="daycol" title="2026-06-30 · +20.9%">
+          <div class="barwrap">
+            <div class="bar up" style="height:29.6%;background:#64748b;bottom:50%"></div>
+          </div>
+          <div class="dval g">+21%</div>
+          <div class="ddate">30</div>
+          <div class="dmech" style="color:#64748b">—</div>
+        </div></div>
+    <div class="legend"><span><i class="dot" style="background:#4f9cff;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Spin Zone</span><span><i class="dot" style="background:#22c55e;display:inline-block;width:9px;height:9px;border-radius:3px"></i>PYP</span><span><i class="dot" style="background:#f59e0b;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Win Master</span><span><i class="dot" style="background:#a855f7;display:inline-block;width:9px;height:9px;border-radius:3px"></i>MES themed/cards</span><span><i class="dot" style="background:#06b6d4;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Spinner Clash</span><span><i class="dot" style="background:#ef4444;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Dash Challenge</span><span><i class="dot" style="background:#ec4899;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Ace/Card Loot</span><span><i class="dot" style="background:#14b8a6;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Jackpots (MES)</span><span><i class="dot" style="background:#eab308;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Mega Winner</span><span><i class="dot" style="background:#8b5cf6;display:inline-block;width:9px;height:9px;border-radius:3px"></i>Custom Pod</span></div>
+  </div>
+
+  <div class="card">
+    <h2>דירוג קורלציה — מכניקת Core × wager</h2>
+    <div class="note">avg uplift = ממוצע שינוי ה-wager בימי המכניקה · Pearson r מול כל הימים · אמינות: ✅ n≥4 · ~ n≥2 · n=1 בודד.</div>
+    <table>
+      <thead><tr><th>מכניקה</th><th class="num">ימים</th><th class="num">avg wager</th><th class="num">r</th><th class="track">חוזק כיוון</th><th class="rel">אמינות</th></tr></thead>
+      <tbody><tr>
+          <td class="mname"><span class="dot" style="background:#ec4899"></span>Ace/Card Loot</td>
+          <td class="num">1</td>
+          <td class="num g">+30.8%</td>
+          <td class="num">+0.31</td>
+          <td class="track"><div class="mbar-pos"><div class="mfill" style="width:46.0%;background:#ec4899"></div></div></td>
+          <td class="rel">n=1</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#64748b"></span>Other</td>
+          <td class="num">1</td>
+          <td class="num g">+30.8%</td>
+          <td class="num">+0.31</td>
+          <td class="track"><div class="mbar-pos"><div class="mfill" style="width:46.0%;background:#64748b"></div></div></td>
+          <td class="rel">n=1</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#14b8a6"></span>Jackpots (MES)</td>
+          <td class="num">1</td>
+          <td class="num g">+18.4%</td>
+          <td class="num">+0.19</td>
+          <td class="track"><div class="mbar-pos"><div class="mfill" style="width:27.4%;background:#14b8a6"></div></div></td>
+          <td class="rel">n=1</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#eab308"></span>Mega Winner</td>
+          <td class="num">1</td>
+          <td class="num g">+15.9%</td>
+          <td class="num">+0.16</td>
+          <td class="track"><div class="mbar-pos"><div class="mfill" style="width:23.8%;background:#eab308"></div></div></td>
+          <td class="rel">n=1</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#06b6d4"></span>Spinner Clash</td>
+          <td class="num">2</td>
+          <td class="num g">+10.1%</td>
+          <td class="num">+0.15</td>
+          <td class="track"><div class="mbar-pos"><div class="mfill" style="width:15.1%;background:#06b6d4"></div></div></td>
+          <td class="rel">~</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#4f9cff"></span>Spin Zone</td>
+          <td class="num">5</td>
+          <td class="num g">+4.1%</td>
+          <td class="num">+0.10</td>
+          <td class="track"><div class="mbar-pos"><div class="mfill" style="width:6.1%;background:#4f9cff"></div></div></td>
+          <td class="rel">✅</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#22c55e"></span>PYP</td>
+          <td class="num">5</td>
+          <td class="num g">+3.0%</td>
+          <td class="num">+0.07</td>
+          <td class="track"><div class="mbar-pos"><div class="mfill" style="width:4.5%;background:#22c55e"></div></div></td>
+          <td class="rel">✅</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#f59e0b"></span>Win Master</td>
+          <td class="num">4</td>
+          <td class="num r">-6.7%</td>
+          <td class="num">-0.14</td>
+          <td class="track"><div class="mbar-neg"><div class="mfill r" style="width:10.0%;background:#f59e0b"></div></div></td>
+          <td class="rel">✅</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#a855f7"></span>MES themed/cards</td>
+          <td class="num">3</td>
+          <td class="num r">-8.8%</td>
+          <td class="num">-0.16</td>
+          <td class="track"><div class="mbar-neg"><div class="mfill r" style="width:13.2%;background:#a855f7"></div></div></td>
+          <td class="rel">~</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#8b5cf6"></span>Custom Pod</td>
+          <td class="num">1</td>
+          <td class="num r">-11.8%</td>
+          <td class="num">-0.12</td>
+          <td class="track"><div class="mbar-neg"><div class="mfill r" style="width:17.7%;background:#8b5cf6"></div></div></td>
+          <td class="rel">n=1</td>
+        </tr><tr>
+          <td class="mname"><span class="dot" style="background:#ef4444"></span>Dash Challenge</td>
+          <td class="num">2</td>
+          <td class="num r">-21.9%</td>
+          <td class="num">-0.32</td>
+          <td class="track"><div class="mbar-neg"><div class="mfill r" style="width:32.7%;background:#ef4444"></div></div></td>
+          <td class="rel">~</td>
+        </tr></tbody>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="ins"><h3 style="color:#4f9cff">סוסי העבודה</h3><p><b>Spin Zone</b> (n=5, r=+0.10) ו-<b>PYP</b> (n=5, r=+0.07): קורלציה חיובית-מתונה ועקבית ל-wager. הבחירה הבטוחה לניקוז קוינז יומי.</p></div>
+    <div class="ins"><h3 style="color:#ef4444">החלש ביותר</h3><p><b>Dash Challenge</b> (r=−0.32) ו-<b>Win Master</b> (r=−0.14): קורלציה שלילית. Dash מתגמל השלמת דאשים ולא ספינים → ניקוז נמוך.</p></div>
+  </div>
+
+  <div class="card">
+    <h2>ימי ה-wager הגבוהים</h2>
+    <ul class="top"><li><b>06-29</b> <span class="g">+35%</span> — M.E.S Cards - 2 Weeks Album</li><li><b>06-23</b> <span class="g">+31%</span> — Woofing Wins - Slot Smashes, World Cup Theme - Ace Loot - 3/4/5* Aces </li><li><b>06-28</b> <span class="g">+29%</span> — Spinner clash + test</li></ul>
+  </div>
+
+  <div class="warn">⚠️ <b>מגבלה:</b> יוני בלבד (23 ימי Core). מכניקות עם n=1-2 (Loot / Jackpots / Mega Winner / Custom Pod) — ה-r לא יציב, וימי השיא שלהן חופפים לאירוע/סוף-אלבום. אמין רק ל-n≥4 (Spin Zone / PYP / Win Master). לייצוב דרוש wager של עוד חודשים.</div>
+</div></body></html>

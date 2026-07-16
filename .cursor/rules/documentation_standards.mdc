@@ -1,0 +1,368 @@
+---
+alwaysApply: true
+---
+
+# Documentation Standards - SM Package
+
+## Overview
+This rule provides consistent naming, organization, and output formatting standards for SM data analysis, ensuring clarity, reproducibility, and professional presentation of all analytical work.
+
+## File Naming Conventions
+
+### Package Structure
+```
+sm_data_assistant_package/
+├── data_sources/
+│   ├── sm_complete_data_context.md
+│   ├── sm_business_context.md
+│   └── sm_data_lineage.md
+├── documentation/
+│   ├── sm_unified_metrics_dictionary.md
+│   ├── sm_analysis_methodology.md
+│   └── prompt_improvement_guide.md
+├── examples/
+│   ├── unified_analysis_examples.md
+│   ├── complexity_assessment_examples.md
+│   └── prompt_training_examples.md
+├── templates/
+│   ├── analysis_project_template.md
+│   └── validation_checklist.md
+└── prompt_documentation/
+    ├── prompt_reflection_guide.md
+    ├── prompt_improvement_tracker.md
+    └── prompt_examples/
+```
+
+### File Naming Rules
+- **Use `sm_` prefix** for all SM-specific files
+- **Use descriptive names** that clearly indicate content
+- **Use lowercase with underscores** for file names
+- **Use consistent terminology** from SM business context
+
+### Analysis File Naming
+```
+sm_[analysis_type]_[metric]_[timeframe]_[date].md
+```
+
+**Examples:**
+- `sm_revenue_analysis_dau_30d_20250101.md`
+- `sm_churn_analysis_cz_segment_q1_20250101.md`
+- `sm_product_performance_vf_daily_20250101.md`
+
+## Output Formatting Standards
+
+### Table Formatting
+Always use tables for structured data and results:
+
+#### Standard Table Format
+```markdown
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Value 1  | Value 2  | Value 3  |
+| Value 4  | Value 5  | Value 6  |
+```
+
+#### SM-Specific Table Examples
+```markdown
+| Date | DAU | Revenue | ARPU |
+|------|-----|---------|------|
+| 2025-01-01 | 558,234 | $725,123 | $1.30 |
+| 2025-01-02 | 562,456 | $731,234 | $1.30 |
+```
+
+### Business Context Integration
+Always explain why metrics and insights matter:
+
+#### Good Example
+```markdown
+**Revenue Analysis Results:**
+- CZ deluxe segment 20-40 shows 25% higher ARPU than segment 0-5
+- This indicates strong monetization among mid-tier engaged users
+- **Business Impact:** Mid-tier engagement campaigns are effectively driving revenue
+```
+
+#### Poor Example
+```markdown
+**Results:**
+- Segment 20-40: $1.50 ARPU
+- Segment 0-5: $1.20 ARPU
+```
+
+### Validation Documentation
+Use consistent validation report format:
+
+```markdown
+## VALIDATION RESULTS
+**Complexity Assessment:** [Query Level] + [Request Level]
+**Validation Users:** [List of user IDs]
+**Raw Data Check:** [Summary of validation process]
+**Source Data Cross-check:** [Transaction/activity validation results]
+**Validation Status:** ✅ Validated / ❌ Issues Found
+**Data Quality Assessment:** [Confidence level and any concerns]
+**Prompt Quality:** [Assessment of request clarity and improvement suggestions]
+```
+
+## SM-Specific Terminology
+
+### User Segments
+- **CZ Deluxe Segments**: 0-5, 5-10, 10-20, 20-40, 40-60, 60-80, 80-100, +100
+- **VIP Tiers**: Tier 1-4 (lower tiers), Tier 4+ (higher tiers)
+- **Paying Users**: Users with `daily_Net_revenue > 0`
+- **Non-Paying Users**: Users with `daily_Net_revenue = 0`
+
+### Metrics and KPIs
+- **DAU**: Daily Active Users
+- **ARPU**: Average Revenue Per User
+- **ARPPU**: Average Revenue Per Paying User
+- **LTV**: Lifetime Value
+- **Retention**: Day 1, 7, 30 retention rates
+- **Churn Rate**: Percentage of users who stop playing
+
+### Game Features
+- **Slot Machines**: Core gameplay mechanic
+- **Spins**: Individual slot machine spins
+- **Coins**: Primary virtual currency
+- **Gems**: Secondary virtual currency
+- **Slotobucks**: Virtual currency for redemption
+- **Bonuses**: Various bonus types and promotions
+
+### Platforms
+- **iOS**: Apple mobile platform
+- **Android**: Google mobile platform
+- **Web**: Web browser platform
+
+### Product Groups
+- **Real Money Products**: Actual USD purchases
+- **Slotobucks Products**: Virtual currency redemption
+- **Product Groups**: Various product categories
+
+## Analysis Documentation Structure
+
+### Standard Analysis Template
+```markdown
+# SM [Analysis Type] - [Date]
+
+## Executive Summary
+[High-level findings and business impact]
+
+## Methodology
+[Data sources, timeframes, and approach]
+
+## Key Findings
+[Main insights with business context]
+
+## Detailed Analysis
+[Comprehensive results with tables]
+
+## Validation Results
+[Validation methodology and results]
+
+## Business Recommendations
+[Actionable insights and next steps]
+
+## Technical Appendix
+[Query details, assumptions, limitations]
+```
+
+### Revenue Analysis Template
+```markdown
+# SM Revenue Analysis - [Date]
+
+## Executive Summary
+- **Total Revenue**: $X for period
+- **Key Trend**: [Main revenue trend]
+- **Business Impact**: [Revenue implications]
+
+## Revenue by Segment
+| Segment | Users | Revenue | ARPU | % of Total |
+|---------|-------|---------|------|------------|
+| CZ 0-5 | X | $X | $X | X% |
+| CZ 5-10 | X | $X | $X | X% |
+| CZ 10-20 | X | $X | $X | X% |
+
+## Product Performance
+[Product-specific revenue analysis]
+
+## Validation Results
+[Revenue validation methodology and results]
+
+## Business Recommendations
+[Revenue optimization strategies]
+```
+
+### User Engagement Template
+```markdown
+# SM User Engagement Analysis - [Date]
+
+## Executive Summary
+- **DAU**: X users
+- **Key Trend**: [Main engagement trend]
+- **Business Impact**: [Engagement implications]
+
+## Engagement by Segment
+| Segment | DAU | Spins | Sessions | Retention |
+|---------|-----|-------|----------|-----------|
+| CZ 0-5 | X | X | X | X% |
+| CZ 5-10 | X | X | X | X% |
+| CZ 10-20 | X | X | X | X% |
+
+## Feature Adoption
+[Feature usage analysis]
+
+## Validation Results
+[Engagement validation methodology and results]
+
+## Business Recommendations
+[Engagement optimization strategies]
+```
+
+## Quality Assurance Standards
+
+### Data Quality Documentation
+```markdown
+## Data Quality Assessment
+- **Completeness**: [Data completeness assessment]
+- **Accuracy**: [Data accuracy validation]
+- **Consistency**: [Cross-table consistency check]
+- **Timeliness**: [Data freshness assessment]
+- **Confidence Level**: [Overall confidence assessment]
+```
+
+### Business Logic Documentation
+```markdown
+## Business Logic Applied
+- **User Segmentation**: [CZ deluxe segmentation logic]
+- **Revenue Calculation**: [Revenue calculation methodology]
+- **Engagement Metrics**: [Engagement calculation approach]
+- **Aggregation Methodology**: [Two-step aggregation verification]
+- **Validation Approach**: [Validation methodology]
+```
+
+### Limitations and Assumptions
+```markdown
+## Limitations and Assumptions
+- **Data Limitations**: [Known data quality issues]
+- **Methodological Assumptions**: [Analysis assumptions]
+- **Business Context**: [Business environment factors]
+- **Recommendations**: [How to address limitations]
+```
+
+## Professional Presentation Standards
+
+### Executive Summary Format
+```markdown
+## Executive Summary
+
+**Key Finding 1:** [Finding with business impact]
+**Key Finding 2:** [Finding with business impact]
+**Key Finding 3:** [Finding with business impact]
+
+**Business Impact:** [Overall business implications]
+**Next Steps:** [Recommended actions]
+```
+
+### Business Context Integration
+Always include:
+- **Why metrics matter** for business decisions
+- **What trends indicate** for future performance
+- **How insights inform** strategic decisions
+- **What actions should be taken** based on findings
+
+### Visual Presentation
+- **Use tables** for all structured data
+- **Use clear headings** for easy navigation
+- **Use bullet points** for key findings
+- **Use consistent formatting** throughout
+
+## Date Handling Standards - CRITICAL ⚠️
+
+### Current Date Determination
+**ALWAYS use the ACTUAL current date when creating or updating documentation.**
+
+**MANDATORY RULES:**
+1. **Never assume dates** from other files or examples
+2. **Always check system date** using `date` command or system date functions
+3. **Never copy dates** from example queries or historical documentation
+4. **Verify date context** - distinguish between:
+   - **Documentation dates** (when document was created/updated)
+   - **Example dates** (dates used in SQL examples for illustration)
+   - **Historical dates** (dates referenced in business context)
+
+### Date Format Standards
+- **Documentation dates**: Use format `[Month] [Year]` (e.g., "November 2025")
+- **Example dates in SQL**: Use format `'YYYY-MM-DD'` (e.g., `'2025-11-15'`)
+- **File naming dates**: Use format `YYYYMMDD` (e.g., `20251115`)
+
+### Common Date Mistakes to Avoid
+❌ **WRONG**: Copying "January 2025" from `sm_complete_data_context.md` (that's when that file was last updated, not current date)
+❌ **WRONG**: Using dates from SQL examples (those are illustrative, not current)
+❌ **WRONG**: Assuming date based on file modification dates
+✅ **CORRECT**: Check actual system date before writing documentation dates
+
+### Date Verification Process
+Before writing any date in documentation:
+1. **Check system date**: Run `date` command or check system date
+2. **Verify context**: Is this a documentation date or an example date?
+3. **Use correct format**: Apply appropriate date format based on context
+4. **Double-check**: Verify date makes sense (not in the past for "current" dates)
+
+### Example Date Usage
+```markdown
+**Last Updated:** November 2025  ✅ (Actual current date)
+**Generated:** November 2025    ✅ (Actual current date)
+
+-- Example SQL with illustrative dates (NOT current date)
+WHERE calc_date BETWEEN '2025-01-01' AND '2025-06-22'  ✅ (Example date range)
+```
+
+## Version Control and Updates
+
+### File Versioning
+```markdown
+**Version:** 1.0
+**Last Updated:** [Date - Use ACTUAL current date]
+**Author:** [Name]
+**Reviewer:** [Name]
+**Changes:** [Summary of changes]
+```
+
+### Update Tracking
+- **Track all changes** to analysis files
+- **Document methodology updates** with rationale
+- **Maintain change log** for significant updates
+- **Version control** for all analytical outputs
+- **Always update "Last Updated" date** to actual current date when modifying files
+
+## Collaboration Standards
+
+### Review Process
+1. **Self-review** before sharing
+2. **Peer review** for complex analyses
+3. **Stakeholder review** for business impact
+4. **Final approval** before publication
+
+### Feedback Integration
+- **Document all feedback** received
+- **Track improvement suggestions** implemented
+- **Maintain learning log** for future reference
+- **Share best practices** across team
+
+## Success Metrics
+
+### Documentation Quality
+- **Clarity**: >90% of analyses are clear and understandable
+- **Completeness**: >95% of analyses include all required sections
+- **Consistency**: >95% of analyses follow standard format
+- **Business Context**: >90% of analyses include business impact
+
+### Professional Standards
+- **Error-free**: <1% of analyses contain errors
+- **Timely delivery**: >95% of analyses delivered on schedule
+- **Stakeholder satisfaction**: >90% satisfaction with analysis quality
+- **Knowledge transfer**: >80% of analyses enable team learning
+
+This documentation standards rule ensures consistent, professional, and business-focused presentation of all SM data analysis with clear quality standards and collaboration protocols.
+description:
+globs:
+alwaysApply: false
+---

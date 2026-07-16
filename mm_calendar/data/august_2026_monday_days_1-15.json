@@ -1,0 +1,1950 @@
+{
+  "meta": {
+    "authority": "READ-ONLY planning truth for 2026-08-01 … 2026-08-15: live Monday MM calendar board (snapshot monday_board_live_by_date.json). Do not change these days via build_august_2026_plan.py or upload_mm_calendar_day_monday.py unless Itay explicitly approves.",
+    "source": "mm_calendar/data/monday_board_live_by_date.json",
+    "date_range": [
+      "2026-08-01",
+      "2026-08-15"
+    ],
+    "read_only": true
+  },
+  "days": [
+    {
+      "date": 1,
+      "iso": "2026-08-01",
+      "dow": "Sat",
+      "hasAnchor": true,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes — (1) Wild Ordinary · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 1 (Shiny Series 1). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 1 (Shiny MS1)",
+          "status": "Album",
+          "isFirst": true,
+          "desc": "Shiny Series 1 · album 14/07–22/09. Window: phase 1 per Nivi promo boundaries (see nivi_collector_album_prizes.md)."
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - Coins",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: Coins · Blast · Quest",
+          "backup": false,
+          "mondayItemId": "12464095723"
+        },
+        {
+          "name": "Shiny Show - Joker All Cards",
+          "status": "Album",
+          "pricing": "",
+          "desc": "Variant: Joker All Cards",
+          "backup": false,
+          "mondayItemId": "12486308699"
+        },
+        {
+          "name": "Custom Pod - X1000",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Custom Pod — X1000",
+          "backup": false,
+          "mondayItemId": "12464095595"
+        },
+        {
+          "name": "Win Master - 3* Reg card + PAB",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Win Master — 3★ Reg card + PAB",
+          "backup": false,
+          "mondayItemId": "12486193098"
+        },
+        {
+          "name": "Daily Deal - 3* Reg card + Hammers Wheel | High Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward (this instance): 3★ Reg card + Hammers Wheel.",
+          "backup": false,
+          "mondayItemId": "12475692413"
+        },
+        {
+          "name": "Status Boost",
+          "status": "Event",
+          "pricing": "",
+          "desc": "Top store denom visibility (Status Boost).",
+          "backup": false,
+          "mondayItemId": "12464110621"
+        },
+        {
+          "name": "1st of month - biggest store denom",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Added to the store denom,\ngives both coins & gems like the american denom in 4th of july",
+          "backup": false,
+          "mondayItemId": "12464180399"
+        },
+        {
+          "name": "LBP - 30% Bigger Balls (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Lotto balls 30% bigger from 00:00 UTC until Promo Time (11:00 UTC) on this calendar day",
+          "backup": false,
+          "mondayItemId": "12464095580"
+        },
+        {
+          "name": "Lotto - peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Night Plan Lotto peak (pair one LBP row this day).",
+          "backup": false,
+          "mondayItemId": "12464095386"
+        },
+        {
+          "name": "BACKUP - 30/50% Coin Coupon - on top of status boost",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Top store denom visibility (Status Boost).",
+          "backup": false,
+          "mondayItemId": "12510663452"
+        },
+        {
+          "name": "RYD - 5* Gold Card + 100% SB - High Price",
+          "status": "RYD",
+          "pricing": "Max",
+          "desc": "Hook: 2026-08-01 | RYD - 5* Gold Card + 100% SB - High Price",
+          "backup": false,
+          "mondayItemId": "12464095650"
+        },
+        {
+          "name": "Blast - Short Term",
+          "status": "Short Term",
+          "pricing": "",
+          "desc": "SALE day (weekend coin sale).\n\nSeason rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 1 (Shiny MS1)\n\nShort Term (Blast): Short-term board (~5d): cycle prizes — (1) Wild Ordinary · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 1 (Shiny Series 1). Full tables: mm_calendar/nivi_collector_album_prizes.md\n\nAlbum (Album — Phase 1 (Shiny MS1)): Shiny Series 1 · album 14/07–22/09. Window: phase 1 per Nivi promo boundaries (see nivi_collector_album_prizes.md).\n\nPurchase driver: 1st of month — biggest store denom — Added to the store denom,\ngives both coins & gems like the american denom in 4th of july\n\nPlan notes: Month-open biggest store denom (purchase driver, not a board promo).\n\nShort Term season start: Blast.",
+          "backup": false,
+          "mondayItemId": "12488278671"
+        },
+        {
+          "name": "Blast | Wild Ordinary | Cozy",
+          "status": "Short Term",
+          "pricing": "",
+          "desc": "Cozy Blast like refrence.",
+          "backup": false,
+          "mondayItemId": "12488377591"
+        }
+      ],
+      "sale": true,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "Month-open biggest store denom (purchase driver, not a board promo).",
+      "mondayAuthority": true
+    },
+    {
+      "date": 2,
+      "iso": "2026-08-02",
+      "dow": "Sun",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 1 (Shiny MS1)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - Gems",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: Gems · Blast · Quest",
+          "backup": false,
+          "mondayItemId": "12464196805"
+        },
+        {
+          "name": "PYP - finish for 3* Ace card",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Missions:\n· Reach act 18 — Shiny Show\n· Spin 100 times — Gem Machine\n· Open 5 pods\n· Use PAB",
+          "backup": false,
+          "mondayItemId": "12486309356"
+        },
+        {
+          "name": "Daily Deal - PAB + Quest Booster | High Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: PAB + Quest Booster.",
+          "backup": false,
+          "mondayItemId": "12486384765"
+        },
+        {
+          "name": "MGAP Matched",
+          "status": "MGAP",
+          "pricing": "",
+          "desc": "Matched multipliers on MGAP tiers.",
+          "backup": false,
+          "mondayItemId": "12467753097"
+        },
+        {
+          "name": "Decoy Bonanza - d3: 5* Reg + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + PAB\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 1 GGS + PAB + Quest Booster + 100% SB + 5★ Reg",
+          "backup": false,
+          "mondayItemId": "12464175025"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "",
+      "mondayAuthority": true
+    },
+    {
+      "date": 3,
+      "iso": "2026-08-03",
+      "dow": "Mon",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mega Pods freemium/premium milestones — nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Album — Phase 1 (Shiny MS1)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - 2 Picks",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: 2 Picks · Blast · Quest",
+          "backup": false,
+          "mondayItemId": "12464173301"
+        },
+        {
+          "name": "Album - Last Day Shiny Collection (MS1)",
+          "status": "Album",
+          "pricing": "",
+          "desc": "last day to finish Shiny Collection MS1 before rotation",
+          "backup": false,
+          "mondayItemId": "12464197169"
+        },
+        {
+          "name": "Clan Dash Bundle - 30% discount",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Clan Dash Bundle — discounted clan season bundle (Monday Dash Day). Prize focus: clan progression bundle; payer breadth",
+          "backup": false,
+          "mondayItemId": "12464173394"
+        },
+        {
+          "name": "Clan Go - Premium for Badge Wheel",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Clan Go — Go Premium for Badge Wheel / picker. Prize focus: badge-wheel spins and clan badge earn",
+          "backup": false,
+          "mondayItemId": "12464215324"
+        },
+        {
+          "name": "Monday Max Deal",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Monday Max Deal — premium Monday clan purchase bundle (Dash Day)",
+          "backup": false,
+          "mondayItemId": "12464173477"
+        },
+        {
+          "name": "Time Limited Prize - 4* Regular Card",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Time Limited Prize — timed clan reward window",
+          "backup": false,
+          "mondayItemId": "12488279081"
+        },
+        {
+          "name": "Time Limited Prize - 4* Regular Card",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Time Limited Prize — timed clan reward window",
+          "backup": false,
+          "mondayItemId": "12511356491"
+        },
+        {
+          "name": "Win Master - 3* Reg card + PAB",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Win Master — 3★ Reg card + PAB",
+          "backup": false,
+          "mondayItemId": "12488297934"
+        },
+        {
+          "name": "Daily Deal - Shiny Card (multiple) | Max Pricing",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Central reward: Shiny Card (multiple) (Max pricing).\nMultiple purchases.",
+          "backup": false,
+          "mondayItemId": "12486308528"
+        },
+        {
+          "name": "Mega Pods Season",
+          "status": "Mid Term",
+          "pricing": "",
+          "desc": "Season rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 1 (Shiny MS1)\n\nMid Term (Mega Pods): Mega Pods freemium/premium milestones — nivi_collector_album_prizes.md\n\nPlan notes: Shiny Collection #1 last day.\n\nMega Pods season start (Mon→Mon, 7d). Through 2026-08-09.",
+          "backup": false,
+          "mondayItemId": "12475691176"
+        },
+        {
+          "name": "Rolling Offer - 3 cycles (Buy More for Less)",
+          "status": "Rolling offer",
+          "pricing": "High",
+          "desc": "Rolling Offer — Buy More for Less\nCycle 1: Coins (low tier) + Gems | 100% SB  | 2 Hammers | 3 RDS | 1 GGS\nCycle 2: Coins (mid tier) + Gems | 200% SB  | 4 Hammers | 3 RDS | 1 GGS\nCycle 3: Coins (high tier) + Gems | 300% SB  | 6 Hammers | 3 RDS | 2 GGS",
+          "backup": false,
+          "mondayItemId": "12464188673"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "Shiny Collection #1 last day.",
+      "mondayAuthority": true
+    },
+    {
+      "date": 4,
+      "iso": "2026-08-04",
+      "dow": "Tue",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": true,
+          "desc": "Shiny Series 2 · album 14/07–22/09. Window: phase 2 per Nivi promo boundaries (see nivi_collector_album_prizes.md)."
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - Gems",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: Gems · Blast · Quest",
+          "backup": false,
+          "mondayItemId": "12464215481"
+        },
+        {
+          "name": "Album - 2nd Shiny Collection Opening",
+          "status": "Album",
+          "pricing": "",
+          "desc": "new Shiny Collection set goes live (4/8 marketing); feeds Shiny Show goals",
+          "backup": false,
+          "mondayItemId": "12464215466"
+        },
+        {
+          "name": "Album - Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "pricing": "",
+          "desc": "Season rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Quest): Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands).\n\nAlbum (Album — Phase 2 (Shiny MS2)): Shiny Series 2 · album 14/07–22/09. Window: phase 2 per Nivi promo boundaries (see nivi_collector_album_prizes.md).\n\nPlan notes: Shiny Collection #2 opens.\n\nAlbum rhythm: Album — Phase 2 (Shiny MS2). Active through 2026-08-24.",
+          "backup": false,
+          "mondayItemId": "12476387067"
+        },
+        {
+          "name": "Shiny Show - Crazy with Aces",
+          "status": "Album",
+          "pricing": "",
+          "desc": "Variant: All Cards",
+          "backup": false,
+          "mondayItemId": "12465729256"
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "X2 Dash Points — double dash-point earn on clan dash missions (Tue/Fri)",
+          "backup": false,
+          "mondayItemId": "12464214893"
+        },
+        {
+          "name": "PYP - finish for 3* Reg card + PAB + Quest Booster",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Missions:\n· Reach act 18 — Shiny Show\n· Spin 100 times — Gem Machine\n· Open 5 pods\n· Use Superboom",
+          "backup": false,
+          "mondayItemId": "12467787872"
+        },
+        {
+          "name": "Daily Deal - 8 Hammers (multiple) | High Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: 8 Hammers (multiple).\nMultiple purchases.",
+          "backup": false,
+          "mondayItemId": "12486296317"
+        },
+        {
+          "name": "Daily Deal - Shiny Limited - Once | High Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: Shiny Limited - Once.\nOnce-per-player — pair with DD multiple same day.",
+          "backup": false,
+          "mondayItemId": "12475671533"
+        },
+        {
+          "name": "X2 Extreme Stamp",
+          "status": "Extreme Stamp",
+          "pricing": "",
+          "desc": "Doubles Extreme Stamps in offers today (RDS → Extreme).",
+          "backup": false,
+          "mondayItemId": "12464188623"
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC) | BACKUP",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Doubles GGS earned in offers (3h post 11:00 UTC).",
+          "backup": false,
+          "mondayItemId": "12464188765"
+        },
+        {
+          "name": "Quest Season - Betty Theme (Wait for Kayy's Approval)",
+          "status": "Mid Term",
+          "pricing": "",
+          "desc": "Season rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Quest): Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands).\n\nAlbum (Album — Phase 2 (Shiny MS2)): Shiny Series 2 · album 14/07–22/09. Window: phase 2 per Nivi promo boundaries (see nivi_collector_album_prizes.md).\n\nPlan notes: Shiny Collection #2 opens.\n\nMid Term season start: Quest. Through 2026-08-08.",
+          "backup": false,
+          "mondayItemId": "12475665380"
+        },
+        {
+          "name": "LBP - 2 Extreme Stamps (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "LBP - 2 Extreme Stamps (Night Plan)",
+          "backup": false,
+          "mondayItemId": "12464175520"
+        },
+        {
+          "name": "Lotto - peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Night Plan Lotto peak (pair one LBP row this day).",
+          "backup": false,
+          "mondayItemId": "12464173516"
+        },
+        {
+          "name": "RYD - Despicable Wolf + 100% SB - Mid Price",
+          "status": "RYD",
+          "pricing": "Medium",
+          "desc": "Hook: 2026-08-04 | RYD - Despicable Wolf + 100% SB - Mid Price\nExtreme Stamp day: RDS → Extreme (4 RDS → 2 Extreme).",
+          "backup": false,
+          "mondayItemId": "12476372632"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "Shiny Collection #2 opens.",
+      "mondayAuthority": true
+    },
+    {
+      "date": 5,
+      "iso": "2026-08-05",
+      "dow": "Wed",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Winovate scene milestones by album phase — nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - 2* Reg card",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: 2★ Reg card · Blast · Quest",
+          "backup": false,
+          "mondayItemId": "12464189091"
+        },
+        {
+          "name": "X2 Badges",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "X2 Badges — double clan badge earn rate (Wednesday)",
+          "backup": false,
+          "mondayItemId": "12464175535"
+        },
+        {
+          "name": "Spinner Clash",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Spinner Clash — tournament Core coin sink; house adds % of wins to prize pot.\nCollector's Album phase 2 (Shiny Series 2) — rank prizes:\n  1st: 5★ Ace Pack\n  2nd: 4★ Ace Pack\n  3rd: 3★ Ace Card\nConfigure ranks in LiveOps per nivi_collector_album_prizes.md.",
+          "backup": false,
+          "mondayItemId": "12475065098"
+        },
+        {
+          "name": "Daily Deal - 100% SB + 6 Hammers | H Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: 100% SB + 6 Hammers (High pricing).",
+          "backup": false,
+          "mondayItemId": "12486310516"
+        },
+        {
+          "name": "MGAP BOGO",
+          "status": "MGAP",
+          "pricing": "",
+          "desc": "BOGO — buy-one-get-one multipliers on MGAP tiers.\nLiveOps: open BOGO config task.",
+          "backup": false,
+          "mondayItemId": "12464188536"
+        },
+        {
+          "name": "Winovate Season",
+          "status": "Mid Term",
+          "pricing": "",
+          "desc": "Season rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Winovate): Winovate scene milestones by album phase — nivi_collector_album_prizes.md\n\nWinovate season start (8d cycle). Through 2026-08-12.",
+          "backup": false,
+          "mondayItemId": "12475693695"
+        },
+        {
+          "name": "Piggy - break for 3* Reg card",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Prize on break: 3★ Reg card",
+          "backup": false,
+          "mondayItemId": "12464175428"
+        },
+        {
+          "name": "Rolling Offer - Supersized (5 cycles) | M Pricing",
+          "status": "Rolling offer",
+          "pricing": "Medium",
+          "desc": "Rolling — Buy X Get Y (5 cycles) | M Pricing\nShort Term: Blast · Mid Term: Winovate (season start)\nRe-use: Supersized · 4★ Gold on Cycle 2 denom 3 (free slot)\n\nCycle 1\n\t1\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t2\tFree\t 100% SB\n\t3\tFree\t supersized 1%\n\t4\tFree\t 3 Hammers\n\t5\tFree\t 3 RDS\n\t6\tFree\t 1 GGS\n\nCycle 2\n\t7\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t8\tFree\t 150% SB\n\t9\tFree\t 4★ Gold card\n\t10\tFree\t 5 Hammers\n\t11\tFree\t 3 RDS\n\t12\tFree\t 1 GGS\n\nCycle 3\n\t13\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t14\tFree\t 200% SB\n\t15\tFree\t supersized 3%\n\t16\tFree\t 7 Hammers\n\t17\tFree\t 3 RDS\n\t18\tFree\t 1 GGS\n\nCycle 4\n\t19\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t20\tFree\t 250% SB\n\t21\tFree\t 3 Picks\n\t22\tFree\t 10 Hammers\n\t23\tFree\t 3 RDS\n\t24\tFree\t 1 GGS\n\nCycle 5\n\t25\tBuy\t Coins + Gems + 1 RDS + 1 GGS\n\t26\tFree\t 300% SB\n\t27\tFree\t supersized 5%\n\t28\tFree\t 12 Hammers\n\t29\tFree\t 3 RDS\n\t30\tFree\t 1 GGS\n\nDuration: all day.",
+          "backup": false,
+          "mondayItemId": "12510879320"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "",
+      "mondayAuthority": true
+    },
+    {
+      "date": 6,
+      "iso": "2026-08-06",
+      "dow": "Thu",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes — (1) Wild Gold · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - Gems",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: Gems · Battlesheep · Quest",
+          "backup": false,
+          "mondayItemId": "12464261622"
+        },
+        {
+          "name": "Clan Go - up to 200 badges",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Clan Go — earn up to 200 badges in the daily window (Thursday template). Prize focus: dash/badge progression",
+          "backup": false,
+          "mondayItemId": "12464219580"
+        },
+        {
+          "name": "MES - Spin Zone + Option to purchase to progress | 4* Ace Card + 3* Ace topper",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Spin Zone — 4★ Ace card chase.\nTopper: 3★ Ace card (Nivi Ace_3 bank).",
+          "backup": false,
+          "mondayItemId": "12486219042"
+        },
+        {
+          "name": "Daily Deal - 3* Reg card + 2 Parasheep | M Pricing",
+          "status": "Daily deal",
+          "pricing": "Medium",
+          "desc": "Central reward: 3★ Reg card (on purchase) + 2 Parasheep (Mid pricing).",
+          "backup": false,
+          "mondayItemId": "12486225802"
+        },
+        {
+          "name": "Gems Sale - 30% store / 20% offers",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Gems Sale — 30% store / 20% offers.",
+          "backup": false,
+          "mondayItemId": "12464258404"
+        },
+        {
+          "name": "Golden Spin | 30% Bigger | Betty Boop theme",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Golden Spin — timed gem feature.",
+          "backup": false,
+          "mondayItemId": "12464239902"
+        },
+        {
+          "name": "Prize Mania - 3* Reg pack | Coins, Gems",
+          "status": "Prize Mania",
+          "pricing": "High",
+          "desc": "Bundle: 3★ Reg pack | Coins, Gems, 4 RDS, 1 GGS, 100% SB",
+          "backup": false,
+          "mondayItemId": "12464260280"
+        },
+        {
+          "name": "Battlesheep - Wild Gold | Betty Theme",
+          "status": "Short Term",
+          "pricing": "",
+          "desc": "wild gold instead of any",
+          "backup": false,
+          "mondayItemId": "12486216467"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "",
+      "mondayAuthority": true
+    },
+    {
+      "date": 7,
+      "iso": "2026-08-07",
+      "dow": "Fri",
+      "hasAnchor": true,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - 2 Dice",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: 2 Dice · Battlesheep · Quest",
+          "backup": false,
+          "mondayItemId": "12464237067"
+        },
+        {
+          "name": "Different Set Sweepstake Every Hour | 15:00-17:00",
+          "status": "Album",
+          "pricing": "",
+          "desc": "14:00-15:00 set number (x)\n15:00-16:00 set number (x)\n16:00-17:00 set number (x)\n\nSet numbers tbd by economy",
+          "backup": false,
+          "mondayItemId": "12486194024"
+        },
+        {
+          "name": "BD Extra Prizes",
+          "status": "Black Diamond",
+          "pricing": "",
+          "desc": "payed in list",
+          "backup": false,
+          "mondayItemId": "12486109623"
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "X2 Dash Points — double dash-point earn on clan dash missions (Tue/Fri)",
+          "backup": false,
+          "mondayItemId": "12464261748"
+        },
+        {
+          "name": "Betty Boop Custom Pod x1250",
+          "status": "Core",
+          "pricing": "",
+          "desc": "",
+          "backup": false,
+          "mondayItemId": "12486106825"
+        },
+        {
+          "name": "Betty Boop | Musical Missions",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Missions:\nSpin 100 times in any game\nopen  pods\nuse  airstrikes\nreach act 18 shiny show\n\n will be determined by economy\n\nrewards - \n1) 2* reg card\n2) 1 airstrike\n3) 6 hrs dice\n4) 4* ace card",
+          "backup": false,
+          "mondayItemId": "12486332880"
+        },
+        {
+          "name": "Daily Deal - AS + 2 Parasheep | Max Pricing",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Central reward: AS + 2 Parasheep.",
+          "backup": false,
+          "mondayItemId": "12486217945"
+        },
+        {
+          "name": "Betty Boop Theme",
+          "status": "Event",
+          "pricing": "",
+          "desc": "Lobby BG,\nStore Assets,\nMachines DF,\nBottom Panel,\nPreloader",
+          "backup": false,
+          "mondayItemId": "12486134021"
+        },
+        {
+          "name": "x2 GGS 18:00-20:00",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Doubles GGS earned in offers (3h post 11:00 UTC).",
+          "backup": false,
+          "mondayItemId": "12464329723"
+        },
+        {
+          "name": "Boosted Gemback Alert 500% | 13:00-18:00 UTC",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Boosted Gemback 500% — exclude DD.",
+          "backup": false,
+          "mondayItemId": "12486332857"
+        },
+        {
+          "name": "Coin Sale | Betty Boop | 50/75/200/400%",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Coin Sale.",
+          "backup": false,
+          "mondayItemId": "12486197991"
+        },
+        {
+          "name": "RYD - 3* Reg + 100% SB - High Price",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Hook: 2026-08-07 | RYD - 3* Reg + 100% SB - High Price",
+          "backup": false,
+          "mondayItemId": "12486223057"
+        }
+      ],
+      "sale": true,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "",
+      "mondayAuthority": true
+    },
+    {
+      "date": 8,
+      "iso": "2026-08-08",
+      "dow": "Sat",
+      "hasAnchor": true,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - Coins",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: Coins · Battlesheep · Quest",
+          "backup": false,
+          "mondayItemId": "12464237271"
+        },
+        {
+          "name": "Shiny Show - Joker Different Prizes",
+          "status": "Album",
+          "pricing": "",
+          "desc": "Variant: Joker Different Prizes",
+          "backup": false,
+          "mondayItemId": "12486489760"
+        },
+        {
+          "name": "Betty Loot - 48Hrs",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Betty theme loot — 48 hours (Fri 8/8 through Sat 9/8).\nReplaces 24h window; aligns with Betty's Birthday weekend.\nDice Loot removed from 9/8 (now 13/8).",
+          "backup": false,
+          "mondayItemId": "12486541143"
+        },
+        {
+          "name": "Betty's Birthday",
+          "status": "Core",
+          "pricing": "",
+          "desc": "All game themed,\nBetty machines df, \nlobby, \nstore, \nbg, \npreloader",
+          "backup": false,
+          "mondayItemId": "12488378134"
+        },
+        {
+          "name": "Win Master - 3* Reg card + 2 Parasheep",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Win Master — 3★ Reg card + 2 Parasheep",
+          "backup": false,
+          "mondayItemId": "12488356368"
+        },
+        {
+          "name": "Daily Deal - 8 Hammers + Quest Booster | H Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: 8 Hammers + Quest Booster (High pricing).",
+          "backup": false,
+          "mondayItemId": "12510753242"
+        },
+        {
+          "name": "Boosted Gemback Alert 300% | 17:00-23:00 UTC",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Boosted Gemback 300% — exclude DD.",
+          "backup": false,
+          "mondayItemId": "12487327616"
+        },
+        {
+          "name": "Decoy Bonanza - d3: 3* Gold + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Parasheep\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 2 Parasheep + Quest Booster + 100% SB + 3★ Gold",
+          "backup": false,
+          "mondayItemId": "12486527603"
+        },
+        {
+          "name": "Fortune Dip - up to 700% | 14:00-15:00 UTC",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Economy to decide the config",
+          "backup": false,
+          "mondayItemId": "12488350009"
+        },
+        {
+          "name": "LBP - 2 multiballs (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Two multiball activations during the peak",
+          "backup": false,
+          "mondayItemId": "12464261977"
+        },
+        {
+          "name": "Lotto - peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Night Plan Lotto peak (pair one LBP row this day).",
+          "backup": false,
+          "mondayItemId": "12464261782"
+        }
+      ],
+      "sale": true,
+      "tag": "event",
+      "banner": "Betty's Birthday",
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "",
+      "mondayAuthority": true
+    },
+    {
+      "date": 9,
+      "iso": "2026-08-09",
+      "dow": "Sun",
+      "hasAnchor": true,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - 2 Parasheep",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: 2 Parasheep · Battlesheep · Globez",
+          "backup": false,
+          "mondayItemId": "12464286594"
+        },
+        {
+          "name": "Spin Zone - 2 Parasheep chase",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Prize: 2 Parasheep\nShort-term: Battlesheep",
+          "backup": false,
+          "mondayItemId": "12475073774"
+        },
+        {
+          "name": "Counter PO | Night Plan",
+          "status": "Counter PO",
+          "pricing": "High",
+          "desc": "Night Plan",
+          "backup": false,
+          "mondayItemId": "12486541140"
+        },
+        {
+          "name": "Daily Deal BOGO - 3 Hammers + 3000 Globez Coins | High",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: Daily Deal BOGO - 3 Hammers + 3000 Globez Coins | High.",
+          "backup": false,
+          "mondayItemId": "12510648211"
+        },
+        {
+          "name": "Betty's Birthday",
+          "status": "Event",
+          "pricing": "",
+          "desc": "Anchor / banner: Betty's Birthday.\n\nSeason rhythm: Short Term: Battlesheep · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Globez): Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands).\n\nPlan notes: Betty's Birthday (day 2).\n\nEvent — Betty's Birthday marketing anchor (Mon–Economy Event tab).\nthemed weekend 8–9/8; Core MES / coin-sink and purchase promos on surrounding rows.",
+          "backup": false,
+          "mondayItemId": "12486541198"
+        },
+        {
+          "name": "Globez Season",
+          "status": "Mid Term",
+          "pricing": "",
+          "desc": "Anchor / banner: Betty's Birthday.\n\nSeason rhythm: Short Term: Battlesheep · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Globez): Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands).\n\nPlan notes: Betty's Birthday (day 2).\n\nMid Term season start: Globez. Through 2026-08-14.",
+          "backup": false,
+          "mondayItemId": "12475701343"
+        },
+        {
+          "name": "RYD - 3* Reg + 100% SB - H Price",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Hook: 2026-08-09 | RYD - 3* Reg + 100% SB - H Price",
+          "backup": false,
+          "mondayItemId": "12476357448"
+        }
+      ],
+      "sale": false,
+      "tag": "event",
+      "banner": "Betty's Birthday",
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "Betty's Birthday (day 2).",
+      "mondayAuthority": true
+    },
+    {
+      "date": 10,
+      "iso": "2026-08-10",
+      "dow": "Mon",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mega Pods freemium/premium milestones — nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - 2 Parasheep",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: 2 Parasheep · Battlesheep · Globez",
+          "backup": false,
+          "mondayItemId": "12464284894"
+        },
+        {
+          "name": "Buy All - Coins: Coins+RDS + 2 Parasheep + AS | Gems: Gems + 1 GGS + 3000 Hero Coins | H Pricing",
+          "status": "Buy all",
+          "pricing": "High",
+          "desc": "Coins denom: Coins+4 RDS + 2 Parasheep + AS\nGems denom: Gems + 1 GGS + 3000 Hero Coins",
+          "backup": false,
+          "mondayItemId": "12488284260"
+        },
+        {
+          "name": "Clan Dash Bundle - 30% discount",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Clan Dash Bundle — discounted clan season bundle (Monday Dash Day). Prize focus: clan progression bundle; payer breadth",
+          "backup": false,
+          "mondayItemId": "12464253806"
+        },
+        {
+          "name": "Clan Go - Premium for Badge Wheel",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Clan Go — Go Premium for Badge Wheel / picker. Prize focus: badge-wheel spins and clan badge earn",
+          "backup": false,
+          "mondayItemId": "12464284862"
+        },
+        {
+          "name": "Monday Max Deal",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Monday Max Deal — premium Monday clan purchase bundle (Dash Day)",
+          "backup": false,
+          "mondayItemId": "12464329414"
+        },
+        {
+          "name": "Time Limited Prize - Shiny Card",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Time Limited Prize — timed clan reward window",
+          "backup": false,
+          "mondayItemId": "12488284460"
+        },
+        {
+          "name": "PYP - finish for 5* Ace card",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Missions:\n· Reach act 18 — Shiny Show\n· Spin 100 times — Gem Machine\n· Open 5 pods\n· Use 2 Airstrikes",
+          "backup": false,
+          "mondayItemId": "12488329633"
+        },
+        {
+          "name": "Daily Deal - 3* Gold Card + 2 Parasheep | H Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: 3* Gold Card + 2 Parasheep (High pricing).",
+          "backup": false,
+          "mondayItemId": "12510661815"
+        },
+        {
+          "name": "MGAP BOGO",
+          "status": "MGAP",
+          "pricing": "",
+          "desc": "BOGO — buy-one-get-one multipliers on MGAP tiers.\nLiveOps: open BOGO config task.",
+          "backup": false,
+          "mondayItemId": "12488284337"
+        },
+        {
+          "name": "Mega Pods Season",
+          "status": "Mid Term",
+          "pricing": "",
+          "desc": "Season rhythm: Short Term: Battlesheep · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Mega Pods): Mega Pods freemium/premium milestones — nivi_collector_album_prizes.md\n\nPlan notes: Ace Loot 48h — last day (no extra Core row; Dash Day focus).\n\nMega Pods season start (Mon→Mon, 7d). Through 2026-08-16.",
+          "backup": false,
+          "mondayItemId": "12475701389"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "Ace Loot 48h — last day (no extra Core row; Dash Day focus).",
+      "mondayAuthority": true
+    },
+    {
+      "date": 11,
+      "iso": "2026-08-11",
+      "dow": "Tue",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes — (1) Wild Gold · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - 3* Reg card",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: 3★ Reg card · SNL · Globez",
+          "backup": false,
+          "mondayItemId": "12464318775"
+        },
+        {
+          "name": "Shiny Show - Joker All Cards",
+          "status": "Album",
+          "pricing": "",
+          "desc": "Variant: Joker All Cards",
+          "backup": false,
+          "mondayItemId": "12464312473"
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "X2 Dash Points — double dash-point earn on clan dash missions (Tue/Fri)",
+          "backup": false,
+          "mondayItemId": "12464289413"
+        },
+        {
+          "name": "Ace Heist - 4* Ace card",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Ace Heist — 4★ Ace card",
+          "backup": false,
+          "mondayItemId": "12467506589"
+        },
+        {
+          "name": "Daily Deal - 4* Reg card + Hammers Wheel | High Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: 4★ Reg card + Hammers Wheel.",
+          "backup": false,
+          "mondayItemId": "12476427941"
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Doubles GGS earned in offers (3h post 11:00 UTC).",
+          "backup": false,
+          "mondayItemId": "12464312376"
+        },
+        {
+          "name": "Decoy Bonanza - d3: 5* Gold + bundle | Max Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "Max",
+          "desc": "Cohort: Popup Store off-test segment (via Popup Store shell).\nd1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Hero Coins\nd3 (bundle): Coins + Gems + 4 RDS + 1 GGS + 2 Dice + 3000 Hero Coins + 100% SB + 5★ Gold",
+          "backup": false,
+          "mondayItemId": "12464285114"
+        },
+        {
+          "name": "LBP - all goldens + 20% bigger (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "All golden slots active + goldens 20% bigger",
+          "backup": false,
+          "mondayItemId": "12464343003"
+        },
+        {
+          "name": "Lotto - peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Night Plan Lotto peak (pair one LBP row this day).",
+          "backup": false,
+          "mondayItemId": "12464343864"
+        },
+        {
+          "name": "Popup Store - TEST · Soft launch (1/3)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Product: Popup Store · TEST · Soft launch (11 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18–24/8). Surfaces the paired purchase offer for the off-test cohort.",
+          "backup": false,
+          "mondayItemId": "12470189724"
+        },
+        {
+          "name": "Price Cut - 20% Coins & offers",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "20% storewide discount.",
+          "backup": false,
+          "mondayItemId": "12468196268"
+        },
+        {
+          "name": "SNL - Wild Gold | Finish all boards for Diner Cash (nostalgic machine)",
+          "status": "Short Term",
+          "pricing": "",
+          "desc": "Season rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nShort Term (SNL): Short-term board (~3d): cycle prizes — (1) Wild Gold · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md\n\nPlan notes: Popup Store TEST (Soft launch).\n\nShort Term season start: SNL. Through 2026-08-13 (promo-time).",
+          "backup": false,
+          "mondayItemId": "12464266351"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "Popup Store TEST (Soft launch).",
+      "mondayAuthority": true
+    },
+    {
+      "date": 12,
+      "iso": "2026-08-12",
+      "dow": "Wed",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - 2 Dice",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: 2 Dice · SNL · Globez",
+          "backup": false,
+          "mondayItemId": "12464356032"
+        },
+        {
+          "name": "X2 Badges",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "X2 Badges — double clan badge earn rate (Wednesday)",
+          "backup": false,
+          "mondayItemId": "12464377537"
+        },
+        {
+          "name": "Spin Zone - Hammers Wheel (single hammer source)",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Spin Zone — Hammers Wheel (single hammer source)",
+          "backup": false,
+          "mondayItemId": "12475173953"
+        },
+        {
+          "name": "72 Hrs Cards M.E.S + Option to buy steps | Generic Theme",
+          "status": "Core",
+          "pricing": "",
+          "desc": "2* reg\n2* Ace\n3* reg\n3* ace\n4* reg\n4* ace\n5* reg\n5* Ace\nWild Ace",
+          "backup": false,
+          "mondayItemId": "12488997296"
+        },
+        {
+          "name": "Daily Deal - Shield + 4 Dice  | High Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: Shield + 4 Dice (on purchase).",
+          "backup": false,
+          "mondayItemId": "12487357465"
+        },
+        {
+          "name": "Boosted Gemback 300% (5h, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Boosted Gemback 300% — exclude DD.",
+          "backup": false,
+          "mondayItemId": "12486443701"
+        },
+        {
+          "name": "Piggy - break for 4* Reg card",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Prize on break: 4★ Reg card",
+          "backup": false,
+          "mondayItemId": "12464390129"
+        },
+        {
+          "name": "Rolling Offer - 6 Cycles | M Pricing",
+          "status": "Rolling offer",
+          "pricing": "Medium",
+          "desc": "Cycle 1 - Coins + Gems + 1 RDS + 1 GGS\n100% SB\n5 Hammers\n2 RDS\n1 GGS\n\nCycle 2\t Coins + Gems + 1 RDS + 1 GGS\n150% SB\n7 Hammers\n3 RDS\n1 GGS\n\nCycle 3 - Coins + Gems + 1 RDS + 1 GGS\n200% SB\n10 Hammers\n3 RDS\n1 GGS\nCycle 4\t- Coins + Gems + 1 RDS + 1 GGS\n250% SB\n12 Hammers\n 3 RDS\n1 GGS\n\nCycle 5\tCoins + Gems + 1 RDS + 1 GGS\n300% SB\n15 Hammers\n3 RDS\n1 GGS\n\nCycle 6\tCoins + Gems + 1 RDS + 1 GGS\n 300% SB\n20 Hammers\n3 RDS\n 1 GGS",
+          "backup": false,
+          "mondayItemId": "12487357536"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "",
+      "mondayAuthority": true
+    },
+    {
+      "date": 13,
+      "iso": "2026-08-13",
+      "dow": "Thu",
+      "hasAnchor": false,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Winovate scene milestones by album phase — nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - Coins",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: Coins · SNL · Globez",
+          "backup": false,
+          "mondayItemId": "12464356071"
+        },
+        {
+          "name": "Shiny Show - Joker Different Prizes",
+          "status": "Album",
+          "pricing": "",
+          "desc": "Variant: Joker Different Prizes",
+          "backup": false,
+          "mondayItemId": "12465907703"
+        },
+        {
+          "name": "Clan Go - up to 200 badges",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "Clan Go — earn up to 200 badges in the daily window (Thursday template). Prize focus: dash/badge progression",
+          "backup": false,
+          "mondayItemId": "12464347718"
+        },
+        {
+          "name": "Dice Loot",
+          "status": "Core",
+          "pricing": "",
+          "desc": "3 WM → 30 mins\n4 WM → 1 HR\n5 WM → 2 HR\n\nRe-use: Dice Booster Loot by Win Multiplier while spinning.\nPlan note: moved from 9/8 (Betty weekend); pairs with 14/8 Dice Deluxe.",
+          "backup": false,
+          "mondayItemId": "12510778773"
+        },
+        {
+          "name": "Daily Deal - 5* Reg card + Despicable wolf MG| H Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: 5★ Reg card + SB Wheel (High pricing).",
+          "backup": false,
+          "mondayItemId": "12476428147"
+        },
+        {
+          "name": "Gems Sale - 30% store / 20% offers",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Gems Sale — 30% store / 20% offers.",
+          "backup": false,
+          "mondayItemId": "12464348270"
+        },
+        {
+          "name": "MGAP Wild Symbols",
+          "status": "MGAP",
+          "pricing": "",
+          "desc": "Wild Symbols themed MGAP window.",
+          "backup": false,
+          "mondayItemId": "12467858374"
+        },
+        {
+          "name": "Winovate Season",
+          "status": "Mid Term",
+          "pricing": "",
+          "desc": "Season rhythm: Short Term: SNL · Mid Term: Globez · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nWinovate season start (8d cycle). Through 2026-08-20.",
+          "backup": false,
+          "mondayItemId": "12475722618"
+        },
+        {
+          "name": "Decoy Bonanza - d3: 4* Gold + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Hero Coins\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 2 Dice + 3000 Hero Coins + 3 Hammers + 100% SB",
+          "backup": false,
+          "mondayItemId": "12470171455"
+        },
+        {
+          "name": "Golden Spin",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Golden Spin — timed gem feature.",
+          "backup": false,
+          "mondayItemId": "12464359105"
+        }
+      ],
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "",
+      "mondayAuthority": true
+    },
+    {
+      "date": 14,
+      "iso": "2026-08-14",
+      "dow": "Fri",
+      "hasAnchor": true,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - Gems",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: Gems · Blast · Globez",
+          "backup": false,
+          "mondayItemId": "12464360325"
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": "",
+          "desc": "X2 Dash Points — double dash-point earn on clan dash missions (Tue/Fri)",
+          "backup": false,
+          "mondayItemId": "12464404289"
+        },
+        {
+          "name": "Win Master - 4* Reg card + 2 Dice + 6 Hrs Dice (Starts night plan with timer & communications)",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Spin Zone — 4★ Reg card + 2 Dice + hrs Dice\n\nGhost Motel gives more\nother machines give regular",
+          "backup": false,
+          "mondayItemId": "12475071262"
+        },
+        {
+          "name": "PYP Mystery Box - Casino Vaper (Until night plan with timer & communication)",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Complete 3 out of 4 challenges to win:\nCasino Caper Machine\n\nAlso every challenge the player will get another prize:\n1st - 100 Dash Points, Shiny Show\n2nd - 5* Reg\n3rd - 4* Ace\n\nChallenges:\n- Complete 3 Dashes\n- Complete 4 Super Dashes\n- Finish Shiny Show\n- Use 5 Dice (Blast board; economy consideration)",
+          "backup": false,
+          "mondayItemId": "12486541655"
+        },
+        {
+          "name": "Daily Deal - 100% SB + 8 Hammers (multiple) | High Pricing",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Central reward: 100% SB + 8 Hammers (multiple).\nMultiple purchases.",
+          "backup": false,
+          "mondayItemId": "12486481216"
+        },
+        {
+          "name": "Daily Deal - Shiny Limited - Once | Max Pricing",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Central reward: Shiny Limited - Once.\nOnce-per-player — pair with DD multiple same day.",
+          "backup": false,
+          "mondayItemId": "12475698268"
+        },
+        {
+          "name": "Nostalgic Weekend",
+          "status": "Event",
+          "pricing": "",
+          "desc": "Anchor / banner: Nostalgic Weekend. Marketing weekend 14–16/8.",
+          "backup": false,
+          "mondayItemId": "12486606145"
+        },
+        {
+          "name": "Ghost Motel and Diner Cash Opening!",
+          "status": "Event",
+          "pricing": "",
+          "desc": "",
+          "backup": false,
+          "mondayItemId": "12486639075"
+        },
+        {
+          "name": "Nostalgic Machines Playlist",
+          "status": "Event",
+          "pricing": "",
+          "desc": "",
+          "backup": false,
+          "mondayItemId": "12486612048"
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Doubles GGS earned in offers (3h post 11:00 UTC).",
+          "backup": false,
+          "mondayItemId": "12464370814"
+        },
+        {
+          "name": "Coin Sale | 50/75/200/500%",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Coin Sale.",
+          "backup": false,
+          "mondayItemId": "12464372390"
+        },
+        {
+          "name": "Dice Deluxe - 200% SB Back (starts night plan)",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Dice Deluxe — weekly dice offer.",
+          "backup": false,
+          "mondayItemId": "12464427452"
+        },
+        {
+          "name": "DPU 1$ Offer - Magic Trixie Machine",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "",
+          "backup": false,
+          "mondayItemId": "12486528466"
+        },
+        {
+          "name": "King for a Day",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "1$ = 1ticket. payed in list\n\n5* gold card\n10 hammers\nShiny Show\n2000 Clan Points\n5 Dice\n5* Reg Pack",
+          "backup": false,
+          "mondayItemId": "12486556023"
+        },
+        {
+          "name": "RYD - 4* Reg + PAB + 100% SB - High Price",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Hook: RYD - 4* Reg + PAB + 100% SB - High Price",
+          "backup": false,
+          "mondayItemId": "12476428575"
+        },
+        {
+          "name": "Blast - Short Term - Nostalgic Weekend theme",
+          "status": "Short Term",
+          "pricing": "",
+          "desc": "Season rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nShort Term (Blast): Short-term board (~5d): cycle prizes — (1) Wild Gold · (2) 5★ Regular Pack · (3) 4★ Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md\n\nShort Term season start: Blast. Through 2026-08-20 (promo-time).",
+          "backup": false,
+          "mondayItemId": "12464447924"
+        }
+      ],
+      "sale": true,
+      "tag": "event",
+      "banner": "Nostalgic Weekend",
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "Nostalgic Weekend marketing (14–16/8) — Coin Sale row covers the purchase promo.",
+      "mondayAuthority": true
+    },
+    {
+      "date": 15,
+      "iso": "2026-08-15",
+      "dow": "Sat",
+      "hasAnchor": true,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album — Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "ADS PO - 2 Dice",
+          "status": "ADS",
+          "pricing": "",
+          "desc": "Prize: 2 Dice · Blast · Quest",
+          "backup": false,
+          "mondayItemId": "12464427127"
+        },
+        {
+          "name": "Mystery Buy All | H Pricing",
+          "status": "Buy all",
+          "pricing": "High",
+          "desc": "Mystery Buy All — same rewards as Buy All; each prize on its own line (not split into coin/gem denoms).\nCoins\nGems\n4 RDS\n1 GGS\n4★ Reg\n2 Dice\n4★ Reg\nQuest Booster",
+          "backup": false,
+          "mondayItemId": "12488192936"
+        },
+        {
+          "name": "PYP - finish for 3* Ace card",
+          "status": "Core",
+          "pricing": "",
+          "desc": "Missions:\n· Reach act 18 — Shiny Show\n· Spin 100 times — Gem Machine\n· Open 5 pods\n· Use 4 Dice Rolls",
+          "backup": false,
+          "mondayItemId": "12488231400"
+        },
+        {
+          "name": "Quest Challenge - Get a reward for every island",
+          "status": "Core",
+          "pricing": "",
+          "desc": "1. 3* Reg\n2. 4* Ace\n3. 5* Ace",
+          "backup": false,
+          "mondayItemId": "12488416652"
+        },
+        {
+          "name": "Daily Deal - Quest Booster + Shield + Multiwheel | Max Pricing",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Central reward: Quest Booster + Shield + Multiwheel.",
+          "backup": false,
+          "mondayItemId": "12488150682"
+        },
+        {
+          "name": "Gem Sale | 30/50%",
+          "status": "Gems",
+          "pricing": "",
+          "desc": "Gems Sale — 30% store / 20% offers.",
+          "backup": false,
+          "mondayItemId": "12488150561"
+        },
+        {
+          "name": "Quest Season",
+          "status": "Mid Term",
+          "pricing": "",
+          "desc": "Anchor / banner: Nostalgic Weekend.\n\nSALE day (weekend coin sale).\n\nSeason rhythm: Short Term: Blast · Mid Term: Quest · Mid Term: Winovate · Mid Term: Mega Pods · Album: Album — Phase 2 (Shiny MS2)\n\nMid Term (Quest): Mid-term rotation — Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes · Mega Pods · Quest islands).\n\nMid Term season start: Quest. Through 2026-08-19.",
+          "backup": false,
+          "mondayItemId": "12475698163"
+        },
+        {
+          "name": "LBP - Jackpot ball 150% + 4 balls (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Jackpot ball +150% and 4 balls instead of 3",
+          "backup": false,
+          "mondayItemId": "12464356105"
+        },
+        {
+          "name": "Lotto - peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": "",
+          "desc": "Night Plan Lotto peak (pair one LBP row this day).",
+          "backup": false,
+          "mondayItemId": "12464374121"
+        }
+      ],
+      "sale": true,
+      "tag": "event",
+      "banner": "Nostalgic Weekend",
+      "isPast": false,
+      "draftSource": "monday_live",
+      "planNotes": "",
+      "mondayAuthority": true
+    }
+  ]
+}

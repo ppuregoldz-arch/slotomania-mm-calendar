@@ -1,0 +1,208 @@
+{
+  "regular_flow_examples": {
+    "description": "Complete JSON examples for regular (non-BOGO) Aviator purchase flow",
+    "flow_sequence": "Purchase → FROZEN → READY_TO_PLAY → ROUND_STARTED → ROUND_ENDED → ROUND_STARTED → ROUND_ENDED → USER_REWARDED",
+    
+    "event_1_frozen": {
+      "eventType": "FROZEN",
+      "userId": 123456,
+      "sessionId": "sess-abc123-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-game-uuid-001",
+      "configId": "s3-config-uuid-001",
+      "segmentId": 42,
+      "aviatorTransactionId": "aviator-txn-789",
+      "originTransactionId": "purchase-txn-456",
+      "eventTs": 1746734400000,
+      "historyData": {
+        "pbeTransactionId": "pbe-txn-001",
+        "sourceName": "Coin Pack $4.99",
+        "pbeBaseAmount": "5000.00"
+      },
+      "entryPath": "PAID",
+      "bonusGameSequenceIdx": 0,
+      "parentGameId": null,
+      "baseAmount": "5000.00",
+      "totalRounds": 2,
+      "growthFormula": {
+        "type": "exponential",
+        "params": {
+          "baseMultiplier": 1.5,
+          "initialGrowthStep": 0.1,
+          "accelRate": 0.25
+        }
+      }
+    },
+    
+    "event_2_ready_to_play": {
+      "eventType": "READY_TO_PLAY",
+      "userId": 123456,
+      "sessionId": "sess-abc123-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-game-uuid-001",
+      "configId": "s3-config-uuid-001",
+      "segmentId": 42,
+      "aviatorTransactionId": "aviator-txn-789",
+      "originTransactionId": "purchase-txn-456",
+      "eventTs": 1746734402000,
+      "historyData": {
+        "pbeTransactionId": "pbe-txn-001",
+        "sourceName": "Coin Pack $4.99",
+        "pbeBaseAmount": "5000.00"
+      }
+    },
+    
+    "event_4_round_1_started": {
+      "eventType": "ROUND_STARTED",
+      "userId": 123456,
+      "sessionId": "sess-abc123-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-game-uuid-001",
+      "configId": "s3-config-uuid-001",
+      "segmentId": 42,
+      "aviatorTransactionId": "aviator-txn-789",
+      "originTransactionId": "purchase-txn-456",
+      "eventTs": 1746734410000,
+      "historyData": {
+        "pbeTransactionId": "pbe-txn-001",
+        "sourceName": "Coin Pack $4.99",
+        "pbeBaseAmount": "5000.00"
+      },
+      "roundIdx": 0,
+      "totalRounds": 2,
+      "growthFormula": {
+        "type": "exponential",
+        "params": {
+          "baseMultiplier": 1.5,
+          "initialGrowthStep": 0.1,
+          "accelRate": 0.25
+        }
+      }
+    },
+    
+    "event_5_round_1_ended": {
+      "eventType": "ROUND_ENDED",
+      "userId": 123456,
+      "sessionId": "sess-abc123-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-game-uuid-001",
+      "configId": "s3-config-uuid-001",
+      "segmentId": 42,
+      "aviatorTransactionId": "aviator-txn-789",
+      "originTransactionId": "purchase-txn-456",
+      "eventTs": 1746734418500,
+      "historyData": {
+        "pbeTransactionId": "pbe-txn-001",
+        "sourceName": "Coin Pack $4.99",
+        "pbeBaseAmount": "5000.00"
+      },
+      "roundIdx": 0,
+      "totalRounds": 2,
+      "growthFormula": {
+        "type": "exponential",
+        "params": {
+          "baseMultiplier": 1.5,
+          "initialGrowthStep": 0.1,
+          "accelRate": 0.25
+        }
+      },
+      "endRoundReason": "LOCK",
+      "historyReason": "PLAYER_LOCK",
+      "multiplier": 2.5,
+      "durationMs": 8500,
+      "gameResult": null
+    },
+    
+    "event_4_round_2_started": {
+      "eventType": "ROUND_STARTED",
+      "userId": 123456,
+      "sessionId": "sess-abc123-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-game-uuid-001",
+      "configId": "s3-config-uuid-001",
+      "segmentId": 42,
+      "aviatorTransactionId": "aviator-txn-789",
+      "originTransactionId": "purchase-txn-456",
+      "eventTs": 1746734420000,
+      "historyData": {
+        "pbeTransactionId": "pbe-txn-001",
+        "sourceName": "Coin Pack $4.99",
+        "pbeBaseAmount": "5000.00"
+      },
+      "roundIdx": 1,
+      "totalRounds": 2,
+      "growthFormula": {
+        "type": "exponential",
+        "params": {
+          "baseMultiplier": 1.5,
+          "initialGrowthStep": 0.1,
+          "accelRate": 0.25
+        }
+      }
+    },
+    
+    "event_5_round_2_ended_final": {
+      "eventType": "ROUND_ENDED",
+      "userId": 123456,
+      "sessionId": "sess-abc123-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-game-uuid-001",
+      "configId": "s3-config-uuid-001",
+      "segmentId": 42,
+      "aviatorTransactionId": "aviator-txn-789",
+      "originTransactionId": "purchase-txn-456",
+      "eventTs": 1746734426200,
+      "historyData": {
+        "pbeTransactionId": "pbe-txn-001",
+        "sourceName": "Coin Pack $4.99",
+        "pbeBaseAmount": "5000.00"
+      },
+      "roundIdx": 1,
+      "totalRounds": 2,
+      "growthFormula": {
+        "type": "exponential",
+        "params": {
+          "baseMultiplier": 1.5,
+          "initialGrowthStep": 0.1,
+          "accelRate": 0.25
+        }
+      },
+      "endRoundReason": "CRASH",
+      "historyReason": "TIMEOUT_CRASH",
+      "multiplier": 1.5,
+      "durationMs": 6200,
+      "gameResult": {
+        "coins": "12500.00",
+        "bundleIds": [1001, 1003],
+        "appliedOnTopMultiplier": null,
+        "winningRoundIdx": 0,
+        "winningRawMultiplier": 2.5
+      }
+    },
+    
+    "event_6_user_rewarded": {
+      "eventType": "USER_REWARDED",
+      "userId": 123456,
+      "sessionId": "sess-abc123-001",
+      "gameType": "coins_regular",
+      "gameId": "aviator-game-uuid-001",
+      "configId": "s3-config-uuid-001",
+      "segmentId": 42,
+      "aviatorTransactionId": "aviator-txn-789",
+      "originTransactionId": "purchase-txn-456",
+      "eventTs": 1746734430000,
+      "historyData": {
+        "pbeTransactionId": "pbe-txn-001",
+        "sourceName": "Coin Pack $4.99",
+        "pbeBaseAmount": "5000.00"
+      },
+      "gameResult": {
+        "coins": "12500.00",
+        "bundleIds": [1001, 1003],
+        "appliedOnTopMultiplier": null,
+        "winningRoundIdx": 0,
+        "winningRawMultiplier": 2.5
+      }
+    }
+  }
+}

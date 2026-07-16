@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>קלנדר מוניטיזציה — יולי 2026</title>
+<style>
+  :root{--card:#131a29;--card2:#1a2336;--stroke:#273249;--txt:#eef2f9;--mut:#8b97ae;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(1200px 620px at 50% -8%,#17223e 0%,#0a0e16 58%);color:var(--txt);font-family:-apple-system,"Segoe UI",Rubik,Arial,sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1340px;margin:0 auto;padding:30px 20px 90px;}
+  h1{font-size:27px;margin:0 0 4px;font-weight:800;letter-spacing:-.5px;}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:22px;}
+  .tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
+  .tab{background:var(--card);border:1px solid var(--stroke);color:var(--mut);padding:10px 20px;border-radius:12px;font-size:14px;cursor:pointer;font-family:inherit;transition:all .15s;}
+  .tab:hover{border-color:#3a4c74;color:var(--txt);}
+  .tab.active{background:linear-gradient(180deg,#3b82f6,#2563eb);border-color:#2563eb;color:#fff;font-weight:700;box-shadow:0 5px 16px rgba(37,99,235,.35);}
+  .panel{display:none;}
+  .panel.active{display:block;animation:fade .2s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:16px;font-size:12px;color:var(--mut);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;}
+  .whead{color:var(--mut);font-size:12px;font-weight:700;text-align:center;padding:4px 0;text-transform:uppercase;letter-spacing:.6px;}
+  .cell{background:linear-gradient(180deg,#141d30,#101725);border:1px solid var(--stroke);border-radius:14px;padding:9px;min-height:184px;display:flex;flex-direction:column;gap:6px;transition:transform .12s,box-shadow .12s,border-color .12s;}
+  .cell:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.45);border-color:#3a4c74;}
+  .cell.special{border-color:#3b5bdb;box-shadow:inset 0 0 0 1px rgba(59,130,246,.22),0 0 22px rgba(59,130,246,.09);}
+  .cell.blank{background:transparent;border:none;box-shadow:none;}
+  .chead{display:flex;justify-content:space-between;align-items:center;}
+  .cdate{font-weight:800;font-size:14px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:#1e2740;}
+  .cdate.spec{background:linear-gradient(180deg,#3b82f6,#2563eb);color:#fff;box-shadow:0 3px 10px rgba(37,99,235,.4);}
+  .cmeta{display:flex;align-items:center;gap:6px;}
+  .cdow{color:var(--mut);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;}
+  .pill.sale{font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:20px;letter-spacing:.5px;color:#04321f;background:linear-gradient(180deg,#4ade80,#22c55e);}
+  .ribbon{font-size:9.5px;color:#e6edfb;background:linear-gradient(90deg,#274073,#1c2946);border:1px solid #34497a;border-radius:8px;padding:4px 8px;line-height:1.35;font-weight:600;}
+  .seasons{display:flex;flex-direction:column;gap:3px;padding:5px 6px;background:#0d1523;border-radius:8px;}
+  .srow{display:flex;align-items:center;gap:6px;font-size:9px;line-height:1.2;}
+  .stag{font-weight:800;font-size:8px;padding:1.5px 5px;border-radius:5px;border:1px solid;white-space:nowrap;flex-shrink:0;min-width:40px;text-align:center;}
+  .sval{color:#9aa6bd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .items{display:flex;flex-direction:column;gap:4px;margin-top:1px;}
+  .item{display:flex;align-items:flex-start;cursor:pointer;padding:4px 7px;background:#0f1728;border-radius:7px;border-inline-start:3px solid #556;transition:background .12s,transform .1s;}
+  .item:hover{background:#1c2842;transform:translateX(-2px);}
+  .item .t{font-size:10.5px;color:#d3dcec;line-height:1.3;}
+  .detail{position:fixed;inset:0;background:rgba(5,8,14,.6);backdrop-filter:blur(3px);z-index:30;display:flex;align-items:flex-end;justify-content:center;}
+  .sheet{background:linear-gradient(180deg,#1b2439,#151d2e);border:1px solid #33456b;border-bottom:none;border-radius:18px 18px 0 0;padding:20px 26px 26px;box-shadow:0 -12px 40px rgba(0,0,0,.6);width:100%;max-width:760px;position:relative;animation:slideup .22s ease;}
+  @keyframes slideup{from{transform:translateY(30px);opacity:0;}to{transform:none;opacity:1;}}
+  .sheet h3{margin:0 0 12px;font-size:16px;font-weight:800;padding-inline-end:70px;}
+  .sheet .line{font-size:13.5px;color:#e2e9f6;line-height:1.5;padding:7px 12px;background:#0f1728;border-radius:8px;margin-bottom:6px;border-inline-start:3px solid #3b82f6;}
+  .sheet .fitline{color:#9dc0ff;font-size:12.5px;background:transparent;border-inline-start:none;padding:4px 2px;}
+  .sheet .close{position:absolute;top:16px;left:20px;background:#26314a;border:none;color:#e7ecf5;border-radius:9px;padding:7px 14px;cursor:pointer;font-family:inherit;font-size:13px;}
+  .sheet .close:hover{background:#33456b;}
+  .ocards{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:14px;}
+  .ocard{background:linear-gradient(180deg,#141d30,#101725);border:1px solid var(--stroke);border-radius:15px;padding:17px 19px;transition:transform .12s,box-shadow .12s;}
+  .ocard:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.4);}
+  .ocard h3{margin:0 0 6px;font-size:15px;color:#9dc0ff;font-weight:800;}
+  .ocard .struct{font-size:12.5px;color:#c3ccdd;line-height:1.6;}
+  .ocard .denom{background:#0d1523;border-radius:8px;padding:8px 11px;margin:6px 0;font-size:12px;border-inline-start:3px solid #3b82f6;}
+  .ocard .tagline{color:var(--mut);font-size:11px;margin-top:9px;font-style:italic;}
+  .banner-note{background:linear-gradient(90deg,#1c2946,#151d2e);border:1px solid var(--stroke);border-radius:13px;padding:13px 17px;margin-bottom:16px;font-size:12.5px;color:#c3ccdd;line-height:1.55;}
+  .warn{background:linear-gradient(90deg,#2a1e12,#241a10);border:1px solid #5a3d1a;color:#f0c890;border-radius:11px;padding:11px 15px;font-size:12px;margin-top:8px;line-height:1.5;}
+</style>
+</head>
+<body><div class="wrap">
+  <h1>קלנדר מוניטיזציה — יולי 2026</h1>
+  <div class="sub">Slotomania · לחיצה על פריט מציגה את הפרסים וחלוקתם לדנומים · הפרסים מותאמים לגיידליינס ולעונות החיות</div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="cal">📅 קלנדר</button>
+    <button class="tab" data-tab="offers">🎁 איך עובדות הצעות</button>
+    <button class="tab" data-tab="promos">🎮 איך עובדים פרומואים</button>
+  </div>
+
+  <div id="cal" class="panel active">
+    <div class="legend" id="legend"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div id="offers" class="panel">
+    <div class="banner-note"><b>עיקרון-על:</b> כל הצעה היא <b>פלטפורמה</b> עם מבנה slots + <b>מאגר פרסים משותף</b> (Coins/Gems · RDS/GGS/%SB · Hammers/Picks/PAB/AS/Dice/Boosters · קלפים Reg/Ace/Gold/Wild/Shiny · Superboom). אותו סוג הצעה נושא תוכן שונה בכל יום לפי המטרה, התמחור, בנק הקלפים והעונה.</div>
+    <div class="ocards" id="ocards"></div>
+    <div class="warn">⚡ <b>ימי Extreme Stamp:</b> כל ההצעות מחליפות RDS ב-Extreme Stamp, ו-4 RDS → 2 Extreme Stamps (ערך גבוה יותר).</div>
+  </div>
+
+  <div id="promos" class="panel">
+    <div class="ocards" id="pcards"></div>
+  </div>
+
+  <div id="detail" class="detail" style="display:none"></div>
+</div>
+
+<script>
+const DAYS = [
+  { date: 1, dow: "Wed", items: ["ADS: 2★ reg", "DD: 6 Hammers [H]", "Core: MES Spin Zone → Ace 3★ pack", "MGAP BOGO (1 לחודש)", "Piggy: break for Wild Ordinary", "Shiny Show: All Cards", "Buy All combo [Max]"] },
+  { date: 2, dow: "Thu", items: ["ADS: Coins", "DD: Cards & SB Wheel [H]", "Core: Win Master → Reg 5★ pack", "Clan: X2 Dash Points", "Buy All combo [M]", "Extreme Stamp (topper)", "Black Diamond (VIP)", "Golden Spin (חמישי)", "Dice Booster 24h Purchase [H]"] },
+  { date: 3, dow: "Fri", items: ["ADS: Coins", "DD: Quest Booster + 8H [H]", "Core: Ace Loot → Ace 3★/4★/5★", "Gems Sale 30/50%", "Shiny Show: Joker Different Prizes", "Rolling More-for-Less [M]"] },
+  { date: 4, dow: "Sat", tag: "event", banner: "4TH OF JULY — אירוע גדול", sale: true, items: ["Coin Sale (סגמנטי: PU 150%, IC 175%, DPU 200%, NPU 500%)", "HH Jumbo Giveaway (topper)", "HH 700% SB", "Boosted Gemback 555% (5h, topper)", "x2 GGS (3h)", "Prize Mania [H]", "MGAP Bigger Multipliers", "DD(1) Wild Any [Max]", "DD(2) 12H [Max]", "DD(3) Wild Gold [H]", "Core: MES 4th of July → Ace 4★ pack", "Extreme Stamp (חריג, topper)", "SB Scratch'N Win up to 1000% (אירוע ענק)", "Custom Pod X1500 (48h, יום 1)", "ADS: Coins", "Lotto peak (Night Plan): 4 plasma instead of 2 (event)"] },
+  { date: 5, dow: "Sun", sale: true, items: ["ADS: 3★ reg", "DD: Wild Supreme + 5H [H]", "Clan: Dash Max", "Core: Spinner Clash → Ace 3★ pack (prize↑ ניקוז בלנס)", "Coin Sale (סגמנטי: PU 100%, IC 125%, DPU 200%, NPU 500%)", "Shiny Show: Different Prizes", "Decoy Bonanza [Max]"] },
+
+  { date: 6, dow: "Mon", tag: "dash", banner: "Dash Day + Mega Pods renew", items: ["ADS: Gems", "DD: 8 Hammers [H]", "Dash Pass עונה חדשה", "Monday Max Deal", "Time Limited Prize", "Core: MES Win Master → Ace 5★", "RYD 100% SB [M]"] },
+  { date: 7, dow: "Tue", tag: "album", banner: "Where to get cards — שבוע לאלבום", items: ["ADS: Gems", "DD: Hammer Wheel + 2 Boosters [H]", "Clan: X2 Dash Points", "Core: PYP → Wild Ace", "RYD 150% SB [M]", "MGAP BOGO", "Black Diamond (VIP)", "X Hunt #1 פתיחה", "Sneak Peek מכונה", "x2 GGS (3h)", "Lotto peak (Night Plan): 30% Bigger Balls"] },
+  { date: 8, dow: "Wed", tag: "album", banner: "Album Last 6 Days + Where to get cards", items: ["ADS: 2★ reg", "DD: 12 Hammers [Max]", "Core: Sneak Peek (מכונה)", "Piggy: break for 5★ reg + coins", "RYD 150% SB [H]", "Rolling More-for-Less [Max]", "Custom Pod X1000 (48h, יום 1)"] },
+  { date: 9, dow: "Thu", tag: "machine", banner: "השקת מכונה · Album Last 5 Days", items: ["ADS: 3★ reg", "DD Segmented: Non-Fin Wild Gold [Max] / Fin 8H", "Clan: machine Slot Smashes", "Core: New Machine Launch + MES → machine Ace 4★ pack", "Custom Pod X1000 (48h, יום 2)", "Bonanza [H]", "Extreme Stamp (topper)", "Where to get cards", "Golden Spin (חמישי)", "Dice Booster 24h Purchase [H]"] },
+  { date: 10, dow: "Fri", tag: "album", banner: "Gold Trading Day · Album Last 4 Days", items: ["ADS: Coins", "DD: Dice Booster 8h + Wild Any [M/H]", "Core: MES Spin Zone (מכונה) → Ace 4★ pack", "Clan: Clan Go badges", "MGAP Matched", "Buy All combo [Max]", "x2 GGS (3h)", "Shiny Show: All Cards"] },
+  { date: 11, dow: "Sat", tag: "album", banner: "Album Last 3 Days", sale: true, items: ["ADS: 2★ reg", "DD: 8 Hammers [H]", "Core: Card Loot → Reg 5★", "Buy All combo [Max]", "Counter PO (topper)", "Where to get cards", "Growing Shiny Show", "Lotto peak (Night Plan): 4 balls instead of 3"] },
+  { date: 12, dow: "Sun", tag: "album", banner: "Album Last 2 Days", sale: true, items: ["ADS: 3★ reg", "DD: SB Wheel + Superboom [H]", "Clan: Dash Max", "Core: PYP → Shiny Card", "Buy All combo [Max]", "Shiny Show: All Cards"] },
+
+  { date: 13, dow: "Mon", tag: "album", banner: "Dash Day · אלבום ישן — יום אחרון", items: ["ADS: Coins", "DD: 8 Hammers [H]", "Dash Pass עונה חדשה", "Monday Max Deal", "Core: Card Challenge End-of-Album → Wild Any", "Where to get cards (LAST)", "RYD Wild Gold + 200% SB [Max]"] },
+  { date: 14, dow: "Tue", tag: "album", banner: "🆕 פתיחת אלבום חדש (wk1)", items: ["ADS: Reg 2★ (reset)", "BD Starter Pack", "20% Price Cut", "קונפיג Mega Pods/Winovate", "DD: Wild Supreme [H]", "Core: MES Spin Zone → Reg 2★ pack", "Buy All combo [Max]", "Black Diamond", "x2 GGS (3h)", "Lotto peak (Night Plan): 2 multiballs"] },
+  { date: 15, dow: "Wed", items: ["ADS: Reg 3★", "DD: 6 Hammers + Booster [M]", "Clan: Clan Go badges", "Core: PYP → Reg 3★", "Piggy: break for Ace 3★", "RYD 150% SB [H]", "MGAP BOGO", "Shiny Show: All Cards"] },
+  { date: 16, dow: "Thu", items: ["ADS: Coins", "DD: Quest Booster + 8H [H]", "Clan: Dash Max Picker", "Core: Card Loot → Reg 3★ (בנק wk1)", "Rolling More-for-Less [Max]", "Golden Spin (חמישי)"] },
+  { date: 17, dow: "Fri", items: ["ADS: Gems", "DD: Reg 3★ + Hammer Wheel [H]", "Core: MES Win Master → Reg 3★", "Gems Sale 40/60%", "RYD 150% SB [M]", "Extreme Stamp (topper)", "Shiny Show: Wild Guaranteed", "Dice Deluxe (machine · ~$441K)"] },
+  { date: 18, dow: "Sat", sale: true, items: ["ADS: Reg 3★", "DD: 12 Hammers [Max]", "Core: Spinner Clash → Reg 3★ pack (בנק wk1, prize↑ ניקוז בלנס)", "Decoy Bonanza [H]", "Coin Sale (סגמנטי: PU 100%, IC 125%, DPU 200%, NPU 500%)", "Shiny Wolf (מיני-גיים · Shiny חדש)", "Lotto peak (Night Plan): all goldens + 20% bigger"] },
+  { date: 19, dow: "Sun", sale: true, items: ["ADS: 3★ reg", "DD: 2 AS + Quest Booster [H]", "Clan: Dash Max", "Core: PYP → Reg 3★ (בנק wk1)", "Buy All combo [M]", "Shiny Show: Different Prizes"] },
+
+  { date: 20, dow: "Mon", tag: "dash", banner: "Dash Day · X Hunt #1 סיום", items: ["ADS: Reg 3★", "DD: 8 Hammers [H]", "Dash Pass עונה חדשה", "Monday Max Deal", "Core: MES Win Master → Reg 3★ pack", "RYD 150% + Superboom [Max]", "Shiny Show: Different Prizes"] },
+  { date: 21, dow: "Tue", items: ["ADS: Gems", "DD: SB Wheel + 2 AS [M]", "Clan: X2 Dash Points", "Core: MES Ace Heist → Ace 3★", "Buy All combo [H]", "MGAP BOGO", "Black Diamond", "Sneak Peek מכונה", "x2 GGS (3h)", "Lotto peak (Night Plan): Jackpot ball 150% + 4 balls"] },
+  { date: 22, dow: "Wed", banner: "Shiny Limited #1 (מאגר wk2)", items: ["ADS: Gems", "DD: Shiny Limited 1st purchase + 8H [Max]", "Core: Sneak Peek (מכונה)", "Piggy: break for Shiny Card", "RYD 150% SB [H]", "Rolling More-for-Less [Max]", "Custom Pod X1200 (48h, יום 1)", "Shiny Show: All Cards - Joker"] },
+  { date: 23, dow: "Thu", tag: "machine", banner: "השקת מכונה", items: ["ADS: 2★ reg", "DD Segmented: Non-Fin Wild Any [Max] / Fin 8H", "Clan: machine Slot Smashes", "Core: New Machine Launch + MES → machine Ace 3★ pack (בנק wk2)", "Custom Pod X1200 (48h, יום 2)", "Bonanza [H]", "Extreme Stamp (topper)", "Golden Spin (חמישי)", "Dice Booster 24h Purchase [H]"] },
+  { date: 24, dow: "Fri", items: ["ADS: 3★ reg", "DD: 3 picks + Dice 12h [H]", "Core: MES Spin Zone (מכונה) → Ace 3★ pack", "Clan: Clan Go badges", "Gems Sale 30/50%", "MGAP Matched", "Bonanza [Max]"] },
+  { date: 25, dow: "Sat", sale: true, items: ["ADS: Coins", "DD: 8 Hammers [H]", "Core: Card Loot → Shiny Card (prize↑ ניקוז בלנס)", "Bonanza [Max]", "Counter PO (topper)", "Coin Sale (סגמנטי: PU 50%, IC 75%, DPU 200%, NPU 500%)", "Shiny Show: Different Prizes", "Lotto peak (Night Plan): Jackpot ball 150% + 30% bigger"] },
+  { date: 26, dow: "Sun", sale: true, banner: "20% Price Cut #2", items: ["ADS: Coins", "DD: 100% SB + Superboom [H]", "Clan: Dash Max", "Core: PYP → Reg 3★ pack", "Decoy Bonanza [M]", "Shiny Wolf (מיני-גיים · Shiny חדש)"] },
+
+  { date: 27, dow: "Mon", tag: "dash", banner: "Dash Day + Mega Pods renew", items: ["ADS: Reg 3★", "DD: 8 Hammers [H]", "Dash Pass עונה חדשה", "Monday Max Deal", "Core: MES Win Master → Reg 3★", "RYD 150% SB + AS [Max]", "Shiny Show: Wild Guaranteed", "שבוע לסוף Shiny M1 (Phase 1 →3/8)"] },
+  { date: 28, dow: "Tue", items: ["ADS: 2★ reg", "DD: 2 AS [H]", "Clan: X2 Dash Points", "Core: MES Win Master → Ace 3★", "Buy All combo [M]", "Extreme Stamp (topper)", "Black Diamond", "x2 GGS (3h)", "Lotto peak (Night Plan): 30% Bigger Balls"] },
+  { date: 29, dow: "Wed", banner: "Shiny Limited #2 (מאגר wk3)", items: ["ADS: Gems", "DD: Shiny Limited 1st purchase + 8H [Max]", "Core: PYP → Ace 4★ pack", "Piggy: break for Gold 3★", "Buy All combo [H]", "MGAP BOGO", "Shiny Show: All Cards Joker"] },
+  { date: 30, dow: "Thu", items: ["ADS: 2★ reg", "DD: 3 parasheeps+3H+5 ace spins [H]", "Core: Ace Loot → Ace 4★ pack", "Clan: Power Dash", "Rolling More-for-Less [Max]", "Golden Spin (חמישי)"] },
+  { date: 31, dow: "Fri", items: ["ADS: 3★ reg", "DD: Superboom [H]", "Core: MES Spin Zone → Reg 3★ pack", "RYD 150% SB [M]", "Gems x2 GGS (3h, ללא sale)", "Shiny Show: Different Prizes", "3 ימים לסוף Shiny M1 (Phase 1 →3/8)", "SB 100% (standard)", "Dice Deluxe (machine)"] },
+];
+const WEEKDAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const LEAD_BLANKS = 3;
+const CAT_COLOR = {dd:"#22c55e",offers:"#4f9cff",mgap:"#ec4899",gems:"#eab308",gameplay:"#a855f7",ads:"#94a3b8",anchor:"#f59e0b"};
+const CAT_LABEL = {dd:"Daily Deal",offers:"Offers (Buy All/Rolling/RYD/Coin Sale)",mgap:"MGAP",gems:"Gems / מגבירים",gameplay:"Gameplay (Core/Shiny/Clan)",ads:"ADS",anchor:"עוגן / אירוע / אלבום"};
+
+function classify(text){
+  const s=text.toLowerCase();
+  if(s.startsWith("dd")||s.startsWith("daily deal"))return"dd";
+  if(s.startsWith("ads"))return"ads";
+  if(s.includes("mgap"))return"mgap";
+  if(s.includes("gemback")||s.includes("ggs")||s.startsWith("gems")||s.includes("gem "))return"gems";
+  if(s.includes("buy all")||s.includes("bonanza")||s.includes("decoy")||s.includes("rolling")||s.startsWith("ryd")||s.includes("coin sale")||s.includes("counter po")||s.includes("limited po")||s.includes("prize mania")||s.includes("scratch")||s.includes("sb ")||s.includes("700% sb")||s.includes("golden spin")||s.includes("mystery buy all"))return"offers";
+  if(s.includes("core")||s.includes("shiny show")||s.includes("clan")||s.includes("dash")||s.includes("pyp")||s.includes("mes")||s.includes("spinner")||s.includes("loot")||s.includes("machine")||s.includes("growing shiny")||s.includes("sneak peek")||s.includes("shiny wolf"))return"gameplay";
+  return"anchor";
+}
+function seasonsFor(d){
+  let st; if(d<=3)st="Battlesheep";else if(d<=8)st=d===4?"Blast(4thJ)":"Blast";else if(d<=13)st="Battlesheep";else if(d<=18)st="Blast";else if(d<=23)st="SNL";else if(d<=28)st="Battlesheep";else st="Blast";
+  let mt; if(d<=5)mt="Quest";else if(d<=10)mt="Globez";else if(d<=15)mt="Figz";else if(d<=20)mt="Quest";else if(d<=25)mt="Globez";else if(d<=30)mt="Figz";else mt="Quest";
+  let al; if(d<=5)al="Album ישן wk8";else if(d<=13)al="Album ישן wk9";else if(d<=19)al="Album חדש wk1";else if(d<=26)al="Album wk2";else al="Album wk3";
+  if(d>=14)al+=" · Shiny M1";
+  return st+" · "+mt+"+Wino+Pods · "+al;
+}
+function seasonsParts(d){
+  let st; if(d<=3)st="Battlesheep";else if(d<=8)st=d===4?"Blast (4thJ)":"Blast";else if(d<=13)st="Battlesheep";else if(d<=18)st="Blast";else if(d<=23)st="SNL";else if(d<=28)st="Battlesheep";else st="Blast";
+  let mt; if(d<=5)mt="Quest";else if(d<=10)mt="Globez";else if(d<=15)mt="Figz";else if(d<=20)mt="Quest";else if(d<=25)mt="Globez";else if(d<=30)mt="Figz";else mt="Quest";
+  let al; if(d<=5)al="Album ישן wk8";else if(d<=13)al="Album ישן wk9";else if(d<=19)al="Album חדש wk1";else if(d<=26)al="Album wk2";else al="Album wk3";
+  if(d>=14)al+=" · Shiny M1";
+  return [["Short",st,"#f59e0b"],["Mid",mt+" + Winovate + Mega Pods","#06b6d4"],["Album",al,"#a855f7"]];
+}
+function liveCtx(day){
+  if(!day)return{booster:"Seasonal Booster",topCard:"Wild Ace",midCard:"4★ Reg",note:"מבנק השבוע"};
+  const d=day.date; let mt;
+  if(d<=5)mt="Quest";else if(d<=10)mt="Globez";else if(d<=15)mt="Figz";else if(d<=20)mt="Quest";else if(d<=25)mt="Globez";else mt="Figz";
+  let topCard="Wild Ace",midCard="4★ Reg",note="מבנק השבוע";
+  if(d>=8&&d<=13){topCard="Wild Any";midCard="5★ Gold";note="בנק סוף-אלבום (ערך גבוה)";}
+  else if(d>=14&&d<=19){topCard="Ace 3★";midCard="Reg 2★";note="בנק פתיחת אלבום (נמוך · Shiny M1)";}
+  else if(d>=20){topCard="Wild Ace";midCard="4★ Reg";note="בנק אמצע מחזור";}
+  if(day.tag==="machine"||/מכונה/.test(day.banner||"")){topCard="מכונה Ace 4★ (themed)";note="בנק + themed מכונה חדשה";}
+  const booster=(mt==="Globez"||mt==="Figz")?("3000 Hero Coins ("+mt+")"):(mt+" Booster");
+  return{booster,topCard,midCard,note};
+}
+function hammerOwner(day){
+  if(!day)return null;
+  const has=i=>/hammer/i.test(i)||/\b\d+\s*h\b/i.test(i);
+  return day.items.find(has)||day.items.find(i=>/rolling/i.test(i))||day.items.find(i=>/buy all|bonanza|decoy/i.test(i.toLowerCase())||/^ryd/i.test(i.toLowerCase()))||null;
+}
+function skuAndPrice(text){
+  const priceMap={max:"Max",h:"High",m:"Mid",l:"Low"}; let price="";
+  const pm=text.match(/\[(Max|H|M|L)\]/); if(pm)price=priceMap[pm[1].toLowerCase()]||pm[1];
+  let sku=text.replace(/\[[^\]]*\]/g,"").trim();
+  sku=sku.replace(/^(DD(\s*\(\d\))?|Daily Deal|RYD)\s*[:\-–]?\s*/i,"").trim();
+  return{sku,price};
+}
+function descFor(text,day){
+  const s=text.toLowerCase(); const {sku,price}=skuAndPrice(text);
+  const H=({Max:12,High:8,Mid:5,Low:3})[price]||8;
+  const pctm=text.match(/\d+%/); const pct=pctm?pctm[0]:null;
+  const c=liveCtx(day);
+  const ex=!!(day&&day.items&&day.items.some(i=>/extreme stamp/i.test(i)))&&!/extreme stamp/i.test(s);
+  const rds=ex?"2 Extreme Stamps":"4 RDS";
+  const owner=hammerOwner(day); const iAmOwner=!owner||owner===text;
+  const ham=n=>iAmOwner?(n+" Hammers"):"2 Picks";
+  const fit="↳ מותאם: "+c.booster+" · קלפים "+c.note+(ex?" · Extreme Stamp במקום RDS":"");
+  if(s.includes("rolling more")||s.includes("more-for-less")||s.includes("buy-more"))
+    return "D1: Coins · "+rds+" · 100% SB · 1 GGS · "+ham(5)+"  |  D2: Coins · Gems · "+rds+" · 200% SB · 1 GGS · "+ham(10)+"  |  D3: Gems · "+rds+" · 300% SB · 2 GGS · Superboom · "+c.topCard+"  |  "+fit;
+  if(s.includes("rolling"))
+    return "רכישה: Coins · Gems · 1 "+(ex?"Extreme Stamp":"RDS")+" · 1 GGS  ||  8 denoms חינם: 150% SB · "+ham(H)+" · "+c.midCard+" · Dice 12h · "+c.booster+" · 1 GGS · 3 RDS · PAB  |  "+fit;
+  if(s.startsWith("dd")||s.includes("daily deal"))
+    return "Coins · Gems · "+(sku||(H+" Hammers"))+(s.includes("segment")?"  (Segmented: Non-Finishers=קלף / Finishers=Hammers)":"");
+  if(s.includes("buy all"))
+    return "Coins+Red denom: Coins · "+rds+" · "+ham(H)+"  |  Gems+Gold denom: Gems · 2 GGS · "+c.midCard+"  |  "+fit;
+  if(s.includes("decoy")||s.includes("bonanza"))
+    return "D1 (Coins+Red): Coins · "+rds+" · PAB  |  D2 (Gems+Gold): Gems · 2 GGS · "+c.midCard+"  |  D3 (שילוב + on-top): Coins · Gems · "+rds+" · 2 GGS · 100% SB · Superboom · "+c.topCard+"  |  "+fit;
+  if(s.startsWith("ryd")){const sb=(pct&&pct!=="155%")?pct:"150%";return "Coins · Gems · "+(sku||c.topCard)+" · "+ham(H)+" · "+rds+" · "+sb+" SB  |  "+fit;}
+  if(s.includes("prize mania"))
+    return rds+" · "+c.topCard+" · 2 GGS · Dice Booster · Coins · Gems  |  "+fit;
+  if(s.includes("coin sale")){const seg=text.match(/\(([^)]*)\)/);return seg?seg[1]:"PU 100% · Inner Circle 125% · DPU 200% · NPU 500%";}
+  if(s.includes("mgap bogo"))return "Coins ×מכפיל + מכפיל שני חינם (BOGO)";
+  if(s.includes("mgap matched"))return "Coins ×מכפיל תואם לרכישה (Matched)";
+  if(s.includes("bigger multiplier"))return "Coins במכפילים מוגדלים";
+  if(s.includes("wild symbol"))return "Wild Symbols — עד 500% SB";
+  if(s.includes("boosted gemback"))return (pct||"555%")+" Gems Back (על שימוש בג'מס)";
+  if(s.includes("x2 ggs")||s.includes("ggs"))return "×2 GGS — הכפלת ה-Gold Gem Stamps שבהצעה";
+  if(s.includes("extreme stamp"))return "+"+(pct||"300%")+" ערך נוסף על ההצעות (SB)";
+  if(s.includes("price cut"))return "20% הנחה על כל החבילות";
+  if(s.includes("gems sale")||s.includes("gem sale"))return "30% בחנות · 20% על ההצעות (עד 40/60%)";
+  if(s.includes("sb ")||s.includes("scratch")||s.includes("slotobucks")||s.includes("% sb"))return pct?pct+" SlotoBucks":"100% סטנדרט · Chance עד 500% · Red Diamond 200% · אירוע 700-1000%";
+  if(s.includes("custom pod")){const t=text.match(/x\d+/i);return "Coins ×"+(t?t[0].replace(/x/i,""):"1000")+" (Custom Pod, 48h)";}
+  if(s.includes("dice deluxe"))return "Coins במכפילים גבוהים (Dice Deluxe)";
+  if(s.includes("dice booster")){const h=text.match(/\d+h/i);return "בוסטר Star Dice — "+(h?h[0]:"24h");}
+  if(s.includes("shiny wolf"))return "קלף Shiny מובטח (הסתברות גבוהה)";
+  if(s.includes("growing shiny"))return "Act1: Wild Ordinary  →  Act2: Wild Ace  →  Act3: Wild Any";
+  if(s.includes("shiny show")){const v=text.replace(/.*shiny show\s*[:\-–]?\s*/i,"").trim();return (v||"פרסי acts")+": קלפי Reg → Wild → Shiny לאלבום";}
+  if(s.includes("loot"))return "3 WM: "+(sku||"Reg pack")+"  |  4 WM: Ace 4★  |  5 WM: Ace 5★";
+  if(s.includes("core")||s.includes("mes")||s.includes("spin zone")||s.includes("pyp")||s.includes("win master")||s.includes("ace heist")||s.includes("spinner")){const prize=text.includes("→")?text.split("→")[1].trim():"pack מבנק הקלפים";return "פרס סיום: "+prize;}
+  if(s.includes("piggy")){const prize=text.replace(/.*break for\s*/i,"").trim();return "פרס: "+(prize||"pack");}
+  if(s.includes("dash pass"))return "פרסי עונה מדורגים (dash rewards) + Time Limited Prize";
+  if(s.includes("monday max"))return "Time Limited Prize: Superboom / קלף / picks";
+  if(s.includes("time limited"))return "Superboom / קלף / 2 AS / picks";
+  if(s.includes("dash max"))return "פרסים מדורגים עד 1200 dash points";
+  if(s.includes("power dash"))return "PAB · picks · Dice Booster";
+  if(s.includes("x2 dash"))return "×2 Dash Points";
+  if(s.includes("x2 badges")||s.includes("clan go"))return "עד 200 badges / Go Premium (badge wheel)";
+  if(s.includes("slot smash"))return "פרסי מכונה חדשה (Slot Smashes)";
+  if(s.includes("clan")||s.includes("dash"))return "badges · dash points · bundle";
+  if(s.includes("lotto")){const v=text.includes(":")?text.split(":").slice(1).join(":").trim():"";return v||"30% bigger / 4 balls / 2 multiballs / all goldens / Jackpot ball 150%";}
+  if(s.startsWith("ads"))return text.replace(/^ads\s*[:\-–]?\s*/i,"").trim()||"Coins / Gems (נמוך)";
+  if(s.includes("golden spin"))return "+20% Bigger Multipliers";
+  if(s.includes("counter po")||s.includes("limited po"))return "הצעה פרסונלית (topper) — פרס לפי סגמנט";
+  if(s.includes("sneak peek"))return "הצצה למכונה חדשה (ללא פרס)";
+  if(s.includes("machine launch")||s.includes("new machine"))return "פרסי השקה: MES pack + Dash Mission + Slot Smashes";
+  return text;
+}
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+// ---- render calendar ----
+const legend=document.getElementById("legend");
+Object.keys(CAT_LABEL).forEach(k=>{legend.innerHTML+='<span><i class="dot" style="background:'+CAT_COLOR[k]+'"></i>'+CAT_LABEL[k]+'</span>';});
+
+const grid=document.getElementById("grid");
+WEEKDAYS.forEach(w=>{const e=document.createElement("div");e.className="whead";e.textContent=w;grid.appendChild(e);});
+for(let i=0;i<LEAD_BLANKS;i++){const b=document.createElement("div");b.className="cell blank";grid.appendChild(b);}
+DAYS.forEach(day=>{
+  const c=document.createElement("div");
+  c.className="cell"+(day.tag?" special":"");
+  let html='<div class="chead"><span class="cdate'+(day.tag?" spec":"")+'">'+day.date+'</span>'
+    +'<span class="cmeta">'+(day.sale?'<span class="pill sale">SALE</span>':'')+'<span class="cdow">'+day.dow+'</span></span></div>';
+  if(day.banner)html+='<div class="ribbon">'+esc(day.banner)+'</div>';
+  html+='<div class="seasons">'+seasonsParts(day.date).map(function(p){
+    return '<div class="srow"><span class="stag" style="background:'+p[2]+'22;color:'+p[2]+';border-color:'+p[2]+'66">'+p[0]+'</span><span class="sval">'+esc(p[1])+'</span></div>';
+  }).join('')+'</div>';
+  html+='<div class="items">';
+  day.items.forEach((it,idx)=>{
+    var col=CAT_COLOR[classify(it)];
+    html+='<div class="item" data-d="'+day.date+'" data-i="'+idx+'" style="border-inline-start-color:'+col+'"><span class="t">'+esc(it)+'</span></div>';
+  });
+  html+='</div>';
+  c.innerHTML=html;
+  grid.appendChild(c);
+});
+
+const detail=document.getElementById("detail");
+function closeSheet(){detail.style.display="none";}
+detail.addEventListener("click",e=>{if(e.target===detail)closeSheet();});
+grid.addEventListener("click",e=>{
+  const item=e.target.closest(".item"); if(!item)return;
+  const day=DAYS.find(d=>d.date==item.dataset.d);
+  const txt=day.items[item.dataset.i];
+  const lines=descFor(txt,day).split(/\s*\|\|?\s*/).filter(Boolean);
+  let h='<div class="sheet"><button class="close">סגור ✕</button>';
+  h+='<h3>'+esc(txt)+'  <span style="color:#8b96ad;font-size:12px;font-weight:600">· '+day.date+'/7 '+day.dow+'</span></h3>';
+  lines.forEach(l=>{h+='<div class="line'+(l.indexOf("↳")===0?" fitline":"")+'">'+esc(l)+'</div>';});
+  h+='</div>';
+  detail.innerHTML=h; detail.style.display="flex";
+  detail.querySelector(".close").addEventListener("click",closeSheet);
+});
+
+// ---- tabs ----
+document.querySelectorAll(".tab").forEach(t=>{
+  t.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    document.getElementById(t.dataset.tab).classList.add("active");
+    detail.style.display="none";
+  });
+});
+
+// ---- offers tab content ----
+const OFFERS=[
+  ["Buy All","2 denoms (בסיס מטבע+חותמת), קונים את שניהם.",["Coins+Red denom: Coins + Red Stamps (RDS) + פרסים (Hammers / card wheel / coin grab)","Gems+Gold denom: Gems + Gold Gem Stamps (GGS) + פרסים (Hammer wheel / SNL dice / ace spins / shiny card)"],"על שני הדנומים פרסים נוספים מעבר לבסיס."],
+  ["Decoy / Bonanza","3 denoms — d1/d2 בסיס בודד, d3 שילוב.",["denom 1: או Coins+RDS או Gems+GGS + פרסים","denom 2: הבסיס המשלים + פרסים","denom 3: שילוב שני הבסיסים + פרסים, ולעיתים בנפיט on-top (%SB / Superboom / Wild / Gold)"],"ה-denom האמצעי הוא ה-decoy."],
+  ["Rolling Offer (Buy X Get Y)","denom רכישה + עד 8 denoms חינמיים.",["רכישה: Coins/Gems + 1 RDS + 1 GGS","כל denom חינמי = פריט אחד מהמאגר: %SB / Hammers / AS / קלף / Dice / Seasonal Booster / GGS / RDS / PAB"],"כל הרכב וסדר אפשריים."],
+  ["Rolling More for Less","3 denoms מדורגים 'הכל-כלול', ערך עולה d1<d2<d3.",["D1: coins + Stamps + 100% SB + hammers","D2: coins+gems + Stamps + 200% SB + hammers","D3: gems + 300% SB + GGS + Superboom + קלף עליון"],"הדפוס המדורג נפוץ אך לא נעול."],
+  ["Daily Deal (DD)","Coins + Gems + slot מרכזי אחד + תמחור.",["Slot מרכזי: כל SKU מהמאגר (Hammers / Wild / SB Wheel / picks / קלף / Dice)","נדיבות לפי תמחור: Max≈12H / High≈8H / Mid≈3-6H"],"וריאציות: Segmented / After Purchase / חלונות שעה."],
+  ["RYD (Reveal Your Deal)","Coins + Gems + hook + RDS + %SB (רוטציוני).",["hook מהמאגר: קלף / Superboom / 48h מכונה / free spins","תמיד פרסים נוספים מעבר ל-SB"],"⛔ אין 155% (ערך תמתי חד-פעמי)."],
+  ["Prize Mania","חבילת פרסים (מיקס חופשי מהמאגר).",["דוגמה: 4 RDS + Wild Gold + 2 GGS + Dice Booster + Coins + Gems"],"ההרכב משתנה לפי המטרה."],
+];
+const oc=document.getElementById("ocards");
+OFFERS.forEach(([t,st,denoms,tag])=>{
+  let h='<h3>'+t+'</h3><div class="struct">'+st+'</div>';
+  denoms.forEach(d=>h+='<div class="denom">'+d+'</div>');
+  h+='<div class="tagline">'+tag+'</div>';
+  const e=document.createElement("div");e.className="ocard";e.innerHTML=h;oc.appendChild(e);
+});
+
+// ---- promos tab content ----
+const PROMOS=[
+  ["Core (צ'אלנג' → פרס)","גיימפליי לשריפת קוינס (coin sink); בסיום פרס pack. מכניקות: Spin Zone / Win Master / PYP / Ace Loot / Spinner Clash / MES / Custom Pod.","פרס = Reg/Ace/Shiny/Wild מבנק השבוע. ⛔ אין Gold בצ'אלנג' משחקי (רק ברכישה)."],
+  ["Shiny Show","מיני-גיים לצריכת ג'מס; השלמת acts → קלפי Wild/Shiny לאלבום.","Joker / All Cards / Wild Guaranteed שורפים הכי הרבה ג'מס. 3/שבוע."],
+  ["MGAP","מנוע ההכנסה #1 — מכפילים על קוינס. BOGO (קנה 1 קבל 1) / Matched / Bigger Multipliers / Wild Symbols עד 500% SB.","≤2/שבוע · מרווח ≥2 ימים · Matched לא עם sale · BOGO לא ביום sale/אחרון."],
+  ["Coin Sale (סגמנטי)","הזרקת קוינס לפי סגמנט.","PU 50/100/150% · Inner Circle 75/125/175% · DPU 200% · NPU/Dormant 500%."],
+  ["Clan-Dash","פיצ'ר קלאנים — מנוע גיוס משלמים (PU). Dash Pass / Monday Max / Dash Max / Power Dash / Clan Go.","שני = Dash Day (Dash Pass עונה חדשה + Monday Max)."],
+  ["Gems / מגבירים","Boosted Gemback (gems back, 5h) / x2 GGS (3h) / Extreme Stamp (+% ערך על ההצעות) / Price Cut 20%.","מגבירים רוחביים — KPI = הכנסה כוללת. Extreme Stamp: לא ביום sale (חריג אירוע), לא עם Wild Card."],
+  ["SlotoBucks (SB)","מטבע קידום (ללא פדיון). 100% סטנדרט · Chance עד 500% · Red Diamond Stamp 200% (2h) · Extreme 300% (2h) · אירוע 700% · ענק 1000%.",""],
+  ["Custom Pod","כלי Core לשריפת קוינס, 48 שעות. X1000 רגיל · X1200 אירוע · X1500 mega sale.","יום 1 standalone (coin sink יומי)."],
+  ["Lotto Bonus","פיק על Night Plan (שלישי/שבת בלילה). 30% bigger / 4 balls / 2 multiballs / all goldens / Jackpot ball 150%.",""],
+  ["Dice","Dice Deluxe (מכפילים גבוהים לרכישה, ~$441K) / Dice Booster 24h (בוסטר star dice).","Booster standalone ×3/שבוע."],
+  ["ADS PO","הצעה מבוססת פרסומת — המסלול הכי פחות חשוב.","פרסים נמוכים בלבד (Coins/Gems/reg נמוך). אסור Gold/Ace גבוה/Wild/Shiny."],
+];
+const pc=document.getElementById("pcards");
+PROMOS.forEach(([t,st,tag])=>{
+  let h='<h3>'+t+'</h3><div class="struct">'+st+'</div>';
+  if(tag)h+='<div class="tagline">'+tag+'</div>';
+  const e=document.createElement("div");e.className="ocard";e.innerHTML=h;pc.appendChild(e);
+});
+</script>
+</body></html>

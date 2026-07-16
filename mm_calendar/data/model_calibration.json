@@ -1,0 +1,1067 @@
+{
+ "meta": {
+  "computed_at": "2026-07-12T18:00:43",
+  "today": "2026-07-12",
+  "current_month": "2026-07",
+  "n_revenue_days": 90,
+  "n_pu_days": 60,
+  "n_gameplay_days": 45,
+  "revenue_window_days": 90,
+  "pu_window_days": 60,
+  "revenue_date_range": [
+   "2026-04-13",
+   "2026-07-11"
+  ],
+  "pu_date_range": [
+   "2026-05-13",
+   "2026-07-11"
+  ],
+  "date_range": [
+   "2026-04-13",
+   "2026-07-11"
+  ],
+  "calendar_date_range": [
+   "2026-04-01",
+   "2026-07-31"
+  ],
+  "min_n_for_pure_data": 4,
+  "regression_data_source": "wide DWH pull (dwh.sm_fact_smart_calendar_promotion_updates x agg.agg_sm_daily_users_stats, exact, Nov 2025-Jul 2026) + real_months.json supplement for dates the wide pull doesn't cover yet; metric-specific trailing windows chosen by held-out grid search",
+  "self_check_in_sample_pct_error": 6.24,
+  "self_check_mean_abs_pct_error": 7.19,
+  "self_check_method": "5-fold cross-validated (DOW+crowd refit per fold, carryover included)",
+  "pu_self_check_mean_abs_pct_error": 5.25,
+  "pu_self_check_scored_days": 300
+ },
+ "product_knowledge": {
+  "source": "Exact DWH days from Jan 1 onward; clean days exclude documented holiday confounds. Used for product understanding and combo planning, not as the forecast coefficient window.",
+  "start_date": "2026-01-01",
+  "date_range": [
+   "2026-01-03",
+   "2026-07-11"
+  ],
+  "n_clean_days": 172,
+  "families": [
+   {
+    "key": "customPod",
+    "n": 20,
+    "avg_rev_k": 714.6,
+    "avg_residual_k": 51.8,
+    "avg_pu": 28675.0
+   },
+   {
+    "key": "coinSale",
+    "n": 16,
+    "avg_rev_k": 692.5,
+    "avg_residual_k": 26.6,
+    "avg_pu": 28262.0
+   },
+   {
+    "key": "mgapBogo",
+    "n": 27,
+    "avg_rev_k": 673.8,
+    "avg_residual_k": 26.4,
+    "avg_pu": 28616.0
+   },
+   {
+    "key": "fortuneDip",
+    "n": 5,
+    "avg_rev_k": 666.4,
+    "avg_residual_k": 23.8,
+    "avg_pu": 26538.0
+   },
+   {
+    "key": "decoyBonanza",
+    "n": 27,
+    "avg_rev_k": 661.4,
+    "avg_residual_k": 19.7,
+    "avg_pu": 27993.0
+   },
+   {
+    "key": "rollingMoreForLess",
+    "n": 24,
+    "avg_rev_k": 650.0,
+    "avg_residual_k": 17.3,
+    "avg_pu": 27370.0
+   },
+   {
+    "key": "extremeStamp",
+    "n": 27,
+    "avg_rev_k": 632.9,
+    "avg_residual_k": 15.1,
+    "avg_pu": 27064.0
+   },
+   {
+    "key": "mgapOther",
+    "n": 31,
+    "avg_rev_k": 653.0,
+    "avg_residual_k": 11.6,
+    "avg_pu": 27650.0
+   },
+   {
+    "key": "rolling",
+    "n": 79,
+    "avg_rev_k": 657.4,
+    "avg_residual_k": 10.3,
+    "avg_pu": 27971.0
+   },
+   {
+    "key": "gemback",
+    "n": 41,
+    "avg_rev_k": 646.4,
+    "avg_residual_k": 6.0,
+    "avg_pu": 27469.0
+   },
+   {
+    "key": "priceCut",
+    "n": 21,
+    "avg_rev_k": 638.5,
+    "avg_residual_k": 5.6,
+    "avg_pu": 28747.0
+   },
+   {
+    "key": "prizeMania",
+    "n": 10,
+    "avg_rev_k": 641.8,
+    "avg_residual_k": 4.2,
+    "avg_pu": 27902.0
+   },
+   {
+    "key": "mgapBigger",
+    "n": 18,
+    "avg_rev_k": 651.1,
+    "avg_residual_k": 0.7,
+    "avg_pu": 28667.0
+   },
+   {
+    "key": "snl",
+    "n": 27,
+    "avg_rev_k": 627.6,
+    "avg_residual_k": -0.4,
+    "avg_pu": 28536.0
+   },
+   {
+    "key": "mgapMatched",
+    "n": 13,
+    "avg_rev_k": 644.1,
+    "avg_residual_k": -2.1,
+    "avg_pu": 26979.0
+   },
+   {
+    "key": "happyHour",
+    "n": 44,
+    "avg_rev_k": 639.6,
+    "avg_residual_k": -2.2,
+    "avg_pu": 28359.0
+   },
+   {
+    "key": "buyAll",
+    "n": 51,
+    "avg_rev_k": 625.5,
+    "avg_residual_k": -11.0,
+    "avg_pu": 28091.0
+   },
+   {
+    "key": "counterPo",
+    "n": 22,
+    "avg_rev_k": 625.7,
+    "avg_residual_k": -11.8,
+    "avg_pu": 27855.0
+   },
+   {
+    "key": "mgapWildSymbols",
+    "n": 21,
+    "avg_rev_k": 626.0,
+    "avg_residual_k": -12.8,
+    "avg_pu": 26768.0
+   },
+   {
+    "key": "goldenSpin",
+    "n": 9,
+    "avg_rev_k": 580.4,
+    "avg_residual_k": -28.1,
+    "avg_pu": 25382.0
+   }
+  ],
+  "top_pairs": [
+   {
+    "keys": [
+     "decoyBonanza",
+     "mgapOther"
+    ],
+    "n": 5,
+    "avg_rev_k": 782.2,
+    "avg_residual_k": 115.7,
+    "synergy_k": 100.0,
+    "avg_pu": 30605.0
+   },
+   {
+    "keys": [
+     "extremeStamp",
+     "mgapOther"
+    ],
+    "n": 4,
+    "avg_rev_k": 751.9,
+    "avg_residual_k": 93.1,
+    "synergy_k": 79.8,
+    "avg_pu": 28116.0
+   },
+   {
+    "keys": [
+     "customPod",
+     "happyHour"
+    ],
+    "n": 7,
+    "avg_rev_k": 760.8,
+    "avg_residual_k": 90.6,
+    "synergy_k": 65.8,
+    "avg_pu": 28492.0
+   },
+   {
+    "keys": [
+     "coinSale",
+     "customPod"
+    ],
+    "n": 6,
+    "avg_rev_k": 763.8,
+    "avg_residual_k": 87.2,
+    "synergy_k": 48.0,
+    "avg_pu": 28747.0
+   },
+   {
+    "keys": [
+     "customPod",
+     "gemback"
+    ],
+    "n": 7,
+    "avg_rev_k": 749.2,
+    "avg_residual_k": 79.8,
+    "synergy_k": 50.9,
+    "avg_pu": 28537.0
+   },
+   {
+    "keys": [
+     "coinSale",
+     "gemback"
+    ],
+    "n": 4,
+    "avg_rev_k": 740.0,
+    "avg_residual_k": 79.1,
+    "synergy_k": 62.8,
+    "avg_pu": 28460.0
+   },
+   {
+    "keys": [
+     "customPod",
+     "decoyBonanza"
+    ],
+    "n": 4,
+    "avg_rev_k": 763.8,
+    "avg_residual_k": 78.9,
+    "synergy_k": 43.1,
+    "avg_pu": 27299.0
+   },
+   {
+    "keys": [
+     "customPod",
+     "mgapBigger"
+    ],
+    "n": 4,
+    "avg_rev_k": 752.1,
+    "avg_residual_k": 77.7,
+    "synergy_k": 51.4,
+    "avg_pu": 29214.0
+   },
+   {
+    "keys": [
+     "customPod",
+     "mgapOther"
+    ],
+    "n": 5,
+    "avg_rev_k": 740.9,
+    "avg_residual_k": 71.6,
+    "synergy_k": 39.9,
+    "avg_pu": 27653.0
+   },
+   {
+    "keys": [
+     "coinSale",
+     "mgapOther"
+    ],
+    "n": 5,
+    "avg_rev_k": 739.6,
+    "avg_residual_k": 71.4,
+    "synergy_k": 52.3,
+    "avg_pu": 27848.0
+   },
+   {
+    "keys": [
+     "decoyBonanza",
+     "rolling"
+    ],
+    "n": 8,
+    "avg_rev_k": 722.3,
+    "avg_residual_k": 63.6,
+    "synergy_k": 48.6,
+    "avg_pu": 28595.0
+   },
+   {
+    "keys": [
+     "customPod",
+     "rolling"
+    ],
+    "n": 14,
+    "avg_rev_k": 728.0,
+    "avg_residual_k": 60.1,
+    "synergy_k": 29.1,
+    "avg_pu": 28613.0
+   }
+  ],
+  "weak_pairs": [
+   {
+    "keys": [
+     "gemback",
+     "snl"
+    ],
+    "n": 5,
+    "avg_rev_k": 603.4,
+    "avg_residual_k": -39.9,
+    "synergy_k": -42.7,
+    "avg_pu": 26036.0
+   },
+   {
+    "keys": [
+     "buyAll",
+     "mgapBigger"
+    ],
+    "n": 6,
+    "avg_rev_k": 615.3,
+    "avg_residual_k": -37.2,
+    "synergy_k": -32.1,
+    "avg_pu": 27241.0
+   },
+   {
+    "keys": [
+     "mgapBigger",
+     "snl"
+    ],
+    "n": 6,
+    "avg_rev_k": 593.6,
+    "avg_residual_k": -36.1,
+    "synergy_k": -36.3,
+    "avg_pu": 26184.0
+   },
+   {
+    "keys": [
+     "happyHour",
+     "priceCut"
+    ],
+    "n": 4,
+    "avg_rev_k": 609.0,
+    "avg_residual_k": -32.4,
+    "synergy_k": -34.1,
+    "avg_pu": 32140.0
+   },
+   {
+    "keys": [
+     "counterPo",
+     "happyHour"
+    ],
+    "n": 7,
+    "avg_rev_k": 591.6,
+    "avg_residual_k": -32.1,
+    "synergy_k": -25.1,
+    "avg_pu": 27679.0
+   },
+   {
+    "keys": [
+     "happyHour",
+     "mgapWildSymbols"
+    ],
+    "n": 5,
+    "avg_rev_k": 588.4,
+    "avg_residual_k": -31.8,
+    "synergy_k": -24.3,
+    "avg_pu": 26138.0
+   },
+   {
+    "keys": [
+     "buyAll",
+     "rollingMoreForLess"
+    ],
+    "n": 5,
+    "avg_rev_k": 599.0,
+    "avg_residual_k": -31.4,
+    "synergy_k": -34.6,
+    "avg_pu": 27236.0
+   },
+   {
+    "keys": [
+     "buyAll",
+     "snl"
+    ],
+    "n": 9,
+    "avg_rev_k": 603.6,
+    "avg_residual_k": -31.3,
+    "synergy_k": -25.6,
+    "avg_pu": 29795.0
+   }
+  ]
+ },
+ "revenue": {
+  "base_dow": {
+   "Sun": 640.8,
+   "Mon": 640.0,
+   "Tue": 577.5,
+   "Wed": 624.6,
+   "Thu": 580.5,
+   "Fri": 659.1,
+   "Sat": 686.5
+  },
+  "n_dow": {
+   "Sun": 10,
+   "Mon": 12,
+   "Tue": 12,
+   "Wed": 12,
+   "Thu": 10,
+   "Fri": 10,
+   "Sat": 11
+  },
+  "crowd_adj_by_month": {
+   "2026-04": 16.1,
+   "2026-05": -10.8,
+   "2026-06": -7.3,
+   "2026-07": -0.2,
+   "2026-08": 14.1
+  },
+  "crowd_trend_per_day": {
+   "2026-07": 0.46,
+   "2026-08": 0.46
+  },
+  "promo_bonus": {
+   "customPod": {
+    "value": 29.8,
+    "n": 7,
+    "basis": "data"
+   },
+   "coinSale": {
+    "value": 13.8,
+    "n": 4,
+    "basis": "data"
+   },
+   "decoyBonanza": {
+    "value": 14.8,
+    "n": 15,
+    "basis": "data"
+   },
+   "mgapBogo": {
+    "value": 11.9,
+    "n": 12,
+    "basis": "data"
+   },
+   "mgapMatched": {
+    "value": -3.9,
+    "n": 5,
+    "basis": "data"
+   },
+   "mgapWildSymbols": {
+    "value": -7.0,
+    "n": 5,
+    "basis": "data"
+   },
+   "mgapBigger": {
+    "value": -0.5,
+    "n": 8,
+    "basis": "data"
+   },
+   "mgapOther": {
+    "value": 4.8,
+    "n": 6,
+    "basis": "data"
+   },
+   "gemback": {
+    "value": 9.2,
+    "n": 20,
+    "basis": "data"
+   },
+   "rollingMoreForLess": {
+    "value": 6.8,
+    "n": 10,
+    "basis": "data"
+   },
+   "rolling": {
+    "value": 13.2,
+    "n": 30,
+    "basis": "data"
+   },
+   "prizeMania": {
+    "value": 4.9,
+    "n": 10,
+    "basis": "data"
+   },
+   "priceCut": {
+    "value": -5.2,
+    "n": 11,
+    "basis": "data"
+   },
+   "buyAll": {
+    "value": -10.4,
+    "n": 19,
+    "basis": "data"
+   },
+   "goldenSpin": {
+    "value": -30.1,
+    "n": 9,
+    "basis": "data"
+   },
+   "counterPo": {
+    "value": 7.5,
+    "n": 8,
+    "basis": "data"
+   },
+   "snl": {
+    "value": 7.5,
+    "n": 18,
+    "basis": "data"
+   },
+   "happyHour": {
+    "value": 14.0,
+    "n": 21,
+    "basis": "data"
+   },
+   "extremeStamp": {
+    "value": 7.7,
+    "n": 13,
+    "basis": "data"
+   },
+   "fortuneDip": {
+    "value": 9.8,
+    "n": 4,
+    "basis": "data"
+   },
+   "holidayEve": {
+    "value": 10.0,
+    "n": 2,
+    "basis": "blended"
+   },
+   "holidayAfter": {
+    "value": -8.0,
+    "n": 2,
+    "basis": "blended"
+   },
+   "ix_customPod_x_coinSale": {
+    "value": 15.0,
+    "n": 2,
+    "basis": "blended"
+   },
+   "ix_customPod_x_happyHour": {
+    "value": 19.9,
+    "n": 3,
+    "basis": "blended"
+   },
+   "ix_coinSale_x_decoyBonanza": {
+    "value": 15.0,
+    "n": 1,
+    "basis": "blended"
+   },
+   "ix_mgapBigger_x_coinSale": {
+    "value": -8.2,
+    "n": 2,
+    "basis": "blended"
+   }
+  },
+  "pricing_bonus": {
+   "dailyDeal:medium": {
+    "value": 0.5,
+    "n": 22,
+    "basis": "data"
+   },
+   "dailyDeal:high": {
+    "value": 4.1,
+    "n": 105,
+    "basis": "data"
+   },
+   "dailyDeal:max": {
+    "value": -0.2,
+    "n": 13,
+    "basis": "data"
+   },
+   "rolling:medium": {
+    "value": -1.2,
+    "n": 11,
+    "basis": "data"
+   },
+   "rolling:high": {
+    "value": -0.8,
+    "n": 25,
+    "basis": "data"
+   },
+   "rolling:max": {
+    "value": -0.3,
+    "n": 1,
+    "basis": "blended"
+   },
+   "decoyBonanza:medium": {
+    "value": 0.0,
+    "n": 0,
+    "basis": "no-data"
+   },
+   "decoyBonanza:high": {
+    "value": 0.3,
+    "n": 7,
+    "basis": "data"
+   },
+   "decoyBonanza:max": {
+    "value": 0.0,
+    "n": 0,
+    "basis": "no-data"
+   },
+   "ryd:medium": {
+    "value": 0.8,
+    "n": 7,
+    "basis": "data"
+   },
+   "ryd:high": {
+    "value": 0.2,
+    "n": 14,
+    "basis": "data"
+   },
+   "ryd:max": {
+    "value": 0.0,
+    "n": 1,
+    "basis": "blended"
+   },
+   "buyAll:medium": {
+    "value": -0.0,
+    "n": 2,
+    "basis": "blended"
+   },
+   "buyAll:high": {
+    "value": 1.0,
+    "n": 19,
+    "basis": "data"
+   },
+   "buyAll:max": {
+    "value": 1.6,
+    "n": 7,
+    "basis": "data"
+   }
+  },
+  "event_bonus": {
+   "major": {
+    "floor": 73.6,
+    "per_item": 17.03,
+    "cap": 300,
+    "n": 5
+   },
+   "minor": {
+    "floor": 20,
+    "per_item": 27.9,
+    "cap": 40,
+    "n": 3
+   },
+   "machine": {
+    "value": 54.1,
+    "n": 6
+   }
+  },
+  "day_of_month_curve": {
+   "b1": {
+    "value": 37.7,
+    "n": 5
+   },
+   "b2": {
+    "value": -19.8,
+    "n": 10
+   },
+   "b3": {
+    "value": 4.9,
+    "n": 17
+   },
+   "b4": {
+    "value": -30.6,
+    "n": 19
+   },
+   "b5": {
+    "value": -24.0,
+    "n": 19
+   },
+   "b6": {
+    "value": -41.5,
+    "n": 7
+   }
+  },
+  "current_month_nowcast": {
+   "adjustment_k": -3.8,
+   "n": 8,
+   "observed_bias_k": 4.8,
+   "major_event_factor": 0.692,
+   "major_event_n": 3
+  },
+  "carryover_fraction": 0.225,
+  "absorption_penalty": -18,
+  "carryover_fit": {
+   "carryover_fraction": 0.225,
+   "carryover_n": 66,
+   "absorption_penalty": -18,
+   "absorption_n": 2,
+   "basis": "data"
+  }
+ },
+ "pu": {
+  "base_dow": {
+   "Sun": 27624.0,
+   "Mon": 33555.7,
+   "Tue": 24296.2,
+   "Wed": 26629.6,
+   "Thu": 24294.7,
+   "Fri": 25856.4,
+   "Sat": 26314.1
+  },
+  "n_dow": {
+   "Sun": 7,
+   "Mon": 7,
+   "Tue": 8,
+   "Wed": 8,
+   "Thu": 6,
+   "Fri": 7,
+   "Sat": 7
+  },
+  "crowd_adj_by_month": {
+   "2026-05": -626.5,
+   "2026-06": 91.9,
+   "2026-07": 432.8,
+   "2026-08": 1702.0
+  },
+  "crowd_trend_per_day": {
+   "2026-07": 40.943,
+   "2026-08": 40.943
+  },
+  "promo_bonus": {
+   "customPod": {
+    "value": 1.81,
+    "n": 5,
+    "basis": "data"
+   },
+   "coinSale": {
+    "value": 1.6,
+    "n": 4,
+    "basis": "data"
+   },
+   "mgapBogo": {
+    "value": 0.99,
+    "n": 10,
+    "basis": "data"
+   },
+   "buyAll": {
+    "value": -0.2,
+    "n": 14,
+    "basis": "data"
+   },
+   "goldenSpin": {
+    "value": -4.6,
+    "n": 7,
+    "basis": "data"
+   },
+   "prizeMania": {
+    "value": 2.5,
+    "n": 7,
+    "basis": "data"
+   },
+   "counterPo": {
+    "value": 1.98,
+    "n": 5,
+    "basis": "data"
+   },
+   "rolling": {
+    "value": 1.48,
+    "n": 19,
+    "basis": "data"
+   }
+  },
+  "pricing_bonus": {
+   "dailyDeal:medium": {
+    "value": 0.39,
+    "n": 22,
+    "basis": "data"
+   },
+   "dailyDeal:high": {
+    "value": 1.13,
+    "n": 105,
+    "basis": "data"
+   },
+   "dailyDeal:max": {
+    "value": 0.2,
+    "n": 13,
+    "basis": "data"
+   },
+   "rolling:medium": {
+    "value": 0.06,
+    "n": 11,
+    "basis": "data"
+   },
+   "rolling:high": {
+    "value": -0.01,
+    "n": 25,
+    "basis": "data"
+   },
+   "rolling:max": {
+    "value": -0.04,
+    "n": 1,
+    "basis": "blended"
+   },
+   "decoyBonanza:medium": {
+    "value": 0.0,
+    "n": 0,
+    "basis": "no-data"
+   },
+   "decoyBonanza:high": {
+    "value": 0.14,
+    "n": 7,
+    "basis": "data"
+   },
+   "decoyBonanza:max": {
+    "value": 0.0,
+    "n": 0,
+    "basis": "no-data"
+   },
+   "ryd:medium": {
+    "value": 0.22,
+    "n": 7,
+    "basis": "data"
+   },
+   "ryd:high": {
+    "value": 0.19,
+    "n": 14,
+    "basis": "data"
+   },
+   "ryd:max": {
+    "value": 0.04,
+    "n": 1,
+    "basis": "blended"
+   },
+   "buyAll:medium": {
+    "value": 0.05,
+    "n": 2,
+    "basis": "blended"
+   },
+   "buyAll:high": {
+    "value": 0.16,
+    "n": 19,
+    "basis": "data"
+   },
+   "buyAll:max": {
+    "value": 0.03,
+    "n": 7,
+    "basis": "data"
+   }
+  },
+  "day_of_month_curve": {
+   "b1": {
+    "value": 246.0,
+    "n": 4
+   },
+   "b2": {
+    "value": -458.0,
+    "n": 6
+   },
+   "b3": {
+    "value": -15.0,
+    "n": 11
+   },
+   "b4": {
+    "value": -33.0,
+    "n": 12
+   },
+   "b5": {
+    "value": -157.0,
+    "n": 12
+   },
+   "b6": {
+    "value": -464.0,
+    "n": 5
+   }
+  },
+  "current_month_nowcast": {
+   "adjustment_pct": 1.46,
+   "n": 11,
+   "observed_bias_pct": -1.73
+  }
+ },
+ "gameplay": {
+  "base_dow": {
+   "Sun": {
+    "spinners": 288842.0,
+    "spinsPerSpinner": 859.0,
+    "winRate": 94.1,
+    "sessionsPerUser": 4.12
+   },
+   "Mon": {
+    "spinners": 286714.0,
+    "spinsPerSpinner": 844.0,
+    "winRate": 86.3,
+    "sessionsPerUser": 4.25
+   },
+   "Tue": {
+    "spinners": 285749.0,
+    "spinsPerSpinner": 796.0,
+    "winRate": 87.7,
+    "sessionsPerUser": 4.23
+   },
+   "Wed": {
+    "spinners": 289172.0,
+    "spinsPerSpinner": 819.0,
+    "winRate": 93.5,
+    "sessionsPerUser": 4.24
+   },
+   "Thu": {
+    "spinners": 286054.0,
+    "spinsPerSpinner": 789.0,
+    "winRate": 106.4,
+    "sessionsPerUser": 4.14
+   },
+   "Fri": {
+    "spinners": 285729.0,
+    "spinsPerSpinner": 806.0,
+    "winRate": 100.8,
+    "sessionsPerUser": 4.08
+   },
+   "Sat": {
+    "spinners": 280099.0,
+    "spinsPerSpinner": 806.0,
+    "winRate": 97.1,
+    "sessionsPerUser": 4.1
+   }
+  },
+  "n_days": 45
+ },
+ "economy": {
+  "source": "agg.agg_sm_daily_user_currency_balance, pu_segment='Active PU', is_playtika_user=0. VELOCITY = today's median end-of-day balance vs the prior day's close. This follows the Tableau Velocity / Balance / Index / Consumption reference more closely than daily_payments>0; same-day start->end is only a secondary diagnostic. See mm_calendar/data/pu_balance_raw.json",
+  "n_coin_days": 101,
+  "n_gem_days": 101,
+  "coin_pct_base_dow": {
+   "Sun": 8.59,
+   "Mon": -9.81,
+   "Tue": -1.87,
+   "Wed": 7.64,
+   "Thu": -5.68,
+   "Fri": 4.69,
+   "Sat": 2.89
+  },
+  "coin_pct_n_dow": {
+   "Sun": 14,
+   "Mon": 14,
+   "Tue": 14,
+   "Wed": 14,
+   "Thu": 15,
+   "Fri": 15,
+   "Sat": 15
+  },
+  "coin_pct_promo_delta": {
+   "pyp": {
+    "value": 0.01,
+    "n": 18,
+    "basis": "data"
+   },
+   "mesTokens": {
+    "value": 0.26,
+    "n": 58,
+    "basis": "data"
+   },
+   "spinnerClash": {
+    "value": 0.01,
+    "n": 7,
+    "basis": "data"
+   },
+   "aceCardLoot": {
+    "value": -0.03,
+    "n": 7,
+    "basis": "data"
+   },
+   "customPod": {
+    "value": 0.19,
+    "n": 12,
+    "basis": "data"
+   },
+   "clanPoints": {
+    "value": -0.21,
+    "n": 69,
+    "basis": "data"
+   },
+   "dashChallenge": {
+    "value": -0.04,
+    "n": 59,
+    "basis": "data"
+   },
+   "machine": {
+    "value": -0.3,
+    "n": 23,
+    "basis": "data"
+   },
+   "winMaster": {
+    "value": 0.41,
+    "n": 11,
+    "basis": "data"
+   },
+   "spinZone": {
+    "value": -0.41,
+    "n": 26,
+    "basis": "data"
+   },
+   "jackpot": {
+    "value": -0.33,
+    "n": 9,
+    "basis": "data"
+   },
+   "megaWinner": {
+    "value": 0.08,
+    "n": 3,
+    "basis": "blended"
+   }
+  },
+  "coin_cv_full_pp": 9.24,
+  "coin_cv_dow_only_pp": 9.26,
+  "gem_pct_base_dow": {
+   "Sun": 3.0,
+   "Mon": 6.51,
+   "Tue": -3.96,
+   "Wed": -3.44,
+   "Thu": -1.08,
+   "Fri": 1.97,
+   "Sat": -0.69
+  },
+  "gem_pct_n_dow": {
+   "Sun": 14,
+   "Mon": 14,
+   "Tue": 14,
+   "Wed": 14,
+   "Thu": 15,
+   "Fri": 15,
+   "Sat": 15
+  },
+  "gem_pct_promo_delta": {
+   "shortTerm": {
+    "value": -0.19,
+    "n": 32,
+    "basis": "data"
+   },
+   "midTerm": {
+    "value": 0.07,
+    "n": 42,
+    "basis": "data"
+   },
+   "album": {
+    "value": 0.1,
+    "n": 51,
+    "basis": "data"
+   },
+   "shinyShow": {
+    "value": -0.16,
+    "n": 72,
+    "basis": "data"
+   }
+  },
+  "gem_cv_full_pp": 4.58,
+  "gem_cv_dow_only_pp": 4.58,
+  "note": "Coin regressors are core coin-sink mechanics (PYP, M.E.S, Spinner Clash, Ace/Card Loot, Custom Pod, Clan Dash/points, gameplay machines, Win Master, Spin Zone, Jackpot, Mega Winner). Gem regressors are the gem-relevant planning surfaces requested by the business: Short Term, Mid Term, Album, and Shiny Show. Purchase/injection offers (Coin Sale, Buy All, MGAP, Rolling, Gems Sale, Gemback, GGS) are deliberately excluded from economy regressions. Cross-validation shows composition adds little beyond the DOW baseline, so deltas are heavily shrunk toward 0 rather than overfitting noise."
+ }
+}

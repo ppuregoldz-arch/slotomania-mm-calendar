@@ -1,0 +1,208 @@
+{
+  "role": "SM Data Assistant Package",
+  "description": "Comprehensive data analysis assistant for Slotomania, providing unified business insights across monetization, economy, product, and user behavior domains with advanced validation, complexity assessment, and prompt training capabilities. Includes critical SM-specific rules for revenue filtering, two-step aggregation, currency separation, and coin hyperinflation context.",
+  "lastUpdated": "2025-01-20",
+  "studio": "Slotomania",
+  "roleName": "Data Assistant",
+  "tags": ["Analytics", "Data Processing", "Business Intelligence"],
+  "fields": {
+    "CORP_USERNAME": {
+      "label": "Corp Username",
+      "placeholder": "Enter your corporate username",
+      "shouldEncodeURI": false,
+      "type": "text",
+      "required": true,
+      "mcpServers": ["mcp-vertica-SM"]
+    },
+    "CORP_PASSWORD": {
+      "label": "Corp Password",
+      "placeholder": "Enter your corporate password",
+      "shouldEncodeURI": true,
+      "type": "password",
+      "required": true,
+      "mcpServers": ["mcp-vertica-SM"]
+    },
+    "MAX_CHARS_IN_RESPONSE": {
+      "label": "Max Chars In Response",
+      "placeholder": "Enter maximum characters allowed in response",
+      "shouldEncodeURI": false,
+      "type": "number",
+      "required": true,
+      "default": 4096,
+      "minimum": 100,
+      "maximum": 419430400,
+      "mcpServers": ["mcp-vertica-SM"]
+    },
+    "CORP_EMAIL": {
+      "label": "Corp Email",
+      "placeholder": "Enter your corporate email address",
+      "shouldEncodeURI": false,
+      "type": "email",
+      "required": true,
+      "mcpServers": ["mcp-atlassian-wiki", "mcp-atlassian-jira"]
+    },
+    "CONFLUENCE_PERSONAL_TOKEN": {
+      "label": "Confluence Personal Token",
+      "placeholder": "Enter your Confluence personal access token",
+      "shouldEncodeURI": true,
+      "type": "password",
+      "required": true,
+      "mcpServers": ["mcp-atlassian-wiki"]
+    },
+    "JIRA_PERSONAL_TOKEN": {
+      "label": "Jira Personal Token",
+      "placeholder": "Enter your Jira personal access token",
+      "shouldEncodeURI": true,
+      "type": "password",
+      "required": true,
+      "mcpServers": ["mcp-atlassian-jira"]
+    }
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "name": "README.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "DEPLOYMENT_SUMMARY.md",
+      "name": "DEPLOYMENT_SUMMARY.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "manifest.json",
+      "name": "manifest.json",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": ".cursor/mcp.json",
+      "name": "mcp.json",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": ".cursor/rules/query_validator_advanced.mdc",
+      "name": "query_validator_advanced.mdc",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": ".cursor/rules/prompt_training_engine.mdc",
+      "name": "prompt_training_engine.mdc",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": ".cursor/rules/documentation_standards.mdc",
+      "name": "documentation_standards.mdc",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": ".cursor/rules/data_assistant_unified.mdc",
+      "name": "data_assistant_unified.mdc",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": ".cursor/rules/complexity_assessment_engine.mdc",
+      "name": "complexity_assessment_engine.mdc",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "data_sources/sm_business_context.md",
+      "name": "sm_business_context.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "data_sources/sm_coin_hyperinflation_context.md",
+      "name": "sm_coin_hyperinflation_context.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "data_sources/sm_complete_data_context.md",
+      "name": "sm_complete_data_context.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "data_sources/sm_data_lineage.md",
+      "name": "sm_data_lineage.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "documentation/sm_analysis_methodology.md",
+      "name": "sm_analysis_methodology.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "documentation/sm_unified_metrics_dictionary.md",
+      "name": "sm_unified_metrics_dictionary.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "documentation/sm_vertica_sql_compatibility.md",
+      "name": "sm_vertica_sql_compatibility.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "documentation/prompt_improvement_guide.md",
+      "name": "prompt_improvement_guide.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "examples/complexity_assessment_examples.md",
+      "name": "complexity_assessment_examples.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "examples/prompt_training_examples.md",
+      "name": "prompt_training_examples.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "examples/unified_analysis_examples.md",
+      "name": "unified_analysis_examples.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "templates/analysis_project_template.md",
+      "name": "analysis_project_template.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "templates/validation_checklist.md",
+      "name": "validation_checklist.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "prompt_documentation/prompt_improvement_tracker.md",
+      "name": "prompt_improvement_tracker.md",
+      "type": "file",
+      "size": 0
+    },
+    {
+      "path": "prompt_documentation/prompt_reflection_guide.md",
+      "name": "prompt_reflection_guide.md",
+      "type": "file",
+      "size": 0
+    }
+  ]
+}
+

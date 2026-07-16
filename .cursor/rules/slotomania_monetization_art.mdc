@@ -1,0 +1,65 @@
+---
+description: Slotomania Monetization-Art — Monday briefs + CRM3 references
+alwaysApply: false
+---
+
+# Slotomania Monetization-Art (Monday + CRM3)
+
+You create and fill Monday.com art brief items on the **Monetization-Art** board by duplicating templates, moving to the correct group, setting columns, and writing **subitem updates** (briefs). Use **CRM3** on the studio share for real references and previews.
+
+## Authentication & tools
+
+- **Monday API**: `MONDAY_API_TOKEN` in `.cursor/monday.env` (gitignored). Never commit tokens.
+- Prefer GraphQL v2 (`https://api.monday.com/v2`) via `scripts/monday_client.py` when MCP is blocked.
+- **CRM3**: `smb://dfs-il/studios/Slotomania/CRM3` (Mac: often `/Volumes/CRM3`). Brief paths: `Q:\Slotomania\CRM3\...`
+
+## Board conventions (verify on account)
+
+- Board ID: **18112190666** (Monetization-Art)
+- Default group example: `group_mm3fs1q5` (“2026-11-11 - test”) — user may specify another
+- Columns:
+  - `date4` — promo date `{"date": "YYYY-MM-DD"}`
+  - `text_mkwe4jsr` — art folder link (`Q:\Slotomania\CRM3\...`)
+  - `color_mky3swe2` — Product (labels must match board exactly; many Coin Sale items leave Product empty)
+- Item name via `name` in `change_multiple_column_values`
+
+## Mandatory workflow (every new promo)
+
+1. Find template on board (Coins Sale, Dynamic JP, Buy All, Daily Deal, RYD, Rolling Offer, PYP, MES, etc.)
+2. `duplicate_item(board_id, item_id)` — do not invent `create_item` + duplicate id
+3. `change_multiple_column_values` — name, promo date, art path; Product only if label exists
+4. `move_item_to_group` — user’s group (duplicate often lands in Templates)
+5. `create_update` on parent — theme, mechanics, art folder, CRM3 note
+6. `create_update` on **every subitem** — briefs live in updates, not description (duplication does not copy subitem updates)
+7. Wait 2–3s after duplicate if subitems empty, then re-query subitems before posting briefs
+
+## References
+
+- **Reference Link** = full file path: `Q:\Slotomania\CRM3\...\filename.png` (not folder-only)
+- **Reference** = embedded preview: upload from CRM3 via `add_file_to_update` → `/v2/file`, then optional `edit_update` with `https://playtika.monday.com/protected_static/7996532/resources/{asset_id}/{filename}`
+- For art briefs use the promo date the user wants (not “exclude incomplete today” analytics rules)
+
+## Brief standards
+
+- HTML tables in updates when template expects rows (Background, Main Messages, Art guidelines, Reference, Reference Link, CTA, etc.)
+- Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
+- State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
+- If CRM3 not mounted: set paths and note “upload previews when CRM3 available”
+
+## User request handling
+
+Ask only if missing: theme, promo date, group, SKUs/mechanics.
+
+Return: Monday pulse URL, item name, date, art path, subitems briefed.
+
+## GraphQL
+
+```graphql
+mutation { duplicate_item(board_id: ID!, item_id: ID!) { id } }
+mutation { change_multiple_column_values(board_id: ID!, item_id: ID!, column_values: JSON!) { id } }
+mutation { move_item_to_group(item_id: ID!, group_id: String!) { id } }
+mutation { create_update(item_id: ID!, body: String!) { id } }
+mutation { edit_update(id: ID!, body: String!) { id } }
+```
+
+Per-promo scripts: `scripts/add_*_monday.py` sourcing `.cursor/monday.env`.

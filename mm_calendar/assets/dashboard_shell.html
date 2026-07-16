@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Slotomania Monetization Dashboard — August 2026 calendar, revenue intelligence, game health"/>
+<title>MM Dashboard · Slotomania · August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+__STYLE_BLOCK__
+</head>
+<body>
+<div class="app-sticky">
+<header class="app-header">
+  <div class="app-header-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">🎰</div>
+      <div>
+        <h1>Monetization Dashboard</h1>
+        <p class="sub">Slotomania · August 2026 · Calendar · Game Health · Planner</p>
+        <p class="sub">Last updated: __LAST_UPDATED__</p>
+      </div>
+    </div>
+    <div class="header-chips">__HEADER_CHIPS__</div>
+  </div>
+</header>
+<nav class="app-nav" aria-label="Sections">
+  <div class="app-nav-inner">
+    <button type="button" class="tab active" data-tab="cal">📅 Calendar</button>
+    <button type="button" class="tab" data-tab="health">📡 Game Health</button>
+    <button type="button" class="tab" data-tab="planner">🧭 Planner</button>
+  </div>
+</nav>
+</div>
+<main class="wrap">
+  <details class="reco-top">
+    <summary>🎯 Top recommendations</summary>
+    __TOP_RECO__
+  </details>
+
+  <div id="cal" class="panel active">
+    <div class="panel-shell cal-panel">
+      <div class="ux-hero">
+        <div>
+          <div class="eyebrow">Planning workspace</div>
+          <h2>August 2026 — Monetization calendar</h2>
+          <p>Click a day for the schedule · click a promo for <b>prizes &amp; offer contents</b> (compact view).</p>
+        </div>
+      </div>
+      <details class="banner-note real-data-note trust-note">
+        <summary>Forecast model notes (optional)</summary>
+        <div><b>Forecast v11 — self-calibrating.</b> __CALIBRATION_STATUS__ Promo bonuses fitted jointly (ridge regression, 18 types at once) so co-occurring promos don't double-credit. Revenue CV ±6.6%, PU CV ±4.78% on held-out days.</div>
+        <div><b>Actuals:</b> shown on past days where DWH exact data or diary exists (diary values marked "est.").</div>
+        <div><b>Economy velocity:</b> coin/gem balance from <code>agg_sm_daily_user_currency_balance</code> filtered to Active PU, non-Playtika — matches Tableau Velocity.</div>
+        <div><b>Caution:</b> Core/Gems effects are directional, not causal. DOW explains more variance than individual sink mechanics.</div>
+      </details>
+      <details class="cal-audit-fold">
+        <summary>Plan-compliance check — August 2026</summary>
+        <div class="cal-audit-body">__CAL_AUDIT__</div>
+      </details>
+      <div id="cal-draft-banner" class="plan-notice cal-draft-banner" hidden></div>
+      <div id="month-tabs" class="month-tabs" role="tablist" aria-label="Calendar month"></div>
+      <div class="cal-glance">
+        <div class="kpis cal-kpis" id="calstats"></div>
+        <div class="cal-toolbar" id="cal-toolbar" role="toolbar" aria-label="Calendar display filters">
+          <span class="tb-hint">Focus list:</span>
+          <button type="button" class="fbtn" data-mode="compact">Compact (+ hide ADS)</button>
+          <button type="button" class="fbtn" data-mode="money">Money only</button>
+          <button type="button" class="fbtn active" data-mode="all">All promos</button>
+          <label class="cal-search"><span>Search</span><input id="cal-search" type="search" placeholder="Promo, prize, MGAP, Rolling..." autocomplete="off"/></label>
+          <span id="cal-search-status" class="search-status" aria-live="polite"></span>
+        </div>
+      </div>
+      <div class="cal-guide-top">
+        <div class="card cal-legend-card">
+          <div class="sec-sub" style="margin-top:0">Promo colors</div>
+          <div class="legend legend-grouped cal-legend-top" id="legend"></div>
+        </div>
+        <details class="card cal-fc-card">
+          <summary>Forecast v11 — self-calibrating forecast + Jan+ product knowledge (short)</summary>
+          <ul class="fc-bullets">
+            <li><b>Nothing below is hand-typed.</b> DOW baselines, month-level crowd/trend, every promo bonus, and event-density scaling are all recomputed from real data every time <code>scripts/calibrate_model.py</code> runs (part of the daily pipeline).</li>
+            <li><b>Forecast coefficients use the CV-winning windows</b>: 105 days for revenue and 45 days for PU. The full Jan+ history is still used in the Revenue tab as a separate product/combo knowledge base, because broad history helps planning but can overfit daily forecasts.</li>
+            <li><b>Promo bonuses are fit jointly</b> (multivariate ridge regression across all 18 promo types at once, not one at a time) so co-occurring promos can't double-credit each other.</li>
+            <li>Month-level "crowd" (user-base size) uses each month's own flat average once well-observed, but the <i>current, mostly-future month</i> uses a continuous day-by-day trend fit from the trailing real days instead of freezing at one anchor point.</li>
+            <li><b>Day-of-month curve</b> is now fit directly from data (was a hand-fixed +25/+12/0/−10/0/−12 shape) — real data shows week 1 is actually below the DOW baseline and month-end dips much deeper than previously assumed.</li>
+            <li><b>Promo-time carryover:</b> a fraction of yesterday's promo bonus bleeds into today (13:00 UTC plan switch) — plus a small post-sale absorption penalty the day after a standalone Coin Sale.</li>
+            <li>Event bonus scales with promo-cluster density, not a flat amount (Cinco de Mayo ≠ Father's Day) — the density coefficients themselves are fit from real event days too.</li>
+            <li>Check the header's <b>🔄 Live-calibrated</b> chip for current sample size and <b>cross-validated</b> accuracy (held-out days, not the days used to fit) — it updates every time the pipeline runs.</li>
+          </ul>
+        </details>
+      </div>
+      <div class="cal-scroll">
+        <div class="cal-grid-wrap">
+          <div class="grid" id="grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="economy" class="panel panel-deferred" hidden aria-hidden="true">
+    <div class="panel-shell">
+      <div class="tab-intro">
+        <div>
+          <div class="eyebrow">Economy planning</div>
+          <h2>Coin sinks and gem pressure in one view</h2>
+          <p>Use this tab to check whether the monthly plan supports currency burn without confusing purchase offers with gameplay sinks.</p>
+        </div>
+      </div>
+      __CORE_RECO__
+      <div class="sec-title">🪙 Core · coin sink</div>
+      <div class="ocards" id="pcards-coin"></div>
+      __CORE_PERF__
+      __GEMS_RECO__
+      <div class="sec-title">💎 Gem usage</div>
+      <div class="ocards" id="pcards-gem"></div>
+      __GEMS_PERF__
+    </div>
+  </div>
+
+  <div id="revenue" class="panel panel-deferred" hidden aria-hidden="true">
+    <div class="panel-shell">
+      <div class="tab-intro">
+        <div>
+          <div class="eyebrow">Revenue planning</div>
+          <h2>Which promos, prizes, and combinations actually help revenue?</h2>
+          <p>v11 forecast values, Jan+ combo knowledge, and promo × prize content are grouped together.</p>
+        </div>
+      </div>
+      __REVENUE_RECO__
+      __SC_VALUE__
+      __LIVE_PRODUCTS__
+      __REVENUE_PERF__
+    </div>
+  </div>
+
+  <div id="guide" class="panel panel-deferred" hidden aria-hidden="true">
+    <div class="panel-shell">
+      <div class="tab-intro">
+        <div>
+          <div class="eyebrow">Reference guide</div>
+          <h2>Offer platforms and slot logic</h2>
+          <p>This is a reference, not the source of actual scheduled content. For exact content, click the promo in Calendar.</p>
+        </div>
+      </div>
+      <div class="banner-note"><b>Principle:</b> each offer is a <b>platform</b> plus a shared prize pool. Same offer type, different content by day, pricing, and season. This tab shows the general platform; for what's <i>actually scheduled</i> on a given day, go to <b>📅 Calendar</b> and click any promo — it shows the real board item's exact content parsed out, plus this same structural explanation.</div>
+      <div class="ocards" id="ocards"></div>
+      <div class="warn">⚡ <b>Extreme Stamp days:</b> RDS → Extreme Stamp · 4 RDS → 2 Extreme Stamps.</div>
+    </div>
+  </div>
+
+  <div id="health" class="panel">
+    <div class="panel-shell">__GAME_HEALTH__</div>
+  </div>
+
+  <div id="rel" class="panel panel-deferred" hidden aria-hidden="true">
+    <div class="panel-shell">__RELATIONSHIPS__</div>
+  </div>
+
+  <div id="planner" class="panel">
+    <div class="panel-shell">
+      <div class="tab-intro">
+        <div>
+          <div class="eyebrow">Auto-planning workspace</div>
+          <h2>Draft a month from economy guidelines</h2>
+          <p>Set caps → <b>Generate</b> → click any day to tweak items. Uses the same density rules as the August board (≤1 gameplay Core, no Shiny on Monday, no extra revenue offer on Dash Day).</p>
+        </div>
+      </div>
+      <div class="plan-notice">Browser-only draft — not synced to Monday. Saved locally per month in this browser.</div>
+      <form class="planner-form" id="pl-form">
+        <div class="pl-fieldset">
+          <div class="pl-legend">Target month</div>
+          <div class="pl-grid">
+            <label class="pl-field">Year<input type="number" id="pl-year" min="2025" max="2035"/></label>
+            <label class="pl-field">Month
+              <select id="pl-month">
+                <option value="1">January</option><option value="2">February</option><option value="3">March</option>
+                <option value="4">April</option><option value="5">May</option><option value="6">June</option>
+                <option value="7">July</option><option value="8">August</option><option value="9">September</option>
+                <option value="10">October</option><option value="11">November</option><option value="12">December</option>
+              </select>
+            </label>
+            <label class="pl-field pl-check"><input type="checkbox" id="pl-weekend-sale" checked/> Coin Sale every weekend (Fri+Sat)</label>
+          </div>
+        </div>
+
+        <div class="pl-fieldset">
+          <div class="pl-legend">Board density (August 2026 standard)</div>
+          <div class="pl-grid pl-density-grid">
+            <label class="pl-field pl-check"><input type="checkbox" id="pl-density-standard" checked/> ≤1 gameplay Core per day (Shiny Show separate)</label>
+            <label class="pl-field pl-check"><input type="checkbox" id="pl-no-shiny-mon" checked/> No Shiny Show on Mondays</label>
+            <label class="pl-field pl-check"><input type="checkbox" id="pl-no-second-mon" checked/> No second purchase offer on Mondays (Dash Day)</label>
+            <label class="pl-field pl-check"><input type="checkbox" id="pl-merge-dd" checked/> Merge DD once + repeatable into one row</label>
+            <label class="pl-field pl-check"><input type="checkbox" id="pl-hide-ads-chips" checked/> Hide ADS in day list (still generated)</label>
+          </div>
+        </div>
+
+        <div class="pl-fieldset">
+          <div class="pl-legend">Weekly / monthly caps (economy guidelines)</div>
+          <div class="pl-grid">
+            <label class="pl-field">Hammers / week<input type="number" id="pl-hammers-week" min="0" max="7" value="4"/></label>
+            <label class="pl-field">MGAP / week<input type="number" id="pl-mgap-week" min="0" max="7" value="2"/></label>
+            <label class="pl-field">x2 GGS / week<input type="number" id="pl-ggs-week" min="0" max="7" value="2"/></label>
+            <label class="pl-field">Dice Booster / week<input type="number" id="pl-dice-week" min="0" max="7" value="3"/></label>
+            <label class="pl-field">Shiny Show / week<input type="number" id="pl-shiny-week" min="0" max="7" value="3"/></label>
+            <label class="pl-field">Gems Sale / month<input type="number" id="pl-gemsale-month" min="0" max="15" value="4"/></label>
+            <label class="pl-field">Price Cut / month<input type="number" id="pl-pricecut-month" min="0" max="10" value="2"/></label>
+            <label class="pl-field">Machine launches<input type="number" id="pl-machine-count" min="0" max="4" value="1"/></label>
+            <label class="pl-field">Rolling MFL cooldown (days)<input type="number" id="pl-rolling-cooldown" min="5" max="21" value="10"/></label>
+          </div>
+        </div>
+
+        <div class="pl-fieldset">
+          <div class="pl-legend">Seasons &amp; album phase</div>
+          <div class="pl-grid">
+            <label class="pl-field">Short Term opens with
+              <select id="pl-shortterm-start"><option>Blast</option><option>Battlesheep</option><option>SNL</option></select>
+            </label>
+            <label class="pl-field">Mid Term opens with
+              <select id="pl-midterm-start"><option>Quest</option><option>Globez</option><option>Figz</option></select>
+            </label>
+            <label class="pl-field">Album phase at month start
+              <select id="pl-album-phase"><option value="Opening">Opening</option><option value="Early">Early</option><option value="Mid" selected>Mid</option><option value="Late">Late</option></select>
+            </label>
+          </div>
+          <div class="pl-legend" style="margin-top:10px">Card bank by week (Nivi / <code>album_cards.md</code>) — Reg/Ace/Gold rarity is auto-scaled by album phase (★2→★5). Check which <strong>Wild sub-types</strong> and <strong>Shiny Limited</strong> are allowed; generation never invents card types outside this table.</div>
+          <table class="pl-bank-table pl-bank-table-wide" id="pl-bank-table">
+            <thead>
+              <tr>
+                <th rowspan="2">Week</th>
+                <th colspan="3">Card families</th>
+                <th colspan="2">Shiny</th>
+                <th colspan="6">Wild sub-types (not one generic “Wild”)</th>
+              </tr>
+              <tr>
+                <th>Reg</th><th>Ace</th><th>Gold</th>
+                <th>Show</th><th>Limited</th>
+                <th title="Regular slots only">Ord</th><th title="Ace slots only">Ace</th><th title="Gold slots only">Gold</th><th title="Any card in current album">Any</th><th title="Current + prior albums">Sup</th><th title="Any allowed wild">All</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <p class="pl-bank-hint" id="pl-bank-phase-hint">★ preview for selected album phase at month start updates when you change “Album phase”.</p>
+        </div>
+
+        <div class="pl-fieldset">
+          <div class="pl-legend">Events, holidays &amp; machine launches</div>
+          <div class="pl-grid">
+            <label class="pl-field" style="grid-column:1/-1">Known events / holidays (one per line: <code>DD: Name</code>, add <code>[major]</code> for a flagship event like Cinco de Mayo/Independence Day)
+              <textarea id="pl-events" placeholder="4: 4th of July [major]&#10;14: Mid-month observance"></textarea>
+            </label>
+            <label class="pl-field">Machine launch days (comma-separated)<input type="text" id="pl-machine-dates" placeholder="e.g. 3, 17"/></label>
+          </div>
+        </div>
+
+        <div class="pl-fieldset">
+          <div class="pl-legend">Forecast baseline (editable — this month has no observed actuals yet)</div>
+          <div class="pl-grid">
+            <label class="pl-field">Crowd adj., revenue ($K/day vs DOW baseline)<input type="number" id="pl-crowd-k" step="1"/></label>
+            <label class="pl-field">Crowd adj., PU (% vs DOW baseline)<input type="number" id="pl-crowd-pu" step="0.1"/></label>
+          </div>
+        </div>
+
+        <div class="pl-fieldset">
+          <div class="pl-legend">Free-form guideline notes (pasted economy brief, special instructions — for your reference, not auto-parsed)</div>
+          <label class="pl-field"><textarea id="pl-notes" placeholder="Paste this month's monthly_guidelines notes here for reference while you review the draft..."></textarea></label>
+        </div>
+
+        <div class="pl-actions">
+          <button type="button" class="pl-btn" id="pl-generate">⚙️ Generate month plan</button>
+          <button type="button" class="pl-btn ghost" id="pl-reset">Reset this month's draft</button>
+          <button type="button" class="pl-btn ghost" id="pl-export-json">Export JSON</button>
+          <button type="button" class="pl-btn ghost" id="pl-export-tsv">Copy as table</button>
+          <span class="pl-status" id="pl-status"></span>
+        </div>
+      </form>
+
+      <div id="pl-summary" class="pl-summary"></div>
+      <div id="pl-violations" class="plan-violations"></div>
+      <div id="pl-days" class="plan-day-list"></div>
+    </div>
+  </div>
+
+  <div id="pl-editor" class="plan-editor hidden"></div>
+
+  <div id="detail" class="detail" style="display:none" role="dialog" aria-modal="true"></div>
+</main>
+<footer class="app-footer">__BUILD_FOOTER__</footer>
+__APP_SCRIPT__
+</body>
+</html>

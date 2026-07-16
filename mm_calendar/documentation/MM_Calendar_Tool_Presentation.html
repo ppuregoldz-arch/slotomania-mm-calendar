@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MM Calendar Tool</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; font-family: "Segoe UI", system-ui, sans-serif; background: #1e1b2e; }
+    .deck { height: 100vh; overflow: hidden; position: relative; }
+    .slide {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s; background: #f7f5fb;
+    }
+    .slide.active { opacity: 1; pointer-events: auto; z-index: 1; }
+    .head { flex-shrink: 0; background: #1e1b2e; color: #fff; padding: 0.85rem 1.5rem 0.75rem; }
+    .head h2 { font-size: 1.35rem; font-weight: 700; }
+    .head p { font-size: 0.85rem; color: #d1d5db; margin-top: 0.2rem; }
+    .head .tag { display: inline-block; margin-top: 0.35rem; padding: 0.2rem 0.55rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+    .tag.p { background: #5b21b6; } .tag.m { background: #0e9488; } .tag.s { background: #db2777; } .tag.i { background: #b45309; }
+    .img-area { flex: 1; min-height: 0; overflow: auto; display: flex; align-items: flex-start; justify-content: center; padding: 0.75rem 1rem; background: #ece9f4; gap: 0.75rem; flex-wrap: wrap; }
+    .img-area img { max-width: 100%; width: auto; height: auto; display: block; box-shadow: 0 8px 28px rgba(0,0,0,0.12); border-radius: 6px; }
+    .img-area.dual img { max-width: 48%; }
+    .img-area.grid img { max-width: 18%; min-width: 120px; }
+    .slide.cover { background: linear-gradient(160deg, #1e1b2e, #5b21b6); color: #fff; justify-content: center; align-items: center; text-align: center; padding: 2rem; }
+    .slide.cover h1 { font-size: 2.75rem; margin-bottom: 0.75rem; }
+    .slide.cover .tagline { font-size: 1.35rem; color: #e9d5ff; }
+    .pipeline { padding: 1.5rem 2rem; overflow: auto; }
+    .pipeline h2 { font-size: 1.4rem; margin-bottom: 0.75rem; color: #1e1b2e; }
+    .pipe-row { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .pipe-row strong { min-width: 10rem; color: #374151; }
+    .pill { padding: 0.3rem 0.65rem; border-radius: 999px; color: #fff; font-weight: 700; font-size: 0.75rem; flex-shrink: 0; }
+    .pill.p { background: #5b21b6; } .pill.m { background: #0e9488; } .pill.s { background: #db2777; } .pill.i { background: #b45309; }
+    .loop { list-style: none; padding: 2rem 2.5rem; font-size: 1.05rem; line-height: 1.9; }
+    .nav { position: fixed; bottom: 0.75rem; right: 1rem; z-index: 10; display: flex; gap: 0.4rem; align-items: center; }
+    .nav button { background: #1e1b2e; color: #fff; border: none; padding: 0.4rem 0.85rem; border-radius: 6px; cursor: pointer; }
+    #counter { color: #fff; font-size: 0.8rem; min-width: 3rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+    <section class="slide cover active">
+      <h1>MM Calendar Tool</h1>
+      <p class="tagline">Plan → Monday → Smart Calendar</p>
+    </section>
+
+    <section class="slide">
+      <div class="pipeline">
+        <h2>Pipeline</h2>
+        <div class="pipe-row"><span class="pill i">Input</span><strong>Economy & highlights</strong> Guidelines feed the builder</div>
+        <div class="pipe-row"><span class="pill p">Plan</span><strong>Dashboard</strong> Builder + validation</div>
+        <div class="pipe-row"><span class="pill m">Monday</span><strong>MM calendar</strong> Team rows & Description</div>
+        <div class="pipe-row"><span class="pill s">Live</span><strong>Smart Calendar</strong> Verify vs Monday</div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="head"><h2>Economy guidelines</h2><p>1st input of the tool</p><span class="tag i">Monthly guidelines</span></div>
+      <div class="img-area dual">
+        <img src="presentation_assets/economy_guidelines_1.png" alt="Economy guidelines 1" />
+        <img src="presentation_assets/economy_guidelines_2.png" alt="Economy guidelines 2" />
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="head"><h2>Monthly highlights</h2><p>2nd input of the tool</p><span class="tag i">Planning context</span></div>
+      <div class="img-area grid">
+        <img src="presentation_assets/monthly_highlight_01.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_02.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_03.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_04.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_05.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_06.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_07.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_08.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_09.png" alt="" />
+        <img src="presentation_assets/monthly_highlight_10.png" alt="" />
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="head"><h2>Planning dashboard</h2><p>Builder output</p><span class="tag p">Repo tool</span></div>
+      <div class="img-area"><img src="presentation_assets/mm_dashboard.png" alt="Dashboard" /></div>
+    </section>
+
+    <section class="slide">
+      <div class="head"><h2>Monday — MM calendar</h2><p>Week 9–15 Aug 2026</p><span class="tag m">Monday.com</span></div>
+      <div class="img-area"><img src="presentation_assets/monday_swimlanes.png" alt="Monday" /></div>
+    </section>
+
+    <section class="slide">
+      <div class="head"><h2>Smart Calendar</h2><p>Week 3–9 Aug 2026</p><span class="tag s">LiveOps</span></div>
+      <div class="img-area"><img src="presentation_assets/smart_calendar_week.png" alt="Smart Calendar" /></div>
+    </section>
+
+    <section class="slide">
+      <div class="pipeline"><h2>Weekly loop</h2>
+        <ol class="loop">
+          <li>Economy → caps & prize bank</li>
+          <li>Build → dashboard + validation</li>
+          <li>Monday → finalize · Add to SC</li>
+          <li>LiveOps → Smart Calendar</li>
+          <li>Verify → Monday ↔ SC per day</li>
+        </ol>
+      </div>
+    </section>
+  </div>
+  <div class="nav">
+    <button type="button" id="prev">←</button>
+    <span id="counter">1/8</span>
+    <button type="button" id="next">→</button>
+  </div>
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    let i = 0;
+    function show(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach((s, j) => s.classList.toggle("active", j === i));
+      document.getElementById("counter").textContent = (i + 1) + "/" + slides.length;
+    }
+    document.getElementById("prev").onclick = () => show(i - 1);
+    document.getElementById("next").onclick = () => show(i + 1);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); show(i + 1); }
+      if (e.key === "ArrowLeft") show(i - 1);
+    });
+  </script>
+</body>
+</html>

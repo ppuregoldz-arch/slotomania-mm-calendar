@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "user-mcp-atlassian-wiki": {
+      "command": "uvx",
+      "args": ["mcp-atlassian"],
+      "env": {
+        "CONFLUENCE_URL": "https://wiki.playtika.com",
+        "CONFLUENCE_USERNAME": "your-email@playtika.com",
+        "CONFLUENCE_PERSONAL_TOKEN": "YOUR_CONFLUENCE_TOKEN_HERE"
+      }
+    },
+    "excel": {
+      "command": "uvx",
+      "args": ["excel-mcp-server", "stdio"]
+    }
+  }
+}
+
+// Instructions:
+// 1. Copy this content to your .cursor/mcp.json file
+// 2. Replace "your-email@playtika.com" with your actual Playtika email
+// 3. Replace "YOUR_CONFLUENCE_TOKEN_HERE" with your personal Confluence token
+// 4. Restart Cursor after making changes
+
+// To get your Confluence token:
+// 1. Go to https://wiki.playtika.com
+// 2. Click your profile → Personal Access Tokens
+// 3. Create new token with read/write permissions
+// 4. Copy the token and paste it in this config

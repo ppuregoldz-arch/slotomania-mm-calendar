@@ -1,0 +1,3761 @@
+{
+  "generated_at": "2026-07-10",
+  "method": {
+    "type": "rolling-origin",
+    "test_window": [
+      "2026-04-01",
+      "2026-07-05"
+    ],
+    "minimum_prior_days": 90,
+    "holiday_dates_excluded": [
+      "2025-11-28",
+      "2025-11-29",
+      "2026-01-01",
+      "2026-01-02",
+      "2026-02-14",
+      "2026-03-17",
+      "2026-04-04",
+      "2026-05-05",
+      "2026-05-25",
+      "2026-07-04"
+    ],
+    "family_effect": "same-weekday residual mean shrunk by n/(n+10)",
+    "revenue_family_sum_cap": 100000.0,
+    "pu_family_sum_cap": 5000.0,
+    "interval": "prediction +/- 80th percentile absolute training residual"
+  },
+  "revenue": {
+    "n_days": 92,
+    "mae": 50044.1219933895,
+    "mape": 8.016339550319774,
+    "bias": 13498.058962363679,
+    "direction_accuracy": 0.4157303370786517,
+    "range_coverage": 0.7282608695652174,
+    "families": {
+      "buyAll": {
+        "n_test_days": 21,
+        "direction_accuracy": 0.47619047619047616,
+        "avg_actual_dow_residual": -8956.941561736881,
+        "avg_predicted_effect": -11032.401194271399
+      },
+      "coinSale": {
+        "n_test_days": 8,
+        "direction_accuracy": 0.625,
+        "avg_actual_dow_residual": 39588.55778941407,
+        "avg_predicted_effect": 15204.129342931285
+      },
+      "counterPo": {
+        "n_test_days": 10,
+        "direction_accuracy": 0.1,
+        "avg_actual_dow_residual": -25618.94522121955,
+        "avg_predicted_effect": 223.37661102205502
+      },
+      "customPod": {
+        "n_test_days": 10,
+        "direction_accuracy": 0.7,
+        "avg_actual_dow_residual": 50151.13639592462,
+        "avg_predicted_effect": 25503.48600368815
+      },
+      "decoyBonanza": {
+        "n_test_days": 17,
+        "direction_accuracy": 0.5882352941176471,
+        "avg_actual_dow_residual": 8625.932886665276,
+        "avg_predicted_effect": 11694.889765887148
+      },
+      "extremeStamp": {
+        "n_test_days": 16,
+        "direction_accuracy": 0.5625,
+        "avg_actual_dow_residual": 12326.587484408068,
+        "avg_predicted_effect": 9357.079950049412
+      },
+      "fortuneDip": {
+        "n_test_days": 6,
+        "direction_accuracy": 0.0,
+        "avg_actual_dow_residual": -19018.976601868013,
+        "avg_predicted_effect": 3579.8231596963196
+      },
+      "gemback": {
+        "n_test_days": 28,
+        "direction_accuracy": 0.07142857142857142,
+        "avg_actual_dow_residual": 3526.8718572094263,
+        "avg_predicted_effect": 3673.0040240043
+      },
+      "goldenSpin": {
+        "n_test_days": 11,
+        "direction_accuracy": 0.5454545454545454,
+        "avg_actual_dow_residual": -37484.64855199267,
+        "avg_predicted_effect": -8750.493698878407
+      },
+      "happyHour": {
+        "n_test_days": 28,
+        "direction_accuracy": 0.03571428571428571,
+        "avg_actual_dow_residual": -3482.4041270748503,
+        "avg_predicted_effect": -1642.1833058157406
+      },
+      "mgapBigger": {
+        "n_test_days": 11,
+        "direction_accuracy": 0.09090909090909091,
+        "avg_actual_dow_residual": -21968.839065117252,
+        "avg_predicted_effect": 8481.171580877146
+      },
+      "mgapBogo": {
+        "n_test_days": 16,
+        "direction_accuracy": 0.5625,
+        "avg_actual_dow_residual": 19692.883801119824,
+        "avg_predicted_effect": 10732.052635534244
+      },
+      "mgapMatched": {
+        "n_test_days": 6,
+        "direction_accuracy": 0.16666666666666666,
+        "avg_actual_dow_residual": 14752.067499371324,
+        "avg_predicted_effect": -5541.667083385089
+      },
+      "mgapOther": {
+        "n_test_days": 16,
+        "direction_accuracy": 0.3125,
+        "avg_actual_dow_residual": 10418.138471647348,
+        "avg_predicted_effect": 6159.601816502847
+      },
+      "mgapWildSymbols": {
+        "n_test_days": 4,
+        "direction_accuracy": 0.5,
+        "avg_actual_dow_residual": -29715.48399776357,
+        "avg_predicted_effect": -10550.134283943597
+      },
+      "priceCut": {
+        "n_test_days": 14,
+        "direction_accuracy": 0.5,
+        "avg_actual_dow_residual": 8503.610454680673,
+        "avg_predicted_effect": 7998.451331795196
+      },
+      "prizeMania": {
+        "n_test_days": 10,
+        "direction_accuracy": 0.2,
+        "avg_actual_dow_residual": 2922.431730746769,
+        "avg_predicted_effect": 6223.068826494889
+      },
+      "rolling": {
+        "n_test_days": 38,
+        "direction_accuracy": 0.5263157894736842,
+        "avg_actual_dow_residual": 8369.746628978033,
+        "avg_predicted_effect": 7333.866138631736
+      },
+      "rollingMoreForLess": {
+        "n_test_days": 13,
+        "direction_accuracy": 0.6923076923076923,
+        "avg_actual_dow_residual": 11031.817905332418,
+        "avg_predicted_effect": 11823.589862743678
+      },
+      "ryd": {
+        "n_test_days": 44,
+        "direction_accuracy": 0.045454545454545456,
+        "avg_actual_dow_residual": -2176.259744194704,
+        "avg_predicted_effect": -1847.513690600913
+      },
+      "snl": {
+        "n_test_days": 15,
+        "direction_accuracy": 0.0,
+        "avg_actual_dow_residual": -12968.051276089935,
+        "avg_predicted_effect": 1651.5464559554719
+      }
+    }
+  },
+  "paying_users": {
+    "n_days": 92,
+    "mae": 2003.0165406350984,
+    "mape": 7.578317695051912,
+    "bias": 1477.5979307354414,
+    "direction_accuracy": 0.24444444444444444,
+    "range_coverage": 0.6521739130434783,
+    "families": {
+      "buyAll": {
+        "n_test_days": 21,
+        "direction_accuracy": 0.047619047619047616,
+        "avg_actual_dow_residual": -1378.4029128353557,
+        "avg_predicted_effect": -123.660300896948
+      },
+      "coinSale": {
+        "n_test_days": 8,
+        "direction_accuracy": 0.25,
+        "avg_actual_dow_residual": -158.9202541956679,
+        "avg_predicted_effect": 366.9943469775912
+      },
+      "counterPo": {
+        "n_test_days": 10,
+        "direction_accuracy": 0.2,
+        "avg_actual_dow_residual": -1811.1833469412845,
+        "avg_predicted_effect": -217.201057672613
+      },
+      "customPod": {
+        "n_test_days": 10,
+        "direction_accuracy": 0.4,
+        "avg_actual_dow_residual": 93.27887403337408,
+        "avg_predicted_effect": 271.12702345012565
+      },
+      "decoyBonanza": {
+        "n_test_days": 17,
+        "direction_accuracy": 0.5294117647058824,
+        "avg_actual_dow_residual": -1715.1044212283355,
+        "avg_predicted_effect": -262.62084120920446
+      },
+      "extremeStamp": {
+        "n_test_days": 16,
+        "direction_accuracy": 0.25,
+        "avg_actual_dow_residual": -1517.834804605665,
+        "avg_predicted_effect": -246.86823874393318
+      },
+      "fortuneDip": {
+        "n_test_days": 6,
+        "direction_accuracy": 0.16666666666666666,
+        "avg_actual_dow_residual": -1102.6656227377862,
+        "avg_predicted_effect": -76.37326023417715
+      },
+      "gemback": {
+        "n_test_days": 28,
+        "direction_accuracy": 0.10714285714285714,
+        "avg_actual_dow_residual": -1016.6055227524677,
+        "avg_predicted_effect": 203.30464896419787
+      },
+      "goldenSpin": {
+        "n_test_days": 11,
+        "direction_accuracy": 0.45454545454545453,
+        "avg_actual_dow_residual": -1546.1541000979169,
+        "avg_predicted_effect": -241.04950510483363
+      },
+      "happyHour": {
+        "n_test_days": 28,
+        "direction_accuracy": 0.03571428571428571,
+        "avg_actual_dow_residual": -1186.5759992546762,
+        "avg_predicted_effect": 5.157933191756103
+      },
+      "mgapBigger": {
+        "n_test_days": 11,
+        "direction_accuracy": 0.18181818181818182,
+        "avg_actual_dow_residual": -1505.5829216153186,
+        "avg_predicted_effect": -12.90877828899793
+      },
+      "mgapBogo": {
+        "n_test_days": 16,
+        "direction_accuracy": 0.1875,
+        "avg_actual_dow_residual": -859.1255290639947,
+        "avg_predicted_effect": 251.99867429165147
+      },
+      "mgapMatched": {
+        "n_test_days": 6,
+        "direction_accuracy": 0.0,
+        "avg_actual_dow_residual": -1231.7926823803325,
+        "avg_predicted_effect": -162.92329009283242
+      },
+      "mgapOther": {
+        "n_test_days": 16,
+        "direction_accuracy": 0.125,
+        "avg_actual_dow_residual": -1188.9391107519682,
+        "avg_predicted_effect": 146.24464280072812
+      },
+      "mgapWildSymbols": {
+        "n_test_days": 4,
+        "direction_accuracy": 0.0,
+        "avg_actual_dow_residual": -1523.9433244916,
+        "avg_predicted_effect": 18.34952956011269
+      },
+      "priceCut": {
+        "n_test_days": 14,
+        "direction_accuracy": 0.2857142857142857,
+        "avg_actual_dow_residual": -525.8426834850969,
+        "avg_predicted_effect": 712.9503423388418
+      },
+      "prizeMania": {
+        "n_test_days": 10,
+        "direction_accuracy": 0.2,
+        "avg_actual_dow_residual": -311.3870609436726,
+        "avg_predicted_effect": 225.1906692675595
+      },
+      "rolling": {
+        "n_test_days": 38,
+        "direction_accuracy": 0.10526315789473684,
+        "avg_actual_dow_residual": -1383.1833233985874,
+        "avg_predicted_effect": 220.98323189663378
+      },
+      "rollingMoreForLess": {
+        "n_test_days": 13,
+        "direction_accuracy": 0.15384615384615385,
+        "avg_actual_dow_residual": -1684.5669113151698,
+        "avg_predicted_effect": 217.64799451274683
+      },
+      "ryd": {
+        "n_test_days": 44,
+        "direction_accuracy": 0.045454545454545456,
+        "avg_actual_dow_residual": -1135.594146842668,
+        "avg_predicted_effect": 39.796804237952855
+      },
+      "snl": {
+        "n_test_days": 15,
+        "direction_accuracy": 0.06666666666666667,
+        "avg_actual_dow_residual": -1217.202979652243,
+        "avg_predicted_effect": 86.42829268935485
+      }
+    }
+  },
+  "wager": {
+    "status": "insufficient-evidence",
+    "reason": "No comparable daily wager series across the backtest window."
+  },
+  "gem_usage": {
+    "status": "insufficient-evidence",
+    "reason": "No comparable game-wide/variant gem-usage series across the backtest window."
+  },
+  "segment": {
+    "status": "insufficient-evidence",
+    "reason": "Daily outcome snapshots do not include canonical segment-level outcomes."
+  },
+  "day_predictions": {
+    "revenue": [
+      {
+        "date": "2026-04-01",
+        "actual": 796045.0,
+        "base": 640175.8095238095,
+        "predicted": 654483.5022392211,
+        "error": -141561.49776077888,
+        "abs_pct_error": 17.783102432749263,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 588994.9165249354,
+        "range_high": 719972.0879535069,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "gemback",
+          "mgapBogo",
+          "mgapOther",
+          "priceCut"
+        ]
+      },
+      {
+        "date": "2026-04-02",
+        "actual": 743065.0,
+        "base": 611351.75,
+        "predicted": 628291.9179464793,
+        "error": -114773.08205352072,
+        "abs_pct_error": 15.445900702296667,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 559828.8906737521,
+        "range_high": 696754.9452192065,
+        "in_range": false,
+        "families": [
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-04-03",
+        "actual": 733310.0,
+        "base": 663189.1052631579,
+        "predicted": 683186.5496677444,
+        "error": -50123.45033225557,
+        "abs_pct_error": 6.835233439098822,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 614454.4970361654,
+        "range_high": 751918.6022993234,
+        "in_range": true,
+        "families": [
+          "coinSale",
+          "counterPo",
+          "mgapOther",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-05",
+        "actual": 684685.0,
+        "base": 638784.1363636364,
+        "predicted": 625359.7348105374,
+        "error": -59325.265189462574,
+        "abs_pct_error": 8.66460710976034,
+        "actual_direction": 1,
+        "predicted_direction": -1,
+        "range_low": 556654.4654325469,
+        "range_high": 694065.0041885279,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "happyHour",
+          "mgapMatched",
+          "priceCut",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-06",
+        "actual": 654083.0,
+        "base": 643006.7272727273,
+        "predicted": 640907.7827320849,
+        "error": -13175.21726791514,
+        "abs_pct_error": 2.0143035773617632,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 571058.6660272793,
+        "range_high": 710756.8994368904,
+        "in_range": true,
+        "families": [
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-07",
+        "actual": 526058.0,
+        "base": 585922.3333333334,
+        "predicted": 591971.3400043603,
+        "error": 65913.3400043603,
+        "abs_pct_error": 12.529671633994788,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 522494.5779906303,
+        "range_high": 661448.1020180903,
+        "in_range": true,
+        "families": [
+          "happyHour",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-08",
+        "actual": 667701.0,
+        "base": 647260.7727272727,
+        "predicted": 665018.296195495,
+        "error": -2682.7038045050576,
+        "abs_pct_error": 0.4017822055837954,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 595913.8888728404,
+        "range_high": 734122.7035181494,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "extremeStamp",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-09",
+        "actual": 695543.0,
+        "base": 617623.8095238095,
+        "predicted": 614026.9091722831,
+        "error": -81516.09082771686,
+        "abs_pct_error": 11.719777329038875,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 545294.8565407041,
+        "range_high": 682758.9618038621,
+        "in_range": false,
+        "families": [
+          "happyHour",
+          "prizeMania",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-10",
+        "actual": 715296.0,
+        "base": 666695.15,
+        "predicted": 691927.7644801517,
+        "error": -23368.2355198483,
+        "abs_pct_error": 3.2669322238413603,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 621706.2930842707,
+        "range_high": 762149.2358760327,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "mgapBogo",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-11",
+        "actual": 658027.0,
+        "base": 683181.947368421,
+        "predicted": 672242.9695658975,
+        "error": 14215.969565897482,
+        "abs_pct_error": 2.160393048597927,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 601809.2834375331,
+        "range_high": 742676.6556942619,
+        "in_range": true,
+        "families": [
+          "buyAll"
+        ]
+      },
+      {
+        "date": "2026-04-12",
+        "actual": 621426.0,
+        "base": 640779.8260869565,
+        "predicted": 641572.1668537215,
+        "error": 20146.166853721486,
+        "abs_pct_error": 3.2419253223588145,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 571500.896377531,
+        "range_high": 711643.437329912,
+        "in_range": true,
+        "families": [
+          "mgapMatched",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-13",
+        "actual": 694924.0,
+        "base": 643488.304347826,
+        "predicted": 650249.8869924542,
+        "error": -44674.11300754582,
+        "abs_pct_error": 6.4286329163398905,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 580421.9936591209,
+        "range_high": 720077.7803257875,
+        "in_range": true,
+        "families": [
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-04-14",
+        "actual": 648162.0,
+        "base": 583201.2272727273,
+        "predicted": 599492.1194596896,
+        "error": -48669.880540310405,
+        "abs_pct_error": 7.508906807296695,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 529704.702793023,
+        "range_high": 669279.5361263562,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "extremeStamp",
+          "happyHour",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-15",
+        "actual": 678865.0,
+        "base": 648149.4782608695,
+        "predicted": 655681.3284110847,
+        "error": -23183.671588915284,
+        "abs_pct_error": 3.4150636118985784,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 585918.9550777514,
+        "range_high": 725443.701744418,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-04-16",
+        "actual": 586154.0,
+        "base": 621165.5909090909,
+        "predicted": 634189.4566570258,
+        "error": 48035.45665702585,
+        "abs_pct_error": 8.195023263003554,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 564452.1266570259,
+        "range_high": 703926.7866570258,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "happyHour",
+          "mgapOther",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-17",
+        "actual": 654621.0,
+        "base": 669009.4761904762,
+        "predicted": 677688.6127762076,
+        "error": 23067.61277620762,
+        "abs_pct_error": 3.5238119119624365,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 607976.326109541,
+        "range_high": 747400.8994428742,
+        "in_range": true,
+        "families": [
+          "rolling",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-04-18",
+        "actual": 711383.0,
+        "base": 681924.2,
+        "predicted": 680668.8804889807,
+        "error": -30714.119511019322,
+        "abs_pct_error": 4.317522278578392,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 611104.876852617,
+        "range_high": 750232.8841253443,
+        "in_range": true,
+        "families": [
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-04-19",
+        "actual": 617397.0,
+        "base": 639973.4166666666,
+        "predicted": 646997.9858787146,
+        "error": 29600.985878714593,
+        "abs_pct_error": 4.7944816509822035,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 578410.9858787146,
+        "range_high": 715584.9858787146,
+        "in_range": true,
+        "families": [
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-20",
+        "actual": 595345.0,
+        "base": 645631.4583333334,
+        "predicted": 637535.1232311048,
+        "error": 42190.12323110481,
+        "abs_pct_error": 7.0866679372640755,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 568964.5232311048,
+        "range_high": 706105.7232311048,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "happyHour",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-04-21",
+        "actual": 612910.0,
+        "base": 586025.6086956522,
+        "predicted": 585517.8979366373,
+        "error": -27392.10206336272,
+        "abs_pct_error": 4.469188308783136,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 516963.69793663727,
+        "range_high": 654072.0979366372,
+        "in_range": true,
+        "families": [
+          "mgapMatched",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-22",
+        "actual": 626691.0,
+        "base": 649429.2916666666,
+        "predicted": 667095.1277247665,
+        "error": 40404.1277247665,
+        "abs_pct_error": 6.447216846063928,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 598557.3277247665,
+        "range_high": 735632.9277247665,
+        "in_range": true,
+        "families": [
+          "prizeMania",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-23",
+        "actual": 638625.0,
+        "base": 619643.3478260869,
+        "predicted": 657002.2317816118,
+        "error": 18377.2317816118,
+        "abs_pct_error": 2.877624863043539,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 588480.8317816118,
+        "range_high": 725523.6317816118,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "extremeStamp",
+          "happyHour",
+          "rolling",
+          "rollingMoreForLess",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-24",
+        "actual": 622443.0,
+        "base": 668355.4545454546,
+        "predicted": 675292.9530625404,
+        "error": 52849.953062540386,
+        "abs_pct_error": 8.490729763615365,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 606787.9530625404,
+        "range_high": 743797.9530625404,
+        "in_range": true,
+        "families": [
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-25",
+        "actual": 687072.0,
+        "base": 683327.0,
+        "predicted": 681466.6491259459,
+        "error": -5605.350874054129,
+        "abs_pct_error": 0.8158316557877674,
+        "actual_direction": 0,
+        "predicted_direction": 0,
+        "range_low": 614008.5904302937,
+        "range_high": 748924.707821598,
+        "in_range": true,
+        "families": [
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-26",
+        "actual": 706702.0,
+        "base": 639070.36,
+        "predicted": 640279.9299552488,
+        "error": -66422.07004475116,
+        "abs_pct_error": 9.398879590655065,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 572907.0734335098,
+        "range_high": 707652.7864769879,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "mgapBogo"
+        ]
+      },
+      {
+        "date": "2026-04-27",
+        "actual": 672825.0,
+        "base": 643620.0,
+        "predicted": 656164.0634606003,
+        "error": -16660.93653939967,
+        "abs_pct_error": 2.4762659739753534,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 588876.4091127743,
+        "range_high": 723451.7178084264,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-28",
+        "actual": 604684.0,
+        "base": 587145.7916666666,
+        "predicted": 593261.4195531629,
+        "error": -11422.58044683712,
+        "abs_pct_error": 1.8890164857739116,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 526058.9673792499,
+        "range_high": 660463.8717270759,
+        "in_range": true,
+        "families": [
+          "extremeStamp",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-29",
+        "actual": 598422.0,
+        "base": 648519.76,
+        "predicted": 646237.901192093,
+        "error": 47815.901192093035,
+        "abs_pct_error": 7.990331437028224,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 579120.651192093,
+        "range_high": 713355.151192093,
+        "in_range": true,
+        "families": [
+          "counterPo",
+          "happyHour",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-30",
+        "actual": 572621.0,
+        "base": 620434.25,
+        "predicted": 634031.3927490108,
+        "error": 61410.39274901082,
+        "abs_pct_error": 10.724439506935795,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 566947.4449229238,
+        "range_high": 701115.3405750978,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-05-01",
+        "actual": 751445.0,
+        "base": 666359.2608695652,
+        "predicted": 677334.6164462067,
+        "error": -74110.3835537933,
+        "abs_pct_error": 9.862382949356679,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 610769.542198715,
+        "range_high": 743899.6906936984,
+        "in_range": false,
+        "families": [
+          "mgapBogo",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-02",
+        "actual": 703805.0,
+        "base": 683497.2272727273,
+        "predicted": 700800.660156036,
+        "error": -3004.3398439639714,
+        "abs_pct_error": 0.4268710571769128,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 633842.0049112808,
+        "range_high": 767759.3154007912,
+        "in_range": true,
+        "families": [
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-05-03",
+        "actual": 644971.0,
+        "base": 641671.5769230769,
+        "predicted": 649925.4298224852,
+        "error": 4954.4298224851955,
+        "abs_pct_error": 0.7681631922187502,
+        "actual_direction": 0,
+        "predicted_direction": 1,
+        "range_low": 583629.4030666323,
+        "range_high": 716221.456578338,
+        "in_range": true,
+        "families": [
+          "goldenSpin",
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-05-04",
+        "actual": 637297.0,
+        "base": 644743.2692307692,
+        "predicted": 642858.5917444981,
+        "error": 5561.591744498117,
+        "abs_pct_error": 0.8726844382600447,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 576749.8139667204,
+        "range_high": 708967.3695222759,
+        "in_range": true,
+        "families": [
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-06",
+        "actual": 651528.0,
+        "base": 646592.9230769231,
+        "predicted": 653797.9475089094,
+        "error": 2269.9475089093903,
+        "abs_pct_error": 0.34840367703450814,
+        "actual_direction": 0,
+        "predicted_direction": 1,
+        "range_low": 587869.9812866872,
+        "range_high": 719725.9137311316,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "customPod",
+          "mgapOther",
+          "mgapWildSymbols"
+        ]
+      },
+      {
+        "date": "2026-05-07",
+        "actual": 567832.0,
+        "base": 618521.72,
+        "predicted": 638223.3608522074,
+        "error": 70391.3608522074,
+        "abs_pct_error": 12.396511794370062,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 572476.2061855408,
+        "range_high": 703970.515518874,
+        "in_range": false,
+        "families": [
+          "decoyBonanza",
+          "gemback",
+          "goldenSpin"
+        ]
+      },
+      {
+        "date": "2026-05-08",
+        "actual": 682536.0,
+        "base": 669904.5,
+        "predicted": 670964.1210488968,
+        "error": -11571.878951103194,
+        "abs_pct_error": 1.695423970472355,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 605575.6766044523,
+        "range_high": 736352.5654933413,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "happyHour",
+          "mgapBogo",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-09",
+        "actual": 693217.0,
+        "base": 684380.1739130435,
+        "predicted": 682826.4130614862,
+        "error": -10390.586938513792,
+        "abs_pct_error": 1.4988938439931208,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 617518.4495059307,
+        "range_high": 748134.3766170418,
+        "in_range": true,
+        "families": [
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-10",
+        "actual": 670835.0,
+        "base": 641793.7777777778,
+        "predicted": 663619.2338865646,
+        "error": -7215.766113435384,
+        "abs_pct_error": 1.0756394811593586,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 598511.4738865646,
+        "range_high": 728726.9938865646,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-05-11",
+        "actual": 695304.0,
+        "base": 644467.4814814815,
+        "predicted": 657029.8933674648,
+        "error": -38274.10663253523,
+        "abs_pct_error": 5.504657909710749,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 592169.4782246077,
+        "range_high": 721890.3085103219,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-12",
+        "actual": 614993.0,
+        "base": 587847.32,
+        "predicted": 626782.1027740253,
+        "error": 11789.10277402529,
+        "abs_pct_error": 1.9169490992621527,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 562169.0324883111,
+        "range_high": 691395.1730597395,
+        "in_range": true,
+        "families": [
+          "customPod",
+          "priceCut",
+          "rolling",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-13",
+        "actual": 694850.0,
+        "base": 646775.7037037037,
+        "predicted": 681320.3952893256,
+        "error": -13529.604710674379,
+        "abs_pct_error": 1.9471259567783519,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 616954.6698607542,
+        "range_high": 745686.1207178971,
+        "in_range": true,
+        "families": [
+          "counterPo",
+          "customPod",
+          "extremeStamp",
+          "gemback",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-14",
+        "actual": 663212.0,
+        "base": 616572.1153846154,
+        "predicted": 622037.8916461195,
+        "error": -41174.10835388047,
+        "abs_pct_error": 6.208287599422277,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 557919.511074691,
+        "range_high": 686156.2722175481,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "goldenSpin",
+          "happyHour",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-15",
+        "actual": 677117.0,
+        "base": 670409.76,
+        "predicted": 675884.8887700855,
+        "error": -1232.1112299144734,
+        "abs_pct_error": 0.181964303054638,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 610902.370251567,
+        "range_high": 740867.4072886041,
+        "in_range": true,
+        "families": [
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-05-16",
+        "actual": 621329.0,
+        "base": 684748.375,
+        "predicted": 678484.0855925108,
+        "error": 57155.08559251076,
+        "abs_pct_error": 9.198844025067357,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 613723.8636348387,
+        "range_high": 743244.3075501828,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "gemback"
+        ]
+      },
+      {
+        "date": "2026-05-17",
+        "actual": 592848.0,
+        "base": 642830.9642857143,
+        "predicted": 667932.283661039,
+        "error": 75084.28366103896,
+        "abs_pct_error": 12.665014246660014,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 603394.3582642135,
+        "range_high": 732470.2090578644,
+        "in_range": false,
+        "families": [
+          "decoyBonanza",
+          "happyHour",
+          "mgapBogo",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-18",
+        "actual": 608574.0,
+        "base": 646283.0714285715,
+        "predicted": 663235.9923583711,
+        "error": 54661.99235837115,
+        "abs_pct_error": 8.981979571649651,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 598100.1889395678,
+        "range_high": 728371.7957771745,
+        "in_range": true,
+        "families": [
+          "mgapBigger",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-19",
+        "actual": 519942.0,
+        "base": 588891.3846153846,
+        "predicted": 614616.3280668946,
+        "error": 94674.32806689455,
+        "abs_pct_error": 18.208632514183225,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 549557.1670982336,
+        "range_high": 679675.4890355555,
+        "in_range": false,
+        "families": [
+          "extremeStamp",
+          "goldenSpin",
+          "rolling",
+          "rollingMoreForLess",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-20",
+        "actual": 573974.0,
+        "base": 648492.6428571428,
+        "predicted": 669820.8959868954,
+        "error": 95846.89598689543,
+        "abs_pct_error": 16.69882189557287,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 604455.1652176647,
+        "range_high": 735186.6267561262,
+        "in_range": false,
+        "families": [
+          "counterPo",
+          "decoyBonanza",
+          "gemback",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-21",
+        "actual": 519860.0,
+        "base": 618299.5185185185,
+        "predicted": 659295.2541092194,
+        "error": 139435.25410921942,
+        "abs_pct_error": 26.82169316916466,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 593884.1769208906,
+        "range_high": 724706.3312975483,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "gemback",
+          "mgapBigger",
+          "mgapBogo",
+          "mgapOther",
+          "priceCut",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-22",
+        "actual": 724900.0,
+        "base": 670667.7307692308,
+        "predicted": 729701.467805804,
+        "error": 4801.467805803986,
+        "abs_pct_error": 0.6623627818739117,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 664175.7505644247,
+        "range_high": 795227.1850471833,
+        "in_range": true,
+        "families": [
+          "coinSale",
+          "customPod",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "prizeMania",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-23",
+        "actual": 694313.0,
+        "base": 682211.6,
+        "predicted": 724538.0383607167,
+        "error": 30225.03836071666,
+        "abs_pct_error": 4.353229503223569,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 658623.0051550972,
+        "range_high": 790453.0715663361,
+        "in_range": true,
+        "families": [
+          "customPod",
+          "happyHour",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-05-24",
+        "actual": 673948.0,
+        "base": 641107.4137931034,
+        "predicted": 668191.4422047354,
+        "error": -5756.557795264642,
+        "abs_pct_error": 0.8541545928268415,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 602436.6324984774,
+        "range_high": 733946.2519109934,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "mgapBogo",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-05-26",
+        "actual": 511939.0,
+        "base": 586337.7037037037,
+        "predicted": 574769.4069303562,
+        "error": 62830.40693035617,
+        "abs_pct_error": 12.27302606958176,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 508373.70322665246,
+        "range_high": 641165.1106340599,
+        "in_range": true,
+        "families": [
+          "buyAll"
+        ]
+      },
+      {
+        "date": "2026-05-27",
+        "actual": 542088.0,
+        "base": 645923.0344827586,
+        "predicted": 641762.2549757357,
+        "error": 99674.25497573568,
+        "abs_pct_error": 18.38709858468287,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 575549.1392614499,
+        "range_high": 707975.3706900214,
+        "in_range": false,
+        "families": [
+          "decoyBonanza",
+          "goldenSpin",
+          "happyHour",
+          "mgapWildSymbols",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-28",
+        "actual": 670092.0,
+        "base": 614783.8214285715,
+        "predicted": 646066.2096892479,
+        "error": -24025.790310752112,
+        "abs_pct_error": 3.5854465223808245,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 579034.7696892478,
+        "range_high": 713097.649689248,
+        "in_range": true,
+        "families": [
+          "extremeStamp",
+          "gemback",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-05-29",
+        "actual": 695444.0,
+        "base": 672676.3333333334,
+        "predicted": 675337.7182933651,
+        "error": -20106.28170663491,
+        "abs_pct_error": 2.8911431699223673,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 608477.7249600317,
+        "range_high": 742197.7116266985,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "mgapMatched"
+        ]
+      },
+      {
+        "date": "2026-05-30",
+        "actual": 618176.0,
+        "base": 682677.0384615385,
+        "predicted": 682059.2663031141,
+        "error": 63883.26630311413,
+        "abs_pct_error": 10.334155046963021,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 615324.6129697808,
+        "range_high": 748793.9196364474,
+        "in_range": true,
+        "families": [
+          "goldenSpin",
+          "happyHour",
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-05-31",
+        "actual": 595397.0,
+        "base": 642202.1,
+        "predicted": 670480.5404083832,
+        "error": 75083.54040838324,
+        "abs_pct_error": 12.610668244613802,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 605014.4292972721,
+        "range_high": 735946.6515194944,
+        "in_range": false,
+        "families": [
+          "gemback",
+          "happyHour",
+          "mgapBogo",
+          "priceCut",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-06-01",
+        "actual": 728108.0,
+        "base": 644982.7586206896,
+        "predicted": 670754.0335161994,
+        "error": -57353.966483800556,
+        "abs_pct_error": 7.877123515165409,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 605379.6930144073,
+        "range_high": 736128.3740179916,
+        "in_range": true,
+        "families": [
+          "priceCut",
+          "rolling",
+          "rollingMoreForLess",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-02",
+        "actual": 544902.0,
+        "base": 583680.6071428572,
+        "predicted": 617639.6153957293,
+        "error": 72737.61539572931,
+        "abs_pct_error": 13.348751774764878,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 551847.3257899946,
+        "range_high": 683431.9050014641,
+        "in_range": false,
+        "families": [
+          "mgapBogo",
+          "mgapOther",
+          "priceCut",
+          "prizeMania",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-03",
+        "actual": 620506.0,
+        "base": 642461.8666666667,
+        "predicted": 638974.3051832593,
+        "error": 18468.305183259305,
+        "abs_pct_error": 2.9763298313407613,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 573079.2566849277,
+        "range_high": 704869.3536815909,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "decoyBonanza",
+          "extremeStamp",
+          "goldenSpin",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-04",
+        "actual": 591240.0,
+        "base": 616691.0,
+        "predicted": 622005.1978299981,
+        "error": 30765.1978299981,
+        "abs_pct_error": 5.203504131993454,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 556148.3804773841,
+        "range_high": 687862.0151826121,
+        "in_range": true,
+        "families": [
+          "goldenSpin",
+          "mgapBogo",
+          "mgapOther",
+          "priceCut",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-05",
+        "actual": 647804.0,
+        "base": 673489.4642857143,
+        "predicted": 704399.384364934,
+        "error": 56595.384364934056,
+        "abs_pct_error": 8.736498132912741,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 638580.7981580375,
+        "range_high": 770217.9705718306,
+        "in_range": true,
+        "families": [
+          "coinSale",
+          "happyHour",
+          "mgapBogo",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-06-06",
+        "actual": 646385.0,
+        "base": 680288.1111111111,
+        "predicted": 703189.3468039694,
+        "error": 56804.346803969354,
+        "abs_pct_error": 8.788005105930576,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 637441.2556162298,
+        "range_high": 768937.4379917089,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "mgapBigger",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-07",
+        "actual": 583263.0,
+        "base": 640692.2580645161,
+        "predicted": 633077.5392542349,
+        "error": 49814.53925423487,
+        "abs_pct_error": 8.540665060913321,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 567583.4843042905,
+        "range_high": 698571.5942041792,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "mgapOther",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-08",
+        "actual": 599183.0,
+        "base": 647753.6,
+        "predicted": 674090.209933983,
+        "error": 74907.20993398305,
+        "abs_pct_error": 12.501557943730553,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 609090.6237270865,
+        "range_high": 739089.7961408796,
+        "in_range": false,
+        "families": [
+          "mgapBigger",
+          "mgapBogo",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-09",
+        "actual": 641178.0,
+        "base": 582343.4137931034,
+        "predicted": 595624.5898215246,
+        "error": -45553.41017847543,
+        "abs_pct_error": 7.104643356209263,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 530898.003614628,
+        "range_high": 660351.1760284211,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "gemback",
+          "mgapBogo",
+          "priceCut",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-06-10",
+        "actual": 583335.0,
+        "base": 641753.6129032258,
+        "predicted": 659609.3260513928,
+        "error": 76274.32605139283,
+        "abs_pct_error": 13.075561392920504,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 595354.0403371071,
+        "range_high": 723864.6117656785,
+        "in_range": false,
+        "families": [
+          "decoyBonanza",
+          "happyHour",
+          "mgapBigger",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-11",
+        "actual": 571885.0,
+        "base": 615842.6333333333,
+        "predicted": 629692.5881023533,
+        "error": 57807.58810235327,
+        "abs_pct_error": 10.108253950069205,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 565351.4776261628,
+        "range_high": 694033.6985785437,
+        "in_range": true,
+        "families": [
+          "extremeStamp",
+          "fortuneDip",
+          "goldenSpin",
+          "happyHour",
+          "mgapBigger",
+          "prizeMania",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-12",
+        "actual": 585954.0,
+        "base": 672603.7586206896,
+        "predicted": 704361.8007635591,
+        "error": 118407.80076355906,
+        "abs_pct_error": 20.2076956149389,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 639977.3928468924,
+        "range_high": 768746.2086802258,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "coinSale",
+          "extremeStamp",
+          "fortuneDip",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "rolling",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-13",
+        "actual": 872009.0,
+        "base": 679077.2857142857,
+        "predicted": 739541.0107371173,
+        "error": -132467.98926288274,
+        "abs_pct_error": 15.191126383200487,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 675136.2561537839,
+        "range_high": 803945.7653204506,
+        "in_range": false,
+        "families": [
+          "coinSale",
+          "customPod",
+          "decoyBonanza",
+          "extremeStamp",
+          "fortuneDip",
+          "gemback",
+          "happyHour",
+          "mgapOther",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-14",
+        "actual": 691833.0,
+        "base": 638897.59375,
+        "predicted": 648787.2913122778,
+        "error": -43045.70868772222,
+        "abs_pct_error": 6.221979681183496,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 583528.7953445358,
+        "range_high": 714045.7872800197,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "mgapMatched",
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-06-15",
+        "actual": 557541.0,
+        "base": 646186.8064516129,
+        "predicted": 639671.4228520002,
+        "error": 82130.42285200022,
+        "abs_pct_error": 14.73083106928463,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 574437.3916020002,
+        "range_high": 704905.4541020002,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "gemback"
+        ]
+      },
+      {
+        "date": "2026-06-16",
+        "actual": 608878.0,
+        "base": 584304.5666666667,
+        "predicted": 571818.3904361746,
+        "error": -37059.60956382542,
+        "abs_pct_error": 6.0865410745379895,
+        "actual_direction": 1,
+        "predicted_direction": -1,
+        "range_low": 506486.5003152068,
+        "range_high": 637150.2805571423,
+        "in_range": true,
+        "families": [
+          "mgapWildSymbols",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-17",
+        "actual": 619042.0,
+        "base": 639928.03125,
+        "predicted": 666994.1414550253,
+        "error": 47952.141455025296,
+        "abs_pct_error": 7.746185469649118,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 601686.7160517995,
+        "range_high": 732301.5668582511,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-06-18",
+        "actual": 531915.0,
+        "base": 614424.6451612903,
+        "predicted": 632932.3176830739,
+        "error": 101017.31768307392,
+        "abs_pct_error": 18.991251926167514,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 567710.7143595158,
+        "range_high": 698153.921006632,
+        "in_range": false,
+        "families": [
+          "counterPo",
+          "extremeStamp",
+          "fortuneDip",
+          "happyHour",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-19",
+        "actual": 549239.0,
+        "base": 669715.4333333333,
+        "predicted": 710817.0435425671,
+        "error": 161578.04354256706,
+        "abs_pct_error": 29.418530647417075,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 645361.50282287,
+        "range_high": 776272.5842622641,
+        "in_range": false,
+        "families": [
+          "coinSale",
+          "fortuneDip",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "mgapOther",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-20",
+        "actual": 712278.0,
+        "base": 685730.1034482758,
+        "predicted": 727897.5874305416,
+        "error": 15619.587430541636,
+        "abs_pct_error": 2.192906060631051,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 661713.6908788175,
+        "range_high": 794081.4839822658,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "coinSale",
+          "decoyBonanza",
+          "extremeStamp",
+          "fortuneDip",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "mgapOther",
+          "priceCut",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-21",
+        "actual": 703970.0,
+        "base": 640501.696969697,
+        "predicted": 634360.6048951356,
+        "error": -69609.39510486438,
+        "abs_pct_error": 9.88811953703487,
+        "actual_direction": 1,
+        "predicted_direction": -1,
+        "range_low": 568501.8056527113,
+        "range_high": 700219.4041375599,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "happyHour",
+          "mgapBogo"
+        ]
+      },
+      {
+        "date": "2026-06-22",
+        "actual": 619576.0,
+        "base": 643416.625,
+        "predicted": 655341.4530642732,
+        "error": 35765.45306427323,
+        "abs_pct_error": 5.772569154433552,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 589617.0733294247,
+        "range_high": 721065.8327991217,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-23",
+        "actual": 587105.0,
+        "base": 585097.2580645161,
+        "predicted": 582951.8526620411,
+        "error": -4153.147337958915,
+        "abs_pct_error": 0.7073943056112476,
+        "actual_direction": 0,
+        "predicted_direction": 0,
+        "range_low": 517361.8924347684,
+        "range_high": 648541.8128893138,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "extremeStamp",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-24",
+        "actual": 604951.0,
+        "base": 639295.1212121212,
+        "predicted": 652982.5688850228,
+        "error": 48031.568885022774,
+        "abs_pct_error": 7.939745348800608,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 587527.0281653258,
+        "range_high": 718438.1096047198,
+        "in_range": true,
+        "families": [
+          "mgapOther",
+          "priceCut",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-25",
+        "actual": 522394.0,
+        "base": 611846.21875,
+        "predicted": 614774.8161402401,
+        "error": 92380.81614024006,
+        "abs_pct_error": 17.68412656734956,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 548781.5973902401,
+        "range_high": 680768.0348902401,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "gemback",
+          "goldenSpin",
+          "mgapOther",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-06-26",
+        "actual": 625207.0,
+        "base": 665829.0967741936,
+        "predicted": 667320.1824052274,
+        "error": 42113.182405227446,
+        "abs_pct_error": 6.735878261956032,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 601426.7890718941,
+        "range_high": 733213.5757385608,
+        "in_range": true,
+        "families": [
+          "happyHour",
+          "mgapMatched",
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-06-27",
+        "actual": 676767.0,
+        "base": 686615.0333333333,
+        "predicted": 723946.649395941,
+        "error": 47179.64939594106,
+        "abs_pct_error": 6.971328299982277,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 658380.8689792744,
+        "range_high": 789512.4298126077,
+        "in_range": true,
+        "families": [
+          "customPod",
+          "gemback",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-28",
+        "actual": 597833.0,
+        "base": 642368.4117647059,
+        "predicted": 669025.5916207099,
+        "error": 71192.59162070986,
+        "abs_pct_error": 11.908441257125295,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 603358.1420239357,
+        "range_high": 734693.041217484,
+        "in_range": false,
+        "families": [
+          "customPod",
+          "mgapWildSymbols",
+          "priceCut",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-29",
+        "actual": 641888.0,
+        "base": 642694.1818181818,
+        "predicted": 637918.8123749798,
+        "error": -3969.1876250201603,
+        "abs_pct_error": 0.6183614002785782,
+        "actual_direction": 0,
+        "predicted_direction": 0,
+        "range_low": 572310.6604855789,
+        "range_high": 703526.9642643807,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "happyHour",
+          "mgapOther",
+          "priceCut"
+        ]
+      },
+      {
+        "date": "2026-06-30",
+        "actual": 515780.0,
+        "base": 585160.0,
+        "predicted": 616856.7001698816,
+        "error": 101076.70016988157,
+        "abs_pct_error": 19.596863036543017,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 551250.671598453,
+        "range_high": 682462.7287413102,
+        "in_range": false,
+        "families": [
+          "extremeStamp",
+          "gemback",
+          "rolling",
+          "rollingMoreForLess",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-07-01",
+        "actual": 762122.0,
+        "base": 638285.0,
+        "predicted": 666419.8646962139,
+        "error": -95702.13530378614,
+        "abs_pct_error": 12.557324851373682,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 600805.3428528958,
+        "range_high": 732034.3865395319,
+        "in_range": false,
+        "families": [
+          "extremeStamp",
+          "gemback",
+          "mgapBogo",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-07-02",
+        "actual": 615657.0,
+        "base": 609135.5454545454,
+        "predicted": 590128.112970605,
+        "error": -25528.887029394973,
+        "abs_pct_error": 4.146608749578901,
+        "actual_direction": 1,
+        "predicted_direction": -1,
+        "range_low": 523064.1129706051,
+        "range_high": 657192.112970605,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "goldenSpin",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-07-03",
+        "actual": 870247.0,
+        "base": 664559.65625,
+        "predicted": 715233.4206632078,
+        "error": -155013.57933679223,
+        "abs_pct_error": 17.81259565810537,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 648202.0206632079,
+        "range_high": 782264.8206632077,
+        "in_range": false,
+        "families": [
+          "coinSale",
+          "customPod",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "mgapOther",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-07-05",
+        "actual": 651883.0,
+        "base": 641095.9714285714,
+        "predicted": 703854.0268985087,
+        "error": 51971.02689850866,
+        "abs_pct_error": 7.972447033978285,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 636695.1517469935,
+        "range_high": 771012.9020500238,
+        "in_range": true,
+        "families": [
+          "customPod",
+          "mgapOther",
+          "priceCut",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      }
+    ],
+    "paying_users": [
+      {
+        "date": "2026-04-01",
+        "actual": 30752.0,
+        "base": 28614.52380952381,
+        "predicted": 29617.848241166914,
+        "error": -1134.1517588330862,
+        "abs_pct_error": 3.688058528983761,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 27170.302786621458,
+        "range_high": 32065.39369571237,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "gemback",
+          "mgapBogo",
+          "mgapOther",
+          "priceCut"
+        ]
+      },
+      {
+        "date": "2026-04-02",
+        "actual": 28361.0,
+        "base": 26005.15,
+        "predicted": 26574.522717045078,
+        "error": -1786.477282954922,
+        "abs_pct_error": 6.299063090000077,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 24131.204535226894,
+        "range_high": 29017.840898863262,
+        "in_range": true,
+        "families": [
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-04-03",
+        "actual": 28472.0,
+        "base": 27609.684210526317,
+        "predicted": 27608.193142604552,
+        "error": -863.8068573954479,
+        "abs_pct_error": 3.033881909930626,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 25149.85980927122,
+        "range_high": 30066.526475937884,
+        "in_range": true,
+        "families": [
+          "coinSale",
+          "counterPo",
+          "mgapOther",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-05",
+        "actual": 32342.0,
+        "base": 29461.227272727272,
+        "predicted": 29639.709861991865,
+        "error": -2702.290138008135,
+        "abs_pct_error": 8.355358784268551,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 27185.225013507017,
+        "range_high": 32094.194710476713,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "happyHour",
+          "mgapMatched",
+          "priceCut",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-06",
+        "actual": 38906.0,
+        "base": 36469.90909090909,
+        "predicted": 36435.12984486909,
+        "error": -2470.870155130913,
+        "abs_pct_error": 6.350871729632739,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 33971.51079725004,
+        "range_high": 38898.74889248813,
+        "in_range": false,
+        "families": [
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-07",
+        "actual": 24060.0,
+        "base": 27646.14285714286,
+        "predicted": 28004.741232933255,
+        "error": 3944.7412329332547,
+        "abs_pct_error": 16.39543322083647,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25542.884090076113,
+        "range_high": 30466.598375790396,
+        "in_range": false,
+        "families": [
+          "happyHour",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-08",
+        "actual": 26818.0,
+        "base": 28711.68181818182,
+        "predicted": 28370.60124275923,
+        "error": 1552.6012427592286,
+        "abs_pct_error": 5.789399816389099,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 25899.670939728927,
+        "range_high": 30841.53154578953,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "extremeStamp",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-09",
+        "actual": 28875.0,
+        "base": 26117.333333333332,
+        "predicted": 26124.602199290683,
+        "error": -2750.3978007093174,
+        "abs_pct_error": 9.525187188603697,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 23666.26886595735,
+        "range_high": 28582.935532624015,
+        "in_range": false,
+        "families": [
+          "happyHour",
+          "prizeMania",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-10",
+        "actual": 28406.0,
+        "base": 27652.8,
+        "predicted": 28429.622666024014,
+        "error": 23.622666024013597,
+        "abs_pct_error": 0.08316083230308244,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 25857.25615884698,
+        "range_high": 31001.989173201047,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "mgapBogo",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-11",
+        "actual": 25299.0,
+        "base": 27898.105263157893,
+        "predicted": 27671.15281249256,
+        "error": 2372.1528124925608,
+        "abs_pct_error": 9.37646868450358,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 25110.10161632031,
+        "range_high": 30232.204008664812,
+        "in_range": true,
+        "families": [
+          "buyAll"
+        ]
+      },
+      {
+        "date": "2026-04-12",
+        "actual": 28073.0,
+        "base": 29586.478260869564,
+        "predicted": 29671.959601070674,
+        "error": 1598.9596010706737,
+        "abs_pct_error": 5.695720446944301,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 27156.996873797943,
+        "range_high": 32186.922328343404,
+        "in_range": true,
+        "families": [
+          "mgapMatched",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-13",
+        "actual": 37046.0,
+        "base": 36575.82608695652,
+        "predicted": 36815.12773984908,
+        "error": -230.87226015092165,
+        "abs_pct_error": 0.6232042869700417,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 34335.32440651574,
+        "range_high": 39294.931073182415,
+        "in_range": true,
+        "families": [
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-04-14",
+        "actual": 26800.0,
+        "base": 27483.136363636364,
+        "predicted": 27148.827198814226,
+        "error": 348.827198814226,
+        "abs_pct_error": 1.3015940254262164,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 24679.677198814225,
+        "range_high": 29617.977198814227,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "extremeStamp",
+          "happyHour",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-15",
+        "actual": 27632.0,
+        "base": 28629.347826086956,
+        "predicted": 28759.332364714515,
+        "error": 1127.3323647145153,
+        "abs_pct_error": 4.079807341902559,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 26293.87903138118,
+        "range_high": 31224.78569804785,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-04-16",
+        "actual": 24504.0,
+        "base": 26242.68181818182,
+        "predicted": 26772.22116284324,
+        "error": 2268.2211628432415,
+        "abs_pct_error": 9.256534291720705,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 24310.464496176573,
+        "range_high": 29233.97782950991,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "happyHour",
+          "mgapOther",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-17",
+        "actual": 24339.0,
+        "base": 27688.666666666668,
+        "predicted": 28132.767270260003,
+        "error": 3793.767270260003,
+        "abs_pct_error": 15.587194503718324,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25674.70727026,
+        "range_high": 30590.827270260004,
+        "in_range": false,
+        "families": [
+          "rolling",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-04-18",
+        "actual": 29483.0,
+        "base": 27768.15,
+        "predicted": 27845.16472068318,
+        "error": -1637.8352793168197,
+        "abs_pct_error": 5.555185290902621,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 25368.22732937883,
+        "range_high": 30322.10211198753,
+        "in_range": true,
+        "families": [
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-04-19",
+        "actual": 27536.0,
+        "base": 29523.416666666668,
+        "predicted": 29763.24972786875,
+        "error": 2227.2497278687515,
+        "abs_pct_error": 8.088501335955664,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 27255.16277134701,
+        "range_high": 32271.33668439049,
+        "in_range": true,
+        "families": [
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-20",
+        "actual": 34959.0,
+        "base": 36595.416666666664,
+        "predicted": 36392.7610723914,
+        "error": 1433.7610723913967,
+        "abs_pct_error": 4.101264545299913,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 33921.129453343776,
+        "range_high": 38864.39269143902,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "happyHour",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-04-21",
+        "actual": 25299.0,
+        "base": 27453.434782608696,
+        "predicted": 27498.326194954527,
+        "error": 2199.3261949545267,
+        "abs_pct_error": 8.693332522844882,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 25033.872480668815,
+        "range_high": 29962.77990924024,
+        "in_range": true,
+        "families": [
+          "mgapMatched",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-22",
+        "actual": 28906.0,
+        "base": 28587.791666666668,
+        "predicted": 29072.17723063405,
+        "error": 166.17723063404992,
+        "abs_pct_error": 0.5748883644712168,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 26590.358183015003,
+        "range_high": 31553.996278253097,
+        "in_range": true,
+        "families": [
+          "prizeMania",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-23",
+        "actual": 24856.0,
+        "base": 26167.08695652174,
+        "predicted": 26426.181647186888,
+        "error": 1570.1816471868879,
+        "abs_pct_error": 6.317113160552333,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 23945.867361472603,
+        "range_high": 28906.495932901173,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "extremeStamp",
+          "happyHour",
+          "rolling",
+          "rollingMoreForLess",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-24",
+        "actual": 23706.0,
+        "base": 27536.409090909092,
+        "predicted": 27741.205702081606,
+        "error": 4035.2057020816064,
+        "abs_pct_error": 17.021875061510194,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 25287.747368748274,
+        "range_high": 30194.66403541494,
+        "in_range": false,
+        "families": [
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-25",
+        "actual": 29515.0,
+        "base": 27849.809523809523,
+        "predicted": 27882.02561296469,
+        "error": -1632.9743870353086,
+        "abs_pct_error": 5.532693162918206,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 25408.286327250407,
+        "range_high": 30355.764898678975,
+        "in_range": true,
+        "families": [
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-26",
+        "actual": 28841.0,
+        "base": 29443.92,
+        "predicted": 29592.984516508663,
+        "error": 751.9845165086626,
+        "abs_pct_error": 2.6073455029598924,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 27119.801183175332,
+        "range_high": 32066.167849841993,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "mgapBogo"
+        ]
+      },
+      {
+        "date": "2026-04-27",
+        "actual": 35414.0,
+        "base": 36529.96,
+        "predicted": 37036.941298216276,
+        "error": 1622.9412982162758,
+        "abs_pct_error": 4.582767544519895,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 34570.332964882946,
+        "range_high": 39503.549631549606,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-04-28",
+        "actual": 25080.0,
+        "base": 27363.666666666668,
+        "predicted": 27181.270994994782,
+        "error": 2101.270994994782,
+        "abs_pct_error": 8.378273504763884,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 24721.23766166145,
+        "range_high": 29641.304328328115,
+        "in_range": true,
+        "families": [
+          "extremeStamp",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-29",
+        "actual": 26136.0,
+        "base": 28600.52,
+        "predicted": 28499.105351038314,
+        "error": 2363.1053510383135,
+        "abs_pct_error": 9.041572356283723,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 26045.64701770498,
+        "range_high": 30952.563684371646,
+        "in_range": true,
+        "families": [
+          "counterPo",
+          "happyHour",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-04-30",
+        "actual": 24707.0,
+        "base": 26112.458333333332,
+        "predicted": 26627.486519638915,
+        "error": 1920.4865196389146,
+        "abs_pct_error": 7.773046179782712,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 24175.81985297225,
+        "range_high": 29079.15318630558,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-05-01",
+        "actual": 28005.0,
+        "base": 27369.869565217392,
+        "predicted": 27750.8661609432,
+        "error": -254.13383905680166,
+        "abs_pct_error": 0.9074588075586562,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 25315.381545558583,
+        "range_high": 30186.350776327814,
+        "in_range": true,
+        "families": [
+          "mgapBogo",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-02",
+        "actual": 27006.0,
+        "base": 27925.5,
+        "predicted": 28426.393850449378,
+        "error": 1420.393850449378,
+        "abs_pct_error": 5.259549175921566,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25995.416927372455,
+        "range_high": 30857.3707735263,
+        "in_range": true,
+        "families": [
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-05-03",
+        "actual": 31190.0,
+        "base": 29420.73076923077,
+        "predicted": 29711.345443786984,
+        "error": -1478.654556213016,
+        "abs_pct_error": 4.740796909948752,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 27291.16852071006,
+        "range_high": 32131.52236686391,
+        "in_range": true,
+        "families": [
+          "goldenSpin",
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-05-04",
+        "actual": 36892.0,
+        "base": 36487.03846153846,
+        "predicted": 36525.594250710135,
+        "error": -366.4057492898646,
+        "abs_pct_error": 0.9931848348960876,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 34103.6327122486,
+        "range_high": 38947.555789171674,
+        "in_range": true,
+        "families": [
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-06",
+        "actual": 25704.0,
+        "base": 28505.73076923077,
+        "predicted": 28733.719299764925,
+        "error": 3029.7192997649254,
+        "abs_pct_error": 11.786956503909607,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 26327.244581568466,
+        "range_high": 31140.194017961385,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "customPod",
+          "mgapOther",
+          "mgapWildSymbols"
+        ]
+      },
+      {
+        "date": "2026-05-07",
+        "actual": 27068.0,
+        "base": 26056.24,
+        "predicted": 26387.27458484082,
+        "error": -680.7254151591806,
+        "abs_pct_error": 2.5148714909087504,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 23933.333844100078,
+        "range_high": 28841.21532558156,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "gemback",
+          "goldenSpin"
+        ]
+      },
+      {
+        "date": "2026-05-08",
+        "actual": 27709.0,
+        "base": 27396.333333333332,
+        "predicted": 27624.128847732987,
+        "error": -84.8711522670128,
+        "abs_pct_error": 0.3062945334260089,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 25168.332836336973,
+        "range_high": 30079.924859129,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "happyHour",
+          "mgapBogo",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-09",
+        "actual": 27794.0,
+        "base": 27885.521739130436,
+        "predicted": 27932.041805541245,
+        "error": 138.04180554124468,
+        "abs_pct_error": 0.49666045024553745,
+        "actual_direction": 0,
+        "predicted_direction": 0,
+        "range_low": 25486.066876766316,
+        "range_high": 30378.016734316174,
+        "in_range": true,
+        "families": [
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-10",
+        "actual": 29431.0,
+        "base": 29486.25925925926,
+        "predicted": 30255.823538754834,
+        "error": 824.8235387548339,
+        "abs_pct_error": 2.8025671528484724,
+        "actual_direction": 0,
+        "predicted_direction": 1,
+        "range_low": 27819.669692600986,
+        "range_high": 32691.97738490868,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-05-11",
+        "actual": 35085.0,
+        "base": 36502.03703703704,
+        "predicted": 36561.931641481126,
+        "error": 1476.9316414811256,
+        "abs_pct_error": 4.209581420781318,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 34131.61597196545,
+        "range_high": 38992.2473109968,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-12",
+        "actual": 27620.0,
+        "base": 27272.32,
+        "predicted": 28607.880154363065,
+        "error": 987.8801543630652,
+        "abs_pct_error": 3.5766841215172525,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 26151.50872579164,
+        "range_high": 31064.251582934492,
+        "in_range": true,
+        "families": [
+          "customPod",
+          "priceCut",
+          "rolling",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-13",
+        "actual": 27195.0,
+        "base": 28401.962962962964,
+        "predicted": 28514.923318579848,
+        "error": 1319.9233185798475,
+        "abs_pct_error": 4.853551456443639,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 26059.15189000842,
+        "range_high": 30970.694747151276,
+        "in_range": true,
+        "families": [
+          "counterPo",
+          "customPod",
+          "extremeStamp",
+          "gemback",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-14",
+        "actual": 25320.0,
+        "base": 26095.153846153848,
+        "predicted": 26301.836880798302,
+        "error": 981.8368807983024,
+        "abs_pct_error": 3.877712799361384,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 23846.665452226876,
+        "range_high": 28757.00830936973,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "goldenSpin",
+          "happyHour",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-15",
+        "actual": 26103.0,
+        "base": 27408.84,
+        "predicted": 27601.892712820514,
+        "error": 1498.8927128205141,
+        "abs_pct_error": 5.742223931427477,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 25147.321284249087,
+        "range_high": 30056.46414139194,
+        "in_range": true,
+        "families": [
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-05-16",
+        "actual": 27729.0,
+        "base": 27881.708333333332,
+        "predicted": 27983.031413044082,
+        "error": 254.031413044082,
+        "abs_pct_error": 0.9161217968339356,
+        "actual_direction": 0,
+        "predicted_direction": 0,
+        "range_low": 25537.885381298052,
+        "range_high": 30428.17744479011,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "gemback"
+        ]
+      },
+      {
+        "date": "2026-05-17",
+        "actual": 23918.0,
+        "base": 29484.285714285714,
+        "predicted": 29808.96287724938,
+        "error": 5890.962877249382,
+        "abs_pct_error": 24.62983057634159,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 27373.242242328746,
+        "range_high": 32244.683512170017,
+        "in_range": false,
+        "families": [
+          "decoyBonanza",
+          "happyHour",
+          "mgapBogo",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-18",
+        "actual": 34086.0,
+        "base": 36451.42857142857,
+        "predicted": 36825.77285121071,
+        "error": 2739.7728512107133,
+        "abs_pct_error": 8.037824476942772,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 34399.47761311547,
+        "range_high": 39252.068089305954,
+        "in_range": false,
+        "families": [
+          "mgapBigger",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-19",
+        "actual": 22126.0,
+        "base": 27285.69230769231,
+        "predicted": 27772.940791773482,
+        "error": 5646.9407917734825,
+        "abs_pct_error": 25.52174270891025,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25352.412822424823,
+        "range_high": 30193.46876112214,
+        "in_range": false,
+        "families": [
+          "extremeStamp",
+          "goldenSpin",
+          "rolling",
+          "rollingMoreForLess",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-20",
+        "actual": 26950.0,
+        "base": 28358.85714285714,
+        "predicted": 28289.573844265124,
+        "error": 1339.5738442651236,
+        "abs_pct_error": 4.9705894035811635,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 25816.71177529961,
+        "range_high": 30762.435913230638,
+        "in_range": true,
+        "families": [
+          "counterPo",
+          "decoyBonanza",
+          "gemback",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-21",
+        "actual": 23468.0,
+        "base": 26066.444444444445,
+        "predicted": 27996.371291762018,
+        "error": 4528.371291762018,
+        "abs_pct_error": 19.295940394418007,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25529.7368090034,
+        "range_high": 30463.005774520636,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "gemback",
+          "mgapBigger",
+          "mgapBogo",
+          "mgapOther",
+          "priceCut",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-22",
+        "actual": 27466.0,
+        "base": 27358.615384615383,
+        "predicted": 28747.55085423581,
+        "error": 1281.5508542358111,
+        "abs_pct_error": 4.665953740026983,
+        "actual_direction": 0,
+        "predicted_direction": 1,
+        "range_low": 26255.646026649607,
+        "range_high": 31239.455681822015,
+        "in_range": true,
+        "families": [
+          "coinSale",
+          "customPod",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "prizeMania",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-05-23",
+        "actual": 25956.0,
+        "base": 27875.6,
+        "predicted": 28495.352314992448,
+        "error": 2539.3523149924476,
+        "abs_pct_error": 9.783296020158913,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 26009.79507361314,
+        "range_high": 30980.909556371756,
+        "in_range": false,
+        "families": [
+          "customPod",
+          "happyHour",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-05-24",
+        "actual": 27306.0,
+        "base": 29292.344827586207,
+        "predicted": 29455.28536163347,
+        "error": 2149.2853616334687,
+        "abs_pct_error": 7.871110238165491,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 27007.333637495536,
+        "range_high": 31903.2370857714,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "mgapBogo",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-05-26",
+        "actual": 23724.0,
+        "base": 27094.59259259259,
+        "predicted": 26991.22705545965,
+        "error": 3267.2270554596507,
+        "abs_pct_error": 13.771822017617815,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 24531.360388792986,
+        "range_high": 29451.093722126316,
+        "in_range": false,
+        "families": [
+          "buyAll"
+        ]
+      },
+      {
+        "date": "2026-05-27",
+        "actual": 24753.0,
+        "base": 28310.275862068964,
+        "predicted": 27887.305133086873,
+        "error": 3134.305133086873,
+        "abs_pct_error": 12.662324296395882,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 25400.104147865197,
+        "range_high": 30374.50611830855,
+        "in_range": false,
+        "families": [
+          "decoyBonanza",
+          "goldenSpin",
+          "happyHour",
+          "mgapWildSymbols",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-05-28",
+        "actual": 23210.0,
+        "base": 25973.64285714286,
+        "predicted": 26407.967875610022,
+        "error": 3197.967875610022,
+        "abs_pct_error": 13.778405323610606,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 23926.203048023817,
+        "range_high": 28889.732703196227,
+        "in_range": false,
+        "families": [
+          "extremeStamp",
+          "gemback",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-05-29",
+        "actual": 23478.0,
+        "base": 27362.59259259259,
+        "predicted": 26931.490433866442,
+        "error": 3453.490433866442,
+        "abs_pct_error": 14.709474545814984,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 24446.817330418166,
+        "range_high": 29416.16353731472,
+        "in_range": false,
+        "families": [
+          "decoyBonanza",
+          "mgapMatched"
+        ]
+      },
+      {
+        "date": "2026-05-30",
+        "actual": 24969.0,
+        "base": 27801.76923076923,
+        "predicted": 27861.095719183017,
+        "error": 2892.0957191830166,
+        "abs_pct_error": 11.582745481128667,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 25372.778576325873,
+        "range_high": 30349.41286204016,
+        "in_range": false,
+        "families": [
+          "goldenSpin",
+          "happyHour",
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-05-31",
+        "actual": 27656.0,
+        "base": 29226.133333333335,
+        "predicted": 30812.53331977678,
+        "error": 3156.5333197767795,
+        "abs_pct_error": 11.41355698501873,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 28324.83331977678,
+        "range_high": 33300.23331977678,
+        "in_range": false,
+        "families": [
+          "gemback",
+          "happyHour",
+          "mgapBogo",
+          "priceCut",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-06-01",
+        "actual": 34584.0,
+        "base": 36369.862068965514,
+        "predicted": 37730.018096538595,
+        "error": 3146.0180965385953,
+        "abs_pct_error": 9.096744438291102,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 35239.849525110025,
+        "range_high": 40220.186667967166,
+        "in_range": false,
+        "families": [
+          "priceCut",
+          "rolling",
+          "rollingMoreForLess",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-02",
+        "actual": 25120.0,
+        "base": 26974.214285714286,
+        "predicted": 28481.683645936922,
+        "error": 3361.6836459369224,
+        "abs_pct_error": 13.382498590513226,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25992.13221736549,
+        "range_high": 30971.235074508353,
+        "in_range": false,
+        "families": [
+          "mgapBogo",
+          "mgapOther",
+          "priceCut",
+          "prizeMania",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-03",
+        "actual": 27446.0,
+        "base": 28191.7,
+        "predicted": 26952.13933977588,
+        "error": -493.8606602241198,
+        "abs_pct_error": 1.79939029448415,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 24455.312888162975,
+        "range_high": 29448.965791388786,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "decoyBonanza",
+          "extremeStamp",
+          "goldenSpin",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-04",
+        "actual": 25645.0,
+        "base": 25878.344827586207,
+        "predicted": 26464.508977269423,
+        "error": 819.5089772694228,
+        "abs_pct_error": 3.195589694948032,
+        "actual_direction": 0,
+        "predicted_direction": 1,
+        "range_low": 23976.281613531937,
+        "range_high": 28952.73634100691,
+        "in_range": true,
+        "families": [
+          "goldenSpin",
+          "mgapBogo",
+          "mgapOther",
+          "priceCut",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-05",
+        "actual": 25853.0,
+        "base": 27223.85714285714,
+        "predicted": 28045.22171391714,
+        "error": 2192.2217139171407,
+        "abs_pct_error": 8.4795641276337,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25554.788380583806,
+        "range_high": 30535.655047250475,
+        "in_range": true,
+        "families": [
+          "coinSale",
+          "happyHour",
+          "mgapBogo",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-06-06",
+        "actual": 24108.0,
+        "base": 27696.85185185185,
+        "predicted": 28446.01876488227,
+        "error": 4338.018764882268,
+        "abs_pct_error": 17.994104715788403,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25960.943065957537,
+        "range_high": 30931.094463807,
+        "in_range": false,
+        "families": [
+          "gemback",
+          "mgapBigger",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-07",
+        "actual": 25873.0,
+        "base": 29175.483870967742,
+        "predicted": 29256.115724319494,
+        "error": 3383.115724319494,
+        "abs_pct_error": 13.07585407304717,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 26753.632713566803,
+        "range_high": 31758.598735072184,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "mgapOther",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-08",
+        "actual": 33434.0,
+        "base": 36310.333333333336,
+        "predicted": 36847.014229131484,
+        "error": 3413.014229131484,
+        "abs_pct_error": 10.208213881472405,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 34280.437810888994,
+        "range_high": 39413.590647373974,
+        "in_range": false,
+        "families": [
+          "mgapBigger",
+          "mgapBogo",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-09",
+        "actual": 26490.0,
+        "base": 26910.275862068964,
+        "predicted": 28058.11043938506,
+        "error": 1568.1104393850583,
+        "abs_pct_error": 5.919631707757865,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25470.6908541316,
+        "range_high": 30645.530024638516,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "gemback",
+          "mgapBogo",
+          "priceCut",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-06-10",
+        "actual": 25488.0,
+        "base": 28167.645161290322,
+        "predicted": 27748.17177561289,
+        "error": 2260.171775612889,
+        "abs_pct_error": 8.86759171222885,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 25163.81693690321,
+        "range_high": 30332.526614322567,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "happyHour",
+          "mgapBigger",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-11",
+        "actual": 24740.0,
+        "base": 25870.566666666666,
+        "predicted": 25164.481228149674,
+        "error": 424.4812281496743,
+        "abs_pct_error": 1.7157689092549486,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 22565.557121006816,
+        "range_high": 27763.405335292533,
+        "in_range": true,
+        "families": [
+          "extremeStamp",
+          "fortuneDip",
+          "goldenSpin",
+          "happyHour",
+          "mgapBigger",
+          "prizeMania",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-12",
+        "actual": 26562.0,
+        "base": 27176.58620689655,
+        "predicted": 27519.058114413026,
+        "error": 957.0581144130265,
+        "abs_pct_error": 3.6031101363339606,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 24920.88847155588,
+        "range_high": 30117.22775727017,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "coinSale",
+          "extremeStamp",
+          "fortuneDip",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "rolling",
+          "ryd",
+          "snl"
+        ]
+      },
+      {
+        "date": "2026-06-13",
+        "actual": 28128.0,
+        "base": 27568.678571428572,
+        "predicted": 28066.75699173346,
+        "error": -61.24300826654144,
+        "abs_pct_error": 0.21772969378036633,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 25469.341813162027,
+        "range_high": 30664.17217030489,
+        "in_range": true,
+        "families": [
+          "coinSale",
+          "customPod",
+          "decoyBonanza",
+          "extremeStamp",
+          "fortuneDip",
+          "gemback",
+          "happyHour",
+          "mgapOther",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-14",
+        "actual": 28045.0,
+        "base": 29072.28125,
+        "predicted": 28618.80300893575,
+        "error": 573.803008935749,
+        "abs_pct_error": 2.0460082329675484,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 26021.25800893575,
+        "range_high": 31216.348008935747,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "mgapMatched",
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-06-15",
+        "actual": 32930.0,
+        "base": 36217.54838709677,
+        "predicted": 36386.98937163619,
+        "error": 3456.989371636191,
+        "abs_pct_error": 10.497993840377138,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 33791.08312163619,
+        "range_high": 38982.89562163619,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "gemback"
+        ]
+      },
+      {
+        "date": "2026-06-16",
+        "actual": 24964.0,
+        "base": 26896.266666666666,
+        "predicted": 27025.686313363367,
+        "error": 2061.686313363367,
+        "abs_pct_error": 8.25863769172956,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 24423.225063363367,
+        "range_high": 29628.147563363367,
+        "in_range": true,
+        "families": [
+          "mgapWildSymbols",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-17",
+        "actual": 25434.0,
+        "base": 28083.90625,
+        "predicted": 28655.521884102316,
+        "error": 3221.521884102316,
+        "abs_pct_error": 12.666202265087348,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 26042.502573757487,
+        "range_high": 31268.541194447145,
+        "in_range": false,
+        "families": [
+          "gemback",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-06-18",
+        "actual": 25009.0,
+        "base": 25834.09677419355,
+        "predicted": 25448.197265999494,
+        "error": 439.19726599949354,
+        "abs_pct_error": 1.7561568475328624,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 22838.151059102944,
+        "range_high": 28058.243472896043,
+        "in_range": true,
+        "families": [
+          "counterPo",
+          "extremeStamp",
+          "fortuneDip",
+          "happyHour",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-19",
+        "actual": 23549.0,
+        "base": 27156.1,
+        "predicted": 27950.24986073931,
+        "error": 4401.24986073931,
+        "abs_pct_error": 18.689752689028452,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25350.77986073931,
+        "range_high": 30549.71986073931,
+        "in_range": false,
+        "families": [
+          "coinSale",
+          "fortuneDip",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "mgapOther",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-20",
+        "actual": 26590.0,
+        "base": 27587.96551724138,
+        "predicted": 27845.30716602636,
+        "error": 1255.3071660263595,
+        "abs_pct_error": 4.720974674788866,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25275.7011054203,
+        "range_high": 30414.91322663242,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "coinSale",
+          "decoyBonanza",
+          "extremeStamp",
+          "fortuneDip",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "mgapOther",
+          "priceCut",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-21",
+        "actual": 29325.0,
+        "base": 29041.151515151516,
+        "predicted": 29104.97421669912,
+        "error": -220.02578330088,
+        "abs_pct_error": 0.750301051324399,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 26536.051868214272,
+        "range_high": 31673.896565183968,
+        "in_range": true,
+        "families": [
+          "buyAll",
+          "happyHour",
+          "mgapBogo"
+        ]
+      },
+      {
+        "date": "2026-06-22",
+        "actual": 33321.0,
+        "base": 36114.8125,
+        "predicted": 35792.1746393678,
+        "error": 2471.1746393677968,
+        "abs_pct_error": 7.4162679372401685,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 33223.93600300416,
+        "range_high": 38360.41327573144,
+        "in_range": true,
+        "families": [
+          "decoyBonanza",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-23",
+        "actual": 23533.0,
+        "base": 26833.935483870966,
+        "predicted": 26634.63951811275,
+        "error": 3101.639518112748,
+        "abs_pct_error": 13.179958008382902,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 24044.758912052144,
+        "range_high": 29224.520124173352,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "extremeStamp",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-24",
+        "actual": 25677.0,
+        "base": 28003.60606060606,
+        "predicted": 28863.786550164536,
+        "error": 3186.7865501645356,
+        "abs_pct_error": 12.41105483570719,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 26267.202838043326,
+        "range_high": 31460.370262285745,
+        "in_range": false,
+        "families": [
+          "mgapOther",
+          "priceCut",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-25",
+        "actual": 22033.0,
+        "base": 25808.3125,
+        "predicted": 25705.90772978219,
+        "error": 3672.9077297821896,
+        "abs_pct_error": 16.67003009023823,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 23109.756214630677,
+        "range_high": 28302.059244933702,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "gemback",
+          "goldenSpin",
+          "mgapOther",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      },
+      {
+        "date": "2026-06-26",
+        "actual": 25348.0,
+        "base": 27039.74193548387,
+        "predicted": 26996.49147258992,
+        "error": 1648.4914725899216,
+        "abs_pct_error": 6.503438032941146,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 24368.06116955962,
+        "range_high": 29624.921775620223,
+        "in_range": true,
+        "families": [
+          "happyHour",
+          "mgapMatched",
+          "prizeMania"
+        ]
+      },
+      {
+        "date": "2026-06-27",
+        "actual": 27195.0,
+        "base": 27554.7,
+        "predicted": 28236.285409603577,
+        "error": 1041.2854096035771,
+        "abs_pct_error": 3.8289590351299028,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 25615.92480354297,
+        "range_high": 30856.646015664184,
+        "in_range": true,
+        "families": [
+          "customPod",
+          "gemback",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-28",
+        "actual": 31245.0,
+        "base": 29049.5,
+        "predicted": 30115.559370232786,
+        "error": -1129.440629767214,
+        "abs_pct_error": 3.614788381396108,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 27503.268461141877,
+        "range_high": 32727.850279323695,
+        "in_range": true,
+        "families": [
+          "customPod",
+          "mgapWildSymbols",
+          "priceCut",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-06-29",
+        "actual": 32673.0,
+        "base": 36030.15151515151,
+        "predicted": 36335.3162841536,
+        "error": 3662.316284153603,
+        "abs_pct_error": 11.208999125129628,
+        "actual_direction": -1,
+        "predicted_direction": 1,
+        "range_low": 33756.80856176846,
+        "range_high": 38913.82400653874,
+        "in_range": false,
+        "families": [
+          "buyAll",
+          "counterPo",
+          "happyHour",
+          "mgapOther",
+          "priceCut"
+        ]
+      },
+      {
+        "date": "2026-06-30",
+        "actual": 23592.0,
+        "base": 26730.78125,
+        "predicted": 26925.65564664895,
+        "error": 3333.655646648949,
+        "abs_pct_error": 14.130449502581168,
+        "actual_direction": -1,
+        "predicted_direction": 0,
+        "range_low": 24351.5588724554,
+        "range_high": 29499.7524208425,
+        "in_range": false,
+        "families": [
+          "extremeStamp",
+          "gemback",
+          "rolling",
+          "rollingMoreForLess",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-07-01",
+        "actual": 29146.0,
+        "base": 27935.176470588234,
+        "predicted": 28056.308603244266,
+        "error": -1089.6913967557339,
+        "abs_pct_error": 3.7387339489320452,
+        "actual_direction": 1,
+        "predicted_direction": 0,
+        "range_low": 25480.95591507222,
+        "range_high": 30631.661291416312,
+        "in_range": true,
+        "families": [
+          "extremeStamp",
+          "gemback",
+          "mgapBogo",
+          "rolling"
+        ]
+      },
+      {
+        "date": "2026-07-02",
+        "actual": 24115.0,
+        "base": 25693.909090909092,
+        "predicted": 25180.84834702731,
+        "error": 1065.8483470273095,
+        "abs_pct_error": 4.41985630117068,
+        "actual_direction": -1,
+        "predicted_direction": -1,
+        "range_low": 22605.80963734989,
+        "range_high": 27755.88705670473,
+        "in_range": true,
+        "families": [
+          "gemback",
+          "goldenSpin",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-07-03",
+        "actual": 30777.0,
+        "base": 26986.875,
+        "predicted": 27676.472054451013,
+        "error": -3100.527945548987,
+        "abs_pct_error": 10.074172094580327,
+        "actual_direction": 1,
+        "predicted_direction": 1,
+        "range_low": 25101.747323268217,
+        "range_high": 30251.19678563381,
+        "in_range": false,
+        "families": [
+          "coinSale",
+          "customPod",
+          "gemback",
+          "happyHour",
+          "mgapBigger",
+          "mgapOther",
+          "rolling",
+          "ryd"
+        ]
+      },
+      {
+        "date": "2026-07-05",
+        "actual": 29333.0,
+        "base": 29112.22857142857,
+        "predicted": 30412.182358107013,
+        "error": 1079.182358107013,
+        "abs_pct_error": 3.6790725739167933,
+        "actual_direction": 0,
+        "predicted_direction": 1,
+        "range_low": 27800.707491796853,
+        "range_high": 33023.65722441717,
+        "in_range": true,
+        "families": [
+          "customPod",
+          "mgapOther",
+          "priceCut",
+          "rolling",
+          "rollingMoreForLess"
+        ]
+      }
+    ]
+  }
+}

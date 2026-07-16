@@ -1,0 +1,44 @@
+# Boosted Gemback — Standard
+
+- **Variant ID:** `boosted-gemback--standard`
+- **Family:** `boosted-gemback`
+- **Default Main KPI:** `gem_usage`
+- **Instances:** 19 rows across 18 dates (2026-05-05 to 2026-07-31)
+- **Completed dates with daily outcomes:** 12
+
+## Measured daily context
+
+The values below are whole-day, same-weekday comparisons. They are correlations with all concurrent promotions, not attributed promo lift.
+
+| KPI | n dates | Mean observed | DOW-matched baseline | Nominal difference | Difference | Evidence | Confidence |
+|---|---:|---:|---:|---:|---:|---|---|
+| Revenue | 12 | $746,556 | $668,478 | $+78,078 | +11.7% | correlation | low |
+| Paying users | 12 | 28,441 | 26,847 | +1,594 | +5.9% | correlation | low |
+
+## KPI-specific historical evidence
+
+No reproducible variant-specific KPI result is available. This is registered as missing evidence; do not infer one.
+
+## Context and confounders
+
+- Concurrent promotion present on 19/19 instance rows.
+- Segments observed: unknown.
+- Pricing observed: none.
+- Holiday set used for the local DOW comparison: 2026-04-04, 2026-05-05, 2026-05-25, 2026-07-04.
+- The holiday-list conflict remains registered; changing it may change the comparison.
+
+## Reuse recommendation
+
+**Insufficient evidence for a confirmed recommendation.** Use only with the family rules and current monthly constraints; consult the prediction framework for eligibility.
+
+## Provenance
+
+- `mm_calendar/data/monday_pull_last_3mo.json`
+- `mm_calendar/data/real_months.json`
+- `mm_calendar/data/wide_revenue_pu.json`
+- Calculation date: 2026-07-10
+- Baseline method: mean daily outcome for the same weekday in Apr 1–Jul 5, excluding the four dates listed above.
+
+## Instance dates
+
+2026-05-05, 2026-05-10, 2026-05-16, 2026-05-20, 2026-05-23, 2026-06-12, 2026-06-13, 2026-06-17, 2026-06-20, 2026-06-27, 2026-07-03, 2026-07-04, 2026-07-09, 2026-07-18, 2026-07-19, 2026-07-24, 2026-07-25, 2026-07-31

@@ -1,0 +1,34 @@
+---
+description: Standard chart visualization style - Tableau-inspired with Calibri, cream background, bold text
+globs: "**/*.py"
+alwaysApply: true
+---
+
+# Chart Visualization Style
+
+Always use this style when generating matplotlib charts:
+
+## Font & Text
+- **Font family**: Calibri
+- **All text bold** (font.weight: bold, axes.titleweight: bold, axes.labelweight: bold)
+- Title: fontsize 20, color #2d2d2d
+- Subtitle: fontsize 12, color #888888
+- Axis labels: fontsize 12, color #444444
+- Tick labels: fontsize 10, color #444444
+
+## Colors
+- **Background**: Creamy `#faf6f1` (both figure and axes)
+- **Tableau palette**: `["#4e79a7", "#f28e2b", "#59a14f", "#e15759"]`
+- **Gridlines**: `#e0dbd5`, horizontal only, linewidth 0.8
+- **Spines**: Remove top and right; left and bottom set to `#cccccc`
+
+## Lines & Markers
+- Hollow circle markers (markerfacecolor = background color)
+- Default lines: linewidth 2.2, markersize 5, markeredgewidth 1.8, alpha 0.45
+- **Current/focus series**: linewidth 4.5, markersize 9, markeredgewidth 3.0, alpha 1.0, higher zorder
+- Cumulative totals annotated at end of line in matching color, bold
+
+## Layout
+- figsize (20, 8), legend frameless, no tick marks (length=0)
+- Save as PNG with dpi=180, facecolor=cream, edgecolor=none
+- Open chart externally with `Start-Process` (not inside Cursor)

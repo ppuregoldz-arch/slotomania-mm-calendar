@@ -1,0 +1,324 @@
+---
+alwaysApply: true
+---
+
+# Advanced Query Validator - SM Package
+
+## Overview
+This rule provides comprehensive validation methodology for SM data analysis, ensuring accuracy, reliability, and confidence in all analytical results through systematic multi-level validation processes.
+
+## Mandatory Validation Process
+
+### Step 1: Pre-Validation Assessment
+Before executing any query, assess:
+
+#### Query Complexity Evaluation
+- **Data Volume**: Estimate rows to be processed
+- **Join Complexity**: Number and type of table joins
+- **Calculation Complexity**: Aggregations, window functions, CTEs
+- **Business Logic**: Custom calculations and business rules
+
+#### Validation Requirements Determination
+Based on complexity assessment:
+- **🟢 SIMPLE**: 1-3 validation users, basic verification
+- **🟡 MODERATE**: 3-5 validation users, cross-table verification
+- **🔴 COMPLEX**: 5-10 validation users, comprehensive validation
+- **⚫ ADVANCED**: 10+ validation users, expert validation
+
+### Step 2: Main Query Execution
+- Execute the primary analysis query
+- Capture results but DO NOT present them yet
+- Document query execution time and resource usage
+- Note any warnings or performance issues
+
+### Step 3: Validation User Selection
+
+#### User Selection Criteria
+- **Relevant Activity**: Users with activity in the target period
+- **Diverse Segments**: Mix of high, medium, and low activity users
+- **Data Completeness**: Users with complete data for validation
+- **Representative Sample**: Users that represent the broader population
+
+#### User Selection Process
+```sql
+-- Find users with relevant activity for validation
+SELECT user_id, 
+       SUM(spins) as total_spins,
+       SUM(daily_Net_revenue) as total_revenue,
+       COUNT(DISTINCT calc_date) as active_days
+FROM agg.agg_sm_daily_users_stats
+WHERE calc_date >= [target_start_date] 
+  AND calc_date <= [target_end_date]
+GROUP BY user_id
+ORDER BY total_spins DESC
+LIMIT 10
+```
+
+### Step 4: Raw Data Extraction
+
+#### Comprehensive Raw Data Query
+```sql
+-- Extract comprehensive raw data for validation users
+SELECT 
+    user_id,
+    calc_date,
+    spins,
+    bet_coins,
+    win_coins,
+    daily_Net_revenue,
+    daily_gross_rev,
+    daily_payments,
+    is_paying_user,
+    balance_start_day,
+    balance_end_day,
+    daily_sessions_amount
+FROM agg.agg_sm_daily_users_stats
+WHERE user_id IN ([validation_user_ids])
+  AND calc_date >= [target_start_date]
+  AND calc_date <= [target_end_date]
+ORDER BY user_id, calc_date
+```
+
+#### Raw Data Analysis
+- **Data Completeness**: Check for missing data points
+- **Data Consistency**: Verify logical relationships
+- **Outlier Detection**: Identify unusual data points
+- **Business Logic Verification**: Validate against known business rules
+
+### Step 5: Single-User Validation Queries
+
+#### Individual User Validation
+```sql
+-- Run main query filtered for each validation user
+SELECT [same_columns_as_main_query]
+FROM [same_tables_as_main_query]
+WHERE user_id = [validation_user_id]
+  AND [same_conditions_as_main_query]
+```
+
+#### Validation Process
+- **User-by-User Analysis**: Run main query for each validation user
+- **Result Comparison**: Compare individual results with raw data
+- **Calculation Verification**: Manually verify key calculations
+- **Edge Case Testing**: Test boundary conditions and edge cases
+
+### Step 6: Source Data Cross-Validation
+
+#### Revenue Validation
+```sql
+-- Cross-validate revenue data with transaction tables
+SELECT 
+    user_id,
+    tran_date,
+    SUM(net_amount) as transaction_revenue,
+    COUNT(*) as transaction_count
+FROM dwh.sm_fact_payments
+WHERE user_id IN ([validation_user_ids])
+  AND tran_status_id = 2  -- CRITICAL: Only approved transactions
+  AND is_test = 0
+  AND artificial_ind = 0
+  AND tran_date >= [target_start_date]
+  AND tran_date <= [target_end_date]
+GROUP BY user_id, tran_date
+ORDER BY user_id, tran_date
+```
+
+#### Aggregated Table Cross-Validation
+```sql
+-- Cross-validate with aggregated daily stats
+SELECT 
+    user_id,
+    calc_date,
+    SUM(daily_Net_revenue) as daily_revenue,
+    SUM(daily_payments) as payment_count
+FROM agg.agg_sm_daily_users_stats
+WHERE user_id IN ([validation_user_ids])
+  AND calc_date >= [target_start_date]
+  AND calc_date <= [target_end_date]
+GROUP BY user_id, calc_date
+ORDER BY user_id, calc_date
+```
+
+## SM-Specific Validation Guidelines
+
+### Coin Hyperinflation Validation - CRITICAL ⚠️
+**SM coin amounts are in extreme hyperinflation. Values in trillions, sextillions, septillions, and even undecillions are NORMAL and EXPECTED.**
+
+**Validation Guidelines:**
+- ✅ **DO validate**: Negative balances, zero balances with activity, logical relationships
+- ❌ **DO NOT validate**: High coin amounts as errors (trillions+ are normal)
+- ❌ **DO NOT flag**: Amounts in trillions/sextillions/septillions/octillions/undecillions as outliers
+- ❌ **DO NOT suggest**: Data cleaning for large coin amounts
+
+**Normal Ranges to Expect:**
+- Balance End Day: Median ~73-99 trillion, P95 ~8-10 septillion, Max ~460 undecillion
+- Bet Coins: Median ~100-173 trillion, P95 ~8.7-11.5 septillion, Max ~142 undecillion
+- Win Coins: Median ~72-125 trillion, P95 ~5.8-8.3 septillion, Max ~105 undecillion
+- Payment Quantity: Median ~7.6 sextillion, P95 ~30 septillion, Max ~19 octillion
+
+**Valid Validation Checks:**
+```sql
+-- ✅ VALID: Check for negative balances
+SELECT COUNT(*) FROM agg.agg_sm_daily_users_stats 
+WHERE balance_end_day < 0
+
+-- ✅ VALID: Check for zero balance with activity
+SELECT COUNT(*) FROM agg.agg_sm_daily_users_stats 
+WHERE balance_end_day = 0 AND spins > 0
+
+-- ❌ INVALID: DO NOT flag high coin amounts
+-- DO NOT use: WHERE balance_end_day > 1000000000 (1 billion is LOW for SM)
+```
+
+**Reference**: See `data_sources/sm_coin_hyperinflation_context.md` for complete validation guidelines.
+
+### Revenue Data Validation - CRITICAL
+- **PRIMARY SOURCE**: Always validate against `agg.agg_sm_daily_users_stats.daily_Net_revenue`
+- **SECONDARY SOURCE**: Cross-check with `dwh.sm_fact_payments` using `tran_status_id = 2` filter
+- **MANDATORY FILTERS**: Always apply `tran_status_id = 2`, `is_test = 0`, `artificial_ind = 0`
+- **CURRENCY SEPARATION**: Verify real money revenue vs virtual currency redemption are separate
+- **INFLATION CHECK**: Verify fact table results are not inflated (should match aggregated table)
+
+### Two-Step Aggregation Validation
+- **MANDATORY CHECK**: Verify all KPI calculations use two-step aggregation
+- **Step 1 Validation**: Check daily metrics are calculated with `GROUP BY calc_date`
+- **Step 2 Validation**: Check monthly averages use `AVG(daily_metric)`
+- **Error Detection**: Flag any single-step aggregation that could undercount users
+
+### User Engagement Validation
+- **DAU validation**: Verify user counts are in hundreds of thousands, not tens of thousands
+- **Spin count validation**: Cross-check spin activity with balance changes
+- **Session validation**: Verify session counts align with activity patterns
+- **Balance validation**: Check balance calculations are logical
+
+### Virtual Currency Validation
+- **Real Money**: Validate against `dwh.sm_fact_payments` (with status filter)
+- **Virtual Currency**: Validate against `dwh.sm_fact_virtual_payment_slotobucks`
+- **Separation Check**: Verify real money and virtual currency are never mixed
+- **Product Mapping**: Validate product group assignments
+
+### Data Quality Checks
+
+#### Completeness Validation
+```sql
+-- Check for missing daily records
+SELECT 
+    calc_date,
+    COUNT(DISTINCT user_id) as users_with_data,
+    SUM(daily_Net_revenue) as total_revenue
+FROM agg.agg_sm_daily_users_stats
+WHERE calc_date >= CURRENT_DATE - 7
+GROUP BY calc_date
+ORDER BY calc_date
+```
+
+#### Consistency Validation
+```sql
+-- Check for logical inconsistencies (NOTE: High coin amounts are NORMAL in SM)
+SELECT 
+    user_id,
+    calc_date,
+    spins,
+    bet_coins,
+    win_coins,
+    CASE 
+        WHEN spins > 0 AND bet_coins = 0 THEN 'Inconsistent'
+        WHEN bet_coins < win_coins AND daily_Net_revenue = 0 THEN 'Inconsistent'
+        ELSE 'Consistent'
+    END as consistency_check
+FROM agg.agg_sm_daily_users_stats
+WHERE calc_date >= CURRENT_DATE - 7
+  AND (
+      (spins > 0 AND bet_coins = 0) OR
+      (bet_coins < win_coins AND daily_Net_revenue = 0)
+  )
+-- NOTE: Do NOT filter by coin amount magnitude - trillions+ are normal in SM
+```
+
+#### Outlier Detection
+```sql
+-- Detect statistical outliers (NOTE: High coin amounts are NORMAL in SM - do NOT flag as outliers)
+WITH user_stats AS (
+    SELECT 
+        user_id,
+        AVG(spins) as avg_spins,
+        STDDEV(spins) as spins_stddev,
+        AVG(daily_Net_revenue) as avg_revenue,
+        STDDEV(daily_Net_revenue) as revenue_stddev
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= CURRENT_DATE - 30
+    GROUP BY user_id
+)
+SELECT 
+    user_id,
+    avg_spins,
+    spins_stddev,
+    avg_revenue,
+    revenue_stddev,
+    CASE 
+        WHEN ABS(avg_spins) > 2 * spins_stddev THEN 'Spin Outlier'
+        WHEN ABS(avg_revenue) > 2 * revenue_stddev THEN 'Revenue Outlier'
+        ELSE 'Normal'
+    END as outlier_type
+FROM user_stats
+WHERE ABS(avg_spins) > 2 * spins_stddev
+   OR ABS(avg_revenue) > 2 * revenue_stddev
+-- NOTE: Do NOT use this for coin amounts (bet_coins, win_coins, balance_end_day)
+-- Coin amounts in trillions/sextillions/septillions are NORMAL in SM
+-- Only flag coin amounts for negative values or logical inconsistencies
+```
+
+## Validation Documentation Format
+
+### Standard Validation Report
+```
+## VALIDATION RESULTS
+
+**Complexity Assessment:** [Query Level] + [Request Level]
+**Validation Users:** [List of user IDs with activity levels]
+**Raw Data Check:** [Summary of raw data extraction and analysis]
+**Source Data Cross-check:** [Transaction/activity validation results]
+**Validation Status:** ✅ Validated / ❌ Issues Found
+**Data Quality Assessment:** [Confidence level and any concerns]
+**Prompt Quality:** [Assessment of request clarity and improvement suggestions]
+
+**Validation Details:**
+- User Selection: [How users were selected and why]
+- Raw Data Analysis: [Key findings from raw data review]
+- Cross-Validation Results: [Results from source data checks]
+- Business Logic Verification: [Verification of business rules]
+- Edge Case Testing: [Results from boundary condition tests]
+- Two-Step Aggregation Check: [Verification of aggregation methodology]
+
+**Confidence Level:** [High/Medium/Low] with justification
+**Recommendations:** [Suggestions for improvement or follow-up]
+```
+
+### Quality Metrics Tracking
+- **Validation Coverage**: Percentage of analyses with proper validation
+- **Accuracy Rate**: Percentage of validated results confirmed by cross-checks
+- **Data Quality Score**: Overall assessment of data quality
+- **Validation Time**: Time spent on validation vs. analysis
+
+## Error Handling and Recovery
+
+### Common Validation Issues
+1. **Missing Data**: Handle gracefully with clear documentation
+2. **Inconsistent Results**: Investigate and resolve discrepancies
+3. **Performance Issues**: Optimize queries or reduce scope
+4. **Business Logic Errors**: Correct and re-validate
+5. **Aggregation Errors**: Fix two-step aggregation methodology
+6. **Status Filter Missing**: Add mandatory `tran_status_id = 2` filter
+
+### Recovery Procedures
+1. **Data Quality Issues**: Document and flag for data team
+2. **Calculation Errors**: Correct and re-run validation
+3. **Performance Problems**: Optimize or reduce complexity
+4. **Business Rule Violations**: Update rules and re-validate
+5. **Aggregation Methodology**: Fix to use two-step process
+
+This advanced query validator ensures comprehensive, reliable validation of all SM data analysis with systematic quality assurance and error handling.
+description:
+globs:
+alwaysApply: false
+---

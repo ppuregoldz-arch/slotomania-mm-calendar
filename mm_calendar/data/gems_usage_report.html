@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Gems Usage — Shiny Show</title><style>
+  :root{--bg:#0b0f17;--card:#141b2b;--card2:#1b2436;--stroke:#26314a;--txt:#e7ecf5;--mut:#8b96ad;--g:#22c55e;--r:#ef4444;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:linear-gradient(180deg,#0b0f17,#0d1320);color:var(--txt);font-family:-apple-system,"Segoe UI",Rubik,Arial,sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 20px 60px;}
+  h1{font-size:24px;margin:0 0 4px;}
+  .sub{color:var(--mut);font-size:12.5px;margin-bottom:22px;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+  .kpi{background:var(--card);border:1px solid var(--stroke);border-radius:14px;padding:14px 16px;}
+  .kpi .v{font-size:20px;font-weight:700;}
+  .kpi .l{color:var(--mut);font-size:11.5px;margin-top:2px;}
+  .card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:20px 22px;margin-bottom:22px;}
+  .card h2{font-size:16px;margin:0 0 4px;}
+  .card .note{color:var(--mut);font-size:12px;margin-bottom:16px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{text-align:right;color:var(--mut);font-weight:600;font-size:11px;padding:6px 8px;border-bottom:1px solid var(--stroke);}
+  td{padding:8px;border-bottom:1px solid #1e2740;}
+  td.num{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .nm{font-weight:600;white-space:nowrap;}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-left:7px;vertical-align:middle;}
+  .track{width:42%;}
+  .bar{position:relative;height:15px;background:#0e1524;border-radius:8px;overflow:hidden;}
+  .bar .fill{position:absolute;right:0;top:0;height:100%;border-radius:8px;}
+  .barc{position:relative;height:15px;background:#0e1524;border-radius:8px;}
+  .barc .fill{position:absolute;height:100%;}
+  .barc .fill.pos{right:50%;border-radius:8px 0 0 8px;}
+  .barc .fill.neg{left:50%;border-radius:0 8px 8px 0;}
+  .g{color:var(--g);}.r{color:var(--r);}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;font-size:11px;color:var(--mut);}
+  .legend span{display:inline-flex;align-items:center;gap:5px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .ins{background:var(--card2);border:1px solid var(--stroke);border-radius:12px;padding:14px 16px;}
+  .ins h3{margin:0 0 6px;font-size:14px;}
+  .ins p{margin:0;color:#c3ccdd;font-size:13px;line-height:1.5;}
+  .warn{background:#2a1e12;border:1px solid #5a3d1a;color:#f0c890;border-radius:12px;padding:11px 15px;font-size:12px;line-height:1.5;margin-top:6px;}
+</style></head><body><div class="wrap"><h1>Gems Usage — צריכת ג'מס (Shiny Show)</h1>
+    <div class="sub">lift ב-Shiny Show Gems Usage מול baseline (~48.7M/יום) · אפריל-יוני 2026 · מקור: Shiny Experience.csv</div>
+    <div class="kpis">
+      <div class="kpi"><div class="v" style="color:#22c55e">+89%</div><div class="l">Joker - Different Prizes (#1)</div></div>
+      <div class="kpi"><div class="v" style="color:#22c55e">+57%</div><div class="l">All Cards - Joker</div></div>
+      <div class="kpi"><div class="v">48.7M</div><div class="l">Baseline ג'מס/יום</div></div>
+      <div class="kpi"><div class="v" style="color:#ef4444">−2%</div><div class="l">Crazy with Aces (מאכזב)</div></div>
+    </div>
+    <div class="card"><h2>דירוג וריאציות Shiny Show לפי צריכת ג'מס</h2>
+    <div class="note">lift מול baseline. ⭐ מנצח · ⚠️ מתחת ל-baseline · ⛔ Clan Pack Guaranteed הוסר (לרפרנס בלבד).</div>
+    <table><thead><tr><th>וריאציה</th><th class="num">ימים</th><th class="num">gem usage</th><th class="num">lift</th><th class="track">חוזק</th></tr></thead>
+    <tbody><tr>
+          <td class="nm">Joker - Different Prizes ⭐</td>
+          <td class="num">4</td>
+          <td class="num">92.3M</td>
+          <td class="num g">+89%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:48.0%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">Wild Guaranteed</td>
+          <td class="num">1</td>
+          <td class="num">83.6M</td>
+          <td class="num g">+71%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:38.3%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">All Cards - Joker</td>
+          <td class="num">5</td>
+          <td class="num">76.6M</td>
+          <td class="num g">+57%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:30.7%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">All Cards</td>
+          <td class="num">5</td>
+          <td class="num">75.1M</td>
+          <td class="num g">+54%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:29.1%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">Find the Flower / Betty</td>
+          <td class="num">1</td>
+          <td class="num">69.3M</td>
+          <td class="num g">+42%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:22.7%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">Growing Shiny Show</td>
+          <td class="num">2</td>
+          <td class="num">68.3M</td>
+          <td class="num g">+40%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:21.6%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">JP Symbol</td>
+          <td class="num">2</td>
+          <td class="num">67.9M</td>
+          <td class="num g">+39%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:21.0%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">Clan Pack Guaranteed ⛔</td>
+          <td class="num">3</td>
+          <td class="num">67.4M</td>
+          <td class="num g">+38%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:20.5%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">Different Prizes</td>
+          <td class="num">7</td>
+          <td class="num">67.1M</td>
+          <td class="num g">+38%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:20.5%;background:#22c55e"></div></div></td>
+        </tr><tr>
+          <td class="nm">SnL dice</td>
+          <td class="num">1</td>
+          <td class="num">62.7M</td>
+          <td class="num g">+29%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:15.6%;background:#eab308"></div></div></td>
+        </tr><tr>
+          <td class="nm">For Every 2 Dashes</td>
+          <td class="num">2</td>
+          <td class="num">57.0M</td>
+          <td class="num g">+17%</td>
+          <td class="track"><div class="barc"><div class="fill pos" style="width:9.2%;background:#eab308"></div></div></td>
+        </tr><tr>
+          <td class="nm">Crazy with Aces ⚠️</td>
+          <td class="num">5</td>
+          <td class="num">47.9M</td>
+          <td class="num r">-2%</td>
+          <td class="track"><div class="barc"><div class="fill neg" style="width:1.1%;background:#ef4444"></div></div></td>
+        </tr><tr>
+          <td class="nm">Finish Sticker ⚠️</td>
+          <td class="num">1</td>
+          <td class="num">44.6M</td>
+          <td class="num r">-8%</td>
+          <td class="track"><div class="barc"><div class="fill neg" style="width:4.3%;background:#ef4444"></div></div></td>
+        </tr></tbody></table></div>
+    <div class="grid2">
+      <div class="ins"><h3 style="color:#22c55e">מנצחים (n≥4)</h3><p><b>Joker - Different Prizes</b> (+89%), <b>All Cards - Joker</b> (+57%), <b>All Cards</b> (+54%), <b>Different Prizes</b> (+38%, n=7 יציב). וריאציות Joker/All Cards מובילות.</p></div>
+      <div class="ins"><h3 style="color:#ef4444">מאכזבים</h3><p><b>Crazy with Aces</b> (−2%, n=5) ו-<b>Finish Sticker</b> (−8%) מתחת ל-baseline — למעט בהם למרות שהם חוזרים הרבה.</p></div>
+    </div>
+    <div class="warn">⚠️ מדגם קטן לחלק מהוריאציות (n=1) · אותות חזקים n≥3 · צריכת ג'מס מושפעת גם מאירועים/סופ"ש/שלב אלבום.</div></div></body></html>

@@ -1,0 +1,64 @@
+---
+description: Slotomania glossary – core business & analytics terms
+alwaysApply: true
+---
+
+# Slotomania Glossary
+
+- **ARPU** – Average revenue per user  
+- **ARPPU** – Average revenue per paying users  
+- **Balance** – The amount of coins or other currency a user currently holds  
+- **Big Win** – When a user wins ×5 or ×10 of their total bet  
+- **BO (Back Office)** – Internal system used mainly by Marketing & CRM to configure coupons, promotions, payment pages, etc.  
+- **Bonus** – A gift that the user can get from the game itself or from friends (e.g., coins)  
+- **Churn Rate** – Percentage of DAU who stop returning to the app  
+- **Client Type** – A compound identifier for app+platform+device+SN+market (e.g., “Apple iPhone3”, “Slotomania Yahoo Games‑Web”)  
+- **Coupon** – A mechanism to grant a user a bonus from the game  
+- **CRM** – Customer Relationship Management  
+- **DAU** – Daily Active Users  
+- **FS** – Free Spins  
+- **FTD** – First‑Time Depositors  
+- **STD** – Second‑Time Depositors  
+- **GCP** – Gift Collection Pop‑up  
+- **inApp** – In‑application message pop‑up shown to users for promos, features, issues, etc.  
+- **Kafka** – Distributed messaging system; used at Playtika for inter‑service comms and streaming history to DWH  
+- **KPI** – Key Performance Indicator  
+- **Lucy Bonus** – Daily bonus in Slotomania given by Lucy via the GCP  
+- **MAU** – Monthly Active Users  
+- **Mega Win** – When a user wins ×20 of their total bet  
+- **MGAP (Mini Game After Purchase)** – Optional mini‑game offer after a user purchase, awarding extra coins percentage  
+- **Piggi Bank** – Slotomania feature that saves a portion of each spin’s coins into a bank the user can later buy  
+- **Platform** – The framework/OS on which the app is played  
+- **PO (Personal Offer)** – Personalized offer based on user level and payment history  
+- **PO (👥 Product Owner)** – Role: product stakeholder/manager  
+- **PP (Payment Page)** – Where users buy coins  
+- **PU** – Paying Users  
+- **Second‑Day Retention** – Users who return one day after install  
+- **SKU** – Stock Keeping Unit / catalog ID for in‑app items  
+- **SM** – Slotomania  
+- **SNID** – Social‑Network ID linked to a user (e.g., Facebook ID)  
+- **SP (Status Points)** – Points earned by purchasing in‑game products  
+- **Sweepstake** – Marketing contest rewarding users (e.g., “Play bonus game today, win 1000 coins”)  
+- **Tableau** – Reporting/BI tool used by analytics team  
+- **Spinner Clash** – Slotomania tournament encouraging longer play; house adds % of wins to prize pot  
+- **TRS (Total Rewards Social)** – Unified Playtika loyalty system  
+- **Turbo Bonus** – Super‑bonus every 2 hours instead of 4  
+- **Vertica** – Column‑store database for big‑data analytics  
+- **White Wedge** – Highest segment in the Mega Bonus  
+- **Wiki** – <https://wiki.playtika.com/pages/viewpage.action?spaceKey=SLOT&title=Slotomania+Home> (internal knowledge base)  
+- **XP (Experience Points)** – Earned by spinning; unlocks higher levels/machines  
+- **FTUE** – First‑Time User Experience  
+- **LTV** – Lifetime Value (total payments received from a user)  
+- **VFM / V4M (Value for Money)** – Exchange rate from USD to coins; depends on user tier & level  
+- **S&L** – Sneaks and Ladders feature  
+- **GM** – Game Mania event  
+- **CTA** – Call to Action  
+- **SQ** – Sloto Quest  
+- **GUID** – Unique Spin ID  
+- **GS** – Golden Spin  
+- **CZ** – Comfort Zone  
+- **CTR** – Click‑Through Ratio  
+- **HO** – Hidden Objects feature  
+- **MFE** – Machine Feature Engine  
+- **Tier** – Player tier in game (ID → label):  
+  1 Bronze  2 Silver  3 Gold  4 Platinum  5 Diamond  6 Royal Diamond  7 Black Diamond  

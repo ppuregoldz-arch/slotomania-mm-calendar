@@ -1,0 +1,49 @@
+---
+name: BA Vertica Workflow (Slotomania)
+description: >
+  When the user (Slotomania BA) asks to run a query or answer an analytical question:
+  use the Vertica MCP server, validate queries and logic, save work in the right folders,
+  and search repository and past projects for context first.
+alwaysApply: true
+---
+
+# Vertica Connection & Execution
+- **Use the Vertica MCP server** `user-mcp-alchemy-sm` to run SQL against `playtika_dwh`.
+- **Execute queries** via the MCP tool `execute_query` (with `params` for parameterized values; never concatenate user input into SQL).
+- **Session**: The MCP server keeps the connection; no need to re-authenticate per query from Cursor.
+
+# Rule 1 — Only Send Queries That Run
+- **Validate before delivery**: Run the query via MCP first. If it errors, fix it (syntax, schema, permissions) and re-run until it succeeds.
+- **Deliver only working queries**: Do not give the user a query that has not been successfully executed (unless they explicitly ask for a draft or explanation only).
+- If the query fails, report the error and what was fixed (or what still needs to be fixed).
+
+# Rule 2 — Validate Logic Against the Question
+- **Align with the ask**: Before and after running, check that the query logic actually answers the user’s question (filters, dimensions, metrics, time range, segments).
+- **Spot-check**: Where the existing SQL/validation rules require it, validate aggregations (e.g. 1–3 entities, manual math vs query result) and document in comments.
+- If the question is ambiguous, clarify or state assumptions in the answer.
+
+# Rule 3 — Save Each Project in Its Own Relevant Folder
+- **Follow the project structure**: Use the folders from the documentation rule:
+  - SQL queries → `/sql` (and/or `/queries` if the project uses it)
+  - Raw data / sources → `/data_sources`
+  - Notebooks / exploration → `/exploration`
+  - Reports, charts, deliverables → `/outputs`
+  - Docs, README, roadmap → `/documentation`
+- **One project per folder** (or subfolder) when the user refers to a distinct project or analysis; do not mix unrelated analyses in the same file.
+- **Naming**: Use clear, descriptive names; timestamps (YYYY-MM-DD) when helpful for traceability.
+
+# Rule 4 — Search Context Before Answering
+- **First**: Search the **repository** (this workspace) for relevant context: schemas, existing queries, docs in `/Context`, `/documentation`, `.cursor/rules`, and table/schema definitions.
+- **If needed**: Search **past projects / prior work** (e.g. agent transcripts, other project folders or references the user has) for accurate definitions, metrics, or logic.
+- **Use what you find**: Prefer existing table names, column names, and filters (e.g. payments safety filters, promo-date logic) from the codebase and context docs.
+- If there is not enough information, say so and state assumptions or ask for one key detail (e.g. table name, date range).
+
+# MCP troubleshooting (`mcp-alchemy-sm` / `user-mcp-alchemy-sm`)
+- If **`execute_query` is missing** or the server shows **errored** in Cursor: in `~/.cursor/mcp.json`, **`--no-cache` must be a `uvx` flag**, not an argument after `mcp-alchemy`. Correct pattern: `"args": ["--no-cache", "--from", "mcp-alchemy==...", "--with", "sqlalchemy-vertica-python", "mcp-alchemy"]`. Then **restart MCP** (or restart Cursor).
+- **DB_URL** must be in the server `env` block; the server connects to Vertica at startup. **VPN / network** to the Vertica host must be up.
+
+# Summary
+1. Run queries via Vertica MCP; only deliver queries that have run successfully.
+2. Ensure query logic matches the desired question; validate where required.
+3. Save work in the correct folder for the project (sql, data_sources, exploration, outputs, documentation).
+4. Search repository first, then past projects, for context before answering.

@@ -1,0 +1,8 @@
+# This folder contains request-activated specialized agents
+# 
+# Current agents:
+# - rv-shiny-shoe-gatekeeping.mdc
+# - analytics-wiki-creator.mdc  
+# - data-validation-agent.mdc
+#
+# Add future specialized agents here with proper activation triggers

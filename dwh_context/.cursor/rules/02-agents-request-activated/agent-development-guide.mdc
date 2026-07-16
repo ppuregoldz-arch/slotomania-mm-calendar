@@ -1,0 +1,197 @@
+---
+description: Guide for creating new request-activated agents with standardized structure and documentation
+alwaysApply: false
+---
+
+# Agent Development Guide
+
+**Purpose**: Standardize the creation of new specialized request-activated agents with consistent structure, clear activation triggers, and automatic documentation updates.
+
+## 🏗️ Agent Template Structure
+
+### Required Frontmatter
+```yaml
+---
+description: [Agent Name] - [Brief description and activation trigger]
+alwaysApply: false
+---
+```
+
+### Required Sections
+1. **Agent Header**: Name, purpose, and activation conditions
+2. **Trigger Phrases**: Clear examples of when the agent activates
+3. **Workflow/Process**: Step-by-step execution guide
+4. **Technical Requirements**: Tools, tables, or resources needed
+5. **Guidelines/Standards**: Quality standards and validation rules
+6. **Integration Notes**: How it works with other agents/systems
+
+### Template Example
+```markdown
+---
+description: [Feature Name] Specialist - Use when analyzing [specific feature/area]
+alwaysApply: false
+---
+
+# [Feature Name] Specialist Agent
+
+**Agent Name**: [Feature Name] Specialist
+**Purpose**: [Clear description of what this agent does]
+
+**Activation**: Use when [specific conditions/requests]
+
+## 🎯 Trigger Phrases (When to Use This Agent)
+
+This agent activates when user says:
+- "[Specific phrase 1]"
+- "[Specific phrase 2]"
+- "[Specific phrase 3]"
+
+## 📋 Workflow
+
+### Step 1: [Action]
+- [Detailed instructions]
+- [Expected outcomes]
+
+### Step 2: [Action]  
+- [Detailed instructions]
+- [Expected outcomes]
+
+## 🛠️ Technical Requirements
+
+### Required Resources
+- Tables: [list key tables]
+- Tools: [MCP servers, etc.]
+- Dependencies: [other agents, etc.]
+
+### Key Fields & Logic
+- [Important fields and calculations]
+- [Business rules to follow]
+
+## ⚠️ Guidelines & Standards
+
+### Quality Requirements
+- [Validation steps]
+- [Success criteria]
+- [Error handling]
+
+### Integration Points
+- [How it works with other agents]
+- [When to escalate or delegate]
+
+Always [key behavioral requirement for this agent type].
+```
+
+## 🔄 Development Process
+
+### 1. Agent Creation Workflow
+1. **Identify Need**: Clear use case and activation triggers
+2. **Draft Agent**: Use template structure above
+3. **Get Approval**: Present draft to user before creating
+4. **Create File**: Save in `02-agents-request-activated/` folder
+5. **Update Documentation**: Auto-update README.md with new agent
+6. **Test Activation**: Verify trigger phrases work correctly
+
+### 2. README Auto-Update Process
+
+**MANDATORY**: Every time a new agent is created, automatically update the README.md file with:
+
+```markdown
+#### **[Agent Name]** - [`filename.mdc`]
+- **Description**: [Brief description of agent purpose]
+- **Activation**: [When it activates]
+- **Status**: REQUEST-ACTIVATED
+```
+
+### 3. Agent Maintenance Rules
+
+#### When to Update Existing Agents
+- New features or requirements discovered
+- Better activation patterns identified
+- Integration improvements needed
+- Performance optimizations available
+
+#### Update Process
+1. **Identify Update Need**: Document what needs to change and why
+2. **Request Permission**: Always ask user before modifying existing agents
+3. **Propose Changes**: Show before/after comparison
+4. **Get Approval**: Wait for explicit approval
+5. **Implement Changes**: Update agent file
+6. **Update Documentation**: Reflect changes in README if needed
+
+## 📝 Documentation Standards
+
+### Agent File Organization
+- **Clear Headers**: Use markdown headers consistently
+- **Code Examples**: Include SQL/code snippets where relevant
+- **Cross-References**: Link to related agents or resources
+- **Version Info**: Include creation/update dates in comments
+
+### Activation Trigger Clarity
+- **Specific Phrases**: List exact phrases that trigger the agent
+- **Context Clues**: Describe situational activation conditions
+- **Negative Cases**: When NOT to use this agent
+- **Priority Rules**: If multiple agents could apply
+
+## 🎯 Quality Standards
+
+### Before Creating New Agent
+- [ ] Clear, unique use case identified
+- [ ] Activation triggers are unambiguous  
+- [ ] No overlap with existing agents
+- [ ] Template structure followed
+- [ ] User approval obtained
+
+### After Creating New Agent
+- [ ] Agent file saved correctly
+- [ ] README.md updated automatically
+- [ ] Activation triggers tested
+- [ ] Integration with existing workflows verified
+
+## 🚫 What NOT to Create Agents For
+
+- **Simple Tasks**: One-step actions that don't need specialization
+- **Overlapping Functions**: Capabilities covered by existing agents
+- **Temporary Needs**: One-time or project-specific requirements
+- **General Analytics**: Tasks covered by the main Slotomania Analytics Specialist
+
+## 🤖 Agent Update Protocol
+
+### Permission Required Updates
+**ALWAYS ask user permission before updating any agent for:**
+- New features or capabilities learned
+- Better activation patterns discovered
+- Improved workflows or processes
+- Integration with new tools or tables
+
+### Proposed Update Format
+```
+I've identified a potential improvement to the [Agent Name]:
+
+**Current Behavior**: [What it does now]
+**Proposed Change**: [What the update would do]
+**Reason**: [Why this would be better]
+**Impact**: [What would change for the user]
+
+**Before Code**: [Show current relevant section]
+**After Code**: [Show proposed changes]
+
+May I implement this update?
+```
+
+## 📊 Agent Performance Tracking
+
+### Success Metrics
+- **Activation Accuracy**: Agent triggers when expected
+- **Task Completion**: Successfully completes intended workflows
+- **User Satisfaction**: Meets user needs effectively
+- **Integration Health**: Works well with other agents
+
+### Review Process
+- **Monthly Review**: Assess agent performance and usage
+- **Update Opportunities**: Identify improvement possibilities
+- **User Feedback**: Incorporate user suggestions
+- **Documentation Sync**: Keep all docs current
+
+---
+
+**Remember**: This guide ensures all agents maintain consistent quality, clear activation patterns, and proper documentation. Always prioritize user approval over autonomous improvements.

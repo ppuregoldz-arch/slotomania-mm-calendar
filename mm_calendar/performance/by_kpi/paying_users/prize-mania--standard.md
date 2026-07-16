@@ -1,0 +1,44 @@
+# Prize Mania — Standard
+
+- **Variant ID:** `prize-mania--standard`
+- **Family:** `prize-mania`
+- **Default Main KPI:** `paying_users`
+- **Instances:** 10 rows across 10 dates (2026-05-03 to 2026-07-26)
+- **Completed dates with daily outcomes:** 7
+
+## Measured daily context
+
+The values below are whole-day, same-weekday comparisons. They are correlations with all concurrent promotions, not attributed promo lift.
+
+| KPI | n dates | Mean observed | DOW-matched baseline | Nominal difference | Difference | Evidence | Confidence |
+|---|---:|---:|---:|---:|---:|---|---|
+| Revenue | 7 | $717,422 | $663,160 | $+54,262 | +8.2% | correlation | low |
+| Paying users | 7 | 27,983 | 27,012 | +971 | +3.6% | correlation | low |
+
+## KPI-specific historical evidence
+
+No reproducible variant-specific KPI result is available. This is registered as missing evidence; do not infer one.
+
+## Context and confounders
+
+- Concurrent promotion present on 10/10 instance rows.
+- Segments observed: unknown.
+- Pricing observed: high, medium, none.
+- Holiday set used for the local DOW comparison: 2026-04-04, 2026-05-05, 2026-05-25, 2026-07-04.
+- The holiday-list conflict remains registered; changing it may change the comparison.
+
+## Reuse recommendation
+
+**Insufficient evidence for a confirmed recommendation.** Use only with the family rules and current monthly constraints; consult the prediction framework for eligibility.
+
+## Provenance
+
+- `mm_calendar/data/monday_pull_last_3mo.json`
+- `mm_calendar/data/real_months.json`
+- `mm_calendar/data/wide_revenue_pu.json`
+- Calculation date: 2026-07-10
+- Baseline method: mean daily outcome for the same weekday in Apr 1–Jul 5, excluding the four dates listed above.
+
+## Instance dates
+
+2026-05-03, 2026-05-22, 2026-05-30, 2026-06-11, 2026-06-14, 2026-06-26, 2026-07-04, 2026-07-10, 2026-07-15, 2026-07-26

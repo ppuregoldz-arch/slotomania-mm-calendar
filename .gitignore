@@ -1,0 +1,14 @@
+.cursor/monday.env
+.cursor/mcp.json
+
+# Python / OS
+__pycache__/
+*.py[cod]
+.DS_Store
+*.pem
+.env
+.env.*
+
+# Local credentials (never commit)
+**/credentials*.json
+**/*secret*

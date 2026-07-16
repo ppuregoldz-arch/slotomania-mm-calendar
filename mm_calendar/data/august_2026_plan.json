@@ -1,0 +1,3252 @@
+{
+  "month": "2026-08",
+  "source": "monthly_guidelines/2026-08.md",
+  "days": [
+    {
+      "date": 1,
+      "dow": "Sat",
+      "iso": "2026-08-01",
+      "sale": true,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Ordinary \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 1 (Shiny Series 1). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 1 (Shiny MS1)",
+          "status": "Album",
+          "isFirst": true,
+          "desc": "Shiny Series 1 \u00b7 album 14/07\u201322/09. Window: phase 1 per Nivi promo boundaries (see nivi_collector_album_prizes.md)."
+        }
+      ],
+      "items": [
+        {
+          "name": "Status Boost",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Status Boost \u2014 progression / store tier promotion anchor.\nMechanic: lifts top store denom visibility \u2014 purchase driver (not a separate offer SKU).",
+          "backup": false
+        },
+        {
+          "name": "DD- 3\u2605 Reg card + Hammers Wheel",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3\u2605 Reg card + Hammers Wheel.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 5\u2605 Gold Card + 100% SB",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 5\u2605 Gold Card + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Joker All Cards",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Joker All Cards.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Sat\u2192Sun 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 30% Bigger Balls (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): Lotto balls 30% bigger from 00:00 UTC until Promo Time (11:00 UTC) on this calendar day \u2014 not a 2h window post 12:00 UTC.\nPeak night: Sat\u2192Sun 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.",
+          "backup": false
+        },
+        {
+          "name": "Win Master \u2014 3\u2605 Reg card + PAB",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 3\u2605 Reg card + PAB",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Coins",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        },
+        {
+          "name": "Custom Pod \u2014 X1000",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nCustom Pod \u2014 X1000",
+          "backup": false
+        }
+      ],
+      "notes": "Month-open biggest store denom (purchase driver, not a board promo). ",
+      "purchaseDrivers": [
+        {
+          "id": "month_open_biggest_denom",
+          "label": "1st of month \u2014 biggest store denom",
+          "kind": "purchase_driver",
+          "monday_product": "Offers & coin sale",
+          "desc": "Added to the store denom,\ngives both coins & gems like the american denom in 4th of july"
+        }
+      ]
+    },
+    {
+      "date": 2,
+      "dow": "Sun",
+      "iso": "2026-08-02",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 1 (Shiny MS1)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- PAB + Quest Booster",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): PAB + Quest Booster.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nBlast \u2014 feature bundle (no card)",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: 5\u2605 Reg + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Reg",
+          "backup": false
+        },
+        {
+          "name": "MGAP Matched",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Matched multiplier mechanic across purchase tiers.",
+          "backup": false
+        },
+        {
+          "name": "PYP \u2014 finish for 4\u2605 Reg card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use PAB",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Gems",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 3,
+      "dow": "Mon",
+      "iso": "2026-08-03",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mega Pods freemium/premium milestones \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Album \u2014 Phase 1 (Shiny MS1)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "Album \u2014 Last Day Shiny Collection (MS1)",
+          "status": "Album",
+          "pricing": null,
+          "desc": "Platform: Album \u2014 Shiny Collection countdown.\nMechanic: last day to finish Shiny Collection MS1 before rotation.",
+          "backup": false
+        },
+        {
+          "name": "DD- Shiny Card (multiple)",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Shiny Card (multiple).\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: multiple \u2014 repeatable after once-per-player DD is bought.\n\nAlbum bank",
+          "backup": false
+        },
+        {
+          "name": "Clan Dash Bundle \u2014 30% discount",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Dash Bundle \u2014 discounted clan season bundle (Monday Dash Day). Prize focus: clan progression bundle; payer breadth.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 Premium for Badge Wheel",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 Go Premium for Badge Wheel / picker. Prize focus: badge-wheel spins and clan badge earn.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Monday Max Deal",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Monday Max Deal \u2014 premium Monday clan purchase bundle (Dash Day).\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Time Limited Prize \u2014 4\u2605 Regular Card",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Time Limited Prize \u2014 timed clan reward window.\nPrize: 4\u2605 Regular Card (Dash premium \u00b7 milestone 4)\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Rolling Offer \u2014 3 cycles (Buy More for Less)",
+          "status": "Rolling offer",
+          "pricing": "High",
+          "desc": "Platform: Rolling Offer \u2014 Buy More for Less\nCycle 1: Coins (low tier) + Gems | 100% SB | 3\u2605 Reg card | 2 Hammers | 3 RDS | 1 GGS\nCycle 2: Coins (mid tier) + Gems | 200% SB | 4\u2605 Reg card | 4 Hammers | 3 RDS | 1 GGS\nCycle 3: Coins (high tier) + Gems | 300% SB | 5\u2605 Reg card | 6 Hammers | 3 RDS | 2 GGS",
+          "backup": false
+        },
+        {
+          "name": "Win Master \u2014 3\u2605 Reg card + PAB",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 3\u2605 Reg card + PAB",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Picks",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Picks.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Shiny Collection #1 last day. "
+    },
+    {
+      "date": 4,
+      "dow": "Tue",
+      "iso": "2026-08-04",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation \u2014 Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes \u00b7 Mega Pods \u00b7 Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": true,
+          "desc": "Shiny Series 2 \u00b7 album 14/07\u201322/09. Window: phase 2 per Nivi promo boundaries (see nivi_collector_album_prizes.md)."
+        }
+      ],
+      "items": [
+        {
+          "name": "Album \u2014 2nd Shiny Collection Opening",
+          "status": "Album",
+          "pricing": null,
+          "desc": "Platform: Album \u2014 Shiny Collection opens.\nMechanic: new Shiny Collection set goes live (4/8 marketing); feeds Shiny Show goals.",
+          "backup": false
+        },
+        {
+          "name": "DD - Shiny Limited - Once",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Shiny Limited - Once.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: once-per-player (Wild / Shiny Limited) \u2014 pair with a separate DD multiple same day.\n\nOnce + multiple below\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "DD- 100% SB + 8 Hammers (multiple)",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 100% SB + 8 Hammers (multiple).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: multiple \u2014 repeatable after once-per-player DD is bought.\n\nRepeatable DD after once-per-player Shiny Limited / Wild purchase \u2014 100% SB + 8 Hammers.\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Dash Points \u2014 double dash-point earn on clan dash missions (Tue/Fri).\nSchedule: Tue (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 3\u2605 Reg + 100% SB",
+          "status": "RYD",
+          "pricing": "Medium",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 3\u2605 Reg + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "X2 Extreme Stamp",
+          "status": "Extreme Stamp",
+          "pricing": null,
+          "desc": "Platform: X2 Extreme Stamp \u2014 doubles Extreme Stamps earned in offers today (revenue amplifier).\nRule: RDS slots \u2192 Extreme Stamp (4 RDS \u2192 2 Extreme); no Wild Card mixed in offers.\nDuration: all day.",
+          "backup": false
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: x2 GGS \u2014 doubles Gold Gem Stamps earned in offers (3h, post 11:00 UTC).",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 All Cards",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): All Cards.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Tue\u2192Wed 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 4 balls instead of 3 (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): 4 balls instead of 3 for the Night Plan peak.\nPeak night: Tue\u2192Wed 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "PYP \u2014 finish for 3\u2605 Reg card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use PAB",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Picks",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Picks.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Shiny Collection #2 opens. "
+    },
+    {
+      "date": 5,
+      "dow": "Wed",
+      "iso": "2026-08-05",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Winovate scene milestones by album phase \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 100% SB + 8 Hammers",
+          "status": "Daily deal",
+          "pricing": "Medium",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 100% SB + 8 Hammers.\nPricing: Medium \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nSB anchor \u2014 no Ace card",
+          "backup": false
+        },
+        {
+          "name": "Piggy \u2014 break for 3\u2605 Reg card",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Piggy \u2014 purchase breaks piggy bank.\nPrize on break: 3\u2605 Reg card.",
+          "backup": false
+        },
+        {
+          "name": "X2 Badges",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Badges \u2014 double clan badge earn rate (Wednesday).\nSchedule: Wed (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: 4\u2605 Gold + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 4\u2605 Gold",
+          "backup": false
+        },
+        {
+          "name": "MGAP BOGO",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Buy-one-get-one multipliers on qualifying purchase tiers.",
+          "backup": false
+        },
+        {
+          "name": "Spinner Clash",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spinner Clash \u2014 tournament Core coin sink; house adds % of wins to prize pot.\nCollector's Album phase 2 (Shiny Series 2) \u2014 rank prizes:\n  1st: 5\u2605 Ace Pack\n  2nd: 4\u2605 Ace Pack\n  3rd: 3\u2605 Ace Card\nConfigure ranks in LiveOps per nivi_collector_album_prizes.md.",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2\u2605 Reg card",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2\u2605 Reg card.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 6,
+      "dow": "Thu",
+      "iso": "2026-08-06",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 3\u2605 Gold card (on purchase) + 2 Parasheep",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3\u2605 Gold card (on purchase) + 2 Parasheep.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "Golden Spin \u2014 weekly feature",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: Golden Spin \u2014 timed gem feature (2h post 12:00 UTC); not a coin VFM offer.",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 up to 200 badges",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 earn up to 200 badges in the daily window (Thursday template). Prize focus: dash/badge progression.\nSchedule: Thu (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Prize Mania \u2014 3\u2605 Reg pack | Coins, Gems",
+          "status": "Prize Mania",
+          "pricing": "Medium",
+          "desc": "Platform: Prize Mania \u2014 one rich prize bundle (coins + gems + stamps + extras).\nBundle focus (this instance): 3\u2605 Reg pack | Coins, Gems.",
+          "backup": false
+        },
+        {
+          "name": "Gems Sale \u2014 30% store / 20% offers",
+          "status": "Gems",
+          "pricing": "High",
+          "desc": "Platform: Gems Sale \u2014 30% off gem store / 20% off gem offers for the day.",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Crazy with Aces + Despicable Wolf",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Crazy with Aces.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget \u00b7 Shiny Wolf mini-game: 3\u20135 Shiny Cards (Collectibles \u2014 Nivi)",
+          "backup": false
+        },
+        {
+          "name": "Spin Zone \u2014 4\u2605 Ace card chase + 3\u2605 Ace topper",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): 4\u2605 Ace card.\nShort-term context: Battlesheep.\nTopper: 3\u2605 Ace card (Nivi Ace_3 bank).",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Gems",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term Battlesheep \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 7,
+      "dow": "Fri",
+      "iso": "2026-08-07",
+      "sale": true,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- AS + 2 Parasheep",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): AS + 2 Parasheep.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nBattlesheep \u2014 feature bundle (no card)",
+          "backup": false
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Dash Points \u2014 double dash-point earn on clan dash missions (Tue/Fri).\nSchedule: Fri (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 3\u2605 Reg + 100% SB",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 3\u2605 Reg + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).",
+          "backup": false
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: x2 GGS \u2014 doubles Gold Gem Stamps earned in offers (3h, post 11:00 UTC).",
+          "backup": false
+        },
+        {
+          "name": "Dice Deluxe \u2014 1\u00d7/week",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Dice Deluxe \u2014 weekly timed dice offer (coins/gems + dice SKU); \u22641\u00d7/week.",
+          "backup": false
+        },
+        {
+          "name": "Spin Zone \u2014 2 Parasheep chase",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): 2 Parasheep.\nShort-term context: Battlesheep.",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Quest Booster",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Quest Booster.\nContext: Short-term Battlesheep \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 8,
+      "dow": "Sat",
+      "iso": "2026-08-08",
+      "sale": true,
+      "tag": "event",
+      "banner": "Betty's Birthday",
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "Betty's Birthday \u2014 themed offers / MES",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Core / event \u2014 Betty's Birthday themed gameplay.\nMechanic: birthday MES / coin-sink tied to marketing 8\u20139/8.",
+          "backup": false
+        },
+        {
+          "name": "DD- 100% SB + 8 Hammers",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 100% SB + 8 Hammers.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nSB anchor \u2014 no Ace card",
+          "backup": false
+        },
+        {
+          "name": "Fortune Dip \u2014 Extreme Stamp / SB up to 700%",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Fortune Dip topper \u2014 chance-based SB (up to 700%) layered on offers / Extreme Stamp day.",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).",
+          "backup": false
+        },
+        {
+          "name": "Rolling Offer \u2014 6 cycles (Buy X Get Y)",
+          "status": "Rolling offer",
+          "pricing": "High",
+          "desc": "Platform: Rolling Offer \u2014 Buy X Get Y (6 cycles).\nSeasonal steps: SNL Dice / Multiwheel / Shield (6-cycle template from 2026-07-01, Battlesheep SKUs swapped).\nRDS max 4/cycle: 1 on first stamp step, 3 on next \u00b7 GGS max 2/cycle: 1 on first stamp step, 1 on next\nCycle 1: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 4 SNL Dice \u00b7 Free 6: 100% SB \u00b7 5 Hammers\nCycle 2: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: Multiwheel \u00b7 Free 6: 150% SB \u00b7 5 Hammers\nCycle 3: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 6 SNL Dice \u00b7 Free 6: 200% SB \u00b7 10 Hammers\nCycle 4: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 2 Multiwheel \u00b7 Free 6: 250% SB \u00b7 10 Hammers\nCycle 5: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 6 SNL Dice \u00b7 Free 6: 300% SB \u00b7 12 Hammers\nCycle 6: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 2 Shield \u00b7 Free 6: 300% SB \u00b7 15 Hammers",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Joker Different Prizes",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Joker Different Prizes.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget \u00b7 Betty Boop theme (Betty's Birthday marketing 8\u20139/8).",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Sat\u2192Sun 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 2 multiballs (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): Two multiball activations during the peak.\nPeak night: Sat\u2192Sun 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.",
+          "backup": false
+        },
+        {
+          "name": "Win Master \u2014 3\u2605 Reg card + 2 Parasheep",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 3\u2605 Reg card + 2 Parasheep",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Coins",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term Battlesheep \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 9,
+      "dow": "Sun",
+      "iso": "2026-08-09",
+      "sale": false,
+      "tag": "event",
+      "banner": "Betty's Birthday",
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation \u2014 Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes \u00b7 Mega Pods \u00b7 Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 3\u2605 Reg card (on purchase) + AS (BOGO \u2014 task config)",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3\u2605 Reg card (on purchase) + AS (BOGO \u2014 task config).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nReg HW bank full \u2014 Reg DD (no Hammer Wheel)",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 3\u2605 Reg + 100% SB",
+          "status": "RYD",
+          "pricing": "Max",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 3\u2605 Reg + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).",
+          "backup": false
+        },
+        {
+          "name": "Counter PO \u2014 FTD segmented (on top)",
+          "status": "Counter PO",
+          "pricing": "High",
+          "desc": "Platform: Counter PO \u2014 segmented personal-offer topper (FTD / payer cohorts).\nPrize line: Counter PO \u2014 FTD segmented (on top).",
+          "backup": false
+        },
+        {
+          "name": "MGAP Wild Symbols",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Wild-symbols themed multiplier window.",
+          "backup": false
+        },
+        {
+          "name": "Ace Loot \u2014 48h (opens tonight)",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nAce Loot \u2014 48h (opens tonight)",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Parasheep",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Parasheep.\nContext: Short-term Battlesheep \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        },
+        {
+          "name": "Custom Pod \u2014 Post-Sale Balance Drain X1200",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nCustom Pod \u2014 Post-Sale Balance Drain X1200",
+          "backup": false
+        }
+      ],
+      "notes": "Betty's Birthday (day 2). "
+    },
+    {
+      "date": 10,
+      "dow": "Mon",
+      "iso": "2026-08-10",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mega Pods freemium/premium milestones \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Reg card + Hammers Wheel",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Reg card + Hammers Wheel.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "Clan Dash Bundle \u2014 30% discount",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Dash Bundle \u2014 discounted clan season bundle (Monday Dash Day). Prize focus: clan progression bundle; payer breadth.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 Premium for Badge Wheel",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 Go Premium for Badge Wheel / picker. Prize focus: badge-wheel spins and clan badge earn.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Monday Max Deal",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Monday Max Deal \u2014 premium Monday clan purchase bundle (Dash Day).\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Time Limited Prize \u2014 Shiny Card",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Time Limited Prize \u2014 timed clan reward window.\nPrize: Shiny Card (Dash premium \u00b7 milestone 9)\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Buy All - Coins: Coins+RDS + 2 Parasheep + AS | Gems: Gems + 1 GGS + 3000 Hero Coins | M Pricing",
+          "status": "Buy all",
+          "pricing": "Medium",
+          "desc": "Coins denom: Coins+RDS + 2 Parasheep + AS\nGems denom: Gems + 1 GGS + 3000 Hero Coins",
+          "backup": false
+        },
+        {
+          "name": "PYP \u2014 finish for 5\u2605 Ace card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use 2 Airstrikes",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Parasheep",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Parasheep.\nContext: Short-term Battlesheep \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Ace Loot 48h \u2014 last day (no extra Core row; Dash Day focus). "
+    },
+    {
+      "date": 11,
+      "dow": "Tue",
+      "iso": "2026-08-11",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- Shiny Card (multiple)",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Shiny Card (multiple).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: multiple \u2014 repeatable after once-per-player DD is bought.\n\nAlbum bank",
+          "backup": false
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Dash Points \u2014 double dash-point earn on clan dash missions (Tue/Fri).\nSchedule: Tue (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Prize Mania \u2014 5\u2605 Gold pack | Coins, Gems",
+          "status": "Prize Mania",
+          "pricing": "Medium",
+          "desc": "Platform: Prize Mania \u2014 one rich prize bundle (coins + gems + stamps + extras).\nBundle focus (this instance): 5\u2605 Gold pack | Coins, Gems.",
+          "backup": false
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: x2 GGS \u2014 doubles Gold Gem Stamps earned in offers (3h, post 11:00 UTC).",
+          "backup": false
+        },
+        {
+          "name": "Price Cut \u2014 20% storewide",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Price Cut \u2014 20% storewide discount (purchase promo, not VFM second offer).",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 All Cards",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): All Cards.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Tue\u2192Wed 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 all goldens + 20% bigger (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): All golden slots active + goldens 20% bigger.\nPeak night: Tue\u2192Wed 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.",
+          "backup": false
+        },
+        {
+          "name": "Ace Heist \u2014 4\u2605 Ace card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Spin 30 times \u2014 any game\n\u00b7 Reach final act \u2014 Shiny Show\n\u00b7 Open 8 pods",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 3\u2605 Reg card",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3\u2605 Reg card.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 12,
+      "dow": "Wed",
+      "iso": "2026-08-12",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- Shield + 4 Dice (on purchase)",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Shield + 4 Dice (on purchase).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nSNL \u2014 Shield + 4 Dice (no Gold card)",
+          "backup": false
+        },
+        {
+          "name": "Popup Store \u2014 TEST \u00b7 Soft launch (1/3)",
+          "status": "Popup Store",
+          "pricing": null,
+          "desc": "Product: Popup Store \u00b7 TEST \u00b7 Soft launch (12 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18\u201324/8). Surfaces the paired purchase offer for the off-test cohort.",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: 5\u2605 Reg + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "Medium",
+          "desc": "Cohort: Popup Store off-test segment (via Popup Store shell).\nd1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Hero Coins\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Reg",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: 5\u2605 Reg + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "Medium",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Hero Coins\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Reg\nControl cohort \u2014 Popup Store test day (Soft launch); same SKUs as paired inner offer.",
+          "backup": false
+        },
+        {
+          "name": "Piggy \u2014 break for 4\u2605 Reg card",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Piggy \u2014 purchase breaks piggy bank.\nPrize on break: 4\u2605 Reg card.",
+          "backup": false
+        },
+        {
+          "name": "X2 Badges",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Badges \u2014 double clan badge earn rate (Wednesday).\nSchedule: Wed (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Boosted Gemback 300% (5h, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: Boosted Gemback \u2014 300% gems back on gem spend (timed window).",
+          "backup": false
+        },
+        {
+          "name": "Spin Zone \u2014 Hammers Wheel (single hammer source)",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nSpin Zone \u2014 Hammers Wheel (single hammer source)",
+          "backup": false
+        },
+        {
+          "name": "Spinner Clash",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spinner Clash \u2014 tournament Core coin sink; house adds % of wins to prize pot.\nCollector's Album phase 2 (Shiny Series 2) \u2014 rank prizes:\n  1st: 5\u2605 Ace Pack\n  2nd: 4\u2605 Ace Pack\n  3rd: 3\u2605 Ace Card\nConfigure ranks in LiveOps per nivi_collector_album_prizes.md.",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 3000 Hero Coins",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3000 Hero Coins.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Popup Store TEST (Soft launch). "
+    },
+    {
+      "date": 13,
+      "dow": "Thu",
+      "iso": "2026-08-13",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Winovate scene milestones by album phase \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 3\u2605 Gold card (on purchase) + 2 Dice",
+          "status": "Daily deal",
+          "pricing": "Medium",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3\u2605 Gold card (on purchase) + 2 Dice.\nPricing: Medium \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "Golden Spin \u2014 weekly feature",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: Golden Spin \u2014 timed gem feature (2h post 12:00 UTC); not a coin VFM offer.",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 up to 200 badges",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 earn up to 200 badges in the daily window (Thursday template). Prize focus: dash/badge progression.\nSchedule: Thu (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Prize Mania \u2014 4\u2605 Reg pack | Coins, Gems",
+          "status": "Prize Mania",
+          "pricing": "High",
+          "desc": "Platform: Prize Mania \u2014 one rich prize bundle (coins + gems + stamps + extras).\nBundle focus (this instance): 4\u2605 Reg pack | Coins, Gems.",
+          "backup": false
+        },
+        {
+          "name": "MGAP Matched",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Matched multiplier mechanic across purchase tiers.",
+          "backup": false
+        },
+        {
+          "name": "Gems Sale \u2014 30% store / 20% offers",
+          "status": "Gems",
+          "pricing": "High",
+          "desc": "Platform: Gems Sale \u2014 30% off gem store / 20% off gem offers for the day.",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Crazy with Aces + Despicable Wolf",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Crazy with Aces.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget \u00b7 Shiny Wolf mini-game: 3\u20135 Shiny Cards (Collectibles \u2014 Nivi)",
+          "backup": false
+        },
+        {
+          "name": "Spin Zone \u2014 4\u2605 Reg card chase",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): 4\u2605 Reg card.\nShort-term context: SNL.",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Coins",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 14,
+      "dow": "Fri",
+      "iso": "2026-08-14",
+      "sale": true,
+      "tag": "event",
+      "banner": "Nostalgic Weekend",
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD - Shiny Limited - Once",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Shiny Limited - Once.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: once-per-player (Wild / Shiny Limited) \u2014 pair with a separate DD multiple same day.\n\nOnce + multiple below",
+          "backup": false
+        },
+        {
+          "name": "DD- 100% SB + 8 Hammers (multiple)",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 100% SB + 8 Hammers (multiple).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: multiple \u2014 repeatable after once-per-player DD is bought.\n\nRepeatable DD after once-per-player Shiny Limited / Wild purchase \u2014 100% SB + 8 Hammers.",
+          "backup": false
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Dash Points \u2014 double dash-point earn on clan dash missions (Tue/Fri).\nSchedule: Fri (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale \u2014 Nostalgic Weekend",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 4\u2605 Reg + PAB + 100% SB",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 4\u2605 Reg + PAB + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).",
+          "backup": false
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: x2 GGS \u2014 doubles Gold Gem Stamps earned in offers (3h, post 11:00 UTC).",
+          "backup": false
+        },
+        {
+          "name": "Dice Deluxe \u2014 1\u00d7/week",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Dice Deluxe \u2014 weekly timed dice offer (coins/gems + dice SKU); \u22641\u00d7/week.",
+          "backup": false
+        },
+        {
+          "name": "Win Master \u2014 4\u2605 Reg card + 2 Dice",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 4\u2605 Reg card + 2 Dice",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Gems",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Nostalgic Weekend marketing (14\u201316/8) \u2014 Coin Sale row covers the purchase promo. "
+    },
+    {
+      "date": 15,
+      "dow": "Sat",
+      "iso": "2026-08-15",
+      "sale": true,
+      "tag": "event",
+      "banner": "Nostalgic Weekend",
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation \u2014 Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes \u00b7 Mega Pods \u00b7 Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- Quest Booster + Shield + Multiwheel",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Quest Booster + Shield + Multiwheel.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nQuest season \u2014 feature bundle (no card)",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).",
+          "backup": false
+        },
+        {
+          "name": "Mystery Buy All | H Pricing",
+          "status": "Buy all",
+          "pricing": "High",
+          "desc": "Platform: Mystery Buy All \u2014 same rewards as Buy All; each prize on its own line (not split into coin/gem denoms).\nCoins\nGems\n4 RDS\n1 GGS\n4\u2605 Reg\n2 Dice\n3\u2605 Gold\nQuest Booster",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Sat\u2192Sun 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 Jackpot ball 150% + 4 balls (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): Jackpot ball +150% and 4 balls instead of 3.\nPeak night: Sat\u2192Sun 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.",
+          "backup": false
+        },
+        {
+          "name": "PYP \u2014 finish for 3\u2605 Ace card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use 4 Dice Rolls",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Dice",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Dice.\nContext: Short-term SNL \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 16,
+      "dow": "Sun",
+      "iso": "2026-08-16",
+      "sale": false,
+      "tag": "event",
+      "banner": "Nostalgic Weekend",
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Gold card (on purchase) + PAB",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + PAB.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "Rolling Offer \u2014 3 cycles (Buy More for Less)",
+          "status": "Rolling offer",
+          "pricing": "High",
+          "desc": "Platform: Rolling Offer \u2014 Buy More for Less\nCycle 1: Coins (low tier) + Gems | 100% SB | 3\u2605 Reg card | 2 Hammers | 3 RDS | 1 GGS\nCycle 2: Coins (mid tier) + Gems | 200% SB | 4\u2605 Reg card | 4 Hammers | 3 RDS | 1 GGS\nCycle 3: Coins (high tier) + Gems | 300% SB | 5\u2605 Reg card | 6 Hammers | 3 RDS | 2 GGS",
+          "backup": false
+        },
+        {
+          "name": "MES \u2014 purchase to progress",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nMES \u2014 purchase to progress",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Picks",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Picks.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 17,
+      "dow": "Mon",
+      "iso": "2026-08-17",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mega Pods freemium/premium milestones \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Reg card + SB Wheel",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Reg card + SB Wheel.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nNo Ace in purchase offers",
+          "backup": false
+        },
+        {
+          "name": "Clan Dash Bundle \u2014 30% discount",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Dash Bundle \u2014 discounted clan season bundle (Monday Dash Day). Prize focus: clan progression bundle; payer breadth.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 Premium for Badge Wheel",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 Go Premium for Badge Wheel / picker. Prize focus: badge-wheel spins and clan badge earn.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Monday Max Deal",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Monday Max Deal \u2014 premium Monday clan purchase bundle (Dash Day).\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Time Limited Prize \u2014 3\u2605 Gold Card",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Time Limited Prize \u2014 timed clan reward window.\nPrize: 3\u2605 Gold Card (Dash premium \u00b7 milestone 11)\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Buy All - Coins: Coins+RDS+4\u2605 Reg + Superboom | Gems: Gems + 1 GGS + 3\u2605 Gold + Quest Booster | M Pricing",
+          "status": "Buy all",
+          "pricing": "Medium",
+          "desc": "Coins denom: Coins+RDS+4\u2605 Reg + Superboom\nGems denom: Gems + 1 GGS + 3\u2605 Gold + Quest Booster",
+          "backup": false
+        },
+        {
+          "name": "Ace Heist \u2014 4\u2605 Ace card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Spin 30 times \u2014 any game\n\u00b7 Reach final act \u2014 Shiny Show\n\u00b7 Open 8 pods",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 3\u2605 Reg card",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3\u2605 Reg card.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 18,
+      "dow": "Tue",
+      "iso": "2026-08-18",
+      "sale": false,
+      "tag": "machine",
+      "banner": "Hoppin' For Gold \u2014 Sneak Peek",
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Reg card + Hammers Wheel",
+          "status": "Daily deal",
+          "pricing": "Medium",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Reg card + Hammers Wheel.\nPricing: Medium \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "Puzzle M.E.S \u2014 Soft Launch 20% \u00b7 day 1/7",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Puzzle day 1 of 7 \u00b7 Soft Launch 20% \u00b7 ~20% cohort.\nCore \u2014 Puzzle M.E.S gameplay \u00b7 window 18\u201324/8 (18/8 \u00b7 Tue).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge.",
+          "backup": false
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Dash Points \u2014 double dash-point earn on clan dash missions (Tue/Fri).\nSchedule: Tue (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Hoppin' For Gold \u2014 Sneak Peek (MES / Spin Zone)",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): Superboom.\nShort-term context: Blast.",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 4\u2605 Reg + 100% SB",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 4\u2605 Reg + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "MGAP BOGO",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Buy-one-get-one multipliers on qualifying purchase tiers.",
+          "backup": false
+        },
+        {
+          "name": "X2 Extreme Stamp",
+          "status": "Extreme Stamp",
+          "pricing": null,
+          "desc": "Platform: X2 Extreme Stamp \u2014 doubles Extreme Stamps earned in offers today (revenue amplifier).\nRule: RDS slots \u2192 Extreme Stamp (4 RDS \u2192 2 Extreme); no Wild Card mixed in offers.\nDuration: all day.",
+          "backup": false
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: x2 GGS \u2014 doubles Gold Gem Stamps earned in offers (3h, post 11:00 UTC).",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Crazy with Aces",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Crazy with Aces.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Tue\u2192Wed 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 Jackpot ball 150% + 30% bigger (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): Jackpot ball +150% and balls 30% bigger.\nPeak night: Tue\u2192Wed 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "Win Master \u2014 4\u2605 Reg card + PAB",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 4\u2605 Reg card + PAB\nControl cohort (~80%) \u2014 standard Core challenge (Puzzle M.E.S is ~20% test only).",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Gems",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Puzzle M.E.S 7-day Core soft launch (~20% cohort, 18\u201324/8; independent of Popup Store). Stickers Season (leading to sale). "
+    },
+    {
+      "date": 19,
+      "dow": "Wed",
+      "iso": "2026-08-19",
+      "sale": false,
+      "tag": "machine",
+      "banner": "Hoppin' For Gold \u2014 Launch",
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 3\u2605 Gold card (on purchase) + Superboom",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3\u2605 Gold card (on purchase) + Superboom.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "Popup Store \u2014 TEST \u00b7 2nd soft launch (2/3)",
+          "status": "Popup Store",
+          "pricing": null,
+          "desc": "Product: Popup Store \u00b7 TEST \u00b7 2nd soft launch (12 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18\u201324/8). Surfaces the paired purchase offer for the off-test cohort.",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: 5\u2605 Gold + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "Medium",
+          "desc": "Cohort: Popup Store off-test segment (via Popup Store shell).\nd1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Gold",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: 5\u2605 Gold + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "Medium",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Gold\nControl cohort \u2014 Popup Store test day (2nd soft launch); same SKUs as paired inner offer.",
+          "backup": false
+        },
+        {
+          "name": "Puzzle M.E.S \u2014 Soft Launch 20% \u00b7 day 2/7",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Puzzle day 2 of 7 \u00b7 Soft Launch 20% \u00b7 ~20% cohort.\nCore \u2014 Puzzle M.E.S gameplay \u00b7 window 18\u201324/8 (19/8 \u00b7 Wed).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge.",
+          "backup": false
+        },
+        {
+          "name": "Piggy \u2014 break for 4\u2605 Reg card",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Piggy \u2014 purchase breaks piggy bank.\nPrize on break: 4\u2605 Reg card.",
+          "backup": false
+        },
+        {
+          "name": "X2 Badges",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Badges \u2014 double clan badge earn rate (Wednesday).\nSchedule: Wed (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Hoppin' For Gold \u2014 Machine Launch (MES \u00b7 Win Master \u00b7 Slot Smashes)",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nHoppin' For Gold \u2014 Machine Launch (MES \u00b7 Win Master \u00b7 Slot Smashes)",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Quest Booster",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Quest Booster.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Popup Store TEST (2nd soft launch). Stickers Season (leading to sale). "
+    },
+    {
+      "date": 20,
+      "dow": "Thu",
+      "iso": "2026-08-20",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Blast",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Figz",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation \u2014 Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes \u00b7 Mega Pods \u00b7 Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- Wild Ord card (on purchase) + PAB (Once + repeatable DD)",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Wild Ord card (on purchase) + PAB.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: once-per-player (Wild / Shiny Limited) \u2014 pair with a separate DD multiple same day.\n\nWild \u2014 Nivi weekly bank (prefer DD + Shiny Show, not Show only)\n\nCompanion repeatable DD (same day): DD- 100% SB + 8 Hammers (multiple).",
+          "backup": false
+        },
+        {
+          "name": "Puzzle M.E.S \u2014 Soft Launch 20% \u00b7 day 3/7",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Puzzle day 3 of 7 \u00b7 Soft Launch 20% \u00b7 ~20% cohort.\nCore \u2014 Puzzle M.E.S gameplay \u00b7 window 18\u201324/8 (20/8 \u00b7 Thu).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge.",
+          "backup": false
+        },
+        {
+          "name": "Golden Spin \u2014 weekly feature",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: Golden Spin \u2014 timed gem feature (2h post 12:00 UTC); not a coin VFM offer.",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 up to 200 badges",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 earn up to 200 badges in the daily window (Thursday template). Prize focus: dash/badge progression.\nSchedule: Thu (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Hoppin' For Gold \u2014 Spin Zone (Superboom)",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): Superboom.\nShort-term context: Blast.",
+          "backup": false
+        },
+        {
+          "name": "Rolling Offer \u2014 2 cycles (Buy X Get Y)",
+          "status": "Rolling offer",
+          "pricing": "Medium",
+          "desc": "Platform: Rolling Offer \u2014 Buy X Get Y (2 cycles).\nRDS max 4/cycle: 1 on first stamp step, 3 on next \u00b7 GGS max 2/cycle: 1 on first stamp step, 1 on next\nCycle 1: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 150% SB \u00b7 Free 6: PAB\nCycle 2: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 150% SB \u00b7 Free 6: PAB",
+          "backup": false
+        },
+        {
+          "name": "MGAP Wild Symbols",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Wild-symbols themed multiplier window.",
+          "backup": false
+        },
+        {
+          "name": "Gems Sale \u2014 30% store / 20% offers",
+          "status": "Gems",
+          "pricing": "High",
+          "desc": "Platform: Gems Sale \u2014 30% off gem store / 20% off gem offers for the day.",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Joker Different Prizes + Despicable Wolf",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Joker Different Prizes.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget \u00b7 Shiny Wolf mini-game: 3\u20135 Shiny Cards (Collectibles \u2014 Nivi)",
+          "backup": false
+        },
+        {
+          "name": "Win Master \u2014 4\u2605 Reg card + Superboom",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 4\u2605 Reg card + Superboom\nControl cohort (~80%) \u2014 standard Core challenge (Puzzle M.E.S is ~20% test only).",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Coins",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term Blast \u00b7 Mid-term Figz.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Stickers Season (leading to sale). "
+    },
+    {
+      "date": 21,
+      "dow": "Fri",
+      "iso": "2026-08-21",
+      "sale": true,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Figz",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Winovate scene milestones by album phase \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Gold card (on purchase) + AS",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + AS.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "Puzzle M.E.S \u2014 Soft Launch 20% \u00b7 day 4/7",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Puzzle day 4 of 7 \u00b7 Soft Launch 20% \u00b7 ~20% cohort.\nCore \u2014 Puzzle M.E.S gameplay \u00b7 window 18\u201324/8 (21/8 \u00b7 Fri).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge.",
+          "backup": false
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Dash Points \u2014 double dash-point earn on clan dash missions (Tue/Fri).\nSchedule: Fri (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Hoppin' For Gold \u2014 Spin Zone (2 Parasheep)",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): 2 Parasheep.\nShort-term context: Battlesheep.",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 4\u2605 Gold Card + 100% SB",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 4\u2605 Gold Card + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).",
+          "backup": false
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: x2 GGS \u2014 doubles Gold Gem Stamps earned in offers (3h, post 11:00 UTC).",
+          "backup": false
+        },
+        {
+          "name": "Dice Deluxe \u2014 1\u00d7/week",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Dice Deluxe \u2014 weekly timed dice offer (coins/gems + dice SKU); \u22641\u00d7/week.",
+          "backup": false
+        },
+        {
+          "name": "PYP \u2014 finish for 5\u2605 Ace card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use 2 Airstrikes\nControl cohort (~80%) \u2014 standard Core challenge (Puzzle M.E.S is ~20% test only).",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Parasheep",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Parasheep.\nContext: Short-term Battlesheep \u00b7 Mid-term Figz.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Stickers Season (leading to sale). "
+    },
+    {
+      "date": 22,
+      "dow": "Sat",
+      "iso": "2026-08-22",
+      "sale": true,
+      "tag": "event",
+      "banner": "Back to School / Summer Sale",
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Figz",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 5\u2605 Reg card + SB Wheel",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 5\u2605 Reg card + SB Wheel.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nNo Ace in purchase offers",
+          "backup": false
+        },
+        {
+          "name": "Puzzle M.E.S \u2014 Soft Launch 20% \u00b7 day 5/7",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Puzzle day 5 of 7 \u00b7 Soft Launch 20% \u00b7 ~20% cohort.\nCore \u2014 Puzzle M.E.S gameplay \u00b7 window 18\u201324/8 (22/8 \u00b7 Sat).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge.",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale \u2014 Back to School",
+          "status": "Offers & coin sale",
+          "pricing": "Max",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).\nTheme: Back to School.",
+          "backup": false
+        },
+        {
+          "name": "Happy Hour / Jumbo Giveaway \u2014 Back to School",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "",
+          "backup": false
+        },
+        {
+          "name": "MGAP Bigger Multipliers \u2014 Back to School themed",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Elevated multiplier tiers (flagship / event).",
+          "backup": false
+        },
+        {
+          "name": "Boosted Gemback 500% \u2014 Back to School (5h, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: Boosted Gemback \u2014 500% gems back on gem spend (timed window).",
+          "backup": false
+        },
+        {
+          "name": "Prize Mania \u2014 Shiny Limited + 5\u2605 Reg pack + Dice Booster 6H",
+          "status": "Prize Mania",
+          "pricing": "High",
+          "desc": "Platform: Prize Mania \u2014 one rich prize bundle (coins + gems + stamps + extras).\nBundle focus (this instance): Shiny Limited + 5\u2605 Reg pack + Dice Booster 6H.",
+          "backup": false
+        },
+        {
+          "name": "Custom Pod \u2014 Back to School X1200",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nCustom Pod \u2014 Back to School X1200",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Sat\u2192Sun 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 30% Bigger Balls (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): Lotto balls 30% bigger from 00:00 UTC until Promo Time (11:00 UTC) on this calendar day \u2014 not a 2h window post 12:00 UTC.\nPeak night: Sat\u2192Sun 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.",
+          "backup": false
+        },
+        {
+          "name": "PYP \u2014 finish for Shiny Card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use 2 Airstrikes",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Parasheep",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Parasheep.\nContext: Short-term Battlesheep \u00b7 Mid-term Figz.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Stickers Season (leading to sale). Shiny MS2 countdown (3d / 2d / last day). "
+    },
+    {
+      "date": 23,
+      "dow": "Sun",
+      "iso": "2026-08-23",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Figz",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Reg card (on purchase) + AS",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Reg card (on purchase) + AS.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nReg HW bank full \u2014 Reg DD (no Hammer Wheel)",
+          "backup": false
+        },
+        {
+          "name": "Puzzle M.E.S \u2014 Soft Launch 20% \u00b7 day 6/7",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Puzzle day 6 of 7 \u00b7 Soft Launch 20% \u00b7 ~20% cohort.\nCore \u2014 Puzzle M.E.S gameplay \u00b7 window 18\u201324/8 (23/8 \u00b7 Sun).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge.",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: 3\u2605 Gold + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "Medium",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Parasheep\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Figz Coins\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 3\u2605 Gold",
+          "backup": false
+        },
+        {
+          "name": "Counter PO \u2014 FTD segmented (on top)",
+          "status": "Counter PO",
+          "pricing": "High",
+          "desc": "Platform: Counter PO \u2014 segmented personal-offer topper (FTD / payer cohorts).\nPrize line: Counter PO \u2014 FTD segmented (on top).",
+          "backup": false
+        },
+        {
+          "name": "PYP \u2014 finish for Shiny Card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use 2 Airstrikes",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 3\u2605 Reg card",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3\u2605 Reg card.\nContext: Short-term Battlesheep \u00b7 Mid-term Figz.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Shiny MS2 countdown (3d / 2d / last day). "
+    },
+    {
+      "date": 24,
+      "dow": "Mon",
+      "iso": "2026-08-24",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation \u2014 Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes \u00b7 Mega Pods \u00b7 Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mega Pods freemium/premium milestones \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Album \u2014 Phase 2 (Shiny MS2)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- Shiny Card (multiple)",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Shiny Card (multiple).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: multiple \u2014 repeatable after once-per-player DD is bought.\n\nAlbum bank",
+          "backup": false
+        },
+        {
+          "name": "Puzzle M.E.S \u2014 Soft Launch 20% \u00b7 day 7/7",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Puzzle day 7 of 7 \u00b7 Soft Launch 20% \u00b7 ~20% cohort.\nCore \u2014 Puzzle M.E.S gameplay \u00b7 window 18\u201324/8 (24/8 \u00b7 Mon).\nSeparate from Popup Store (12/19/26). Control segment keeps the day's Core challenge.",
+          "backup": false
+        },
+        {
+          "name": "Clan Dash Bundle \u2014 30% discount",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Dash Bundle \u2014 discounted clan season bundle (Monday Dash Day). Prize focus: clan progression bundle; payer breadth.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 Premium for Badge Wheel",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 Go Premium for Badge Wheel / picker. Prize focus: badge-wheel spins and clan badge earn.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Monday Max Deal",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Monday Max Deal \u2014 premium Monday clan purchase bundle (Dash Day).\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Time Limited Prize \u2014 5\u2605 Regular Card",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Time Limited Prize \u2014 timed clan reward window.\nPrize: 5\u2605 Regular Card (Dash premium \u00b7 milestone 14)\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Buy All - Coins: Coins+RDS+Wild Gold + 2 Parasheep | Gems: Gems + 1 GGS + 3\u2605 Gold + Quest Booster | M Pricing",
+          "status": "Buy all",
+          "pricing": "Medium",
+          "desc": "Coins denom: Coins+RDS+Wild Gold + 2 Parasheep\nGems denom: Gems + 1 GGS + 3\u2605 Gold + Quest Booster",
+          "backup": false
+        },
+        {
+          "name": "Win Master \u2014 5\u2605 Reg card + 2 Parasheep",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 5\u2605 Reg card + 2 Parasheep\nControl cohort (~80%) \u2014 standard Core challenge (Puzzle M.E.S is ~20% test only).",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Quest Booster",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Quest Booster.\nContext: Short-term Battlesheep \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Shiny MS2 countdown (3d / 2d / last day). "
+    },
+    {
+      "date": 25,
+      "dow": "Tue",
+      "iso": "2026-08-25",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "Battlesheep",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 3 (Shiny MS3)",
+          "status": "Album",
+          "isFirst": true,
+          "desc": "Shiny Series 3 \u00b7 album 14/07\u201322/09. Window: phase 3 per Nivi promo boundaries (see nivi_collector_album_prizes.md)."
+        }
+      ],
+      "items": [
+        {
+          "name": "Album \u2014 3rd Shiny Collection Opening",
+          "status": "Album",
+          "pricing": null,
+          "desc": "Platform: Album \u2014 Shiny Collection opens.\nMechanic: new Shiny Collection set goes live (25/8 marketing); feeds Shiny Show goals.",
+          "backup": false
+        },
+        {
+          "name": "DD- 4\u2605 Gold card (on purchase) + AS",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + AS.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Dash Points \u2014 double dash-point earn on clan dash missions (Tue/Fri).\nSchedule: Tue (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Rolling Offer \u2014 3 cycles (Buy More for Less)",
+          "status": "Rolling offer",
+          "pricing": "High",
+          "desc": "Platform: Rolling Offer \u2014 Buy More for Less\nCycle 1: Coins (low tier) + Gems | 100% SB | 5\u2605 Reg card | 2 Hammers | 3 RDS | 1 GGS\nCycle 2: Coins (mid tier) + Gems | 200% SB | 5\u2605 Reg card | 4 Hammers | 3 RDS | 1 GGS\nCycle 3: Coins (high tier) + Gems | 300% SB | 5\u2605 Reg card | 6 Hammers | 3 RDS | 2 GGS",
+          "backup": false
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: x2 GGS \u2014 doubles Gold Gem Stamps earned in offers (3h, post 11:00 UTC).",
+          "backup": false
+        },
+        {
+          "name": "Boosted Gemback 300% (5h, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: Boosted Gemback \u2014 300% gems back on gem spend (timed window).",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Joker Different Prizes",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Joker Different Prizes.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Tue\u2192Wed 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 4 balls instead of 3 (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): 4 balls instead of 3 for the Night Plan peak.\nPeak night: Tue\u2192Wed 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.",
+          "backup": false
+        },
+        {
+          "name": "MES \u2014 purchase to progress",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nMES \u2014 purchase to progress",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Coins",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term Battlesheep \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        },
+        {
+          "name": "Custom Pod \u2014 Phase 3 open X1000",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nCustom Pod \u2014 Phase 3 open X1000",
+          "backup": false
+        }
+      ],
+      "notes": "Shiny Collection #3 opens. Phase 3 / Shiny MS3 opens. "
+    },
+    {
+      "date": 26,
+      "dow": "Wed",
+      "iso": "2026-08-26",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Any \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 3 (Shiny Series 3). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 3 (Shiny MS3)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD - Shiny Limited - Once",
+          "status": "Daily deal",
+          "pricing": "Medium",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Shiny Limited - Once.\nPricing: Medium \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: once-per-player (Wild / Shiny Limited) \u2014 pair with a separate DD multiple same day.\n\nOnce + multiple below\n\nCompanion repeatable DD (same day): DD- 100% SB + 8 Hammers (multiple).",
+          "backup": false
+        },
+        {
+          "name": "Popup Store \u2014 LAUNCH \u00b7 Full launch (3/3)",
+          "status": "Popup Store",
+          "pricing": null,
+          "desc": "Product: Popup Store \u00b7 LAUNCH \u00b7 Full launch (12 / 19 / 26/8 only).\nSeparate from Puzzle M.E.S (Core 18\u201324/8). Surfaces the paired purchase offer for the off-test cohort.",
+          "backup": false
+        },
+        {
+          "name": "Piggy \u2014 break for 5\u2605 Reg card",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Piggy \u2014 purchase breaks piggy bank.\nPrize on break: 5\u2605 Reg card.",
+          "backup": false
+        },
+        {
+          "name": "X2 Badges",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Badges \u2014 double clan badge earn rate (Wednesday).\nSchedule: Wed (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 5\u2605 Gold Card + 100% SB \u00b7 BACKUP cap (if Popup Store LAUNCH slips)",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 5\u2605 Gold Card + 100% SB \u00b7 BACKUP cap (if Popup Store LAUNCH slips).\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).",
+          "backup": true
+        },
+        {
+          "name": "MGAP BOGO",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Buy-one-get-one multipliers on qualifying purchase tiers.",
+          "backup": false
+        },
+        {
+          "name": "Price Cut \u2014 20% storewide",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Price Cut \u2014 20% storewide discount (purchase promo, not VFM second offer).",
+          "backup": false
+        },
+        {
+          "name": "Spinner Clash",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spinner Clash \u2014 tournament Core coin sink; house adds % of wins to prize pot.\nCollector's Album phase 3 (Shiny Series 3) \u2014 rank prizes:\n  1st: Wild Ace\n  2nd: 5\u2605 Ace Pack\n  3rd: 3\u2605 Ace Pack\nConfigure ranks in LiveOps per nivi_collector_album_prizes.md.",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Gems",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term SNL \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": "Popup Store LAUNCH (Full launch) \u2014 shell only. RYD on this day (if present) is BACKUP cap only \u2014 use if Popup LAUNCH slips; do not run both as primary VFM. "
+    },
+    {
+      "date": 27,
+      "dow": "Thu",
+      "iso": "2026-08-27",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 3 (Shiny MS3)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Gold card (on purchase) + Shield",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + Shield.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "Golden Spin \u2014 weekly feature",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: Golden Spin \u2014 timed gem feature (2h post 12:00 UTC); not a coin VFM offer.",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 up to 200 badges",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 earn up to 200 badges in the daily window (Thursday template). Prize focus: dash/badge progression.\nSchedule: Thu (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 5\u2605 Reg + 100% SB",
+          "status": "RYD",
+          "pricing": "Medium",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 5\u2605 Reg + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).\n\nExtreme Stamp day: use Extreme Stamp instead of RDS in offer slots (4 RDS \u2192 2 Extreme).",
+          "backup": false
+        },
+        {
+          "name": "X2 Extreme Stamp",
+          "status": "Extreme Stamp",
+          "pricing": null,
+          "desc": "Platform: X2 Extreme Stamp \u2014 doubles Extreme Stamps earned in offers today (revenue amplifier).\nRule: RDS slots \u2192 Extreme Stamp (4 RDS \u2192 2 Extreme); no Wild Card mixed in offers.\nDuration: all day.",
+          "backup": false
+        },
+        {
+          "name": "Gems Sale \u2014 30% store / 20% offers",
+          "status": "Gems",
+          "pricing": "High",
+          "desc": "Platform: Gems Sale \u2014 30% off gem store / 20% off gem offers for the day.",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Wild Guaranteed + Despicable Wolf",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Wild Guaranteed.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 counts vs Nivi Shiny Limited weekly budget \u00b7 Shiny Wolf mini-game: 3\u20135 Shiny Cards (Collectibles \u2014 Nivi)",
+          "backup": false
+        },
+        {
+          "name": "Spin Zone \u2014 Hammers Wheel (single hammer source)",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nSpin Zone \u2014 Hammers Wheel (single hammer source)",
+          "backup": false
+        },
+        {
+          "name": "PYP \u2014 finish for 5\u2605 Reg card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use 4 Dice Rolls",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Dice",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Dice.\nContext: Short-term SNL \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 28,
+      "dow": "Fri",
+      "iso": "2026-08-28",
+      "sale": true,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Quest",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 3 (Shiny MS3)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Reg card + Hammers Wheel",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Reg card + Hammers Wheel.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "X2 Dash Points",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): X2 Dash Points \u2014 double dash-point earn on clan dash missions (Tue/Fri).\nSchedule: Fri (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: Wild Ord + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + Wild Ord",
+          "backup": false
+        },
+        {
+          "name": "x2 GGS (3h window, post 11:00 UTC)",
+          "status": "Gems",
+          "pricing": null,
+          "desc": "Platform: x2 GGS \u2014 doubles Gold Gem Stamps earned in offers (3h, post 11:00 UTC).",
+          "backup": false
+        },
+        {
+          "name": "Ace Heist \u2014 5\u2605 Ace card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Spin 30 times \u2014 any game\n\u00b7 Reach final act \u2014 Shiny Show\n\u00b7 Open 8 pods",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 2 Dice",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Dice.\nContext: Short-term SNL \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 29,
+      "dow": "Sat",
+      "iso": "2026-08-29",
+      "sale": true,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mid-term rotation \u2014 Quest / Figz / Globez prizes by phase: nivi_collector_album_prizes.md (Winovate scenes \u00b7 Mega Pods \u00b7 Quest islands)."
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Winovate scene milestones by album phase \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 3 (Shiny MS3)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 5\u2605 Gold card (on purchase) + Multiwheel",
+          "status": "Daily deal",
+          "pricing": "Max",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 5\u2605 Gold card (on purchase) + Multiwheel.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "backup": false
+        },
+        {
+          "name": "Coin Sale",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Coin Sale \u2014 discounted coin packages in store for the sale window.\nContents: tiered coin SKUs (pairs with a VFM second offer on Fri/Sat sale days).",
+          "backup": false
+        },
+        {
+          "name": "RYD \u2014 5\u2605 Reg + 100% SB",
+          "status": "RYD",
+          "pricing": "High",
+          "desc": "Platform: RYD \u2014 Coins + Gems + hook prize + RDS + % SlotoBucks.\nHook / card prize (this instance): 5\u2605 Reg + 100% SB.\nStamps: RDS on reveal \u00b7 SB% on top (standard tiers only \u2014 never 155% SB).",
+          "backup": false
+        },
+        {
+          "name": "Dice Deluxe \u2014 1\u00d7/week",
+          "status": "Offers & coin sale",
+          "pricing": "High",
+          "desc": "Platform: Dice Deluxe \u2014 weekly timed dice offer (coins/gems + dice SKU); \u22641\u00d7/week.",
+          "backup": false
+        },
+        {
+          "name": "Lotto \u2014 peak (Night Plan)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: Lotto Bonus \u2014 Night Plan revenue peak (not a coin VFM offer).\nPeak window: Sat\u2192Sun 00:00 \u2014 Lotto jackpot emphasis on Night Plan.\nPairing: exactly one LBP promo on this calendar day (rotate per lotto_bonus.md).",
+          "backup": false
+        },
+        {
+          "name": "LBP \u2014 2 multiballs (Night Plan peak)",
+          "status": "Offers & coin sale",
+          "pricing": null,
+          "desc": "Platform: LBP (Lotto Bonus Peak) \u2014 timed Lotto boost on Night Plan.\nMechanic (this instance): Two multiball activations during the peak.\nPeak night: Sat\u2192Sun 00:00. Rotation: regular six (lotto_bonus.md); event-only (4 plasma / doubled multiballs) on mega sales only.",
+          "backup": false
+        },
+        {
+          "name": "Ace Heist \u2014 5\u2605 Ace card",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Missions:\n\u00b7 Spin 30 times \u2014 any game\n\u00b7 Reach final act \u2014 Shiny Show\n\u00b7 Open 8 pods",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 3\u2605 Reg card",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3\u2605 Reg card.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 30,
+      "dow": "Sun",
+      "iso": "2026-08-30",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Album \u2014 Phase 3 (Shiny MS3)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 5\u2605 Reg card (on purchase) + Shield (BOGO \u2014 task config)",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 5\u2605 Reg card (on purchase) + Shield (BOGO \u2014 task config).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nReg HW bank full \u2014 Reg DD (no Hammer Wheel)",
+          "backup": false
+        },
+        {
+          "name": "Decoy Bonanza \u2014 d3: 4\u2605 Gold + bundle | H Pricing",
+          "status": "Offers & coin sale",
+          "pricing": "Medium",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Hero Coins\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 4\u2605 Gold",
+          "backup": false
+        },
+        {
+          "name": "MGAP Slotobucks Guaranteed",
+          "status": "MGAP",
+          "pricing": "High",
+          "desc": "Platform: MGAP \u2014 purchase multiplier promo (timed).\nMechanic (this instance): Guaranteed SlotoBucks % on qualifying buys.",
+          "backup": false
+        },
+        {
+          "name": "Shiny Show \u2014 Joker All Cards",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Variant / prizes (this day): Joker All Cards.\nMain shiny-card source (Nivi): up to 3 special promos/week. \u22643\u00d7/week calendar cap \u00b7 does not consume Shiny Limited budget",
+          "backup": false
+        },
+        {
+          "name": "Spin Zone \u2014 5\u2605 Ace card chase",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): 5\u2605 Ace card.\nShort-term context: SNL.",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 Gems",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        },
+        {
+          "name": "Custom Pod \u2014 Post-Sale Balance Drain X1200",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nCustom Pod \u2014 Post-Sale Balance Drain X1200",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "date": 31,
+      "dow": "Mon",
+      "iso": "2026-08-31",
+      "sale": false,
+      "tag": null,
+      "banner": null,
+      "seasons": [
+        {
+          "name": "SNL",
+          "status": "Short Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Globez",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Winovate",
+          "status": "Mid Term",
+          "isFirst": false,
+          "desc": ""
+        },
+        {
+          "name": "Mega Pods",
+          "status": "Mid Term",
+          "isFirst": true,
+          "desc": "Mega Pods freemium/premium milestones \u2014 nivi_collector_album_prizes.md"
+        },
+        {
+          "name": "Album \u2014 Phase 3 (Shiny MS3)",
+          "status": "Album",
+          "isFirst": false,
+          "desc": ""
+        }
+      ],
+      "items": [
+        {
+          "name": "DD- 4\u2605 Gold card (on purchase) + 2 Dice",
+          "status": "Daily deal",
+          "pricing": "High",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + 2 Dice.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nGold bank full \u2014 planned stars",
+          "backup": false
+        },
+        {
+          "name": "Clan Dash Bundle \u2014 30% discount",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Dash Bundle \u2014 discounted clan season bundle (Monday Dash Day). Prize focus: clan progression bundle; payer breadth.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Clan Go \u2014 Premium for Badge Wheel",
+          "status": "Clan-Dash",
+          "pricing": null,
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Clan Go \u2014 Go Premium for Badge Wheel / picker. Prize focus: badge-wheel spins and clan badge earn.\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Monday Max Deal",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Monday Max Deal \u2014 premium Monday clan purchase bundle (Dash Day).\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Time Limited Prize \u2014 5\u2605 Gold Card",
+          "status": "Clan-Dash",
+          "pricing": "High",
+          "desc": "Platform: Clan-Dash \u2014 payer/recruitment feature (badges, dash points, bundles).\nMechanic (this instance): Time Limited Prize \u2014 timed clan reward window.\nPrize: 5\u2605 Gold Card (Dash premium \u00b7 milestone 17)\nSchedule: Mon (weekly Clan-Dash template \u2014 do not exceed).",
+          "backup": false
+        },
+        {
+          "name": "Buy All - Coins: Coins+RDS+5\u2605 Reg + 2 Dice | Gems: Gems + 1 GGS + 5\u2605 Reg + 3000 Hero Coins | M Pricing",
+          "status": "Buy all",
+          "pricing": "Medium",
+          "desc": "Coins denom: Coins+RDS+5\u2605 Reg + 2 Dice\nGems denom: Gems + 1 GGS + 5\u2605 Reg + 3000 Hero Coins",
+          "backup": false
+        },
+        {
+          "name": "MES \u2014 purchase to progress",
+          "status": "Core",
+          "pricing": null,
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nMES \u2014 purchase to progress",
+          "backup": false
+        },
+        {
+          "name": "ADS PO \u2014 3000 Hero Coins",
+          "status": "ADS",
+          "pricing": null,
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3000 Hero Coins.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "backup": false
+        }
+      ],
+      "notes": ""
+    }
+  ]
+}

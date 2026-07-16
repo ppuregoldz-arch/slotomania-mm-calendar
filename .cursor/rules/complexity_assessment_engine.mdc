@@ -1,0 +1,403 @@
+---
+alwaysApply: true
+---
+
+# Complexity Assessment Engine - SM Package
+
+## Overview
+This rule provides advanced complexity evaluation for SM data analysis, including dual assessment of query complexity and request complexity, with systematic validation requirements and quality assurance protocols.
+
+## Dual Complexity Assessment Framework
+
+### Query Complexity Assessment (Traffic Light System)
+
+#### 🟢 GREEN - Simple Queries
+**Characteristics:**
+- Single table queries
+- Simple aggregations (COUNT, SUM, AVG)
+- Standard KPIs (DAU, revenue, spins)
+- No complex joins or window functions
+- Pre-calculated metrics from aggregated tables
+
+**Examples:**
+```sql
+-- Simple DAU query
+SELECT calc_date, COUNT(DISTINCT user_id) as DAU
+FROM agg.agg_sm_daily_users_stats
+WHERE calc_date >= CURRENT_DATE - 30
+GROUP BY calc_date
+
+-- Simple revenue query
+SELECT calc_date, SUM(daily_Net_revenue) as daily_revenue
+FROM agg.agg_sm_daily_users_stats
+WHERE calc_date >= CURRENT_DATE - 30
+GROUP BY calc_date
+```
+
+**Validation Requirements:**
+- 1-3 validation users
+- Basic verification against raw data
+- 1-2 hours validation time
+
+#### 🟡 YELLOW - Moderate Queries
+**Characteristics:**
+- Multi-table joins (2-3 tables)
+- Cohort analysis
+- User segmentation analysis
+- Moderate aggregations with grouping
+- Cross-table validation required
+
+**Examples:**
+```sql
+-- Revenue by CZ deluxe segment
+SELECT 
+    cz_segment,
+    COUNT(DISTINCT user_id) as users,
+    SUM(daily_Net_revenue) as total_revenue,
+    AVG(daily_Net_revenue) as avg_revenue_per_user
+FROM agg.agg_sm_daily_users_stats a
+LEFT JOIN dwh.sm_user_profile_datamining_snapshot b
+    ON a.user_id = b.user_id AND a.calc_date = DATE(b.snapshot_insert_ts)
+WHERE calc_date >= CURRENT_DATE - 30
+GROUP BY cz_segment
+
+-- Product performance analysis
+SELECT 
+    product_group,
+    SUM(net_amount) as revenue,
+    COUNT(*) as transaction_count
+FROM dwh.sm_fact_payments p
+LEFT JOIN sm_draft.SM_DIM_Products pr
+    ON p.transaction_source_type_id = pr.transaction_source_type_id
+    AND p.sku_id = pr.sku_id
+WHERE tran_date >= CURRENT_DATE - 30
+  AND tran_status_id = 2
+GROUP BY product_group
+```
+
+**Validation Requirements:**
+- 3-5 validation users
+- Cross-table verification
+- 0.5-1 day validation time
+
+#### 🔴 RED - Complex Queries
+**Characteristics:**
+- Advanced attribution analysis
+- Complex funnels and user journeys
+- Statistical analysis and modeling
+- Multiple CTEs and window functions
+- Cross-system validation required
+- Two-step aggregation required
+
+**Examples:**
+```sql
+-- Complex churn analysis with cohorts
+WITH user_cohorts AS (
+    SELECT 
+        user_id,
+        MIN(calc_date) as first_date,
+        DATE_TRUNC('month', MIN(calc_date)) as cohort_month
+    FROM agg.agg_sm_daily_users_stats
+    GROUP BY user_id
+),
+cohort_retention AS (
+    SELECT 
+        c.cohort_month,
+        COUNT(DISTINCT c.user_id) as cohort_size,
+        COUNT(DISTINCT CASE WHEN a.calc_date >= c.first_date + INTERVAL '1 day' THEN a.user_id END) as day_1_retained,
+        COUNT(DISTINCT CASE WHEN a.calc_date >= c.first_date + INTERVAL '7 days' THEN a.user_id END) as day_7_retained,
+        COUNT(DISTINCT CASE WHEN a.calc_date >= c.first_date + INTERVAL '30 days' THEN a.user_id END) as day_30_retained
+    FROM user_cohorts c
+    LEFT JOIN agg.agg_sm_daily_users_stats a
+        ON c.user_id = a.user_id
+    GROUP BY c.cohort_month
+)
+SELECT * FROM cohort_retention
+ORDER BY cohort_month
+```
+
+**Validation Requirements:**
+- 5-10 validation users
+- Comprehensive validation
+- 1-3 days validation time
+
+#### ⚫ BLACK - Advanced Queries
+**Characteristics:**
+- Experimental frameworks
+- Predictive modeling
+- Cross-system validation
+- Machine learning integration
+- Expert-level analysis
+- Complex two-step aggregations across multiple dimensions
+
+**Examples:**
+```sql
+-- Advanced LTV prediction model with multiple features
+WITH user_features AS (
+    SELECT 
+        user_id,
+        AVG(spins) as avg_spins,
+        AVG(daily_Net_revenue) as avg_revenue,
+        COUNT(DISTINCT calc_date) as active_days,
+        MAX(balance_end_day) as max_balance,
+        SUM(CASE WHEN daily_Net_revenue > 0 THEN 1 ELSE 0 END) as paying_days
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= CURRENT_DATE - 90
+    GROUP BY user_id
+),
+user_behavior AS (
+    SELECT 
+        uf.user_id,
+        uf.avg_spins,
+        uf.avg_revenue,
+        uf.active_days,
+        uf.max_balance,
+        uf.paying_days,
+        CASE 
+            WHEN uf.avg_spins > 1000 AND uf.avg_revenue > 10 THEN 'High_Value'
+            WHEN uf.avg_spins > 500 AND uf.avg_revenue > 1 THEN 'Medium_Value'
+            ELSE 'Low_Value'
+        END as user_segment
+    FROM user_features uf
+)
+SELECT 
+    user_segment,
+    COUNT(*) as user_count,
+    AVG(avg_revenue) as avg_revenue,
+    AVG(active_days) as avg_active_days
+FROM user_behavior
+GROUP BY user_segment
+```
+
+**Validation Requirements:**
+- 10+ validation users
+- Expert validation
+- 3+ days validation time
+
+### Request Complexity Assessment (Token Usage)
+
+#### 📝 SIMPLE - Basic Requests
+**Characteristics:**
+- < 100 tokens
+- Single metric request
+- Clear scope and timeframe
+- Straightforward business question
+
+**Examples:**
+- "What is today's DAU?"
+- "Show me yesterday's revenue"
+- "How many spins did we have last week?"
+
+**Validation Requirements:**
+- Basic verification
+- Single user validation
+- Quick cross-check
+
+#### 📊 MODERATE - Standard Requests
+**Characteristics:**
+- 100-500 tokens
+- Multiple metrics
+- Defined timeframe
+- Clear user segments
+
+**Examples:**
+- "Compare DAU and revenue by CZ deluxe segment for the last 30 days"
+- "Show me spin frequency and session duration by platform for this month"
+- "Analyze retention rates by user tier for Q1"
+
+**Validation Requirements:**
+- Multi-user validation
+- Cross-table verification
+- Business logic validation
+
+#### 🔍 COMPLEX - Advanced Requests
+**Characteristics:**
+- 500-1000 tokens
+- Multi-dimensional analysis
+- Complex business logic
+- Multiple data sources
+
+**Examples:**
+- "Analyze the impact of bonus campaigns on user retention and revenue, comparing CZ deluxe segments, with cohort analysis over the last 3 months"
+- "Investigate the correlation between coin balance, spin activity, and long-term user value, including platform-specific analysis and seasonal trends"
+
+**Validation Requirements:**
+- Comprehensive validation
+- Multiple validation approaches
+- Statistical validation
+
+#### 🚀 ADVANCED - Expert Requests
+**Characteristics:**
+- > 1000 tokens
+- Predictive modeling
+- Cross-system analysis
+- Experimental frameworks
+
+**Examples:**
+- "Develop a predictive model for user churn that incorporates engagement patterns, balance behavior, revenue patterns, and game progression, with validation across different CZ deluxe segments and platforms"
+
+**Validation Requirements:**
+- Expert-level validation
+- Multiple validation methodologies
+- Statistical significance testing
+
+## Combined Assessment Matrix
+
+### Assessment Logic
+```
+Combined Assessment = f(Query Complexity, Request Complexity)
+```
+
+### Assessment Rules
+- **🟢 SIMPLE**: Green query + Simple request
+- **🟡 MODERATE**: Yellow query + Moderate request OR Green query + Complex request
+- **🔴 COMPLEX**: Red query + Any request OR Yellow query + Advanced request
+- **⚫ ADVANCED**: Black query + Any request OR Red query + Advanced request
+
+### Validation Requirements by Combined Assessment
+
+#### 🟢 SIMPLE
+- **Validation Users**: 1-3
+- **Validation Time**: 1-2 hours
+- **Validation Depth**: Basic verification
+- **Documentation**: Standard validation report
+
+#### 🟡 MODERATE
+- **Validation Users**: 3-5
+- **Validation Time**: 0.5-1 day
+- **Validation Depth**: Cross-table verification
+- **Documentation**: Detailed validation report
+
+#### 🔴 COMPLEX
+- **Validation Users**: 5-10
+- **Validation Time**: 1-3 days
+- **Validation Depth**: Comprehensive validation
+- **Documentation**: Comprehensive validation report
+
+#### ⚫ ADVANCED
+- **Validation Users**: 10+
+- **Validation Time**: 3+ days
+- **Validation Depth**: Expert validation
+- **Documentation**: Expert validation report
+
+## SM-Specific Complexity Factors
+
+### Coin Hyperinflation Considerations ⚠️
+**SM coin amounts are in extreme hyperinflation. When assessing complexity, account for:**
+- **Large number handling**: Coin values can be in trillions, sextillions, septillions, or even undecillions
+- **Percentile analysis**: Use percentiles rather than absolute values for comparisons
+- **Ratio analysis**: Focus on ratios (win rate, consumption rate) rather than absolute amounts
+- **Validation complexity**: Do NOT flag high coin amounts as errors - they are normal in SM
+
+**Normal Ranges:**
+- Balance: Median ~73-99 trillion, P95 ~8-10 septillion, Max ~460 undecillion
+- Bet/Win: Median ~100-173 trillion, P95 ~8.7-11.5 septillion, Max ~142 undecillion
+- Payments: Median ~7.6 sextillion, P95 ~30 septillion, Max ~19 octillion
+
+**Reference**: See `data_sources/sm_coin_hyperinflation_context.md` for detailed ranges.
+
+### Data Volume Considerations
+- **Small**: < 1M rows (simple aggregations)
+- **Medium**: 1M-10M rows (moderate analysis)
+- **Large**: 10M-100M rows (complex analysis)
+- **Very Large**: > 100M rows (advanced analysis)
+
+### Join Complexity
+- **Simple**: Single table or simple joins
+- **Moderate**: 2-3 table joins with clear relationships
+- **Complex**: Multiple joins with complex business logic
+- **Advanced**: Cross-system joins with data lineage
+
+### Business Logic Complexity
+- **Simple**: Standard KPIs and metrics
+- **Moderate**: User segmentation and cohort analysis
+- **Complex**: Advanced attribution and funnel analysis
+- **Advanced**: Predictive modeling and ML integration
+
+### Revenue Analysis Complexity
+- **Simple**: Daily revenue totals from aggregated table
+- **Moderate**: Revenue by segment with user context
+- **Complex**: Revenue attribution and LTV analysis
+- **Advanced**: Revenue prediction and optimization models
+
+### Aggregation Methodology Complexity
+- **Simple**: Direct aggregations from pre-calculated tables
+- **Moderate**: Two-step aggregation for monthly averages
+- **Complex**: Multi-dimensional two-step aggregations
+- **Advanced**: Complex aggregations with multiple grouping dimensions
+
+## Quality Assurance Protocols
+
+### Pre-Analysis Assessment
+1. **Query Complexity Evaluation**
+   - Estimate data volume and processing requirements
+   - Assess join complexity and business logic
+   - Determine validation requirements
+   - Check for two-step aggregation requirements
+
+2. **Request Complexity Evaluation**
+   - Analyze token usage and clarity
+   - Assess scope and specificity
+   - Evaluate business value and actionability
+
+3. **Combined Assessment**
+   - Integrate query and request complexity
+   - Determine validation approach
+   - Set quality assurance protocols
+
+### During Analysis Monitoring
+1. **Performance Monitoring**
+   - Track query execution time
+   - Monitor resource usage
+   - Identify performance bottlenecks
+
+2. **Quality Checks**
+   - Validate business logic
+   - Check data consistency
+   - Verify calculation accuracy
+   - Verify two-step aggregation methodology
+
+3. **Documentation Requirements**
+   - Document methodology
+   - Record assumptions and limitations
+   - Track validation results
+
+### Post-Analysis Validation
+1. **Result Validation**
+   - Cross-check with source data
+   - Validate business logic
+   - Verify calculation accuracy
+   - Verify aggregation methodology
+
+2. **Quality Assessment**
+   - Assess confidence level
+   - Identify potential issues
+   - Document recommendations
+
+3. **Continuous Improvement**
+   - Track validation success rates
+   - Identify improvement opportunities
+   - Update complexity assessment framework
+
+## Success Metrics
+
+### Complexity Assessment Accuracy
+- **Assessment Accuracy**: >95% of complexity assessments are accurate
+- **Validation Coverage**: 100% of analyses include appropriate validation
+- **Quality Improvement**: Continuous refinement of assessment criteria
+
+### Analysis Quality
+- **Validation Success**: >98% of validated results are confirmed
+- **Business Impact**: High stakeholder confidence in analytical results
+- **Process Efficiency**: Reduced time from question to validated insight
+
+### Learning and Improvement
+- **Framework Evolution**: Regular updates to complexity assessment criteria
+- **Best Practice Sharing**: Cross-team learning and standardization
+- **Quality Monitoring**: Continuous assessment of analysis quality
+
+This complexity assessment engine ensures systematic evaluation of SM data analysis complexity with appropriate validation requirements and quality assurance protocols.
+description:
+globs:
+alwaysApply: false
+---

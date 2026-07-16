@@ -1,0 +1,176 @@
+{
+  "complete_round_examples": {
+    "description": "Detailed examples of ROUND_STARTED and ROUND_ENDED events for both rounds",
+    
+    "round_1_lock_scenario": {
+      "description": "Round 1 where player locks in at 2.5x multiplier",
+      
+      "round_started": {
+        "eventType": "ROUND_STARTED",
+        "userId": 123456,
+        "sessionId": "sess-rounds-001", 
+        "gameType": "coins_regular",
+        "gameId": "aviator-rounds-uuid-001",
+        "configId": "s3-config-uuid-004",
+        "segmentId": 28,
+        "aviatorTransactionId": "aviator-rounds-txn-333",
+        "originTransactionId": "purchase-rounds-txn-444",
+        "eventTs": 1746734800000,
+        "historyData": {
+          "pbeTransactionId": "pbe-rounds-001",
+          "sourceName": "Standard Pack $2.99",
+          "pbeBaseAmount": "3000.00"
+        },
+        "roundIdx": 0,
+        "totalRounds": 2,
+        "growthFormula": {
+          "type": "exponential",
+          "params": {
+            "baseMultiplier": 1.2,
+            "initialGrowthStep": 0.08,
+            "accelRate": 0.2
+          }
+        }
+      },
+      
+      "round_ended": {
+        "eventType": "ROUND_ENDED",
+        "userId": 123456,
+        "sessionId": "sess-rounds-001",
+        "gameType": "coins_regular", 
+        "gameId": "aviator-rounds-uuid-001",
+        "configId": "s3-config-uuid-004",
+        "segmentId": 28,
+        "aviatorTransactionId": "aviator-rounds-txn-333",
+        "originTransactionId": "purchase-rounds-txn-444",
+        "eventTs": 1746734807500,
+        "historyData": {
+          "pbeTransactionId": "pbe-rounds-001",
+          "sourceName": "Standard Pack $2.99",
+          "pbeBaseAmount": "3000.00"
+        },
+        "roundIdx": 0,
+        "totalRounds": 2,
+        "growthFormula": {
+          "type": "exponential",
+          "params": {
+            "baseMultiplier": 1.2,
+            "initialGrowthStep": 0.08,
+            "accelRate": 0.2
+          }
+        },
+        "endRoundReason": "LOCK",
+        "historyReason": "PLAYER_LOCK",
+        "multiplier": 2.5,
+        "durationMs": 7500,
+        "gameResult": null
+      }
+    },
+    
+    "round_2_crash_scenario": {
+      "description": "Round 2 where player times out/crashes - includes final game result",
+      
+      "round_started": {
+        "eventType": "ROUND_STARTED",
+        "userId": 123456,
+        "sessionId": "sess-rounds-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-rounds-uuid-001", 
+        "configId": "s3-config-uuid-004",
+        "segmentId": 28,
+        "aviatorTransactionId": "aviator-rounds-txn-333",
+        "originTransactionId": "purchase-rounds-txn-444",
+        "eventTs": 1746734810000,
+        "historyData": {
+          "pbeTransactionId": "pbe-rounds-001",
+          "sourceName": "Standard Pack $2.99",
+          "pbeBaseAmount": "3000.00"
+        },
+        "roundIdx": 1,
+        "totalRounds": 2,
+        "growthFormula": {
+          "type": "exponential", 
+          "params": {
+            "baseMultiplier": 1.2,
+            "initialGrowthStep": 0.08,
+            "accelRate": 0.2
+          }
+        }
+      },
+      
+      "round_ended_final": {
+        "eventType": "ROUND_ENDED",
+        "userId": 123456,
+        "sessionId": "sess-rounds-001",
+        "gameType": "coins_regular",
+        "gameId": "aviator-rounds-uuid-001",
+        "configId": "s3-config-uuid-004",
+        "segmentId": 28,
+        "aviatorTransactionId": "aviator-rounds-txn-333", 
+        "originTransactionId": "purchase-rounds-txn-444",
+        "eventTs": 1746734815200,
+        "historyData": {
+          "pbeTransactionId": "pbe-rounds-001",
+          "sourceName": "Standard Pack $2.99",
+          "pbeBaseAmount": "3000.00"
+        },
+        "roundIdx": 1,
+        "totalRounds": 2,
+        "growthFormula": {
+          "type": "exponential",
+          "params": {
+            "baseMultiplier": 1.2,
+            "initialGrowthStep": 0.08,
+            "accelRate": 0.2
+          }
+        },
+        "endRoundReason": "CRASH",
+        "historyReason": "TIMEOUT_CRASH", 
+        "multiplier": 1.2,
+        "durationMs": 5200,
+        "gameResult": {
+          "coins": "7500.00",
+          "bundleIds": [3001],
+          "appliedOnTopMultiplier": null,
+          "winningRoundIdx": 0,
+          "winningRawMultiplier": 2.5
+        }
+      }
+    },
+    
+    "round_analysis": {
+      "game_summary": {
+        "total_rounds": 2,
+        "round_outcomes": [
+          {
+            "round_idx": 0,
+            "outcome": "LOCK",
+            "multiplier": 2.5,
+            "duration_ms": 7500,
+            "player_action": "Cashed out at 2.5x"
+          },
+          {
+            "round_idx": 1, 
+            "outcome": "CRASH",
+            "multiplier": 1.2,
+            "duration_ms": 5200,
+            "player_action": "Timed out, got base multiplier"
+          }
+        ],
+        "winning_round": 0,
+        "final_multiplier": 2.5,
+        "final_reward": "7500.00",
+        "base_amount": "3000.00",
+        "reward_multiplier": 2.5
+      },
+      
+      "key_insights": {
+        "best_strategy": "Player's round 1 lock decision was optimal",
+        "round_2_result": "Timeout resulted in base multiplier only", 
+        "final_calculation": "3000 * 2.5 = 7500 coins",
+        "milestones_achieved": ["First milestone at 2x multiplier"],
+        "promotional_effects": "None applied in this example"
+      }
+    }
+  }
+}

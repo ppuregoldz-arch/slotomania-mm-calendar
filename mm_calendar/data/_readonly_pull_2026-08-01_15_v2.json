@@ -1,0 +1,1702 @@
+{
+  "report_meta": {
+    "method": "Only rows where date_mky27nx7 parses to 2026-08-01..15",
+    "with_date_in_range": 173,
+    "empty_date_but_aug_in_name_1_15": [
+      {
+        "id": "12464158111",
+        "name": "2026-08-01 | Coin Sale | High Pricing",
+        "product": "Offers & coin sale",
+        "name_date_hint": "2026-08-01",
+        "timeline": ""
+      },
+      {
+        "id": "12464188536",
+        "name": "2026-08-05 | MGAP BOGO",
+        "product": "MGAP",
+        "name_date_hint": "2026-08-05",
+        "timeline": ""
+      },
+      {
+        "id": "12464266630",
+        "name": "2026-08-08 | Coin Sale | High Pricing",
+        "product": "Offers & coin sale",
+        "name_date_hint": "2026-08-08",
+        "timeline": ""
+      },
+      {
+        "id": "12464253781",
+        "name": "2026-08-09 | Custom Pod - Post-Sale Balance Drain X1200",
+        "product": "Core",
+        "name_date_hint": "2026-08-09",
+        "timeline": ""
+      },
+      {
+        "id": "12464330472",
+        "name": "2026-08-10 | Dash Pass - Dash Day",
+        "product": "Clan-Dash",
+        "name_date_hint": "2026-08-10",
+        "timeline": ""
+      },
+      {
+        "id": "12464262445",
+        "name": "2026-08-11 | Segmented test - Decoy (Soft launch)",
+        "product": "",
+        "name_date_hint": "2026-08-11",
+        "timeline": ""
+      },
+      {
+        "id": "12464310472",
+        "name": "2026-08-11 | Segmented test - Decoy (Soft launch)",
+        "product": "",
+        "name_date_hint": "2026-08-11",
+        "timeline": ""
+      },
+      {
+        "id": "12464377086",
+        "name": "2026-08-12 | Popup Store",
+        "product": "",
+        "name_date_hint": "2026-08-12",
+        "timeline": ""
+      },
+      {
+        "id": "12464359321",
+        "name": "2026-08-15 | Coin Sale | 50/75/200/500%",
+        "product": "Offers & coin sale",
+        "name_date_hint": "2026-08-15",
+        "timeline": ""
+      },
+      {
+        "id": "12467835488",
+        "name": "2026-08-09 | MGAP Wild Symbols",
+        "product": "MGAP",
+        "name_date_hint": "2026-08-09",
+        "timeline": ""
+      },
+      {
+        "id": "12475166376",
+        "name": "2026-08-08 | Win Master - 3* Reg card + 2 Parasheep",
+        "product": "Core",
+        "name_date_hint": "2026-08-08",
+        "timeline": ""
+      },
+      {
+        "id": "12475071171",
+        "name": "2026-08-12 | Spinner Clash",
+        "product": "Core",
+        "name_date_hint": "2026-08-12",
+        "timeline": ""
+      },
+      {
+        "id": "12486196561",
+        "name": "2026-08-01 | Coin Sale | High Pricing",
+        "product": "Offers & coin sale",
+        "name_date_hint": "2026-08-01",
+        "timeline": ""
+      },
+      {
+        "id": "12486440047",
+        "name": "2026-08-09 | Custom Pod - Post-Sale Balance Drain X1200",
+        "product": "Core",
+        "name_date_hint": "2026-08-09",
+        "timeline": ""
+      },
+      {
+        "id": "12486606735",
+        "name": "2026-08-08 | Coin Sale",
+        "product": "Offers & coin sale",
+        "name_date_hint": "2026-08-08",
+        "timeline": ""
+      },
+      {
+        "id": "12486541204",
+        "name": "2026-08-08 | Win Master - 3* Reg card + 2 Parasheep",
+        "product": "Core",
+        "name_date_hint": "2026-08-08",
+        "timeline": ""
+      },
+      {
+        "id": "12486527701",
+        "name": "2026-08-09 | Custom Pod - Post-Sale Balance Drain X1200",
+        "product": "Core",
+        "name_date_hint": "2026-08-09",
+        "timeline": ""
+      },
+      {
+        "id": "12486551779",
+        "name": "2026-08-14 | Nostalgic Weekend",
+        "product": "",
+        "name_date_hint": "2026-08-14",
+        "timeline": ""
+      },
+      {
+        "id": "12488347454",
+        "name": "2026-08-08 | Rolling Offer - 6 cycles (Buy X Get Y)",
+        "product": "Rolling offer",
+        "name_date_hint": "2026-08-08",
+        "timeline": ""
+      }
+    ],
+    "empty_date_but_timeline_mentions_aug": [],
+    "cancelled_still_dated_in_range": []
+  },
+  "items": [
+    {
+      "id": "10644921775",
+      "name": "2026-08-01",
+      "product": "Day",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"icon\":\"\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": ""
+    },
+    {
+      "id": "12464180399",
+      "name": "2026-08-01 | 1st of month - biggest store denom",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-07T08:30:58.470Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464095723",
+      "name": "2026-08-01 | ADS PO - Coins",
+      "product": "ADS",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-07T08:22:59.724Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488278671",
+      "name": "2026-08-01 | Blast - Short Term",
+      "product": "Short Term",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-09T10:43:28.776Z\"}",
+      "timeline": "",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488377591",
+      "name": "2026-08-01 | Blast | Wild Ordinary | Cozy",
+      "product": "Short Term",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-09T10:54:24.688Z\"}",
+      "timeline": "2026-08-01 - 2026-08-05",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464095595",
+      "name": "2026-08-01 | Custom Pod - X1000",
+      "product": "Core",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-07T08:23:02.558Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": "Config needed"
+    },
+    {
+      "id": "12475692413",
+      "name": "2026-08-01 | Daily Deal - 3* Reg card + Hammers Wheel | Max Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-08T08:15:45.856Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464095580",
+      "name": "2026-08-01 | LBP - 30% Bigger Balls (Night Plan peak)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-07T08:22:53.899Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464095386",
+      "name": "2026-08-01 | Lotto - peak (Night Plan)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-07T08:22:50.537Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": ""
+    },
+    {
+      "id": "12464095650",
+      "name": "2026-08-01 | RYD - 5* Gold Card + 100% SB - High Price",
+      "product": "RYD",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-07T08:22:47.535Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12486308699",
+      "name": "2026-08-01 | Shiny Show - Joker All Cards",
+      "product": "Album",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-09T03:31:18.747Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464110621",
+      "name": "2026-08-01 | Status Boost",
+      "product": "Event",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-07T08:22:37.760Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": ""
+    },
+    {
+      "id": "12486193098",
+      "name": "2026-08-01 | Win Master - 3* Reg card + PAB",
+      "product": "Core",
+      "date_col_text": "2026-08-01",
+      "date_col_value": "{\"date\":\"2026-08-01\",\"changed_at\":\"2026-07-09T03:31:27.371Z\"}",
+      "timeline": "2026-08-01 - 2026-08-01",
+      "config": "MCP needed"
+    },
+    {
+      "id": "10644919823",
+      "name": "2026-08-02",
+      "product": "Day",
+      "date_col_text": "2026-08-02",
+      "date_col_value": "{\"date\":\"2026-08-02\",\"icon\":\"\"}",
+      "timeline": "2026-08-02 - 2026-08-02",
+      "config": ""
+    },
+    {
+      "id": "12464196805",
+      "name": "2026-08-02 | ADS PO - Gems",
+      "product": "ADS",
+      "date_col_text": "2026-08-02",
+      "date_col_value": "{\"date\":\"2026-08-02\",\"changed_at\":\"2026-07-07T08:40:00.985Z\"}",
+      "timeline": "2026-08-02 - 2026-08-02",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486384765",
+      "name": "2026-08-02 | Daily Deal - 3* Gold card + PAB | High Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-02",
+      "date_col_value": "{\"date\":\"2026-08-02\",\"changed_at\":\"2026-07-09T03:52:51.315Z\"}",
+      "timeline": "2026-08-02 - 2026-08-02",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464175025",
+      "name": "2026-08-02 | Decoy Bonanza - d3: 5* Reg + bundle | H Pricing",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-02",
+      "date_col_value": "{\"date\":\"2026-08-02\",\"changed_at\":\"2026-07-07T08:39:50.390Z\"}",
+      "timeline": "2026-08-02 - 2026-08-02",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12467753097",
+      "name": "2026-08-02 | MGAP Matched",
+      "product": "MGAP",
+      "date_col_text": "2026-08-02",
+      "date_col_value": "{\"date\":\"2026-08-02\",\"changed_at\":\"2026-07-07T15:12:36.464Z\"}",
+      "timeline": "2026-08-02 - 2026-08-02",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486309356",
+      "name": "2026-08-02 | PYP - finish for 3* Ace card",
+      "product": "Core",
+      "date_col_text": "2026-08-02",
+      "date_col_value": "{\"date\":\"2026-08-02\",\"changed_at\":\"2026-07-09T03:31:49.811Z\"}",
+      "timeline": "2026-08-02 - 2026-08-02",
+      "config": "MCP needed"
+    },
+    {
+      "id": "10644921689",
+      "name": "2026-08-03",
+      "product": "Day",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"icon\":\"\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": ""
+    },
+    {
+      "id": "12464173301",
+      "name": "2026-08-03 | ADS PO - 2 Picks",
+      "product": "ADS",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-07T08:40:55.057Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464197169",
+      "name": "2026-08-03 | Album - Last Day Shiny Collection (MS1)",
+      "product": "Album",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-07T08:40:11.755Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": ""
+    },
+    {
+      "id": "12464173394",
+      "name": "2026-08-03 | Clan Dash Bundle - 30% discount",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-07T08:40:27.944Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464215324",
+      "name": "2026-08-03 | Clan Go - Premium for Badge Wheel",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-07T08:40:33.636Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486308528",
+      "name": "2026-08-03 | Daily Deal - Shiny Card (multiple) | Max Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-09T03:32:04.193Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": "Config needed"
+    },
+    {
+      "id": "12475691176",
+      "name": "2026-08-03 | Mega Pods Season",
+      "product": "Mid Term",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-08T08:16:41.921Z\"}",
+      "timeline": "2026-08-03 - 2026-08-09",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464173477",
+      "name": "2026-08-03 | Monday Max Deal",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-07T08:40:39.006Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464188673",
+      "name": "2026-08-03 | Rolling Offer - 3 cycles (Buy More for Less)",
+      "product": "Rolling offer",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-07T08:40:49.681Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488279081",
+      "name": "2026-08-03 | Time Limited Prize",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-09T10:44:09.373Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": ""
+    },
+    {
+      "id": "12488297934",
+      "name": "2026-08-03 | Win Master - 3* Reg card + PAB",
+      "product": "Core",
+      "date_col_text": "2026-08-03",
+      "date_col_value": "{\"date\":\"2026-08-03\",\"changed_at\":\"2026-07-09T10:44:13.995Z\"}",
+      "timeline": "2026-08-03 - 2026-08-03",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12488256453",
+      "name": "2026-08-01 | Album - Phase 2 (Shiny MS2)",
+      "product": "Album",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-09T10:43:31.824Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": "Config needed"
+    },
+    {
+      "id": "10644926829",
+      "name": "2026-08-04",
+      "product": "Day",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"icon\":\"\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": ""
+    },
+    {
+      "id": "12464215481",
+      "name": "2026-08-04 | ADS PO - 2 Picks",
+      "product": "ADS",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T08:42:01.131Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464215466",
+      "name": "2026-08-04 | Album - 2nd Shiny Collection Opening",
+      "product": "Album",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T08:41:00.404Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": ""
+    },
+    {
+      "id": "12476387067",
+      "name": "2026-08-04 | Album - Phase 2 (Shiny MS2)",
+      "product": "Album",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-08T10:23:59.160Z\"}",
+      "timeline": "2026-08-04 - 2026-08-24",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486296317",
+      "name": "2026-08-04 | Daily Deal - 8 Hammers (multiple) | High Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-09T03:59:46.101Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": ""
+    },
+    {
+      "id": "12475671533",
+      "name": "2026-08-04 | Daily Deal - Shiny Limited - Once | High Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-08T08:17:14.630Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": "Done"
+    },
+    {
+      "id": "12464175520",
+      "name": "2026-08-04 | LBP - 4 balls instead of 3 (Night Plan peak)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T08:41:44.649Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464173516",
+      "name": "2026-08-04 | Lotto - peak (Night Plan)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T08:41:39.615Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": ""
+    },
+    {
+      "id": "12467787872",
+      "name": "2026-08-04 | PYP - finish for 3* Reg card + PAB + Quest Booster",
+      "product": "Core",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T15:13:44.379Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12475665380",
+      "name": "2026-08-04 | Quest Season",
+      "product": "Mid Term",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-08T08:17:08.768Z\"}",
+      "timeline": "2026-08-04 - 2026-08-08",
+      "config": "Config needed"
+    },
+    {
+      "id": "12476372632",
+      "name": "2026-08-04 | RYD - 3* Reg + 100% SB - Mid Price",
+      "product": "RYD",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-08T10:24:51.644Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12465729256",
+      "name": "2026-08-04 | Shiny Show - Crazy with Aces",
+      "product": "Album",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T12:37:31.315Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464214893",
+      "name": "2026-08-04 | X2 Dash Points",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T08:41:12.426Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": ""
+    },
+    {
+      "id": "12464188623",
+      "name": "2026-08-04 | X2 Extreme Stamp",
+      "product": "Extreme stamp",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T08:41:22.934Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": ""
+    },
+    {
+      "id": "12464188765",
+      "name": "2026-08-04 | x2 GGS (3h window, post 11:00 UTC) | BACKUP",
+      "product": "Gems",
+      "date_col_text": "2026-08-04",
+      "date_col_value": "{\"date\":\"2026-08-04\",\"changed_at\":\"2026-07-07T08:41:28.295Z\"}",
+      "timeline": "2026-08-04 - 2026-08-04",
+      "config": ""
+    },
+    {
+      "id": "10644927248",
+      "name": "2026-08-05",
+      "product": "Day",
+      "date_col_text": "2026-08-05",
+      "date_col_value": "{\"date\":\"2026-08-05\",\"icon\":\"\"}",
+      "timeline": "2026-08-05 - 2026-08-05",
+      "config": ""
+    },
+    {
+      "id": "12464189091",
+      "name": "2026-08-05 | ADS PO - 2* Reg card",
+      "product": "ADS",
+      "date_col_text": "2026-08-05",
+      "date_col_value": "{\"date\":\"2026-08-05\",\"changed_at\":\"2026-07-07T08:42:50.219Z\"}",
+      "timeline": "2026-08-05 - 2026-08-05",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12486310516",
+      "name": "2026-08-05 | Daily Deal - 100% SB + 6 Hammers | H Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-05",
+      "date_col_value": "{\"date\":\"2026-08-05\",\"changed_at\":\"2026-07-09T03:35:38.466Z\"}",
+      "timeline": "2026-08-05 - 2026-08-05",
+      "config": ""
+    },
+    {
+      "id": "12467805477",
+      "name": "2026-08-05 | Decoy Bonanza - d3: 4* Gold + bundle | H Pricing",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-05",
+      "date_col_value": "{\"date\":\"2026-08-05\",\"changed_at\":\"2026-07-07T15:14:03.252Z\"}",
+      "timeline": "2026-08-05 - 2026-08-05",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464175428",
+      "name": "2026-08-05 | Piggy - break for 3* Reg card",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-05",
+      "date_col_value": "{\"date\":\"2026-08-05\",\"changed_at\":\"2026-07-07T08:42:18.016Z\"}",
+      "timeline": "2026-08-05 - 2026-08-05",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12475065098",
+      "name": "2026-08-05 | Spinner Clash",
+      "product": "Core",
+      "date_col_text": "2026-08-05",
+      "date_col_value": "{\"date\":\"2026-08-05\",\"changed_at\":\"2026-07-08T06:18:37.157Z\"}",
+      "timeline": "2026-08-05 - 2026-08-05",
+      "config": "Config needed"
+    },
+    {
+      "id": "12475693695",
+      "name": "2026-08-05 | Winovate Season",
+      "product": "Mid Term",
+      "date_col_text": "2026-08-05",
+      "date_col_value": "{\"date\":\"2026-08-05\",\"changed_at\":\"2026-07-08T08:17:37.483Z\"}",
+      "timeline": "2026-08-05 - 2026-08-12",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464175535",
+      "name": "2026-08-05 | X2 Badges",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-05",
+      "date_col_value": "{\"date\":\"2026-08-05\",\"changed_at\":\"2026-07-07T08:42:23.229Z\"}",
+      "timeline": "2026-08-05 - 2026-08-05",
+      "config": ""
+    },
+    {
+      "id": "10644921463",
+      "name": "2026-08-06",
+      "product": "Day",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"icon\":\"\"}",
+      "timeline": "2026-08-06 - 2026-08-06",
+      "config": ""
+    },
+    {
+      "id": "12464261622",
+      "name": "2026-08-06 | ADS PO - Gems",
+      "product": "ADS",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-07T08:48:10.077Z\"}",
+      "timeline": "2026-08-06 - 2026-08-06",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486216467",
+      "name": "2026-08-06 | Battlesheep - Wild Gold | Betty Theme",
+      "product": "Short Term",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-09T03:35:58.608Z\"}",
+      "timeline": "2026-08-06 - 2026-08-10",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464219580",
+      "name": "2026-08-06 | Clan Go - up to 200 badges",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-07T08:47:38.840Z\"}",
+      "timeline": "2026-08-06 - 2026-08-06",
+      "config": ""
+    },
+    {
+      "id": "12486225802",
+      "name": "2026-08-06 | Daily Deal - 3* Reg card + 2 Parasheep | M Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-09T03:36:02.963Z\"}",
+      "timeline": "2026-08-06 - 2026-08-06",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464258404",
+      "name": "2026-08-06 | Gems Sale - 30% store / 20% offers",
+      "product": "Gems",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-07T08:47:49.281Z\"}",
+      "timeline": "2026-08-06 - 2026-08-06",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464239902",
+      "name": "2026-08-06 | Golden Spin | 30% Bigger | Betty Boop theme",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-07T08:47:33.606Z\"}",
+      "timeline": "2026-08-06 - 2026-08-06",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486219042",
+      "name": "2026-08-06 | MES - Spin Zone + Option to purchase to progress | 4* Ace Card",
+      "product": "Core",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-09T03:36:21.336Z\"}",
+      "timeline": "2026-08-06 - 2026-08-06",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464260280",
+      "name": "2026-08-06 | Prize Mania - 3* Gold pack | Coins, Gems",
+      "product": "Prize Mania",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-07T08:47:43.944Z\"}",
+      "timeline": "2026-08-06 - 2026-08-06",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12486311772",
+      "name": "2026-08-06 | Shiny Show - Crazy with Aces + Despicable Wolf",
+      "product": "Album",
+      "date_col_text": "2026-08-06",
+      "date_col_value": "{\"date\":\"2026-08-06\",\"changed_at\":\"2026-07-09T03:36:17.034Z\"}",
+      "timeline": "",
+      "config": "Config needed"
+    },
+    {
+      "id": "10644927249",
+      "name": "2026-08-07",
+      "product": "Day",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"icon\":\"\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": ""
+    },
+    {
+      "id": "12464237067",
+      "name": "2026-08-07 | ADS PO - Quest Booster",
+      "product": "ADS",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-07T08:51:23.322Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486197991",
+      "name": "2026-08-07 | Coin Sale | Betty Boop | 50/75/200/400%",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:36:39.411Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486217945",
+      "name": "2026-08-07 | Daily Deal - 3* Gold card + AS | Max Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:36:33.438Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12486219087",
+      "name": "2026-08-07 | Dice Deluxe - 1×/week",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:36:50.287Z\"}",
+      "timeline": "",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486223057",
+      "name": "2026-08-07 | RYD - 3* Reg + 100% SB - High Price",
+      "product": "RYD",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:36:44.105Z\"}",
+      "timeline": "",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12486226051",
+      "name": "2026-08-07 | Spin Zone - 2 Parasheep chase",
+      "product": "Core",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:36:54.737Z\"}",
+      "timeline": "",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464261748",
+      "name": "2026-08-07 | X2 Dash Points",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-07T08:50:50.227Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": ""
+    },
+    {
+      "id": "12464329723",
+      "name": "2026-08-07 | x2 GGS 18:00-20:00",
+      "product": "Gems",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-07T08:51:07.327Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": ""
+    },
+    {
+      "id": "12486109623",
+      "name": "BD Extra Prizes",
+      "product": "Black Diamond",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:15:00.277Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": ""
+    },
+    {
+      "id": "12486106825",
+      "name": "Betty Boop Custom Pod x1250",
+      "product": "Core",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:11:01.122Z\"}",
+      "timeline": "2026-08-07 - 2026-08-09",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486134021",
+      "name": "Betty Boop Theme",
+      "product": "Event",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:18:06.337Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": ""
+    },
+    {
+      "id": "12486332880",
+      "name": "Betty Boop | Musical Missions",
+      "product": "Core",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T04:03:45.025Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12486332857",
+      "name": "Boosted Gemback Alert 500% | 13:00-18:00 UTC",
+      "product": "Gems",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T04:02:40.158Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": ""
+    },
+    {
+      "id": "12486194024",
+      "name": "Different Set Sweepstake Every Hour | 15:00-17:00",
+      "product": "Album",
+      "date_col_text": "2026-08-07",
+      "date_col_value": "{\"date\":\"2026-08-07\",\"changed_at\":\"2026-07-09T03:35:19.598Z\"}",
+      "timeline": "2026-08-07 - 2026-08-07",
+      "config": "MCP needed"
+    },
+    {
+      "id": "10644927108",
+      "name": "2026-08-08",
+      "product": "Day",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"icon\":\"\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": ""
+    },
+    {
+      "id": "12464237271",
+      "name": "2026-08-08 | ADS PO - Coins",
+      "product": "ADS",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-07T08:52:06.255Z\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486541143",
+      "name": "2026-08-08 | Betty Loot - 48h | TBD",
+      "product": "Core",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T10:59:51.496Z\"}",
+      "timeline": "2026-08-08 - 2026-08-09",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488378134",
+      "name": "2026-08-08 | Betty's Birthday",
+      "product": "Core",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T10:56:18.781Z\"}",
+      "timeline": "",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488338997",
+      "name": "2026-08-08 | Coin Sale | 50/75/200/400",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T10:56:29.323Z\"}",
+      "timeline": "",
+      "config": ""
+    },
+    {
+      "id": "12488378137",
+      "name": "2026-08-08 | Daily Deal - 100% SB + 8 Hammers | Max Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T10:56:21.981Z\"}",
+      "timeline": "",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486527603",
+      "name": "2026-08-08 | Decoy Bonanza - d3: 3* Gold + bundle | H Pricing",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T04:51:23.287Z\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12488350009",
+      "name": "2026-08-08 | Fortune Dip - up to 700% | 14:00-15:00 UTC",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T10:56:25.740Z\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464261977",
+      "name": "2026-08-08 | LBP - 2 multiballs (Night Plan peak)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-07T08:52:01.383Z\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": ""
+    },
+    {
+      "id": "12464261782",
+      "name": "2026-08-08 | Lotto - peak (Night Plan)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-07T08:51:56.246Z\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": ""
+    },
+    {
+      "id": "12486489760",
+      "name": "2026-08-08 | Shiny Show - Joker Different Prizes",
+      "product": "Album",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T04:51:27.882Z\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488356368",
+      "name": "2026-08-08 | Win Master - 3* Reg card + 2 Parasheep",
+      "product": "Core",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T10:56:40.872Z\"}",
+      "timeline": "",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12487327616",
+      "name": "Boosted Gemback Alert 300% | 17:00-23:00 UTC",
+      "product": "Gems",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-09T07:29:28.865Z\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": ""
+    },
+    {
+      "id": "12510753242",
+      "name": "Daily Deal - 8 Hammers + Quest Booster | H Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-08",
+      "date_col_value": "{\"date\":\"2026-08-08\",\"changed_at\":\"2026-07-12T07:32:07.462Z\"}",
+      "timeline": "2026-08-08 - 2026-08-08",
+      "config": ""
+    },
+    {
+      "id": "10644921515",
+      "name": "2026-08-09",
+      "product": "Day",
+      "date_col_text": "2026-08-09",
+      "date_col_value": "{\"date\":\"2026-08-09\",\"icon\":\"\"}",
+      "timeline": "2026-08-09 - 2026-08-09",
+      "config": ""
+    },
+    {
+      "id": "12464286594",
+      "name": "2026-08-09 | ADS PO - 2 Parasheep",
+      "product": "ADS",
+      "date_col_text": "2026-08-09",
+      "date_col_value": "{\"date\":\"2026-08-09\",\"changed_at\":\"2026-07-07T08:52:36.519Z\"}",
+      "timeline": "2026-08-09 - 2026-08-09",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486541198",
+      "name": "2026-08-09 | Betty's Birthday",
+      "product": "Event",
+      "date_col_text": "2026-08-09",
+      "date_col_value": "{\"date\":\"2026-08-09\",\"changed_at\":\"2026-07-09T04:52:01.920Z\"}",
+      "timeline": "2026-08-09 - 2026-08-09",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486541140",
+      "name": "2026-08-09 | Counter PO | Night Plan",
+      "product": "Counter PO",
+      "date_col_text": "2026-08-09",
+      "date_col_value": "{\"date\":\"2026-08-09\",\"changed_at\":\"2026-07-09T04:52:13.010Z\"}",
+      "timeline": "2026-08-09 - 2026-08-09",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486541138",
+      "name": "2026-08-09 | Daily Deal - 3* Reg card (on purchase) + AS (BOGO - task config) | High Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-09",
+      "date_col_value": "{\"date\":\"2026-08-09\",\"changed_at\":\"2026-07-09T04:52:06.433Z\"}",
+      "timeline": "",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12475701343",
+      "name": "2026-08-09 | Globez Season",
+      "product": "Mid Term",
+      "date_col_text": "2026-08-09",
+      "date_col_value": "{\"date\":\"2026-08-09\",\"changed_at\":\"2026-07-08T08:18:53.598Z\"}",
+      "timeline": "2026-08-09 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12476357448",
+      "name": "2026-08-09 | RYD - 3* Reg + 100% SB - Max Price",
+      "product": "RYD",
+      "date_col_text": "2026-08-09",
+      "date_col_value": "{\"date\":\"2026-08-09\",\"changed_at\":\"2026-07-08T10:26:10.710Z\"}",
+      "timeline": "2026-08-09 - 2026-08-09",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12510648211",
+      "name": "Daily Deal BOGO - 3* Reg + 3000 Globez Coins | High",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-09",
+      "date_col_value": "{\"date\":\"2026-08-09\",\"changed_at\":\"2026-07-12T07:33:03.078Z\"}",
+      "timeline": "2026-08-09 - 2026-08-09",
+      "config": "MCP needed"
+    },
+    {
+      "id": "10644919662",
+      "name": "2026-08-10",
+      "product": "Day",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"icon\":\"\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": ""
+    },
+    {
+      "id": "12464284894",
+      "name": "2026-08-10 | ADS PO - 2 Parasheep",
+      "product": "ADS",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-07T08:53:53.441Z\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488284260",
+      "name": "2026-08-10 | Buy All - Coins: Coins+RDS+4* Reg + 2 Parasheep | Gems: Gems + 1 GGS + 3* Gold + 3000 Hero Coins | H Pricing",
+      "product": "Buy all",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-09T10:49:04.600Z\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464253806",
+      "name": "2026-08-10 | Clan Dash Bundle - 30% discount",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-07T08:53:09.618Z\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464284862",
+      "name": "2026-08-10 | Clan Go - Premium for Badge Wheel",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-07T08:53:14.882Z\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488300711",
+      "name": "2026-08-10 | Daily Deal - 3* Gold card (on purchase) + 2 Parasheep | Mid Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-09T10:48:57.018Z\"}",
+      "timeline": "",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12488284337",
+      "name": "2026-08-10 | MGAP BOGO",
+      "product": "MGAP",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-09T10:49:08.188Z\"}",
+      "timeline": "",
+      "config": "Config needed"
+    },
+    {
+      "id": "12475701389",
+      "name": "2026-08-10 | Mega Pods Season",
+      "product": "Mid Term",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-08T08:19:14.968Z\"}",
+      "timeline": "2026-08-10 - 2026-08-16",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464329414",
+      "name": "2026-08-10 | Monday Max Deal",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-07T08:53:19.956Z\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488329633",
+      "name": "2026-08-10 | PYP - finish for 5* Ace card",
+      "product": "Core",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-09T10:49:11.437Z\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12488284460",
+      "name": "2026-08-10 | Time Limited Prize",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-09T10:49:02.620Z\"}",
+      "timeline": "",
+      "config": ""
+    },
+    {
+      "id": "12510661815",
+      "name": "Daily Deal - 3* Gold Card + 2 Parasheep | H Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-12T07:34:43.354Z\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12488396867",
+      "name": "MGAP BOGO",
+      "product": "MGAP",
+      "date_col_text": "2026-08-10",
+      "date_col_value": "{\"date\":\"2026-08-10\",\"changed_at\":\"2026-07-12T07:34:01.093Z\"}",
+      "timeline": "2026-08-10 - 2026-08-10",
+      "config": ""
+    },
+    {
+      "id": "10644927234",
+      "name": "2026-08-11",
+      "product": "Day",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"icon\":\"\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": ""
+    },
+    {
+      "id": "12464318775",
+      "name": "2026-08-11 | ADS PO - 3* Reg card",
+      "product": "ADS",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T08:59:40.699Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12467506589",
+      "name": "2026-08-11 | Ace Heist - 4* Ace card",
+      "product": "Core",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T14:58:38.692Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12476427941",
+      "name": "2026-08-11 | Daily Deal - 4* Reg card + Hammers Wheel | High Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-08T10:26:38.649Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464285114",
+      "name": "2026-08-11 | Decoy Bonanza - d3: 5* Gold + bundle | Max Pricing",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T08:54:13.198Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464343003",
+      "name": "2026-08-11 | LBP - all goldens + 20% bigger (Night Plan peak)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T08:59:30.214Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464343864",
+      "name": "2026-08-11 | Lotto - peak (Night Plan)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T08:59:25.239Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "Config needed"
+    },
+    {
+      "id": "12470189724",
+      "name": "2026-08-11 | Popup Store - TEST · Soft launch (1/3)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T18:38:52.942Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "Config needed"
+    },
+    {
+      "id": "12468196268",
+      "name": "2026-08-11 | Price Cut - 20% Coins & offers",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T15:53:31.183Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464266351",
+      "name": "2026-08-11 | SNL - Wild Gold",
+      "product": "Short Term",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T08:53:58.158Z\"}",
+      "timeline": "2026-08-11 - 2026-08-15",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464312473",
+      "name": "2026-08-11 | Shiny Show - Joker All Cards",
+      "product": "Album",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T08:59:20.290Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464289413",
+      "name": "2026-08-11 | X2 Dash Points",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T08:54:08.151Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": ""
+    },
+    {
+      "id": "12464312376",
+      "name": "2026-08-11 | x2 GGS (3h window, post 11:00 UTC)",
+      "product": "Gems",
+      "date_col_text": "2026-08-11",
+      "date_col_value": "{\"date\":\"2026-08-11\",\"changed_at\":\"2026-07-07T08:59:15.259Z\"}",
+      "timeline": "2026-08-11 - 2026-08-11",
+      "config": ""
+    },
+    {
+      "id": "10644926774",
+      "name": "2026-08-12",
+      "product": "Day",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\",\"icon\":\"\"}",
+      "timeline": "2026-08-12 - 2026-08-12",
+      "config": ""
+    },
+    {
+      "id": "12464356032",
+      "name": "2026-08-12 | ADS PO - 3000 Hero Coins",
+      "product": "ADS",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\",\"changed_at\":\"2026-07-07T09:07:48.338Z\"}",
+      "timeline": "2026-08-12 - 2026-08-12",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486443701",
+      "name": "2026-08-12 | Boosted Gemback 300% (5h, post 11:00 UTC)",
+      "product": "Gems",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\",\"changed_at\":\"2026-07-09T04:31:22.955Z\"}",
+      "timeline": "2026-08-12 - 2026-08-12",
+      "config": "Config needed"
+    },
+    {
+      "id": "12487357465",
+      "name": "2026-08-12 | Daily Deal - 4* Gold card (on purchase) + Shield | High Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\",\"changed_at\":\"2026-07-09T07:35:13.638Z\"}",
+      "timeline": "2026-08-12 - 2026-08-12",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464390129",
+      "name": "2026-08-12 | Piggy - break for 4* Reg card",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\",\"changed_at\":\"2026-07-07T09:07:20.194Z\"}",
+      "timeline": "2026-08-12 - 2026-08-12",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12487357536",
+      "name": "2026-08-12 | Rolling Offer - 6 Cycles | M Pricing",
+      "product": "Rolling offer",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\",\"changed_at\":\"2026-07-09T07:35:19.721Z\"}",
+      "timeline": "2026-08-12 - 2026-08-12",
+      "config": "Config needed"
+    },
+    {
+      "id": "12475173953",
+      "name": "2026-08-12 | Spin Zone - Hammers Wheel (single hammer source)",
+      "product": "Core",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\",\"changed_at\":\"2026-07-08T06:39:48.102Z\"}",
+      "timeline": "2026-08-12 - 2026-08-12",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464377537",
+      "name": "2026-08-12 | X2 Badges",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\",\"changed_at\":\"2026-07-07T09:07:26.281Z\"}",
+      "timeline": "2026-08-12 - 2026-08-12",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488997296",
+      "name": "72 Hrs Cards M.E.S + Option to buy steps | Betty Theme",
+      "product": "Core",
+      "date_col_text": "2026-08-12",
+      "date_col_value": "{\"date\":\"2026-08-12\"}",
+      "timeline": "2026-08-12 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "10644921682",
+      "name": "2026-08-13",
+      "product": "Day",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"icon\":\"\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": ""
+    },
+    {
+      "id": "12464356071",
+      "name": "2026-08-13 | ADS PO - Coins",
+      "product": "ADS",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-07T09:08:47.534Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464347718",
+      "name": "2026-08-13 | Clan Go - up to 200 badges",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-07T09:08:20.617Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "Config needed"
+    },
+    {
+      "id": "12476428147",
+      "name": "2026-08-13 | Daily Deal - 5* Reg card + Despicable wolf MG| H Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-08T10:27:17.832Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "Config needed"
+    },
+    {
+      "id": "12470171455",
+      "name": "2026-08-13 | Decoy Bonanza - d3: 4* Ace + bundle | H Pricing",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-07T18:40:29.974Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464348270",
+      "name": "2026-08-13 | Gems Sale - 30% store / 20% offers",
+      "product": "Gems",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-07T09:08:25.914Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464359105",
+      "name": "2026-08-13 | Golden Spin",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-07T09:08:15.516Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "Config needed"
+    },
+    {
+      "id": "12467858374",
+      "name": "2026-08-13 | MGAP Matched",
+      "product": "MGAP",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-07T15:17:32.953Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "Config needed"
+    },
+    {
+      "id": "12465907703",
+      "name": "2026-08-13 | Shiny Show - Joker Different Prizes",
+      "product": "Album",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-07T12:58:14.315Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "Config needed"
+    },
+    {
+      "id": "12475073774",
+      "name": "2026-08-13 | Spin Zone - 4* Ace card & Ghost Motel Early Access",
+      "product": "Core",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-08T06:21:00.636Z\"}",
+      "timeline": "2026-08-13 - 2026-08-13",
+      "config": "Config needed"
+    },
+    {
+      "id": "12475722618",
+      "name": "2026-08-13 | Winovate Season",
+      "product": "Mid Term",
+      "date_col_text": "2026-08-13",
+      "date_col_value": "{\"date\":\"2026-08-13\",\"changed_at\":\"2026-07-08T08:20:17.693Z\"}",
+      "timeline": "2026-08-13 - 2026-08-20",
+      "config": "Config needed"
+    },
+    {
+      "id": "10644919645",
+      "name": "2026-08-14",
+      "product": "Day",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"icon\":\"\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": ""
+    },
+    {
+      "id": "12464360325",
+      "name": "2026-08-14 | ADS PO - Gems",
+      "product": "ADS",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-07T09:09:46.541Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464372390",
+      "name": "2026-08-14 | Coin Sale | 50/75/200/500%",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-07T09:08:52.293Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486481216",
+      "name": "2026-08-14 | Daily Deal - 100% SB + 8 Hammers (multiple) | High Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-09T04:41:48.263Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12475698268",
+      "name": "2026-08-14 | Daily Deal - Shiny Limited - Once | Max Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-08T08:20:43.762Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464427452",
+      "name": "2026-08-14 | Dice Deluxe - 200% SB Back (starts night plan)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-07T09:09:36.819Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486606145",
+      "name": "2026-08-14 | Nostalgic Weekend",
+      "product": "Event",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-09T04:53:59.862Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": ""
+    },
+    {
+      "id": "12476428575",
+      "name": "2026-08-14 | RYD - 4* Gold Card + 100% SB - High Price",
+      "product": "RYD",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-08T10:27:40.009Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12475071262",
+      "name": "2026-08-14 | Win Master - 4* Reg card + 2 Dice + 6 Hrs Dice (Starts night plan with timer & communications)",
+      "product": "Core",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-08T06:21:18.077Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464404289",
+      "name": "2026-08-14 | X2 Dash Points",
+      "product": "Clan-Dash",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-07T09:09:26.415Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12464370814",
+      "name": "2026-08-14 | x2 GGS (3h window, post 11:00 UTC)",
+      "product": "Gems",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-07T09:09:31.624Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "Config needed"
+    },
+    {
+      "id": "12486528466",
+      "name": "DPU 1$ Offer - Magic Trixie Machine",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-09T04:57:58.359Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": ""
+    },
+    {
+      "id": "12486639075",
+      "name": "Ghost Motel and Diner Cash Opening!",
+      "product": "Event",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-09T05:08:19.774Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": ""
+    },
+    {
+      "id": "12486556023",
+      "name": "King for a Day",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-09T05:03:10.283Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": ""
+    },
+    {
+      "id": "12486612048",
+      "name": "Nostalgic Machines Playlist",
+      "product": "Event",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-09T05:07:09.677Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": ""
+    },
+    {
+      "id": "12486541655",
+      "name": "PYP Mystery Box - Casino Vaper (Until night plan with timer & communication)",
+      "product": "Core",
+      "date_col_text": "2026-08-14",
+      "date_col_value": "{\"date\":\"2026-08-14\",\"changed_at\":\"2026-07-09T04:52:04.404Z\"}",
+      "timeline": "2026-08-14 - 2026-08-14",
+      "config": "MCP needed"
+    },
+    {
+      "id": "10644927138",
+      "name": "2026-08-15",
+      "product": "Day",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"icon\":\"\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": ""
+    },
+    {
+      "id": "12464427127",
+      "name": "2026-08-15 | ADS PO - 2 Dice",
+      "product": "ADS",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-07T09:10:38.978Z\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488150561",
+      "name": "2026-08-15 | Coin Sale | 50/75/200/500%",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-09T10:23:35.737Z\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488150682",
+      "name": "2026-08-15 | Daily Deal - 3* Gold card (on purchase) + Shield | Max Pricing",
+      "product": "Daily deal",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-09T10:23:32.329Z\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12464356105",
+      "name": "2026-08-15 | LBP - Jackpot ball 150% + 4 balls (Night Plan peak)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-07T09:10:23.300Z\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": ""
+    },
+    {
+      "id": "12464374121",
+      "name": "2026-08-15 | Lotto - peak (Night Plan)",
+      "product": "Offers & coin sale",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-07T09:10:17.887Z\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488192936",
+      "name": "2026-08-15 | Mystery Buy All | H Pricing",
+      "product": "Buy all",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-09T10:28:51.723Z\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488231400",
+      "name": "2026-08-15 | PYP - finish for 3* Ace card",
+      "product": "Core",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-09T10:25:43.156Z\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": "MCP needed"
+    },
+    {
+      "id": "12475698163",
+      "name": "2026-08-15 | Quest Season",
+      "product": "Mid Term",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-08T08:21:01.839Z\"}",
+      "timeline": "2026-08-15 - 2026-08-19",
+      "config": "Config needed"
+    },
+    {
+      "id": "12488416652",
+      "name": "Quest Challenge - Get a reward for every island",
+      "product": "Core",
+      "date_col_text": "2026-08-15",
+      "date_col_value": "{\"date\":\"2026-08-15\",\"changed_at\":\"2026-07-09T11:10:26.468Z\"}",
+      "timeline": "2026-08-15 - 2026-08-15",
+      "config": ""
+    }
+  ]
+}

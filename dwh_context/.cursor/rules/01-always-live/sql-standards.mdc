@@ -1,0 +1,138 @@
+---
+description: SQL Formatting & Documentation Standards - Code formatting, comments, documentation, and file organization for SQL queries
+alwaysApply: true
+---
+
+# SQL Formatting & Documentation Standards
+
+SQL code formatting, commenting, documentation, and file organization standards for this workspace.
+
+## Comment and Documentation Rules
+
+### Subquery Comments
+- After the main `select` list (or immediately before a joined subquery), add a **brief** block comment describing what that subquery or branch is for
+- Use `/* ... */` on its own line or end-of-line
+- Examples: `/*groups segments table*/`, `/*actual users per group - PO2 table & test groups*/`, `/*test groups*/`, `/*payments - time to finish*/`, `/*datamining - RV segments, CZ*/`
+- Keep comments **short** (source table + role in the query); avoid long essays
+
+## Formatting Standards
+
+### Lowercase SQL Surface
+- Use **lowercase** for SQL keywords and constructs: `select`, `from`, `where`, `join`, `left join`, `group by`, `order by`, `having`, `case`, `as`, `on`, `and`, `or`, `not`, `in`, `is`, `null`, etc.
+- Prefer **lowercase** for aliases you introduce (e.g. `a`, `b`, `c`, `t`, `config`)
+- Warehouse column names may stay as defined in Vertica (e.g. mixed case); do not rename physical columns only to satisfy casing
+
+### Team Query Patterns
+- Use `where 1 = 1` as a stable anchor; add real filters on following `and` lines
+- Use `--` for optional / toggled filters (e.g. `-- and template_id = 226225`)
+- Use **positional** `group by 1, 2, 3` where it matches the team habit
+- Promo / business date from UTC often uses: `date(ts::timestamp at time zone 'UTC' at time zone 'Asia/Jerusalem' - interval '14 hours')` (or the same pattern the user already uses)
+- Reuse familiar join blocks when relevant (e.g. abtest `/*test groups*/` pattern)
+
+### Vertica Window Function Limitations
+- **DISTINCT not allowed** in window functions except for `MIN(DISTINCT)`, `MAX(DISTINCT)`, `BOOL_AND(DISTINCT)`, `BOOL_OR(DISTINCT)`
+- **Error**: `Only MIN/MAX and BOOL_AND/BOOL_OR are allowed to use DISTINCT`
+- **Solution**: Remove DISTINCT when data granularity already ensures uniqueness
+- **Example**: `COUNT(CASE WHEN condition THEN field END) OVER (...)` instead of `COUNT(DISTINCT CASE WHEN condition THEN field END) OVER (...)`
+
+## Documentation Requirements
+
+### Query File Documentation
+- **Always** save your main query as a separate file in the `sql/` folder
+- Include **comprehensive comments and explanations** of what the query does
+- Make it easy for humans to understand your logic
+- Use descriptive file names that reflect the analysis purpose
+- Include date stamps when helpful for version tracking
+
+### Query Comments Structure
+- **Header comment**: Brief description of query purpose and business question
+- **Section comments**: Explain each major subquery or join block
+- **Complex logic comments**: Document any non-obvious business rules or calculations
+- **Data source comments**: Note key tables and their role in the analysis
+
+### Comment Placement Rules
+- **Subquery comments**: Place comments ABOVE the subquery, not inline after FROM
+- **Block comments**: Use `/*comment*/` format positioned before the relevant SQL block
+- **Inline comments**: Use `/*comment*/` at end of lines for field explanations
+- **Example**: 
+  ```sql
+  /*DAU per promo date*/
+  from (
+      select promo_date, count(distinct user_id) as dau
+      from table
+  ) d
+  ```
+- **Avoid**: `from ( -- comment here` (inline after FROM clause)
+
+### Example Documentation Pattern
+```sql
+/*
+Query Purpose: Weekly revenue analysis by user segment
+Business Question: How does revenue differ across CZ buckets?
+Created: 2026-05-20
+Author: Analytics Team
+*/
+
+select 
+    user_segment,
+    week_start_date,
+    sum(revenue_usd) as total_revenue
+    /*weekly revenue aggregation by segment*/
+from (
+    select distinct
+        user_id,
+        case 
+            when cz_bucket between 0 and 4.99 then 'Low CZ'
+            when cz_bucket between 5 and 19.99 then 'Mid CZ'
+            else 'High CZ'
+        end as user_segment,
+        /*CZ segmentation logic - standard buckets*/
+        date_trunc('week', promo_date) as week_start_date,
+        revenue_usd
+    from dwh.sm_fact_payments p
+    /*payments table - main revenue source*/
+    left join dwh.sm_user_profile_datamining_snapshot s
+        on p.user_id = s.user_id
+        /*user segmentation data*/
+    where 1 = 1
+        and promo_date >= '2026-04-01'
+        and revenue_usd > 0
+) revenue_by_segment
+/*clean revenue data with segments*/
+group by 1, 2
+order by 2 desc, 3 desc
+```
+
+## Validation Requirements
+
+### Query Execution Validation
+- **Always run queries** via MCP Vertica server before delivery
+- Only provide queries that execute successfully
+- Fix syntax, schema, or permission errors before sharing
+- Report and document any fixes made during validation
+
+### Logic Validation  
+- Verify query logic answers the actual business question
+- Check filters, dimensions, metrics, time ranges, and segments align with requirements
+- Validate aggregations with spot-checks when required
+- Document assumptions for ambiguous requirements
+
+### File Organization
+- Save queries in appropriate subfolders within `sql/`:
+  - Feature analysis: `sql/features/`
+  - Weekly reports: `sql/weekly_report/`  
+  - Gatekeeping: `sql/gatekeeping/`
+  - User segments: `sql/segments/`
+  - Revenue analysis: `sql/revenue/`
+- Use clear, descriptive file names
+- Include date stamps for time-sensitive analyses
+
+## What This Rule Does Not Replace
+
+- Data correctness, Vertica syntax, and project-specific table names still come from context docs and validation rules
+- If a query must use a CTE for a one-off reason, only do so when the user explicitly requests it
+
+## Rule Maintenance
+
+- If you notice an **additional recurring pattern** in the user's SQL that should be added here, **do not** edit this file automatically
+- **Ask the user first**, describe the proposed addition briefly, and **wait for explicit approval** before updating this rule

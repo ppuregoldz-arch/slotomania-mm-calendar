@@ -1,0 +1,300 @@
+Total raw items: 2602
+Wrote /Users/itayg/Desktop/Cursor Work/mm_calendar/data/real_months.json
+2026-04: 30/30 days with promos (216 total) · 18 days w/ actual revenue
+2026-05: 31/31 days with promos (259 total) · 26 days w/ actual revenue
+2026-06: 30/30 days with promos (238 total) · 29 days w/ actual revenue
+2026-07: 31/31 days with promos (297 total) · 1 days w/ actual revenue
+[1/3] OK
+--- [2/3] calibrate_model.py (recompute model constants from real data) ---
+Wrote /Users/itayg/Desktop/Cursor Work/mm_calendar/data/model_calibration.json
+  revenue: 74 real days, PU: 25 real days, gameplay: 21 real days
+  current month for trend extrapolation: 2026-07 (slope -1.02$K/day)
+  SELF-CHECK (same-day terms only, no carryover): mean abs error 6.5% over 74 real days
+[2/3] OK
+--- [3/3] build_calendar_html.py (rebuild dashboard) ---
+Wrote: /Users/itayg/Desktop/Cursor Work/mm_calendar/data/mm_dashboard.html
+Published: /Users/itayg/Desktop/Cursor Work/mm_calendar/public/index.html
+  → cd "/Users/itayg/Desktop/Cursor Work/mm_calendar/public" && python3 -m http.server 8765
+  → http://localhost:8765/
+[3/3] OK
+===== 2026-07-03 12:00:38 : daily_update.sh SUCCESS =====
+2026-07: 31/31 days with promos (297 total) · 2 days w/ actual revenue
+[1/3] OK
+--- [2/3] calibrate_model.py (recompute model constants from real data) ---
+Wrote /Users/itayg/Desktop/Cursor Work/mm_calendar/data/model_calibration.json
+  revenue: 104 real days (105d window), PU: 44 real days (45d window), gameplay: 45 real days
+  current month for trend extrapolation: 2026-07 (slope -0.438$K/day)
+  IN-SAMPLE fit (optimistic, not the real accuracy): 6.14% over 104 days
+  CROSS-VALIDATED (honest, held-out) accuracy: 6.60% over 520 scored days  <-- trust this one
+  PU CROSS-VALIDATED accuracy: 3.87% over 220 scored days
+  economy: 92 real PU-coin-balance days, 92 real PU-gem-balance days (new DWH pull)
+    coin % change: DOW+sink-mechanic CV=9.3pp vs DOW-only CV=9.3pp (sink mechanics add ~-0.02pp)
+    gem % change:  DOW+sink-mechanic CV=4.4pp vs DOW-only CV=4.4pp (sink mechanics add ~-0.01pp)
+[2/3] OK
+--- [3/3] build_calendar_html.py (rebuild dashboard) ---
+Wrote: /Users/itayg/Desktop/Cursor Work/mm_calendar/data/mm_dashboard.html
+Published: /Users/itayg/Desktop/Cursor Work/mm_calendar/public/index.html
+  → cd "/Users/itayg/Desktop/Cursor Work/mm_calendar/public" && python3 -m http.server 8765
+  → http://localhost:8765/
+[3/3] OK
+===== 2026-07-04 06:00:06 : daily_update.sh SUCCESS =====
+2026-07: 31/31 days with promos (297 total) · 3 days w/ actual revenue
+[2/4] OK
+--- [3/4] calibrate_model.py (recompute model constants from real data) ---
+Wrote /Users/itayg/Desktop/Cursor Work/mm_calendar/data/model_calibration.json
+  revenue: 105 real days (105d window), PU: 45 real days (45d window), gameplay: 45 real days
+  current month for trend extrapolation: 2026-07 (slope 1.272$K/day)
+  IN-SAMPLE fit (optimistic, not the real accuracy): 6.43% over 105 days
+  CROSS-VALIDATED (honest, held-out) accuracy: 7.05% over 525 scored days  <-- trust this one
+  PU CROSS-VALIDATED accuracy: 3.98% over 225 scored days
+  economy: 93 real PU-coin-balance days, 93 real PU-gem-balance days (new DWH pull)
+    coin % change: DOW+sink-mechanic CV=9.4pp vs DOW-only CV=9.4pp (sink mechanics add ~+0.01pp)
+    gem % change:  DOW+sink-mechanic CV=4.4pp vs DOW-only CV=4.4pp (sink mechanics add ~-0.01pp)
+[3/4] OK
+--- [4/4] build_calendar_html.py (rebuild dashboard) ---
+Wrote: /Users/itayg/Desktop/Cursor Work/mm_calendar/data/mm_dashboard.html
+Published: /Users/itayg/Desktop/Cursor Work/mm_calendar/public/index.html
+  → cd "/Users/itayg/Desktop/Cursor Work/mm_calendar/public" && python3 -m http.server 8765
+  → http://localhost:8765/
+[4/4] OK
+===== 2026-07-04 11:52:39 : daily_update.sh SUCCESS =====
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 88, in connect
+    return Connection(kwargs)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 351, in __init__
+    self.startup_connection()
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 917, in startup_connection
+    self.write(messages.Startup(user, database, session_label, os_user_name, autocommit, binary_transfer, 
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 680, in write
+    vsocket = self._socket()
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 495, in _socket
+    raw_socket = self.establish_socket_connection(self.address_list)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 668, in establish_socket_connection
+    raise errors.ConnectionError(err_msg)
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Failed to establish a connection to the primary server or any backup address.
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-05 10:16:42 : daily_update.sh FAILED — see above =====
+    type_ = self.read_bytes(1)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 813, in read_bytes
+    raise errors.ConnectionError("Connection closed by Vertica")
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Connection closed by Vertica
+[SQL: 
+    SELECT
+      calc_date,
+      ROUND(SUM(daily_Net_revenue), 0) AS rev,
+      COUNT(DISTINCT CASE WHEN daily_payments > 0 THEN user_id END) AS pu
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= :start_date
+      AND calc_date < CURRENT_DATE
+      AND user_id > 0
+    GROUP BY calc_date
+    ORDER BY calc_date
+    ]
+[parameters: {'start_date': '2025-11-01'}]
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-06 10:00:08 : daily_update.sh FAILED — see above =====
+    type_ = self.read_bytes(1)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 813, in read_bytes
+    raise errors.ConnectionError("Connection closed by Vertica")
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Connection closed by Vertica
+[SQL: 
+    SELECT
+      calc_date,
+      ROUND(SUM(daily_Net_revenue), 0) AS rev,
+      COUNT(DISTINCT CASE WHEN daily_payments > 0 THEN user_id END) AS pu
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= :start_date
+      AND calc_date < CURRENT_DATE
+      AND user_id > 0
+    GROUP BY calc_date
+    ORDER BY calc_date
+    ]
+[parameters: {'start_date': '2025-11-01'}]
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-07 10:00:10 : daily_update.sh FAILED — see above =====
+    type_ = self.read_bytes(1)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 813, in read_bytes
+    raise errors.ConnectionError("Connection closed by Vertica")
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Connection closed by Vertica
+[SQL: 
+    SELECT
+      calc_date,
+      ROUND(SUM(daily_Net_revenue), 0) AS rev,
+      COUNT(DISTINCT CASE WHEN daily_payments > 0 THEN user_id END) AS pu
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= :start_date
+      AND calc_date < CURRENT_DATE
+      AND user_id > 0
+    GROUP BY calc_date
+    ORDER BY calc_date
+    ]
+[parameters: {'start_date': '2025-11-01'}]
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-08 10:00:19 : daily_update.sh FAILED — see above =====
+    type_ = self.read_bytes(1)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 813, in read_bytes
+    raise errors.ConnectionError("Connection closed by Vertica")
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Connection closed by Vertica
+[SQL: 
+    SELECT
+      calc_date,
+      ROUND(SUM(daily_Net_revenue), 0) AS rev,
+      COUNT(DISTINCT CASE WHEN daily_payments > 0 THEN user_id END) AS pu
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= :start_date
+      AND calc_date < CURRENT_DATE
+      AND user_id > 0
+    GROUP BY calc_date
+    ORDER BY calc_date
+    ]
+[parameters: {'start_date': '2025-11-01'}]
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-09 10:00:09 : daily_update.sh FAILED — see above =====
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 88, in connect
+    return Connection(kwargs)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 351, in __init__
+    self.startup_connection()
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 917, in startup_connection
+    self.write(messages.Startup(user, database, session_label, os_user_name, autocommit, binary_transfer, 
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 680, in write
+    vsocket = self._socket()
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 495, in _socket
+    raw_socket = self.establish_socket_connection(self.address_list)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 668, in establish_socket_connection
+    raise errors.ConnectionError(err_msg)
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Failed to establish a connection to the primary server or any backup address.
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-10 10:09:12 : daily_update.sh FAILED — see above =====
+--- [4/5] build_calendar_html.py (rebuild dashboard) ---
+Synced to OneDrive (standalone): /Users/itayg/Library/CloudStorage/OneDrive-PlaytikaLtd/Calendar Maker/MM_Calendar_August_2026.html
+Wrote: /Users/itayg/Desktop/Cursor Work/mm_calendar/data/mm_dashboard.html
+Published: /Users/itayg/Desktop/Cursor Work/mm_calendar/public/index.html
+  → cd "/Users/itayg/Desktop/Cursor Work/mm_calendar/public" && python3 -m http.server 8765
+  → http://localhost:8765/
+[4/5] OK
+--- [5/5] validate_calendar.py (hard-rule validation) ---
+=== Validation: 31 days ===
+❌ Found 3 violations:
+  Week 1: MGAP 3 (>2/week)
+  Week 2: MGAP 1 (<2/week)
+  Week 4: MGAP 1 (<2/week)
+
+=== Coverage summary ===
+Shiny Show per week: {0: 3, 1: 3, 2: 3, 3: 3, 4: 2}
+MGAP per week: {0: 3, 1: 1, 2: 2, 3: 1, 4: 1}
+Hammers days per week: {0: 4, 1: 4, 2: 3, 3: 3, 4: 2}
+[5/5] OK
+===== 2026-07-11 10:02:48 : daily_update.sh SUCCESS =====
+    type_ = self.read_bytes(1)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 813, in read_bytes
+    raise errors.ConnectionError("Connection closed by Vertica")
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Connection closed by Vertica
+[SQL: 
+    SELECT
+      calc_date,
+      ROUND(SUM(daily_Net_revenue), 0) AS rev,
+      COUNT(DISTINCT CASE WHEN daily_payments > 0 THEN user_id END) AS pu
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= :start_date
+      AND calc_date < CURRENT_DATE
+      AND user_id > 0
+    GROUP BY calc_date
+    ORDER BY calc_date
+    ]
+[parameters: {'start_date': '2025-11-01'}]
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-12 10:00:31 : daily_update.sh FAILED — see above =====
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 88, in connect
+    return Connection(kwargs)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 351, in __init__
+    self.startup_connection()
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 917, in startup_connection
+    self.write(messages.Startup(user, database, session_label, os_user_name, autocommit, binary_transfer, 
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 680, in write
+    vsocket = self._socket()
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 495, in _socket
+    raw_socket = self.establish_socket_connection(self.address_list)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 668, in establish_socket_connection
+    raise errors.ConnectionError(err_msg)
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Failed to establish a connection to the primary server or any backup address.
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-13 10:38:59 : daily_update.sh FAILED — see above =====
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 88, in connect
+    return Connection(kwargs)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 351, in __init__
+    self.startup_connection()
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 917, in startup_connection
+    self.write(messages.Startup(user, database, session_label, os_user_name, autocommit, binary_transfer, 
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 680, in write
+    vsocket = self._socket()
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 495, in _socket
+    raw_socket = self.establish_socket_connection(self.address_list)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 668, in establish_socket_connection
+    raise errors.ConnectionError(err_msg)
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Failed to establish a connection to the primary server or any backup address.
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-14 10:46:25 : daily_update.sh FAILED — see above =====
+    type_ = self.read_bytes(1)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 813, in read_bytes
+    raise errors.ConnectionError("Connection closed by Vertica")
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Connection closed by Vertica
+[SQL: 
+    SELECT
+      calc_date,
+      ROUND(SUM(daily_Net_revenue), 0) AS rev,
+      COUNT(DISTINCT CASE WHEN daily_payments > 0 THEN user_id END) AS pu
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= :start_date
+      AND calc_date < CURRENT_DATE
+      AND user_id > 0
+    GROUP BY calc_date
+    ORDER BY calc_date
+    ]
+[parameters: {'start_date': '2025-11-01'}]
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-15 10:00:13 : daily_update.sh FAILED — see above =====
+    type_ = self.read_bytes(1)
+  File "/Users/itayg/Library/Python/3.9/lib/python/site-packages/vertica_python/vertica/connection.py", line 813, in read_bytes
+    raise errors.ConnectionError("Connection closed by Vertica")
+sqlalchemy.exc.DatabaseError: (vertica_python.errors.ConnectionError) Connection closed by Vertica
+[SQL: 
+    SELECT
+      calc_date,
+      ROUND(SUM(daily_Net_revenue), 0) AS rev,
+      COUNT(DISTINCT CASE WHEN daily_payments > 0 THEN user_id END) AS pu
+    FROM agg.agg_sm_daily_users_stats
+    WHERE calc_date >= :start_date
+      AND calc_date < CURRENT_DATE
+      AND user_id > 0
+    GROUP BY calc_date
+    ORDER BY calc_date
+    ]
+[parameters: {'start_date': '2025-11-01'}]
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+[1/5] FAILED — aborting (keeping yesterday's data/dashboard untouched)
+===== 2026-07-16 10:00:13 : daily_update.sh FAILED — see above =====
