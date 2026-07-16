@@ -63,7 +63,7 @@ If unsure, generate a review spec with `requires_review: true`; do not silently 
 
 Season rows create work only on `isFirst`. Daily promos create work on their scheduled day. Backup items are excluded.
 
-When a Night Plan day contains both Lotto peak and LBP, create **two separate Ops tasks** under that calendar day's parent: one for Lotto peak and one for the LBP mechanic. Both run from `00:00 UTC` on the parent day through `00:00 UTC` the following day and use M&M Status `Night Plan`.
+When a calendar day contains both Lotto peak and LBP for Night Plan, create **two separate Ops tasks** under that calendar day's parent: one for Lotto peak and one for the LBP mechanic. Their production window is on the following date from `00:00 UTC` through `11:00 UTC`, and both use M&M Status `Night Plan`. Example: tasks under parent `2026-08-01` run on `2026-08-02` from 00:00 to 11:00.
 
 ## Required fields
 
@@ -86,7 +86,7 @@ The plan-driven builder can draft only what exists in the source plan. Missing e
 - August 2026 Promo Time is **11:00 UTC**.
 - A standard calendar-day task runs from `YYYY-MM-DD 11:00 UTC` to the following day at `11:00 UTC`.
 - An inclusive calendar range ends at 11:00 UTC on the day after its final listed date.
-- Night Plan uses `00:00 UTC` only when the source explicitly says Night Plan and ends at `00:00 UTC` the following day.
+- Night Plan uses `00:00–11:00 UTC` on the date following its calendar-day parent.
 - Never copy the historical March `12:00 UTC` convention into August.
 - Write scheduling dates and exact clock times only into `date_mm0f8tdb` and `date_mm0fr8sp`.
 - Do not repeat production dates, start/end times, reset times, or date ranges in Description.

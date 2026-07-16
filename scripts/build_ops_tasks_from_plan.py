@@ -235,10 +235,10 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
 
 
 def build_night_plan_task(day: dict[str, Any], item: dict[str, Any]) -> dict[str, Any]:
-    start_iso = day["iso"]
-    end_iso = (date.fromisoformat(start_iso) + timedelta(days=1)).isoformat()
+    start_iso = (date.fromisoformat(day["iso"]) + timedelta(days=1)).isoformat()
+    end_iso = start_iso
     monday_start_date, monday_start_time = monday_api_date_time(start_iso, "00:00:00")
-    monday_end_date, monday_end_time = monday_api_date_time(end_iso, "00:00:00")
+    monday_end_date, monday_end_time = monday_api_date_time(end_iso, "11:00:00")
     is_lotto_peak = bool(re.search(r"lotto\s*[—-]\s*peak", item["name"], re.I))
     task_name = (
         "NIGHT PLAN - Lotto Peak"
@@ -246,7 +246,7 @@ def build_night_plan_task(day: dict[str, Any], item: dict[str, Any]) -> dict[str
         else f"NIGHT PLAN - {normalize_task_name(item['name']).replace(' (Night Plan peak)', '')}"
     )
     return {
-        "parent_day": start_iso,
+        "parent_day": day["iso"],
         "source_calendar_day": day["iso"],
         "source_row_name": item["name"],
         "task_name": task_name,
@@ -256,9 +256,9 @@ def build_night_plan_task(day: dict[str, Any], item: dict[str, Any]) -> dict[str
         "start_date": start_iso,
         "end_date": end_iso,
         "start_at": f"{start_iso} 00:00 UTC",
-        "end_at": f"{end_iso} 00:00 UTC",
+        "end_at": f"{end_iso} 11:00 UTC",
         "start_time": "00:00:00",
-        "end_time": "00:00:00",
+        "end_time": "11:00:00",
         "monday_start_date": monday_start_date,
         "monday_start_time": monday_start_time,
         "monday_end_date": monday_end_date,

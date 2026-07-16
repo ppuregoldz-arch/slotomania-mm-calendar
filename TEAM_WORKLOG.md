@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Shift Night Plan production to next morning
+
+- **Goal:** Correct the Night Plan production date while retaining the originating calendar-day parent.
+- **Done:** Kept Lotto Peak and LBP under parent `2026-08-01`, but moved both visible production windows to `2026-08-02 00:00–11:00`. Updated the builder, reviewed spec, and standing Ops guidance.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/2026-08-01.json`, `scripts/build_ops_tasks_from_plan.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, generic/curated payload validation ✓, targeted Monday update of 10 existing subitems ✓, live parent/date/status verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Night Plan is filed under the prior calendar day but runs from midnight through Promo Time on the following date.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Separate Lotto and LBP Night Plan tasks
 
 - **Goal:** Represent Lotto peak and LBP as separate Ops actions and use the full overnight date range.
