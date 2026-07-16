@@ -21,6 +21,7 @@ MONDAY_DISPLAY_OFFSET_HOURS = 3
 
 # build_rows is the canonical filter for which approved calendar rows need config.
 from upload_mm_calendar_day_monday import build_rows  # noqa: E402
+from ops_description import compose_description  # noqa: E402
 
 
 TEMPLATE_GROUPS: dict[str, tuple[str, str]] = {
@@ -151,35 +152,21 @@ def operational_description(
     row: dict[str, Any],
     detail: str,
     missing: list[str],
+    template_source: dict[str, str] | None = None,
 ) -> str:
-    lines = [
-        "Production",
-        "Audience: TBD - owner required",
-        f"Mechanic / contents: {detail or 'TBD - owner required'}",
-    ]
-    if row.get("pricing"):
-        lines.append(f"Pricing: {row['pricing']}")
-    lines.extend(
-        [
-            "",
-            "Journey / flow:",
-            "Trigger: TBD - owner required",
-            "Actions / reset behavior: TBD - owner required",
-            "",
-            "Dependencies:",
-        ]
+    return compose_description(
+        task_name=normalize_task_name(row["name"]),
+        product=row.get("product") or "",
+        detail=detail or "Required mechanic/config details are missing from the MM source.",
+        pricing=row.get("pricing"),
+        reference=None,
+        reuse=None,
+        template_source=template_source,
+        missing=[
+            *missing,
+            "Source files / links: TBD - owner required",
+        ],
     )
-    lines.extend(f"- {entry}" for entry in missing)
-    lines.append("- Source files / links: TBD - owner required")
-    lines.extend(
-        [
-            "",
-            f"Source: MM calendar item - {normalize_task_name(row['name'])}",
-            "Recent Ops reference: TBD - owner required (3-month window)",
-            "Reuse: TBD - verify exact recent execution and current delta",
-        ]
-    )
-    return "\n".join(lines)
 
 
 def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
@@ -228,6 +215,7 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
             row=row,
             detail=detail,
             missing=missing,
+            template_source=template,
         ),
         "requires_review": True,
         "warnings": warnings,
@@ -268,18 +256,14 @@ def build_night_plan_task(day: dict[str, Any], item: dict[str, Any]) -> dict[str
         "times_per_player": None,
         "reuse": None,
         "recent_ops_reference": None,
-        "description": "\n".join(
-            [
-                "Night Plan",
-                f"Mechanic / contents: {item.get('desc') or 'TBD - owner required'}",
-                "",
-                "Dependencies:",
-                "- Config / source files: TBD - owner required",
-                "",
-                f"Source: MM calendar item - {normalize_task_name(item['name'])}",
-                "Recent Ops reference: TBD - owner required (3-month window)",
-                "Reuse: TBD - verify exact recent execution and current delta",
-            ]
+        "description": compose_description(
+            task_name=task_name,
+            product=item.get("status") or "",
+            detail=item.get("desc") or "Required mechanic/config details are missing from the MM source.",
+            reference=None,
+            reuse=None,
+            missing=["Config / source files: TBD - owner required"],
+            night_plan=True,
         ),
         "requires_review": True,
         "warnings": [

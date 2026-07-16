@@ -1,18 +1,20 @@
 ---
 description: Build execution-ready Slotomania Ops tasks from approved MM calendar days
-globs: "{scripts/*ops_task*.py,mm_calendar/ops_*.md,mm_calendar/data/ops_tasks/**}"
+globs: "{scripts/*ops*.py,mm_calendar/ops_*.md,mm_calendar/data/ops_tasks/**,mm_calendar/documentation/ops_task_refs/**}"
 alwaysApply: false
 ---
 
 # Ops Task Builder
 
-- Read `mm_calendar/00_GUIDELINES_ITAY.md`, `mm_calendar/ops_board_schema.md`, and `mm_calendar/ops_task_construction.md` first.
+- Read `mm_calendar/00_GUIDELINES_ITAY.md`, `mm_calendar/ops_board_schema.md`, `mm_calendar/ops_task_construction.md`, and `mm_calendar/documentation/ops_task_refs/README.md` first.
 - Source board: `Operation - Monetization` (`2109172490`); `57490550` is its view ID. Production tasks belong as subitems under the exact `YYYY-MM-DD` day parent.
 - Build only from an approved calendar day and only when Itay explicitly requests it. Dry-run is the default; live writing requires explicit `--commit`.
 - The MM calendar Name is authoritative over a conflicting Description. Keep missing execution details as `TBD - owner required`; never infer rewards, segments, parameters, IDs, owners, files, or links.
 - Connect every Ops subitem's `MM calendar` relation (`board_relation_mkzvrve9`) to its exact `source_mm_item_id`. Verify with `BoardRelationValue.linked_items`; Monday's generic relation `text`/`value` fields may stay null even when the link exists.
 - Historical execution references are limited to the 3 calendar months before the target date. Use the newest matching promo/variant first; never copy older tasks when no recent precedent exists.
 - `Reuse` requires a verified recent Ops source: record its date/item ID, reused scope, and current delta. The MM Creative Label alone is not proof of operational reuse.
+- Write the Description as a concise human handoff: start with what Ops must set up, then only the execution facts, exact duplicate source/current delta, and concrete dependencies. Do not emit generic `Production`, empty Journey/CTA blocks, `Reuse: YES/NO`, or source-ID boilerplate.
+- Duplicate only the newest exact promo/variant inside the valid three-month window. If only a generic template exists, name its template group and keep unsupported fields as TBD; never present it as verified reuse.
 - August Promo Time is 11:00 UTC. A calendar date range is inclusive and ends at 11:00 UTC on the following day after its final date.
 - Never fill `Operation Status` (`dup__of_m_m_status1`); Ops owns it. The agent owns and may set only `M&M Status`.
 - Put Once/Multiple only in the dedicated `Times per player` column; never repeat it in Description.

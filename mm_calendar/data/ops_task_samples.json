@@ -1,0 +1,1580 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T13:52:11.655880+00:00",
+  "board_id": "2109172490",
+  "target_date": "2026-08-01",
+  "history_start": "2026-05-01",
+  "group_sources": {
+    "group_mm0t6mxh": "Monday days",
+    "group_mkzhwecm": "Monday dates",
+    "group_mkv1971m": "Daily Deal",
+    "group_mkv1b6ky": "Rolling Offer",
+    "group_mkv1q8yw": "RYD",
+    "group_mkv12864": "Buy All",
+    "group_mkzvt95x": "Triple Offer - Decoy",
+    "group_mm0928d4": "Triple Offer - Equal offers",
+    "group_mm4h2685": "Limited PO",
+    "group_mkv1vqxx": "MGAP",
+    "group_mm15y5em": "PO ADS",
+    "group_mky2tww7": "Mid Term",
+    "group_mkx57gcq": "Album handover",
+    "new_group30880": "Used templates",
+    "new_group3154": "Next Month Tasks from Template"
+  },
+  "raw_example_count": 2678,
+  "selected_by_family": {
+    "daily_deal": [
+      {
+        "id": "11869086854",
+        "name": "DD BOGO - 2 AS | H price",
+        "family": "daily_deal",
+        "family_title": "Daily Deal",
+        "description": "Start 2026-05-30 11:00 UTC\nEnd 2026-05-31 11:00 UTC\n\nCoins + 4 RDS + 2 AS\n\nMultiple\nDD BOGO\n\ntrigger: buy daily deal\naction1: give matching winners inapp (by segment)\naction2: give daily deal loot X2\nH price",
+        "promo_date": "2026-05-30",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798666",
+        "parent_name": "2026-05-30",
+        "statuses": [
+          "M&M Completed",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11869086854"
+      },
+      {
+        "id": "12037101680",
+        "name": "Daily Deal - Clan Pack & 2 extreme stamps | H Price",
+        "family": "daily_deal",
+        "family_title": "Daily Deal",
+        "description": "Start 2026-05-28 at 11:00 UTC\nEnd 2026-05-29 at 11:00 UTC\n\ncoins + gems + Clan pack + 2 Extreme stamps\nonce\n\nMCP- 87081 - The funky family album - promo - clan pack",
+        "promo_date": "2026-05-28",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791495",
+        "parent_name": "2026-05-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12037101680"
+      },
+      {
+        "id": "11967559266",
+        "name": "Daily Deal - 8 Hammers | H Pricing",
+        "family": "daily_deal",
+        "family_title": "Daily Deal",
+        "description": "Coins, gems, 8 hammers\n\nmultiple times",
+        "promo_date": "2026-05-25",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791617",
+        "parent_name": "2026-05-25",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11967559266"
+      },
+      {
+        "id": "12032575720",
+        "name": "Daily Deal - Superboom + Clan Pack | H Pricing",
+        "family": "daily_deal",
+        "family_title": "Daily Deal",
+        "description": "Coins, gems, Superboom, clan pack\nMCP for clan pack - 87081 - The Funky Family Album - Promo - Clan Pack\n\n\nmultiple times",
+        "promo_date": "2026-05-24",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798570",
+        "parent_name": "2026-05-24",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12032575720"
+      },
+      {
+        "id": "12407166691",
+        "name": "DD BOGO - 6 Hammers | Max Pricing - NO GEMS",
+        "family": "daily_deal",
+        "family_title": "Daily Deal",
+        "description": "Coins + Coin Stamps + 6 Hammers\n\nMultiple\nDD BOGO\n\ntrigger: buy daily deal\naction1: give matching winners inapp (by segment)\naction2: give daily deal loot X2",
+        "promo_date": "2026-07-31",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12407077077",
+        "parent_name": "2026-07-31",
+        "statuses": [
+          "M&M Completed"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12407166691"
+      },
+      {
+        "id": "12406471719",
+        "name": "Daily Deal - 2 AS + Shiny Card | H Pricing",
+        "family": "daily_deal",
+        "family_title": "Daily Deal",
+        "description": "Coins + Gems + 1 GGS +  4* gold H price\nmultiple\n\nMCP ID: 85905 — The Funky Family Album - Promo - 4 star Gold card",
+        "promo_date": "2026-07-23",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12393725156",
+        "parent_name": "2026-07-23",
+        "statuses": [
+          "Missing MCP"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12406471719"
+      }
+    ],
+    "rolling_offer": [
+      {
+        "id": "12104594749",
+        "name": "Rolling Offer 6 Cycles - M Price",
+        "family": "rolling_offer",
+        "family_title": "Rolling Offer",
+        "description": "Start - 2026-05-31 11:00 UTC\nEnd - 2026-06-01 11:00 UTC\n\nnew config\n\n*12hrs timer | Reset Night Plan*\n\nrolling offer with 6 cycles\n\n- Open MGAP Extreme for purchase\n\nTriggers : Banner + Log in\nRemove banner after purchase\nOnce Per player\nAdd X Button\n\nConfig attached - flow in config\nArt in PM",
+        "promo_date": "2026-05-31",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804999",
+        "parent_name": "2026-05-31",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12104594749"
+      },
+      {
+        "id": "12037002387",
+        "name": "Rolling offer - buy more for less H price",
+        "family": "rolling_offer",
+        "family_title": "Rolling Offer",
+        "description": "2026-05-28 11:00\n2026-05-29 11:00\n\n*12hrs timer | Reset Night Plan*\n\nTriggers : Banner + Log in\nRemove banner after purchasing all denoms\n\nH price",
+        "promo_date": "2026-05-28",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791495",
+        "parent_name": "2026-05-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12037002387"
+      },
+      {
+        "id": "12106852253",
+        "name": "Rolling Offer - M Price",
+        "family": "rolling_offer",
+        "family_title": "Rolling Offer",
+        "description": "Start 2026-05-26 11:00 UTC\nEnd 2026-05-27 11:00 UTC\n\nTriggers : Banner + Log in\nRemove banner after purchasing all denoms\nOnce Per player\nConfig attached - flow in config\nArt in PM",
+        "promo_date": "2026-05-26",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791641",
+        "parent_name": "2026-05-26",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12106852253"
+      },
+      {
+        "id": "12093639589",
+        "name": "DPU/NPU Rolling Offer",
+        "family": "rolling_offer",
+        "family_title": "Rolling Offer",
+        "description": "DPU NPU only \n\nadd widget\nremove if purchased clan dash bundle\n\nconfig in monday task art in pm\nONCE per player\nthanks!",
+        "promo_date": "2026-05-25",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791617",
+        "parent_name": "2026-05-25",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12093639589"
+      },
+      {
+        "id": "12406491925",
+        "name": "Rolling Offer 6 cycles | M Pricing",
+        "family": "rolling_offer",
+        "family_title": "Rolling Offer",
+        "description": "*12hrs timer | Reset Night Plan*\n\nrolling offer with 6 cycles\n\n- Open MGAP Extreme for purchase\n\nTriggers : Banner + Log in\nRemove banner after purchase\nOnce Per player\nAdd X Button\n\nConfig attached - flow in config\nArt in PM",
+        "promo_date": "2026-07-23",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12393725156",
+        "parent_name": "2026-07-23",
+        "statuses": [
+          "Missing Config"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12406491925"
+      },
+      {
+        "id": "12514834371",
+        "name": "Rolling Offer | M Price",
+        "family": "rolling_offer",
+        "family_title": "Rolling Offer",
+        "description": "*12hrs timer | Reset Night Plan*\n\nrolling offer with 6 cycles\n\n- Open MGAP Extreme for purchase\n\nTriggers : Banner + Log in\nRemove banner after purchase\nOnce Per player\nAdd X Button\n\nConfig attached - flow in config\nArt in PM",
+        "promo_date": "2026-07-17",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12488068958",
+        "parent_name": "2026-07-17",
+        "statuses": [
+          "M&M Completed",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12514834371"
+      }
+    ],
+    "ryd": [
+      {
+        "id": "12097003127",
+        "name": "RYD - 150% SB | H Pricing",
+        "family": "ryd",
+        "family_title": "Reveal Your Deal",
+        "description": "RYD \nCoins, Gems, 150% SB\n\nTrigger Extreme MGAP",
+        "promo_date": "2026-05-27",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791709",
+        "parent_name": "2026-05-27",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12097003127"
+      },
+      {
+        "id": "11967466483",
+        "name": "RYD - 150% SB + Superboom | H Pricing",
+        "family": "ryd",
+        "family_title": "Reveal Your Deal",
+        "description": "RYD \nCoins, Gems, 150% SB, Superboom\n\nTrigger Extreme MGAP",
+        "promo_date": "2026-05-25",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791617",
+        "parent_name": "2026-05-25",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11967466483"
+      },
+      {
+        "id": "12061324782",
+        "name": "Night Plan - RYD 150% SB + 3000 globez | H Pricing - Lucy carnival theme",
+        "family": "ryd",
+        "family_title": "Reveal Your Deal",
+        "description": "RYD with \ncoins, gems, 150% sb+ 3000 globez\n\nlucy's carnival theme - in pm\n\nH pricing\n\nonce per player",
+        "promo_date": "2026-05-21",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798568",
+        "parent_name": "2026-05-21",
+        "statuses": [
+          "Night Plan",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12061324782"
+      },
+      {
+        "id": "11977017447",
+        "name": "RYD 100% SB + 3000 globez | H Pricing",
+        "family": "ryd",
+        "family_title": "Reveal Your Deal",
+        "description": "2026-05-18 11:00\n2026-05-19 11:00\n\nRYD with \ncoins, gems, 100% sb+ 3000 globez\n\nH pricing\n\nonce per player\nreset at 00:00 UTC",
+        "promo_date": "2026-05-18",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791627",
+        "parent_name": "2026-05-18",
+        "statuses": [
+          "M&M Change",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11977017447"
+      },
+      {
+        "id": "12393747008",
+        "name": "RYD- 150% SB",
+        "family": "ryd",
+        "family_title": "Reveal Your Deal",
+        "description": "RYD with 150% SB and Hammers wheel\nart in PM \nplease trigger extreme mgap \nonce per player\nH price\nArt in PM",
+        "promo_date": "2026-07-22",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12393704839",
+        "parent_name": "2026-07-22",
+        "statuses": [
+          "M&M Completed"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12393747008"
+      },
+      {
+        "id": "12515272669",
+        "name": "RYD- 100% SB + hammer wheel |H price",
+        "family": "ryd",
+        "family_title": "Reveal Your Deal",
+        "description": "RYD with 100% SB and Hammers wheel\nart in PM \nplease trigger extreme mgap \nonce per player\nH price\nArt in PM",
+        "promo_date": "2026-07-19",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12515116678",
+        "parent_name": "2026-07-19",
+        "statuses": [
+          "M&M Completed",
+          "To Do"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12515272669"
+      }
+    ],
+    "buy_all": [
+      {
+        "id": "11868447387",
+        "name": "Buy All - 2 PAB + 3* gold | H Pricing",
+        "family": "buy_all",
+        "family_title": "Buy All",
+        "description": "Start 2026-05-26 at 11:00 UTC\nEnd 2026-05-27 at 11:00 UTC\nreset at 00:00 UTC\n\ncoins denom - coins, 4 rds, 2 PAB\ngems denom - gems, 1 ggs, 3* gold\n\nH price",
+        "promo_date": "2026-05-26",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791641",
+        "parent_name": "2026-05-26",
+        "statuses": [
+          "M&M Completed",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11868447387"
+      },
+      {
+        "id": "12032690385",
+        "name": "Buy all | H Price",
+        "family": "buy_all",
+        "family_title": "Buy All",
+        "description": "+ reset at 00:00 UTC \n\nonce per player\n\ncoins denom - 6 hammers, coins, 4 rds \ngems denom - coins, 1 GGS, 3000 globez coins\n\nPlayers who will purchase it all will get SB wheel up to 300% on top of the buy all\n\nH price",
+        "promo_date": "2026-05-21",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798568",
+        "parent_name": "2026-05-21",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12032690385"
+      },
+      {
+        "id": "11936176861",
+        "name": "Buy All - Coins - 100% SB Superboom | M Pricing",
+        "family": "buy_all",
+        "family_title": "Buy All",
+        "description": "Internal\nStart 2026-05-13 at 11:00 UTC\nEnd 2026-05-14 at 11:00 UTC\n\nProduction\nStart 2026-05-16 at 11:00 UTC\nEnd 2026-05-17 at 11:00 UTC\nreset at 00:00 UTC\n\nCoins - 100% SB + 4 RDS \nGems - 1 GGS + Superboom\n\nM price",
+        "promo_date": "2026-05-16",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798609",
+        "parent_name": "2026-05-16",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11936176861"
+      },
+      {
+        "id": "11936182541",
+        "name": "X2 GGS 13:00-15:00 TIME LIMITED",
+        "family": "buy_all",
+        "family_title": "Buy All",
+        "description": "Start 2026-05-16 13:00 UTC\nEnd 2026-05-16 15:00 UTC\n\nOn all packages + DD\nNot on the Buy All!\n\ndon't forget UI\nplease add timer to the inapp",
+        "promo_date": "2026-05-16",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798609",
+        "parent_name": "2026-05-16",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11936182541"
+      },
+      {
+        "id": "12407208841",
+        "name": "500% Boosted Gem Back Alert",
+        "family": "buy_all",
+        "family_title": "Buy All",
+        "description": "Only changes - remove the trigger of \"purchase the 2nd denom\" AND art changes,\nrest of the config remains the same\n\nPLEASE ADD TIMER ON THE POP UP + NF INAPP - Middle place (where the template is)\n\nSubject Line:\n״GemBack Alert!\n״\n\nWidget sends to inapp\n\"tell me more\" banner sends to inapp\n\ntrigger: player uses gems before qualify\naction: give losers inapp\n\nchange assets after purchase: widget, banner, pp\n\n2 Config options:\n\nFlow 1:\nTrigger: Player buys the Highest Gem Package in the payment page\nAction: Give Boosted Gem Back UP TO 500% \nAction: Give winners inapp 500%\n\nFlow.2:\nTrigger: Player buys Daily Deal / RYD / Decoy Bonanza / Buy All / Rolling Offer / mystery buy all \nAction: Give Boosted Gem Back UP TO 150% \nActon: Give winners inapp 150%\n\nWidgets attached\n\nplease notice there are banners & pp banners before & after purchase\nnotice where we should add timer according to the communications please",
+        "promo_date": "2026-07-31",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12407077077",
+        "parent_name": "2026-07-31",
+        "statuses": [
+          "After Promo"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12407208841"
+      },
+      {
+        "id": "12407149054",
+        "name": "Bonanza - H price",
+        "family": "buy_all",
+        "family_title": "Buy All",
+        "description": "2026-06-22 11:00\n2026-06-23 00:00\n\n\nFirst Denom - coins + 4 RDS + 4* reg card + 100% SB\n2nd Denom - gems, 1 GGS + 2 AS\n3rd Denom (bonanza) - All above\n\n\nONCE\nArt in PM\ncan't be paid with SB \ntrigger MGAP Extreme after purchase \n\nTriggers : Banner + Log in\nRemove banner after purchase",
+        "promo_date": "2026-07-31",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12407077077",
+        "parent_name": "2026-07-31",
+        "statuses": [
+          "M&M Completed"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12407149054"
+      }
+    ],
+    "decoy_offer": [
+      {
+        "id": "11869322792",
+        "name": "Decoy Bonanza Offer - M,M,H price",
+        "family": "decoy_offer",
+        "family_title": "Triple Offer / Decoy",
+        "description": "Start - 2026-05-29 11:00 UTC\nEnd - 2026-05-30 11:00 UTC\nReset at 00:00 UTC\n\ndenom 1 - coins, 2 rds, AS |  M Price\ndenom 2 - gems, 1 ggs, 3* reg card (85873 The Funky Family Album - Promo - 3 star regular card) , Shiny card- 86785 The Funky Family Album - Shiny Card - Promo, | M Price\ndenom 3 - coins, gems, 4 rds, 2 ggs, 3* reg card (85873 The Funky Family Album - Promo - 3 star regular card), Shiny card- 86785 The Funky Family Album - Shiny Card - Promo, 2 AS \n\nconfig in pricing board \n\nOffer can be purchased ONCE \n\nArt in PM\ncan't be paid with SB \ntrigger MGAP Extreme after purchase \n\nTriggers : Banner + Log in\nRemove banner after purchase",
+        "promo_date": "2026-05-29",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798606",
+        "parent_name": "2026-05-29",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11869322792"
+      },
+      {
+        "id": "12093635494",
+        "name": "Decoy Bonanza | M,M,H Price",
+        "family": "decoy_offer",
+        "family_title": "Triple Offer / Decoy",
+        "description": "Reset at 11:00 UTC\n\ndenom 1 - coins, 4 RDS, 6 Hammers - M Price\ndenom 2 - gems, 1 ggs, rare pack  - M price\ndenom 3 - coins, gems, 4 rds, 1 ggs, 6 hammers, rare pack, 100% SB- H price\n\n86665 - The Funky Family Album - Rare Pack\n \n\nMCP in economy task\n\nONCE\ncan't be paid with SB \ntrigger MGAP Extreme after purchase \n\nTriggers : Banner + Log in\nRemove banner after purchase",
+        "promo_date": "2026-05-24",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798570",
+        "parent_name": "2026-05-24",
+        "statuses": [
+          "M&M Completed",
+          "QA'd, needs ATTN"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12093635494"
+      },
+      {
+        "id": "12009854896",
+        "name": "Decoy Bonanza | M,M,H Price",
+        "family": "decoy_offer",
+        "family_title": "Triple Offer / Decoy",
+        "description": "Start 2026-05-20 at 11:00 UTC\nEnd 2026-05-21 at 11:00 UTC\n\nreset at 00:00 UTC\n\ndenom 1 - coins, 2 rds, 3* reg card - M price\ndenom 2 - gems, 1 ggs, 2 Airstrikes - M price\ndenom 3 - coins, gems, 4 RDS, 3* reg card, 2 AS - H price\n\nONCE\nArt in PM\ncan't be paid with SB \ntrigger MGAP Extreme after purchase \n\nTriggers : Banner + Log in\nRemove banner after purchase",
+        "promo_date": "2026-05-20",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798567",
+        "parent_name": "2026-05-20",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12009854896"
+      },
+      {
+        "id": "12000920839",
+        "name": "Decoy Bonanza Offer - M,M,H price",
+        "family": "decoy_offer",
+        "family_title": "Triple Offer / Decoy",
+        "description": "2026-05-17 11:00\n2026-05-18 11:00\n\nreuse from 14/05/2026\n\n\nreset at 00:00 UTC\n\nDenom 1\n4 RDS, Lotto Bonus, 3* Reg\n\nDenom 2\n2 GGS, Dice Booster 8 hrs, 3 Hammers\n\nBonanza\n2 GGS + 4 RDS + Lotto Bonus + Dice Booster 8hrs +3* Reg + 3 Hammers\n\nONCE\nArt in PM\ncan't be paid with SB \ntrigger MGAP Extreme after purchase \n\nTriggers : Banner + Log in\nRemove banner after purchase",
+        "promo_date": "2026-05-17",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798759",
+        "parent_name": "2026-05-17",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12000920839"
+      },
+      {
+        "id": "10636855340",
+        "name": "Blast promo time offer - decoy",
+        "family": "decoy_offer",
+        "family_title": "Triple Offer / Decoy",
+        "description": "Decoy offer 50% discount\n\n[internal link omitted]",
+        "promo_date": "2025-11-28",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299615405",
+        "parent_name": "2025-11-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10636855340"
+      },
+      {
+        "id": "10512199976",
+        "name": "Battlesheep -promo offer",
+        "family": "decoy_offer",
+        "family_title": "Triple Offer / Decoy",
+        "description": "50% discount -DECOY\n[internal link omitted]",
+        "promo_date": "2025-11-14",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299358754",
+        "parent_name": "2025-11-14",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10512199976"
+      }
+    ],
+    "equal_offer": [],
+    "limited_po": [
+      {
+        "id": "12048058423",
+        "name": "Soft Launch - Limited PO",
+        "family": "limited_po",
+        "family_title": "Limited Personal Offer",
+        "description": "only for soft launch group\ntest A group id - 121526729\n\nconfig attached\n\nplease open to: \n8 groups\n1000000 players in each group \n150 Quantity for each group\nMax Trigger of PO per player - 1\n\nLimited PO with:\n1. 4 RDS\n2. Coins\n\nPlease apply 100% coin sale over it\nPlease add timer for 24 hours\nPlease trigger extreme MGAP after purchase\n\nremove banner after purchase\nremove banner after offer is sold out \n\nArt in today's PM \n\nThanks.",
+        "promo_date": "2026-05-20",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798567",
+        "parent_name": "2026-05-20",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12048058423"
+      },
+      {
+        "id": "11975237846",
+        "name": "Soft Launch - Limited PO",
+        "family": "limited_po",
+        "family_title": "Limited Personal Offer",
+        "description": "only for soft launch group\ntest A group id - 121510097\n\nconfig attached\n\nplease open to: \n1205 groups\n10000 players in each group \n70 Quantity for each group\nMax Trigger of PO per player - 1\n\nLimited PO with:\n1. 4 RDS\n2. Coins\n\nPlease apply 100% coin sale over it\nPlease add timer for 24 hours\nPlease trigger extreme MGAP after purchase\n\nremove banner after purchase\nremove banner after offer is sold out \n\nArt in today's PM \n\nThanks.",
+        "promo_date": "2026-05-13",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798711",
+        "parent_name": "2026-05-13",
+        "statuses": [
+          "M&M Completed",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11975237846"
+      }
+    ],
+    "mgap": [
+      {
+        "id": "11869646254",
+        "name": "Progress Pack - H Price",
+        "family": "mgap",
+        "family_title": "MGAP",
+        "description": "Start 2026-05-30 at 11:00 UTC\nEnd 2026-05-31 at 11:00 UTC\n*12hrs timer | Reset Night Plan*\n\nfor all users\n\nsegmented by simple_median_spins - check config \n\nConfig in economy task \n- Open MGAP Extreme for purchase\n\nPlease add a push message:\nSegment - players who completed all spins in the prize mania and didn't purchase it. \nWhen - 30 minutes after completing all spins \n\ntext: \nAmazing! 🤩\nYou spun through missions and earned 🎁 EXTRA PRIZES 🎁 Tap to grab an Offer and claim what's yours!\n\nTriggers  Log in + back to lobby + DF + inapp (in pm)\nRemove DF after purchase\nOnce Per player\nAdd X Button\n\nArt in PM",
+        "promo_date": "2026-05-30",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798666",
+        "parent_name": "2026-05-30",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11869646254"
+      },
+      {
+        "id": "12104479793",
+        "name": "MGAP Matched - Extreme + Epic",
+        "family": "mgap",
+        "family_title": "MGAP",
+        "description": "Start - 2026-05-29 11:00 UTC\nEnd - 2026-05-30 11:00 UTC\nMGAP Matched- \nPlayer that will purchase Extreme OR Epic MGAP will get his coin win matched instantly - to balance.\n\nFLOW\nTrigger - player purchased Extreme OR Epic MGAP\nAction1 - match players winning amount and send it directly to balance\nAction2 - show player winners inapp - Epic for Epic purchase and Extreme for Extreme purchase)\n\nMultiple times per player",
+        "promo_date": "2026-05-29",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798606",
+        "parent_name": "2026-05-29",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12104479793"
+      },
+      {
+        "id": "12104479923",
+        "name": "MGAP Matched - UI",
+        "family": "mgap",
+        "family_title": "MGAP",
+        "description": "Start - 2026-05-29 11:00 UTC\nEnd - 2026-05-30 11:00 UTC\nMake sure to set UI for both Extreme + Epic",
+        "promo_date": "2026-05-29",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798606",
+        "parent_name": "2026-05-29",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12104479923"
+      },
+      {
+        "id": "12091467731",
+        "name": "MGAP SB up 500% - Wild Symbol - Extreme & Epic",
+        "family": "mgap",
+        "family_title": "MGAP",
+        "description": "start:2026-03-28 at 11:00 UTC\nEnd :2026-03-29 at 11:00 UTC\n\nget X% SlotoBucks Back from your purchase  - Extreme + Epic MGAP\npls change the \"wild\" symbol to new symbol- X (in PM)\n\nFLOW:\nTrigger - Player purchased Epic OR Extreme MGAP\nAction1 - Give player SB % to his balance according to the Wild symbols he received\nAction2 - Show player winners inapp according to his SB sin - 150% / 300% / 500% (CTA - close)\n\n*Winners inapp awarded in according to Epic/Extreme purchase*\n\nMULTIPLE TIMES PER PLAYERS",
+        "promo_date": "2026-05-27",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791709",
+        "parent_name": "2026-05-27",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12091467731"
+      },
+      {
+        "id": "10596071486",
+        "name": "MGAP Matched - Extreme + Epic",
+        "family": "mgap",
+        "family_title": "MGAP",
+        "description": "Start: 2025-11-23 at 12:00 UTC\nEnd: 2025-11-24 at 12:00 UTC\n\nMGAP Matched- \nPlayer that will purchase Extreme OR Epic MGAP will get his coin win matched instantly - to balance.\n\nFLOW\nTrigger - player purchased Extreme OR Epic MGAP\nAction1 - match players winning amount and send it directly to balance\nAction2 - show player winners inapp - Epic for Epic purchase and Extreme for Extreme purchase)\n\nMultiple times per player",
+        "promo_date": "2025-11-23",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299607501",
+        "parent_name": "2025-11-23",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10596071486"
+      },
+      {
+        "id": "10620648156",
+        "name": "--Internal-- MGAP Matched Thanksgiving- UI",
+        "family": "mgap",
+        "family_title": "MGAP",
+        "description": "Internal\nStart: 2025-11-23 at 12:00 UTC\nEnd: 2025-11-24 at 12:00 UTC\n\nProduction\nStart 2025-11-24 at 12:00 UTC\nEnd 2025-11-25 at 12:00 UTC\n\nMake sure to set UI for both Extreme + Epic\n\nExtreme is new UI completely\nEpic is not",
+        "promo_date": "2025-11-23",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299607501",
+        "parent_name": "2025-11-23",
+        "statuses": [
+          "M&M Completed",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10620648156"
+      }
+    ],
+    "ads_personal_offer": [
+      {
+        "id": "12114729100",
+        "name": "Gems ads PO",
+        "family": "ads_personal_offer",
+        "family_title": "ADS Personal Offer",
+        "description": "Max per day 2",
+        "promo_date": "2026-05-31",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804999",
+        "parent_name": "2026-05-31",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12114729100"
+      },
+      {
+        "id": "12114735809",
+        "name": "2 Parasheeps ads PO",
+        "family": "ads_personal_offer",
+        "family_title": "ADS Personal Offer",
+        "description": "2026-05-30 at 11:00 UTC\n2026-05-31 at 11:00 UTC\n\nMax per day 3\nFirst priority\n\nart in pm",
+        "promo_date": "2026-05-30",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798666",
+        "parent_name": "2026-05-30",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12114735809"
+      },
+      {
+        "id": "12113633298",
+        "name": "Ads PO - 3* Reg",
+        "family": "ads_personal_offer",
+        "family_title": "ADS Personal Offer",
+        "description": "3* Reg",
+        "promo_date": "2026-05-29",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798606",
+        "parent_name": "2026-05-29",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12113633298"
+      },
+      {
+        "id": "12037003100",
+        "name": "Gems ads PO",
+        "family": "ads_personal_offer",
+        "family_title": "ADS Personal Offer",
+        "description": "Max per day 2",
+        "promo_date": "2026-05-28",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791495",
+        "parent_name": "2026-05-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12037003100"
+      },
+      {
+        "id": "12540192459",
+        "name": "winovate wheel ads PO",
+        "family": "ads_personal_offer",
+        "family_title": "ADS Personal Offer",
+        "description": "Max per day 2",
+        "promo_date": "2026-07-21",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12516420976",
+        "parent_name": "2026-07-21",
+        "statuses": [
+          "M&M Completed"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12540192459"
+      },
+      {
+        "id": "12510743066",
+        "name": "Gems ads PO",
+        "family": "ads_personal_offer",
+        "family_title": "ADS Personal Offer",
+        "description": "Max per day 2",
+        "promo_date": "2026-07-15",
+        "group_id": "group_mkv12864",
+        "group_title": "Buy All",
+        "source_type": "template_subitem",
+        "parent_id": "12476193958",
+        "parent_name": "2026-07-15",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12510743066"
+      }
+    ],
+    "mes": [
+      {
+        "id": "12117377695",
+        "name": "MES - Ace Heist",
+        "family": "mes",
+        "family_title": "M.E.S",
+        "description": "Start 2026-05-31 at 11:00 UTC\nEnd 2026-06-01 at 11:00 UTC\n\nbanner - open MES\n\nFILL THE BARS WITH <🔦> TO WIN ALL PRIZES\n\nAll players",
+        "promo_date": "2026-05-31",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804999",
+        "parent_name": "2026-05-31",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12117377695"
+      },
+      {
+        "id": "11869150703",
+        "name": "MES - Sweet Ambrosia - Win Master 4* ace",
+        "family": "mes",
+        "family_title": "M.E.S",
+        "description": "Start 2026-05-29 at 11:00 UTC\nEnd 2026-05-30 at 11:00 UTC\n\nbanner - open MES\n\nCollect  to fill the bar & win a sweet Prize\n\nAll players",
+        "promo_date": "2026-05-29",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798606",
+        "parent_name": "2026-05-29",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11869150703"
+      },
+      {
+        "id": "12037022658",
+        "name": "MES - Spin zone - Sweet Ambrosia-",
+        "family": "mes",
+        "family_title": "M.E.S",
+        "description": "Start:2026-05-28 at 11:00 UTC\nEnd :2026-05-29 at 11:00 UTC\n\nbanner - open MES\nRemove banner after finishing all the challenge\nGive winners' inapp after finishing\n\nSub title - Collect  to win ethereal Prizes\n\nPlease use attached  UI",
+        "promo_date": "2026-05-28",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791495",
+        "parent_name": "2026-05-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12037022658"
+      },
+      {
+        "id": "12117410935",
+        "name": "INTERNAL - MES - Ace Heist",
+        "family": "mes",
+        "family_title": "M.E.S",
+        "description": "Start 2026-05-31 at 11:00 UTC\nEnd 2026-06-01 at 11:00 UTC\n\nbanner - open MES\n\nFILL X BARS WITH <🔦> TO WIN ALL PRIZES\n\nAll players",
+        "promo_date": "2026-05-28",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791495",
+        "parent_name": "2026-05-28",
+        "statuses": [
+          "M&M Completed",
+          "To Do"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12117410935"
+      },
+      {
+        "id": "11868460369",
+        "name": "MES - Gems machine missions",
+        "family": "mes",
+        "family_title": "M.E.S",
+        "description": "Start 2026-05-26 at 11:00 UTC\nEnd 2026-05-27 at 11:00 UTC\n\nbanner - open MES\n\nFILL THE BAR WITH  TO WIN ALL PRIZES \n\nAll players",
+        "promo_date": "2026-05-26",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791641",
+        "parent_name": "2026-05-26",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11868460369"
+      },
+      {
+        "id": "12032574573",
+        "name": "M.E.S - Clan Packs",
+        "family": "mes",
+        "family_title": "M.E.S",
+        "description": "reuse from 17th",
+        "promo_date": "2026-05-24",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798570",
+        "parent_name": "2026-05-24",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12032574573"
+      }
+    ],
+    "clan_dash": [
+      {
+        "id": "11937780635",
+        "name": "INTERNAL - Dash wheel instead of dash pack",
+        "family": "clan_dash",
+        "family_title": "Clan Dash",
+        "description": "INTERNAL  ONLY \n\nPlease create the dash wheel and replace it with the dash pack on the dash max bar. \nconfigs for the bar and wheel are saved in the clan dash economy folder\nassets attached: \nwheel ui - jackpot is wild gold\ndash wheel sku for the dash max bar \n3* reg sku for the freemium bar",
+        "promo_date": "2026-05-07",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804998",
+        "parent_name": "2026-05-07",
+        "statuses": [
+          "Internal Task",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11937780635"
+      }
+    ],
+    "gameplay": [
+      {
+        "id": "12037081010",
+        "name": "Battlesheep - BD Benefit",
+        "family": "gameplay",
+        "family_title": "Gameplay / Core",
+        "description": "Once per player\nBlack Diamond Battlesheep benefit - \nPlease send 10 Parasheep Tokens to GCP\n\nadd directly to the balance\n\nonce per player",
+        "promo_date": "2026-05-28",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791495",
+        "parent_name": "2026-05-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12037081010"
+      },
+      {
+        "id": "12037001603",
+        "name": "Battlesheep new season",
+        "family": "gameplay",
+        "family_title": "Gameplay / Core",
+        "description": "2026-05-28 at 11:00 UTC\n2026-06-01 at 11:00 UTC\n\nnew season - generic \nwith Wild Ordinary on the first cycle (6 boards)",
+        "promo_date": "2026-05-28",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791495",
+        "parent_name": "2026-05-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12037001603"
+      },
+      {
+        "id": "12037081168",
+        "name": "Battlesheep - single offer",
+        "family": "gameplay",
+        "family_title": "Gameplay / Core",
+        "description": "2026-05-28 at 11:00 UTC\n2026-06-01 at 11:00 UTC\n\n50% DISCOUNT -SINGLE\n\n[internal link omitted]",
+        "promo_date": "2026-05-28",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791495",
+        "parent_name": "2026-05-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12037081168"
+      },
+      {
+        "id": "12093000683",
+        "name": "Spinner clash",
+        "family": "gameplay",
+        "family_title": "Gameplay / Core",
+        "description": "Start 2026-05-27 at 11:00 UTC\nEnd 2026-05-28 at 11:00 UTC\n\nSpinner clash tournament feature for all players\n4 consecutive tournaments of 6hr each, when a tournament ends a new one start - Total of 24h.\n\nConfig attached in economy task\nTriggers (multiple):\n1. WM on the reels - up to 10 TP\n2. open pods - Each pod is 40 TP\n3. complete super dash - Each SUPER DASH COMPLETED is 75 TP.\n\nPRIZES:\nPrizes\n1 - 4 Star Ace Card + coins\n2 - 3 Star Ace Card + coins\n3 - 2 Star Ace Card + coins\n4-5 - 3 Star Regular Card + coins\n6-10 - coins\nopen for all players\n\nPlease see journey popup info in a separate task.\n\nTHANKS",
+        "promo_date": "2026-05-27",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791709",
+        "parent_name": "2026-05-27",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12093000683"
+      },
+      {
+        "id": "10604052778",
+        "name": "Battlesheep - Night Offer",
+        "family": "gameplay",
+        "family_title": "Gameplay / Core",
+        "description": "50% DISCOUNT -SINGLE\nDifferent art\n[internal link omitted]",
+        "promo_date": "2025-11-23",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299607501",
+        "parent_name": "2025-11-23",
+        "statuses": [
+          "M&M Completed"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10604052778"
+      },
+      {
+        "id": "10604063705",
+        "name": "Battlesheep - Promo Offer",
+        "family": "gameplay",
+        "family_title": "Gameplay / Core",
+        "description": "50% DISCOUNT -SINGLE\n[internal link omitted]",
+        "promo_date": "2025-11-23",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299607501",
+        "parent_name": "2025-11-23",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10604063705"
+      }
+    ],
+    "shiny_show": [
+      {
+        "id": "11869597335",
+        "name": "Shiny Show - All cards Joker Edition",
+        "family": "shiny_show",
+        "family_title": "Shiny Show",
+        "description": "Start:2026-05-31 at 11:00 UTC\nEnd :2026-06-01 at 11:00 UTC\n\nShiny Show - all items are cards\n21 floors\nconfig - attached\n\nplease upload DF attached\n\nPush message:\n✨Win up to 30 SlotoCards✨\nAll prizes are Cards in today's Shiny Show🤯🤯 Find the 🃏JOKER🃏 to win even more!\n\nPlease open arena banner for the joker, CTA main inapp",
+        "promo_date": "2026-05-31",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804999",
+        "parent_name": "2026-05-31",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11869597335"
+      },
+      {
+        "id": "11869455582",
+        "name": "PYP - Shiny Card & AS",
+        "family": "shiny_show",
+        "family_title": "Shiny Show",
+        "description": "Start 2026-05-30 at 11:00 UTC\nEnd 2026-05-31 at 11:00 UTC\n\nPlayer needs to finish 3 out of 4 to win Shiny Card & AS\n\nComplete 3 battlesheep boards \nreach act 15 in the shiny show \nTrigger free spins in gems machine \ncomplete 2 daily dashes\n\nafter each mission add winner inapp + change widget\n\nplease add the dynamic inapp to popup and NF\nsubject line: \n\nChoose Your\nChallenges\n\nOnce per player\nwhen finished please remove NF + Banner\nThanks!",
+        "promo_date": "2026-05-30",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798666",
+        "parent_name": "2026-05-30",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11869455582"
+      },
+      {
+        "id": "11869301424",
+        "name": "Shiny Show - All cards",
+        "family": "shiny_show",
+        "family_title": "Shiny Show",
+        "description": "Start: 2026-05-29 at 11:00 UTC\nEnd: 2026-05-30 at 11:00 UTC\n\nShiny Show - all items are cards\n21 floors\nconfig - attached",
+        "promo_date": "2026-05-29",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798606",
+        "parent_name": "2026-05-29",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11869301424"
+      },
+      {
+        "id": "11868286770",
+        "name": "Shiny Show - Different Prizes (Picks)",
+        "family": "shiny_show",
+        "family_title": "Shiny Show",
+        "description": "Start 2026-05-26 at 11:00 UTC\nEnd: 2026-05-27 at 11:00 UTC\n\nMultiple\n\naccording to config",
+        "promo_date": "2026-05-26",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791641",
+        "parent_name": "2026-05-26",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11868286770"
+      },
+      {
+        "id": "10637506689",
+        "name": "00:00 UTC - Shiny Show Fusion Pieces",
+        "family": "shiny_show",
+        "family_title": "Shiny Show",
+        "description": "Internal\nStart 2025-11-26 at 12:00 UTC\nEnd 2025-11-27 at 12:00 UTC\n\nProduction\nStart 2025-11-29 at 00:00 UTC\nEnd 2025-11-30 at 00:00 UTC\n\nShiny show black friday theme.\nPlayers need to find BF items in shiny acts to get rewards\n\nPlease include to dormant players + communications\n\nThanks!",
+        "promo_date": "2025-11-28",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299615405",
+        "parent_name": "2025-11-28",
+        "statuses": [
+          "Night Plan",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10637506689"
+      },
+      {
+        "id": "10635216783",
+        "name": "BF - Super Dash Promo",
+        "family": "shiny_show",
+        "family_title": "Shiny Show",
+        "description": "Start 2025-11-28 at 12:00 UTC\nEnd 2025-11-29 at 12:00 UTC\n\nSuper dash promo - Every 2 Super Dashes you get a shiny show.",
+        "promo_date": "2025-11-28",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299615405",
+        "parent_name": "2025-11-28",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10635216783"
+      }
+    ],
+    "season_blast": [
+      {
+        "id": "12038691570",
+        "name": "INTERNAL - wonder blast season",
+        "family": "season_blast",
+        "family_title": "Season / Blast",
+        "description": "https://playtika.monday.com/boards/2109172490/pulses/12033401013",
+        "promo_date": "2026-05-19",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798653",
+        "parent_name": "2026-05-19",
+        "statuses": [
+          "Internal Task",
+          "Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12038691570"
+      },
+      {
+        "id": "11959381794",
+        "name": "Blast new season - booming blast",
+        "family": "season_blast",
+        "family_title": "Season / Blast",
+        "description": "In this season we will use the 3 type of sku. (SKU art attached):\n1 pab\n1 super boom\ngolden pab =10 pab \nevery time a player will find the on his board, he will win 1/ 10 PAB \n\ntrigger: player found on of the journey sku - pab\naction: give winners inapp of PAB won + enter it to the GCP\n\ntrigger: player found on of the journey sku - superboom\naction: give winners inapp of superboom won + enter it to the GCP\n\ntrigger: player found on of the journey sku - golden PAB\naction: give winners inapp of golden pab won + enter it to the GCP\n\nall season long\n\nGCP text winners (depending on amount of pab won):\nBlast 'N' Boom!​\nBlast faster with 1 Pick-a-Boom!​\n\nplayer won the golden pab - 10 pab grant:\nBlast 'N' Boom!​\nBlast faster with 10 Pick-a-Booms!\n\nplayer won the super boom:\nBlast 'N' Boom!​\nBlast faster with 1 super boom!",
+        "promo_date": "2026-05-14",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791550",
+        "parent_name": "2026-05-14",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11959381794"
+      },
+      {
+        "id": "11978173535",
+        "name": "Blast BD - benfit",
+        "family": "season_blast",
+        "family_title": "Season / Blast",
+        "description": "Blast BD benefit –  10 picks on us  ​​\n\nTrigger: player login   ​​\nCondition: BD player ​​\nAction: give 10 Extra picks to GCP​​\nAdd inapp attached as NF 5 ​​\n*Once per player ​​\n\nGCP: Image: logo (505x50 pixels)  ​​\nSender: Black Diamond Perks ​\nMessage: Enjoy 10 Extra Picks ​\n​",
+        "promo_date": "2026-05-14",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791550",
+        "parent_name": "2026-05-14",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11978173535"
+      },
+      {
+        "id": "11978197029",
+        "name": "Blast offer",
+        "family": "season_blast",
+        "family_title": "Season / Blast",
+        "description": "Single - 50% discount\nBooming blast:\n[internal link omitted]",
+        "promo_date": "2026-05-14",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791550",
+        "parent_name": "2026-05-14",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11978197029"
+      },
+      {
+        "id": "10830024195",
+        "name": "Blast promo - Find the symbol to win Pick",
+        "family": "season_blast",
+        "family_title": "Season / Blast",
+        "description": "Start - 2025-12-23 12:00 UTC\nEnd - 2025-12-25 12:00 UTC\n\nPlayers who finds the symbol win Pick.\n\nTrigger: Player finds the symbol.\nAction: give player pick",
+        "promo_date": "2025-12-23",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "10620195079",
+        "parent_name": "2025-12-23",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10830024195"
+      },
+      {
+        "id": "10829160065",
+        "name": "Blast single offer- promo time",
+        "family": "season_blast",
+        "family_title": "Season / Blast",
+        "description": "Single offer 50% discount\n\n[internal link omitted]",
+        "promo_date": "2025-12-23",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "10620195079",
+        "parent_name": "2025-12-23",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10829160065"
+      }
+    ],
+    "lbp_lotto": [
+      {
+        "id": "12032641195",
+        "name": "Night Plan - LBP peak + All golden balls - Lucy's Carnival",
+        "family": "lbp_lotto",
+        "family_title": "Lotto Bonus Premium / Lotto",
+        "description": "Players will get a new config with golden balls (extra) instead of the white balls\nplease also add 4 balls instead of 3\n\nconfig in economy task \nArt in PM\nUI attached to the task",
+        "promo_date": "2026-05-23",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791543",
+        "parent_name": "2026-05-23",
+        "statuses": [
+          "Night Plan",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12032641195"
+      },
+      {
+        "id": "12033168333",
+        "name": "INTERNAL - LBP Golden Balls Promo",
+        "family": "lbp_lotto",
+        "family_title": "Lotto Bonus Premium / Lotto",
+        "description": "https://playtika.monday.com/boards/2109172490/pulses/12032641195",
+        "promo_date": "2026-05-19",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798653",
+        "parent_name": "2026-05-19",
+        "statuses": [
+          "Internal Task",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12033168333"
+      },
+      {
+        "id": "11978782808",
+        "name": "Night Plan - LBP 4 balls",
+        "family": "lbp_lotto",
+        "family_title": "Lotto Bonus Premium / Lotto",
+        "description": "for 00:00 UTC - LBP with 4 balls to all players\n\nUI attached- Please ,match to every segment\nBronze-> Silver\nSilver->Gold\nGold->Platinum + IC\nDiamond->Royal Diamond + IC\nRoyal Diamond->Black Diamond + IC\nBlack Diamond ->Boosted Black Diamond + IC\nArt in PM",
+        "promo_date": "2026-05-15",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334798756",
+        "parent_name": "2026-05-15",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11978782808"
+      },
+      {
+        "id": "11936779021",
+        "name": "LBP - all balls 40% bigger NIGT PLAN",
+        "family": "lbp_lotto",
+        "family_title": "Lotto Bonus Premium / Lotto",
+        "description": "2026-05-10 00:00\n2026-05-11 00:00\nall balls 40% bigger\nUI attached",
+        "promo_date": "2026-05-09",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791602",
+        "parent_name": "2026-05-09",
+        "statuses": [
+          "Night Plan"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11936779021"
+      }
+    ],
+    "sales_store": [
+      {
+        "id": "12114700442",
+        "name": "Push internal Test- Android",
+        "family": "sales_store",
+        "family_title": "Sales / Store Configuration",
+        "description": "Please send one time Push message to the following UID's:\n154000052953231\n154000063425876\n\nplease add 1M coins coupon benefit.\nCTA - to the game lobby\nArt is attached",
+        "promo_date": "2026-05-27",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791709",
+        "parent_name": "2026-05-27",
+        "statuses": [
+          "M&M Completed",
+          "Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12114700442"
+      },
+      {
+        "id": "12093819221",
+        "name": "Dormant Sneak peek sweet Ambrosia -12 FS- Email+Push",
+        "family": "sales_store",
+        "family_title": "Sales / Store Configuration",
+        "description": "Email+ push task: \nstart 2026-05-25 at 13:00 UTC\n \nsegments: \nDormant Medium and Deep 2026 (14080576), Test for CX materials (65389)\nPlease exclude 68491\n \n1. EMAIL - \nEmail ID : \n28978\n\n\nplease add 1M coins coupon benefit.\nCTA - to the game lobby\n \n2. PUSH - \nstart 2026-05-25 at 13:00 UTC\nAndroid push - art is attached \n\nIOS copy:\n🏵️ 12 Free Spins🏵️ \nPlay New Game 🌸Sweet Ambrosia🌸 for Free before the official release!",
+        "promo_date": "2026-05-25",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791617",
+        "parent_name": "2026-05-25",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12093819221"
+      },
+      {
+        "id": "12093664382",
+        "name": "Coins Sale up to 100/125%",
+        "family": "sales_store",
+        "family_title": "Sales / Store Configuration",
+        "description": "all communications, pop ups, PP should be accordingly\n\nCoin sale on store\nPU - Up to 100%\nIC - up to 125% (with coupon- 100%+25% coupon)\nDPU - 200%\nNPU - 500%\nDormant - 500%\n\nOffers - 75% (including rooc) \n\nStore Sale - gradual:\nDenom 1-25%\nDenom 2-25%\nDenom 3- 100%\nDenom 4 - 100%\nDenom 5- 75%\nDenom 6-25%\nDenom 7-25%\nDenom 8- 50%\nDenom 9- 50%",
+        "promo_date": "2026-05-25",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791617",
+        "parent_name": "2026-05-25",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12093664382"
+      },
+      {
+        "id": "12097492837",
+        "name": "Memorial Day email- all players",
+        "family": "sales_store",
+        "family_title": "Sales / Store Configuration",
+        "description": "Email task: \nstart 2026-05-25 at 12:00 UTC\n \nsegments: all players\nPlease exclude 68491 and 14080576\n \n1. EMAIL - \nEmail ID : \n29044\n\nplease add 1M coins coupon benefit.\nCTA - to the game lobby",
+        "promo_date": "2026-05-25",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334791617",
+        "parent_name": "2026-05-25",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12097492837"
+      },
+      {
+        "id": "10620971106",
+        "name": "00:00 Black Friday ROOC - New Sale %",
+        "family": "sales_store",
+        "family_title": "Sales / Store Configuration",
+        "description": "Start 2025-11-28 at 00:00 UTC\nEnd 2025-11-30 at 00:00 UTC\n\nPlease add coin sale:\n1st day:\n150/175/200/400 (based on segments)\n2nd day:\n200/225/200/400 (based on segments)",
+        "promo_date": "2025-11-28",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299615405",
+        "parent_name": "2025-11-28",
+        "statuses": [
+          "Night Plan",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10620971106"
+      },
+      {
+        "id": "10620971137",
+        "name": "00:00 Black Friday ROOG - New Sale %",
+        "family": "sales_store",
+        "family_title": "Sales / Store Configuration",
+        "description": "Start 2025-11-28 at 00:00 UTC\nEnd 2025-11-30 at 00:00 UTC\n\nPlease add coin sale:\n1st day:\n70/90/200/400 (based on segments)\n2nd day:\n70/90/200/400 (based on segments)",
+        "promo_date": "2025-11-28",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "18299615405",
+        "parent_name": "2025-11-28",
+        "statuses": [
+          "Night Plan",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10620971137"
+      }
+    ],
+    "other": [
+      {
+        "id": "12116931025",
+        "name": "New - 500% Boosted Gem Back",
+        "family": "other",
+        "family_title": "Other",
+        "description": "Only changes - remove the trigger of \"purchase the 2nd denom\" AND art changes,\nrest of the config remains the same\n\nPLEASE ADD TIMER ON THE POP UP + NF INAPP - Middle place (where the template is)\n\nSubject Line:\n״GemBack Alert!\n״\n\nWidget sends to inapp\n\"tell me more\" banner sends to inapp\n\ntrigger: player uses gems before qualify\naction: give losers inapp\n\nchange assets after purchase: widget, banner, pp\n\n2 Config options:\n\nFlow 1:\nTrigger: Player buys the Highest Gem Package in the payment page\nAction: Give Boosted Gem Back UP TO 500% \nAction: Give winners inapp 500%\n\nFlow.2:\nTrigger: Player buys Daily Deal / RYD / Decoy Bonanza / Buy All / Rolling Offer\nAction: Give Boosted Gem Back UP TO 150% \nActon: Give winners inapp 150%\n\nWidgets attached\n\nplease notice there are banners & pp banners before & after purchase\nnotice where we should add timer according to the communications please",
+        "promo_date": "2026-05-31",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804999",
+        "parent_name": "2026-05-31",
+        "statuses": [
+          "Ready for internal",
+          "QA Done"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12116931025"
+      },
+      {
+        "id": "12127135921",
+        "name": "New - 300% Boosted Gem Back",
+        "family": "other",
+        "family_title": "Other",
+        "description": "Only changes - art changes,\nrest of the config remains the same\n\nPLEASE ADD TIMER ON THE POP UP + NF INAPP - Middle place (where the template is)\n\nSubject Line:\n״GemBack Alert!\n״\n\nWidget sends to inapp\n\"tell me more\" banner sends to inapp\n\ntrigger: player uses gems before qualify\naction: give losers inapp\n\nchange assets after purchase: widget, banner, pp\n\n2 Config options:\n\nFlow 1:\nTrigger: Player buys a Gold Stamp\nAction: Give Boosted Gem Back UP TO 300% \nAction: Give winners inapp 300%\n\nFlow.2:\nTrigger: Player buys a regular Gem Stamp\nAction: Give Boosted Gem Back UP TO 110% \nActon: Give winners inapp 110%\n\nWidgets attached\n\nplease notice there are banners & pp banners before & after purchase\nnotice where we should add timer according to the communications please",
+        "promo_date": "2026-05-31",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804999",
+        "parent_name": "2026-05-31",
+        "statuses": [
+          "Ready for internal",
+          "Ready for QA"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12127135921"
+      },
+      {
+        "id": "12127829517",
+        "name": "Marketing Activity- Social set 4-90 days players- innapp",
+        "family": "other",
+        "family_title": "Other",
+        "description": "start 2026-05-31  at 11:00 utc\nends 2026-06-14  at 11:00 utc\n\nSegments: Clan set 2 for in-game players for journey (14090644)\n\nPlayers from this segment who log in the game from email/push/RT/organiclly gets a Clan Pack\n\n1.  Once the player logs into the game - in-app trigger.\n2. when player click on the CTA- he gets social pack\nONCE PER PLAYER\n\n\n87121 - The Funky Family Album - Clan Set - Set 2\n \nArt is attached",
+        "promo_date": "2026-05-31",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804999",
+        "parent_name": "2026-05-31",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12127829517"
+      },
+      {
+        "id": "12127932720",
+        "name": "Marketing Activity- Social set 4-90 days players- Email+Push",
+        "family": "other",
+        "family_title": "Other",
+        "description": "EMAIL:\nStart date- 2026-05-31 at 15:00 UTC\nCTA -  lobby view\n\nSegment: Clan set for externals players for push (14090650)\nID Template- \n29296\n\nPush:\nStart date- 2026-05-31 at 15:00 UTC\nCTA - lobby view\n\n\nCopy iOS push:\n🎁Come Get Your Rewards🎁\nYour Clan just Completed a Set, so you win a Prize!\n\nPLEASE MAKE SUR TO ATTACH ART TO IOS AS WELL- ONLY BIG PUSH\nPLEASE SEND PUSH TO WEB AS WELL\n\nart is attached.",
+        "promo_date": "2026-05-31",
+        "group_id": "group_mm0t6mxh",
+        "group_title": "Monday days",
+        "source_type": "dated_subitem",
+        "parent_id": "11334804999",
+        "parent_name": "2026-05-31",
+        "statuses": [
+          "M&M Completed",
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12127932720"
+      },
+      {
+        "id": "10840782905",
+        "name": "01:00-02:30 UTC - Set sweepstake - Wild ord",
+        "family": "other",
+        "family_title": "Other",
+        "description": "Start: 2025-12-24 01:00 UTC\nEnd: 2025-12-24 02:30 UTC\n\n\nplayers who purchase red diamond stamp will have a chance to win a wild ordinary\n\n**Purchases made with Slotobucks are not eligible**\n\nwinners probability: 0.1%\nwinners will receive corresponding winners inapp + Wild ordinary\n\nlosers probability: 99.9%\nlosers will receive corresponding losers inapp.\n\njourney will be for every purchase.\n\nattached here the corresponding losers and winners inapps. \nattached NF, banner and PP banner in PM",
+        "promo_date": "2025-12-23",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "10620195079",
+        "parent_name": "2025-12-23",
+        "statuses": [
+          "M&M Completed",
+          "In Progress"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10840782905"
+      },
+      {
+        "id": "10796293836",
+        "name": "Red Carpet Stickiness",
+        "family": "other",
+        "family_title": "Other",
+        "description": "Day 1: 23.12.2025 ( 15:00) (24h) (CTA TO BIG WHITE)\nSpin 300 times, win 500 gems\n\nDay 2: 24.12.2025 (15:00)(24h) (CTA TO BIG WHITE)\nSpin 350 times win wild ordinary\n \nDay 3- 25.12.2025 ( 15:00)(24h) (CTA TO BIG WHITE)\nSpin 400 times, win 20 hammers, 5 dice and 350 dash points",
+        "promo_date": "2025-12-23",
+        "group_id": "new_group30880",
+        "group_title": "Used templates",
+        "source_type": "template_subitem",
+        "parent_id": "10620195079",
+        "parent_name": "2025-12-23",
+        "statuses": [
+          "Scheduled"
+        ],
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/10796293836"
+      }
+    ]
+  }
+}

@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Promo-aware Ops descriptions
+
+- **Goal:** Make Operation - Monetization descriptions understandable by promo type and identify the exact task/template to duplicate.
+- **Done:** Read 2,678 historical/template descriptions without writing to Monday; published 85 selected examples across 17 promo families; added a duplicate-from source map, natural writing guidance, a shared description composer, and variant-safe duplicate matching in both Ops builders.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/ops_board_schema.md`, `mm_calendar/BUILD_CALENDAR_ROUTER.md`, `mm_calendar/data/ops_task_samples.json`, `mm_calendar/documentation/ops_task_refs/`, `scripts/sample_ops_task_descriptions.py`, `scripts/ops_description.py`, `scripts/build_ops_tasks_from_plan.py`, `scripts/build_ops_tasks_from_live_days.py`, `TEAM_WORKLOG.md`; matching CRM3 guidance/reference copies.
+- **Commands run:** read-only Monday sampling ✓, Python compile ✓, promo-variant matching tests ✓, August 5 dry-run + old/new description comparison ✓, CRM3 parity ✓, Git commit/push ✓, Monday writes n/a.
+- **Notes for next agent:** Never duplicate a different variant (for example Supersized 5 cycles from a generic 6-cycle Rolling task). Equal Offer had no usable Description and Clan Dash had one; use their template/same-component rules without inventing details.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Connect Ops tasks to exact MM rows
 
 - **Goal:** Correct the missing `MM calendar` board relations on the five newly opened Ops days.

@@ -19,14 +19,26 @@ OPS_BOARD = "2109172490"
 OPS_SUBITEM_BOARD = "2109172677"
 MONDAY_DISPLAY_OFFSET_HOURS = 3
 
+TEMPLATE_GROUPS: dict[str, tuple[str, str]] = {
+    "daily deal": ("group_mkv1971m", "Daily Deal"),
+    "rolling": ("group_mkv1b6ky", "Rolling Offer"),
+    "ryd": ("group_mkv1q8yw", "RYD"),
+    "buy all": ("group_mkv12864", "Buy All"),
+    "decoy": ("group_mkzvt95x", "Triple Offer - Decoy"),
+    "mgap": ("group_mkv1vqxx", "MGAP"),
+    "ads": ("group_mm15y5em", "PO ADS"),
+}
+
 sys.path.insert(0, str(ROOT / "scripts"))
 from monday_client import gql  # noqa: E402
+from ops_description import compose_description  # noqa: E402
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--date", action="append", required=True, help="YYYY-MM-DD")
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
+    parser.add_argument("--stdout", action="store_true", help="Print JSON; do not write files")
     return parser.parse_args()
 
 
@@ -46,6 +58,8 @@ def family(value: str) -> str:
         ("piggy", ("piggy",)),
         ("spinner clash", ("spinner clash",)),
         ("spin zone", ("spin zone",)),
+        ("win master", ("win master",)),
+        ("custom pod", ("custom pod",)),
         ("gems sale", ("gems sale",)),
         ("gems coupon", ("gems coupon", "gem coupon")),
         ("golden spin", ("golden spin",)),
@@ -53,19 +67,19 @@ def family(value: str) -> str:
         ("battlesheep", ("battlesheep",)),
         ("shiny show", ("shiny show",)),
         ("ace heist", ("ace heist",)),
-        ("lbp", ("lbp",)),
-        ("lotto peak", ("lotto", "peak")),
+        ("lbp", ("lbp", "lotto bonus premium")),
+        ("lotto peak", ("lotto peak", "lotto - peak", "lotto — peak")),
         ("snl", ("snl",)),
         ("stickers sources", ("sticker sources", "stickers sources")),
         ("dice deluxe", ("dice deluxe",)),
         ("ryd", ("ryd", "reveal your deal")),
+        ("buy all", ("buy all",)),
+        ("decoy", ("decoy", "bonanza")),
         ("globez", ("globez",)),
         ("winovate", ("winovate",)),
     ]
     for result, aliases in rules:
-        if all(alias in text for alias in aliases):
-            return result
-        if len(aliases) > 1 and any(alias in text for alias in aliases):
+        if any(alias in text for alias in aliases):
             return result
     return re.sub(r"[^a-z0-9]+", " ", text).strip().split(" ")[0]
 
@@ -86,6 +100,76 @@ def tokens(value: str) -> set[str]:
 def similarity(left: str, right: str) -> float:
     a, b = tokens(left), tokens(right)
     return len(a & b) / len(a | b) if a and b else 0.0
+
+
+def variant_tags(value: str) -> set[str]:
+    text = normalize_name(value).lower()
+    tags: set[str] = set()
+    patterns = {
+        "bogo": r"\bbogo\b",
+        "bmfl": r"\bbmfl\b|buy more for less",
+        "supersized": r"\bsupersized\b",
+        "matched": r"\bmatched\b",
+        "bigger": r"\bbigger\b|% bigger",
+        "golden_balls": r"\bgolden balls?\b",
+        "joker": r"\bjoker\b",
+        "all_cards": r"\ball cards\b",
+        "wild_symbol": r"\bwild symbols?\b",
+    }
+    for tag, pattern in patterns.items():
+        if re.search(pattern, text):
+            tags.add(tag)
+    cycle = re.search(r"\b([1-6])\s*cycles?\b", text)
+    if cycle:
+        tags.add(f"cycles_{cycle.group(1)}")
+    return tags
+
+
+def pricing_tag(value: str) -> str:
+    text = normalize_name(value).lower()
+    match = re.search(r"\b(high|mid|max|low|h|m|l)\s*(?:price|pricing)\b", text)
+    if not match:
+        return ""
+    return {"h": "high", "m": "mid", "l": "low"}.get(match.group(1), match.group(1))
+
+
+def compatible_variant(current: str, candidate: str, family_name: str) -> bool:
+    current_lower = current.lower()
+    candidate_lower = candidate.lower()
+    if ("internal" in candidate_lower or re.search(r"\bui\b", candidate_lower)) and not (
+        "internal" in current_lower or re.search(r"\bui\b", current_lower)
+    ):
+        return False
+    current_tags = variant_tags(current)
+    candidate_tags = variant_tags(candidate)
+    critical_groups = [
+        {"bogo"},
+        {"bmfl"},
+        {"supersized"},
+        {"matched"},
+        {"bigger", "golden_balls"},
+        {"joker"},
+        {"all_cards"},
+        {"wild_symbol"},
+    ]
+    for group in critical_groups:
+        current_values = current_tags & group
+        candidate_values = candidate_tags & group
+        if current_values != candidate_values:
+            return False
+    current_cycle = {tag for tag in current_tags if tag.startswith("cycles_")}
+    candidate_cycle = {tag for tag in candidate_tags if tag.startswith("cycles_")}
+    if current_cycle and current_cycle != candidate_cycle:
+        return False
+    current_price, candidate_price = pricing_tag(current), pricing_tag(candidate)
+    if current_price and candidate_price and current_price != candidate_price:
+        return False
+    score = similarity(current, candidate)
+    shell_families = {"daily deal", "ryd", "buy all", "ads", "decoy"}
+    threshold = 0.1 if family_name in shell_families else 0.25
+    if family_name in {"blast", "snl"}:
+        threshold = 0.5
+    return score >= threshold
 
 
 def sanitize_description(value: str) -> str:
@@ -210,6 +294,13 @@ def is_night_plan(row: dict[str, Any]) -> bool:
     return "night plan" in text
 
 
+def template_source(row: dict[str, Any]) -> dict[str, str] | None:
+    source = TEMPLATE_GROUPS.get(family(row["name"]))
+    if not source:
+        return None
+    return {"group_id": source[0], "group_title": source[1]}
+
+
 def range_end(row: dict[str, Any], target: str) -> str:
     match = re.findall(r"\d{4}-\d{2}-\d{2}", row.get("timeline") or "")
     last = match[-1] if match else target
@@ -247,10 +338,14 @@ def recent_reference(row: dict[str, Any], target: str, history: list[dict[str, s
     if not candidates:
         return False, f"No recent Ops precedent found ({lower} through {(start - timedelta(days=1)).isoformat()})"
     candidates.sort(key=lambda item: (similarity(row["name"], item["name"]), item["date"]), reverse=True)
-    best = candidates[0]
-    score = similarity(row["name"], best["name"])
-    exact_reuse = score >= 0.5 and (row.get("creative_label") == "Reuse")
-    return exact_reuse, f"{best['date']} item {best['id']} ({best['name']})"
+    compatible = [
+        item
+        for item in candidates
+        if compatible_variant(row["name"], item["name"], family(row["name"]))
+    ]
+    best = compatible[0] if compatible else candidates[0]
+    can_duplicate = bool(compatible)
+    return can_duplicate, f"{best['date']} item {best['id']} ({best['name']})"
 
 
 def build_task(row: dict[str, Any], target: str, history: list[dict[str, str]]) -> dict[str, Any]:
@@ -266,30 +361,19 @@ def build_task(row: dict[str, Any], target: str, history: list[dict[str, str]]) 
     monday_start_date, monday_start_time = monday_api_value(start_date, start_time)
     monday_end_date, monday_end_time = monday_api_value(end_date, end_time)
     reuse, reference = recent_reference(row, target, history)
+    template = template_source(row)
     detail = sanitize_description(row.get("description") or "") or "Required mechanic/config details are missing from the MM source."
-    reference_item = re.search(r"item (\d+)", reference)
-    description_reference = (
-        f"Ops item {reference_item.group(1)}"
-        if reference_item
-        else "No recent Ops precedent found"
-    )
-    description = "\n".join(
-        [
-            "Night Plan" if night else "Production",
-            "Audience: No segment override is stated in the MM source.",
-            f"Mechanic / contents: {detail}",
-            *( [f"Pricing: {row['pricing']}"] if row.get("pricing") else [] ),
-            "",
-            f"Reuse: {'YES' if reuse else 'NO'} - {'reuse the verified recent operational shell; apply the current MM mechanic and contents.' if reuse else 'no exact recent operational reuse was verified.'}",
-            "",
-            "Dependencies:",
-            f"- Config status from MM: {row.get('config_status') or 'not specified'}.",
-            f"- Creative handoff: {row.get('creative_label') or 'not specified'}.",
-            "- Missing IDs/files/parameters remain owned by the relevant MM/Ops owner.",
-            "",
-            f"Source: MM calendar item {row['id']}",
-            f"Recent Ops reference: {description_reference}",
-        ]
+    description = compose_description(
+        task_name=normalize_name(row["name"]),
+        product=row.get("product") or "",
+        detail=detail,
+        pricing=row.get("pricing") or None,
+        reference=reference,
+        reuse=reuse,
+        template_source=template,
+        config_status=row.get("config_status") or None,
+        creative_label=row.get("creative_label") or None,
+        night_plan=night,
     )
     return {
         "parent_day": target,
@@ -299,6 +383,7 @@ def build_task(row: dict[str, Any], target: str, history: list[dict[str, str]]) 
         "task_name": normalize_name(row["name"]),
         "product": row.get("product"),
         "pricing": row.get("pricing") or None,
+        "template_source": template,
         "start_date": start_date,
         "end_date": end_date,
         "start_at": f"{start_date} {start_time[:5]} UTC",
@@ -326,7 +411,7 @@ def main() -> None:
     dates = sorted(set(args.date))
     rows_by_date = fetch_live_rows(dates)
     history = fetch_ops_history()
-    args.output_dir.mkdir(parents=True, exist_ok=True)
+    specs: list[dict[str, Any]] = []
     for target in dates:
         rows = [row for row in rows_by_date[target] if should_create(row)]
         lbp_rows = [row for row in rows if family(row["name"]) == "lbp"]
@@ -348,9 +433,16 @@ def main() -> None:
             "task_count": len(tasks),
             "tasks": tasks,
         }
+        specs.append(spec)
+    if args.stdout:
+        print(json.dumps(specs[0] if len(specs) == 1 else specs, indent=2, ensure_ascii=False))
+        return
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    for spec in specs:
+        target = spec["day"]
         path = args.output_dir / f"{target}.json"
         path.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print(f"{path.relative_to(ROOT)}: {len(tasks)} task(s)")
+        print(f"{path.relative_to(ROOT)}: {spec['task_count']} task(s)")
 
 
 if __name__ == "__main__":

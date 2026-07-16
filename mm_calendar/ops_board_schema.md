@@ -111,27 +111,24 @@ M&M Status labels include: `Operations in Progress`, `Done`, `Missing Config`, `
 
 ## Observed task anatomy
 
+Historical descriptions often repeat dates, times, and Once/Multiple. New tasks must keep those values in their dedicated columns and use the Description only for the execution handoff. Real source samples are indexed in `documentation/ops_task_refs/README.md`.
+
 ### Standard offer/config task
 
 ```text
-Start: 2026-03-04 at 12:00 UTC
-End: 2026-03-05 at 12:00 UTC
+Set up a High-price Daily Deal with Coins, Gems, 8 Hammers and 1 GGS.
 
-Daily Deal with Coins + Gems + 8 Hammers + 1 GGS.
-High pricing.
-Multiple times per player.
+Duplicate from: <exact dated task/link>.
+Change: <current reward or pricing delta>.
+
+MCP: <confirmed ID or TBD>.
 ```
 
 ### Journey/challenge task
 
 ```text
-Start: <timestamp UTC>
-End: <timestamp UTC>
-
-Audience / exclusions: <confirmed segments>
-Mechanic: <what the player must do>
-Prize: <exact reward>
-Times per player: Once | Multiple
+Set up <promo/mechanic> for <confirmed audience>.
+Players <plain-language requirement> to receive <exact reward>.
 
 Journey:
 Trigger: <event>
@@ -149,7 +146,7 @@ Dependencies:
 - MCP, list, economy or BA task: <confirmed link/status>
 ```
 
-Do not fill unknown audience, parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Mark them as `TBD - owner required` and use `More Info required` when the missing field blocks execution.
+Do not fill unknown audience, parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Mark them as `TBD - owner required` and use `More Info required` when the missing field blocks execution. Omit a Journey block entirely when the promo is a simple offer with no confirmed flow.
 
 ## Updates/comments
 

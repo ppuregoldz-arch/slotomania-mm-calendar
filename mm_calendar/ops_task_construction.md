@@ -107,35 +107,102 @@ Blast - New Season
 
 Normalize symbols only for readability (`★` may remain `★`). Do not prepend the date to subitem names. Keep segment/test qualifiers that change execution.
 
-## Description skeleton
+## How to write the Description
+
+Descriptions must read like a direct handoff from Monetization to Ops, not like a database export.
+
+1. Open with one plain sentence saying what Ops must set up.
+2. Add only the promo facts that change execution: contents, reward, price, audience, cycles, trigger, or feature behavior.
+3. For a verified reuse, say **Duplicate from** and name the exact dated task/link. Follow with **Change** and **Keep** only when useful.
+4. Add flow steps only for a journey, challenge, grant, or UI transition. A simple offer does not need empty Trigger/Action headings.
+5. End with concrete dependencies only: config, art, MCP, economy task, list, or attached file.
+6. Do not repeat the calendar source ID in prose; the `MM calendar` relation is the source connection.
+7. Do not write `Production`, `Reuse: YES/NO`, generic ownership disclaimers, or filler such as “apply the current mechanic.”
+
+### Natural description patterns
+
+#### Daily Deal / simple purchase offer
 
 ```text
-Production
-Audience: <confirmed audience or All eligible players>
-Mechanic: <execution instruction>
-Pricing: <High / Max / Mid / Low, if applicable>
-Prize / contents: <exact source text>
+Set up a High-price Daily Deal with Coins, Gems, a 3★ Regular Card and a Hammers Wheel.
 
-Journey / flow:
-Trigger: <confirmed trigger or TBD>
-Condition: <confirmed condition or n/a>
-Action 1: <confirmed action or TBD>
-Action 2: <confirmed action or n/a>
+Duplicate from: Daily Deal - 8 Hammers, 2026-05-25 (item 11967559266).
+Change: replace the 8 Hammers reward with the 3★ Regular Card + Hammers Wheel.
 
-Surfaces / CTA:
-<confirmed surfaces and CTA, or TBD>
-
-Dependencies:
-- Config: <attached / reuse from date / TBD>
-- Art: <attached / PM task / reuse from date / not required / TBD>
-- MCP / Economy / BA list / Payment: <IDs or TBD>
-
-Source: MM calendar <date> - <source row name>
-Recent Ops reference: <date + item ID/link, or no recent precedent>
-Reuse: <Yes/No> - <exact reused scope and current changes>
+MCP required for the card.
 ```
 
-For simple offer tasks, omit journey blocks that are genuinely unnecessary. Do not add generic triggers or CTA behavior merely to fill the template.
+#### Rolling / RYD / Buy All / Decoy
+
+```text
+Set up a 6-cycle Mid-price Rolling Offer.
+
+Duplicate from: Rolling Offer 6 Cycles - M Price, 2026-05-31 (item 12104594749).
+Keep: 12-hour timer, login + banner triggers, X button and banner removal after purchase.
+Change: use the current six-cycle config and approved rewards.
+
+Config is attached; art is in PM.
+```
+
+#### M.E.S / gameplay challenge
+
+```text
+Set up Win Master in M.E.S for all eligible players.
+Players complete the configured win requirement to receive a 3★ Regular Card + Pick a Boom.
+
+Banner opens M.E.S. Remove it after the challenge is completed and show the winner inapp.
+Duplicate the full latest matching Win Master M.E.S task; update the mission and reward across the complete asset/config set.
+
+MCP required for the card.
+```
+
+#### Grant / segmented benefit
+
+```text
+Give 10 Parasheep Tokens directly to the balance of eligible Black Diamond players.
+
+Trigger: player logs in.
+Condition: Black Diamond segment.
+Action: grant 10 tokens and show the attached winner inapp.
+```
+
+#### LBP / Night Plan
+
+```text
+Open Lotto Bonus Premium with every ball value increased by 30%.
+
+Duplicate from: LBP - all balls 40% bigger, 2026-05-09 (item 11936779021).
+Change: 40% → 30%.
+Keep: the existing Bigger Balls config and matching UI by segment.
+```
+
+For more real examples, start at `documentation/ops_task_refs/README.md`. These examples preserve the team's writing voice; old dates/times shown in source examples must not be copied into new Descriptions.
+
+## Duplicate-from source map
+
+“Duplicate” means duplicate the closest verified task structure, then change the instance-specific fields. It never means copy an entire old description unchanged.
+
+| Promo family | Preferred source | Safe to carry forward | Must be checked or changed |
+|---|---|---|---|
+| Daily Deal | Newest exact reward + pricing task; fallback group `Daily Deal` (`group_mkv1971m`) | DD shell and standard Coins/Gems structure | Central rewards, pricing, MCP, Once/Multiple |
+| Rolling Offer | Newest exact variant/cycle task; fallback `Rolling Offer` (`group_mkv1b6ky`) | Variant flow, verified triggers, timer, close/removal behavior | Cycles, rewards, pricing, MGAP tie-in, audience |
+| RYD | Newest exact SB/reward/pricing task; fallback `RYD` (`group_mkv1q8yw`) | Reveal flow and verified shell | Hook reward, SB %, pricing, segment, reset/trigger |
+| Buy All | Newest matching denom layout; fallback `Buy All` (`group_mkv12864`) | Multi-denom structure | Coins/Gems denoms, rewards, pricing, reset |
+| Decoy / Bonanza | Same test structure; fallback `Triple Offer- Decoy` (`group_mkzvt95x`) | Three-offer layout and test framework | Each denom, decoy position, rewards, test groups |
+| Equal triple offer | Same structure; fallback `Triple Offer- Equal offers` (`group_mm0928d4`) | Equal-offer layout only | Denoms, rewards, segment allocation |
+| Limited Personal Offer | Same offer type; fallback `Limited PO` (`group_mm4h2685`) | Verified limited-offer shell | Reward, price, eligibility, cap/timer |
+| MGAP | Newest exact mechanic (Matched/BOGO/Bigger/etc.); fallback `MGAP` (`group_mkv1vqxx`) | Only the same mechanic's flow | Eligible tiers, mapping, UI, reward, frequency |
+| ADS Personal Offer | Same prize type; fallback `PO ADS` (`group_mm15y5em`) | Ad-watch grant flow | Prize, eligibility, frequency, season context |
+| M.E.S | Newest exact M.E.S mechanic from a dated day task | Banner→M.E.S entry and only verified completion behavior | Mission, parameters, reward, audience, full config/asset set |
+| Clan Dash | Newest task for the same Clan Dash component | Only the same bar/wheel/pass component | Reward SKU, bar placement, segment, attached economy config |
+| Core / gameplay | Newest exact feature and variant | Feature-specific triggers/actions only | Machines, exclusions, effort, min bet, rewards, winner flow |
+| Shiny Show | Newest exact Shiny mechanic/reward setup | Floor/config structure only when identical | Reward pool, floors, Joker/special rules, art/UI |
+| Season / Blast | Same season mechanic; fallback `Mid Term` (`group_mky2tww7`) | Journey SKU behavior only when identical | Theme, cycle rewards, SKU grants, winner messages |
+| Album opening/handover | `Album handover` (`group_mkx57gcq`) | Verified opening/handover checklist | Album name, audience, rewards, exact opening state |
+| LBP / Lotto | Newest exact LBP variant or Lotto Peak task | Exact config type and segment UI mapping | Percentage/ball count, segments, UI; keep Lotto and LBP separate |
+| Sales / store | Newest same sale/store mechanic | Store surfaces and verified exclusions | Percent by segment, denoms, Coins/Gems values, payment-page scope |
+
+If no exact task exists in the valid three-month window, point to the template group and leave unsupported execution details as `TBD - owner required`. Do not present a generic template as a verified reuse.
 
 ## Product-specific minimums
 
