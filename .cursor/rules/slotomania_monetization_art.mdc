@@ -7,6 +7,13 @@ alwaysApply: false
 
 You create and fill Monday.com art brief items on the **Monetization-Art** board by duplicating templates, moving to the correct group, setting columns, and writing **subitem updates** (briefs). Use **CRM3** on the studio share for real references and previews.
 
+Before classifying or briefing a promo, read:
+- `mm_calendar/creative/CREATIVE_LABEL_RULES.md`
+- `mm_calendar/creative/PROMOTION_GLOSSARY.md`
+- `mm_calendar/creative/overrides.yaml`
+
+Those files contain Itay's canonical label definitions, promo meanings, and explicit exceptions.
+
 ## Authentication & tools
 
 - **Monday API**: `MONDAY_API_TOKEN` in `.cursor/monday.env` (gitignored). Never commit tokens.
@@ -27,6 +34,16 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
   - `status` — Status Creative; board label `done` means Completed
 - Item name via `name` in `change_multiple_column_values`
 
+## Creative Label decision order
+
+1. Ignore canceled tasks as evidence.
+2. If the mechanic/Creative structure never existed: **New promo**.
+3. If an existing structure needs a different visual theme: **New theme for promo**.
+4. Otherwise, if an art-visible prize, mission, value, percentage, quantity, or multiplier changes: **Prize Change**.
+5. Otherwise: **Reuse**.
+
+Theme change wins when theme and prize both change. Dynamic configuration that is not embedded in art may remain Reuse. A missing reference does not change the label.
+
 ## Mandatory workflow (every new promo)
 
 1. Find template on board (Coins Sale, Dynamic JP, Buy All, Daily Deal, RYD, Rolling Offer, PYP, MES, etc.)
@@ -43,8 +60,9 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 - **Reference** = embedded preview: upload from CRM3 via `add_file_to_update` → `/v2/file`, then optional `edit_update` with `https://playtika.monday.com/protected_static/7996532/resources/{asset_id}/{filename}`
 - Reference art must match the subitem asset type: Inapp→Inapp, Banner→Banner, Widget→Widget, etc. Never reuse one generic preview across unlike assets.
 - A Reuse reference must visibly contain the exact current prize/theme. A matching task name or instruction to “add” the prize is not enough; verify the final attached image itself.
-- Use the newest previous matching promo task. Within its matching subitem, use the latest update that actually contains Creative attachments and the latest relevant attachment(s) from that update.
+- Prefer an older exact promo match over a newer same-family task with a different prize or theme. Within the selected exact task, use the latest update that actually contains Creative attachments and the latest relevant attachment(s) from that update.
 - Creative's latest attached deliverable outranks an older attachment, an old `Reference Link`, or art merely mentioned in brief text. Record source promo date, pulse/update, and asset.
+- The newest delivered attachment may be used before task approval. Never use a canceled task as evidence or reference.
 - If the latest Creative update contains multiple required variants, show all of them. Use an older asset only with an explicit reason.
 - If no matching historical asset exists, say so explicitly and leave the preview empty; never attach a misleading reference.
 - For art briefs use the promo date the user wants (not “exclude incomplete today” analytics rules)
@@ -62,6 +80,7 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 - Before writing any Creative instruction, read the latest comparable parent brief and all relevant subitem updates. Derive the required asset scope and wording from what was actually requested/delivered last time—not from the duplicated template alone.
 - Use history to determine the instruction, but do not paste the research into the brief. Summarize it only as concise **Change** and **Keep** rows.
 - If the latest comparable execution used only a subset of template assets, request only that subset. Mark the other duplicated subitems Completed/No Action unless Itay explicitly expands scope.
+- **Win Master exception:** when driven by M.E.S (Mission Event System), open the complete M.E.S asset set every time. Never reduce it to Banner-only from recent execution history.
 - Never infer a missing CTA, version, timer, FP, message, or asset. Use an older matching execution only when the latest task lacks that asset, and document the fallback; otherwise leave it for Itay.
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
@@ -80,7 +99,7 @@ You create and fill Monday.com art brief items on the **Monetization-Art** board
 
 ## User request handling
 
-Ask only if missing: theme, promo date, group, SKUs/mechanics.
+Ask only if missing: theme, promo date, group, SKUs/mechanics, or a promo definition absent from the canonical glossary. Ask unknown promotions one at a time.
 
 Return: Monday pulse URL, item name, date, art path, subitems briefed.
 

@@ -78,6 +78,7 @@ monthly_guidelines → עונות + שלב אלבום → עוגנים (sale/MGA
 | **שני / Sale / Lotto / Dash** | `topics/08_anchors_timing/README.md` | `recurring_events.md` |
 | **מה עולה ל-Monday (עמודות)** | `topics/09_monday_board/README.md` | `board_schema.md` |
 | **איך כותבים משימת Ops ליום מאושר** | `ops_task_construction.md` | `ops_board_schema.md` |
+| **Creative Label / בריף Monetization-Art** | `creative/CREATIVE_LABEL_RULES.md` | `creative/PROMOTION_GLOSSARY.md`, `creative/overrides.yaml` |
 | **מה חזק/חלש ברבניו** | `topics/10_data_performance/README.md` | `smart_calendar_insights.md` |
 | **תוצאת וריאנט קנונית / תאריכים** | `performance/README.md` | `performance/by_kpi/`, `performance/instances/promo_instances.jsonl` |
 | **איך מודדים / איזה baseline** | `measurement/MEASUREMENT_METHODOLOGY.md` | `measurement/DATA_MODEL.md` |

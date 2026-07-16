@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Canonical Creative Label guidance
+
+- **Goal:** Persist all Creative Label, promo-definition, brief, status, due-date, and reference-selection guidance in Git and the CRM3 team folder.
+- **Done:** Added canonical Creative Label rules, an August 1 promotion glossary, and machine-readable overrides; routed MM Calendar and the Monetization-Art agent rule through them; mirrored the same files under CRM3.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `mm_calendar/00_GUIDELINES_ITAY.md`, `mm_calendar/BUILD_CALENDAR_ROUTER.md`, `mm_calendar/creative/CREATIVE_LABEL_RULES.md`, `mm_calendar/creative/PROMOTION_GLOSSARY.md`, `mm_calendar/creative/overrides.yaml`, `TEAM_WORKLOG.md`; matching CRM3 copies.
+- **Commands run:** local/CRM3 parity check ✓, YAML parse ✓, lints ✓, Git commit/push ✓, Monday sync n/a.
+- **Notes for next agent:** Use the exact-match reference hierarchy and promo overrides; Win Master requires the full M.E.S asset set, Lotto Peak has no Creative brief, and Cozy Blast is one brief.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Shift Night Plan production to next morning
 
 - **Goal:** Correct the Night Plan production date while retaining the originating calendar-day parent.

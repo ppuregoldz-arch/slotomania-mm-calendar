@@ -1,0 +1,87 @@
+version: 1
+last_updated: "2026-07-16"
+authority: "Direct instructions from Itay"
+
+label_precedence:
+  - new_promo
+  - new_theme_for_promo
+  - prize_change
+  - reuse
+
+evidence:
+  canceled_task_is_valid: false
+  missing_reference_changes_label: false
+  exact_older_match_beats_newer_family_match: true
+  use_newest_delivered_attachment_in_selected_task: true
+  approval_required_for_attachment: false
+  require_matching_asset_type: true
+
+global:
+  theme_change_wins_over_prize_change: true
+  segment_change_alone: reuse
+  active_art_copy_status: null
+  active_art_status: null
+
+promotions:
+  ads_personal_offer:
+    aliases: ["ADS PO", "ADS Personal Offer"]
+    po_expansion: "Personal Offer"
+    player_flow: "Selected users watch an ad and receive the prize"
+    purchase_required: false
+    dynamic_fields: ["coin_quantity"]
+    dynamic_field_change_label: reuse
+
+  shiny_show_joker_all_cards:
+    joker_mechanic: "Landing on Joker awards all prizes on the floor"
+    all_cards_meaning: "All prizes are cards"
+    exact_prior_match_label: reuse
+    changed_visible_reward_set_label: prize_change
+
+  custom_pod:
+    event_specific: false
+    x1000_meaning: "Maximum prize equals 1000 times player bet"
+    multiplier_change_label: prize_change
+
+  win_master:
+    pab_expansion: "Pick a Boom"
+    both_listed_rewards_awarded: true
+    delivery_system: "Mission Event System"
+    asset_scope: full_mes_set
+    allow_banner_only_scope: false
+
+  daily_deal:
+    listed_rewards_are_combined: true
+
+  status_boost:
+    mechanic: "Next tier benefits plus bigger Coin packages"
+    percentage_change_label: prize_change
+
+  biggest_store_denom:
+    schedule: "First day of each month"
+    package_contents: ["Coins", "Gems"]
+    monthly_label_mode: case_by_case
+
+  lotto_peak:
+    operational_only: true
+    create_creative_brief: false
+
+  lotto_bonus_premium:
+    alias: "LBP"
+    bigger_balls_scope: all_ball_values
+    percentage_change_label: prize_change
+
+  reveal_your_deal:
+    alias: "RYD"
+    reveal_behavior: "Always reveals the largest personalized offer"
+    visible_value_change_label: prize_change
+
+  cozy_blast_wild_ordinary:
+    brief_count: 1
+    theme: "Cozy"
+    reward: "Wild card for ordinary album collection"
+
+  backup_coupon_status_boost:
+    activation: "General revenue fallback"
+    pu_expansion: "Paying Users"
+    pras_expansion: "Inner Circle"
+    uplift_applies_to: "Coins value"
