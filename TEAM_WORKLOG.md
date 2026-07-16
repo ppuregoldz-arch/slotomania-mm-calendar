@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Separate Copy and Art status
+
+- **Goal:** Stop using Copy Status `Done` to represent completion of an art brief.
+- **Done:** Active art-only assets now use Copy Status `No Need`, Art Status `Working on it`, and parent Status Creative `Design in progress`. Applied this to Win Master Banner and backup Coupon Inapp; Reuse/no-action assets remain Done.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `scripts/apply_august_1_creative_brief_requirements.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, targeted parent/subitem status updates ✓, delayed automation-safe verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Brief completion is not copy completion; only set Copy `Done` when actual copy work is finished.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Reuse source and reward in titles
 
 - **Goal:** Put reuse provenance and seasonal reward directly in item titles while simplifying brief bodies further.

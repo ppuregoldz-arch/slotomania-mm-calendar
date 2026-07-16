@@ -163,7 +163,7 @@ PROMOS: dict[str, Promo] = {
             "Inapp": "One Inapp with two versions (PU and PRAS); CTA to store; Timer yes; FP once per player.",
         },
         actions={
-            "Inapp": "PU 30% unchanged; PRAS 55% → 50%; machine theme → Status Boost. Headline: Itay/Copy.",
+            "Inapp": "PU 30% unchanged; PRAS 55% → 50%; machine theme → Status Boost.",
         },
         references={
             "Inapp": r("https://playtika.monday.com/protected_static/7996532/resources/3061558852/The_Craziest_Games_Coupon_Inapp_PU.png", r"Q:\Slotomania\CRM3\New Games\Crazy_Train_Games\Crazy_Train_Celebration\2026\2026_01_22_Celebration\Coupon\The_Craziest_Games_Coupon_Inapp_PU.png"),
@@ -311,7 +311,7 @@ def main() -> None:
             "date_mkwj8wwp": {"date": BRIEF_DUE},
             "date_mkwep612": {"date": ART_DUE},
             "color_mkws3h8e": {"label": promo.priority},
-            "status": {"label": "done" if promo.label == "Reuse" else "Copy Done"},
+            "status": {"label": "done" if promo.label == "Reuse" else "Design in progress"},
         }
         gql(change_values, {"board": BOARD, "item": item["id"], "values": json.dumps(values)})
 
@@ -322,8 +322,13 @@ def main() -> None:
             required = asset_requires_creative(promo, subitem["name"])
             if required and subitem["name"] not in promo.actions:
                 raise RuntimeError(f"Missing exact action for {name} / {subitem['name']}")
-            sub_values: dict[str, object] = {"status": {"label": "Done"}}
-            if not required:
+            if required:
+                sub_values: dict[str, object] = {
+                    "status": {"label": "No Need"},
+                    "color_mkwerpn6": {"label": "Working on it"},
+                }
+            else:
+                sub_values = {"status": {"label": "Done"}}
                 sub_values["color_mkwerpn6"] = {"label": "Done"}
             gql(change_values, {"board": SUBITEM_BOARD, "item": subitem["id"], "values": json.dumps(sub_values)})
             gql(edit_update, {"id": subitem["updates"][0]["id"], "body": subitem_body(name, subitem["name"], promo)})
@@ -338,7 +343,7 @@ def main() -> None:
         gql(change_values, {
             "board": BOARD,
             "item": item["id"],
-            "values": json.dumps({"status": {"label": "done" if promo.label == "Reuse" else "Copy Done"}}),
+            "values": json.dumps({"status": {"label": "done" if promo.label == "Reuse" else "Design in progress"}}),
         })
     time.sleep(5)
 
@@ -369,7 +374,7 @@ def main() -> None:
             continue
         promo = PROMOS[item["name"]]
         columns = {column["id"]: column.get("text") or "" for column in item["column_values"]}
-        expected_status = "done" if promo.label == "Reuse" else "Copy Done"
+        expected_status = "done" if promo.label == "Reuse" else "Design in progress"
         if columns.get("status") != expected_status:
             errors.append(f"{item['name']}: parent status {columns.get('status')!r}")
         if columns.get("date_mkwj8wwp") != BRIEF_DUE or columns.get("date_mkwep612") != ART_DUE:
@@ -387,10 +392,12 @@ def main() -> None:
                 errors.append(f"{item['name']} / {subitem['name']}: no-action brief")
             if len(body) > 3500:
                 errors.append(f"{item['name']} / {subitem['name']}: brief too long")
+            subcolumns = {column["id"]: column.get("text") or "" for column in subitem["column_values"]}
             if not asset_requires_creative(promo, subitem["name"]):
-                subcolumns = {column["id"]: column.get("text") or "" for column in subitem["column_values"]}
                 if subcolumns.get("status") != "Done" or subcolumns.get("color_mkwerpn6") != "Done":
                     errors.append(f"{item['name']} / {subitem['name']}: completion")
+            elif subcolumns.get("status") != "No Need" or subcolumns.get("color_mkwerpn6") != "Working on it":
+                errors.append(f"{item['name']} / {subitem['name']}: active art status")
     if errors:
         raise RuntimeError("Verification failed:\n- " + "\n- ".join(errors))
     print(f"VERIFIED {len(PROMOS)} parent briefs and {sum(len(item['subitems']) for item in verified if item['name'] in PROMOS)} subitem briefs")
