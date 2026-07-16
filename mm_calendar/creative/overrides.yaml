@@ -15,12 +15,42 @@ evidence:
   use_newest_delivered_attachment_in_selected_task: true
   approval_required_for_attachment: false
   require_matching_asset_type: true
+  matching_live_ops_task_is_valid: true
+  use_ops_live_date_when_creative_reference_missing: true
+  same_family_different_visible_variant_is_valid: false
 
 global:
   theme_change_wins_over_prize_change: true
   segment_change_alone: reuse
+  brief_date_source_board: 18041947639
+  active_status_creative: null
+  complete_brief_status_mm: "Brief Done"
+  incomplete_new_promo_status_mm: "MM work in progress"
+  reuse_status_creative: "done"
+  reuse_status_mm: "Ready - no action needed"
   active_art_copy_status: null
   active_art_status: null
+
+traffic_column_mapping:
+  Brief Date: Brief Due Date
+  Creative Owner: Artist
+  Monetization: MM
+  MM TL: MM TL
+  TL Owner: Creative TL
+
+instance_label_overrides:
+  "12464188536":
+    label: reuse
+    evidence: "Operation - Monetization item 11869424484 live 2026-05-30"
+  "12464318775":
+    label: reuse
+    evidence: "Operation - Monetization item 12113633298 live 2026-05-29"
+  "12467506589":
+    label: reuse
+    evidence: "Exact Ace Heist 4-star Ace execution"
+  "12511214687":
+    label: reuse
+    evidence: "Exact Generic Bigger Multipliers execution"
 
 promotions:
   ads_personal_offer:

@@ -34,6 +34,13 @@ Those files contain Itay's canonical label definitions, promo meanings, and expl
   - `status` — Status Creative; board label `done` means Completed
 - Item name via `name` in `change_multiple_column_values`
 
+### Creative Traffic authority
+
+- Source board: **Creative Traffic** (`18041947639`), treated as read-only by this writer.
+- Match the day row by its `D/8` name when Promo Date is blank.
+- Map source columns exactly: `Brief Date` → `Brief Due Date`; `Creative Owner` → `Artist`; `Monetization` → `MM`; `MM TL` → `MM TL`; `TL Owner` → `Creative TL`.
+- Apply the day assignment to every Monetization-Art item in that date group, including the consolidated Reuse summary.
+
 ## Creative Label decision order
 
 1. Ignore canceled tasks as evidence.
@@ -42,11 +49,11 @@ Those files contain Itay's canonical label definitions, promo meanings, and expl
 4. Otherwise, if an art-visible prize, mission, value, percentage, quantity, or multiplier changes: **Prize Change**.
 5. Otherwise: **Reuse**.
 
-Theme change wins when theme and prize both change. Dynamic configuration that is not embedded in art may remain Reuse. A missing reference does not change the label.
+Theme change wins when theme and prize both change. Dynamic configuration that is not embedded in art may remain Reuse. A missing reference does not change the label. A confirmed matching promo/variant previously live on the Operation - Monetization board is valid Reuse evidence; when no exact Creative reference exists, link the Ops task and record its live date. Do not use a different visible variant as evidence.
 
 ## Mandatory workflow
 
-For **Reuse**, create one bare day-level item named `REUSE - No Creative Action`. Its single parent update lists every Reuse promotion for that day with promotion title, reuse-from date, Monday source pulse, and CRM3 path. Do not duplicate templates, create per-promo Reuse items, or create asset subitems for Reuse.
+For **Reuse**, create one bare day-level item named `REUSE - No Creative Action`. Its single parent update lists every Reuse promotion for that day with promotion title, reuse-from date, and the exact Creative reference. When that reference is unavailable but Ops confirms the promo went live, use the Ops task link and live date. Do not duplicate templates, create per-promo Reuse items, or create asset subitems for Reuse.
 
 For every non-Reuse promo:
 
@@ -60,10 +67,11 @@ For every non-Reuse promo:
 
 ## References
 
-- **Reference Link** = full file path: `Q:\Slotomania\CRM3\...\filename.png` (not folder-only)
+- **Reference** and **Reference Link** are always separate rows. **Reference** contains only the real embedded PNG/image preview; **Reference Link** contains only its direct URL or exact CRM3 file path.
+- **Reference Link** = direct attached-image URL or full file path: `Q:\Slotomania\CRM3\...\filename.png` (not folder-only)
 - **Reference** = embedded preview: upload from CRM3 via `add_file_to_update` → `/v2/file`, then optional `edit_update` with `https://playtika.monday.com/protected_static/7996532/resources/{asset_id}/{filename}`
 - Reference art must match the subitem asset type: Inapp→Inapp, Banner→Banner, Widget→Widget, etc. Never reuse one generic preview across unlike assets.
-- A Reuse reference must visibly contain the exact current prize/theme. A matching task name or instruction to “add” the prize is not enough; verify the final attached image itself.
+- Prefer a Reuse reference that visibly contains the exact current prize/theme. If none exists, an exact matching live Ops task is sufficient evidence; show its link and live date without attaching a misleading image.
 - Prefer an older exact promo match over a newer same-family task with a different prize or theme. Within the selected exact task, use the latest update that actually contains Creative attachments and the latest relevant attachment(s) from that update.
 - Creative's latest attached deliverable outranks an older attachment, an old `Reference Link`, or art merely mentioned in brief text. Record source promo date, pulse/update, and asset.
 - The newest delivered attachment may be used before task approval. Never use a canceled task as evidence or reference.
@@ -76,8 +84,8 @@ For every non-Reuse promo:
 - Keep briefs short. Do not repeat Promo Date, due dates, priority, category, history, or status details already stored in columns.
 - Reuse is consolidated into the single day-level `REUSE - No Creative Action` item; do not create separate Reuse parent tasks.
 - Seasonal parent title must include the exact required reward; never leave it only as “Season”.
-- Parent brief: maximum five useful rows—Creative Label, Change, Reference (Monday source + source date + CRM3 path), Assets, and Skeleton only for a New promo.
-- Actionable subitem: Task, Keep, Reference. Keep each instruction to one clear line.
+- Parent brief uses only useful rows—Creative Label, Change, optional Reference preview, Reference Link, Reference Date, Assets, and Skeleton only for a New promo.
+- Actionable subitem: Task, Keep, Reference, Reference Link. Keep each instruction to one clear line.
 - Do not keep no-action subitems in new briefs; request only the assets that need work.
 - A Link field contains only the URL or exact CRM3 file path—no commentary, provenance prose, or folder instructions.
 - A PNG/reference-art field contains only a real attached image for that exact asset type. If no real matching image exists, omit the row; never create a placeholder or made-up template.
@@ -89,15 +97,16 @@ For every non-Reuse promo:
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
 - Every subitem must name its asset and point to the parent's exact Change; the parent carries the full delta so it is not repeated in every asset brief.
-- **Prize Change**: state `Current/source prize → Required prize` for every affected asset, including exact quantity, tier, mission, percentage, and currency. Never write only “update prize.”
-- **New theme for promo**: state `Current/source theme → Required theme` and the exact motifs, palette, logo, machine/event treatment, and elements that must remain unchanged.
+- **Prize Change**: state `Current/source prize → Required prize` once in the parent, including exact quantity, tier, mission, percentage, and currency. Asset subitems point to that Change.
+- **New theme for promo**: state `Current/source theme → Required theme` once in the parent, including exact motifs, palette, logo, machine/event treatment, and elements that must remain unchanged.
 - **New promo**: do not invent mechanics, prizes, copy, or art direction. Create a clearly marked skeleton for **Itay to complete**; attach only clearly relevant latest references as optional inspiration.
 - The parent **Change** and **Assets** rows are the Creative request; do not add a second repetitive Creative Request row.
-- **Reuse**: the day summary names each exact source promo/date and includes both the Monday source and CRM3 path. The summary has no subitems and Status Creative=`done`.
+- **Reuse**: the day summary names each exact source promo/date and includes the exact Creative reference or Ops live evidence. The summary has no subitems, Status Creative=`done`, and Status MM=`Ready - no action needed`.
 - Never set Copy Status=`Done` merely because the brief was written.
-- Art-only required asset: leave both Copy Status and Art Status empty; parent Status Creative=`Design in progress`.
+- For every non-Reuse item, leave parent Status Creative empty. Monetization only writes Status MM: `Brief Done` for a complete brief or `MM work in progress` for an incomplete New promo skeleton.
+- Art-only required asset: leave both Copy Status and Art Status empty.
 - If copy work is explicitly required, use the real active Copy status; set `Done` only after the copy itself is completed.
-- Due dates: Brief Due = promo date − 7 calendar days minimum; Art Due = promo date − 2 calendar days minimum. If either lands Friday/Saturday, move it backward to Thursday.
+- Due dates: Brief Due comes from Creative Traffic `Brief Date`. Art Due = promo date − 2 calendar days minimum; if it lands Friday/Saturday, move it backward to Thursday.
 - Priority default: Critical for business-critical launch with no fallback; High for new promo/theme or broad anchor package; Medium for prize/mission changes; Low for Reuse, backup, or no-action work. Override only with explicit business context.
 - If CRM3 not mounted: set paths and note “upload previews when CRM3 available”
 

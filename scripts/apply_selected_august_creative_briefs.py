@@ -18,6 +18,7 @@ SNAPSHOT = ROOT / "mm_calendar" / "data" / "monday_board_live_by_date.json"
 ART_CACHE = ROOT / "mm_calendar" / "data" / "monetization_art_board_full.json"
 BOARD = "18112190666"
 SUBITEM_BOARD = "18112200937"
+TRAFFIC_GROUP = "group_title"
 REUSE_TASK_NAME = "REUSE - No Creative Action"
 
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -64,6 +65,24 @@ SOURCE_OVERRIDES = {
     "12475750417": "12337043899",  # DD SB wheel structure
     "12475732350": "11223800692",  # DD wheel structure
     "12475100661": "11868921934",  # Generic MES Ace Heist structure
+}
+
+LABEL_OVERRIDES = {
+    "12464188536": "Reuse",  # MGAP BOGO confirmed live in Ops
+    "12464318775": "Reuse",  # ADS PO 3* Reg confirmed live in Ops
+    "12467506589": "Reuse",  # Exact prior Ace Heist 4* Ace execution
+    "12511214687": "Reuse",  # Exact prior Generic Bigger Multipliers execution
+}
+
+REUSE_LIVE_OVERRIDES = {
+    "12464188536": {
+        "date": "2026-05-30",
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11869424484",
+    },
+    "12464318775": {
+        "date": "2026-05-29",
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/12113633298",
+    },
 }
 
 
@@ -145,6 +164,71 @@ def priority(label: str) -> str:
     }[label]
 
 
+def people_ids(value: str | None) -> list[int]:
+    if not value:
+        return []
+    parsed = json.loads(value)
+    return [
+        int(person["id"])
+        for person in parsed.get("personsAndTeams") or []
+        if person.get("kind") == "person"
+    ]
+
+
+def people_value(ids: list[int]) -> dict[str, Any]:
+    return {
+        "personsAndTeams": [
+            {"id": person_id, "kind": "person"}
+            for person_id in ids
+        ]
+    }
+
+
+def traffic_assignments(dates: list[str]) -> dict[str, dict[str, Any]]:
+    query = """
+    query($groups:[String!]) {
+      boards(ids:[18041947639]) {
+        groups(ids:$groups) {
+          items_page(limit:500) {
+            items {
+              id name
+              column_values(ids:[
+                "dup__of_date","people3","person","multiple_person_mkw741g6","people_1"
+              ]) { id text value }
+            }
+          }
+        }
+      }
+    }
+    """
+    items = gql(query, {"groups": [TRAFFIC_GROUP]})["boards"][0]["groups"][0]["items_page"]["items"]
+    result: dict[str, dict[str, Any]] = {}
+    for item in items:
+        match = re.match(r"^(\d{1,2})/8(?:\D|$)", item["name"])
+        if not match:
+            continue
+        target = f"2026-08-{int(match.group(1)):02d}"
+        if target not in dates:
+            continue
+        columns = {column["id"]: column for column in item["column_values"]}
+        brief_date = columns["dup__of_date"].get("text") or ""
+        if not brief_date:
+            raise RuntimeError(f"Traffic item {item['id']} {item['name']} has no Brief Date")
+        result[target] = {
+            "item_id": str(item["id"]),
+            "item_name": item["name"],
+            "brief_date": brief_date,
+            "artist_ids": people_ids(columns["people3"].get("value")),
+            "mm_ids": people_ids(columns["person"].get("value")),
+            "mm_tl_ids": people_ids(columns["multiple_person_mkw741g6"].get("value")),
+            "creative_tl_ids": people_ids(columns["people_1"].get("value")),
+        }
+    missing = sorted(set(dates) - set(result))
+    if missing:
+        raise RuntimeError(f"Missing Creative Traffic assignment(s): {missing}")
+    return result
+
+
 def fetch_rows(dates: list[str]) -> dict[str, list[dict[str, str]]]:
     snapshot = json.loads(SNAPSHOT.read_text(encoding="utf-8"))["by_date"]
     ids: list[str] = []
@@ -173,7 +257,11 @@ def fetch_rows(dates: list[str]) -> dict[str, list[dict[str, str]]]:
         normalized = normalize_name(item["name"])
         if re.search(r"lotto\s*-\s*peak", normalized, re.I) or normalized.lower() == "lbp peak":
             continue
-        label = columns.get("color_mm4kygty") or ("Reuse" if family(item["name"]) == "rlap" else "")
+        label = (
+            LABEL_OVERRIDES.get(str(item["id"]))
+            or columns.get("color_mm4kygty")
+            or ("Reuse" if family(item["name"]) == "rlap" else "")
+        )
         if label not in {"Reuse", "Prize Change", "New theme for promo", "New promo"}:
             raise RuntimeError(f"Missing Creative Label for {item['name']}")
         description = columns.get("long_text_mkxzgg1v") or ""
@@ -237,18 +325,131 @@ def source_reference_path(source: dict[str, Any]) -> str:
     raise RuntimeError(f"No CRM3 reference path found for source {source['id']} {source['name']}")
 
 
-def reference_html(source: dict[str, Any], allow_missing_path: bool = False) -> str:
+def load_source_assets(
+    rows_by_date: dict[str, list[dict[str, str]]],
+    catalog: dict[str, dict[str, Any]],
+) -> None:
+    source_ids = sorted(
+        {
+            str(source_for(row, catalog)["id"])
+            for rows in rows_by_date.values()
+            for row in rows
+        }
+    )
+    query = """
+    query($ids:[ID!]!) {
+      items(ids:$ids) {
+        id
+        updates(limit:50) { id assets { id name url } }
+        subitems {
+          id name
+          updates(limit:50) { id assets { id name url } }
+        }
+      }
+    }
+    """
+    for offset in range(0, len(source_ids), 20):
+        for item in gql(query, {"ids": source_ids[offset:offset + 20]})["items"]:
+            assets: list[dict[str, str]] = []
+            for update in item.get("updates") or []:
+                for asset in update.get("assets") or []:
+                    assets.append({**asset, "asset_type": "", "update_id": str(update["id"])})
+            for subitem in item.get("subitems") or []:
+                for update in subitem.get("updates") or []:
+                    for asset in update.get("assets") or []:
+                        assets.append(
+                            {
+                                **asset,
+                                "asset_type": subitem["name"],
+                                "update_id": str(update["id"]),
+                            }
+                        )
+            if str(item["id"]) in catalog:
+                catalog[str(item["id"])]["_reference_assets"] = assets
+
+
+def reference_asset(source: dict[str, Any], asset_name: str | None = None) -> dict[str, str] | None:
+    images = [
+        asset
+        for asset in source.get("_reference_assets") or []
+        if re.search(r"\.(?:png|jpe?g|webp)$", asset.get("name") or "", re.I)
+    ]
+    if not images:
+        return None
+    if not asset_name:
+        return next(
+            (asset for asset in images if asset["name"].lower().endswith(".png")),
+            images[0],
+        )
+    target_tokens = set(re.findall(r"[a-z0-9]+", asset_name.lower()))
+    stop = {"asset", "final", "generic", "dynamic", "the"}
+    target_tokens -= stop
+    scored: list[tuple[float, int, dict[str, str]]] = []
+    for index, asset in enumerate(images):
+        candidate = f"{asset.get('asset_type') or ''} {asset.get('name') or ''}".lower()
+        candidate_tokens = set(re.findall(r"[a-z0-9]+", candidate)) - stop
+        overlap = len(target_tokens & candidate_tokens)
+        score = overlap / max(1, len(target_tokens))
+        if asset_name.lower() == (asset.get("asset_type") or "").lower():
+            score += 2
+        if score > 0:
+            scored.append((score, -index, asset))
+    if not scored:
+        return None
+    scored.sort(reverse=True, key=lambda item: (item[0], item[1]))
+    return scored[0][2]
+
+
+def reference_png_html(source: dict[str, Any], asset_name: str | None = None) -> str:
+    asset = reference_asset(source, asset_name)
+    if not asset:
+        return ""
+    url = esc(asset["url"])
+    return f'<a href="{url}"><img src="{url}" alt="{esc(asset["name"])}" width="600"></a>'
+
+
+def reference_link_html(
+    source: dict[str, Any],
+    asset_name: str | None = None,
+    allow_missing_path: bool = False,
+) -> str:
+    asset = reference_asset(source, asset_name)
+    if asset:
+        url = esc(asset["url"])
+        return f'<a href="{url}">{url}</a>'
     source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{source['id']}"
     try:
-        path = f"<code>{esc(source_reference_path(source))}</code>"
+        return f"<code>{esc(source_reference_path(source))}</code>"
     except RuntimeError:
         if not allow_missing_path:
             raise
-        path = "No valid prior CRM3 art reference — new structure."
-    return (
-        f'<a href="{source_url}">Monday source</a><br>'
-        f"{path}"
-    )
+        return f'<a href="{source_url}">{source_url}</a>'
+
+
+def reuse_evidence(
+    row: dict[str, str],
+    catalog: dict[str, dict[str, Any]],
+) -> dict[str, str]:
+    live = REUSE_LIVE_OVERRIDES.get(row["id"])
+    if live:
+        return {
+            "date": live["date"],
+            "reference": "",
+            "link": (
+                f'<a href="{esc(live["url"])}">Ops live task</a><br>'
+                "No exact Creative reference found — confirmed live in Ops."
+            ),
+        }
+    source = source_for(row, catalog)
+    try:
+        link = reference_link_html(source)
+    except RuntimeError:
+        link = "No exact Creative reference found — prior live date confirmed."
+    return {
+        "date": source_date(source),
+        "reference": reference_png_html(source),
+        "link": link,
+    }
 
 
 def create_group(title: str) -> str:
@@ -336,15 +537,48 @@ def brief_name(row: dict[str, str], source: dict[str, Any]) -> str:
     return normalize_name(row["name"])
 
 
-def parent_values(row: dict[str, str], source: dict[str, Any], target: str) -> dict[str, Any]:
+def status_mm_label(row: dict[str, str]) -> str:
+    if row["label"] == "New promo":
+        return "MM work in progress"
+    return "Brief Done"
+
+
+def assignment_values(assignment: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "date_mkwj8wwp": {"date": assignment["brief_date"]},
+        "multiple_person_mkwetsg8": people_value(assignment["artist_ids"]),
+        "person": people_value(assignment["mm_ids"]),
+        "multiple_person_mkwetd0y": people_value(assignment["mm_tl_ids"]),
+        "multiple_person_mkwez377": people_value(assignment["creative_tl_ids"]),
+    }
+
+
+def parent_values(
+    row: dict[str, str],
+    source: dict[str, Any],
+    target: str,
+    assignment: dict[str, Any],
+) -> dict[str, Any]:
     return {
         "name": brief_name(row, source),
         "date4": {"date": target},
-        "date_mkwj8wwp": {"date": adjusted_due(target, 7)},
         "date_mkwep612": {"date": adjusted_due(target, 2)},
         "color_mkws3h8e": {"label": priority(row["label"])},
         "text_mkwe4jsr": art_path(row, source, target),
-        "status": {"label": "done" if row["label"] == "Reuse" else "Design in progress"},
+        "status": None,
+        "color_mkwes65f": {"label": status_mm_label(row)},
+        **assignment_values(assignment),
+    }
+
+
+def reuse_values(target: str, assignment: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "name": REUSE_TASK_NAME,
+        "date4": {"date": target},
+        "color_mkws3h8e": {"label": "Low"},
+        "status": {"label": "done"},
+        "color_mkwes65f": {"label": "Ready - no action needed"},
+        **assignment_values(assignment),
     }
 
 
@@ -367,13 +601,20 @@ def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) 
     rows = [
         ("Creative Label", esc(row["label"])),
         ("Change", esc(f"{source['name']} → {concise_requirement(row)}")),
-        (
-            "Reference",
-            f"{reference_html(source, row['label'] == 'New promo')}<br>"
-            f"Reference date: {esc(source_date(source))}",
-        ),
-        ("Assets", esc(", ".join(assets) if assets else "No asset scope yet")),
     ]
+    reference_png = reference_png_html(source)
+    if reference_png:
+        rows.append(("Reference", reference_png))
+    rows.extend(
+        [
+            (
+                "Reference Link",
+                reference_link_html(source, allow_missing_path=row["label"] == "New promo"),
+            ),
+            ("Reference Date", esc(source_date(source))),
+            ("Assets", esc(", ".join(assets) if assets else "No asset scope yet")),
+        ]
+    )
     if row["label"] == "New promo":
         rows.append(
             (
@@ -385,29 +626,38 @@ def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) 
 
 
 def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
-    return table(
-        [
-            ("Task", esc(f"Apply the parent Change to {asset}.")),
-            ("Keep", "Match the reference for everything else."),
-            ("Reference", reference_html(source, row["label"] == "New promo")),
-        ]
+    rows = [
+        ("Task", esc(f"Apply the parent Change to {asset}.")),
+        ("Keep", "Match the reference for everything else."),
+    ]
+    reference_png = reference_png_html(source, asset)
+    if reference_png:
+        rows.append(("Reference", reference_png))
+    rows.append(
+        (
+            "Reference Link",
+            reference_link_html(source, asset, row["label"] == "New promo"),
+        )
     )
+    return table(rows)
 
 
 def reuse_body(rows: list[dict[str, str]], catalog: dict[str, dict[str, Any]]) -> str:
     header = (
         "<thead><tr><th><p><strong>Promotion</strong></p></th>"
         "<th><p><strong>Reuse from</strong></p></th>"
-        "<th><p><strong>Reference</strong></p></th></tr></thead>"
+        "<th><p><strong>Reference</strong></p></th>"
+        "<th><p><strong>Reference Link</strong></p></th></tr></thead>"
     )
     body = []
     for row in rows:
-        source = source_for(row, catalog)
+        evidence = reuse_evidence(row, catalog)
         body.append(
             "<tr>"
             f"<td><p>{esc(normalize_name(row['name']))}</p></td>"
-            f"<td><p>{esc(source_date(source))}</p></td>"
-            f"<td><p>{reference_html(source)}</p></td>"
+            f"<td><p>{esc(evidence['date'])}</p></td>"
+            f"<td><p>{evidence['reference']}</p></td>"
+            f"<td><p>{evidence['link']}</p></td>"
             "</tr>"
         )
     return "<table>" + header + "<tbody>" + "".join(body) + "</tbody></table>"
@@ -427,6 +677,7 @@ def is_old_reuse_item(
 def write_brief(
     row: dict[str, str],
     target: str,
+    assignment: dict[str, Any],
     group_id: str,
     existing: dict[str, dict[str, Any]],
     catalog: dict[str, dict[str, Any]],
@@ -448,7 +699,7 @@ def write_brief(
         time.sleep(4)
         live_item = gql(query, {"ids": [item_id]})["items"][0]
         subitems = live_item.get("subitems") or []
-    set_columns(BOARD, item_id, parent_values(row, source, target))
+    set_columns(BOARD, item_id, parent_values(row, source, target, assignment))
     upsert_update(
         item_id,
         live_item.get("updates") or [],
@@ -469,7 +720,9 @@ def main() -> None:
     args = parse_args()
     dates = sorted(set(args.date))
     rows_by_date = fetch_rows(dates)
+    assignments = traffic_assignments(dates)
     catalog = source_catalog()
+    load_source_assets(rows_by_date, catalog)
     groups = group_map()
     total = 0
     if not args.commit:
@@ -481,13 +734,14 @@ def main() -> None:
             old_reuse = [item for item in existing if is_old_reuse_item(item, reuse_rows)]
             print(
                 f"\n{target}: one consolidated Reuse task ({len(reuse_rows)} promotions), "
-                f"{len(active_rows)} active brief(s), delete {len(old_reuse)} old Reuse item(s)"
+                f"{len(active_rows)} active brief(s), delete {len(old_reuse)} old Reuse item(s); "
+                f"Brief Date {assignments[target]['brief_date']}"
             )
             for row in reuse_rows:
-                source = source_for(row, catalog)
+                evidence = reuse_evidence(row, catalog)
                 print(
-                    f"  REUSE {normalize_name(row['name'])} <- {source_date(source)} "
-                    f"{source_reference_path(source)}"
+                    f"  REUSE {normalize_name(row['name'])} <- {evidence['date']} "
+                    f"{re.sub('<[^>]+>', ' ', evidence['link'])}"
                 )
             for row in active_rows:
                 source = source_for(row, catalog)
@@ -495,6 +749,7 @@ def main() -> None:
         print("\nDRY RUN - no Monday changes made.")
         return
     for target in dates:
+        assignment = assignments[target]
         group_id = groups.get(target) or create_group(target)
         current_items = items_in_group(group_id)
         reuse_rows = [row for row in rows_by_date[target] if row["label"] == "Reuse"]
@@ -506,16 +761,7 @@ def main() -> None:
         else:
             reuse_item_id = create_bare_item(group_id, REUSE_TASK_NAME)
             reuse_item = {"id": reuse_item_id, "name": REUSE_TASK_NAME, "updates": [], "subitems": []}
-        set_columns(
-            BOARD,
-            reuse_item_id,
-            {
-                "name": REUSE_TASK_NAME,
-                "date4": {"date": target},
-                "color_mkws3h8e": {"label": "Low"},
-                "status": {"label": "done"},
-            },
-        )
+        set_columns(BOARD, reuse_item_id, reuse_values(target, assignment))
         upsert_update(reuse_item_id, reuse_item.get("updates") or [], reuse_body(reuse_rows, catalog))
         for subitem in reuse_item.get("subitems") or []:
             delete_item(str(subitem["id"]))
@@ -558,7 +804,11 @@ def main() -> None:
                         subitem.get("updates") or [],
                         subitem_body(row, source, subitem["name"]),
                     )
-                set_columns(BOARD, str(existing_item["id"]), parent_values(row, source, target))
+                set_columns(
+                    BOARD,
+                    str(existing_item["id"]),
+                    parent_values(row, source, target, assignment),
+                )
                 upsert_update(
                     str(existing_item["id"]),
                     existing_item.get("updates") or [],
@@ -571,25 +821,31 @@ def main() -> None:
                 print(f"{target} UPDATED existing {existing_item['id']} {name}")
                 total += 1
                 continue
-            item_id, subitem_count = write_brief(row, target, group_id, existing, catalog)
+            item_id, subitem_count = write_brief(
+                row,
+                target,
+                assignment,
+                group_id,
+                existing,
+                catalog,
+            )
             total += 1
             print(f"{target} {item_id} {row['label']:<19} subitems={subitem_count} {brief_name(row, source_for(row, catalog))}")
         time.sleep(10)
         for item in items_in_group(group_id):
             if item["name"] == REUSE_TASK_NAME:
+                set_columns(BOARD, str(item["id"]), reuse_values(target, assignment))
+                continue
+            match = next((row for row in rows_by_date[target] if brief_name(row, source_for(row, catalog)) == item["name"]), None)
+            if match:
                 set_columns(
                     BOARD,
                     str(item["id"]),
                     {
-                        "date4": {"date": target},
-                        "color_mkws3h8e": {"label": "Low"},
-                        "status": {"label": "done"},
+                        "status": None,
+                        "color_mkwes65f": {"label": status_mm_label(match)},
                     },
                 )
-                continue
-            match = next((row for row in rows_by_date[target] if brief_name(row, source_for(row, catalog)) == item["name"]), None)
-            if match:
-                set_columns(BOARD, str(item["id"]), {"status": {"label": "done" if match["label"] == "Reuse" else "Design in progress"}})
     print(f"CONSOLIDATED Reuse and created/updated {total} active Creative briefs across {len(dates)} dates.")
 
 

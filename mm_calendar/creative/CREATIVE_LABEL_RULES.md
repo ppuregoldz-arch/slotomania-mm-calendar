@@ -31,6 +31,8 @@
 4. For Reuse, verify that the final image visibly matches the current prize and theme.
 5. Do not use canceled tasks as evidence or as references.
 6. If no matching asset exists, keep the correct label and explicitly mark **Reference missing**.
+7. A confirmed matching promo/variant that previously went live on the Operation - Monetization board is valid Reuse evidence. If no exact Creative reference exists, link the Ops task and record the date it went live.
+8. A same-family but different visible prize, theme, mechanic, or variant is not sufficient live evidence.
 
 ## Brief behavior
 
@@ -40,8 +42,10 @@
 - **New promo:** leave mechanics and direction for Itay; attach only clearly relevant inspiration.
 - Theme change takes precedence over simultaneous prize change.
 - Active art-only work leaves both Copy Status and Art Status empty.
-- Brief Due Date is at least seven days before launch; Art Due Date is at least 48 hours before launch. Move Friday/Saturday due dates back to Thursday.
-- Keep briefs short. Links contain only links/paths; PNG rows contain only real matching images.
+- Brief Due Date and people ownership come from `Creative Traffic` board `18041947639`: `Brief Date`, `Creative Owner`, `Monetization`, `MM TL`, and `TL Owner`. Map them to `Brief Due Date`, `Artist`, `MM`, `MM TL`, and `Creative TL` on Monetization-Art.
+- Leave Status Creative empty for every non-Reuse brief. Monetization owns only Status MM: use `Brief Done` for a complete brief, `MM work in progress` for an incomplete New promo skeleton, and `Ready - no action needed` for the Reuse summary. Reuse may set Status Creative to `done`.
+- Art Due Date is at least 48 hours before launch. Move Friday/Saturday due dates back to Thursday.
+- Keep briefs short. Use separate **Reference** and **Reference Link** rows: Reference contains only the real matching PNG/image preview; Reference Link contains only its direct URL or exact file path.
 
 ## Known exceptions
 

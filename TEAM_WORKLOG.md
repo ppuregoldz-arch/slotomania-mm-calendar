@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Apply Creative Traffic ownership and status rules
+
+- **Goal:** Source Creative due dates and ownership from Creative Traffic, correct status ownership, and accept confirmed live Ops execution as Reuse evidence.
+- **Done:** Applied Traffic Brief Date, Artist, MM, MM TL, and Creative TL to all 22 remaining items across August 5/6/11/28/29. Cleared Status Creative on all active briefs; set Status MM to `Brief Done`, `MM work in progress`, or `Ready - no action needed` as appropriate. Reclassified four exact prior executions as Reuse, leaving five summaries with 27 rows; two missing Creative references now show their Ops live task/date.
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `mm_calendar/creative/CREATIVE_LABEL_RULES.md`, `mm_calendar/creative/overrides.yaml`, `scripts/apply_selected_august_creative_briefs.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Creative Traffic schema/assignment read ✓, target status-option audit ✓, dry runs ✓, live target updates ✓, 22-item dates/owners/statuses + 27-Reuse-row verification ✓, Python compile/lints ✓, source-board reverse relation ✗ (403; treated read-only), full MM calendar sync n/a.
+- **Notes for next agent:** Creative Traffic board `18041947639` is the authority for Brief Date and four owner roles. Do not write Status Creative on active briefs. Exact live Ops evidence qualifies Reuse when Creative art is missing; use the Ops link and live date, not a misleading image.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Consolidate Reuse Creative briefs
 
 - **Goal:** Make Creative handoffs easier to scan and remove unnecessary per-asset work for Reuse promotions.
