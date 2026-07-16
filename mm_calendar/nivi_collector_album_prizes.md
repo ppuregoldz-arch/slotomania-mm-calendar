@@ -26,7 +26,7 @@ Album active **14/07/26 – 22/09/26** (`album_cards.md`).
 
 ## Short-term features (Blast, Battlesheep, S&L)
 
-~**5 days** average per season. Board completion cycle prizes by album **phase**:
+~**5 days** average per season for **Blast / Battlesheep**. **Snakes & Ladders (SNL): 3–4 days** (Jul 2026). Board completion cycle prizes by album **phase**:
 
 | Cycle | Phase 1 | Phase 2 | Phase 3 |
 |-------|---------|---------|---------|

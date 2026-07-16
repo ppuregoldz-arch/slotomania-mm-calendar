@@ -18,7 +18,7 @@
 
 | מסלול | דרישה |
 |---|---|
-| Short Term | לפחות אחד חי בכל יום. עונות גב-אל-גב (5 ימים טיפוסי). |
+| Short Term | לפחות אחד חי בכל יום. עונות גב-אל-גב: **Blast/Battlesheep ~5 ימים** · **SNL 3–4 ימים** (HARD — Itay, יולי 2026). |
 | Mid Term: Winovate | תמיד חי. עונות 8-9 ימים גב-אל-גב. |
 | Mid Term: Mega Pods | תמיד חי. שבועי Mon-Mon (~7 ימים). |
 | Mid Term: רוטציה | תמיד אחד מ-{Quest, Globez, Figz} חי. |

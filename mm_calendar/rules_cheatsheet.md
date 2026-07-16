@@ -11,7 +11,7 @@
 - ה"דפוס הנפוץ" הוא ברירת-מחדל בלבד, **לא נעילה**. בעת שיבוץ: בחר פלטפורמה → קבע מטרה → מלא כל slot מהמאגר. פירוט מלא ב-`offer_construction.md`.
 
 ## Always-On (HARD - כיסוי רציף)
-- **Short Term** (Blast/Battlesheep/SNL) - תמיד ≥1 חי; עונות ~5 ימים גב-אל-גב.
+- **Short Term** (Blast/Battlesheep/SNL) - תמיד ≥1 חי; עונות גב-אל-גב: **Blast/Battlesheep ~5 ימים** · **SNL 3–4 ימים**.
 - **Mid Term**: Winovate (8-9 ימים) + Mega Pods (Mon-Mon) תמיד חיים; רוטציה Quest/Globez/Figz (אחד בכל פעם).
 - **Album**: מחזור פעיל תמיד (~70 יום / 10 שבועות).
 - **בכל יום להציג אילו עונות פתוחות.**

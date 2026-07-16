@@ -4,7 +4,7 @@
 > **לא הועלה ל-Monday** — לאשר לפני פרסום. **טבלת קלפים:** אומתה מול התמונה במייל (סימון במסמך הגיידליינים).
 
 ## Always-On אוגוסט
-- **Short Term:** Blast 1-5 · Battlesheep 6-10 · SNL 11-15 · Blast 16-20 · Battlesheep 21-25 · SNL 26-31
+- **Short Term:** Blast 1-5 · Battlesheep 6-10 · SNL 11-13 · Blast 14-18 · Battlesheep 19-23 · SNL 24-27 · Blast 28-31
 - **Mid Term:** Quest 1–3 · Quest 4–8 · Globez 9–14 · Quest 15–19 · Figz 20–23 · Quest 24–28 · Globez 29–31 · **Winovate** (new 5/8, 8d) · **Mega Pods** (new 3/8, Mon→Mon)
 - **Album:** Phase 1 (1–3/8) · Phase 2 (4–24/8) · Phase 3 (מ-25/8) · Stickers 18–22 · **Back to School 22/8**
 - **Feature prizes (Spinner, Short/Mid-term, Dash):** `nivi_collector_album_prizes.md`
@@ -113,23 +113,23 @@
 | 12/8 | Wed |  | DD- Shield + 4 Dice (on purchase) · Decoy Bonanza — d3: 5★ Reg + bundle | H Pricing · Decoy Bonanza — d3: 5★ Reg + bundle | H Pricing · Piggy — break for 4★ Reg card · Boosted Gemback 300% (5h, post 1 |
 | 13/8 | Thu |  | DD- 3★ Gold card (on purchase) + 2 Dice · Golden Spin — weekly feature · Prize Mania — 4★ Reg pack | Coins, Gems · MGAP Matched · Gems Sale — 30% store / 20% offers |
 | 14/8 | Fri | Nostalgic Weekend | DD - Shiny Limited - Once · DD- 100% SB + 8 Hammers (multiple) · Coin Sale — Nostalgic Weekend · RYD — 4★ Reg + PAB + 100% SB · x2 GGS (3h window, post 11:00 UTC) · Dice Deluxe — 1×/week |
-| 15/8 | Sat | Nostalgic Weekend | DD- Quest Booster + Shield + Multiwheel · Coin Sale · Mystery Buy All | H Pricing · Lotto — peak (Night Plan) · LBP — Jackpot ball 150% + 4 balls (Night Plan pe… |
+| 15/8 | Sat | Nostalgic Weekend | DD- PAB + Quest Booster · Coin Sale · Mystery Buy All | H Pricing · Lotto — peak (Night Plan) · LBP — Jackpot ball 150% + 4 balls (Night Plan pe… |
 | 16/8 | Sun | Nostalgic Weekend | DD- 4★ Gold card (on purchase) + PAB · Rolling Offer — 3 cycles (Buy More for Less) |
 | 17/8 | Mon |  | DD- 4★ Reg card + SB Wheel · Buy All - Coins: Coins+RDS+4★ Reg + Superboom | … |
 | 18/8 | Tue | Hoppin' For Gold — Sneak Peek | DD- 4★ Reg card + Hammers Wheel · RYD — 4★ Reg + 100% SB · MGAP BOGO · x2 GGS (3h window, post 11:00 UTC) · Lotto — peak (Night Plan) · LBP — Jackpot ball 150% + 30% bigger (Night Plan… |
-| 19/8 | Wed | Hoppin' For Gold — Launch | DD- 3★ Gold card (on purchase) + Superboom · Decoy Bonanza — d3: 5★ Gold + bundle | H Pricing · Decoy Bonanza — d3: 5★ Gold + bundle | H Pricing · Piggy — break for 4★ Reg card |
-| 20/8 | Thu |  | DD- Wild Ord card (on purchase) + PAB (Once + re… · Golden Spin — weekly feature · Rolling Offer — 2 cycles (Buy X Get Y) · MGAP Wild Symbols · Gems Sale — 30% store / 20% offers |
+| 19/8 | Wed | Hoppin' For Gold — Launch | DD- 3★ Gold card (on purchase) + AS · Decoy Bonanza — d3: 5★ Gold + bundle | H Pricing · Decoy Bonanza — d3: 5★ Gold + bundle | H Pricing · Piggy — break for 4★ Reg card |
+| 20/8 | Thu |  | DD- Wild Ord card (on purchase) + 2 Parasheep (O… · Golden Spin — weekly feature · Rolling Offer — 2 cycles (Buy X Get Y) · MGAP Wild Symbols · Gems Sale — 30% store / 20% offers |
 | 21/8 | Fri |  | DD- 4★ Gold card (on purchase) + AS · Coin Sale · RYD — 4★ Gold Card + 100% SB · x2 GGS (3h window, post 11:00 UTC) · Dice Deluxe — 1×/week |
 | 22/8 | Sat | Back to School / Summer Sale | DD- 5★ Reg card + SB Wheel · Coin Sale — Back to School · Happy Hour / Jumbo Giveaway — Back to School · MGAP Bigger Multipliers — Back to School themed · Boosted Gemback 500% — Back to School (5h, po |
 | 23/8 | Sun |  | DD- 4★ Reg card (on purchase) + AS · Decoy Bonanza — d3: 3★ Gold + bundle | H Pricing |
-| 24/8 | Mon |  | DD- Shiny Card (multiple) · Buy All - Coins: Coins+RDS+Wild Gold + 2 Parashe… |
-| 25/8 | Tue |  | DD- 4★ Gold card (on purchase) + AS · Rolling Offer — 3 cycles (Buy More for Less) · x2 GGS (3h window, post 11:00 UTC) · Boosted Gemback 300% (5h, post 11:00 UTC) · Lotto — peak (Night Plan) · LBP —  |
+| 24/8 | Mon |  | DD- Shiny Card (multiple) · Buy All - Coins: Coins+RDS+Wild Gold + 2 Dice | … |
+| 25/8 | Tue |  | DD- 4★ Gold card (on purchase) + 2 Dice · Rolling Offer — 3 cycles (Buy More for Less) · x2 GGS (3h window, post 11:00 UTC) · Boosted Gemback 300% (5h, post 11:00 UTC) · Lotto — peak (Night Plan) · LB |
 | 26/8 | Wed |  | DD - Shiny Limited - Once · Piggy — break for 5★ Reg card · RYD — 5★ Gold Card + 100% SB · BACKUP cap (if Po… · MGAP BOGO · Price Cut — 20% storewide |
 | 27/8 | Thu |  | DD- 4★ Gold card (on purchase) + Shield · Golden Spin — weekly feature · RYD — 5★ Reg + 100% SB · Gems Sale — 30% store / 20% offers |
 | 28/8 | Fri |  | DD- 4★ Reg card + Hammers Wheel · Coin Sale · Decoy Bonanza — d3: Wild Ord + bundle | H Pricin… · x2 GGS (3h window, post 11:00 UTC) |
-| 29/8 | Sat |  | DD- 5★ Gold card (on purchase) + Multiwheel · Coin Sale · RYD — 5★ Reg + 100% SB · Dice Deluxe — 1×/week · Lotto — peak (Night Plan) · LBP — 2 multiballs (Night Plan peak) |
-| 30/8 | Sun |  | DD- 5★ Reg card (on purchase) + Shield (BOGO — t… · Decoy Bonanza — d3: 4★ Gold + bundle | H Pricing · MGAP Slotobucks Guaranteed |
-| 31/8 | Mon |  | DD- 4★ Gold card (on purchase) + 2 Dice · Buy All - Coins: Coins+RDS+5★ Reg + 2 Dice | Gem… |
+| 29/8 | Sat |  | DD- 5★ Gold card (on purchase) + PAB · Coin Sale · RYD — 5★ Reg + 100% SB · Dice Deluxe — 1×/week · Lotto — peak (Night Plan) · LBP — 2 multiballs (Night Plan peak) |
+| 30/8 | Sun |  | DD- 5★ Reg card (on purchase) + Picks (BOGO — ta… · Decoy Bonanza — d3: 4★ Gold + bundle | H Pricing · MGAP Slotobucks Guaranteed |
+| 31/8 | Mon |  | DD- 4★ Gold card (on purchase) + Superboom · Buy All - Coins: Coins+RDS+5★ Reg + Superboom | … |
 
 ## קבצים
 - JSON מלא (לעריכה/ייבוא): `mm_calendar/data/august_2026_plan.json`

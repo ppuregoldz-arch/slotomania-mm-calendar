@@ -61,7 +61,7 @@ alwaysApply: false
 ```
 0. סמכות: קרא `00_GUIDELINES_ITAY.md`, אחריו `monthly_guidelines/<חודש>.md` ואת constraints §0. אכוף caps ובנק קלפים כ-HARD; אל תסיק כלל/מספר חסר.
 1. עוגנים: צור/ודא עוגן Day לכל יום בחודש. הנח את מסלולי ה-always-on:
-   - Short Term: עונות 5 ימים גב-אל-גב (Blast/Battlesheep/SNL לסירוגין).
+   - Short Term: **Blast/Battlesheep ~5 ימים** · **SNL 3–4 ימים** — גב-אל-גב (Blast/Battlesheep/SNL לסירוגין).
    - Mid Term: Winovate (8-9d) + Mega Pods (Mon-Mon) + רוטציית Quest/Globez/Figz.
    - Album: ודא מחזור פעיל; שבץ מעברי מחזור אם רלוונטי.
 2. עוגנים חוזרים + אירועים: שבץ את העוגנים מ-`recurring_events.md` (Dash Day בשני, **Golden Spin בחמישי**, Piggy ברביעי, פיקי Lotto שלישי/שבת בלילה, MGAP שבועי, Rolling/Extreme Stamp/יום Gems/Black Diamond שבועי, Sale בסופ"ש, Price Cut x2/חודש, Machine Launch x2/חודש, ו~פעם ב-1.5 שבועות: Dice/Prize Mania/Mystery Buy All/Counter PO). שבץ אירועים/חגים, אבני דרך אלבום (Album Last X Days, Gold Trading Day, Shiny Limited שבועי). יישם מטרות חודשיות (`learnings.md`).

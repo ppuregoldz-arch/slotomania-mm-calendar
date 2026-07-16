@@ -447,7 +447,7 @@ GUIDELINES: list[PromoGuideline] = [
     {
         "category": "Seasonal & album",
         "name": "Short Term (Blast / Battlesheep / SNL)",
-        "times": "Always ≥1 live · ~5d blocks.",
+        "times": "Always ≥1 live · Blast/Battlesheep ~5d · SNL 3–4d.",
         "duration": "Season window on Monday row.",
         "lane": "Seasonal / Short Term.",
         "cant_with": "Wrong-season SKU in offers.",

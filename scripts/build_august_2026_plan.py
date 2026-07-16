@@ -30,13 +30,29 @@ OUT_MD = ROOT / "mm_calendar" / "examples" / "2026-08_calendar.md"
 
 WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
-# Short Term 5-day blocks from Aug 1
+# Short Term blocks — SNL 3–4d (Itay Jul 2026); Blast/Battlesheep ~5d
+SHORT_TERM_BLOCKS: tuple[tuple[int, int, str], ...] = (
+    (1, 5, "Blast"),
+    (6, 10, "Battlesheep"),
+    (11, 13, "SNL"),       # 3d
+    (14, 18, "Blast"),
+    (19, 23, "Battlesheep"),
+    (24, 27, "SNL"),       # 4d
+    (28, 31, "Blast"),
+)
+
+
 def short_term(d: int) -> str:
-    blocks = [(1, 5, "Blast"), (6, 10, "Battlesheep"), (11, 15, "SNL"), (16, 20, "Blast"), (21, 25, "Battlesheep"), (26, 31, "SNL")]
-    for a, b, name in blocks:
+    for a, b, name in SHORT_TERM_BLOCKS:
         if a <= d <= b:
             return name
     return "SNL"
+
+
+def short_term_board_duration_label(st: str) -> str:
+    if st == "SNL":
+        return "~3-4d"
+    return "~5d"
 
 
 def pyp_seasonal_mission(d: int) -> str:
@@ -219,8 +235,9 @@ SPINNER_CLASH_RANK_PRIZES: dict[int, tuple[str, str, str]] = {
 def short_term_album_cycle_description(d: int) -> str:
     ph = collector_album_phase(d)
     c1, c2, c3 = SHORT_TERM_CYCLE_PRIZES[ph]
+    dur = short_term_board_duration_label(short_term(d))
     return (
-        f"Short-term board (~5d): cycle prizes — (1) {c1} · (2) {c2} · (3) {c3}. "
+        f"Short-term board ({dur}): cycle prizes — (1) {c1} · (2) {c2} · (3) {c3}. "
         f"Collector's Album phase {ph} (Shiny Series {ph}). "
         "Full tables: mm_calendar/nivi_collector_album_prizes.md"
     )
@@ -2510,8 +2527,8 @@ DAILY_DEAL_KEYS: dict[int, str] = {
     11: "reg_hw",     # GGS + Price Cut (Popup moved to 12)
     12: "snl_shield_dice",    # Popup Store soft launch 1/3 + on-purchase DD (see DD_ON_PURCHASE_DAYS)
     13: "gold_as",
-    14: "ace_sb",
-    15: "snl_quest_combo",
+    14: "ace_sb",       # Blast 14–18 opens
+    15: "feat_pab_quest",
     16: "reg_hw",
     17: "reg_hw",
     18: "reg_hw",
@@ -4951,7 +4968,7 @@ def main():
         "> **לא הועלה ל-Monday** — לאשר לפני פרסום. **טבלת קלפים:** אומתה מול התמונה במייל (סימון במסמך הגיידליינים).",
         "",
         "## Always-On אוגוסט",
-        "- **Short Term:** Blast 1-5 · Battlesheep 6-10 · SNL 11-15 · Blast 16-20 · Battlesheep 21-25 · SNL 26-31",
+        "- **Short Term:** Blast 1-5 · Battlesheep 6-10 · SNL 11-13 · Blast 14-18 · Battlesheep 19-23 · SNL 24-27 · Blast 28-31",
         f"- **Mid Term:** {mid_term_blocks_markdown()} · **Winovate** (new 5/8, 8d) · **Mega Pods** (new 3/8, Mon→Mon)",
         "- **Album:** Phase 1 (1–3/8) · Phase 2 (4–24/8) · Phase 3 (מ-25/8) · Stickers 18–22 · **Back to School 22/8**",
         "- **Feature prizes (Spinner, Short/Mid-term, Dash):** `nivi_collector_album_prizes.md`",

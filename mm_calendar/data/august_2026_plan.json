@@ -1041,7 +1041,7 @@
           "name": "SNL",
           "status": "Short Term",
           "isFirst": true,
-          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+          "desc": "Short-term board (~3-4d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
         },
         {
           "name": "Globez",
@@ -1370,10 +1370,10 @@
       "banner": "Nostalgic Weekend",
       "seasons": [
         {
-          "name": "SNL",
+          "name": "Blast",
           "status": "Short Term",
-          "isFirst": false,
-          "desc": ""
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
         },
         {
           "name": "Globez",
@@ -1451,17 +1451,17 @@
           "backup": false
         },
         {
-          "name": "Win Master \u2014 4\u2605 Reg card + 2 Dice",
+          "name": "Win Master \u2014 4\u2605 Reg card + Superboom",
           "status": "Core",
           "pricing": null,
-          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 4\u2605 Reg card + 2 Dice",
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 4\u2605 Reg card + Superboom",
           "backup": false
         },
         {
           "name": "ADS PO \u2014 Gems",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term Blast \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         }
       ],
@@ -1476,7 +1476,7 @@
       "banner": "Nostalgic Weekend",
       "seasons": [
         {
-          "name": "SNL",
+          "name": "Blast",
           "status": "Short Term",
           "isFirst": false,
           "desc": ""
@@ -1508,10 +1508,10 @@
       ],
       "items": [
         {
-          "name": "DD- Quest Booster + Shield + Multiwheel",
+          "name": "DD- PAB + Quest Booster",
           "status": "Daily deal",
           "pricing": "Max",
-          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Quest Booster + Shield + Multiwheel.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nQuest season \u2014 feature bundle (no card)",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): PAB + Quest Booster.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nBlast \u2014 feature bundle (no card)",
           "backup": false
         },
         {
@@ -1525,7 +1525,7 @@
           "name": "Mystery Buy All | H Pricing",
           "status": "Buy all",
           "pricing": "High",
-          "desc": "Platform: Mystery Buy All \u2014 same rewards as Buy All; each prize on its own line (not split into coin/gem denoms).\nCoins\nGems\n4 RDS\n1 GGS\n4\u2605 Reg\n2 Dice\n3\u2605 Gold\nQuest Booster",
+          "desc": "Platform: Mystery Buy All \u2014 same rewards as Buy All; each prize on its own line (not split into coin/gem denoms).\nCoins\nGems\n4 RDS\n1 GGS\n4\u2605 Reg\nSuperboom\n3\u2605 Gold\nQuest Booster",
           "backup": false
         },
         {
@@ -1546,14 +1546,14 @@
           "name": "PYP \u2014 finish for 3\u2605 Ace card",
           "status": "Core",
           "pricing": null,
-          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use 4 Dice Rolls",
+          "desc": "Missions:\n\u00b7 Reach act 18 \u2014 Shiny Show\n\u00b7 Spin 100 times \u2014 Gem Machine\n\u00b7 Open 5 pods\n\u00b7 Use PAB",
           "backup": false
         },
         {
-          "name": "ADS PO \u2014 2 Dice",
+          "name": "ADS PO \u2014 2 Picks",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Dice.\nContext: Short-term SNL \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Picks.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         }
       ],
@@ -1570,8 +1570,8 @@
         {
           "name": "Blast",
           "status": "Short Term",
-          "isFirst": true,
-          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+          "isFirst": false,
+          "desc": ""
         },
         {
           "name": "Quest",
@@ -1872,10 +1872,10 @@
       "banner": "Hoppin' For Gold \u2014 Launch",
       "seasons": [
         {
-          "name": "Blast",
+          "name": "Battlesheep",
           "status": "Short Term",
-          "isFirst": false,
-          "desc": ""
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
         },
         {
           "name": "Quest",
@@ -1904,10 +1904,10 @@
       ],
       "items": [
         {
-          "name": "DD- 3\u2605 Gold card (on purchase) + Superboom",
+          "name": "DD- 3\u2605 Gold card (on purchase) + AS",
           "status": "Daily deal",
           "pricing": "High",
-          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3\u2605 Gold card (on purchase) + Superboom.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 3\u2605 Gold card (on purchase) + AS.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
           "backup": false
         },
         {
@@ -1921,14 +1921,14 @@
           "name": "Decoy Bonanza \u2014 d3: 5\u2605 Gold + bundle | H Pricing",
           "status": "Offers & coin sale",
           "pricing": "Medium",
-          "desc": "Cohort: Popup Store off-test segment (via Popup Store shell).\nd1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Gold",
+          "desc": "Cohort: Popup Store off-test segment (via Popup Store shell).\nd1 (coin+RDS base): Coins + 4 RDS + 2 Parasheep\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Gold",
           "backup": false
         },
         {
           "name": "Decoy Bonanza \u2014 d3: 5\u2605 Gold + bundle | H Pricing",
           "status": "Offers & coin sale",
           "pricing": "Medium",
-          "desc": "d1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Gold\nControl cohort \u2014 Popup Store test day (2nd soft launch); same SKUs as paired inner offer.",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Parasheep\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 5\u2605 Gold\nControl cohort \u2014 Popup Store test day (2nd soft launch); same SKUs as paired inner offer.",
           "backup": false
         },
         {
@@ -1963,7 +1963,7 @@
           "name": "ADS PO \u2014 Quest Booster",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Quest Booster.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Quest Booster.\nContext: Short-term Battlesheep \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         }
       ],
@@ -1978,7 +1978,7 @@
       "banner": null,
       "seasons": [
         {
-          "name": "Blast",
+          "name": "Battlesheep",
           "status": "Short Term",
           "isFirst": false,
           "desc": ""
@@ -2010,10 +2010,10 @@
       ],
       "items": [
         {
-          "name": "DD- Wild Ord card (on purchase) + PAB (Once + repeatable DD)",
+          "name": "DD- Wild Ord card (on purchase) + 2 Parasheep (Once + repeatable DD)",
           "status": "Daily deal",
           "pricing": "High",
-          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Wild Ord card (on purchase) + PAB.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: once-per-player (Wild / Shiny Limited) \u2014 pair with a separate DD multiple same day.\n\nWild \u2014 Nivi weekly bank (prefer DD + Shiny Show, not Show only)\n\nCompanion repeatable DD (same day): DD- 100% SB + 8 Hammers (multiple).",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): Wild Ord card (on purchase) + 2 Parasheep.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: once-per-player (Wild / Shiny Limited) \u2014 pair with a separate DD multiple same day.\n\nWild \u2014 Nivi weekly bank (prefer DD + Shiny Show, not Show only)\n\nCompanion repeatable DD (same day): DD- 100% SB + 8 Hammers (multiple).",
           "backup": false
         },
         {
@@ -2038,17 +2038,17 @@
           "backup": false
         },
         {
-          "name": "Hoppin' For Gold \u2014 Spin Zone (Superboom)",
+          "name": "Hoppin' For Gold \u2014 Spin Zone (2 Parasheep)",
           "status": "Core",
           "pricing": null,
-          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): Superboom.\nShort-term context: Blast.",
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): 2 Parasheep.\nShort-term context: Battlesheep.",
           "backup": false
         },
         {
           "name": "Rolling Offer \u2014 2 cycles (Buy X Get Y)",
           "status": "Rolling offer",
           "pricing": "Medium",
-          "desc": "Platform: Rolling Offer \u2014 Buy X Get Y (2 cycles).\nRDS max 4/cycle: 1 on first stamp step, 3 on next \u00b7 GGS max 2/cycle: 1 on first stamp step, 1 on next\nCycle 1: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 150% SB \u00b7 Free 6: PAB\nCycle 2: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 150% SB \u00b7 Free 6: PAB",
+          "desc": "Platform: Rolling Offer \u2014 Buy X Get Y (2 cycles).\nRDS max 4/cycle: 1 on first stamp step, 3 on next \u00b7 GGS max 2/cycle: 1 on first stamp step, 1 on next\nCycle 1: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 150% SB \u00b7 Free 6: 2 Parasheep\nCycle 2: Pay \u2014 Coins, Gems (no stamps on pay) \u00b7 Free 1: 1 RDS \u00b7 Free 2: 3 RDS \u00b7 Free 3: 1 GGS \u00b7 Free 4: 1 GGS \u00b7 Free 5: 150% SB \u00b7 Free 6: 2 Parasheep",
           "backup": false
         },
         {
@@ -2073,17 +2073,17 @@
           "backup": false
         },
         {
-          "name": "Win Master \u2014 4\u2605 Reg card + Superboom",
+          "name": "Win Master \u2014 4\u2605 Reg card + 2 Parasheep",
           "status": "Core",
           "pricing": null,
-          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 4\u2605 Reg card + Superboom\nControl cohort (~80%) \u2014 standard Core challenge (Puzzle M.E.S is ~20% test only).",
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 4\u2605 Reg card + 2 Parasheep\nControl cohort (~80%) \u2014 standard Core challenge (Puzzle M.E.S is ~20% test only).",
           "backup": false
         },
         {
           "name": "ADS PO \u2014 Coins",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term Blast \u00b7 Mid-term Figz.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term Battlesheep \u00b7 Mid-term Figz.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         }
       ],
@@ -2100,8 +2100,8 @@
         {
           "name": "Battlesheep",
           "status": "Short Term",
-          "isFirst": true,
-          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+          "isFirst": false,
+          "desc": ""
         },
         {
           "name": "Figz",
@@ -2423,10 +2423,10 @@
       "banner": null,
       "seasons": [
         {
-          "name": "Battlesheep",
+          "name": "SNL",
           "status": "Short Term",
-          "isFirst": false,
-          "desc": ""
+          "isFirst": true,
+          "desc": "Short-term board (~3-4d): cycle prizes \u2014 (1) Wild Gold \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 2 (Shiny Series 2). Full tables: mm_calendar/nivi_collector_album_prizes.md"
         },
         {
           "name": "Quest",
@@ -2497,24 +2497,24 @@
           "backup": false
         },
         {
-          "name": "Buy All - Coins: Coins+RDS+Wild Gold + 2 Parasheep | Gems: Gems + 1 GGS + 3\u2605 Gold + Quest Booster | M Pricing",
+          "name": "Buy All - Coins: Coins+RDS+Wild Gold + 2 Dice | Gems: Gems + 1 GGS + 3\u2605 Gold + Quest Booster | M Pricing",
           "status": "Buy all",
           "pricing": "Medium",
-          "desc": "Coins denom: Coins+RDS+Wild Gold + 2 Parasheep\nGems denom: Gems + 1 GGS + 3\u2605 Gold + Quest Booster",
+          "desc": "Coins denom: Coins+RDS+Wild Gold + 2 Dice\nGems denom: Gems + 1 GGS + 3\u2605 Gold + Quest Booster",
           "backup": false
         },
         {
-          "name": "Win Master \u2014 5\u2605 Reg card + 2 Parasheep",
+          "name": "Win Master \u2014 5\u2605 Reg card + 2 Dice",
           "status": "Core",
           "pricing": null,
-          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 5\u2605 Reg card + 2 Parasheep\nControl cohort (~80%) \u2014 standard Core challenge (Puzzle M.E.S is ~20% test only).",
+          "desc": "Gameplay Core \u2014 coin-sink challenge; complete missions/tasks for prize in title.\nWin Master \u2014 5\u2605 Reg card + 2 Dice\nControl cohort (~80%) \u2014 standard Core challenge (Puzzle M.E.S is ~20% test only).",
           "backup": false
         },
         {
           "name": "ADS PO \u2014 Quest Booster",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Quest Booster.\nContext: Short-term Battlesheep \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Quest Booster.\nContext: Short-term SNL \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         }
       ],
@@ -2529,7 +2529,7 @@
       "banner": null,
       "seasons": [
         {
-          "name": "Battlesheep",
+          "name": "SNL",
           "status": "Short Term",
           "isFirst": false,
           "desc": ""
@@ -2568,10 +2568,10 @@
           "backup": false
         },
         {
-          "name": "DD- 4\u2605 Gold card (on purchase) + AS",
+          "name": "DD- 4\u2605 Gold card (on purchase) + 2 Dice",
           "status": "Daily deal",
           "pricing": "Max",
-          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + AS.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + 2 Dice.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
           "backup": false
         },
         {
@@ -2634,7 +2634,7 @@
           "name": "ADS PO \u2014 Coins",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term Battlesheep \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Coins.\nContext: Short-term SNL \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         },
         {
@@ -2658,8 +2658,8 @@
         {
           "name": "SNL",
           "status": "Short Term",
-          "isFirst": true,
-          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Any \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 3 (Shiny Series 3). Full tables: mm_calendar/nivi_collector_album_prizes.md"
+          "isFirst": false,
+          "desc": ""
         },
         {
           "name": "Quest",
@@ -2875,10 +2875,10 @@
       "banner": null,
       "seasons": [
         {
-          "name": "SNL",
+          "name": "Blast",
           "status": "Short Term",
-          "isFirst": false,
-          "desc": ""
+          "isFirst": true,
+          "desc": "Short-term board (~5d): cycle prizes \u2014 (1) Wild Any \u00b7 (2) 5\u2605 Regular Pack \u00b7 (3) 4\u2605 Regular Pack. Collector's Album phase 3 (Shiny Series 3). Full tables: mm_calendar/nivi_collector_album_prizes.md"
         },
         {
           "name": "Quest",
@@ -2931,7 +2931,7 @@
           "name": "Decoy Bonanza \u2014 d3: Wild Ord + bundle | H Pricing",
           "status": "Offers & coin sale",
           "pricing": "High",
-          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + Wild Ord",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + Quest Booster\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + Wild Ord",
           "backup": false
         },
         {
@@ -2949,10 +2949,10 @@
           "backup": false
         },
         {
-          "name": "ADS PO \u2014 2 Dice",
+          "name": "ADS PO \u2014 2 Picks",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Dice.\nContext: Short-term SNL \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 2 Picks.\nContext: Short-term Blast \u00b7 Mid-term Quest.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         }
       ],
@@ -2967,7 +2967,7 @@
       "banner": null,
       "seasons": [
         {
-          "name": "SNL",
+          "name": "Blast",
           "status": "Short Term",
           "isFirst": false,
           "desc": ""
@@ -2999,10 +2999,10 @@
       ],
       "items": [
         {
-          "name": "DD- 5\u2605 Gold card (on purchase) + Multiwheel",
+          "name": "DD- 5\u2605 Gold card (on purchase) + PAB",
           "status": "Daily deal",
           "pricing": "Max",
-          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 5\u2605 Gold card (on purchase) + Multiwheel.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 5\u2605 Gold card (on purchase) + PAB.\nPricing: Max \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).",
           "backup": false
         },
         {
@@ -3051,7 +3051,7 @@
           "name": "ADS PO \u2014 3\u2605 Reg card",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3\u2605 Reg card.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3\u2605 Reg card.\nContext: Short-term Blast \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         }
       ],
@@ -3066,7 +3066,7 @@
       "banner": null,
       "seasons": [
         {
-          "name": "SNL",
+          "name": "Blast",
           "status": "Short Term",
           "isFirst": false,
           "desc": ""
@@ -3098,17 +3098,17 @@
       ],
       "items": [
         {
-          "name": "DD- 5\u2605 Reg card (on purchase) + Shield (BOGO \u2014 task config)",
+          "name": "DD- 5\u2605 Reg card (on purchase) + Picks (BOGO \u2014 task config)",
           "status": "Daily deal",
           "pricing": "High",
-          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 5\u2605 Reg card (on purchase) + Shield (BOGO \u2014 task config).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nReg HW bank full \u2014 Reg DD (no Hammer Wheel)",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 5\u2605 Reg card (on purchase) + Picks (BOGO \u2014 task config).\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nReg HW bank full \u2014 Reg DD (no Hammer Wheel)",
           "backup": false
         },
         {
           "name": "Decoy Bonanza \u2014 d3: 4\u2605 Gold + bundle | H Pricing",
           "status": "Offers & coin sale",
           "pricing": "Medium",
-          "desc": "d1 (coin+RDS base): Coins + 4 RDS + 2 Dice\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Hero Coins\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 4\u2605 Gold",
+          "desc": "d1 (coin+RDS base): Coins + 4 RDS + Superboom\nd2 (gem+GGS base, decoy middle): Gems + 1 GGS + 3000 Hero Coins\nd3 (bundle): Coins + Gems + 4 RDS + 2 GGS + 3 Hammers + 100% SB + 4\u2605 Gold",
           "backup": false
         },
         {
@@ -3126,17 +3126,17 @@
           "backup": false
         },
         {
-          "name": "Spin Zone \u2014 5\u2605 Ace card chase",
+          "name": "Spin Zone \u2014 Superboom chase",
           "status": "Core",
           "pricing": null,
-          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): 5\u2605 Ace card.\nShort-term context: SNL.",
+          "desc": "Platform: Spin Zone \u2014 coin-sink Core; complete spins/missions for prize in title.\nPrize (this instance): Superboom.\nShort-term context: Blast.",
           "backup": false
         },
         {
           "name": "ADS PO \u2014 Gems",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): Gems.\nContext: Short-term Blast \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         },
         {
@@ -3158,7 +3158,7 @@
       "banner": null,
       "seasons": [
         {
-          "name": "SNL",
+          "name": "Blast",
           "status": "Short Term",
           "isFirst": false,
           "desc": ""
@@ -3190,10 +3190,10 @@
       ],
       "items": [
         {
-          "name": "DD- 4\u2605 Gold card (on purchase) + 2 Dice",
+          "name": "DD- 4\u2605 Gold card (on purchase) + Superboom",
           "status": "Daily deal",
           "pricing": "High",
-          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + 2 Dice.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nGold bank full \u2014 planned stars",
+          "desc": "Platform: Daily Deal \u2014 Coins + Gems + 1 central reward slot.\nCentral reward (this instance): 4\u2605 Gold card (on purchase) + Superboom.\nPricing: High \u2014 SKU generosity scales with tier (High \u2248 up to ~8 Hammers equivalent).\nPurchase rule: standard DD (multiple purchases unless marked once-per-player).\n\nGold bank full \u2014 planned stars",
           "backup": false
         },
         {
@@ -3225,10 +3225,10 @@
           "backup": false
         },
         {
-          "name": "Buy All - Coins: Coins+RDS+5\u2605 Reg + 2 Dice | Gems: Gems + 1 GGS + 5\u2605 Reg + 3000 Hero Coins | M Pricing",
+          "name": "Buy All - Coins: Coins+RDS+5\u2605 Reg + Superboom | Gems: Gems + 1 GGS + 5\u2605 Reg + 3000 Hero Coins | M Pricing",
           "status": "Buy all",
           "pricing": "Medium",
-          "desc": "Coins denom: Coins+RDS+5\u2605 Reg + 2 Dice\nGems denom: Gems + 1 GGS + 5\u2605 Reg + 3000 Hero Coins",
+          "desc": "Coins denom: Coins+RDS+5\u2605 Reg + Superboom\nGems denom: Gems + 1 GGS + 5\u2605 Reg + 3000 Hero Coins",
           "backup": false
         },
         {
@@ -3242,7 +3242,7 @@
           "name": "ADS PO \u2014 3000 Hero Coins",
           "status": "ADS",
           "pricing": null,
-          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3000 Hero Coins.\nContext: Short-term SNL \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
+          "desc": "Platform: ADS PO (SPO) \u2014 reward gated by watching an ad; low-tier prize only.\nPrize (this instance): 3000 Hero Coins.\nContext: Short-term Blast \u00b7 Mid-term Globez.\nRules: no Gold / Shiny / Wild / 4\u20135\u2605 Ace on ADS; prize must match active Short/Mid Term (see label).",
           "backup": false
         }
       ],

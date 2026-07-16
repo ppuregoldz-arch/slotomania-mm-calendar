@@ -1,7 +1,8 @@
 # 07 — Seasons · Album · Cards
 
 ## Always-on לבדוק בכל יום
-- **Short Term** (Blast / Battlesheep / SNL) — SKU תואם בלבד
+- **Short Term** (Blast / Battlesheep / SNL) — SKU תואם בלבד  
+  **משך:** Blast/Battlesheep ~**5d** · **SNL 3–4d** (לא 5)
 - **Mid Term** (Quest / Globez / Figz) — Booster vs 3000 Hero Coins
 - **Album phase** — פתיחה / אמצע / **שבוע אחרון** (Wild בלבד בהצעות רכישה)
 

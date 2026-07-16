@@ -9,6 +9,15 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+---
+
+### 2026-07-16 — Agent — SNL Short Term 3–4 days (guidelines + builder)
+
+- **Goal:** Itay — SNL season length **3–4 days** (not ~5).
+- **Done:** `lanes.md`, `constraints.md`, `rules_cheatsheet.md`, `monthly_guidelines/2026-08.md`, `nivi_collector_album_prizes.md`, `topics/07`, decision tree, `mm_calendar_builder.mdc`. Builder blocks: SNL **11–13** + **24–27**; descriptions `~3-4d` vs `~5d`.
+- **Commands run:** `build_august_2026_plan.py` ✓, git push
+- **Notes:** Aug **1–15 Monday** may still differ until season rows synced; plan JSON reflects new ST timeline for full month.
+
 ### 2026-07-16 — Agent — Git sync mandatory for `.cursor/rules/`
 
 - **Goal:** Every rules change must land on GitHub for the team.

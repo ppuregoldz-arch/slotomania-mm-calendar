@@ -51,7 +51,7 @@
 | שלב | מה עושים (במילים פשוטות) | מה **מחליטים** כאן |
 |-----|---------------------------|---------------------|
 | **1** | פותחים guidelines החודש | Hammers, MGAP, GGS, Gems Sale, **שורת קלפים לכל שבוע** |
-| **2** | משרטטים עונות על ציר הזמן | Short Term ~5 ימים (Blast / Battlesheep / SNL), Mid (Quest/Globez/Figz + Winovate + Mega Pods), שלב Album |
+| **2** | משרטטים עונות על ציר הזמן | Short Term: **Blast/Battlesheep ~5d** · **SNL 3–4d** · Mid (Quest/Globez/Figz + Winovate + Mega Pods), שלב Album |
 | **3** | שמים «עוגנים» שלא זזים | שני Dash · חמישי Golden Spin · רביעי Piggy · Lotto peak · **2 MGAP בשבוע** · מכירת סופ"ש **שישי+שבת** · Price Cut פעמיים בחודש · Rolling BMFL בימי MFL |
 | **4** | **לכל יום** — Daily Deal | איזה קלף/פרס מרכזי; אם DD **Once** (Wild/Shiny) → **חובה** DD **Multiple** באותו יום |
 | **5** | **לכל יום** — הצעה שנייה (VFM) | RYD / Buy All / Decoy / Rolling / PM — ראה **חלק ג**; **לא** אותו סוג כמו אתמול |
