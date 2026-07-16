@@ -131,19 +131,22 @@ def missing_dependencies(row: dict[str, Any], description: str) -> list[str]:
     return missing
 
 
+def m_and_m_status(row: dict[str, Any], missing: list[str]) -> str:
+    if row.get("config") == "MCP needed":
+        return "Missing MCP"
+    if any(entry.startswith("Art:") for entry in missing):
+        return "Missing art"
+    return "More Info required"
+
+
 def operational_description(
     *,
-    day_iso: str,
     row: dict[str, Any],
     detail: str,
-    end_iso: str,
     missing: list[str],
 ) -> str:
     lines = [
         "Production",
-        f"Start: {day_iso} {PROMO_TIME}",
-        f"End: {end_iso} {PROMO_TIME}",
-        "",
         "Audience: TBD - owner required",
         f"Mechanic / contents: {detail or 'TBD - owner required'}",
     ]
@@ -164,7 +167,7 @@ def operational_description(
     lines.extend(
         [
             "",
-            f"Source: MM calendar {day_iso} - {normalize_task_name(row['name'])}",
+            f"Source: MM calendar item - {normalize_task_name(row['name'])}",
             "Recent Ops reference: TBD - owner required (3-month window)",
             "Reuse: TBD - verify exact recent execution and current delta",
         ]
@@ -203,15 +206,13 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "end_at": f"{end_iso} {PROMO_TIME}",
         "start_time": "11:00:00",
         "end_time": "11:00:00",
-        "m_and_m_status": "MM Work in Progress",
+        "m_and_m_status": m_and_m_status(row, missing),
         "times_per_player": frequency,
         "reuse": None,
         "recent_ops_reference": None,
         "description": operational_description(
-            day_iso=start_iso,
             row=row,
             detail=detail,
-            end_iso=end_iso,
             missing=missing,
         ),
         "requires_review": True,

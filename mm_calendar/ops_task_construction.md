@@ -87,8 +87,9 @@ The plan-driven builder can draft only what exists in the source plan. Missing e
 - An inclusive calendar range ends at 11:00 UTC on the day after its final listed date.
 - Night Plan uses `00:00 UTC` only when the source explicitly says Night Plan.
 - Never copy the historical March `12:00 UTC` convention into August.
-- Write the same dates into `date_mm0f8tdb` and `date_mm0fr8sp`; the Description carries exact UTC times.
-- Include the exact clock time in both Monday date columns (`date` + `time`), not only in Description.
+- Write scheduling dates and exact clock times only into `date_mm0f8tdb` and `date_mm0fr8sp`.
+- Do not repeat production dates, start/end times, reset times, or date ranges in Description.
+- Monday stores date-column times as UTC and renders the same instant in the viewer's local timezone. Keep the stored value correct; do not offset it merely to force a particular display time.
 - Standard promo window: 11:00 UTC to 11:00 UTC the next day. Time-limited and Night Plan tasks use their exact approved hours.
 
 ## Naming
@@ -108,9 +109,6 @@ Normalize symbols only for readability (`★` may remain `★`). Do not prepend 
 
 ```text
 Production
-Start: <YYYY-MM-DD HH:MM UTC>
-End: <YYYY-MM-DD HH:MM UTC>
-
 Audience: <confirmed audience or All eligible players>
 Mechanic: <execution instruction>
 Pricing: <High / Max / Mid / Low, if applicable>
@@ -221,7 +219,8 @@ BMFL is exactly 3 cycles and High pricing. Never substitute the deprecated Free1
 - **Never write Operation Status** (`dup__of_m_m_status1`). Leave it blank; Ops owns this lifecycle.
 - The agent owns `M&M Status` and may set it according to handoff completeness.
 - Use `M&M Completed` only when Monetization supplied an execution-ready definition.
-- Use `MM Work in Progress` when required mechanic, audience, reward, parameter, or source material is still missing.
+- Use the most specific current blocker status when one exists: `Missing MCP`, `Missing art`, `Missing Art+Config`, `Missing Config`, `Missing List`, `Missing Test Groups`, `Waiting for economy`, or `More Info required`.
+- Use `MM Work in Progress` only when Monetization is actively drafting and no more specific blocker label applies.
 - Never use M&M Status to claim that Ops configured, scheduled, QA'd, or completed the promo.
 - Put `Once` / `Multiple` only in the dedicated `Times per player` column. Do not repeat it in Description.
 

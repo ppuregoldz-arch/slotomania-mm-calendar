@@ -36,13 +36,13 @@
       "start_time": "11:00:00",
       "end_time": "11:00:00",
       "due_date": "2026-07-30",
-      "m_and_m_status": "M&M Completed",
+      "m_and_m_status": "Missing MCP",
       "times_per_player": "Once",
       "reuse": true,
       "recent_ops_reference": "2026-05-18 item 11977017447",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nStart: 2026-08-01 11:00 UTC\nEnd: 2026-08-02 11:00 UTC\nReset: 2026-08-02 00:00 UTC\n\nAudience: All eligible players; no segment override is stated in the MM row.\nOffer contents: Coins + Gems + 100% SlotoBucks + 5* Gold Card.\nPricing: High.\n\nReuse: YES - reuse the recent High-price 100% SB RYD shell from 2026-05-18 (Ops item 11977017447). Current delta: replace 3000 Globez with a 5* Gold Card and update dates. Creative is also marked Reuse on the MM calendar.\n\nDependencies:\n- MCP / Economy task required for the 5* Gold Card.\n- Ops config must use the current approved RYD pricing/config; do not copy older pre-May tasks.\n\nSource: MM calendar item 12464095650\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11977017447"
+      "description": "Production\nAudience: All eligible players; no segment override is stated in the MM row.\nOffer contents: Coins + Gems + 100% SlotoBucks + 5* Gold Card.\nPricing: High.\n\nReuse: YES - reuse the latest verified High-price 100% SB RYD shell (Ops item 11977017447). Current delta: replace 3000 Globez with a 5* Gold Card. Creative is also marked Reuse on the MM calendar.\n\nDependencies:\n- MCP / Economy task required for the 5* Gold Card.\n- Ops config must use the current approved RYD pricing/config.\n\nSource: MM calendar item 12464095650\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11977017447"
     },
     {
       "parent_day": "2026-08-01",
@@ -65,7 +65,7 @@
       "recent_ops_reference": "2026-05-09 item 11936779021",
       "requires_review": false,
       "warnings": [],
-      "description": "Night Plan\nStart: 2026-08-01 00:00 UTC\nEnd: 2026-08-01 11:00 UTC (Promo Time)\n\nAudience: All eligible Lotto players.\nMechanic: Lotto balls are 30% bigger for the Night Plan window.\n\nReuse: YES - reuse the recent LBP Bigger Balls operational shell/UI from 2026-05-09 (Ops item 11936779021). Current delta: 40% Bigger Balls -> 30% Bigger Balls, and update the window to 00:00-11:00 UTC. Do not copy older LBP tasks.\n\nDependencies:\n- Update and QA the LBP config for 30%.\n- Confirm the current UI supports the 30% value before scheduling.\n\nSource: MM calendar item 12464095580\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11936779021"
+      "description": "Night Plan\nAudience: All eligible Lotto players.\nMechanic: Lotto balls are 30% bigger for the Night Plan window.\n\nReuse: YES - reuse the latest verified LBP Bigger Balls operational shell/UI (Ops item 11936779021). Current delta: 40% Bigger Balls -> 30% Bigger Balls.\n\nDependencies:\n- Update and QA the LBP config for 30%.\n- Confirm the current UI supports the 30% value before scheduling.\n\nSource: MM calendar item 12464095580\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11936779021"
     },
     {
       "parent_day": "2026-08-01",
@@ -88,7 +88,7 @@
       "recent_ops_reference": "2026-05-27 item 12091440866",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nStart: 2026-08-01 11:00 UTC\nEnd: 2026-08-02 11:00 UTC\n\nAudience: Standard ADS PO audience.\nPrize: Coins.\nSeason context: Short Term Blast + Mid Term Quest.\n\nReuse: YES - same ADS PO Coins execution as the latest recent task on 2026-05-27 (Ops item 12091440866); update dates and active-season context only. Creative is marked Reuse on the MM calendar.\n\nDependencies:\n- Configure and QA the Coins ADS PO for the production window.\n- ADS remains a separate product; do not merge it into Daily Deal.\n\nSource: MM calendar item 12464095723\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/12091440866"
+      "description": "Production\nAudience: Standard ADS PO audience.\nPrize: Coins.\nSeason context: Short Term Blast + Mid Term Quest.\n\nReuse: YES - use the latest verified ADS PO Coins execution (Ops item 12091440866); update the active-season context only. Creative is marked Reuse on the MM calendar.\n\nDependencies:\n- Configure and QA the Coins ADS PO for the production window.\n- ADS remains a separate product; do not merge it into Daily Deal.\n\nSource: MM calendar item 12464095723\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/12091440866"
     },
     {
       "parent_day": "2026-08-01",
@@ -111,7 +111,7 @@
       "recent_ops_reference": "2026-05-12 item 11879878314",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nStart: 2026-08-01 11:00 UTC\nEnd: 2026-08-02 11:00 UTC\n\nAudience: Standard generic Custom Pod audience; no segment override is stated.\nMechanic: Generic Custom Pod with prizes up to X1000.\n\nReuse: YES - reuse the latest recent generic Custom Pod operational flow from 2026-05-12 (Ops item 11879878314). Current delta: X1200 -> X1000 and update dates. Do not follow the older task linked inside that May item because it is outside the 3-month reference window.\n\nOperational requirements:\n- Apply the current X1000 config and UI.\n- At end time, restore the active Mega Pods season configuration.\n\nSource: MM calendar item 12464095595\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11879878314"
+      "description": "Production\nAudience: Standard generic Custom Pod audience; no segment override is stated.\nMechanic: Generic Custom Pod with prizes up to X1000.\n\nReuse: YES - reuse the latest verified generic Custom Pod operational flow (Ops item 11879878314). Current delta: X1200 -> X1000.\n\nOperational requirements:\n- Apply the current X1000 config and UI.\n- When the task ends, restore the active Mega Pods season configuration.\n\nSource: MM calendar item 12464095595\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11879878314"
     },
     {
       "parent_day": "2026-08-01",
@@ -128,13 +128,13 @@
       "start_time": "11:00:00",
       "end_time": "11:00:00",
       "due_date": "2026-07-30",
-      "m_and_m_status": "MM Work in Progress",
+      "m_and_m_status": "More Info required",
       "times_per_player": null,
       "reuse": false,
       "recent_ops_reference": "No recent Ops precedent found from 2026-05-01 through 2026-07-31",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nStart: 2026-08-01 11:00 UTC\nEnd: 2026-08-02 11:00 UTC\n\nAudience: Store-eligible players.\nMechanic: Add a new biggest store denom that grants both Coins and Gems, following the approved 4th of July American-denom concept.\n\nReuse: NO - the MM calendar marks this as New promo, and no relevant Ops task exists in the 3-month reference window.\n\nRequired before configuration:\n- Monetization must provide the exact denom price, Coins amount, Gems amount, segment eligibility, and store placement.\n- Ops must create and QA a new config after those values are supplied.\n\nSource: MM calendar item 12464180399\nRecent Ops reference: No recent precedent found (2026-05-01 to 2026-07-31)."
+      "description": "Production\nAudience: Store-eligible players.\nMechanic: Add a new biggest store denom that grants both Coins and Gems, following the approved American-denom concept.\n\nReuse: NO - the MM calendar marks this as New promo, and no relevant recent Ops task exists.\n\nRequired before configuration:\n- Monetization must provide the exact denom price, Coins amount, Gems amount, segment eligibility, and store placement.\n- Ops must create and QA a new config after those values are supplied.\n\nSource: MM calendar item 12464180399\nRecent Ops reference: No recent precedent found."
     },
     {
       "parent_day": "2026-08-01",
@@ -151,13 +151,13 @@
       "start_time": "11:00:00",
       "end_time": "11:00:00",
       "due_date": "2026-07-30",
-      "m_and_m_status": "M&M Completed",
+      "m_and_m_status": "Missing MCP",
       "times_per_player": "Multiple",
       "reuse": true,
       "recent_ops_reference": "2026-05-25 item 11967559266",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nStart: 2026-08-01 11:00 UTC\nEnd: 2026-08-02 11:00 UTC\n\nAudience: All eligible players; no segment split is stated.\nDaily Deal contents: Coins + Gems + 3* Regular Card + Hammers Wheel.\nPricing: High.\n\nReuse: YES - reuse the latest recent High-price Daily Deal shell from 2026-05-25 (Ops item 11967559266). Current delta: replace the 8-Hammers reward with 3* Regular Card + Hammers Wheel. Creative is marked Reuse on the MM calendar.\n\nDependencies:\n- MCP / Economy task required for the 3* Regular Card.\n- Use the current High-price DD config; do not copy older pricing/configs.\n\nSource: MM calendar item 12475692413\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11967559266"
+      "description": "Production\nAudience: All eligible players; no segment split is stated.\nDaily Deal contents: Coins + Gems + 3* Regular Card + Hammers Wheel.\nPricing: High.\n\nReuse: YES - reuse the latest verified High-price Daily Deal shell (Ops item 11967559266). Current delta: replace the 8-Hammers reward with 3* Regular Card + Hammers Wheel. Creative is marked Reuse on the MM calendar.\n\nDependencies:\n- MCP / Economy task required for the 3* Regular Card.\n- Use the current High-price DD config.\n\nSource: MM calendar item 12475692413\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11967559266"
     },
     {
       "parent_day": "2026-08-01",
@@ -174,13 +174,13 @@
       "start_time": "11:00:00",
       "end_time": "11:00:00",
       "due_date": "2026-07-30",
-      "m_and_m_status": "M&M Completed",
+      "m_and_m_status": "Missing art",
       "times_per_player": "Multiple",
       "reuse": true,
       "recent_ops_reference": "2026-05-31 item 11869597335",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nStart: 2026-08-01 11:00 UTC\nEnd: 2026-08-02 11:00 UTC\n\nAudience: All eligible Shiny Show players.\nMechanic: Joker Edition; all items/prizes are cards; 21 floors.\n\nReuse: YES for the operational config and flow - use the exact recent Joker All Cards task from 2026-05-31 (Ops item 11869597335). Creative delta: the MM calendar requires a New theme for promo, so the old art is not the final current art.\n\nOperational requirements:\n- Reuse the 21-floor all-cards/Joker config.\n- Add the new approved theme art before scheduling.\n- Arena banner CTA opens the main inapp, matching the recent flow.\n\nSource: MM calendar item 12486308699\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11869597335"
+      "description": "Production\nAudience: All eligible Shiny Show players.\nMechanic: Joker Edition; all items/prizes are cards; 21 floors.\n\nReuse: YES for the operational config and flow - use the latest verified Joker All Cards task (Ops item 11869597335). Creative delta: the MM calendar requires a New theme for promo, so the old art is not the final current art.\n\nOperational requirements:\n- Reuse the 21-floor all-cards/Joker config.\n- Add the new approved theme art before scheduling.\n- Arena banner CTA opens the main inapp, matching the recent flow.\n\nSource: MM calendar item 12486308699\nRecent Ops reference: https://playtika.monday.com/boards/2109172490/pulses/11869597335"
     },
     {
       "parent_day": "2026-08-01",
@@ -197,13 +197,13 @@
       "start_time": "11:00:00",
       "end_time": "11:00:00",
       "due_date": "2026-07-30",
-      "m_and_m_status": "MM Work in Progress",
+      "m_and_m_status": "More Info required",
       "times_per_player": null,
       "reuse": false,
       "recent_ops_reference": "No matching Win Master challenge found from 2026-05-01 through 2026-07-31; 2026-05-29 item 11869150703 is a different MES mechanic",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nStart: 2026-08-01 11:00 UTC\nEnd: 2026-08-02 11:00 UTC\n\nAudience: Not defined in the MM source.\nPrize: 3* Regular Card + PAB.\nIntended role: Core coin-sink challenge.\n\nReuse: NO operational reuse verified. The MM Creative Label says Reuse, but the only recent Win Master reference found (2026-05-29, Ops item 11869150703) is a different MES/bar mechanic and must not be copied.\n\nRequired before configuration:\n- Define the exact challenge requirement, eligible machines/exclusions, effort and minimum-bet parameters, Once/Multiple behavior, triggers, surfaces, CTA, and winner flow.\n- MCP / Economy task required for the 3* Regular Card.\n\nSource: MM calendar item 12486193098\nRejected recent reference: https://playtika.monday.com/boards/2109172490/pulses/11869150703 (different mechanic)"
+      "description": "Production\nAudience: Not defined in the MM source.\nPrize: 3* Regular Card + PAB.\nIntended role: Core coin-sink challenge.\n\nReuse: NO operational reuse verified. The MM Creative Label says Reuse, but the recent Win Master reference found (Ops item 11869150703) is a different MES/bar mechanic and must not be copied.\n\nRequired before configuration:\n- Define the exact challenge requirement, eligible machines/exclusions, effort and minimum-bet parameters, Once/Multiple behavior, triggers, surfaces, CTA, and winner flow.\n- MCP / Economy task required for the 3* Regular Card.\n\nSource: MM calendar item 12486193098\nRejected recent reference: https://playtika.monday.com/boards/2109172490/pulses/11869150703 (different mechanic)"
     },
     {
       "parent_day": "2026-08-01",
@@ -220,13 +220,13 @@
       "start_time": "11:00:00",
       "end_time": "11:00:00",
       "due_date": "2026-08-01",
-      "m_and_m_status": "MM Work in Progress",
+      "m_and_m_status": "More Info required",
       "times_per_player": null,
       "reuse": false,
       "recent_ops_reference": "No matching Cozy Blast execution found from 2026-05-01 through 2026-07-31; May tasks are Cinco de Mayo or Booming Blast variants",
       "requires_review": false,
       "warnings": [],
-      "description": "Production\nStart: 2026-08-01 11:00 UTC\nEnd: 2026-08-06 11:00 UTC\n\nTheme / variant: Cozy Blast.\nApproved cycle prizes:\n1. Cycle 1 - Wild Ordinary\n2. Cycle 2 - 5* Regular Pack\n3. Cycle 3 - 4* Regular Pack\nAlbum context: Phase 1 / Shiny Series 1.\n\nReuse: NO recent matching operational task. The May 1 Cinco de Mayo Blast and May 14 Booming Blast use different mechanics and must not be copied. The MM calendar requires a New theme for promo.\n\nRequired before configuration:\n- Provide the exact current Cozy Blast mechanic/reference, journey SKU behavior, audience/segment, config file, winner flow, and new theme art.\n- Do not use Cozy Blast tasks older than 2026-05-01.\n\nSource: MM calendar item 12488377591\nRecent Ops reference: No matching precedent found in the 3-month window."
+      "description": "Production\nTheme / variant: Cozy Blast.\nApproved cycle prizes:\n1. Cycle 1 - Wild Ordinary\n2. Cycle 2 - 5* Regular Pack\n3. Cycle 3 - 4* Regular Pack\nAlbum context: Phase 1 / Shiny Series 1.\n\nReuse: NO recent matching operational task. The recent Cinco de Mayo Blast and Booming Blast references use different mechanics and must not be copied. The MM calendar requires a New theme for promo.\n\nRequired before configuration:\n- Provide the exact current Cozy Blast mechanic/reference, journey SKU behavior, audience/segment, config file, winner flow, and new theme art.\n\nSource: MM calendar item 12488377591\nRecent Ops reference: No matching precedent found in the 3-month window."
     }
   ]
 }

@@ -5,6 +5,16 @@ Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
 
 ---
 
+### 2026-07-16 — GPT-5.6 Sol — Ops descriptions and blocker statuses
+
+- **Goal:** Remove scheduling data from Ops descriptions and correct M&M ownership/status semantics.
+- **Done:** Removed all dates and times from the nine August 1 task descriptions. Changed M&M Status to the specific handoff blocker (`Missing MCP`, `Missing art`, or `More Info required`) while retaining `M&M Completed` only for execution-ready tasks. Preserved the true UTC instants in Start/End columns and verified Operation Status remains blank.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/2026-08-01.json`, `scripts/build_ops_tasks_from_plan.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓, payload validation ✓, targeted Monday update of 9 existing subitems ✓, live UTC/status/description verification ✓, full Monday sync n/a.
+- **Notes for next agent:** Monday stores `11:00:00` UTC but viewers at UTC+3 see 14:00; this is expected localization, not a three-hour scheduling error.
+
+---
+
 ### 2026-07-16 — GPT-5.6 Sol — Ops field ownership corrections
 
 - **Goal:** Correct field ownership and timing on the 1 August Ops handoff.
