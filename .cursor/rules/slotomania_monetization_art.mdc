@@ -84,9 +84,9 @@ For every non-Reuse promo:
 
 ## References
 
-- **CRM3 reference ladder** (every actionable subitem): (1) same trigger + same prize → strongest reuse/ref; (2) same trigger + different prize → preferred **Prize Change** ref; (3) same feature only → weaker — **state match tier in the Reference row** (e.g. `Same trigger: break piggy; prize differs: 5 Hammers → 2 PAB`). See `BRIEF_WRITING_STANDARDS.md`.
-- **Reference** and **Reference Link** are always separate rows. **Reference** holds the match-tier sentence plus embedded PNG preview when uploaded; **Reference Link** contains only its direct URL or exact CRM3 file/folder path.
-- **Prize Change** and **New theme for promo** subitems use **`What to change` · `Reference` · `Reference Link`** (not Task/Keep). **Reference Link** = CRM3 **folder** for that asset type (e.g. `...\Inapp`); never put `monday.com/protected_static/...` in the link row (preview PNGs belong in **Reference** only when uploaded).
+- **CRM3 reference ladder** (agent picks folder): (1) same trigger + same prize; (2) same trigger + different prize; (3) same feature weaker. Ladder prose stays **internal** — subitem **Reference** is **short ref name only** (+ optional preview). See `BRIEF_WRITING_STANDARDS.md`.
+- **Reference** and **Reference Link** are separate columns. **Reference** = short label (+ embedded PNG when uploaded). **Reference Link** = CRM3 folder (Prize/Theme) or file URL when intended — never Monday PNG in the link column.
+- **Prize Change** / **New theme for promo**: **`What to change` · `Reference` · `Reference Link`**. **What to change** = **deltas only**, plain English; one table row per prize when several change. No Task/Keep.
 - **Reference Link** (other labels) = direct attached-image URL or full file path: `Q:\Slotomania\CRM3\...\filename.png` when a file link is intended; folder paths when briefing Prize/Theme deltas without naming one file.
 - **Reference** = embedded preview: upload from CRM3 via `add_file_to_update` → `/v2/file`, then optional `edit_update` with `https://playtika.monday.com/protected_static/7996532/resources/{asset_id}/{filename}`
 - Reference art must match the subitem asset type: Inapp→Inapp, Banner→Banner, Widget→Widget, etc. Never reuse one generic preview across unlike assets.
@@ -105,21 +105,16 @@ For every non-Reuse promo:
 - Seasonal parent title must include the exact required reward; never leave it only as “Season”.
 - Parent brief has exactly two rows: `Creative Label` and `Change`. `Change` states `source → required`; there is no parent reference, asset list, or skeleton row.
 - Every subitem body is only one HTML table. Follow the asset-specific schema in `BRIEF_WRITING_STANDARDS.md`; add no prose before or after it.
-- Standalone MGAP UI tasks use Product `MGAP`, blank Status Creative, Status MM `Brief Done`, the day’s Creative Traffic assignments, and exactly the UI-related subitem(s).
-- Theme cells contain the theme name only. Never include colors, motifs, mood, composition, copy suggestions, or quoted headlines.
-- Do not keep no-action subitems in new briefs; request only the assets that need work.
-- A Link field contains only the URL or exact CRM3 file path—no commentary, provenance prose, or folder instructions.
-- A PNG/reference-art field contains only a real attached image for that exact asset type. If no real matching image exists, omit the row; never create a placeholder or made-up template.
-- **Inapp scope:** Main inapp (hub/prize strip), Journey inapp (mid-event progress), Winner inapp (results/claim). Every promo with a **non–card-only** reward needs a Winner inapp subitem unless Itay narrows scope; **card-only** rewards → no Winner inapp, note `card-only — no winner inapp`. See `PRODUCT_PLAYBOOK.md`.
-- Before writing any Creative instruction, read the latest comparable parent brief and all relevant subitem updates. Derive the required asset scope and wording from what was actually requested/delivered last time—not from the duplicated template alone.
-- Use history to determine the instruction, but do not paste the research into the brief. Summarize as concise parent **Change** and numbered **What to change** steps on Prize/Theme subitems (generic **Task**/**Keep** only for New promo / non-Prize schemas).
+- Standalone MGAP UI tasks use Product `MGAP`, blank Status Creative, Status MM `Brief Done`, Traffic people (Artist + Copywriter split), and UI subitem(s) **only when UI work is needed**. If UI is already shipped (`skip_brief` in script/overrides), **delete** the MGAP UI parent — do not brief it.
+- **Inapp scope:** Main, Journey, Winner per product playbook. **No Winners Inapp** for DD store offers (pre-purchase) or Spinner Clash. Piggy break keeps Winners Inapp when playbook/history includes it. See `PRODUCT_PLAYBOOK.md`.
+- Use history for scope; do not paste MM/ops text into Reference. Parent **Change** + short **What to change** deltas on subitems.
 - If the latest comparable execution used only a subset of template assets, request only that subset. Mark the other duplicated subitems Completed/No Action unless Itay explicitly expands scope.
 - **Win Master exception:** when driven by M.E.S (Mission Event System), open the complete M.E.S asset set every time. Never reduce it to Banner-only from recent execution history.
 - Never infer a missing CTA, version, timer, FP, message, or asset. Use an older matching execution only when the latest task lacks that asset, and document the fallback; otherwise leave it for Itay.
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
 - Every subitem must name its asset and point to the parent's exact Change; the parent carries the full delta so it is not repeated in every asset brief.
-- **Prize Change**: state `Current/source prize → Required prize` once in the parent (e.g. `Break prize: 5 Hammers → 2 PAB`). Asset subitems spell out numbered **What to change** steps; do not use Task/Keep boilerplate.
+- **Prize Change**: parent **Change** once (e.g. `Break prize: 5 Hammers → 2 PAB`). Subitems: **What to change** = deltas only (plain English); no Task/Keep.
 - **New theme for promo**: state `Current/source theme → Required theme` once in the parent. Do not prescribe motifs, palette, mood, composition, logo treatment, or copy; the reference carries the visual cue.
 - **New promo**: do not invent mechanics, prizes, copy, or art direction. Create a clearly marked skeleton for **Itay to complete**; attach only clearly relevant latest references as optional inspiration.
 - The parent **Change** row is the shared Creative request; do not add a second repetitive Creative Request or Assets row.

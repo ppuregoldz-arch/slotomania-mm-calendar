@@ -160,30 +160,28 @@ def table(rows: list[tuple[str, str]]) -> str:
     ) + "</tbody></table>"
 
 
+def vertical_field_table(rows: list[tuple[str, str]]) -> str:
+    """Monday brief table: one label row per field, top to bottom (see Battlesheep refs)."""
+    return "<table><tbody>" + "".join(
+        f"<tr><td><p>{esc(label)}</p></td><td>{cell}</td></tr>"
+        for label, cell in rows
+    ) + "</tbody></table>"
+
+
 def prize_change_table(
     change_lines: list[str],
     reference_cell: str,
     reference_link_cell: str,
 ) -> str:
-    header = (
-        "<thead><tr>"
-        "<th><p><strong>What to change</strong></p></th>"
-        "<th><p><strong>Reference</strong></p></th>"
-        "<th><p><strong>Reference Link</strong></p></th>"
-        "</tr></thead>"
-    )
-    ref_plain = reference_cell.split("<br>", 1)[0]
-    body_parts: list[str] = []
-    for index, line in enumerate(change_lines):
-        ref = reference_cell if index == 0 else ref_plain
-        body_parts.append(
-            "<tr>"
-            f"<td><p>{esc(line)}</p></td>"
-            f"<td>{ref}</td>"
-            f"<td>{reference_link_cell}</td>"
-            "</tr>"
-        )
-    return f"<table>{header}<tbody>{''.join(body_parts)}</tbody></table>"
+    rows: list[tuple[str, str]] = []
+    for line in change_lines:
+        rows.append(("What to change", f"<p>{esc(line)}</p>"))
+    ref_body = reference_cell
+    if ref_body and not ref_body.lstrip().startswith("<"):
+        ref_body = f"<p>{ref_body}</p>"
+    rows.append(("Reference", ref_body or "<p></p>"))
+    rows.append(("Reference Link", reference_link_cell or "<p></p>"))
+    return vertical_field_table(rows)
 
 
 def normalize_name(value: str) -> str:
@@ -992,6 +990,25 @@ def concise_requirement(row: dict[str, str]) -> str:
 
 
 def required_prize_from_row(row: dict[str, str]) -> str:
+    if family(row["name"]) == "daily deal":
+        title = normalize_name(row["name"])
+        if " - " in title:
+            tail = title.split(" - ", 1)[1]
+            tail = re.sub(r"\s*\|\s*H Pricing\s*$", "", tail, flags=re.I)
+            if tail:
+                return tail.strip()
+        for line in row.get("description", "").splitlines():
+            if re.search(r"central reward|100%|hammer", line, re.I):
+                match = re.search(r":\s*(.+)$", line.strip())
+                if match:
+                    return re.sub(
+                        r"\s*\([^)]*\)\s*$",
+                        "",
+                        match.group(1).strip(),
+                    )
+    if family(row["name"]) == "piggy":
+        if "2 PAB" in normalize_name(row["name"]).upper():
+            return "2 PAB"
     for line in row.get("description", "").splitlines():
         if re.search(r"prize", line, re.I):
             match = re.search(r":\s*(.+)$", line.strip())
@@ -1233,7 +1250,7 @@ def reference_label_html(
 ) -> str:
     ref_date = source_date(source)
     if row and family(row["name"]) == "piggy":
-        return esc(f"{ref_date} Piggy break 5 Hammers — {asset}")
+        return esc(f"2026-06-17 Piggy break 5 Hammers — {asset}")
     if row and family(row["name"]) == "spinner clash":
         return esc(f"{ref_date} Spinner Clash — {asset}")
     name = normalize_name(source.get("name") or "")
@@ -1545,6 +1562,9 @@ def write_brief(
         subitems = live_item.get("subitems") or []
     subitems = ensure_playbook_subitems(item_id, row, subitems)
     subitems = prune_non_playbook_subitems(item_id, row, subitems)
+    if playbook_required_subitems(row):
+        live_item = gql(query, {"ids": [item_id]})["items"][0]
+        subitems = live_item.get("subitems") or []
     set_columns(BOARD, item_id, parent_values(row, source, target, assignment))
     upsert_update(
         item_id,

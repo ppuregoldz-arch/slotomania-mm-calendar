@@ -1,4 +1,12 @@
-### 2026-07-19 — Auto — Fix 2026-08-05 Reuse CRM3 refs (ADS PO + Rolling Supersized)
+### 2026-07-19 — Auto — Aug 5 briefs: Itay feedback (plain deltas, scope fixes)
+
+- **Goal:** Apply creative brief training feedback on 2026-08-05; encode in docs + script.
+- **Done:** Subitems use **What to change** deltas only (multi-row per prize); **Reference** = short ref name; no match-tier prose. **No Winners Inapp** on DD (store denom only) or Spinner (Main/Journey/Banner). Piggy keeps Main/Winners/Banner. **MGAP UI - BOGO** `skip_brief` — no new UI task (already on board removed earlier). Re-fetch subitems after prune so stray Winners delete on apply. Marina → Artist, Yarden → Copywriter via Traffic split.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `BRIEF_WRITING_STANDARDS.md`, `PRODUCT_PLAYBOOK.md`, `overrides.yaml`, `.cursor/rules/slotomania_monetization_art.mdc`, `TEAM_WORKLOG.md`.
+- **Commands run:** `apply_selected_august_creative_briefs.py --date 2026-08-05 --commit --allow-in-flight` ✓.
+- **Notes for next agent:** MGAP UI parent absent on 5/8 group is expected. CRM3 ladder stays in docs for agents only.
+
+---
 
 - **Goal:** Reuse consolidated parent on 2026-08-05 must cite ADS Rewarded Video (not ROOC/paid PO) and generic Supersize_Wins rolling art (not Easter skin).
 - **Done:** `apply_selected_august_creative_briefs.py` — `SOURCE_OVERRIDES` for `12464189091` → PO ADS Cards arts; `12510879320` → generic Supersized Wins base pulse; `REUSE_REFERENCE_FOLDER_OVERRIDES`; ADS/Rolling `crm3_folder_path` + `source_reference_path` guards; reuse table uses CRM3 folder links. Docs: `BRIEF_WRITING_STANDARDS.md`, `overrides.yaml`. Monday Reuse `12550314166` refreshed (`--allow-in-flight`).

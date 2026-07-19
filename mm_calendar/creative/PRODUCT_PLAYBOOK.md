@@ -11,13 +11,14 @@ Explicit instructions from Itay override these defaults. Reuse promotions do not
 - **Journey inapp** — mid-event progress, rank, or interim prize frames.
 - **Winner inapp** — end state: results, podium, claim, visible payout.
 
-**Winner inapp rule:** Include **Winners Inapp** (or combined Journey/Winners where the product uses one subitem) for every promo with a **non–card-only** reward. **Card-only** payouts (card art alone, no coins/hammers/SB/mixed packs/wheels): omit Winner inapp and note `card-only — no winner inapp` in scope or parent Change.
+**Winner inapp rule:** Include **Winners Inapp** only when this playbook or a prior brief lists it (Piggy break, Battlesheep, Custom Pod, PYP, etc.). **Do not** add Winners Inapp for **Daily Deal** store offers (pre-purchase), **Spinner Clash** (Main + Journey + Banner only), or other store/denom-first offers unless Itay asks. **Card-only** payouts: omit Winner inapp.
 
 ## Default actionable subitems
 
 | Product | Keep by default | Notes |
 |---|---|---|
-| Daily Deal, standard | `DD (in store)` | Add Inapp/Banner only when explicitly big. No FP row. |
+| Daily Deal, standard | `DD (in store)` / `store denom` | Pre-purchase offer — **no Winners Inapp**. Add Inapp/Banner only when explicitly big. |
+| Spinner Clash | `Main Inapp`, `Journey Inapp`, `Banner` | **No Winners Inapp.** Match prior Spinner briefs. |
 | Daily Deal, BOGO / big | `Store Denom`, `Inapp`, `Winners Inapp` | BOGO is big by default. |
 | Rolling Offer | `Background`, `Banner` | Drop Denom Buy/Free unless requested. |
 | RYD | `Background`, `Banner`, `Denom On`, `Denom Off` | Each denom state needs its own reference. |

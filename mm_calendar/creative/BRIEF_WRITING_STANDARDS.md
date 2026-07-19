@@ -25,6 +25,7 @@ No parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or art di
 ### Subitem updates
 
 - Body is only `<table>...</table>`; no leading or trailing prose.
+- **Layout:** vertical field table — each label is a **left column row**, content in the **right column**, read top to bottom (`What to change` → `Reference` → `Reference Link`, or New promo `BG` → `Main Message` → …). Match live briefs such as [Battlesheep Challenge](https://playtika.monday.com/boards/18112190666/pulses/12393938324); never use a horizontal header row with three field names as columns.
 - Use the shortest unambiguous sentence in each cell.
 - Theme name appears as a name only, once per asset table when its schema includes Theme.
 - Include only theme name, prizes/amounts, mechanic facts, required format constraints, CTA destination, and reference.
@@ -64,7 +65,7 @@ Every real MGAP promotion has a separate `MGAP UI - <variant>` parent in additio
 ## Row rules
 
 - **Main Messages:** one-sentence takeaway for this asset, not literal headline copy.
-- **What to change:** only the **delta** — plain language, one line per change. Do not list what stays the same (no “keep layout unchanged…”). Multiple prizes → **one table row per prize** (repeat Reference / Reference Link on each row).
+- **What to change:** only the **delta** — plain language, one line per change. Do not list what stays the same (no “keep layout unchanged…”). Multiple prizes → **extra rows** labeled `What to change` (stacked top-to-bottom), then one `Reference` row, then one `Reference Link` row — **not** a sideways 3-column grid.
 - **Reference:** **short ref name only** (date + execution + asset, e.g. `2026-07-06 Spinner Clash — Main Inapp`). Optional embedded preview in this cell only. **No** match-tier essay, MM description dump, or “see attached in Monday” filler.
 - **Reference Link:** CRM3 **folder** path for Prize Change and New theme for promo (never a Monday `protected_static` PNG URL in this row).
 - **Timer:** include `Timer | yes` only when explicitly required by the mechanic/source.
