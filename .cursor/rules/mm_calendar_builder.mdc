@@ -108,7 +108,7 @@ alwaysApply: false
 - [ ] **ריטואל אירוע גדול**: Coin Sale + HH Jumbo/Prize Picker + Gemback + Prize Mania + MGAP themed + DD חלונות + SB + Extreme Stamp.
 - [ ] **ריטואל סוף אלבום**: countdown יומי (Last X Days + Where to get cards) + Gold Trading Day + Growing Shiny Show; **פתיחת אלבום**: Starter Pack + 20% Price Cut + קונפיג Mega Pods/Winovate.
 - [ ] **ריטואל השקת מכונה**: Sneak Peek (לפני) -> Launch + MES/Dash tie-ins.
-- [ ] **ADS PO כל יום** עם פרס **נמוך בלבד** (Coins/Gems/Clan Pack/reg נמוך/season). אסור Gold/Shiny Limited/Shiny Card/Ace גבוה/Wild על ADS - הם לערוצים בתשלום.
+- [ ] **ADS PO כל יום** עם פרס **נמוך בלבד** (Coins/Gems/Reg נמוך/פרס עונתי נמוך). **Clan Pack אסור גם ב-ADS.** אסור Gold/Shiny Limited/Shiny Card/Ace גבוה/Wild על ADS - הם לערוצים בתשלום.
 - [ ] **גיוון**: Shiny Show וריאציה שונה כל פעם; Clan-Dash מגוון; הצעות קומבו ולא SKU בודד; DD מגוון יומי.
 - [ ] **קלפים = מאגר/תקרה, לא חובה** (לא יותר מ-Wild אחד per source).
 - [ ] **בנק הקלפים = טבלת ניבי בלבד (HARD)**: כל פרס קלף (Shiny Show/Core/ADS/DD/Offers) מתוך בנק `monthly_guidelines` של אותו שבוע. **אין להמציא** סוג/דרגה שלא בטבלה. דוגמת יולי: **מ-14/7 אין Wild בבנק** (wk1 Reg 3/Shiny/Starter · wk2 עד Ace 3 · wk3 עד Ace 4/Gold 3). חריגה = אישור מפורש בלבד.

@@ -297,6 +297,11 @@ def fetch_ops_history() -> list[dict[str, str]]:
 
 def should_create(row: dict[str, Any]) -> bool:
     name = row["name"].lower()
+    config_status = (row.get("config_status") or "").strip().casefold()
+    if config_status in {"on hold", "canceled", "cancelled"}:
+        return False
+    if re.search(r"\b(?:canceled|cancelled)\b", name):
+        return False
     if "backup" in name:
         return False
     if row["product"] in {"Clan-Dash"}:

@@ -96,6 +96,7 @@ When picking a CRM3 folder, search in this order:
 - **Scope:** **`Inapp` only**. Do not create `store denom`.
 - **Reference (preview):** Embed the actual designer PNG uploaded on pulse [11415353948](https://playtika.monday.com/boards/18112190666/pulses/11415353948), including attachments in the parent Update (for example `Gems_Coupon_Superbowl_Inapp_IC_145.png`). The designer attachment outranks old path prose.
 - **Reference Link:** `Q:\Slotomania\CRM3\Features\Gems\2026\2026_03_14_Gem_Coupon\Inapp`.
+- **Themed exception:** Use a themed Gems Coupon reference only when MM Description explicitly contains `ALLOW_THEMED_GEMS_COUPON`.
 
 ### Prize Mania
 

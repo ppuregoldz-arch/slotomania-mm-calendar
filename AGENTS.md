@@ -77,7 +77,7 @@ python3 scripts/upload_mm_calendar_day_monday.py --day 17
 - **DD pricing ≠ second-offer pricing** on the same day (when both are priced).
 - **Monday upload mapping:** `scripts/upload_mm_calendar_day_monday.py` — only rows that appear in `build_rows()` matter for the board; test with a single day before `--all`.
 - **Lotto peak + LBP:** MM calendar upload leaves **Config Status empty**. The separate Ops handoff must still create two tasks under the calendar day: one Lotto peak task and one LBP task.
-- **LBP timing:** **00:00 UTC → 11:00 UTC (Promo Time)** on the calendar day — not 2h post 12:00 UTC (see `promo_duration_note` in builder).
+- **LBP timing:** Keep both Ops tasks under calendar parent **D**, but their production window is **D+1, 00:00 UTC → 11:00 UTC (Promo Time)** — not 2h after 12:00 UTC (see `ops_task_construction.md`).
 
 Season SKU alignment: `scripts/validate_season_skus.py` (imported from the August builder validation).
 

@@ -15,7 +15,7 @@
 - **Parent and subitems:** Non-Reuse parent = concise Creative Label + Change summary. Actionable subitems use one vertical HTML table; no prose outside it.
 - **References:** `Reference` is the matching embedded preview only. `Reference Link` is the CRM3 folder. Designer-delivered attachments outrank stale path prose.
 - **Generic work:** Do not use a holiday/themed asset for a generic brief. Use themed references only when MM explicitly requests that same theme.
-- **Gems Coupon:** `Inapp` only; no `store denom`. Use the designer-uploaded Inapp PNG from Monetization-Art pulse `11415353948`; link `Q:\Slotomania\CRM3\Features\Gems\2026\2026_03_14_Gem_Coupon\Inapp`.
+- **Gems Coupon:** `Inapp` only; no `store denom`. Use the designer-uploaded Inapp PNG from Monetization-Art pulse `11415353948`; link `Q:\Slotomania\CRM3\Features\Gems\2026\2026_03_14_Gem_Coupon\Inapp`. Themed art requires the explicit MM token `ALLOW_THEMED_GEMS_COUPON`.
 - **MGAP basic UI:** Exactly one subitem named `MGAP UI`; never `Full theme UI` unless MM explicitly asks for full-theme execution.
 - **Prize Mania:** Pricing is configuration, not Creative input. The visible prizes in MM Description are the Hook and must appear in the Creative delta.
 - **Pricing generally:** Strip `H/M/L/Max` pricing from Creative titles, Change, What to change, and Hook.

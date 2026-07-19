@@ -22,14 +22,17 @@
   - other promos: Segment, optional Trigger, Prize;
   - use product-specific schemas only where documented.
 - **No duplicated metadata:** Keep dates/times in Start/End columns and Once/Multiple in its dedicated column. Do not repeat them in Description.
-- **Lotto peak + LBP:** A calendar day with both creates two separate Night Plan tasks. Both run on the following date from `00:00` to `11:00 UTC`.
+- **Lotto peak + LBP:** Calendar parent D creates two separate Night Plan tasks. Both run on D+1 from `00:00` to `11:00 UTC`.
 - **LBP timing:** LBP is the overnight Promo Time window, not an arbitrary two-hour period after 12:00 UTC.
 - **X2 Extreme Stamp:** When an explicit MM row exists, create a separate task with Segment plus `don't forget UI`. Pairing details belong in the related offer task.
 - **Extreme-only scope:** When Itay provides an explicit MM-ID allowlist for an Extreme day, build/write only those rows. Do not pull unrelated same-day tasks into the handoff.
+- **Extreme-day identity:** RYD remains RYD; do not silently replace it with Rolling. Canceled / On Hold MM rows do not become active Ops tasks.
 - **RLAP / Stash Booster:** Segment + eligible-offer Trigger + segmented Prize lines; no Pricing. Use only approved MM rewards and triggers.
 - **X2 GGS:** Calendar amplifier by default; no Ops task unless explicitly requested.
 - **Statuses:** Never write Operation Status. Use the most specific M&M blocker; use `Waiting for MM Approval` only when the handoff is complete and config/MCP is ready or not required.
-- **Safety:** Dry-run first; one day at a time; add/update only. Never delete, move, archive, comment, attach, relate, or assign beyond explicit scope.
+- **Safety:** Dry-run first; one day at a time; add/update only by default. `--replace-day` is destructive and requires explicit approval for that exact parent; `--parent-id` is required when Itay means a nonstandard dated parent. Never move, archive, comment, attach, relate, or assign beyond explicit scope.
+- **Validation:** Run `scripts/validate_ops_task_spec_rules.py` after changing generated specs.
+- **Historical refs:** `documentation/ops_task_refs/` preserves historical voice. Current field order comes from `ops_task_construction.md` and the composer, not old examples that embed dates or dependency prose.
 
 ## Maintenance rule
 

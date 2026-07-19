@@ -68,6 +68,8 @@ If unsure, generate a review spec with `requires_review: true`; do not silently 
 
 Season rows create work only on `isFirst`. Daily promos create work on their scheduled day. Backup items are excluded.
 
+Canceled and On Hold MM rows are not active Ops handoffs. Exclude them unless Itay explicitly asks Ops to prepare a replacement or rollback task.
+
 When Itay supplies an explicit MM-item allowlist for a focused day build (for example an Extreme-only handoff), that allowlist is a HARD scope boundary: build and write only those source rows. Do not add unrelated rows merely because they share the same calendar date. Preserve the allowlist with the generated day spec so the scope is auditable.
 
 When a calendar day contains both Lotto peak and LBP for Night Plan, create **two separate Ops tasks** under that calendar day's parent: one for Lotto peak and one for the LBP mechanic. Their production window is on the following date from `00:00 UTC` through `11:00 UTC`, and both use M&M Status `Night Plan`. Example: tasks under parent `2026-08-01` run on `2026-08-02` from 00:00 to 11:00.
@@ -429,10 +431,12 @@ Never pre-write a success claim or fake a spot-check count.
 - Build only after Itay explicitly asks for a day.
 - Dry-run is the default.
 - One day at a time.
-- Add/update only; never delete or archive.
+- Add/update only by default; never delete or archive without explicit scope.
+- `--replace-day` deletes every subitem under the selected parent before recreating the spec. Use it only after Itay explicitly approves replacement of that exact parent. Use `--parent-id` when the intended dated parent is not the normal `Monday days` item.
 - Match within the parent day by normalized task name.
 - Write and verify `board_relation_mkzvrve9` against the task's `source_mm_item_id`; query `BoardRelationValue.linked_items` for verification because the generic column `text` and `value` fields can be null even when the relation is connected.
 - Do not create a missing day parent unless `--create-day` is explicitly supplied with `--commit`.
 - Creating/updating a task does not authorize comments, assignees, links, files, or statuses beyond the reviewed spec.
 - Show warnings for every TBD and unsupported calendar row.
 - For an approved description-only repair of existing tasks, use `upload_ops_task_monday.py --commit --update-existing --description-only`; this updates only `long_text` and refuses missing tasks.
+- Run `python3 scripts/validate_ops_task_spec_rules.py` after changing generated Ops specs.

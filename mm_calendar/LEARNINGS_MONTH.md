@@ -32,6 +32,14 @@
 - **Evidence:** Low-confidence or confounded evidence is directional, never a confirmed learning.
 - **Validation:** Build, audit, and season-SKU validation must pass before handoff. Do not hand-edit generated JSON to hide a builder failure.
 
+## August 2026 authority and board conventions
+
+- **Split source of truth:** Live Monday is authoritative for August 1–15; the plan/builder remains the working source for August 16–31 until those dates are explicitly approved on Monday.
+- **Refresh after edits:** After every approved Monday mutation, re-pull the live snapshot and regenerate the authority artifacts before using them for planning or Ops.
+- **Daily Deal Size Large:** Preserve `| Size Large |` in the title of approved flagship DD rows; Smart Calendar text may lag a live title correction.
+- **Config due date:** Rows requiring Config or MCP use a due date two calendar days before the promo date unless Itay supplies another deadline.
+- **Validation split:** For August, use `build_august_2026_plan.py` + `audit_august_2026_plan.py`; do not treat the older `validate_calendar.py`/July canvas output as August authority. Track unresolved MGAP/validator drift in `measurement/UNRESOLVED_CONFLICTS.md`.
+
 ## Month workflow
 
 1. Confirm month type, target month, approved economy guidelines, live seasons, events, and business goals.

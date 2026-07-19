@@ -42,7 +42,7 @@
 - **Hammers**: **מקור יחיד ליום (HARD)** — רק מוצר אחד נותן Hammers. Rolling יכול לפרוס על פני denoms/סייקלים שלו, אך **לא במוצר נוסף** באותו יום; שאר ההצעות → פרס חלופי (Picks/PAB/קלף). ≤4/שבוע. Pricing->SKU: Med 3-6 / High ≤8 / Max ≤12.
 - **פרס עונת Mid-Term**: **Globez / Figz → 3000 Hero Coins** (לא Booster) · Quest → Quest Booster.
 - **SKU עונת Short-Term (חייב להתאים לעונה החיה)**: **Blast → Superboom/PAB** · **Battlesheep → Parasheep/Airstrike** · **SNL → Dice/Multiwheel/Shield**. אסור SKU של עונה שלא באוויר. ⚠️ **SnL Dice בכפולות של 2/3 (לא 1).**
-- **MGAP**: **≤3 פרומואים/שבוע** (לפי גיידליין ניבי; יולי=3). **Matched לא עם sale**. מרווח **≥2 ימים** בין פרומואי MGAP. לא בימי שני. **אין MGAP+Bucks** (מגיב חלש — רק BOGO/Bigger/Matched).
+- **MGAP**: **בדיוק 2 פרומואים/שבוע** (ברזל Itay; גובר על גיידליין ישן של ≤3). בשבוע חלקי של פחות מ־4 ימים: לפחות 1. **Matched לא עם sale**. מרווח **≥2 ימים** בין פרומואי MGAP. לא בימי שני. **אין MGAP+Bucks** (מגיב חלש — רק BOGO/Bigger/Matched).
 - **MGAP BOGO**: חובה ב-1 לחודש · **אסור ביום האחרון** · **אסור ביום sale** · בשאיפה **בכל שבוע** · **עדיף יום אחרי sale** (למניעת hangover).
 - **Gems**: x2 GGS ≤2/שבוע; Gems Sale ≤4/חודש.
 - **Dice Booster 24h** ×3/שבוע standalone.
@@ -116,7 +116,7 @@
 - **דעיכה**: המשחק יורד נומינלית מיום ליום - להשוות **בתוך תקופה** (relative), לא על פני חודשים.
 - ⭐ **בסיס ליפט = ממוצע ≥20 יום אחרון (trailing 20d)** — לעולם לא להשוות ליום בודד (±יום). אין להשתמש בעמודת %Difference יום-מול-יום מדשבורדים.
 - להגן על נוכחות: MGAP (הכנסה) · Daily Deal (הכנסה+PU) · Clan-Dash (PU) · Gems · Rolling.
-- **וריאציות מנצחות**: MGAP Bigger Multipliers/BOGO · Rolling Buy-More-for-Less · DD Hammers/Clan Pack · Gems Boosted Gemback · Shiny Show Joker/All Cards.
+- **וריאציות מועדפות לפי הראיות הקיימות**: Rolling Buy-More-for-Less · DD SB Wheel/Wild Supreme · Shiny Show Joker/All Cards. MGAP Bigger/BOGO ו-Boosted Gemback דורשים הקשר וקונפאונדרים; **Clan Pack היסטורי בלבד ואסור לשיבוץ**.
 - **חלשים (למעט)**: Rolling Supersized · DD Wild Any/Parasheep · Shiny Crazy with Aces.
 
 ## צפיפות

@@ -1,3 +1,12 @@
+### 2026-07-19 — GPT-5.6 Sol — Close learning-audit drift
+- **Goal:** Apply the confirmed follow-ups from the Creative, Ops, and month-planning audits.
+- **Done:** Corrected MGAP to exactly 2/week and removed Clan Pack from ADS; clarified LBP parent D vs production D+1; aligned Creative Reference, Reference Link, `Waiting for MM`, and themed Gems opt-in rules; documented August authority refresh, Size Large, Config due −2, destructive Ops replacement, and historical-ref precedence; excluded canceled/On Hold rows in the live Ops builder.
+- **Files:** `mm_calendar/rules_cheatsheet.md`, `.cursor/rules/mm_calendar_builder.mdc`, `AGENTS.md`, `.cursor/rules/slotomania_monetization_art.mdc`, `mm_calendar/creative/overrides.yaml`, `mm_calendar/creative/CRM3_REFERENCE_MAP.md`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `mm_calendar/creative/LEARNINGS_BRIEFS.md`, `mm_calendar/LEARNINGS_MONTH.md`, `mm_calendar/LEARNINGS_OPS.md`, `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/ops_task_construction.md`, `mm_calendar/documentation/ops_task_refs/README.md`, `scripts/build_ops_tasks_from_live_days.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓; Ops eligibility checks ✓; Ops spec validation (10 specs) ✓; YAML parse ✓; scoped `git diff --check` ✓; targeted CRM3 rsync ✓; Monday sync n/a.
+- **Notes for next agent:** Current canon now agrees on MGAP frequency, Clan Pack prohibition, D/D+1 Night Plan timing, Creative status/reference semantics, and destructive Ops safeguards.
+
+---
+
 ### 2026-07-19 — GPT-5.6 Sol — Organize and mirror MM learnings
 - **Goal:** Organize confirmed learnings for Ops tasks, Monetization-Art briefs, and month planning; make the local workspace and CRM3 team share consistent.
 - **Done:** Added three start-here learning indexes; linked them from the router and relevant Cursor rules; backfilled the Extreme-only Ops allowlist; resolved stale X2 Extreme Stamp and Ops-status contradictions; made the two-row Creative parent rule unambiguous; switched current canonical workspace references from CRM2 to CRM3.

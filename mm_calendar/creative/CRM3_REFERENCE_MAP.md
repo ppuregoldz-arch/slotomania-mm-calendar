@@ -48,7 +48,7 @@ Use this after Creative Label classification. Monday history determines the corr
 ## Reference presentation
 
 - `Reference` contains only the embedded image uploaded to Monday.
-- `Reference Link` contains only the exact Windows path: `Q:\Slotomania\CRM3\...\filename.png`.
+- `Reference Link` contains the exact Windows **folder** path for Prize/Theme briefs: `Q:\Slotomania\CRM3\...\folder`. Use a full `...\filename.png` path only when the brief intentionally points to one specific file.
 - Keep `/Volumes/CRM3/...` only for local upload code; never show it to the artist.
 - When multiple required variants are delivered together, embed all required variants in one reference-cell thumbnail grid.
 - If CRM3 is unavailable, keep the exact Windows path and leave the preview empty for later backfill. Never fabricate an image URL.

@@ -5,6 +5,7 @@ Target date: `2026-08-01`; dated-history window starts `2026-05-01`.
 
 These are writing and duplication references, not permission to copy blindly.
 Use the newest exact promo/variant in the valid window; otherwise use the template group and keep unknowns explicit.
+These snapshots predate parts of the July 2026 minimal composer. For current field order and exclusions, `ops_task_construction.md` and `scripts/ops_description.py` override historical examples that embed dates, status, dependency, or explanatory prose in Description.
 
 | Promo family | Real examples | Reference file |
 |---|---:|---|
