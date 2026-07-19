@@ -18,6 +18,17 @@ SNAPSHOT = ROOT / "mm_calendar" / "data" / "monday_board_live_by_date.json"
 ART_CACHE = ROOT / "mm_calendar" / "data" / "monetization_art_board_full.json"
 BOARD = "18112190666"
 SUBITEM_BOARD = "18112200937"
+STATUS_MM_COLUMN = "color_mkwes65f"
+STATUS_CREATIVE_COLUMN = "status"
+STATUS_MM_READY_FOR_BRIEF = "Ready for Brief"
+STATUS_MM_REUSE = "Ready - no action needed"
+STATUS_MM_NEW_PROMO_SKELETON = "MM work in progress"
+# Status MM has duplicate label names; index 4 "Ready for Brief" is deactivated — use index 10.
+STATUS_MM_INDEX = {
+    STATUS_MM_READY_FOR_BRIEF: 10,
+    STATUS_MM_REUSE: 6,
+    STATUS_MM_NEW_PROMO_SKELETON: 8,
+}
 TRAFFIC_GROUP = "group_title"
 REUSE_TASK_NAME = "REUSE - No Creative Action"
 
@@ -50,6 +61,7 @@ SOURCE_BY_FAMILY = {
     "ryd": "11727887975",
     "globez": "11360876494",
     "winovate": "12407252858",
+    "blast": "11058531907",
 }
 
 PIGGY_BREAK_REF_FOLDER = (
@@ -106,6 +118,10 @@ REUSE_LIVE_OVERRIDES = {
         "date": "2026-05-29",
         "url": "https://playtika.monday.com/boards/2109172490/pulses/12113633298",
     },
+    "12548089680": {
+        "date": "2026-05-14",
+        "url": "https://playtika.monday.com/boards/2109172490/pulses/11978197029",
+    },
 }
 
 MGAP_UI_OVERRIDES = {
@@ -146,6 +162,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Create only the separate MGAP UI tasks for the selected dates",
     )
+    parser.add_argument(
+        "--rebuild",
+        action="store_true",
+        help="Delete Monetization-Art brief parents in each date group before recreate",
+    )
     return parser.parse_args()
 
 
@@ -172,14 +193,14 @@ def prize_change_table(
     change_lines: list[str],
     reference_cell: str,
     reference_link_cell: str,
+    theme: str = "",
 ) -> str:
     rows: list[tuple[str, str]] = []
     for line in change_lines:
         rows.append(("What to change", f"<p>{esc(line)}</p>"))
-    ref_body = reference_cell
-    if ref_body and not ref_body.lstrip().startswith("<"):
-        ref_body = f"<p>{ref_body}</p>"
-    rows.append(("Reference", ref_body or "<p></p>"))
+    if theme:
+        rows.append(("Theme", f"<p>{esc(theme)}</p>"))
+    rows.append(("Reference", reference_cell or "<p></p>"))
     rows.append(("Reference Link", reference_link_cell or "<p></p>"))
     return vertical_field_table(rows)
 
@@ -221,6 +242,7 @@ def family(value: str) -> str:
         ("globez", ("globez",)),
         ("winovate", ("winovate",)),
         ("clan", ("clan go", "x2 badges", "x2 dash", "dash picker")),
+        ("blast", ("blast vegas", "blast challenge", "vegas blast", "cozy blast")),
     ]
     for result, aliases in rules:
         if any(alias in text for alias in aliases):
@@ -271,6 +293,17 @@ def split_creative_owner_ids(owner_ids: list[int]) -> tuple[list[int], list[int]
     if len(owner_ids) == 1:
         return owner_ids[:1], []
     return owner_ids[:1], owner_ids[1:2]
+
+
+def normalized_traffic_people(assignment: dict[str, Any]) -> tuple[list[int], list[int]]:
+    """Artist = Traffic 1st owner only; Copywriter = 2nd only (never both on Artist)."""
+    artist_ids = list(assignment.get("artist_ids") or [])
+    copywriter_ids = list(assignment.get("copywriter_ids") or [])
+    if not copywriter_ids and artist_ids:
+        artist_ids, copywriter_ids = split_creative_owner_ids(artist_ids)
+    copy_set = set(copywriter_ids)
+    artist_ids = [person_id for person_id in artist_ids if person_id not in copy_set]
+    return artist_ids[:1], copywriter_ids[:1]
 
 
 def traffic_assignments(dates: list[str]) -> dict[str, dict[str, Any]]:
@@ -927,22 +960,47 @@ def brief_name(row: dict[str, str], source: dict[str, Any]) -> str:
 
 def status_mm_label(row: dict[str, str]) -> str:
     if row["label"] == "New promo":
-        return "MM work in progress"
-    return "Brief Done"
+        return STATUS_MM_NEW_PROMO_SKELETON
+    return STATUS_MM_READY_FOR_BRIEF
+
+
+def status_mm_column_value(label: str) -> dict[str, Any]:
+    index = STATUS_MM_INDEX.get(label)
+    if index is not None:
+        return {"index": index}
+    return {"label": label}
 
 
 def assignment_values(assignment: dict[str, Any]) -> dict[str, Any]:
-    copywriter_ids = assignment.get("copywriter_ids")
-    if copywriter_ids is None:
-        _, copywriter_ids = split_creative_owner_ids(assignment.get("artist_ids") or [])
+    artist_ids, copywriter_ids = normalized_traffic_people(assignment)
     return {
         "date_mkwj8wwp": {"date": assignment["brief_date"]},
-        "multiple_person_mkwetsg8": people_value(assignment["artist_ids"]),
-        "multiple_person_mkwev9a5": people_value(copywriter_ids or []),
+        "multiple_person_mkwetsg8": people_value(artist_ids),
+        "multiple_person_mkwev9a5": people_value(copywriter_ids),
         "person": people_value(assignment["mm_ids"]),
         "multiple_person_mkwetd0y": people_value(assignment["mm_tl_ids"]),
         "multiple_person_mkwez377": people_value(assignment["creative_tl_ids"]),
     }
+
+
+def apply_traffic_people_columns(item_id: str, assignment: dict[str, Any]) -> None:
+    """Overwrite Artist/Copywriter; duplicated templates often copy both onto Artist."""
+    artist_ids, copywriter_ids = normalized_traffic_people(assignment)
+    empty_people = {
+        "multiple_person_mkwetsg8": people_value([]),
+        "multiple_person_mkwev9a5": people_value([]),
+    }
+    set_columns(BOARD, item_id, empty_people)
+    time.sleep(0.15)
+    set_columns(
+        BOARD,
+        item_id,
+        {
+            **assignment_values(assignment),
+            "multiple_person_mkwetsg8": people_value(artist_ids),
+            "multiple_person_mkwev9a5": people_value(copywriter_ids),
+        },
+    )
 
 
 def parent_values(
@@ -957,8 +1015,8 @@ def parent_values(
         "date_mkwep612": {"date": adjusted_due(target, 2)},
         "color_mkws3h8e": {"label": priority(row["label"])},
         "text_mkwe4jsr": "",
-        "status": None,
-        "color_mkwes65f": {"label": status_mm_label(row)},
+        STATUS_CREATIVE_COLUMN: None,
+        STATUS_MM_COLUMN: status_mm_column_value(status_mm_label(row)),
         **assignment_values(assignment),
     }
 
@@ -968,15 +1026,64 @@ def reuse_values(target: str, assignment: dict[str, Any]) -> dict[str, Any]:
         "name": REUSE_TASK_NAME,
         "date4": {"date": target},
         "color_mkws3h8e": {"label": "Low"},
-        "status": {"label": "done"},
-        "color_mkwes65f": {"label": "Ready - no action needed"},
+        STATUS_CREATIVE_COLUMN: {"label": "done"},
+        STATUS_MM_COLUMN: status_mm_column_value(STATUS_MM_REUSE),
         **assignment_values(assignment),
     }
 
 
+def sanitized_description(row: dict[str, str]) -> str:
+    """Drop wrong MM boilerplate (e.g. Golden Spin mislabeled as timed gem)."""
+    raw = row.get("description") or ""
+    if family(row["name"]) != "golden spin":
+        return raw
+    kept: list[str] = []
+    for line in raw.splitlines():
+        if re.search(
+            r"timed gem|gem feature|gem machine|2h post 12:00|time-limited \(post",
+            line,
+            re.I,
+        ):
+            continue
+        kept.append(line)
+    return "\n".join(kept)
+
+
+def promo_theme_label(row: dict[str, str]) -> str:
+    """Theme from MM name/description only; empty when not explicitly stated."""
+    name = normalize_name(row["name"])
+    desc = sanitized_description(row)
+    blob = f"{name}\n{desc}"
+    if re.search(r"\b(?:generic|gemeric)\s+theme\b", blob, re.I):
+        return "Generic"
+    match = re.search(r"\|\s*([^|]+?)\s+theme\s*$", name, re.I)
+    if match:
+        segment = match.group(1).strip()
+        if "|" in segment:
+            segment = segment.rsplit("|", 1)[-1].strip()
+        if segment.lower() not in ("generic", "gemeric"):
+            return re.sub(r"\s+theme$", "", segment, flags=re.I).strip() or segment
+    match = re.search(r"\|\s*([^|]+?)\s+Theme\s*$", name)
+    if match:
+        return match.group(1).strip()
+    for line in desc.splitlines():
+        theme_match = re.match(r"^Theme:\s*(.+)$", line.strip(), re.I)
+        if theme_match:
+            val = theme_match.group(1).strip()
+            if val.lower() in ("generic", "gemeric"):
+                return "Generic"
+            return val
+    if re.search(r"\bcozy\b", name, re.I) and re.search(r"\bblast\b", name, re.I):
+        return "Cozy"
+    return ""
+
+
 def concise_requirement(row: dict[str, str]) -> str:
     title = normalize_name(row["name"])
-    lines = [re.sub(r"\s+", " ", line).strip() for line in row["description"].splitlines()]
+    lines = [
+        re.sub(r"\s+", " ", line).strip()
+        for line in sanitized_description(row).splitlines()
+    ]
     first_block: list[str] = []
     for line in lines:
         if not line and first_block:
@@ -990,6 +1097,13 @@ def concise_requirement(row: dict[str, str]) -> str:
 
 
 def required_prize_from_row(row: dict[str, str]) -> str:
+    if family(row["name"]) == "golden spin":
+        name = normalize_name(row["name"])
+        tail = name.split("|", 1)[-1].strip() if "|" in name else name
+        tail = re.sub(r"\s*\|\s*[^|]+\s+theme\s*$", "", tail, flags=re.I).strip()
+        if tail.lower().startswith("golden spin"):
+            tail = re.sub(r"^golden spin\s*[-–—|]\s*", "", tail, flags=re.I).strip()
+        return tail or name
     if family(row["name"]) == "daily deal":
         title = normalize_name(row["name"])
         if " - " in title:
@@ -1009,7 +1123,7 @@ def required_prize_from_row(row: dict[str, str]) -> str:
     if family(row["name"]) == "piggy":
         if "2 PAB" in normalize_name(row["name"]).upper():
             return "2 PAB"
-    for line in row.get("description", "").splitlines():
+    for line in sanitized_description(row).splitlines():
         if re.search(r"prize", line, re.I):
             match = re.search(r":\s*(.+)$", line.strip())
             if match:
@@ -1107,6 +1221,10 @@ def subitem_matches(required: str, existing: str) -> bool:
         return True
     if req == "journey inapp" and "journey" in cur and "inapp" in cur:
         return True
+    if req == "inapp" and cur == "inapp":
+        return True
+    if req == "inapp" and cur.startswith("main") and "inapp" in cur and "winner" not in cur:
+        return True
     return False
 
 
@@ -1124,6 +1242,18 @@ def spinner_rank_prize_lines(row: dict[str, str]) -> list[str]:
     return lines
 
 
+def daily_deal_reward_blob(row: dict[str, str]) -> str:
+    return f"{normalize_name(row['name'])}\n{row.get('description') or ''}".lower()
+
+
+def daily_deal_has_sb_and_hammers(row: dict[str, str]) -> bool:
+    """DD store + inapp hub when both SB and hammers are in the offer (Itay)."""
+    blob = daily_deal_reward_blob(row)
+    has_sb = bool(re.search(r"\b\d+%\s*sb\b|\b100%\s*sb\b|\bsb\b", blob))
+    has_hammers = bool(re.search(r"\b\d+\s*hammers?\b|\bhammer\b", blob))
+    return has_sb and has_hammers
+
+
 def playbook_required_subitems(row: dict[str, str]) -> list[str]:
     if row["label"] not in {"Prize Change", "New theme for promo", "New promo"}:
         return []
@@ -1136,6 +1266,8 @@ def playbook_required_subitems(row: dict[str, str]) -> list[str]:
     if fam == "piggy":
         return ["Main Inapp", *winners, "Banner"]
     if fam == "daily deal":
+        if daily_deal_has_sb_and_hammers(row):
+            return ["store denom", "Inapp"]
         return ["store denom"]
     return []
 
@@ -1219,10 +1351,7 @@ def what_to_change_lines(row: dict[str, str], source: dict[str, Any], asset: str
             "Match PAB art from Main Inapp.",
         ]
     if fam == "piggy" and "inapp" in asset_l and "winner" not in asset_l:
-        return [
-            f"Break prize: {ref_prize} → {req}.",
-            "Count badge: 2 PAB.",
-        ]
+        return [f"Break prize: {ref_prize} → {req}."]
     if fam == "piggy" and "banner" in asset_l:
         return [f"Banner prize: {ref_prize} → {req}."]
 
@@ -1234,13 +1363,19 @@ def what_to_change_lines(row: dict[str, str], source: dict[str, Any], asset: str
             return [f"Show {line}" for line in ranks]
         return [f"Update rank prizes to: {req}."]
 
-    if fam == "daily deal" and (
-        "dd" in asset_l or "store" in asset_l or "denom" in asset_l
-    ):
-        return [f"Store reward: {req}."]
+    if fam == "daily deal":
+        if "inapp" in asset_l and "winner" not in asset_l and "journey" not in asset_l:
+            return [f"Inapp reward: {req}."]
+        if "dd" in asset_l or "store" in asset_l or "denom" in asset_l:
+            return [f"Store reward: {req}."]
 
     change = change_summary(row, source)
     return [f"{asset}: {change}."]
+
+
+def reference_cell_html(source: dict[str, Any], asset: str) -> str:
+    """Reference row: embedded preview only — no prose (Itay)."""
+    return reference_png_html(source, asset) or "<p></p>"
 
 
 def reference_label_html(
@@ -1259,20 +1394,19 @@ def reference_label_html(
 
 def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) -> str:
     del assets
-    return table(
-        [
-            ("Creative Label", esc(row["label"])),
-            ("Change", esc(change_summary(row, source))),
-        ]
-    )
+    rows: list[tuple[str, str]] = [
+        ("Creative Label", esc(row["label"])),
+        ("Change", esc(change_summary(row, source))),
+    ]
+    theme = promo_theme_label(row)
+    if theme:
+        rows.append(("Theme", esc(theme)))
+    return table(rows)
 
 
 def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
     if row["label"] in {"Prize Change", "New theme for promo"}:
-        reference_cell = reference_label_html(source, asset, row)
-        reference_png = reference_png_html(source, asset)
-        if reference_png:
-            reference_cell = f"{reference_cell}<br>{reference_png}"
+        reference_cell = reference_cell_html(source, asset)
         link_cell = reference_link_html(
             source,
             asset,
@@ -1283,6 +1417,7 @@ def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str
             what_to_change_lines(row, source, asset),
             reference_cell,
             link_cell,
+            theme=promo_theme_label(row),
         )
     rows = [
         ("Task", esc(f"Apply the parent Change to {asset}.")),
@@ -1295,6 +1430,9 @@ def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str
                 "Itay must complete missing mechanic, prizes, and format requirements. Do not invent them.",
             )
         )
+    theme = promo_theme_label(row)
+    if theme:
+        rows.append(("Theme", esc(theme)))
     reference_png = reference_png_html(source, asset)
     if reference_png:
         rows.append(("Reference", reference_png))
@@ -1304,7 +1442,9 @@ def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str
             reference_link_html(source, asset, row["label"] == "New promo"),
         )
     )
-    return table(rows)
+    return vertical_field_table(
+        [(label, f"<p>{value}</p>" if not value.startswith("<") else value) for label, value in rows]
+    )
 
 
 def reuse_body(rows: list[dict[str, str]], catalog: dict[str, dict[str, Any]]) -> str:
@@ -1339,6 +1479,45 @@ def is_old_reuse_item(
     return False
 
 
+def is_monetization_art_brief_item(
+    item: dict[str, Any],
+    reuse_rows: list[dict[str, str]],
+    active_brief_names: set[str],
+) -> bool:
+    """Art brief parents in a date group (not unrelated comms without subitems)."""
+    name = item["name"]
+    if name == REUSE_TASK_NAME:
+        return True
+    if name.startswith("MGAP UI"):
+        return True
+    if is_old_reuse_item(item, reuse_rows):
+        return True
+    if name in active_brief_names:
+        return True
+    if normalize_name(name) in active_brief_names:
+        return True
+    if item.get("subitems"):
+        return True
+    return False
+
+
+def delete_group_art_briefs(
+    group_id: str,
+    reuse_rows: list[dict[str, str]],
+    active_brief_names: set[str],
+    allow_in_flight: bool,
+) -> int:
+    deleted = 0
+    for item in items_in_group(group_id):
+        if not is_monetization_art_brief_item(item, reuse_rows, active_brief_names):
+            continue
+        assert_brief_editable(str(item["id"]), allow_in_flight)
+        delete_item(str(item["id"]))
+        deleted += 1
+        print(f"REBUILD deleted {item['id']} {item['name'][:72]}")
+    return deleted
+
+
 def mgap_ui_specs(
     rows_by_date: dict[str, list[dict[str, str]]],
 ) -> dict[str, list[dict[str, str]]]:
@@ -1371,8 +1550,8 @@ def mgap_ui_values(
         "color_mkws3h8e": {"label": "Medium"},
         "color_mky3swe2": {"label": "MGAP"},
         "text_mkwe4jsr": "",
-        "status": None,
-        "color_mkwes65f": {"label": "Brief Done"},
+        STATUS_CREATIVE_COLUMN: None,
+        STATUS_MM_COLUMN: status_mm_column_value(STATUS_MM_READY_FOR_BRIEF),
         **assignment_values(assignment),
     }
 
@@ -1552,6 +1731,7 @@ def write_brief(
         item_id = duplicate_item(str(source["id"]))
         set_columns(BOARD, item_id, {"name": name})
         move_item(item_id, group_id)
+        apply_traffic_people_columns(item_id, assignment)
         time.sleep(3)
     query = "query($ids:[ID!]!){items(ids:$ids){updates(limit:1){id body} subitems{id name updates(limit:1){id body}}}}"
     live_item = gql(query, {"ids": [item_id]})["items"][0]
@@ -1566,6 +1746,7 @@ def write_brief(
         live_item = gql(query, {"ids": [item_id]})["items"][0]
         subitems = live_item.get("subitems") or []
     set_columns(BOARD, item_id, parent_values(row, source, target, assignment))
+    apply_traffic_people_columns(item_id, assignment)
     upsert_update(
         item_id,
         live_item.get("updates") or [],
@@ -1642,9 +1823,21 @@ def main() -> None:
     for target in dates:
         assignment = assignments[target]
         group_id = groups.get(target) or create_group(target)
-        current_items = items_in_group(group_id)
         reuse_rows = [row for row in rows_by_date[target] if row["label"] == "Reuse"]
         active_rows = [row for row in rows_by_date[target] if row["label"] != "Reuse"]
+        active_brief_names = {
+            brief_name(row, source_for(row, catalog)) for row in active_rows
+        }
+        if args.rebuild:
+            removed = delete_group_art_briefs(
+                group_id,
+                reuse_rows,
+                active_brief_names,
+                args.allow_in_flight,
+            )
+            print(f"{target} rebuild removed {removed} Monetization-Art brief item(s)")
+            time.sleep(2)
+        current_items = items_in_group(group_id)
 
         reuse_item = next((item for item in current_items if item["name"] == REUSE_TASK_NAME), None)
         if reuse_item:
@@ -1709,6 +1902,7 @@ def main() -> None:
                     str(existing_item["id"]),
                     parent_values(row, source, target, assignment),
                 )
+                apply_traffic_people_columns(str(existing_item["id"]), assignment)
                 upsert_update(
                     str(existing_item["id"]),
                     live_existing.get("updates") or [],
@@ -1735,6 +1929,7 @@ def main() -> None:
             print(f"{target} {item_id} {row['label']:<19} subitems={subitem_count} {brief_name(row, source_for(row, catalog))}")
         time.sleep(10)
         for item in items_in_group(group_id):
+            apply_traffic_people_columns(str(item["id"]), assignment)
             if item["name"] == REUSE_TASK_NAME:
                 set_columns(BOARD, str(item["id"]), reuse_values(target, assignment))
                 continue
@@ -1744,8 +1939,8 @@ def main() -> None:
                     BOARD,
                     str(item["id"]),
                     {
-                        "status": None,
-                        "color_mkwes65f": {"label": status_mm_label(match)},
+                        STATUS_CREATIVE_COLUMN: None,
+                        STATUS_MM_COLUMN: status_mm_column_value(status_mm_label(match)),
                     },
                 )
     apply_mgap_ui_tasks(

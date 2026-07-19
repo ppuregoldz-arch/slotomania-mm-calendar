@@ -120,6 +120,16 @@ promotions:
     theme: "Cozy"
     reward: "Wild card for ordinary album collection"
 
+  golden_spin:
+    not_gem_machine: true
+    not_timed_gems_alert: true
+    product: "Premium Mega Bonus wheel (coin-value wedges)"
+    crm3_root: "Q:\\Slotomania\\CRM3\\Features\\Golden_Spin"
+    strip_mm_boilerplate:
+      - "timed gem feature"
+      - "2h post 12:00 UTC"
+      - "Gem Machine"
+
   backup_coupon_status_boost:
     activation: "General revenue fallback"
     pu_expansion: "Paying Users"

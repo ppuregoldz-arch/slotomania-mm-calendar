@@ -73,6 +73,12 @@
 - `Wild Ordinary` is a Wild card for the ordinary/regular album collection.
 - Include both theme and reward in the title.
 
+### Golden Spin
+
+- **Not** Gem Machine, Happy Hour, or any timed **Gems** ALERT window. Golden Spin is the **premium Mega Bonus wheel** (coin-value wedges / variants such as Bigger Multipliers, Extra Black Wedge, themed arena).
+- Briefs and parent **Change** use variant + optional **Theme** from the MM row; never paste MM boilerplate that calls it a “timed gem feature.”
+- CRM3 lives under `Features\Golden_Spin\`; do not reuse Gem Machine / `Winning_Spins_Gems` folders unless Itay directs a one-off.
+
 ### Backup Coupon Status Boost
 
 - A general revenue fallback if a main offer underperforms or is canceled; it is not limited to Status Boost failure.

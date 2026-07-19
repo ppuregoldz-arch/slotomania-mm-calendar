@@ -17,7 +17,8 @@ Explicit instructions from Itay override these defaults. Reuse promotions do not
 
 | Product | Keep by default | Notes |
 |---|---|---|
-| Daily Deal, standard | `DD (in store)` / `store denom` | Pre-purchase offer — **no Winners Inapp**. Add Inapp/Banner only when explicitly big. |
+| Daily Deal, standard | `DD (in store)` / `store denom` | Pre-purchase — **no Winners Inapp**. Store denom only unless the offer mixes **SB + hammers** (see next row). |
+| Daily Deal, SB + hammers | `store denom`, `Inapp` | Same visible reward on store card and inapp hub; **no Winners Inapp** (pre-purchase). Match prior DD+SB briefs (`Inapp` subitem name). |
 | Spinner Clash | `Main Inapp`, `Journey Inapp`, `Banner` | **No Winners Inapp.** Match prior Spinner briefs. |
 | Daily Deal, BOGO / big | `Store Denom`, `Inapp`, `Winners Inapp` | BOGO is big by default. |
 | Rolling Offer | `Background`, `Banner` | Drop Denom Buy/Free unless requested. |
@@ -28,6 +29,7 @@ Explicit instructions from Itay override these defaults. Reuse promotions do not
 | MES SB Challenge | `Banner` | Win Master exception below. |
 | Shiny Show | `Inapp`, `Banner`, `PJMS`, `Intro`, `Tooltip` | Drop Externals, Comufy, iOS Push. |
 | Battlesheep Challenge | `Main Inapp`, `Theme/BO`, `Banner`, `Winners Inapp` | Drop other template assets. |
+| Golden Spin | Template defaults (Main Inapp, Banner, arena assets) | **Coin-value Mega Bonus wheel** — not Gem Machine / timed Gems ALERT. Use **Theme** row when MM names a skin (`Betty Boop`, `4th of July`, etc.). Never label “timed gem feature” in brief text. |
 | Custom Pod | `Main Inapp`, `Winners Inapp`, `Banner` | Drop Externals and Comufy. |
 | Decoy Bonanza | `Background`, `Banner`, `Denoms` | Three denoms; Big Denom is best value. |
 | Gatcha / Cocktail Bonus / SB Picker | `Inapp`, `BG`, `Banner`, `PP Banner`, `UI`, `Logo Entrance`, `Header` | Pick screen needs BG/UI/Logo/Header. |
@@ -79,6 +81,8 @@ Reuse itself is consolidated and gets no asset subitems. If an actionable label 
 ### Timers and time-limited mechanics
 
 If the chosen source or requested mechanic is explicitly ALERT, Happy Hour, Limited Time, or otherwise countdown-based, include `Timer | yes` immediately before Reference. Never infer a timer from a family name alone.
+
+**Golden Spin** is not in this bucket — it is not Gem Machine and not a Gems timed ALERT; do not add `Timer | yes` or “timed gem” language for Golden Spin unless MM explicitly requests a countdown on a specific asset.
 
 ### MES and Win Master
 

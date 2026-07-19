@@ -104,8 +104,9 @@ For every non-Reuse promo:
 - Reuse is consolidated into the single day-level `REUSE - No Creative Action` item; do not create separate Reuse parent tasks.
 - Seasonal parent title must include the exact required reward; never leave it only as “Season”.
 - Parent brief has exactly two rows: `Creative Label` and `Change`. `Change` states `source → required`; there is no parent reference, asset list, or skeleton row.
-- Every subitem body is only one HTML table. Follow the asset-specific schema in `BRIEF_WRITING_STANDARDS.md`; add no prose before or after it.
+- Every subitem body is only one HTML table. Follow the asset-specific schema in `BRIEF_WRITING_STANDARDS.md`; add no prose before or after it. **Prize Change / New theme / New promo:** vertical **`What to change` → optional `Theme` → `Reference` → `Reference Link`** (Theme only when MM states one).
 - Standalone MGAP UI tasks use Product `MGAP`, blank Status Creative, Status MM **`Ready for Brief`** when the UI brief is complete, Traffic people (Artist + Copywriter split), and UI subitem(s) **only when UI work is needed**. If UI is already shipped (`skip_brief` in script/overrides), **delete** the MGAP UI parent — do not brief it.
+- **Golden Spin:** premium Mega Bonus wheel (coin wedges) — **never** Gem Machine / timed Gems ALERT copy in briefs; strip wrong MM Description boilerplate; use **Theme** row when MM names a skin.
 - **Inapp scope:** Main, Journey, Winner per product playbook. **No Winners Inapp** for DD store offers (pre-purchase) or Spinner Clash. Piggy break keeps Winners Inapp when playbook/history includes it. See `PRODUCT_PLAYBOOK.md`.
 - Use history for scope; do not paste MM/ops text into Reference. Parent **Change** + short **What to change** deltas on subitems.
 - If the latest comparable execution used only a subset of template assets, request only that subset. Mark the other duplicated subitems Completed/No Action unless Itay explicitly expands scope.

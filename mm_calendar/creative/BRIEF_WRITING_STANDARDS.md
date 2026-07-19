@@ -13,8 +13,9 @@ The non-Reuse parent contains exactly one HTML table with two rows:
 |---|---|
 | Creative Label | `Prize Change`, `New theme for promo`, or `New promo` |
 | Change | Exact `source → required` delta |
+| Theme | Optional third row when MM names a theme (`Generic`, `Betty Boop`, `Cozy`, etc.). Omit when MM is generic-only with no named theme. |
 
-No parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or art direction. Reuse is the exception: one consolidated day-level summary with no subitems.
+No other parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or art direction. Reuse is the exception: one consolidated day-level summary with no subitems.
 
 ### Trigger and prize (labeling)
 
@@ -25,9 +26,9 @@ No parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or art di
 ### Subitem updates
 
 - Body is only `<table>...</table>`; no leading or trailing prose.
-- **Layout:** vertical field table — each label is a **left column row**, content in the **right column**, read top to bottom (`What to change` → `Reference` → `Reference Link`, or New promo `BG` → `Main Message` → …). Match live briefs such as [Battlesheep Challenge](https://playtika.monday.com/boards/18112190666/pulses/12393938324); never use a horizontal header row with three field names as columns.
+- **Layout:** vertical field table — each label is a **left column row**, content in the **right column**, read top to bottom (`What to change` → optional **`Theme`** → `Reference` → `Reference Link`, or New promo `Task` → `Keep` → …). Match live briefs such as [Battlesheep Challenge](https://playtika.monday.com/boards/18112190666/pulses/12393938324); never use a horizontal header row with three field names as columns.
 - Use the shortest unambiguous sentence in each cell.
-- Theme name appears as a name only, once per asset table when its schema includes Theme.
+- **`Theme` row:** include when MM name/description states a named theme or explicit `Generic` / `Generic theme`. Value is the theme name only (`Betty Boop`, `Cozy`, `4th of July`, `Generic`). Do **not** invent a theme when the calendar row is variant-only with no theme token.
 - Include only theme name, prizes/amounts, mechanic facts, required format constraints, CTA destination, and reference.
 - Never prescribe palette, colors, decorative motifs, mood, atmosphere, composition, typography, headline/button copy, or quoted copy.
 - Never repeat promo date, due dates, priority, category, status, or internal pricing tier.
@@ -65,9 +66,9 @@ Every real MGAP promotion has a separate `MGAP UI - <variant>` parent in additio
 ## Row rules
 
 - **Main Messages:** one-sentence takeaway for this asset, not literal headline copy.
-- **What to change:** only the **delta** — plain language, one line per change. Do not list what stays the same (no “keep layout unchanged…”). Multiple prizes → **extra rows** labeled `What to change` (stacked top-to-bottom), then one `Reference` row, then one `Reference Link` row — **not** a sideways 3-column grid.
-- **Reference:** **short ref name only** (date + execution + asset, e.g. `2026-07-06 Spinner Clash — Main Inapp`). Optional embedded preview in this cell only. **No** match-tier essay, MM description dump, or “see attached in Monday” filler.
-- **Reference Link:** CRM3 **folder** path for Prize Change and New theme for promo (never a Monday `protected_static` PNG URL in this row).
+- **What to change:** only the **delta** — plain language, one line per change. Do not list what stays the same (no “keep layout unchanged…”). No internal jargon (e.g. “count badge”) — describe what the player sees. Multiple prizes → **extra rows** labeled `What to change` (stacked top-to-bottom), then one `Reference` row, then one `Reference Link` row — **not** a sideways 3-column grid.
+- **Reference:** **embedded preview only** when a matching asset exists — **no wording** in this cell (no ref name, match tier, or “see Monday”). Empty cell if no preview yet.
+- **Reference Link:** CRM3 **folder** path only (never a Monday `protected_static` PNG URL in this row).
 - **Timer:** include `Timer | yes` only when explicitly required by the mechanic/source.
 - **FP:** use only when the asset/template requires it; never infer.
 
@@ -88,7 +89,7 @@ When picking a CRM3 folder, search in this order:
 2. **Same trigger + different prize** — preferred for Prize Change.
 3. **Same feature, weaker match** — only if nothing closer; optional **one short note in parent Change** if the gap matters to design.
 
-Do **not** paste ladder prose into the subitem **Reference** cell. Designer sees ref name + folder link only.
+Do **not** paste ladder prose or ref labels into the subitem **Reference** cell. Designers use **Reference Link** (folder) + preview image.
 
 Preview PNGs may embed in **Reference** when uploaded; **Reference Link** stays a **folder** path.
 
@@ -130,7 +131,7 @@ One reference per asset is the default. Multiple images belong in one thumbnail 
 
 1. Duplicate templates with `with_updates=False`; target exactly one editable update per subitem.
 2. Board automation can create parent placeholders and late stray subitems. Wait for it to settle, then remove only unwanted subitems and re-verify.
-3. Date and people writes can silently drop after duplication. Verify all date/team columns and retry idempotently.
+3. Date and people writes can silently drop after duplication. **Always** clear then set Artist (`multiple_person_mkwetsg8`) and Copywriter (`multiple_person_mkwev9a5`) from Creative Traffic on every apply — duplicated templates often copy both owners onto Artist only. Verify all date/team columns and retry idempotently.
 4. Apply custom team overrides after finalization; finalization may overwrite them.
 5. Retry `edit_update` on transient internal errors without re-uploading assets.
 6. If automation deletes the placeholder during upload, create a fresh update using the already-uploaded URLs.
@@ -176,17 +177,26 @@ Reuse has no asset subitems (day-level summary only).
 
 **Bad (do not ship):** four-row `Task` · `Keep` · `Reference` · `Reference Link` tables where Task says “Apply the parent Change to Main Inapp.”, Keep says “Match the reference for everything else.”, and Reference Link is a `monday.com/protected_static/...png` URL.
 
-**Good:** multi-row **`What to change` · `Reference` · `Reference Link`** when several prizes change. Each **What to change** cell states **only the delta** in simple English. **Reference** is a short label (optional preview in that cell). **Reference Link** is a CRM3 **folder** path.
+**Good:** vertical **`What to change` → `Theme` (when MM states one) → `Reference` (image only) → `Reference Link` (folder)**. **What to change** = delta only. **Reference** = preview embed or empty.
 
-Parent stays hybrid: **Creative Label** + **Change** one-liner (e.g. `Break prize: 5 Hammers → 2 PAB`).
+Parent hybrid: **Creative Label** + **Change** one-liner; add **Theme** parent row when MM names a theme (e.g. `Betty Boop`, `Generic`).
+
+Example Theme subitem row (HTML):
+
+```html
+<tr><td><p>Theme</p></td><td><p>Betty Boop</p></td></tr>
+```
 
 **Generic actionable asset** (`Task` · `Keep` · …) remains for **New promo** skeletons and products without a Prize/Theme schema — not for Prize Change or New theme for promo.
 
 ## Status and edit safety
 
-- Before any mutation to an existing brief, query Status MM (`color_mkwes65f`).
-- Non-blank means in flight: stop and ask Itay. Use an override only after explicit approval.
-- After writing/recreating each subitem, blank Copy Status (`status`), Art Status (`color_mkwerpn6`), TL Approval (`color_mkwe6hz`), and Subject Line (`long_text_mkwyvrm1`).
+- Before any mutation to an existing brief, query **Status MM** (`color_mkwes65f`).
+- Non-blank Status MM means in flight: stop and ask Itay. Use an override only after explicit approval.
+- When the agent finishes a **complete** active brief (Prize Change, New theme for promo, or finished New promo), set **Status MM** = **`Ready for Brief`** — brief is ready to hand to Creative. Leave **Status Creative** (`status`) empty unless Creative/copy has started.
+- **New promo** skeleton still in progress: Status MM = **`MM work in progress`**.
+- Consolidated **Reuse** parent: Status Creative = `done`, Status MM = **`Ready - no action needed`** (unchanged).
+- After writing/recreating each subitem, blank Copy Status (`status` on subitem board), Art Status, TL Approval, and Subject Line on subitems.
 - Never set Copy/Art Done merely because the brief was written.
 
 ## Completion checklist
@@ -196,10 +206,9 @@ Parent stays hybrid: **Creative Label** + **Change** one-liner (e.g. `Break priz
 - Art folder link blank.
 - Parent contains exactly Creative Label + Change.
 - Subitem set and order match `PRODUCT_PLAYBOOK.md` (Main / Journey / Winner inapps where required).
-- Non–card-only rewards include Winner inapp **only when playbook/prior brief does** (not DD offers, not Spinner Clash).
-- Reference row is **short ref name** only (no CRM3 ladder prose).
+- Non–card-only rewards include Winner inapp **only when playbook/prior brief does** (not DD store offers, not Spinner Clash). **DD with SB + hammers:** `store denom` + `Inapp`; still no Winners.
+- Reference row is **preview only** (no prose).
 - What to change lists **deltas only** (plain language).
-- Each **Reference** row states match tier (trigger/prize alignment or weaker feature match).
 - Every subitem is table-only, concise, and free of creative direction.
 - Every available preview matches its asset type and mechanic; Reference Link is exact.
 - All four subitem gate/copy fields are blank.
