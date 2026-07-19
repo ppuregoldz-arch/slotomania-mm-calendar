@@ -1,5 +1,11 @@
-### 2026-07-19 — Auto — Hook row + generic CRM3 refs + brief brevity
+### 2026-07-19 — Auto — Battlesheep/Blast + Decoy brief rules
 
+- **Goal:** Encode Itay rules: no challenge assets/titles unless MM Description defines season challenge; **SKU** row only then; no Decoy Art briefs (single offer only).
+- **Done:** `mm_defines_season_challenge()` reads MM description only (not product name “Challenge”); `calendar_active_brief_rows()` skips decoy; decoy parents deleted on apply; Battlesheep prize from name head; docs (`PRODUCT_PLAYBOOK`, `BRIEF_WRITING_STANDARDS`, `slotomania_monetization_art.mdc`).
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, creative docs above, `TEAM_WORKLOG.md`.
+- **Notes for next agent:** Re-apply **2026-08-06** Battlesheep day if Monday still shows challenge subitems or “Challenge” title.
+
+---
 - **Goal:** Monetization-Art training backlog (715774bb): no Task/Keep; short parent **Change**; **Hook** / **Theme** rows; Rolling **MGAP denom** only (no Buy denom); generic CRM3 refs (no holiday DD skins on generic days); rebuild Aug 5/6/11/28/29.
 - **Done:** `promo_hook_line`, `short_parent_change`, themed path filter (`is_themed_crm3_path`, `prefer_generic_crm3_paths`, `GENERIC_DD_HAMMER_WHEEL_FOLDER`), DD override `12476427941` → SB wheel chain; Rolling playbook Background+Banner+MGAP denom; docs (`BRIEF_WRITING_STANDARDS`, `PRODUCT_PLAYBOOK`, `slotomania_monetization_art.mdc` from prior pass).
 - **Monday:** `--commit --allow-in-flight --rebuild` ✓ **2026-08-11** (4 removed, 3 active + MGAP UI); **2026-08-05/06/28/29** running via `/tmp/aug_creative_rebuild.log`.

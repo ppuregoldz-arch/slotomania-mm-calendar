@@ -235,6 +235,7 @@ def prize_change_table(
     reference_link_cell: str,
     theme: str = "",
     hook: str | None = None,
+    sku: str = "",
 ) -> str:
     rows: list[tuple[str, str]] = []
     for line in change_lines:
@@ -243,6 +244,8 @@ def prize_change_table(
         rows.append(("Theme", f"<p>{esc(theme)}</p>"))
     if hook:
         rows.append(("Hook", f"<p>{esc(hook)}</p>"))
+    if sku:
+        rows.append(("SKU", f"<p>{esc(sku)}</p>"))
     rows.append(("Reference", reference_cell or "<p></p>"))
     rows.append(("Reference Link", reference_link_cell or "<p></p>"))
     return vertical_field_table(rows)
@@ -1113,7 +1116,109 @@ def reorder_subitems(parent_id: str) -> None:
 
 def brief_name(row: dict[str, str], source: dict[str, Any]) -> str:
     del source
-    return normalize_name(row["name"])
+    name = normalize_name(row["name"])
+    fam = family(row["name"])
+    if fam in {"battlesheep", "blast"} and not mm_defines_season_challenge(row):
+        name = re.sub(r"\bbattlesheep\s+challenge\b", "Battlesheep", name, flags=re.I)
+        name = re.sub(r"\bblast\s+challenge\b", "Blast", name, flags=re.I)
+        name = re.sub(r"\s+challenge\b", "", name, flags=re.I)
+        name = re.sub(r"\s+", " ", name).strip(" -|")
+    return name
+
+
+def is_short_term_season_promo(row: dict[str, str]) -> bool:
+    return family(row["name"]) in {"battlesheep", "blast"}
+
+
+def mm_defines_season_challenge(row: dict[str, str]) -> bool:
+    """True only when MM Calendar *description* defines a season challenge mechanic.
+
+    Product titles like \"Battlesheep Challenge\" do not count — ignore the promo name.
+    """
+    if not is_short_term_season_promo(row):
+        return False
+    desc = sanitized_description(row)
+    if not desc.strip():
+        return False
+    patterns = (
+        r"season\s+(?:long\s+)?challenge",
+        r"every\s+\d+(?:st|nd|rd|th)?\s+ship",
+        r"sink\s+\d+\s+ships?",
+        r"\d+\s+days?\s+full?\s+launch",
+        r"complete\s+(?:the\s+)?season\s+challenge",
+        r"find\s+skus?\s+behind",
+        r"ships?\s+you\s+sink",
+        r"journey\s+inapp.*challenge|challenge.*journey",
+        r"wheel\s+ui.*challenge|challenge.*wheel",
+    )
+    for pattern in patterns:
+        if re.search(pattern, desc, re.I):
+            return True
+    if re.search(r"\bchallenge\b", desc, re.I) and re.search(
+        r"season|ship|sku|sink|wheel|journey|wedge",
+        desc,
+        re.I,
+    ):
+        return True
+    return False
+
+
+def season_reward_sku(row: dict[str, str]) -> str:
+    """Visible season SKU for challenge weeks only (from MM name)."""
+    if not mm_defines_season_challenge(row):
+        return ""
+    name = normalize_name(row["name"])
+    if "|" in name:
+        head = name.split("|", 1)[0].strip()
+        head = re.sub(r"^(?:battlesheep|blast)\s*[-–—]\s*", "", head, flags=re.I).strip()
+        if head and head.lower() not in {"battlesheep", "blast"}:
+            return head
+    for part in name.split("|"):
+        part = part.strip()
+        if re.search(r"\b(?:wild|gold|reg|ace|pack|parasheep|airstrike|superboom|pab)\b", part, re.I):
+            if "theme" not in part.lower():
+                return part
+    return ""
+
+
+def promo_is_decoy_offer(row: dict[str, str]) -> bool:
+    blob = f"{normalize_name(row['name'])}\n{row.get('description') or ''}".lower()
+    return bool(re.search(r"\bdecoy\b|\bbonanza\b|triple offer", blob))
+
+
+def calendar_active_brief_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Actionable MM rows for Monetization-Art (excludes Reuse and Decoy offers)."""
+    return [
+        row
+        for row in rows
+        if row["label"] != "Reuse" and not promo_is_decoy_offer(row)
+    ]
+
+
+def is_decoy_structure_subitem(name: str) -> bool:
+    key = normalize_subitem_key(name)
+    if "decoy" in key:
+        return True
+    if re.match(r"^denom\s*[23]$", key):
+        return True
+    if key in {"big denom", "coupon inapp", "denom buy", "denom free"}:
+        return True
+    return False
+
+
+def is_challenge_only_subitem(name: str, row: dict[str, str]) -> bool:
+    if not is_short_term_season_promo(row) or mm_defines_season_challenge(row):
+        return False
+    key = normalize_subitem_key(name)
+    if "theme" in key and ("bo" in key or "background" in key):
+        return True
+    if "journey" in key and "inapp" in key:
+        return True
+    if "wheel" in key and "ui" in key:
+        return True
+    if key in {"wedges", "theme/bo", "theme / bo"}:
+        return True
+    return False
 
 
 def status_mm_label(row: dict[str, str]) -> str:
@@ -1327,6 +1432,14 @@ def required_prize_from_row(row: dict[str, str]) -> str:
     if family(row["name"]) == "piggy":
         if "2 PAB" in normalize_name(row["name"]).upper():
             return "2 PAB"
+    fam = family(row["name"])
+    if fam in {"battlesheep", "blast"}:
+        name = normalize_name(row["name"])
+        head = name.split("|", 1)[0].strip()
+        head = re.sub(r"^(?:battlesheep|blast)\s*[-–—]\s*", "", head, flags=re.I).strip()
+        head = re.sub(r"\s+challenge\s*$", "", head, flags=re.I).strip()
+        if head and head.lower() not in {"battlesheep", "blast"}:
+            return head
     for line in sanitized_description(row).splitlines():
         if re.search(r"prize", line, re.I):
             match = re.search(r":\s*(.+)$", line.strip())
@@ -1594,6 +1707,19 @@ def short_parent_change(row: dict[str, str], source: dict[str, Any]) -> str:
         if hook:
             return hook[:220]
 
+    if fam in {"battlesheep", "blast"}:
+        req = required_prize_from_row(row)
+        theme = promo_theme_label(row)
+        if row["label"] == "New theme for promo" and theme:
+            src = infer_source_theme_name(source) or "prior theme"
+            return f"Theme: {src} → {theme}"[:220]
+        if req and len(req) <= 80:
+            if theme:
+                return f"{req} · {theme} theme"[:220]
+            return req[:220]
+        if theme:
+            return f"{theme} theme"[:220]
+
     return ""
 
 
@@ -1617,6 +1743,16 @@ def playbook_required_subitems(row: dict[str, str]) -> list[str]:
         if rolling_has_mgap_ladder(row):
             subs.append("MGAP denom")
         return subs
+    if fam in {"battlesheep", "blast"}:
+        if mm_defines_season_challenge(row):
+            return [
+                "Main Inapp",
+                "Theme/BO",
+                "Journey Inapps",
+                "Banner",
+                "Winners Inapp",
+            ]
+        return ["Main Inapp", "Banner", "Winners Inapp"]
     return []
 
 
@@ -1659,6 +1795,25 @@ def prune_non_playbook_subitems(
             )
             time.sleep(0.25)
             continue
+        if is_challenge_only_subitem(subitem["name"], row):
+            delete_item(str(subitem["id"]))
+            print(
+                f"REMOVED {parent_id} subitem {subitem['name']!r} "
+                "(no MM season challenge — challenge assets out of scope)"
+            )
+            time.sleep(0.25)
+            continue
+        if promo_is_decoy_offer(row) or (
+            not promo_is_decoy_offer(row) and is_decoy_structure_subitem(subitem["name"])
+        ):
+            if is_decoy_structure_subitem(subitem["name"]):
+                delete_item(str(subitem["id"]))
+                print(
+                    f"REMOVED {parent_id} subitem {subitem['name']!r} "
+                    "(single-offer brief — no decoy/multi-denom structure)"
+                )
+                time.sleep(0.25)
+                continue
         if any(subitem_matches(name, subitem["name"]) for name in required):
             kept.append(subitem)
             continue
@@ -1793,6 +1948,19 @@ def what_to_change_lines(row: dict[str, str], source: dict[str, Any], asset: str
             return [f"Show {line}" for line in ranks]
         return [f"Update rank prizes to: {req}."]
 
+    if fam in {"battlesheep", "blast"}:
+        if "winner" in asset_l:
+            return [f"Show season payout: {req}."]
+        if "banner" in asset_l:
+            return [f"Show {req} on banner."]
+        if "main" in asset_l:
+            return [f"Show {req} on main inapp."]
+        if mm_defines_season_challenge(row) and "journey" in asset_l:
+            return ["Update journey frames for the season challenge progress."]
+        if mm_defines_season_challenge(row) and asset_is_background(asset):
+            return ["Update Theme/BO for the season challenge."]
+        return [f"Update {req} on {asset}."]
+
     if fam == "daily deal":
         if "inapp" in asset_l and "winner" not in asset_l and "journey" not in asset_l:
             return [f"Inapp reward: {req}."]
@@ -1876,12 +2044,15 @@ def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str
     lines = what_to_change_lines(row, source, asset)
     if not lines:
         lines = [f"Update {asset} per parent Change."]
+    theme = promo_theme_label(row)
+    sku = season_reward_sku(row) if mm_defines_season_challenge(row) else ""
     return prize_change_table(
         lines,
         reference_cell,
         link_cell,
-        theme=promo_theme_label(row),
+        theme=theme,
         hook=promo_hook_line(row),
+        sku=sku,
     )
 
 
@@ -2233,7 +2404,7 @@ def main() -> None:
     if not args.commit:
         for target in dates:
             reuse_rows = [row for row in rows_by_date[target] if row["label"] == "Reuse"]
-            active_rows = [row for row in rows_by_date[target] if row["label"] != "Reuse"]
+            active_rows = calendar_active_brief_rows(rows_by_date[target])
             group_id = groups.get(target)
             existing = items_in_group(group_id) if group_id else []
             old_reuse = [item for item in existing if is_old_reuse_item(item, reuse_rows)]
@@ -2251,6 +2422,10 @@ def main() -> None:
             for row in active_rows:
                 source = source_for(row, catalog)
                 print(f"  {row['label']:<19} {normalize_name(row['name'])} <- {source_date(source)} {source['name']}")
+            for row in rows_by_date[target]:
+                if row["label"] == "Reuse" or not promo_is_decoy_offer(row):
+                    continue
+                print(f"  SKIP (decoy)        {normalize_name(row['name'])} — single-offer only; no Art brief")
         print("\nStandalone MGAP UI tasks:")
         apply_mgap_ui_tasks(mgap_specs, assignments, groups, catalog, False, False)
         print("\nDRY RUN - no Monday changes made.")
@@ -2259,7 +2434,12 @@ def main() -> None:
         assignment = assignments[target]
         group_id = groups.get(target) or create_group(target)
         reuse_rows = [row for row in rows_by_date[target] if row["label"] == "Reuse"]
-        active_rows = [row for row in rows_by_date[target] if row["label"] != "Reuse"]
+        decoy_rows = [
+            row
+            for row in rows_by_date[target]
+            if row["label"] != "Reuse" and promo_is_decoy_offer(row)
+        ]
+        active_rows = calendar_active_brief_rows(rows_by_date[target])
         active_brief_names = {
             brief_name(row, source_for(row, catalog)) for row in active_rows
         }
@@ -2304,6 +2484,22 @@ def main() -> None:
             for item in items_in_group(group_id)
             if item["name"] != REUSE_TASK_NAME
         }
+        for row in decoy_rows:
+            decoy_names = {
+                normalize_name(row["name"]),
+                brief_name(row, source_for(row, catalog)),
+            }
+            for decoy_name in decoy_names:
+                item = existing.pop(decoy_name, None)
+                if not item:
+                    continue
+                assert_brief_editable(str(item["id"]), args.allow_in_flight)
+                delete_item(str(item["id"]))
+                print(
+                    f"{target} DELETED decoy brief (no Monetization-Art scope): "
+                    f"{item['name']} ({item['id']})"
+                )
+                time.sleep(0.3)
         for row in active_rows:
             name = brief_name(row, source_for(row, catalog))
             base_name = normalize_name(row["name"])

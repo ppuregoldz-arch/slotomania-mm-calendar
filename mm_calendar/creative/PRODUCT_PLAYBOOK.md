@@ -28,10 +28,10 @@ Explicit instructions from Itay override these defaults. Reuse promotions do not
 | Spin Zone, light | `Banner` | Distinct from MES-linear. |
 | MES SB Challenge | `Banner` | Win Master exception below. |
 | Shiny Show | `Inapp`, `Banner`, `PJMS`, `Intro`, `Tooltip` | Drop Externals, Comufy, iOS Push. |
-| Battlesheep Challenge | `Main Inapp`, `Theme/BO`, `Banner`, `Winners Inapp` | Drop other template assets. |
+| Battlesheep / Blast (default) | `Main Inapp`, `Banner`, `Winners Inapp` | Strip **Challenge** from brief titles unless MM **description** defines a season challenge. No Theme/BO, Journey, Wheel UI, or Wedges subitems. |
+| Battlesheep / Blast (season challenge) | `Main Inapp`, `Theme/BO`, `Journey Inapps`, `Banner`, `Winners Inapp` | Subitem table may include **`SKU`** row when MM defines the challenge reward SKU. |
 | Golden Spin | Template defaults (Main Inapp, Banner, arena assets) | **Coin-value Mega Bonus wheel** — not Gem Machine / timed Gems ALERT. Use **Theme** when MM names a skin; **Hook** when MM states the variant (e.g. **`30% Bigger Wedges`**). Never label “timed gem feature” in brief text. |
 | Custom Pod | `Main Inapp`, `Winners Inapp`, `Banner` | Drop Externals and Comufy. |
-| Decoy Bonanza | `Background`, `Banner`, `Denoms` | Three denoms; Big Denom is best value. |
 | Gatcha / Cocktail Bonus / SB Picker | `Inapp`, `BG`, `Banner`, `PP Banner`, `UI`, `Logo Entrance`, `Header` | Pick screen needs BG/UI/Logo/Header. |
 | PYP | `Inapp`, `Journey/Winners Inapp`, `Banner`, `Widget` | Main Inapp must be a true Inapp. |
 
@@ -59,6 +59,12 @@ The Denom slot includes DD store cells, Denoms, Big Denom, Denom On/Off, Store D
 - Denom On and Denom Off use different active/muted references.
 - Avoid themed or mechanic-variant RYD references unless that is the requested variant.
 
+### Battlesheep / Blast
+
+- Default brief scope: **Main Inapp**, **Banner**, **Winners Inapp** — prize/theme from MM name (e.g. `Wild Gold · Betty theme`), not challenge template assets.
+- **Season challenge** (ships, journey progress, wheel UI, etc.) applies only when MM **Description** states that mechanic — not when the MM product name says “Challenge”.
+- **`SKU`** table row: only on challenge weeks, populated from the visible reward SKU in MM.
+
 ### Buy All
 
 - Background prize row: non-currency prizes only, joined with ` · `.
@@ -77,7 +83,7 @@ The Denom slot includes DD store cells, Denoms, Big Denom, Denom On/Off, Store D
 
 ### Decoy, Triple PO, and Mystery Box
 
-- Decoy Bonanza has three denoms; Big Denom is the best-value choice.
+- **Decoy Bonanza / multi-denom decoy:** do **not** create Monetization-Art briefs — offers are **single** in calendar scope; no Background + three-denom brief structure.
 - Triple PO extends Double PO to three denoms. Use Double PO for layout and a separate theme cue only when needed.
 - Mystery Box / any-purchase promos get one Winners subitem per prize variant.
 

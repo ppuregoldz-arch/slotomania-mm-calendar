@@ -27,7 +27,8 @@ No other parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or 
 ### Subitem updates
 
 - Body is only `<table>...</table>`; no leading or trailing prose.
-- **Layout:** vertical field table — each label is a **left column row**, content in the **right column**, read top to bottom (`What to change` → optional **`Theme`** → optional **`Hook`** → `Reference` → `Reference Link`). Match live briefs such as [Battlesheep Challenge](https://playtika.monday.com/boards/18112190666/pulses/12393938324); never use a horizontal header row with three field names as columns.
+- **Layout:** vertical field table — each label is a **left column row**, content in the **right column**, read top to bottom (`What to change` → optional **`Theme`** → optional **`Hook`** → optional **`SKU`** → `Reference` → `Reference Link`). Match live briefs such as [Battlesheep (vertical table)](https://playtika.monday.com/boards/18112190666/pulses/12393938324); never use a horizontal header row with three field names as columns.
+- **`SKU` row:** Battlesheep / Blast **only** when MM **Description** defines a **season challenge** and names the reward SKU — omit otherwise.
 - Use the shortest unambiguous sentence in each cell.
 - **`Theme` row:** include when MM name/description states a named theme or explicit `Generic` / `Generic theme`. Value is the theme name only (`Betty Boop`, `Cozy`, `4th of July`, `Generic`). Do **not** invent a theme when the calendar row is variant-only with no theme token.
 - Include only theme name, prizes/amounts, mechanic facts, required format constraints, CTA destination, and reference.
@@ -111,7 +112,8 @@ Use **Winners Inapp** only where the product playbook or a prior shipped brief i
 
 **No Winners Inapp** for:
 
-- **Store / pre-purchase offers** (Daily Deal store cell, RYD denoms, Rolling, Decoy, etc.) — the inapp is **before** purchase, not a post-win claim.
+- **Store / pre-purchase offers** (Daily Deal store cell, RYD denoms, Rolling, etc.) — the inapp is **before** purchase, not a post-win claim.
+- **Decoy Bonanza / multi-denom decoy:** no Monetization-Art brief — calendar treats these as **single** offers; do not brief three-denom decoy structures.
 - **Spinner Clash** — **Main Inapp**, **Journey Inapp**, **Banner** only (mirror prior Spinner briefs).
 
 **Card-only** payouts: no Winner inapp; note `card-only — no winner inapp` in scope if needed.
