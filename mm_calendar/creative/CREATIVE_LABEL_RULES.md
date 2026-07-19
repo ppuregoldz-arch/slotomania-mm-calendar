@@ -8,7 +8,7 @@
 | Label | Use when | Required evidence |
 |---|---|---|
 | **Reuse** | The same mechanic, visual theme, visible prizes/mission, and required asset variants already exist; Creative changes nothing. Dynamic configuration that is not embedded in art may change. | A previous non-canceled matching execution. Missing art does not change the label; mark the reference as missing. |
-| **Prize Change** | The structure and theme already exist, but a visible prize, mission, quantity, percentage, multiplier, currency, or value changes. | A previous matching structure plus the exact `source → required` delta. |
+| **Prize Change** | Same **player trigger** and Creative structure/theme; only a visible prize, mission, quantity, percentage, multiplier, currency, or value changes (break piggy, finish island, Shiny Show completion, etc.). | A previous **same-trigger** execution plus the exact `source → required` delta. Prefer a ref with same trigger and different prize over a loose same-feature ref. |
 | **New theme for promo** | The mechanic/structure exists, but Creative must apply a different event, machine, season, or visual theme. | A previous matching structure and the exact old/new themes. If theme and prize both change, this label wins. |
 | **New promo** | The mechanic or Creative structure has never existed. | No valid prior matching execution. Create a skeleton for Itay; do not invent mechanics or art direction. |
 
@@ -24,6 +24,8 @@
 8. A missing reference never converts an otherwise exact reuse into a new promo.
 
 ## Reference selection
+
+**Trigger + prize ladder** (detail in `BRIEF_WRITING_STANDARDS.md`): (1) same trigger + same prize → best reuse/ref; (2) same trigger + different prize → **Prize Change** ref; (3) same feature only → weaker; say so in the brief **Reference** row.
 
 1. Prefer an older exact promo match over a newer same-family task with different prizes or theme.
 2. Within the selected exact task, use the newest matching Creative attachment, even if the task is not yet Approved.
@@ -43,10 +45,10 @@
 - **MGAP UI:** every real MGAP promotion also gets a separate parent task named `MGAP UI - <variant>` in the same day group, in addition to its regular promo brief or Reuse-summary row. The separate task keeps only MGAP UI subitems. This includes MGAP embedded in another offer (for example a Rolling MGAP ladder), but excludes RLAP/Stash Booster because it replaces the MGAP promo.
 - Theme change takes precedence over simultaneous prize change.
 - Active art-only work leaves both Copy Status and Art Status empty.
-- Brief Due Date and people ownership come from `Creative Traffic` board `18041947639`: `Brief Date`, `Creative Owner`, `Monetization`, `MM TL`, and `TL Owner`. Map them to `Brief Due Date`, `Artist`, `MM`, `MM TL`, and `Creative TL` on Monetization-Art.
+- Brief Due Date and people ownership come from `Creative Traffic` board `18041947639`: `Brief Date`, `Creative Owner`, `Monetization`, `MM TL`, and `TL Owner`. Map `Brief Date` → `Brief Due Date`; `Monetization` → `MM`; `MM TL` → `MM TL`; `TL Owner` → `Creative TL`. Split `Creative Owner` on Monetization-Art: first person → **Artist** (`multiple_person_mkwetsg8`), second person (when present) → **Copywriter** (`multiple_person_mkwev9a5`); a lone `Creative Owner` → Artist only. Do not assign both Traffic owners to Artist.
 - Leave Status Creative empty for every non-Reuse brief. Monetization owns only Status MM: use `Brief Done` for a complete brief, `MM work in progress` for an incomplete New promo skeleton, and `Ready - no action needed` for the Reuse summary. Reuse may set Status Creative to `done`.
 - Art Due Date is at least 48 hours before launch. Move Friday/Saturday due dates back to Thursday.
-- Keep briefs short. Use separate **Reference** and **Reference Link** rows: Reference contains only the real matching PNG/image preview; Reference Link contains only its direct URL or exact file path.
+- Keep briefs short. Use separate **Reference** and **Reference Link** rows: **Reference** states match tier (trigger/prize alignment) and embeds the matching PNG when available; **Reference Link** is the CRM3 folder or exact file path (see `BRIEF_WRITING_STANDARDS.md`).
 
 ## Known exceptions
 

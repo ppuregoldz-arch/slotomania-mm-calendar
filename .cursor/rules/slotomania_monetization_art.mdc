@@ -50,7 +50,9 @@ Those files contain Itay's canonical label definitions, promo meanings, and expl
 
 - Source board: **Creative Traffic** (`18041947639`), treated as read-only by this writer.
 - Match the day row by its `D/8` name when Promo Date is blank.
-- Map source columns exactly: `Brief Date` → `Brief Due Date`; `Creative Owner` → `Artist`; `Monetization` → `MM`; `MM TL` → `MM TL`; `TL Owner` → `Creative TL`.
+- Map source columns: `Brief Date` → `Brief Due Date`; `Monetization` → `MM`; `MM TL` → `MM TL`; `TL Owner` → `Creative TL`.
+- **`Creative Owner` (`people3`) is not a single Artist column.** On Monetization-Art, `multiple_person_mkwetsg8` = **Artist** and `multiple_person_mkwev9a5` = **Copywriter**. When Traffic lists two people in `Creative Owner`, assign **the first person → Artist** and **the second → Copywriter** (verified pattern: Marina Kleynerman → Artist, Yarden Himelfarb → Copywriter). When only one person is listed, assign that person to **Artist** and leave **Copywriter** blank unless Itay specifies copy-only work.
+- Never put both Traffic `Creative Owner` people only under Artist; that mis-tags the copywriter.
 - Apply the day assignment to every Monetization-Art item in that date group, including the consolidated Reuse summary.
 
 ## Creative Label decision order
@@ -58,10 +60,10 @@ Those files contain Itay's canonical label definitions, promo meanings, and expl
 1. Ignore canceled tasks as evidence.
 2. If the mechanic/Creative structure never existed: **New promo**.
 3. If an existing structure needs a different visual theme: **New theme for promo**.
-4. Otherwise, if an art-visible prize, mission, value, percentage, quantity, or multiplier changes: **Prize Change**.
+4. Otherwise, if an art-visible prize, mission, value, percentage, quantity, or multiplier changes with the **same player trigger** (break piggy, finish quest island, Shiny Show completion, etc.): **Prize Change**.
 5. Otherwise: **Reuse**.
 
-Theme change wins when theme and prize both change. Dynamic configuration that is not embedded in art may remain Reuse. A missing reference does not change the label. A confirmed matching promo/variant previously live on the Operation - Monetization board is valid Reuse evidence; when no exact Creative reference exists, link the Ops task and record its live date. Do not use a different visible variant as evidence.
+Theme change wins when theme and prize both change. **Prize Change** is not a theme swap — same trigger, different visible reward. Dynamic configuration that is not embedded in art may remain Reuse. A missing reference does not change the label. A confirmed matching promo/variant previously live on the Operation - Monetization board is valid Reuse evidence; when no exact Creative reference exists, link the Ops task and record its live date. Do not use a different visible variant as evidence.
 
 ## Mandatory workflow
 
@@ -82,8 +84,10 @@ For every non-Reuse promo:
 
 ## References
 
-- **Reference** and **Reference Link** are always separate rows. **Reference** contains only the real embedded PNG/image preview; **Reference Link** contains only its direct URL or exact CRM3 file path.
-- **Reference Link** = direct attached-image URL or full file path: `Q:\Slotomania\CRM3\...\filename.png` (not folder-only)
+- **CRM3 reference ladder** (every actionable subitem): (1) same trigger + same prize → strongest reuse/ref; (2) same trigger + different prize → preferred **Prize Change** ref; (3) same feature only → weaker — **state match tier in the Reference row** (e.g. `Same trigger: break piggy; prize differs: 5 Hammers → 2 PAB`). See `BRIEF_WRITING_STANDARDS.md`.
+- **Reference** and **Reference Link** are always separate rows. **Reference** holds the match-tier sentence plus embedded PNG preview when uploaded; **Reference Link** contains only its direct URL or exact CRM3 file/folder path.
+- **Prize Change** and **New theme for promo** subitems use **`What to change` · `Reference` · `Reference Link`** (not Task/Keep). **Reference Link** = CRM3 **folder** for that asset type (e.g. `...\Inapp`); never put `monday.com/protected_static/...` in the link row (preview PNGs belong in **Reference** only when uploaded).
+- **Reference Link** (other labels) = direct attached-image URL or full file path: `Q:\Slotomania\CRM3\...\filename.png` when a file link is intended; folder paths when briefing Prize/Theme deltas without naming one file.
 - **Reference** = embedded preview: upload from CRM3 via `add_file_to_update` → `/v2/file`, then optional `edit_update` with `https://playtika.monday.com/protected_static/7996532/resources/{asset_id}/{filename}`
 - Reference art must match the subitem asset type: Inapp→Inapp, Banner→Banner, Widget→Widget, etc. Never reuse one generic preview across unlike assets.
 - Prefer a Reuse reference that visibly contains the exact current prize/theme. If none exists, an exact matching live Ops task is sufficient evidence; show its link and live date without attaching a misleading image.
@@ -106,15 +110,16 @@ For every non-Reuse promo:
 - Do not keep no-action subitems in new briefs; request only the assets that need work.
 - A Link field contains only the URL or exact CRM3 file path—no commentary, provenance prose, or folder instructions.
 - A PNG/reference-art field contains only a real attached image for that exact asset type. If no real matching image exists, omit the row; never create a placeholder or made-up template.
+- **Inapp scope:** Main inapp (hub/prize strip), Journey inapp (mid-event progress), Winner inapp (results/claim). Every promo with a **non–card-only** reward needs a Winner inapp subitem unless Itay narrows scope; **card-only** rewards → no Winner inapp, note `card-only — no winner inapp`. See `PRODUCT_PLAYBOOK.md`.
 - Before writing any Creative instruction, read the latest comparable parent brief and all relevant subitem updates. Derive the required asset scope and wording from what was actually requested/delivered last time—not from the duplicated template alone.
-- Use history to determine the instruction, but do not paste the research into the brief. Summarize it only as concise **Change** and **Keep** rows.
+- Use history to determine the instruction, but do not paste the research into the brief. Summarize as concise parent **Change** and numbered **What to change** steps on Prize/Theme subitems (generic **Task**/**Keep** only for New promo / non-Prize schemas).
 - If the latest comparable execution used only a subset of template assets, request only that subset. Mark the other duplicated subitems Completed/No Action unless Itay explicitly expands scope.
 - **Win Master exception:** when driven by M.E.S (Mission Event System), open the complete M.E.S asset set every time. Never reduce it to Banner-only from recent execution history.
 - Never infer a missing CTA, version, timer, FP, message, or asset. Use an older matching execution only when the latest task lacks that asset, and document the fallback; otherwise leave it for Itay.
 - Coin Sale: include PU / IC / DPU / NPU coin % tiers unless user overrides
 - State theme + mechanic clearly; art folder under `Features\...` or `Holidays & Events\{Event}\{year}\Coin_Sale`
 - Every subitem must name its asset and point to the parent's exact Change; the parent carries the full delta so it is not repeated in every asset brief.
-- **Prize Change**: state `Current/source prize → Required prize` once in the parent, including exact quantity, tier, mission, percentage, and currency. Asset subitems point to that Change.
+- **Prize Change**: state `Current/source prize → Required prize` once in the parent (e.g. `Break prize: 5 Hammers → 2 PAB`). Asset subitems spell out numbered **What to change** steps; do not use Task/Keep boilerplate.
 - **New theme for promo**: state `Current/source theme → Required theme` once in the parent. Do not prescribe motifs, palette, mood, composition, logo treatment, or copy; the reference carries the visual cue.
 - **New promo**: do not invent mechanics, prizes, copy, or art direction. Create a clearly marked skeleton for **Itay to complete**; attach only clearly relevant latest references as optional inspiration.
 - The parent **Change** row is the shared Creative request; do not add a second repetitive Creative Request or Assets row.

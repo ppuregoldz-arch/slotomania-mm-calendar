@@ -16,6 +16,12 @@ The non-Reuse parent contains exactly one HTML table with two rows:
 
 No parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or art direction. Reuse is the exception: one consolidated day-level summary with no subitems.
 
+### Trigger and prize (labeling)
+
+**Prize Change** applies when the **player trigger is the same** but the **visible reward differs** — break piggy, finish quest island, complete Shiny Show, claim milestone, etc. Structure, theme, and entry flow stay; only art-visible prizes, counts, or currency types change.
+
+**New theme for promo** is same trigger + same prizes with a different visual theme. **Reuse** is same trigger, same prizes, same theme. Do not label a prize-only delta as theme change unless Itay explicitly treats it as theme work.
+
 ### Subitem updates
 
 - Body is only `<table>...</table>`; no leading or trailing prose.
@@ -49,7 +55,7 @@ Do not add an `N/A` row for a denom that does not exist.
 
 ### Generic actionable asset
 
-When no product-specific schema exists: `Task` · `Keep` · optional `Theme / Art Guidelines` · optional `Numbers / Prizes / Amounts` · `Reference` · `Reference Link`.
+When no product-specific schema exists and the label is **not** Prize Change or New theme for promo: `Task` · `Keep` · optional `Theme / Art Guidelines` · optional `Numbers / Prizes / Amounts` · `Reference` · `Reference Link`.
 
 ### MGAP UI
 
@@ -58,13 +64,14 @@ Every real MGAP promotion has a separate `MGAP UI - <variant>` parent in additio
 ## Row rules
 
 - **Main Messages:** one-sentence takeaway for this asset, not literal headline copy.
-- **Task:** point to the parent's exact Change and name this asset.
-- **Keep:** what must remain structurally unchanged from the reference; no visual direction.
+- **What to change:** numbered, designer-readable steps for Prize Change and New theme for promo (layout keep/swap rules, prize art, badges, legal lines). Not a pointer to the parent Change alone.
+- **Task:** (New promo / generic only) point to the parent's exact Change and name this asset.
+- **Keep:** (New promo / generic only) what must remain structurally unchanged from the reference; no visual direction.
 - **Theme / Art Guidelines:** theme name only, such as `Generic.` or `Cozy.`
 - **Numbers / Prizes / Amounts:** prize data only. If Itay omitted a required quantity, use `TBD — awaiting MM prizes`; do not invent it.
 - **CTA:** destination, not button text: offer/inapp screen or checkout.
-- **Reference:** embedded matching image only.
-- **Reference Link:** exact Windows file path or direct attached-image URL only.
+- **Reference:** embedded matching image when available, plus a **match tier** sentence (see CRM3 reference ladder below). Not image-only with no provenance.
+- **Reference Link:** CRM3 **folder** path for Prize Change and New theme for promo; exact file path or direct attached-image URL only when Itay explicitly requests a file link (otherwise folder-only).
 - **Timer:** include `Timer | yes` only when explicitly required by the mechanic/source.
 - **FP:** use only when the asset/template requires it; never infer.
 
@@ -76,6 +83,36 @@ Every real MGAP promotion has a separate `MGAP UI - <variant>` parent in additio
 - Values contain prizes only.
 - Match row count to actual denom count.
 - If tier roles are operationally necessary, put one concise row in the table; do not append prose outside it.
+
+## CRM3 reference ladder
+
+When picking a CRM3 ref for any actionable subitem, search in this order:
+
+1. **Same trigger + same prize** — strongest match; reuse that execution or cite it as the primary ref.
+2. **Same trigger + different prize** — preferred for **Prize Change** (e.g. prior piggy break with 5 Hammers when today needs 2 PAB).
+3. **Same feature, different trigger or weaker match** — allowed only when nothing closer exists; **state the gap explicitly** in the **Reference** row (not only in Reference Link).
+
+Every subitem **Reference** row must include **match tier** prose, for example: `Same trigger: break piggy; prize differs: 5 Hammers → 2 PAB` or `Same feature: Piggy 2.0; prior break used coins (weaker — no hammer match)`.
+
+Preview PNGs still embed in **Reference** when uploaded; **Reference Link** stays a **folder** path for Prize Change and New theme for promo (never a Monday `protected_static` PNG URL in the link row).
+
+## Inapp types (designer-facing)
+
+| Type | Role | Typical content |
+|---|---|---|
+| **Main inapp** | Entry / hub | Prize strip, CTA into the promo, core mechanic framing |
+| **Journey inapp** | Mid-event frames | Progress, rank, mission track, interim prizes |
+| **Winner inapp** | End / results | Podium, claim, summary of what the player won |
+
+Banner, PP Banner, BG, denoms, and widgets follow `PRODUCT_PLAYBOOK.md` per product. When scope is unclear, mirror the latest comparable execution’s inapp split (Main vs Journey vs Winner), not the duplicated template alone.
+
+### Winner inapp requirement
+
+Every promotion that pays a **non–card-only reward** (coins, gems, hammers, SB, mixed packs, wheels, boosters, etc.) needs a **Winner inapp** subitem in the brief unless Itay drops scope.
+
+**Card-only reward** (Regular/Legendary card with no accompanying currency or item art): **no Winner inapp**. Note in the brief scope or parent Change: `card-only — no winner inapp`.
+
+If Journey and Winner are one combined asset on the board (e.g. PYP `Journey/Winners Inapp`), one subitem may cover both; still satisfy the winner/results requirement for non–card-only payouts.
 
 ## Reference embedding
 
@@ -101,6 +138,43 @@ One reference per asset is the default. Multiple images belong in one thumbnail 
 9. Preserve spaces and unusual Unicode in CRM3 names; quote paths in shell use.
 10. Reordering subitems means recreate + delete. Preserve bodies, clear gate fields on recreated subitems, and require Status-MM approval first.
 
+## Creative Traffic → Monetization-Art people
+
+Source board `18041947639` (`Creative Owner` = column `people3`). Target board `18112190666`:
+
+| Traffic column | Monetization-Art column | Column id |
+|---|---|---|
+| Brief Date | Brief Due Date | `date_mkwj8wwp` |
+| Creative Owner — **1st person** | **Artist** | `multiple_person_mkwetsg8` |
+| Creative Owner — **2nd person** (if any) | **Copywriter** | `multiple_person_mkwev9a5` |
+| Monetization | MM | `person` |
+| MM TL | MM TL | `multiple_person_mkwetd0y` |
+| TL Owner | Creative TL | `multiple_person_mkwez377` |
+
+Putting both Traffic owners on Artist only is wrong (copywriter ends up invisible to Copy Status workflows).
+
+## Per-label subitem tables (training / Description HTML)
+
+Parent row stays the hybrid **`Creative Label` + `Change`** summary. Subitem bodies are table-only. For agent training, use these row sets (CRM3 **folder** paths in **Reference Link** unless Itay asks for a direct PNG path; embed matching PNGs in **Reference** when uploading):
+
+| Label | Subitem rows |
+|---|---|
+| **New theme for promo** | What to change · Reference · Reference Link |
+| **Prize Change** | What to change · Reference · Reference Link |
+| **New promo** | BG · Main Message · Ref · Ref Link |
+
+Reuse has no asset subitems (day-level summary only).
+
+### Bad vs Good — Prize / Theme Change subitems (Itay Jul 2026)
+
+**Bad (do not ship):** four-row `Task` · `Keep` · `Reference` · `Reference Link` tables where Task says “Apply the parent Change to Main Inapp.”, Keep says “Match the reference for everything else.”, and Reference Link is a `monday.com/protected_static/...png` URL.
+
+**Good:** three-row **`What to change` · `Reference` · `Reference Link`** tables. What to change is numbered, asset-specific steps (layout stays, swap prize art, update count badge, footer legal if prize type changes). Reference is a human label (optional embedded preview image in that cell only). Reference Link is a **CRM3 folder** path (e.g. `Q:\Slotomania\CRM3\Features\Piggy_2.0\2026\2026_06_17_Piggy_5_Hammers\Inapp`) — never a Monday PNG URL in the link row.
+
+Parent stays hybrid: **Creative Label** + **Change** one-liner (e.g. `Break prize: 5 Hammers → 2 PAB`).
+
+**Generic actionable asset** (`Task` · `Keep` · …) remains for **New promo** skeletons and products without a Prize/Theme schema — not for Prize Change or New theme for promo.
+
 ## Status and edit safety
 
 - Before any mutation to an existing brief, query Status MM (`color_mkwes65f`).
@@ -114,7 +188,9 @@ One reference per asset is the default. Multiple images belong in one thumbnail 
 - Promo, Art Due, Brief Due, and assigned team verified.
 - Art folder link blank.
 - Parent contains exactly Creative Label + Change.
-- Subitem set and order match `PRODUCT_PLAYBOOK.md`.
+- Subitem set and order match `PRODUCT_PLAYBOOK.md` (Main / Journey / Winner inapps where required).
+- Non–card-only rewards include Winner inapp (or documented `card-only — no winner inapp`).
+- Each **Reference** row states match tier (trigger/prize alignment or weaker feature match).
 - Every subitem is table-only, concise, and free of creative direction.
 - Every available preview matches its asset type and mechanic; Reference Link is exact.
 - All four subitem gate/copy fields are blank.

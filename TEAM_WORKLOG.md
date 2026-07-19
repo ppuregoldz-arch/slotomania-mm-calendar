@@ -1,3 +1,46 @@
+### 2026-07-19 — Auto — Creative brief trigger/prize + winner inapp docs
+
+- **Goal:** Encode Itay-approved training: trigger/prize labeling, CRM3 reference ladder, Main/Journey/Winner inapps, winner inapp requirement.
+- **Done:** Updated `BRIEF_WRITING_STANDARDS.md` (Trigger and prize, CRM3 reference ladder, Inapp types, checklist bullets), `CREATIVE_LABEL_RULES.md` (Prize Change = same trigger; reference ladder cross-ref), `PRODUCT_PLAYBOOK.md` (inapp types + winner rule), `slotomania_monetization_art.mdc` (agent ladder + winner inapp). Committed + pushed per git_sync_rules.
+- **Files:** `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `mm_calendar/creative/CREATIVE_LABEL_RULES.md`, `mm_calendar/creative/PRODUCT_PLAYBOOK.md`, `.cursor/rules/slotomania_monetization_art.mdc`, `TEAM_WORKLOG.md`.
+- **Commands run:** `github_push_origin.py` ✓/✗ (see commit hash in session).
+- **Notes for next agent:** Prize/Theme subitems stay **What to change · Reference · Reference Link**; Reference row must include match-tier prose, not preview-only.
+
+---
+
+### 2026-07-19 — Auto — Prize Change subitem format fix
+
+- **Goal:** Replace rejected Task/Keep/Monday-PNG subitem briefs with designer-readable What to change + CRM3 folder links.
+- **Done:** `scripts/apply_selected_august_creative_briefs.py` — Prize Change / New theme for promo use What to change · Reference · Reference Link; piggy-specific steps; Reference Link folder-only; parent Change uses `Break prize: … → …` for Piggy. Updated `BRIEF_WRITING_STANDARDS.md` (Bad vs Good) and `slotomania_monetization_art.mdc`.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `.cursor/rules/slotomania_monetization_art.mdc`, `TEAM_WORKLOG.md`.
+- **Commands run:** local Python smoke for 2026-08-05 Piggy ✓; Monday sync n/a.
+- **Notes for next agent:** Re-run `apply_selected_august_creative_briefs.py --date 2026-08-05 --commit` (and other August prize-change dates Itay wants refreshed) after approval — overwrites subitem updates only when Status MM allows.
+
+---
+
+- **Goal:** Follow-up to [Aug 5 creative briefs draft](c920cc3c-2f50-4de5-a43f-00912b5cf66f): align code with Artist/Copywriter split.
+- **Done:** `split_creative_owner_ids()` in `apply_selected_august_creative_briefs.py`; `assignment_values()` writes `multiple_person_mkwev9a5` (Copywriter). Docs already updated by prior pass.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** n/a.
+- **Notes for next agent:** Re-run August creative apply for `2026-08-05` only when Itay approves Monday write — fixes Marina/Yarden columns on group items.
+
+---
+
+- **Goal:** Training deliverable for 2026-08-05 Monetization-Art briefs; fix Copywriter vs Artist Traffic mapping in docs.
+- **Done:** Documented split of Creative Traffic `Creative Owner` (first → Artist, second → Copywriter). Added per-label subitem training row sets to `BRIEF_WRITING_STANDARDS.md`. Prepared structured Aug 5 inventory + draft brief fields from live MM calendar, Ops specs, and Monday group `2026-08-05` (no Monday writes).
+- **Files:** `.cursor/rules/slotomania_monetization_art.mdc`, `mm_calendar/creative/CREATIVE_LABEL_RULES.md`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `mm_calendar/creative/overrides.yaml`, `TEAM_WORKLOG.md`.
+- **Commands run:** Monday read-only (Traffic `05/8`, Monetization-Art group `group_mm5a17c0`) ✓; Monday sync n/a.
+- **Notes for next agent:** `scripts/apply_selected_august_creative_briefs.py` still maps all of `people3` → Artist only; fix `assignment_values()` when applying Traffic. Aug 5 live Piggy row is **2 PAB** — Monday art item title still says 3★ Reg (stale).
+
+---
+- **Goal:** Prepare agent + Itay workflow for writing proper Monetization-Art briefs (distinct from Ops tasks); no day build.
+- **Done:** Read canonical creative stack (`CREATIVE_LABEL_RULES`, glossary/overrides, `BRIEF_WRITING_STANDARDS`, CRM3 map, product playbook, `slotomania_monetization_art.mdc`, art refs samples). Drafted training curriculum, MM→brief workflow, common mistakes, and three practice exercises from `monday_board_live_by_date.json` (Aug 2026). No rule-file diff — existing **Completion checklist** in `BRIEF_WRITING_STANDARDS.md` is sufficient.
+- **Files:** `TEAM_WORKLOG.md` only.
+- **Commands run:** n/a (read-only).
+- **Notes for next agent:** Train by Itay correcting agent draft briefs (label → parent Change → subitems → CRM3 paths). Ops Description voice lives in `ops_task_construction.md` / `ops_task_refs/` — do not paste into art briefs.
+
+---
+
 ### 2026-07-19 — GPT-5.6 Sol — Fix MES mission/prize semantics
 
 - **Goal:** Correct the 2026-07-26 `MES - Crazy train machines` Ops Description without changing unrelated Ops tasks.

@@ -5,6 +5,14 @@
 
 Explicit instructions from Itay override these defaults. Reuse promotions do not use this playbook: consolidate them into the day-level `REUSE - No Creative Action` item.
 
+## Inapp types
+
+- **Main inapp** — entry/hub and prize strip.
+- **Journey inapp** — mid-event progress, rank, or interim prize frames.
+- **Winner inapp** — end state: results, podium, claim, visible payout.
+
+**Winner inapp rule:** Include **Winners Inapp** (or combined Journey/Winners where the product uses one subitem) for every promo with a **non–card-only** reward. **Card-only** payouts (card art alone, no coins/hammers/SB/mixed packs/wheels): omit Winner inapp and note `card-only — no winner inapp` in scope or parent Change.
+
 ## Default actionable subitems
 
 | Product | Keep by default | Notes |
