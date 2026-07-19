@@ -26,6 +26,7 @@ def promo_family(name: str, product: str = "", detail: str = "") -> str:
         ("rlap", ("rlap", "stash booster")),
         ("ace_heist", ("ace heist",)),
         ("extreme_stamp", ("x2 extreme stamp",)),
+        ("x2_ggs", ("x2 ggs",)),
         ("stickers_sources", ("sticker sources", "stickers sources")),
         ("happy_hour", ("hh -", "happy hour")),
         ("gatcha_promo", ("gatcha",)),
@@ -177,6 +178,43 @@ def price_label(value: str | None) -> str:
     return mapping.get(normalized, normalized.title())
 
 
+PRICING_IN_TITLE_RE = re.compile(
+    r"(?:"
+    r"\|\s*[^|]*\b(?:price|pricing)\b"
+    r"|\b(?:high|mid|max|low)\s+(?:price|pricing)\b"
+    r"|\b(?:h|m|l)\s+price\b"
+    r"|\|\s*(?:h|m|l|max)\s*,\s*(?:h|m|l|max)"
+    r")",
+    re.I,
+)
+
+
+def title_mentions_pricing(name: str) -> bool:
+    return bool(PRICING_IN_TITLE_RE.search(normalize_name(name)))
+
+
+def pricing_title_suffix(mm_pricing: str | None) -> str:
+    if not mm_pricing or not mm_pricing.strip():
+        return ""
+    raw = mm_pricing.strip().lower()
+    mapping = {
+        "high": "H Pricing",
+        "mid": "M Pricing",
+        "max": "Max Pricing",
+        "low": "L Pricing",
+        "h": "H Pricing",
+        "m": "M Pricing",
+        "l": "L Pricing",
+    }
+    if raw in mapping:
+        return f"| {mapping[raw]}"
+    letter = price_label(mm_pricing)
+    if letter in {"High", "Mid", "Max", "Low"}:
+        short = {"High": "H", "Mid": "M", "Max": "Max", "Low": "L"}[letter]
+        return f"| {short} Pricing"
+    return f"| {letter} Pricing"
+
+
 def reference_parts(reference: str | None) -> dict[str, str]:
     value = reference or ""
     match = re.search(r"(?P<date>20\d{2}-\d{2}-\d{2})\s+item\s+(?P<id>\d+)", value)
@@ -309,6 +347,24 @@ GAMEPLAY_RANK_PRIZE_FEATURES = (
 
 def is_offer_family(family: str) -> bool:
     return family in OFFER_FAMILIES
+
+
+def apply_pricing_to_ops_task_name(
+    task_name: str,
+    pricing: str | None,
+    *,
+    product: str = "",
+    detail: str = "",
+) -> str:
+    """Append `| H Pricing` (etc.) when MM pricing is set and the title omits it."""
+    base = normalize_name(task_name)
+    if not pricing or title_mentions_pricing(base):
+        return base
+    family = promo_family(base, product, detail)
+    if family not in OFFER_FAMILIES and family != "rolling_offer":
+        return base
+    suffix = pricing_title_suffix(pricing)
+    return f"{base} {suffix}".strip() if suffix else base
 
 
 MAIN_OFFER_FAMILIES = {
@@ -933,9 +989,46 @@ def compose_stickers_sources_description(task_name: str, detail: str, segment: s
     return finalize_ops_description("\n".join(lines).strip())
 
 
+def is_x2_ggs_promo(task_name: str, product: str = "", detail: str = "") -> bool:
+    text = f" {normalize_name(task_name)} {product} {detail} ".lower()
+    return has_alias(text, "x2 ggs")
+
+
+def ui_reminder_lines(*, family: str, task_name: str) -> list[str]:
+    """Ops voice from historical tasks (MGAP UI subitems, X2 GGS buy_all sample)."""
+    name = normalize_name(task_name).lower()
+    if family == "mgap":
+        if any(term in name for term in ("matched", "wild", "bogo")) or "extreme" in name or "epic" in name:
+            return ["Make sure to set UI for both Extreme + Epic"]
+        return ["don't forget UI"]
+    if family == "extreme_stamp":
+        return ["don't forget UI"]
+    if family == "x2_ggs" or is_x2_ggs_promo(task_name):
+        return ["don't forget UI", "please add timer to the inapp"]
+    return []
+
+
+def append_ui_reminder(description: str, *, task_name: str, product: str = "", detail: str = "") -> str:
+    family = promo_family(task_name, product, detail)
+    extras = ui_reminder_lines(family=family, task_name=task_name)
+    if not extras:
+        return description
+    blob = (description or "").lower()
+    if "don't forget ui" in blob or "make sure to set ui" in blob:
+        return description
+    lines = [description.rstrip(), *extras]
+    return "\n".join(line for line in lines if line).strip()
+
+
 def compose_extreme_stamp_description(task_name: str, detail: str, segment: str) -> str:
     _ = (task_name, detail)
-    return finalize_ops_description(f"Segment: {segment}")
+    body = append_ui_reminder(
+        f"Segment: {segment}",
+        task_name=task_name,
+        product="Extreme stamp",
+        detail=detail,
+    )
+    return finalize_ops_description(body)
 
 
 def compose_mechanism_promo_description(task_name: str, detail: str, segment: str) -> str:
@@ -1201,6 +1294,144 @@ def promotion_prizes(task_name: str, family: str, detail: str) -> str:
     return promotion_prize(task_name, family, detail)
 
 
+def is_mes_board_task(task_name: str) -> bool:
+    name = normalize_name(task_name).lower()
+    if "win master" in name and not re.search(r"\bm\.?e\.?s\b", name) and not name.startswith("mes"):
+        return False
+    return bool(
+        re.search(r"\bm\.?e\.?s\b", name)
+        or name.startswith("mes ")
+        or name.startswith("mes-")
+        or name.startswith("mes —")
+    )
+
+
+def mes_subtitle_from_mm(detail: str) -> str | None:
+    """Return Sub title line only when MM Description states it explicitly."""
+    for raw in (detail or "").splitlines():
+        line = raw.strip()
+        if re.match(r"^sub\s*title\s*[-:]", line, re.I):
+            text = re.sub(r"^sub\s*title\s*[-:]\s*", "", line, flags=re.I).strip()
+            if text:
+                return f"Sub title - {text}"
+            return None
+    return None
+
+
+def mes_subtitle_missing(task_name: str, detail: str) -> bool:
+    """MES Ops needs art when MM did not supply an explicit Sub title line."""
+    if not is_mes_board_task(task_name):
+        return False
+    return mes_subtitle_from_mm(detail) is None
+
+
+def mes_detail_body(detail: str) -> str:
+    lines: list[str] = []
+    for raw in (detail or "").splitlines():
+        line = raw.strip()
+        if not line or re.match(r"^sub\s*title", line, re.I):
+            continue
+        # Production duration belongs only in Start/End columns. Keep reward
+        # durations such as "dice booster 6 hours" because those do not start
+        # the line and are part of the exact prize.
+        if re.fullmatch(
+            r"(?:for\s+)?\d+(?:\.\d+)?\s*(?:hours?|hrs?|days?)\s*"
+            r"(?:m\.?e\.?s\.?|mes)?(?:\s+challenge)?",
+            line,
+            re.I,
+        ):
+            continue
+        lines.append(line)
+    return "\n".join(lines).strip()
+
+
+MES_MILESTONE_RE = re.compile(
+    r"^(?:(?P<ordinal>\d+)(?:st|nd|rd|th)?\s+milestone|"
+    r"milestone\s+(?P<number>\d+))\s*:?\s*(?P<remainder>.*)$",
+    re.I,
+)
+MES_PRIZE_RE = re.compile(r"^(?:grand\s+)?prize\s*[-:]\s*(.+)$", re.I)
+
+
+def mes_semantic_lines(detail: str) -> list[str]:
+    """Format MES source as context plus mission/prize pairs per milestone."""
+    body = mes_detail_body(detail)
+    context: list[str] = []
+    milestones: list[dict[str, Any]] = []
+    current: dict[str, Any] | None = None
+
+    for raw in body.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        milestone = MES_MILESTONE_RE.match(line)
+        if milestone:
+            number = milestone.group("ordinal") or milestone.group("number")
+            current = {"number": number, "missions": [], "prizes": []}
+            milestones.append(current)
+            remainder = milestone.group("remainder").strip()
+            if remainder:
+                current["missions"].append(remainder)
+            continue
+        if re.fullmatch(r"\d+\s+milestones?", line, re.I) or re.match(
+            r"^milestones?,\s*missions?\s+and\s+prizes?\s*:?\s*$",
+            line,
+            re.I,
+        ):
+            continue
+        prize = MES_PRIZE_RE.match(line)
+        if prize:
+            if current is not None:
+                current["prizes"].append(prize.group(1).strip())
+            else:
+                context.append(f"Prize: {prize.group(1).strip()}")
+            continue
+        if current is not None:
+            current["missions"].append(line)
+        else:
+            context.append(line)
+
+    if not milestones:
+        return context
+
+    out: list[str] = []
+    for line in context:
+        if re.match(r"^(?:mission|prize)\s*:", line, re.I):
+            out.append(line)
+        else:
+            out.append(f"Mission: {line}")
+    for milestone in milestones:
+        if out:
+            out.append("")
+        out.append(f"Milestone {milestone['number']}:")
+        missions = milestone["missions"]
+        prizes = milestone["prizes"]
+        if missions:
+            out.append(f"Mission: {missions[0]}")
+            out.extend(missions[1:])
+        if prizes:
+            out.append(f"Prize: {prizes[0]}")
+            out.extend(prizes[1:])
+    return out
+
+
+def compose_mes_description(task_name: str, detail: str, segment: str) -> str:
+    subtitle = mes_subtitle_from_mm(detail)
+    semantic = mes_semantic_lines(detail)
+    lines = [
+        f"Segment: {segment}",
+        "banner - open M.E.S",
+    ]
+    if subtitle:
+        lines.extend(["", subtitle])
+    if semantic:
+        lines.extend(["", *semantic])
+    else:
+        prize = promotion_prize(task_name, "mes", detail)
+        lines.extend(["", f"Prize: {prize}"])
+    return finalize_ops_description("\n".join(lines).strip())
+
+
 def compose_description(
     *,
     task_name: str,
@@ -1264,15 +1495,30 @@ def compose_description(
             ).strip()
         )
 
-    if family in VARIANT_FAMILIES:
-        return finalize_ops_description(
-            "\n".join(
-                [
-                    f"Segment: {segment}",
-                    f"Variant: {variant_value(task_name, family, detail)}",
-                ]
-            ).strip()
+    if family == "x2_ggs":
+        body = append_ui_reminder(
+            f"Segment: {segment}",
+            task_name=task_name,
+            product=product,
+            detail=detail,
         )
+        return finalize_ops_description(body)
+
+    if family in VARIANT_FAMILIES:
+        variant_body = "\n".join(
+            [
+                f"Segment: {segment}",
+                f"Variant: {variant_value(task_name, family, detail)}",
+            ]
+        ).strip()
+        if family == "mgap":
+            variant_body = append_ui_reminder(
+                variant_body,
+                task_name=task_name,
+                product=product,
+                detail=detail,
+            )
+        return finalize_ops_description(variant_body)
 
     if family == "rolling_offer":
         denoms = rolling_denom_lines(detail)
@@ -1293,6 +1539,9 @@ def compose_description(
         lines.append(f"Pricing: {price_label(pricing) or 'Not specified in MM source'}")
         return with_main_offer_reset(lines, family, task_name)
 
+    if is_mes_board_task(task_name):
+        return compose_mes_description(task_name, detail, segment)
+
     trigger = trigger_value(task_name, family, detail)
     prize = promotion_prize(task_name, family, detail)
     lines = [f"Segment: {segment}"]
@@ -1312,6 +1561,16 @@ TITLE_UTC_PREFIX_RE = re.compile(
     r"^(?P<hour>\d{1,2}):(?P<minute>\d{2})\s*UTC\s*-\s*",
     re.I,
 )
+
+ISO_DATE_PREFIX_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\s*(?:\|\s*|-\s*)")
+
+
+def ops_task_short_name(name: str) -> str:
+    """Ops subitem title label — no calendar date, no leading UTC clock prefix."""
+    base = normalize_name(name)
+    base = ISO_DATE_PREFIX_RE.sub("", base)
+    base = TITLE_UTC_PREFIX_RE.sub("", base)
+    return base.strip()
 
 MAIN_OFFER_FAMILIES = frozenset(
     {
@@ -1418,12 +1677,13 @@ def resolve_ops_production_window(
     """Resolve UTC production window, Monday API clocks, and Ops subitem title."""
     warnings: list[str] = []
     base_name = normalize_name(name)
+    short_name = ops_task_short_name(name) or base_name
     timing_blob = f"{name}\n{detail or ''}"
 
     if night_plan:
         start_date = (date.fromisoformat(parent_day) + timedelta(days=1)).isoformat()
         return {
-            "task_name": base_name,
+            "task_name": f"00:00 UTC - {short_name}",
             "start_date": start_date,
             "end_date": start_date,
             "start_time": "00:00:00",
@@ -1442,7 +1702,7 @@ def resolve_ops_production_window(
         start_date = parent_day
         end_date, end_time = _add_hours(start_date, title_start, hours)
         return {
-            "task_name": base_name,
+            "task_name": f"{title_start[:5]} UTC - {short_name}",
             "start_date": start_date,
             "end_date": end_date,
             "start_time": title_start,
@@ -1466,9 +1726,7 @@ def resolve_ops_production_window(
                     "MM description includes UTC start time but no end/duration; default 1h window."
                 )
             end_date, end_time = _add_hours(start_date, detail_start, hours)
-        task_name = base_name
-        if not task_name_has_explicit_utc_prefix(task_name):
-            task_name = f"{detail_start[:5]} UTC - {base_name}"
+        task_name = f"{detail_start[:5]} UTC - {short_name}"
         return {
             "task_name": task_name,
             "start_date": start_date,
@@ -1490,7 +1748,7 @@ def resolve_ops_production_window(
         start_date = parent_day
         end_date, end_time = _add_hours(start_date, start_time, hours)
         return {
-            "task_name": f"{start_time[:5]} UTC - {base_name}",
+            "task_name": f"{start_time[:5]} UTC - {short_name}",
             "start_date": start_date,
             "end_date": end_date,
             "start_time": start_time,
@@ -1499,7 +1757,7 @@ def resolve_ops_production_window(
         }
 
     return {
-        "task_name": base_name,
+        "task_name": short_name,
         "start_date": parent_day,
         "end_date": standard_end_date,
         "start_time": "11:00:00",

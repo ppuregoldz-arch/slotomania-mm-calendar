@@ -33,8 +33,10 @@ TEMPLATE_GROUPS: dict[str, tuple[str, str]] = {
 sys.path.insert(0, str(ROOT / "scripts"))
 from monday_client import gql  # noqa: E402
 from ops_description import (  # noqa: E402
+    apply_pricing_to_ops_task_name,
     compose_description,
     infer_times_per_player,
+    mes_subtitle_missing,
     ops_handoff_sufficient,
     resolve_ops_production_window,
 )
@@ -301,6 +303,10 @@ def should_create(row: dict[str, Any]) -> bool:
         return False
     if any(term in name for term in ("x2 badges", "x2 dash points", "dash picker")):
         return False
+    if re.search(r"\bx2\s*ggs\b", name):
+        return False
+    if "status boost" in name:
+        return False
     return True
 
 
@@ -398,6 +404,10 @@ def status_for(
         return "Night Plan"
     config = (row.get("config_status") or "").strip()
     label = (row.get("creative_label") or "").strip()
+    if mes_subtitle_missing(task_name, detail):
+        if config == "Config needed":
+            return "Missing Art+Config"
+        return "Missing art"
     if config == "MCP needed":
         return "Missing MCP"
     if label in {"New promo", "New theme for promo", "Prize Change"} and config == "Config needed":
@@ -459,9 +469,19 @@ def build_task(
     start_time = timing["start_time"]
     end_time = timing["end_time"]
     task_name = timing["task_name"]
+    task_name = apply_pricing_to_ops_task_name(
+        task_name,
+        row.get("pricing") or None,
+        product=row.get("product") or "",
+        detail=detail,
+    )
     timing_warnings = timing["warnings"]
-    monday_start_date, monday_start_time = monday_api_value(start_date, start_time)
-    monday_end_date, monday_end_time = monday_api_value(end_date, end_time)
+    if night:
+        monday_start_date, monday_start_time = start_date, start_time
+        monday_end_date, monday_end_time = end_date, end_time
+    else:
+        monday_start_date, monday_start_time = monday_api_value(start_date, start_time)
+        monday_end_date, monday_end_time = monday_api_value(end_date, end_time)
     reuse, reference = recent_reference(row, target, history)
     template = template_source(row)
     description = compose_description(

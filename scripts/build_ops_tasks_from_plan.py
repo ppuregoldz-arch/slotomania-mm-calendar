@@ -21,7 +21,11 @@ MONDAY_DISPLAY_OFFSET_HOURS = 3
 
 # build_rows is the canonical filter for which approved calendar rows need config.
 from upload_mm_calendar_day_monday import build_rows  # noqa: E402
-from ops_description import compose_description  # noqa: E402
+from ops_description import (  # noqa: E402
+    apply_pricing_to_ops_task_name,
+    compose_description,
+    mes_subtitle_missing,
+)
 
 
 TEMPLATE_GROUPS: dict[str, tuple[str, str]] = {
@@ -142,6 +146,10 @@ def missing_dependencies(row: dict[str, Any], description: str) -> list[str]:
 def m_and_m_status(row: dict[str, Any], missing: list[str]) -> str:
     if row.get("config") == "MCP needed":
         return "Missing MCP"
+    task_name = normalize_task_name(row["name"])
+    detail = row.get("description") or ""
+    if mes_subtitle_missing(task_name, detail):
+        return "Missing Art+Config" if row.get("config") == "Config needed" else "Missing art"
     if any(entry.startswith("Art:") for entry in missing):
         return "Missing art"
     return "More Info required"
@@ -150,12 +158,13 @@ def m_and_m_status(row: dict[str, Any], missing: list[str]) -> str:
 def operational_description(
     *,
     row: dict[str, Any],
+    task_name: str,
     detail: str,
     missing: list[str],
     template_source: dict[str, str] | None = None,
 ) -> str:
     return compose_description(
-        task_name=normalize_task_name(row["name"]),
+        task_name=task_name,
         product=row.get("product") or "",
         detail=detail or "Required mechanic/config details are missing from the MM source.",
         pricing=row.get("pricing"),
@@ -175,6 +184,12 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     monday_start_date, monday_start_time = monday_api_date_time(start_iso, "11:00:00")
     monday_end_date, monday_end_time = monday_api_date_time(end_iso, "11:00:00")
     detail = source_description(day, row)
+    task_name = apply_pricing_to_ops_task_name(
+        normalize_task_name(row["name"]),
+        row.get("pricing"),
+        product=row.get("product") or "",
+        detail=detail,
+    )
     frequency = times_per_player(row["name"], detail)
     missing = missing_dependencies(row, detail)
     template = template_source(row)
@@ -192,7 +207,7 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "parent_day": start_iso,
         "source_calendar_day": day["iso"],
         "source_row_name": row["name"],
-        "task_name": normalize_task_name(row["name"]),
+        "task_name": task_name,
         "product": row.get("product"),
         "pricing": row.get("pricing"),
         "template_source": template,
@@ -213,6 +228,7 @@ def build_task(day: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "recent_ops_reference": None,
         "description": operational_description(
             row=row,
+            task_name=task_name,
             detail=detail,
             missing=missing,
             template_source=template,

@@ -226,7 +226,7 @@ Variant: <mechanic variant from MM calendar — not the promo title alone>
 
 ### All other promos (Core, MES, Piggy, season rows, etc.)
 
-**M.E.S / MES** — use the dated template voice. **Sub title** comes **only** from an explicit `Sub title - …` line in MM Description (never from the row Name). If MM has no Sub title (Win Master, Spin Zone, and other types reuse prior art as-is), **omit** the Sub title block and set **M&M Status** to **Missing art** (or **Missing Art+Config** when Config is also needed).
+**M.E.S / MES** — use the dated template voice. **Sub title** comes **only** from an explicit `Sub title - …` line in MM Description (never from the row Name). If MM has no Sub title (Win Master, Spin Zone, and other types reuse prior art as-is), **omit** the Sub title block and set **M&M Status** to **Missing art** (or **Missing Art+Config** when Config is also needed). Do not copy the MES timeframe/duration into Description; scheduling belongs only in Start/End columns. When MM supplies milestones, preserve its mission and prize text and format each one as a semantic pair:
 
 ```text
 Segment: <segment>
@@ -234,8 +234,13 @@ banner - open M.E.S
 
 Sub title - <only when MM Description includes it>
 
-Prize:
-<missions / milestones from MM Description>
+Milestone 1:
+Mission: <mission / trigger from MM Description>
+Prize: <prize from MM Description>
+
+Milestone 2:
+Mission: …
+Prize: …
 ```
 
 ```text

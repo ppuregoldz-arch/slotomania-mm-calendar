@@ -113,23 +113,21 @@ M&M Status labels include: `Operations in Progress`, `Done`, `Missing Config`, `
 
 Historical descriptions often repeat dates, times, and Once/Multiple. New tasks must keep those values in their dedicated columns and use the Description only for the execution handoff. Real source samples are indexed in `documentation/ops_task_refs/README.md`.
 
-### Standard offer/config task
+### Standard offer task
 
 ```text
-Prizes: Coins + Gems + 8 Hammers + 1 GGS
 Segment: All Users
+Prizes: Coins + Gems + 8 Hammers + 1 GGS
 Pricing: High
 ```
 
-### Journey/challenge task
+### Non-offer / challenge task
 
 ```text
-Prizes: <exact reward>
-Segment: <confirmed audience or All Users>
-Trigger: <what the player must do — omit if unknown>
+Segment: All Users
+Trigger: <what the player must do — omit line if unknown>
+Prize: <exact reward>
 ```
-
-Do not explain the product or mention Reuse/Prize Change in Description. Default an unstated Segment to `All Users`, except ADS always uses `ADS Segment`. Do not fill unknown parameters, journey IDs, files, MCP IDs, test groups, assignees, or numeric rewards. Omit Trigger when unconfirmed.
 
 ## Updates/comments
 

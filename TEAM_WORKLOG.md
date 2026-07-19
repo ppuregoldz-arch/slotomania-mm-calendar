@@ -1,3 +1,13 @@
+### 2026-07-19 — GPT-5.6 Sol — Fix MES mission/prize semantics
+
+- **Goal:** Correct the 2026-07-26 `MES - Crazy train machines` Ops Description without changing unrelated Ops tasks.
+- **Done:** Removed the `48 hours MES` production duration; changed the MES composer to emit context plus `Milestone N` / `Mission` / `Prize` pairs; retained no Sub title and `Missing Art+Config`; rebuilt only the 2026-07-26 spec; updated only Monday subitem `12571791840` under existing parent `12537481831`.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `scripts/ops_description.py`, `scripts/validate_ops_task_spec_rules.py`, `mm_calendar/ops_task_construction.md`, `mm_calendar/data/ops_tasks/2026-07-26.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py --date 2026-07-26` ✓, `validate_ops_task_spec_rules.py` ✓ (10 specs), Python compilation ✓, Monday exact-item read/write/read verification ✓.
+- **Notes for next agent:** MES production duration stays in Start/End only; reward durations embedded in prize text are preserved.
+
+---
+
 ### 2026-07-19 — GPT-5.6 Sol — Enforce updated Ops title/MES rules
 
 - **Goal:** Ensure every Ops builder applies MM pricing in offer titles, omits calendar dates from Ops titles, and never invents M.E.S subtitles.
