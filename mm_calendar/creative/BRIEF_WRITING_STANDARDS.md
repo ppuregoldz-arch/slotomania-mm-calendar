@@ -13,7 +13,8 @@ The non-Reuse parent contains exactly one HTML table with two rows:
 |---|---|
 | Creative Label | `Prize Change`, `New theme for promo`, or `New promo` |
 | Change | Exact `source → required` delta |
-| Theme | Optional third row when MM names a theme (`Generic`, `Betty Boop`, `Cozy`, etc.). Omit when MM is generic-only with no named theme. |
+| Theme | Optional when MM names a theme (`Generic`, `Betty Boop`, …). Omit when generic-only. |
+| Hook | Optional when MM exposes a distinct player-facing hook (`30% Bigger Wedges`, `BOGO`, `MGAP denom 3 ladder`, …). Omit when nothing distinct. |
 
 No other parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or art direction. Reuse is the exception: one consolidated day-level summary with no subitems.
 
@@ -26,7 +27,7 @@ No other parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or 
 ### Subitem updates
 
 - Body is only `<table>...</table>`; no leading or trailing prose.
-- **Layout:** vertical field table — each label is a **left column row**, content in the **right column**, read top to bottom (`What to change` → optional **`Theme`** → `Reference` → `Reference Link`, or New promo `Task` → `Keep` → …). Match live briefs such as [Battlesheep Challenge](https://playtika.monday.com/boards/18112190666/pulses/12393938324); never use a horizontal header row with three field names as columns.
+- **Layout:** vertical field table — each label is a **left column row**, content in the **right column**, read top to bottom (`What to change` → optional **`Theme`** → optional **`Hook`** → `Reference` → `Reference Link`). Match live briefs such as [Battlesheep Challenge](https://playtika.monday.com/boards/18112190666/pulses/12393938324); never use a horizontal header row with three field names as columns.
 - Use the shortest unambiguous sentence in each cell.
 - **`Theme` row:** include when MM name/description states a named theme or explicit `Generic` / `Generic theme`. Value is the theme name only (`Betty Boop`, `Cozy`, `4th of July`, `Generic`). Do **not** invent a theme when the calendar row is variant-only with no theme token.
 - Include only theme name, prizes/amounts, mechanic facts, required format constraints, CTA destination, and reference.
@@ -88,6 +89,7 @@ When picking a CRM3 folder, search in this order:
 1. **Same trigger + same prize** — reuse or strongest ref.
 2. **Same trigger + different prize** — preferred for Prize Change.
 3. **Same feature, weaker match** — only if nothing closer; optional **one short note in parent Change** if the gap matters to design.
+4. **Non-themed execution** — when the calendar day is **generic** (Winovate, Blast, standard DD/SB+hammers, etc.) or label is **Prize Change**, pick CRM3 folders from **regular Features paths**, not `Holidays & Events` or holiday skins (4th of July, Easter, Thanksgiving, XmasInJuly, …). Use themed folders **only** when label is **New theme for promo** **and** MM names that same theme.
 
 Do **not** paste ladder prose or ref labels into the subitem **Reference** cell. Designers use **Reference Link** (folder) + preview image.
 
@@ -175,19 +177,45 @@ Reuse has no asset subitems (day-level summary only).
 
 ### Bad vs Good — Prize / Theme Change subitems (Itay Jul 2026)
 
-**Bad (do not ship):** four-row `Task` · `Keep` · `Reference` · `Reference Link` tables where Task says “Apply the parent Change to Main Inapp.”, Keep says “Match the reference for everything else.”, and Reference Link is a `monday.com/protected_static/...png` URL.
+**Bad (parent Change dump):** paste MM Description / Name into Change or What to change — e.g. `Theme/layout delta: Rolling Offer - 4th of July → Rolling Offer - 4 cycles (Buy X Get Y) · MGAP ladder… — Platform: … · Short Term: SNL… · Same day: X2 Extreme Stamp…` (season stack, Ops config, same-day promos).
 
-**Good:** vertical **`What to change` → `Theme` (when MM states one) → `Reference` (image only) → `Reference Link` (folder)**. **What to change** = delta only. **Reference** = preview embed or empty.
+**Bad (themed DD ref on generic day):** Reference Link `…\Holidays & Events\…` or `…XmasInJuly…` when the DD row is generic Shiny+hammers (Prize Change).
+
+**Good (Rolling + MGAP parent Change):** `Theme: 4th of July → Generic; Add MGAP denom 3 (cycles 2–4) on Rolling ladder; 4 cycles Buy X Get Y, H pricing`
+
+**Good (DD Reference Link):** `Q:\Slotomania\CRM3\Features\Daily_Deal\2026\2026_07_09_DD_Hammer_Wheel` (generic hammer/wheel structure — not holiday DD skin).
+
+**Bad (do not ship):** `Task` · `Keep` tables — e.g. Task “Apply the parent Change to Background.” and Keep “Match the reference for everything else.” Never ship **Keep**; never use pointer Task rows on actionable assets.
+
+**Bad (Rolling):** briefing **Denom Buy** / buy-free denom slots by default; vague denom line with no MGAP/denom name.
+
+**Good:** vertical **`What to change` → `Theme` (when MM states one) → `Reference` (image only) → `Reference Link` (folder)**. **What to change** = plain creative action (theme hook, prize delta, or named denom work).
+
+**Good (Rolling + MGAP ladder):** Background — `Make the MGAP ladder the main visual hook of this Rolling offer.` · MGAP denom subitem — `Build MGAP denom 3 (cycles 2–4; new for this Rolling promo).`
+
+**Good (Background / theme):** `Reskin this Background to the Betty Boop theme.` — not “Apply the parent Change to Background.”
 
 Parent hybrid: **Creative Label** + **Change** one-liner; add **Theme** parent row when MM names a theme (e.g. `Betty Boop`, `Generic`).
 
-Example Theme subitem row (HTML):
+- **`Hook` row:** only when MM name/description states a clear mechanic hook (not every promo). Examples: Golden Spin **`30% Bigger Wedges`** (never “timed gem”); MGAP **`BOGO`**; Rolling **`MGAP denom 3 ladder`**. Place after **Theme** when both exist.
+
+Example Golden Spin subitem stack (HTML):
 
 ```html
+<tr><td><p>What to change</p></td><td><p>Reskin this Banner to the Betty Boop theme.</p></td></tr>
 <tr><td><p>Theme</p></td><td><p>Betty Boop</p></td></tr>
+<tr><td><p>Hook</p></td><td><p>30% Bigger Wedges</p></td></tr>
+<tr><td><p>Reference</p></td><td><p></p></td></tr>
+<tr><td><p>Reference Link</p></td><td><p>…CRM3 folder…</p></td></tr>
 ```
 
-**Generic actionable asset** (`Task` · `Keep` · …) remains for **New promo** skeletons and products without a Prize/Theme schema — not for Prize Change or New theme for promo.
+Example Rolling MGAP denom **What to change** row:
+
+```html
+<tr><td><p>What to change</p></td><td><p>Build MGAP denom 3 (cycles 2–4; new for this Rolling promo).</p></td></tr>
+```
+
+**New promo** skeletons use the same vertical table (What to change states Itay must complete missing mechanic/prizes) — not Task/Keep.
 
 ## Status and edit safety
 

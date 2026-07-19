@@ -21,7 +21,7 @@ Explicit instructions from Itay override these defaults. Reuse promotions do not
 | Daily Deal, SB + hammers | `store denom`, `Inapp` | Same visible reward on store card and inapp hub; **no Winners Inapp** (pre-purchase). Match prior DD+SB briefs (`Inapp` subitem name). |
 | Spinner Clash | `Main Inapp`, `Journey Inapp`, `Banner` | **No Winners Inapp.** Match prior Spinner briefs. |
 | Daily Deal, BOGO / big | `Store Denom`, `Inapp`, `Winners Inapp` | BOGO is big by default. |
-| Rolling Offer | `Background`, `Banner` | Drop Denom Buy/Free unless requested. |
+| Rolling Offer | `Background`, `Banner` | Drop **Denom Buy**, **Denom Free**, and generic buy/free denom slots unless Itay explicitly requests them. When MM embeds an **MGAP ladder** (name/description mentions MGAP + ladder/denom), add **`MGAP denom`** subitem only — brief it with a named line (e.g. `Build MGAP denom 3 (cycles 2–4; new for this Rolling promo).`). |
 | RYD | `Background`, `Banner`, `Denom On`, `Denom Off` | Each denom state needs its own reference. |
 | MGAP | `Main Inapp`, `Banner`, `PP Banner`, `UI` | Add Winners Inapp when relevant. |
 | Gem Machine | `Banner` | Drop dynamic Inapp/Winners/push unless requested. |
@@ -29,7 +29,7 @@ Explicit instructions from Itay override these defaults. Reuse promotions do not
 | MES SB Challenge | `Banner` | Win Master exception below. |
 | Shiny Show | `Inapp`, `Banner`, `PJMS`, `Intro`, `Tooltip` | Drop Externals, Comufy, iOS Push. |
 | Battlesheep Challenge | `Main Inapp`, `Theme/BO`, `Banner`, `Winners Inapp` | Drop other template assets. |
-| Golden Spin | Template defaults (Main Inapp, Banner, arena assets) | **Coin-value Mega Bonus wheel** — not Gem Machine / timed Gems ALERT. Use **Theme** row when MM names a skin (`Betty Boop`, `4th of July`, etc.). Never label “timed gem feature” in brief text. |
+| Golden Spin | Template defaults (Main Inapp, Banner, arena assets) | **Coin-value Mega Bonus wheel** — not Gem Machine / timed Gems ALERT. Use **Theme** when MM names a skin; **Hook** when MM states the variant (e.g. **`30% Bigger Wedges`**). Never label “timed gem feature” in brief text. |
 | Custom Pod | `Main Inapp`, `Winners Inapp`, `Banner` | Drop Externals and Comufy. |
 | Decoy Bonanza | `Background`, `Banner`, `Denoms` | Three denoms; Big Denom is best value. |
 | Gatcha / Cocktail Bonus / SB Picker | `Inapp`, `BG`, `Banner`, `PP Banner`, `UI`, `Logo Entrance`, `Header` | Pick screen needs BG/UI/Logo/Header. |
@@ -44,6 +44,13 @@ Creative works top-to-bottom:
 The Denom slot includes DD store cells, Denoms, Big Denom, Denom On/Off, Store Denom, and Denom Buy/Free. Monday has no reorder mutation; ordering may require snapshotting bodies, recreating subitems in order, clearing their gate fields, then deleting originals. Treat this as a guarded mutation.
 
 ## Product rules
+
+### Rolling Offer
+
+- Default actionable scope: **Background** + **Banner** only.
+- **Never** auto-create **Buy denom**, **Denom Buy**, **Denom Free**, or combined buy/free denom subitems.
+- When the calendar row includes an **MGAP ladder** (MGAP + ladder/denom in name or Description), add one **`MGAP denom`** subitem. **What to change** must name the denom (e.g. **MGAP denom 3**) and cycles when MM specifies them — not generic “apply parent Change” text.
+- **Background** theme work: plain hook lines (e.g. “Make the MGAP ladder the main visual hook of this Rolling offer.”), not Task/Keep pointer rows.
 
 ### Reveal Your Deal
 

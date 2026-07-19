@@ -73,6 +73,45 @@ SPINNER_REF_BASE = (
 ADS_REWARDED_VIDEO_REF = (
     r"Q:\Slotomania\CRM3\Generic Promotions\Rewarded_Video"
 )
+GENERIC_DAILY_DEAL_PATH_HINTS = (
+    "8hammers",
+    "8_hammers",
+    "hammer_wheel",
+    "sb_wheel",
+    "winovate_wheel",
+    "wilda_hammers",
+    "parasheep_hammers",
+    "3reg_hammer",
+)
+
+THEMED_CRM3_TOKENS = (
+    "holidays & events",
+    "holidays\\ events",
+    "4th_of_july",
+    "4th of july",
+    "july_4",
+    "independence",
+    "easter",
+    "thanksgiving",
+    "memorial",
+    "christmas",
+    "xmas",
+    "valentine",
+    "halloween",
+    "st_patrick",
+    "patrick",
+    "carnival",
+    "black_friday",
+    "new_year",
+    "world_cup",
+    "xmasinJuly",
+    "xmas_in_july",
+)
+
+GENERIC_DD_HAMMER_WHEEL_FOLDER = (
+    r"Q:\Slotomania\CRM3\Features\Daily_Deal\2026\2026_07_09_DD_Hammer_Wheel"
+)
+
 GENERIC_ROLLING_SUPERSIZED_REF = (
     r"Q:\Slotomania\CRM3\Generic Promotions\Supersize_Wins\2025"
     r"\2025_04_06_Supersized_Wins_X_RO"
@@ -94,6 +133,7 @@ SOURCE_OVERRIDES = {
     "12511214687": "12148706201",  # Generic bigger multipliers
     "12475750417": "12337043899",  # DD SB wheel structure
     "12475732350": "11223800692",  # DD wheel structure
+    "12476427941": "12475750417",  # DD Shiny+hammers wheel — generic SB/hammer structure
     "12475100661": "11868921934",  # Generic MES Ace Heist structure
 }
 
@@ -194,12 +234,15 @@ def prize_change_table(
     reference_cell: str,
     reference_link_cell: str,
     theme: str = "",
+    hook: str | None = None,
 ) -> str:
     rows: list[tuple[str, str]] = []
     for line in change_lines:
         rows.append(("What to change", f"<p>{esc(line)}</p>"))
     if theme:
         rows.append(("Theme", f"<p>{esc(theme)}</p>"))
+    if hook:
+        rows.append(("Hook", f"<p>{esc(hook)}</p>"))
     rows.append(("Reference", reference_cell or "<p></p>"))
     rows.append(("Reference Link", reference_link_cell or "<p></p>"))
     return vertical_field_table(rows)
@@ -445,7 +488,10 @@ def source_date(source: dict[str, Any]) -> str:
     return match.group(0) if match else "reference-missing"
 
 
-def source_reference_path(source: dict[str, Any]) -> str:
+def source_reference_path(
+    source: dict[str, Any],
+    row: dict[str, str] | None = None,
+) -> str:
     if is_ads_po_source(source):
         art = source.get("art_link") or ""
         if art and "Rewarded_Video" in str(art):
@@ -459,20 +505,21 @@ def source_reference_path(source: dict[str, Any]) -> str:
             return generic
     if source.get("art_link"):
         art = str(source["art_link"])
-        if "easter_ro_supersized" not in art.lower():
-            return art
+        if not is_themed_crm3_path(art) or (row and mm_allows_themed_crm3_reference(row)):
+            if "easter_ro_supersized" not in art.lower():
+                return art
         generic = generic_rolling_supersized_folder(all_crm3_paths(source))
         if generic:
             return generic
-        return art
+        if not is_themed_crm3_path(art):
+            return art
     texts = [update.get("text_body") or "" for update in source.get("updates") or []]
     for subitem in source.get("subitems") or []:
         texts.extend(update.get("text_body") or "" for update in subitem.get("updates") or [])
     for text in texts:
-        for line in text.splitlines():
-            line = line.strip()
-            if line.startswith(("Q:\\", "/Volumes/CRM3/", "/Volumes/studios/")):
-                return line
+        paths = prefer_generic_crm3_paths(crm3_paths_in_text(text), row)
+        for line in paths:
+            return line
     raise RuntimeError(f"No CRM3 reference path found for source {source['id']} {source['name']}")
 
 
@@ -534,6 +581,80 @@ def is_ads_po_source(source: dict[str, Any]) -> bool:
     return "po ads" in name or "ads po" in name
 
 
+def is_themed_crm3_path(path: str) -> bool:
+    lowered = path.lower().replace("/", "\\")
+    if "holidays & events" in lowered or "holidays\\ events" in lowered:
+        return True
+    compact = re.sub(r"[^a-z0-9]+", "_", lowered)
+    for token in THEMED_CRM3_TOKENS:
+        t = re.sub(r"[^a-z0-9]+", "_", token.lower())
+        if t in compact:
+            return True
+    if re.search(r"\\20\d{2}_[01]\d_[01]\d_", lowered):
+        # Date-stamped feature folders on holiday promos — treat as themed when under Events
+        if "events" in lowered or "holiday" in lowered:
+            return True
+    return False
+
+
+def themed_path_matches_mm_theme(path: str, row: dict[str, str]) -> bool:
+    theme = (promo_theme_label(row) or "").lower()
+    if not theme or theme == "generic":
+        return False
+    p = path.lower()
+    checks = {
+        "4th of july": ("july", "4th", "independence"),
+        "betty boop": ("betty", "boop"),
+        "valentine": ("valentine",),
+        "easter": ("easter",),
+        "halloween": ("halloween",),
+        "thanksgiving": ("thanksgiving",),
+        "christmas": ("christmas", "xmas"),
+        "cozy": ("cozy",),
+        "wonder": ("wonder",),
+    }
+    for key, needles in checks.items():
+        if key in theme or theme in key:
+            return any(n in p for n in needles)
+    return theme.replace(" ", "_") in p.replace("-", "_").replace(" ", "_")
+
+
+def mm_allows_themed_crm3_reference(row: dict[str, str] | None) -> bool:
+    if not row or row["label"] != "New theme for promo":
+        return False
+    theme = promo_theme_label(row)
+    return bool(theme and theme.lower() != "generic")
+
+
+def prefer_generic_crm3_paths(
+    paths: list[str],
+    row: dict[str, str] | None,
+) -> list[str]:
+    if not paths:
+        return paths
+    if row and mm_allows_themed_crm3_reference(row):
+        matched = [p for p in paths if is_themed_crm3_path(p) and themed_path_matches_mm_theme(p, row)]
+        generic = [p for p in paths if not is_themed_crm3_path(p)]
+        other_themed = [p for p in paths if is_themed_crm3_path(p) and p not in matched]
+        return matched + generic + other_themed
+    generic = [p for p in paths if not is_themed_crm3_path(p)]
+    themed = [p for p in paths if is_themed_crm3_path(p)]
+    return generic + themed
+
+
+def score_daily_deal_path(path: str) -> int:
+    lowered = path.lower()
+    score = 0
+    for hint in GENERIC_DAILY_DEAL_PATH_HINTS:
+        if hint in lowered:
+            score += 10
+    if is_themed_crm3_path(path):
+        score -= 50
+    if "features\\daily_deal" in lowered.replace("/", "\\"):
+        score += 2
+    return score
+
+
 def is_non_ads_po_crm3_path(path: str) -> bool:
     lowered = path.lower()
     if "rewarded_video" in lowered.replace("\\", "/"):
@@ -557,7 +678,11 @@ def generic_rolling_supersized_folder(paths: list[str]) -> str:
     return ""
 
 
-def crm3_folder_path(source: dict[str, Any], asset_name: str | None = None) -> str:
+def crm3_folder_path(
+    source: dict[str, Any],
+    asset_name: str | None = None,
+    row: dict[str, str] | None = None,
+) -> str:
     if is_ads_po_source(source):
         art = source.get("art_link") or ""
         if art and "Rewarded_Video" in str(art):
@@ -580,13 +705,41 @@ def crm3_folder_path(source: dict[str, Any], asset_name: str | None = None) -> s
         return crm3_asset_folder(piggy_base, asset_name)
     if family(source.get("name") or "") == "spinner clash":
         return crm3_asset_folder(SPINNER_REF_BASE, asset_name)
-    if family(source.get("name") or "") == "daily deal":
-        for path in all_crm3_paths(source):
-            if "Daily_Deal" in path:
-                return crm3_asset_folder(crm3_path_to_folder(path), asset_name)
+    row_fam = family(row["name"]) if row else ""
+    source_fam = family(source.get("name") or "")
+    if row_fam == "daily deal" or source_fam == "daily deal":
+        paths = all_crm3_paths(source, asset_name)
+        dd_paths = [
+            p
+            for p in paths
+            if "daily_deal" in p.lower().replace("\\", "/")
+        ]
+        candidates = prefer_generic_crm3_paths(dd_paths or paths, row)
+        candidates.sort(key=score_daily_deal_path, reverse=True)
+        allowed = [
+            p
+            for p in candidates
+            if not is_themed_crm3_path(p)
+            or (
+                row
+                and mm_allows_themed_crm3_reference(row)
+                and themed_path_matches_mm_theme(p, row)
+            )
+        ]
+        pick = allowed[0] if allowed else ""
+        if not pick and candidates and row and not mm_allows_themed_crm3_reference(row):
+            pick = ""  # force fallback below
+        elif not pick and candidates:
+            pick = candidates[0]
+        if pick:
+            return crm3_asset_folder(crm3_path_to_folder(pick), asset_name)
+        if row and not mm_allows_themed_crm3_reference(row):
+            return crm3_asset_folder(GENERIC_DD_HAMMER_WHEEL_FOLDER, asset_name)
         if source.get("art_link"):
-            return crm3_asset_folder(str(source["art_link"]), asset_name)
-    paths = all_crm3_paths(source, asset_name)
+            art = str(source["art_link"])
+            if not is_themed_crm3_path(art) or (row and mm_allows_themed_crm3_reference(row)):
+                return crm3_asset_folder(art, asset_name)
+    paths = prefer_generic_crm3_paths(all_crm3_paths(source, asset_name), row)
     folders = [crm3_path_to_folder(path) for path in paths]
     if asset_name:
         asset_key = asset_name.lower()
@@ -599,7 +752,7 @@ def crm3_folder_path(source: dict[str, Any], asset_name: str | None = None) -> s
                 return folder
     if folders:
         return folders[0]
-    paths = all_crm3_paths(source)
+    paths = prefer_generic_crm3_paths(all_crm3_paths(source), row)
     folders = [crm3_path_to_folder(path) for path in paths]
     if asset_name:
         asset_key = asset_name.lower()
@@ -611,7 +764,9 @@ def crm3_folder_path(source: dict[str, Any], asset_name: str | None = None) -> s
     if folders:
         return folders[0]
     if source.get("art_link"):
-        return crm3_asset_folder(str(source["art_link"]), asset_name)
+        art = str(source["art_link"])
+        if not is_themed_crm3_path(art) or (row and mm_allows_themed_crm3_reference(row)):
+            return crm3_asset_folder(art, asset_name)
     raise RuntimeError(f"No CRM3 folder path found for source {source['id']} {source['name']}")
 
 
@@ -704,10 +859,11 @@ def reference_link_html(
     asset_name: str | None = None,
     allow_missing_path: bool = False,
     folder_only: bool = False,
+    row: dict[str, str] | None = None,
 ) -> str:
     if folder_only:
         try:
-            folder = crm3_folder_path(source, asset_name)
+            folder = crm3_folder_path(source, asset_name, row=row)
         except RuntimeError:
             if not allow_missing_path:
                 raise
@@ -720,7 +876,7 @@ def reference_link_html(
         return f'<a href="{url}">{url}</a>'
     source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{source['id']}"
     try:
-        return f"<code>{esc(source_reference_path(source))}</code>"
+        return f"<code>{esc(source_reference_path(source, row))}</code>"
     except RuntimeError:
         if not allow_missing_path:
             raise
@@ -904,6 +1060,8 @@ def canonical_subitem_order(names: list[str]) -> list[str]:
             return (3, index)
         if key in {"background", "bg", "theme/bo", "theme / bo"}:
             return (4, index)
+        if "mgap" in key and "denom" in key:
+            return (5, index)
         if key == "df":
             return (5, index)
         if key.startswith("denom"):
@@ -1078,6 +1236,52 @@ def promo_theme_label(row: dict[str, str]) -> str:
     return ""
 
 
+def promo_hook_line(row: dict[str, str]) -> str | None:
+    """Player-facing hook from MM name/description; None when nothing distinct."""
+    name = normalize_name(row["name"])
+    desc = sanitized_description(row)
+    blob = f"{name}\n{desc}".lower()
+    fam = family(row["name"])
+
+    if fam == "golden spin":
+        for part in name.split("|"):
+            part = part.strip()
+            if re.match(r"golden\s*spin", part, re.I):
+                continue
+            if re.search(r"\btheme\s*$", part, re.I):
+                continue
+            pct_bigger = re.search(r"(\d+%\s*Bigger)", part, re.I)
+            if pct_bigger:
+                return f"{pct_bigger.group(1).title()} Wedges"
+            if re.search(r"bigger\s+multipliers", part, re.I):
+                return "Bigger Multipliers"
+        if re.search(r"extra\s+black\s+wedge", blob):
+            return "Extra Black Wedge"
+        if re.search(r"gold\s+cards?\s+on\s+wedges", blob):
+            return "Gold Cards on Wedges"
+        if re.search(r"bigger\s+multipliers", blob):
+            return "Bigger Multipliers"
+        return None
+
+    if re.search(r"\bbogo\b", blob):
+        return "BOGO"
+
+    if re.search(r"supersiz(ed|e)", blob):
+        return "Supersized Wins" if "win" in blob else "Supersized"
+
+    if re.search(r"bigger\s+multipliers", blob):
+        return "Bigger Multipliers"
+
+    if fam == "rolling" and rolling_has_mgap_ladder(row):
+        hint = rolling_mgap_denom_hint(row)
+        return f"{hint} ladder" if hint else "MGAP ladder"
+
+    if re.search(r"\bx1000\b", name, re.I):
+        return "X1000"
+
+    return None
+
+
 def concise_requirement(row: dict[str, str]) -> str:
     title = normalize_name(row["name"])
     lines = [
@@ -1225,6 +1429,8 @@ def subitem_matches(required: str, existing: str) -> bool:
         return True
     if req == "inapp" and cur.startswith("main") and "inapp" in cur and "winner" not in cur:
         return True
+    if req == "mgap denom" and "mgap" in cur and "denom" in cur and "buy" not in cur:
+        return True
     return False
 
 
@@ -1254,6 +1460,143 @@ def daily_deal_has_sb_and_hammers(row: dict[str, str]) -> bool:
     return has_sb and has_hammers
 
 
+def rolling_promo_blob(row: dict[str, str]) -> str:
+    return f"{normalize_name(row['name'])}\n{sanitized_description(row)}".lower()
+
+
+def rolling_has_mgap_ladder(row: dict[str, str]) -> bool:
+    blob = rolling_promo_blob(row)
+    return "mgap" in blob and ("ladder" in blob or "denom" in blob)
+
+
+def rolling_mgap_denom_hint(row: dict[str, str]) -> str:
+    desc = sanitized_description(row) or row.get("description") or ""
+    match = re.search(
+        r"mgap:\s*denom\s*(\d+)(?:\s*only)?(?:\s*[·•-]\s*(cycles?\s*[\d\s–—\-]+))?",
+        desc,
+        re.I,
+    )
+    if match:
+        denom = match.group(1)
+        cycles = (match.group(2) or "").strip()
+        if cycles:
+            return f"MGAP denom {denom} ({cycles})"
+        return f"MGAP denom {denom}"
+    if rolling_has_mgap_ladder(row):
+        return "MGAP denom"
+    return ""
+
+
+def is_rolling_buy_denom_subitem(name: str) -> bool:
+    """Buy/Free denom slots — never auto-brief on Rolling (Itay)."""
+    key = normalize_subitem_key(name)
+    if "buy" in key and "denom" in key:
+        return True
+    if "free" in key and "denom" in key and "mgap" not in key:
+        return True
+    if key in {
+        "denom buy",
+        "denom buy/free",
+        "denom free",
+        "buy denom",
+        "free denom",
+        "denoms",
+    }:
+        return True
+    return False
+
+
+def asset_is_rolling_mgap_denom(asset: str) -> bool:
+    key = normalize_subitem_key(asset)
+    return "mgap" in key and "denom" in key
+
+
+def infer_source_theme_name(source: dict[str, Any]) -> str:
+    name = normalize_name(source.get("name") or "")
+    for label in (
+        "4th of July",
+        "Valentine",
+        "Easter",
+        "Halloween",
+        "Thanksgiving",
+        "Betty Boop",
+        "Generic",
+        "Wonder",
+        "Cozy",
+    ):
+        if label.lower() in name.lower():
+            return label
+    if " - " in name:
+        tail = name.split(" - ", 1)[-1].strip()
+        if len(tail) <= 45 and not re.search(r"^\d+\s*cycles?", tail, re.I):
+            return tail
+    return ""
+
+
+def rolling_cycle_pricing_clause(row: dict[str, str]) -> str:
+    name = normalize_name(row["name"])
+    bits: list[str] = []
+    match = re.search(r"(\d+)\s*cycles?", name, re.I)
+    if match:
+        bits.append(f"{match.group(1)} cycles Buy X Get Y")
+    if re.search(r"H Pricing|\|\s*H\s*Pricing", name, re.I) or (
+        (row.get("pricing") or "").lower() == "high"
+    ):
+        bits.append("H pricing")
+    return ", ".join(bits)
+
+
+def short_parent_change(row: dict[str, str], source: dict[str, Any]) -> str:
+    """One short creative-visible delta for parent Change — never MM Description dumps."""
+    fam = family(row["name"])
+    if fam == "rolling":
+        parts: list[str] = []
+        src_theme = infer_source_theme_name(source)
+        dst_theme = promo_theme_label(row) or (
+            "Generic" if row["label"] == "New theme for promo" else ""
+        )
+        if row["label"] == "New theme for promo" and (src_theme or dst_theme):
+            parts.append(f"Theme: {src_theme or 'prior'} → {dst_theme or 'required theme'}")
+        elif row["label"] == "Prize Change":
+            ref = inferred_reference_prize(source)
+            req = required_prize_from_row(row)
+            if ref and req and len(req) <= 72:
+                parts.append(f"{ref} → {req}")
+        if rolling_has_mgap_ladder(row):
+            hint = rolling_mgap_denom_hint(row) or "MGAP denom"
+            parts.append(f"Add {hint} on Rolling ladder")
+        cycle_clause = rolling_cycle_pricing_clause(row)
+        if cycle_clause and not any("cycles" in part for part in parts):
+            parts.append(cycle_clause)
+        if parts:
+            return "; ".join(parts)[:220]
+        return "Rolling offer creative update"
+
+    if fam == "golden spin" and row["label"] == "New theme for promo":
+        src = infer_source_theme_name(source) or "prior theme"
+        dst = promo_theme_label(row) or "required theme"
+        line = f"Theme: {src} → {dst}"
+        hook = promo_hook_line(row)
+        if hook:
+            line = f"{line}; {hook}"
+        return line[:220]
+
+    if row["label"] == "New theme for promo":
+        src = infer_source_theme_name(source) or normalize_name(source.get("name") or "")[:35]
+        dst = promo_theme_label(row) or "required theme"
+        return f"Theme: {src} → {dst}"[:220]
+
+    if row["label"] == "Prize Change" and fam == "golden spin":
+        hook = promo_hook_line(row)
+        dst = promo_theme_label(row)
+        if hook and dst:
+            return f"Theme: → {dst}; {hook}"[:220]
+        if hook:
+            return hook[:220]
+
+    return ""
+
+
 def playbook_required_subitems(row: dict[str, str]) -> list[str]:
     if row["label"] not in {"Prize Change", "New theme for promo", "New promo"}:
         return []
@@ -1269,6 +1612,11 @@ def playbook_required_subitems(row: dict[str, str]) -> list[str]:
         if daily_deal_has_sb_and_hammers(row):
             return ["store denom", "Inapp"]
         return ["store denom"]
+    if fam == "rolling":
+        subs = ["Background", "Banner"]
+        if rolling_has_mgap_ladder(row):
+            subs.append("MGAP denom")
+        return subs
     return []
 
 
@@ -1303,6 +1651,14 @@ def prune_non_playbook_subitems(
         return subitems
     kept: list[dict[str, Any]] = []
     for subitem in subitems:
+        if family(row["name"]) == "rolling" and is_rolling_buy_denom_subitem(subitem["name"]):
+            delete_item(str(subitem["id"]))
+            print(
+                f"REMOVED {parent_id} subitem {subitem['name']!r} "
+                "(Rolling: no Buy/Free denom in scope)"
+            )
+            time.sleep(0.25)
+            continue
         if any(subitem_matches(name, subitem["name"]) for name in required):
             kept.append(subitem)
             continue
@@ -1317,6 +1673,14 @@ def spinner_prize_lines(row: dict[str, str]) -> list[str]:
 
 
 def change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
+    if row["label"] == "New theme for promo":
+        short = short_parent_change(row, source)
+        if short:
+            return short
+    if family(row["name"]) == "rolling":
+        short = short_parent_change(row, source)
+        if short:
+            return short
     if row["label"] == "Prize Change" and family(row["name"]) == "piggy":
         ref_prize = inferred_reference_prize(source) or "prior break prize"
         return f"Break prize: {ref_prize} → {required_prize_from_row(row)}"
@@ -1327,11 +1691,13 @@ def change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
             prizes = spinner_rank_prize_lines(row)
             if prizes:
                 return " · ".join(prizes)
-        if ref_prize:
+        if ref_prize and req and len(req) <= 72:
             return f"{ref_prize} → {req}"
-    if row["label"] == "New theme for promo":
-        return f"{normalize_name(source.get('name') or '')} → {concise_requirement(row)}"
-    return f"{source['name']} → {concise_requirement(row)}"
+        if req and len(req) <= 72:
+            return req
+    src_name = normalize_name(source.get("name") or "")[:40]
+    dst_name = normalize_name(row["name"]).split("|")[0].strip()[:40]
+    return f"{src_name} → {dst_name}"
 
 
 def numbered_steps_html(steps: list[str]) -> str:
@@ -1339,11 +1705,75 @@ def numbered_steps_html(steps: list[str]) -> str:
     return f"<ol>{items}</ol>"
 
 
+def asset_is_background(asset: str) -> bool:
+    key = normalize_subitem_key(asset)
+    if key in {"background", "bg", "theme/bo", "theme / bo"}:
+        return True
+    return "background" in key or key.startswith("theme/")
+
+
+def asset_is_banner(asset: str) -> bool:
+    key = normalize_subitem_key(asset)
+    return "banner" in key and "pp banner" not in key
+
+
+def display_change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
+    """Short delta for subitem copy — never MM Description dumps."""
+    short = short_parent_change(row, source)
+    if short:
+        return short
+    return change_summary(row, source)
+
+
+def theme_hook_lines(row: dict[str, str], source: dict[str, Any], asset: str) -> list[str]:
+    """Plain-language theme/hook instructions for Background and similar assets."""
+    theme = promo_theme_label(row)
+    title = normalize_name(row["name"]).lower()
+    asset_l = asset.lower()
+    hook = promo_hook_line(row)
+
+    if "mgap" in title and "rolling" in title and asset_is_background(asset):
+        return ["Make the MGAP ladder the main visual hook of this Rolling offer."]
+
+    if row["label"] == "New theme for promo" and (
+        asset_is_background(asset) or asset_is_banner(asset) or "theme" in asset_l
+    ):
+        lines: list[str] = []
+        if theme:
+            lines.append(f"Reskin this {asset} to the {theme} theme.")
+        else:
+            lines.append(f"Reskin this {asset} to the required theme.")
+        if hook and family(row["name"]) == "golden spin":
+            lines.append(f"Show hook on wheel/arena: {hook}.")
+        elif family(row["name"]) == "rolling":
+            lines.append("Keep Buy X Get Y Rolling layout visible.")
+        return lines
+
+    if row["label"] == "New theme for promo" and family(row["name"]) == "golden spin":
+        if theme and hook:
+            return [f"Apply {theme} theme to Golden Spin {asset}.", f"Hook: {hook}."]
+        if theme:
+            return [f"Apply {theme} theme to Golden Spin {asset}."]
+        return [f"Apply required theme to Golden Spin {asset}."]
+
+    return []
+
+
 def what_to_change_lines(row: dict[str, str], source: dict[str, Any], asset: str) -> list[str]:
     req = required_prize_from_row(row)
     ref_prize = inferred_reference_prize(source) or "prior prize"
     asset_l = asset.lower()
     fam = family(row["name"])
+
+    hook = theme_hook_lines(row, source, asset)
+    if hook:
+        return hook
+
+    if row["label"] == "New promo":
+        return [
+            f"Itay must complete mechanic, prizes, and format for {normalize_name(row['name'])}.",
+            f"This asset: {asset}.",
+        ]
 
     if fam == "piggy" and "winner" in asset_l:
         return [
@@ -1369,8 +1799,35 @@ def what_to_change_lines(row: dict[str, str], source: dict[str, Any], asset: str
         if "dd" in asset_l or "store" in asset_l or "denom" in asset_l:
             return [f"Store reward: {req}."]
 
+    if fam == "rolling":
+        if is_rolling_buy_denom_subitem(asset):
+            return []
+        if asset_is_rolling_mgap_denom(asset) or (
+            normalize_subitem_key(asset) == "mgap denom"
+        ):
+            hint = rolling_mgap_denom_hint(row) or "MGAP denom"
+            return [f"Build {hint} — new for this Rolling promo."]
+        if asset_is_banner(asset):
+            if row["label"] == "Prize Change":
+                ref = inferred_reference_prize(source) or "prior"
+                req = required_prize_from_row(row)
+                if len(req) <= 72:
+                    return [f"Update visible Rolling prizes on banner: {ref} → {req}."]
+            theme = promo_theme_label(row)
+            if theme:
+                return [f"Reskin Rolling banner to {theme} theme."]
+            return ["Update Rolling banner for this promo."]
+        if asset_is_background(asset):
+            hook = theme_hook_lines(row, source, asset)
+            if hook:
+                return hook
+            return ["Update Rolling background for this promo."]
+
     change = change_summary(row, source)
-    return [f"{asset}: {change}."]
+    if asset_is_background(asset) or asset_is_banner(asset):
+        if row["label"] == "Prize Change":
+            return [f"Update {asset}: {change}."]
+    return [f"Update {asset} for: {change}."]
 
 
 def reference_cell_html(source: dict[str, Any], asset: str) -> str:
@@ -1401,49 +1858,30 @@ def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) 
     theme = promo_theme_label(row)
     if theme:
         rows.append(("Theme", esc(theme)))
+    hook = promo_hook_line(row)
+    if hook:
+        rows.append(("Hook", esc(hook)))
     return table(rows)
 
 
 def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
-    if row["label"] in {"Prize Change", "New theme for promo"}:
-        reference_cell = reference_cell_html(source, asset)
-        link_cell = reference_link_html(
-            source,
-            asset,
-            allow_missing_path=row["label"] == "New promo",
-            folder_only=True,
-        )
-        return prize_change_table(
-            what_to_change_lines(row, source, asset),
-            reference_cell,
-            link_cell,
-            theme=promo_theme_label(row),
-        )
-    rows = [
-        ("Task", esc(f"Apply the parent Change to {asset}.")),
-        ("Keep", "Match the reference for everything else."),
-    ]
-    if row["label"] == "New promo":
-        rows.append(
-            (
-                "Skeleton",
-                "Itay must complete missing mechanic, prizes, and format requirements. Do not invent them.",
-            )
-        )
-    theme = promo_theme_label(row)
-    if theme:
-        rows.append(("Theme", esc(theme)))
-    reference_png = reference_png_html(source, asset)
-    if reference_png:
-        rows.append(("Reference", reference_png))
-    rows.append(
-        (
-            "Reference Link",
-            reference_link_html(source, asset, row["label"] == "New promo"),
-        )
+    reference_cell = reference_cell_html(source, asset)
+    link_cell = reference_link_html(
+        source,
+        asset,
+        allow_missing_path=row["label"] == "New promo",
+        folder_only=row["label"] in {"Prize Change", "New theme for promo", "New promo"},
+        row=row,
     )
-    return vertical_field_table(
-        [(label, f"<p>{value}</p>" if not value.startswith("<") else value) for label, value in rows]
+    lines = what_to_change_lines(row, source, asset)
+    if not lines:
+        lines = [f"Update {asset} per parent Change."]
+    return prize_change_table(
+        lines,
+        reference_cell,
+        link_cell,
+        theme=promo_theme_label(row),
+        hook=promo_hook_line(row),
     )
 
 
@@ -1570,16 +2008,13 @@ def mgap_ui_subitem_body(
     source: dict[str, Any],
     asset_name: str,
 ) -> str:
-    rows = [
-        ("Task", esc(f"Apply the parent Change to {asset_name}.")),
-        ("Keep", "Keep the existing MGAP UI structure."),
-        ("Mechanic", esc(spec["mechanic"])),
+    reference_cell = reference_cell_html(source, asset_name)
+    link_cell = reference_link_html(source, asset_name, folder_only=True)
+    lines = [
+        f"Update MGAP UI: {spec['change']}",
+        f"Mechanic: {spec['mechanic']}",
     ]
-    reference_png = reference_png_html(source, asset_name)
-    if reference_png:
-        rows.append(("Reference", reference_png))
-    rows.append(("Reference Link", reference_link_html(source, asset_name)))
-    return table(rows)
+    return prize_change_table(lines, reference_cell, link_cell)
 
 
 def write_mgap_ui_task(

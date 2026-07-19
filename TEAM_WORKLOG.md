@@ -1,3 +1,40 @@
+### 2026-07-19 — Auto — Hook row + generic CRM3 refs + brief brevity
+
+- **Goal:** Monetization-Art training backlog (715774bb): no Task/Keep; short parent **Change**; **Hook** / **Theme** rows; Rolling **MGAP denom** only (no Buy denom); generic CRM3 refs (no holiday DD skins on generic days); rebuild Aug 5/6/11/28/29.
+- **Done:** `promo_hook_line`, `short_parent_change`, themed path filter (`is_themed_crm3_path`, `prefer_generic_crm3_paths`, `GENERIC_DD_HAMMER_WHEEL_FOLDER`), DD override `12476427941` → SB wheel chain; Rolling playbook Background+Banner+MGAP denom; docs (`BRIEF_WRITING_STANDARDS`, `PRODUCT_PLAYBOOK`, `slotomania_monetization_art.mdc` from prior pass).
+- **Monday:** `--commit --allow-in-flight --rebuild` ✓ **2026-08-11** (4 removed, 3 active + MGAP UI); **2026-08-05/06/28/29** running via `/tmp/aug_creative_rebuild.log`.
+- **DD ref example:** was `…2025_07_25_DD_6hours_XmasInJuly…` → now `Q:\Slotomania\CRM3\Features\Daily_Deal\2026\2026_06_09_DD_SB_Wheel` on 11 Aug DD.
+- **Rolling Change example:** `Theme: 4th of July → Generic; Add MGAP denom 3 (cycles 2–4) on Rolling ladder; 4 cycles Buy X Get Y, H pricing`
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `PRODUCT_PLAYBOOK.md`, `TEAM_WORKLOG.md`.
+
+---
+
+- **Goal:** Status MM = Ready for Brief on completed briefs; Traffic Artist/Copywriter split; DD 100% SB + hammers gets store denom + Inapp (no Winners).
+- **Done:** `status_mm_column_value()` uses Status MM **index 10** (`color_mkwes65f`) — label index 4 is deactivated duplicate. `daily_deal_has_sb_and_hammers()` → `store denom` + `Inapp`; inapp/store **What to change** deltas. Docs: `BRIEF_WRITING_STANDARDS.md`, `PRODUCT_PLAYBOOK.md`, `CREATIVE_LABEL_RULES.md`, `.cursor/rules/slotomania_monetization_art.mdc`. Re-applied 2026-08-05 group.
+- **Verified (Monday):** `12549561473` subitems `Inapp`, `store denom`; Status MM Ready for Brief; Marina Artist / Yarden Copywriter only. Same people + status on Piggy `12571759372`, Spinner `12549581866`.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, creative docs above, `TEAM_WORKLOG.md`.
+- **Commands run:** `apply_selected_august_creative_briefs.py --date 2026-08-05 --commit --allow-in-flight` ✓.
+
+---
+
+### 2026-07-19 — Auto — Reference row image-only; Piggy one delta line
+
+- **Goal:** Reference cell = preview only (no prose); Piggy Main Inapp single `Break prize` line.
+- **Done:** `reference_cell_html()`; re-applied 2026-08-05 Monetization-Art briefs.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `BRIEF_WRITING_STANDARDS.md`, `TEAM_WORKLOG.md`.
+- **Commands run:** `apply_selected_august_creative_briefs.py --date 2026-08-05 --commit --allow-in-flight` ✓.
+
+---
+
+### 2026-07-19 — Auto — Vertical brief tables (Battlesheep pattern)
+
+- **Goal:** Subitem tables read top-to-bottom like pulse `12393938324`, not horizontal 3-column headers.
+- **Done:** `vertical_field_table()`; Prize Change = stacked `What to change` rows → `Reference` → `Reference Link`. Standards updated; 2026-08-05 briefs re-applied on Monday.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `TEAM_WORKLOG.md`.
+- **Commands run:** `apply_selected_august_creative_briefs.py --date 2026-08-05 --commit --allow-in-flight` ✓.
+
+---
+
 ### 2026-07-19 — Auto — Aug 5 briefs: Itay feedback (plain deltas, scope fixes)
 
 - **Goal:** Apply creative brief training feedback on 2026-08-05; encode in docs + script.
