@@ -1,3 +1,12 @@
+### 2026-07-19 — GPT-5.6 Sol — Organize and mirror MM learnings
+- **Goal:** Organize confirmed learnings for Ops tasks, Monetization-Art briefs, and month planning; make the local workspace and CRM3 team share consistent.
+- **Done:** Added three start-here learning indexes; linked them from the router and relevant Cursor rules; backfilled the Extreme-only Ops allowlist; resolved stale X2 Extreme Stamp and Ops-status contradictions; made the two-row Creative parent rule unambiguous; switched current canonical workspace references from CRM2 to CRM3.
+- **Files:** `mm_calendar/LEARNINGS_MONTH.md`, `mm_calendar/LEARNINGS_OPS.md`, `mm_calendar/creative/LEARNINGS_BRIEFS.md`, `mm_calendar/BUILD_CALENDAR_ROUTER.md`, `mm_calendar/ops_task_construction.md`, `mm_calendar/ops_board_schema.md`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `.cursor/rules/mm_calendar_builder.mdc`, `.cursor/rules/ops_task_builder.mdc`, `.cursor/rules/slotomania_monetization_art.mdc`, `AGENTS.md`, `BACKUP_LOCAL.md`, `mm_calendar/ONBOARDING_QUICK.md`, `mm_calendar/PRIZE_PRIORITY_AND_MONTH_BUILD.md`, `TEAM_WORKLOG.md`.
+- **Commands run:** learning-link check ✓; Ops spec validation (10 specs) ✓; scoped `git diff --check` ✓; Desktop → `/Volumes/studios/Slotomania/CRM3/MM Calendar/Cursor Work/` rsync ✓; 14-file SHA-256 mirror verification ✓; Monday sync n/a.
+- **Notes for next agent:** CRM3 is now the documented team-canonical workspace. The mirror used `--update` with no deletions, preserving newer/share-only files; `.git`, caches, and local credential/config files were excluded.
+
+---
+
 ### 2026-07-19 — GPT-5.6 Sol — Correct Gems, MGAP UI, and Prize Mania briefs
 - **Goal:** Apply Itay's corrections quickly and only to the three affected Aug 28 briefs.
 - **Done:** Gems Coupon now has `Inapp` only and embeds the designer-uploaded image from pulse `11415353948`; removed erroneous `store denom`. MGAP has one `MGAP UI` subitem and basic-UI scope only. Prize Mania title/body exclude pricing and use the six visible rewards as the Hook. Updated script, creative standards, product playbook, and Cursor art rule.

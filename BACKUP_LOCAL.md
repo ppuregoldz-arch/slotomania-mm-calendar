@@ -4,7 +4,7 @@ This folder is your **personal backup** of the team workspace.
 
 | Role | Path |
 |------|------|
-| **Team canonical** | `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work` |
+| **Team canonical** | `/Volumes/studios/Slotomania/CRM3/MM Calendar/Cursor Work` |
 | **Your local backup** | `/Users/itayg/Desktop/Cursor Work` |
 | **OneDrive mirror** | `~/Library/CloudStorage/OneDrive-PlaytikaLtd/Documents/Cursor Work MM` |
 
@@ -16,7 +16,7 @@ This folder is your **personal backup** of the team workspace.
 
 ```bash
 rsync -a --exclude '.git' --exclude '__pycache__' --exclude '*.pyc' \
-  "/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work/" \
+  "/Volumes/studios/Slotomania/CRM3/MM Calendar/Cursor Work/" \
   "/Users/itayg/Desktop/Cursor Work/"
 ```
 
@@ -25,14 +25,14 @@ rsync -a --exclude '.git' --exclude '__pycache__' --exclude '*.pyc' \
 ```bash
 rsync -a --exclude '.git' --exclude '__pycache__' --exclude '*.pyc' \
   "/Users/itayg/Desktop/Cursor Work/" \
-  "/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work/"
+  "/Volumes/studios/Slotomania/CRM3/MM Calendar/Cursor Work/"
 ```
 
 Then append **`TEAM_WORKLOG.md`** so the team sees what changed.
 
 **Do not** rely on only OneDrive for the full repo unless you sync the complete tree; the studio volume is the live team copy.
 
-**Last synced:** 2026-07-16 (Desktop → studio / CRM share)
+**Last synced:** 2026-07-19 (Desktop → CRM3 studio share)
 
 ## August 2026 — MM Calendar month backup (Monday)
 

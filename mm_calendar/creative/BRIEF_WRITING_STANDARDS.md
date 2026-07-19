@@ -13,8 +13,6 @@ The non-Reuse parent contains exactly one HTML table with two rows:
 |---|---|
 | Creative Label | `Prize Change`, `New theme for promo`, or `New promo` |
 | Change | Exact `source → required` delta |
-| Theme | Optional when MM names a theme (`Generic`, `Betty Boop`, …). Omit when generic-only. |
-| Hook | Optional when MM exposes a distinct player-facing hook (`30% Bigger Wedges`, `BOGO`, `MGAP denom 3 ladder`, …). Omit when nothing distinct. |
 
 No other parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or art direction. Reuse is the exception: one consolidated day-level summary with no subitems.
 
@@ -214,7 +212,7 @@ Reuse has no asset subitems (day-level summary only).
 
 **Good (Background / theme):** `Reskin this Background to the Betty Boop theme.` — not “Apply the parent Change to Background.”
 
-Parent hybrid: **Creative Label** + **Change** one-liner; add **Theme** parent row when MM names a theme (e.g. `Betty Boop`, `Generic`).
+Parent hybrid: exactly **Creative Label** + **Change** one-liner. Theme and Hook rows belong only in applicable asset subitems.
 
 - **`Hook` row:** only on **Banner** and **Inapp** subitems (not Background, denom, MGAP denom, Theme/BO, etc.). Examples: Golden Spin **`30% Bigger Wedges`**; MGAP **`BOGO`**; Rolling **`MGAP denom 3 ladder`** on banner/inapp only.
 

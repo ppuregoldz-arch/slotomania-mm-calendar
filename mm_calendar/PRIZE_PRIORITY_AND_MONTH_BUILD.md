@@ -1,7 +1,7 @@
 # Prize priority, building the month & how to use the MD library
 
 **Audience:** Monetization planners, Cursor agents, economists.  
-**Canonical workspace:** `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`  
+**Canonical workspace:** `/Volumes/studios/Slotomania/CRM3/MM Calendar/Cursor Work`
 **Last updated:** July 2026
 
 ---

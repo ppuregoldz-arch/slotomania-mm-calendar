@@ -12,6 +12,7 @@
 | שאלה | קובץ |
 |------|------|
 | מה הסמכות העליונה / מה אסור להסיק? | `00_GUIDELINES_ITAY.md` |
+| איפה הלמידות המאורגנות לפי תחום? | חודש: `LEARNINGS_MONTH.md` · Ops: `LEARNINGS_OPS.md` · בריפים: `creative/LEARNINGS_BRIEFS.md` |
 | **עץ החלטות בניית חודש (צבעים)?** | `documentation/MONTH_BUILD_DECISION_TREE_COLORED_HE.md` |
 | איזה חודש? caps ו**בנק קלפים**? | `monthly_guidelines/YYYY-MM.md` |
 | כללי HARD בקצרה? | `rules_cheatsheet.md` |

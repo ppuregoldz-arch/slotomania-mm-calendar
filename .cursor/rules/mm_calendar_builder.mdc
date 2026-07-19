@@ -11,6 +11,7 @@ alwaysApply: false
 
 - `mm_calendar/00_GUIDELINES_ITAY.md` - ⭐ **תמיד ראשון** — סמכות, כללי ברזל, evidence; הוראה חיה מאיתי גוברת.
 - `mm_calendar/BUILD_CALENDAR_ROUTER.md` - ⭐ **נקודת כניסה** — משימה → תיקיית `topics/` / קובץ נכון.
+- `mm_calendar/LEARNINGS_MONTH.md` - אינדקס למידות בניית חודש; מפנה לכל המקורות הקנוניים בלי לשכפל אותם.
 - `mm_calendar/topics/README.md` - מפת 11 תחומים (DD, Rolling, second offers, coin/gem sinks, …) עם דוגמאות ומה לשבץ.
 - `mm_calendar/rules_cheatsheet.md` - ⭐ סיכום מהיר של כל הכללים. התחל כאן.
 - `mm_calendar/monthly_guidelines/YYYY-MM.md` - ⭐ **המקור הסמכותי לתקרות ולבנק הקלפים** בחודש היעד. התקרות HARD אלא אם איתי אישר חריגה מפורשת.

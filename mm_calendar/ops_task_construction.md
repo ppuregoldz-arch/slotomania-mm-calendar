@@ -68,6 +68,8 @@ If unsure, generate a review spec with `requires_review: true`; do not silently 
 
 Season rows create work only on `isFirst`. Daily promos create work on their scheduled day. Backup items are excluded.
 
+When Itay supplies an explicit MM-item allowlist for a focused day build (for example an Extreme-only handoff), that allowlist is a HARD scope boundary: build and write only those source rows. Do not add unrelated rows merely because they share the same calendar date. Preserve the allowlist with the generated day spec so the scope is auditable.
+
 When a calendar day contains both Lotto peak and LBP for Night Plan, create **two separate Ops tasks** under that calendar day's parent: one for Lotto peak and one for the LBP mechanic. Their production window is on the following date from `00:00 UTC` through `11:00 UTC`, and both use M&M Status `Night Plan`. Example: tasks under parent `2026-08-01` run on `2026-08-02` from 00:00 to 11:00.
 
 ## Required fields

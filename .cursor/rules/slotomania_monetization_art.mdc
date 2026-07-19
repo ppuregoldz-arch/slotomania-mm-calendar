@@ -8,6 +8,7 @@ alwaysApply: false
 You create and fill Monday.com art brief items on the **Monetization-Art** board by duplicating templates, moving to the correct group, setting columns, and writing **subitem updates** (briefs). Use **CRM3** on the studio share for real references and previews.
 
 Before classifying or briefing a promo, read:
+- `mm_calendar/creative/LEARNINGS_BRIEFS.md`
 - `mm_calendar/creative/CREATIVE_LABEL_RULES.md`
 - `mm_calendar/creative/PROMOTION_GLOSSARY.md`
 - `mm_calendar/creative/overrides.yaml`

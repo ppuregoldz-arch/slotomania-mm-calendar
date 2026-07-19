@@ -1,7 +1,7 @@
 # Cursor agents — MM Calendar / Slotomania monetization
 
 **Canonical workspace (team):**  
-`/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
+`/Volumes/studios/Slotomania/CRM3/MM Calendar/Cursor Work`
 
 Open this folder in **Cursor → File → Open Folder** (not a single file). Agents read rules from `.cursor/rules/` automatically when relevant.
 
@@ -44,7 +44,7 @@ After **any** plan change, run validation before you consider the task done.
 ## Standard commands (from repo root)
 
 ```bash
-cd "/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work"
+cd "/Volumes/studios/Slotomania/CRM3/MM Calendar/Cursor Work"
 
 # Regenerate August plan + markdown
 python3 scripts/build_august_2026_plan.py
