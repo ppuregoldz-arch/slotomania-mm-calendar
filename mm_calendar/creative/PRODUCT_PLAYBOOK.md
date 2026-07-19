@@ -31,6 +31,8 @@ Explicit instructions from Itay override these defaults. Reuse promotions do not
 | Battlesheep / Blast (default) | `Main Inapp`, `Banner`, `Winners Inapp` | Strip **Challenge** from brief titles unless MM **description** defines a season challenge. No Theme/BO, Journey, Wheel UI, or Wedges subitems. |
 | Battlesheep / Blast (season challenge) | `Main Inapp`, `Theme/BO`, `Journey Inapps`, `Banner`, `Winners Inapp` | Subitem table may include **`SKU`** row when MM defines the challenge reward SKU. |
 | Golden Spin | Template defaults (Main Inapp, Banner, arena assets) | **Coin-value Mega Bonus wheel** — not Gem Machine / timed Gems ALERT. Use **Theme** when MM names a skin; **Hook** when MM states the variant (e.g. **`30% Bigger Wedges`**). Never label “timed gem feature” in brief text. |
+| Gems Coupon | `Inapp` | Use the designer-uploaded Inapp preview on source pulse `11415353948`; no `store denom`. |
+| Prize Mania | Template asset set (usually `Banner`) | The visible prize list is the Hook. Pricing is never Creative copy or a Hook. |
 | Custom Pod | `Main Inapp`, `Winners Inapp`, `Banner` | Drop Externals and Comufy. |
 | Gatcha / Cocktail Bonus / SB Picker | `Inapp`, `BG`, `Banner`, `PP Banner`, `UI`, `Logo Entrance`, `Header` | Pick screen needs BG/UI/Logo/Header. |
 | PYP | `Inapp`, `Journey/Winners Inapp`, `Banner`, `Widget` | Main Inapp must be a true Inapp. |
@@ -105,6 +107,8 @@ If the chosen source or requested mechanic is explicitly ALERT, Happy Hour, Limi
 ### MGAP
 
 MGAP price-cut means the multiplier-upgrade cost is reduced by the specified percentage; it does not mean the Gem pack is discounted.
+
+Standalone MGAP **basic UI** work uses exactly one subitem named `MGAP UI`. Do not label or scope it as `Full theme UI` unless MM explicitly requests a full-theme execution.
 
 ### Gatcha / Cocktail Bonus / SB Picker
 

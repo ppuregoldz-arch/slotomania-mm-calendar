@@ -37,6 +37,15 @@ REUSE_TASK_NAME = "REUSE - No Creative Action"
 sys.path.insert(0, str(ROOT / "scripts"))
 from monday_client import gql  # noqa: E402
 
+# Lucy's Hunt sticker season — layout + CRM3 from shipped "4th of July Stickers" brief.
+STICKERS_SOURCES_LAYOUT_SOURCE = "12093956694"
+STICKERS_HUNT_SEASON_START = "2026-08-26"
+LUCYS_HUNT_STICKERS_ART_ROOT = (
+    r"Q:\Slotomania\CRM3\Features\Lucy's_Hunt\2026_07_04_Lucy's_BBQ_Hunt"
+)
+LUCYS_HUNT_STICKERS_HOW_TO = (
+    LUCYS_HUNT_STICKERS_ART_ROOT + r"\Inapp\Inapp_How_To"
+)
 
 SOURCE_BY_FAMILY = {
     "ads": "10860770073",
@@ -58,7 +67,7 @@ SOURCE_BY_FAMILY = {
     "extreme": "12309916897",
     "snl": "10968800690",
     "gems coupon": "11415353948",
-    "stickers sources": "11913837798",
+    "stickers sources": STICKERS_SOURCES_LAYOUT_SOURCE,
     "dice deluxe": "11890715396",
     "ryd": "11727887975",
     "globez": "11360876494",
@@ -108,6 +117,29 @@ THEMED_CRM3_TOKENS = (
     "world_cup",
     "xmasinJuly",
     "xmas_in_july",
+    "superbowl",
+    "super_bowl",
+)
+
+THEMED_REFERENCE_ASSET_TOKENS = (
+    "superbowl",
+    "super_bowl",
+    "easter",
+    "pre_easter",
+    "preeaster",
+    "halloween",
+    "christmas",
+    "xmas",
+    "valentine",
+    "patrick",
+    "thanksgiving",
+    "women",
+    "betty",
+    "july_4",
+    "independence",
+    "carnival",
+    "black_friday",
+    "memorial",
 )
 
 GENERIC_DD_HAMMER_WHEEL_FOLDER = (
@@ -189,8 +221,8 @@ MGAP_UI_OVERRIDES = {
     "12511214687": {
         "name": "MGAP UI - Bigger Multipliers - Generic",
         "source_id": "12148706201",
-        "change": "Existing MGAP Bigger Multipliers UI → Generic Bigger Multipliers MGAP UI.",
-        "mechanic": "Bigger Multipliers, Generic theme.",
+        "change": "Update the basic MGAP UI for Bigger Multipliers.",
+        "mechanic": "Bigger Multipliers only — no full-theme UI.",
     },
 }
 
@@ -304,6 +336,7 @@ def strip_pricing_prose(text: str) -> str:
     text = re.sub(r"\s*\|\s*[HML](?:ax)?\s*Pricing\s*", "", text, flags=re.I)
     text = re.sub(r",?\s*\b[HML](?:ax)?\s+pricing\b", "", text, flags=re.I)
     text = re.sub(r",?\s*\b(?:high|medium|max)\s+pricing\b", "", text, flags=re.I)
+    text = re.sub(r",?\s*\b(?:H|M|L|Max)\s+price\b", "", text, flags=re.I)
     text = re.sub(r"\s+", " ", text).strip(" ,;·|-")
     return text
 
@@ -526,7 +559,10 @@ def source_catalog() -> dict[str, dict[str, Any]]:
 
 
 def source_for(row: dict[str, str], catalog: dict[str, dict[str, Any]]) -> dict[str, Any]:
-    source_id = SOURCE_OVERRIDES.get(row["id"]) or SOURCE_BY_FAMILY.get(family(row["name"]))
+    if family(row["name"]) == "stickers sources":
+        source_id = STICKERS_SOURCES_LAYOUT_SOURCE
+    else:
+        source_id = SOURCE_OVERRIDES.get(row["id"]) or SOURCE_BY_FAMILY.get(family(row["name"]))
     seen: set[str] = set()
     while source_id and source_id in SOURCE_OVERRIDES:
         if source_id in seen:
@@ -560,10 +596,54 @@ def source_date(source: dict[str, Any]) -> str:
     return match.group(0) if match else "reference-missing"
 
 
+def is_gems_coupon_context(
+    row: dict[str, str] | None,
+    source: dict[str, Any] | None = None,
+) -> bool:
+    if row and family(row["name"]) == "gems coupon":
+        return True
+    if source and family(source.get("name") or "") == "gems coupon":
+        return True
+    return False
+
+
+def mm_allows_gems_coupon_themed_reference(row: dict[str, str] | None) -> bool:
+    if not row:
+        return False
+    blob = f"{row.get('name') or ''}\n{row.get('description') or ''}"
+    return bool(re.search(r"\bALLOW_THEMED_GEMS_COUPON\b", blob, re.I))
+
+
+def is_themed_reference_asset_name(name: str) -> bool:
+    compact = re.sub(r"[^a-z0-9]+", "_", (name or "").lower())
+    for token in THEMED_REFERENCE_ASSET_TOKENS:
+        t = re.sub(r"[^a-z0-9]+", "_", token.lower())
+        if t in compact:
+            return True
+    return False
+
+
+def gems_coupon_designer_assets(source: dict[str, Any]) -> list[dict[str, str]]:
+    """Monday file previews on pulse 11415353948 — designer uploads, not CRM3 path text."""
+    images = [
+        asset
+        for asset in source.get("_reference_assets") or []
+        if re.search(r"\.(?:png|jpe?g|webp)$", asset.get("name") or "", re.I)
+    ]
+    branded = [
+        asset
+        for asset in images
+        if re.search(r"gems?_?coupon", asset.get("name") or "", re.I)
+    ]
+    return branded or images
+
+
 def source_reference_path(
     source: dict[str, Any],
     row: dict[str, str] | None = None,
 ) -> str:
+    if is_gems_coupon_context(row, source) and not mm_allows_gems_coupon_themed_reference(row):
+        return GENERIC_GEMS_COUPON_FOLDER
     if is_ads_po_source(source):
         art = source.get("art_link") or ""
         if art and "Rewarded_Video" in str(art):
@@ -777,14 +857,12 @@ def crm3_folder_path(
         return crm3_asset_folder(piggy_base, asset_name)
     if family(source.get("name") or "") == "spinner clash":
         return crm3_asset_folder(SPINNER_REF_BASE, asset_name)
+    if is_gems_coupon_context(row, source) and not mm_allows_gems_coupon_themed_reference(row):
+        return crm3_asset_folder(GENERIC_GEMS_COUPON_FOLDER, asset_name)
     row_fam = family(row["name"]) if row else ""
     source_fam = family(source.get("name") or "")
-    if row_fam == "gems coupon" or source_fam == "gems coupon":
-        if row and row["label"] == "New theme for promo" and promo_theme_label(row):
-            paths = prefer_generic_crm3_paths(all_crm3_paths(source, asset_name), row)
-            if paths:
-                return crm3_asset_folder(crm3_path_to_folder(paths[0]), asset_name)
-        return crm3_asset_folder(GENERIC_GEMS_COUPON_FOLDER, asset_name)
+    if row_fam == "stickers sources" or source_fam == "stickers sources":
+        return LUCYS_HUNT_STICKERS_HOW_TO
     if row_fam == "daily deal" or source_fam == "daily deal":
         paths = all_crm3_paths(source, asset_name)
         dd_paths = [
@@ -857,8 +935,10 @@ def load_source_assets(
         ({
             str(source_for(row, catalog)["id"])
             for rows in rows_by_date.values()
-            for row in rows
-        } | (extra_source_ids or set()))
+            for row in calendar_active_brief_rows(rows)
+        }
+        | (extra_source_ids or set())
+        | {STICKERS_SOURCES_LAYOUT_SOURCE})
     )
     query = """
     query($ids:[ID!]!) {
@@ -892,14 +972,49 @@ def load_source_assets(
                 catalog[str(item["id"])]["_reference_assets"] = assets
 
 
-def reference_asset(source: dict[str, Any], asset_name: str | None = None) -> dict[str, str] | None:
-    images = [
-        asset
-        for asset in source.get("_reference_assets") or []
-        if re.search(r"\.(?:png|jpe?g|webp)$", asset.get("name") or "", re.I)
-    ]
+def reference_asset(
+    source: dict[str, Any],
+    asset_name: str | None = None,
+    row: dict[str, str] | None = None,
+) -> dict[str, str] | None:
+    if is_gems_coupon_context(row, source) and not mm_allows_gems_coupon_themed_reference(row):
+        images = gems_coupon_designer_assets(source)
+    else:
+        images = [
+            asset
+            for asset in source.get("_reference_assets") or []
+            if re.search(r"\.(?:png|jpe?g|webp)$", asset.get("name") or "", re.I)
+        ]
     if not images:
         return None
+    if is_gems_coupon_context(row, source) and not mm_allows_gems_coupon_themed_reference(row):
+        if not asset_name:
+            return next(
+                (asset for asset in images if asset["name"].lower().endswith(".png")),
+                images[0],
+            )
+        asset_l = asset_name.lower()
+        scored_gc: list[tuple[float, int, dict[str, str]]] = []
+        for index, asset in enumerate(images):
+            name_l = (asset.get("name") or "").lower()
+            type_l = (asset.get("asset_type") or "").lower()
+            score = 0.0
+            if "inapp" in asset_l and "inapp" in name_l:
+                score += 4
+            if ("store" in asset_l or "denom" in asset_l) and (
+                "store" in name_l or "denom" in name_l or "_pu_" in name_l or "pu_" in name_l
+            ):
+                score += 4
+            if type_l and type_l == asset_l:
+                score += 3
+            if re.search(r"gems?_?coupon", name_l):
+                score += 1
+            if score > 0:
+                scored_gc.append((score, -index, asset))
+        if scored_gc:
+            scored_gc.sort(reverse=True, key=lambda item: (item[0], item[1]))
+            return scored_gc[0][2]
+        return images[0]
     if not asset_name:
         return next(
             (asset for asset in images if asset["name"].lower().endswith(".png")),
@@ -924,8 +1039,12 @@ def reference_asset(source: dict[str, Any], asset_name: str | None = None) -> di
     return scored[0][2]
 
 
-def reference_png_html(source: dict[str, Any], asset_name: str | None = None) -> str:
-    asset = reference_asset(source, asset_name)
+def reference_png_html(
+    source: dict[str, Any],
+    asset_name: str | None = None,
+    row: dict[str, str] | None = None,
+) -> str:
+    asset = reference_asset(source, asset_name, row=row)
     if not asset:
         return ""
     url = esc(asset["url"])
@@ -948,7 +1067,7 @@ def reference_link_html(
             source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{source['id']}"
             return f'<a href="{source_url}">{source_url}</a>'
         return f"<code>{esc(folder)}</code>"
-    asset = reference_asset(source, asset_name)
+    asset = reference_asset(source, asset_name, row=row)
     if asset:
         url = esc(asset["url"])
         return f'<a href="{url}">{url}</a>'
@@ -975,7 +1094,15 @@ def reuse_evidence(
                 "No exact Creative reference found — confirmed live in Ops."
             ),
         }
-    source = source_for(row, catalog)
+    try:
+        source = source_for(row, catalog)
+    except RuntimeError:
+        promo_date = row["name"][:10] if re.match(r"^\d{4}-\d{2}-\d{2}", row["name"]) else "reference-missing"
+        return {
+            "date": promo_date,
+            "reference": "",
+            "link": "No Creative template mapped — confirm reuse manually.",
+        }
     folder_override = REUSE_REFERENCE_FOLDER_OVERRIDES.get(row["id"])
     if folder_override:
         link = f"<code>{esc(folder_override)}</code>"
@@ -1191,7 +1318,7 @@ def reorder_subitems(parent_id: str) -> None:
 
 def brief_name(row: dict[str, str], source: dict[str, Any]) -> str:
     del source
-    name = normalize_name(row["name"])
+    name = brief_display_name(row)
     fam = family(row["name"])
     if fam in {"battlesheep", "blast"} and not mm_defines_season_challenge(row):
         name = re.sub(r"\bbattlesheep\s+challenge\b", "Battlesheep", name, flags=re.I)
@@ -1261,12 +1388,21 @@ def promo_is_decoy_offer(row: dict[str, str]) -> bool:
     return bool(re.search(r"\bdecoy\b|\bbonanza\b|triple offer", blob))
 
 
+def row_has_creative_brief_template(row: dict[str, str]) -> bool:
+    if row["id"] in SOURCE_OVERRIDES:
+        return True
+    fam = family(row["name"])
+    return bool(fam and fam in SOURCE_BY_FAMILY)
+
+
 def calendar_active_brief_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     """Actionable MM rows for Monetization-Art (excludes Reuse and Decoy offers)."""
     return [
         row
         for row in rows
-        if row["label"] != "Reuse" and not promo_is_decoy_offer(row)
+        if row["label"] != "Reuse"
+        and not promo_is_decoy_offer(row)
+        and row_has_creative_brief_template(row)
     ]
 
 
@@ -1296,8 +1432,109 @@ def is_challenge_only_subitem(name: str, row: dict[str, str]) -> bool:
     return False
 
 
+def stickers_hunt_day_index(row: dict[str, str]) -> int:
+    """Day 1–5 of Lucy's Hunt sticker season from title or promo date."""
+    name = normalize_name(row["name"])
+    match = re.search(r"day\s*(\d)\s*/\s*5", name, re.I)
+    if match:
+        return int(match.group(1))
+    date_part = row["name"][:10] if re.match(r"^\d{4}-\d{2}-\d{2}", row["name"]) else ""
+    if date_part:
+        start = date.fromisoformat(STICKERS_HUNT_SEASON_START)
+        index = (date.fromisoformat(date_part) - start).days + 1
+        if 1 <= index <= 5:
+            return index
+    return 1
+
+
+def stickers_layout_day_subitem_name(day: int) -> str:
+    if day == 1:
+        return "Day 1 - Source (first)"
+    return f"Day {day} - Source"
+
+
+def stickers_sources_lines(row: dict[str, str]) -> list[str]:
+    blob = sanitized_description(row) or row.get("description") or ""
+    lines: list[str] = []
+    for raw in blob.splitlines():
+        stripped = raw.strip()
+        if not stripped:
+            continue
+        stripped = re.sub(r"^sources for stickers:\s*", "", stripped, flags=re.I)
+        numbered = re.match(r"^(?:\d+[.)]\s*)(.+)$", stripped)
+        if numbered:
+            lines.append(numbered.group(1).strip())
+    if lines:
+        return lines
+    for part in re.split(r"(?<=\d)\.\s+", blob):
+        part = part.strip()
+        if part and not part.lower().startswith("segment"):
+            lines.append(part)
+    return [line for line in lines if line]
+
+
+def stickers_layout_reference_source(
+    row: dict[str, str],
+    catalog: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    """Monday layout ref: matching Day N - Source subitem on 4th of July Stickers brief."""
+    layout = catalog[STICKERS_SOURCES_LAYOUT_SOURCE]
+    day = stickers_hunt_day_index(row)
+    want = stickers_layout_day_subitem_name(day)
+    want_key = normalize_subitem_key(want)
+    subitem: dict[str, Any] | None = None
+    for candidate in layout.get("subitems") or []:
+        key = normalize_subitem_key(candidate["name"])
+        if key == want_key:
+            subitem = candidate
+            break
+        if day == 1 and "day 1" in key and "source" in key:
+            subitem = candidate
+            break
+    if not subitem:
+        raise RuntimeError(
+            f"No layout subitem {want!r} on Stickers reference {STICKERS_SOURCES_LAYOUT_SOURCE} "
+            f"for {normalize_name(row['name'])}"
+        )
+    return {
+        **layout,
+        "subitems": [subitem],
+        "updates": [],
+    }
+
+
+def stickers_sources_subitem_table(
+    row: dict[str, str],
+    reference_cell: str,
+    link_cell: str,
+) -> str:
+    day = stickers_hunt_day_index(row)
+    sources = stickers_sources_lines(row)
+    benefits = (
+        "".join(f"<p>{esc(line)}</p>" for line in sources)
+        if sources
+        else "<p>List sticker sources from MM Description.</p>"
+    )
+    rows: list[tuple[str, str]] = [
+        (
+            "Main Message",
+            (
+                f"<p>Lucy's Hunt — Day {day}/5 HOW TO GET stickers today. "
+                "Keep layout from reference; update source tiles to the MM list below.</p>"
+            ),
+        ),
+        ("Benefits", benefits),
+        ("Reference", reference_cell or "<p></p>"),
+        ("Reference Link", link_cell or "<p></p>"),
+        ("CTA", "<p>[I'M ON IT] — match reference.</p>"),
+    ]
+    return vertical_field_table(rows)
+
+
 def status_mm_label(row: dict[str, str]) -> str:
     if row["label"] == "New promo":
+        if family(row["name"]) == "stickers sources" and stickers_sources_lines(row):
+            return STATUS_MM_WAITING_FOR_MM
         return STATUS_MM_NEW_PROMO_SKELETON
     return STATUS_MM_WAITING_FOR_MM
 
@@ -1423,6 +1660,10 @@ def promo_hook_line(row: dict[str, str]) -> str | None:
     blob = f"{name}\n{desc}".lower()
     fam = family(row["name"])
 
+    if fam == "prize mania":
+        prizes = prize_mania_prizes(row)
+        return " · ".join(prizes) if prizes else None
+
     if fam == "golden spin":
         for part in name.split("|"):
             part = part.strip()
@@ -1481,6 +1722,9 @@ def concise_requirement(row: dict[str, str]) -> str:
 
 
 def required_prize_from_row(row: dict[str, str]) -> str:
+    if family(row["name"]) == "prize mania":
+        prizes = prize_mania_prizes(row)
+        return " · ".join(prizes)
     if family(row["name"]) == "golden spin":
         name = normalize_name(row["name"])
         tail = name.split("|", 1)[-1].strip() if "|" in name else name
@@ -1521,6 +1765,19 @@ def required_prize_from_row(row: dict[str, str]) -> str:
             if match:
                 return match.group(1).strip()
     return concise_requirement(row)
+
+
+def prize_mania_prizes(row: dict[str, str]) -> list[str]:
+    """Visible rewards are the Prize Mania hook; pricing is configuration only."""
+    prizes: list[str] = []
+    for raw in sanitized_description(row).splitlines():
+        line = strip_pricing_prose(raw.strip().strip(","))
+        if not line or re.fullmatch(r"prize\s*mania", line, re.I):
+            continue
+        if re.fullmatch(r"(?:H|M|L|Max)\s+price", line, re.I):
+            continue
+        prizes.append(line)
+    return prizes
 
 
 def inferred_reference_prize(source: dict[str, Any]) -> str:
@@ -1780,6 +2037,16 @@ def short_parent_change(row: dict[str, str], source: dict[str, Any]) -> str:
             f"New promo — Itay to complete mechanic and art direction ({title})."
         )[:220]
 
+    if fam == "stickers sources":
+        day = stickers_hunt_day_index(row)
+        sources = stickers_sources_lines(row)
+        if sources:
+            joined = " · ".join(sources[:4])
+            if len(sources) > 4:
+                joined += " · …"
+            return strip_pricing_prose(f"Day {day}/5 sticker sources: {joined}")[:220]
+        return f"Day {day}/5 — Lucy's Hunt sticker sources inapp"[:220]
+
     if row["label"] == "Prize Change" and fam == "golden spin":
         hook = promo_hook_line(row)
         dst = promo_theme_label(row)
@@ -1834,6 +2101,10 @@ def playbook_required_subitems(row: dict[str, str]) -> list[str]:
                 "Winners Inapp",
             ]
         return ["Main Inapp", "Banner", "Winners Inapp"]
+    if fam == "stickers sources":
+        return ["Inapp"]
+    if fam == "gems coupon":
+        return ["Inapp"]
     return []
 
 
@@ -1929,6 +2200,8 @@ def change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
     if row["label"] == "Prize Change":
         ref_prize = inferred_reference_prize(source)
         req = required_prize_from_row(row)
+        if family(row["name"]) == "prize mania" and req:
+            return f"Show prizes: {req}"
         if family(row["name"]) == "spinner clash":
             prizes = spinner_rank_prize_lines(row)
             if prizes:
@@ -2018,6 +2291,10 @@ def what_to_change_lines(row: dict[str, str], source: dict[str, Any], asset: str
     if hook:
         return hook
 
+    if fam == "prize mania":
+        prizes = prize_mania_prizes(row)
+        return [f"Show prizes: {' · '.join(prizes)}."] if prizes else ["Update visible prizes."]
+
     if row["label"] == "New promo":
         return [
             f"Itay must complete mechanic, prizes, and format for {normalize_name(row['name'])}.",
@@ -2092,9 +2369,16 @@ def what_to_change_lines(row: dict[str, str], source: dict[str, Any], asset: str
     return [f"Update {asset} for: {change}."]
 
 
-def reference_cell_html(source: dict[str, Any], asset: str) -> str:
+def reference_cell_html(
+    source: dict[str, Any],
+    asset: str,
+    row: dict[str, str] | None = None,
+) -> str:
     """Reference row: embedded preview only — no prose (Itay)."""
-    return reference_png_html(source, asset) or "<p></p>"
+    png = reference_png_html(source, asset, row=row)
+    if png:
+        return png
+    return "<p></p>"
 
 
 def reference_label_html(
@@ -2126,8 +2410,25 @@ def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) 
     return table(rows)
 
 
-def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
-    reference_cell = reference_cell_html(source, asset)
+def subitem_body(
+    row: dict[str, str],
+    source: dict[str, Any],
+    asset: str,
+    catalog: dict[str, dict[str, Any]] | None = None,
+) -> str:
+    if catalog is None:
+        catalog = source_catalog()
+    if family(row["name"]) == "stickers sources":
+        ref_source = stickers_layout_reference_source(row, catalog)
+        reference_cell = reference_cell_html(ref_source, ref_source["subitems"][0]["name"])
+        link_cell = reference_link_html(
+            ref_source,
+            asset,
+            folder_only=True,
+            row=row,
+        )
+        return stickers_sources_subitem_table(row, reference_cell, link_cell)
+    reference_cell = reference_cell_html(source, asset, row)
     link_cell = reference_link_html(
         source,
         asset,
@@ -2279,8 +2580,8 @@ def mgap_ui_subitem_body(
     reference_cell = reference_cell_html(source, asset_name)
     link_cell = reference_link_html(source, asset_name, folder_only=True)
     lines = [
-        f"Update MGAP UI: {spec['change']}",
-        f"Mechanic: {spec['mechanic']}",
+        spec["change"],
+        spec["mechanic"],
     ]
     return prize_change_table(lines, reference_cell, link_cell)
 
@@ -2292,10 +2593,41 @@ def write_mgap_ui_task(
     group_id: str,
     existing: dict[str, dict[str, Any]],
     catalog: dict[str, dict[str, Any]],
+    allow_in_flight: bool = False,
 ) -> tuple[str, int]:
     existing_item = existing.get(spec["name"])
     if existing_item:
-        return str(existing_item["id"]), 0
+        item_id = str(existing_item["id"])
+        assert_brief_editable(item_id, allow_in_flight)
+        source = catalog[spec["source_id"]]
+        query = """
+        query($ids:[ID!]!) {
+          items(ids:$ids) {
+            updates(limit:1) { id body }
+            subitems { id name updates(limit:1) { id body } }
+          }
+        }
+        """
+        item = gql(query, {"ids": [item_id]})["items"][0]
+        subitems = item.get("subitems") or []
+        ui_subitems = [subitem for subitem in subitems if "ui" in subitem["name"].lower()]
+        if not ui_subitems:
+            subitem_id = create_subitem(item_id, "MGAP UI")
+            ui_subitems = [{"id": subitem_id, "name": "MGAP UI", "updates": []}]
+        primary = ui_subitems[0]
+        set_columns(SUBITEM_BOARD, str(primary["id"]), {"name": "MGAP UI"})
+        for subitem in subitems:
+            if str(subitem["id"]) != str(primary["id"]):
+                delete_item(str(subitem["id"]))
+        set_columns(BOARD, item_id, mgap_ui_values(spec, target, assignment))
+        upsert_update(item_id, item.get("updates") or [], mgap_ui_parent_body(spec))
+        clear_subitem_fields(str(primary["id"]))
+        upsert_update(
+            str(primary["id"]),
+            primary.get("updates") or [],
+            mgap_ui_subitem_body(spec, source, "MGAP UI"),
+        )
+        return item_id, 1
     source = catalog[spec["source_id"]]
     item_id = duplicate_item(spec["source_id"])
     set_columns(BOARD, item_id, {"name": spec["name"]})
@@ -2405,6 +2737,7 @@ def apply_mgap_ui_tasks(
                 group_id,
                 existing,
                 catalog,
+                allow_in_flight,
             )
             print(f"{target} {action}: {spec['name']} ({item_id}); UI subitems={ui_count}")
             existing = {
@@ -2460,7 +2793,7 @@ def write_brief(
         upsert_update(
             str(subitem["id"]),
             subitem.get("updates") or [],
-            subitem_body(row, source, subitem["name"]),
+            subitem_body(row, source, subitem["name"], catalog),
         )
     reorder_subitems(item_id)
     return item_id, len(subitems)
@@ -2582,10 +2915,11 @@ def main() -> None:
             if item["name"] != REUSE_TASK_NAME
         }
         for row in decoy_rows:
-            decoy_names = {
-                normalize_name(row["name"]),
-                brief_name(row, source_for(row, catalog)),
-            }
+            decoy_names = {normalize_name(row["name"])}
+            try:
+                decoy_names.add(brief_name(row, source_for(row, catalog)))
+            except RuntimeError:
+                pass
             for decoy_name in decoy_names:
                 item = existing.pop(decoy_name, None)
                 if not item:
@@ -2618,12 +2952,17 @@ def main() -> None:
                     row,
                     live_existing.get("subitems") or [],
                 )
+                subitems = prune_non_playbook_subitems(
+                    str(existing_item["id"]),
+                    row,
+                    subitems,
+                )
                 for subitem in subitems:
                     clear_subitem_fields(str(subitem["id"]))
                     upsert_update(
                         str(subitem["id"]),
                         subitem.get("updates") or [],
-                        subitem_body(row, source, subitem["name"]),
+                        subitem_body(row, source, subitem["name"], catalog),
                     )
                 set_columns(
                     BOARD,

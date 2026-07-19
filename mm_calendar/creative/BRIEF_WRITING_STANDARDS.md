@@ -92,6 +92,23 @@ When picking a CRM3 folder, search in this order:
 3. **Same feature, weaker match** — only if nothing closer; optional **one short note in parent Change** if the gap matters to design.
 4. **Non-themed execution** — when the calendar day is **generic** (Winovate, Blast, standard DD/SB+hammers, etc.) or label is **Prize Change**, pick CRM3 folders from **regular Features paths**, not `Holidays & Events` or holiday skins (4th of July, Easter, Thanksgiving, XmasInJuly, …). Use themed folders **only** when label is **New theme for promo** **and** MM names that same theme.
 
+### Gems coupon (generic default)
+
+- **Creative source:** Monetization-Art **`11415353948`** (`2026-03-14` Gems Coupon). MM row override **`12511095622`** → same source (not Pre-Easter **`11621408835`**).
+- **Scope:** **`Inapp` only**. Do not create `store denom`.
+- **Reference (preview):** Embed the actual designer PNG uploaded on pulse [11415353948](https://playtika.monday.com/boards/18112190666/pulses/11415353948), including attachments in the parent Update (for example `Gems_Coupon_Superbowl_Inapp_IC_145.png`). The designer attachment outranks old path prose.
+- **Reference Link:** `Q:\Slotomania\CRM3\Features\Gems\2026\2026_03_14_Gem_Coupon\Inapp`.
+
+### Prize Mania
+
+- Pricing (`H/M/L/Max price` or Pricing column) is configuration only: remove it from the Creative title, Change, What to change, and Hook.
+- The **visible prize list from the MM Description is the hook**. Put those prizes in `Change`, the asset delta, and `Hook` on Banner/Inapp.
+
+### MGAP UI
+
+- A request for **basic UI** creates exactly one subitem named **`MGAP UI`**.
+- Never call it `Full theme UI` and do not request a full-theme package unless MM explicitly asks for one.
+
 Do **not** paste ladder prose or ref labels into the subitem **Reference** cell. Designers use **Reference Link** (folder) + preview image.
 
 Preview PNGs may embed in **Reference** when uploaded; **Reference Link** stays a **folder** path.
@@ -218,6 +235,13 @@ Example Rolling MGAP denom **What to change** row:
 ```
 
 **New promo** skeletons use **`BG` or `Main Message` · `Benefits` · `Reference` · `Reference Link` · `CTA`** (vertical) — not Task/Keep and not the Prize Change `What to change` stack.
+
+### Stickers Sources (Lucy's Hunt season)
+
+- **Layout reference:** Monetization-Art **`12093956694`** (*4th of July Stickers* / Lucy's BBQ Hunt) — duplicate that brief's structure, not the generic RE-USE template.
+- **Per day:** Match subitem **`Day N - Source`** (day 1 = **`Day 1 - Source (first)`**) for **Reference** image from the layout brief; **Reference Link** = `Q:\Slotomania\CRM3\Features\Lucy's_Hunt\2026_07_04_Lucy's_BBQ_Hunt\Inapp\Inapp_How_To` (reskin layout; art folder unchanged until MM ships new hunt skin).
+- **Copy:** MM Calendar **Description** numbered list = sticker source tiles for that day → **Benefits** on the **Inapp** subitem; parent **Change** = `Day N/5 sticker sources: …`.
+- **Status MM:** **`Waiting for MM`** when the MM source list is present (not an empty New-promo skeleton). Season header row (*Stickers - Lucy's Hunt - 5 Days*) is **not** a separate Art brief.
 
 ## Status and edit safety
 

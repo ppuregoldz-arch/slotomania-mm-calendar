@@ -1,4 +1,30 @@
-### 2026-07-19 — Auto — Status MM Waiting for MM; Hook scope; Gems coupon ref
+### 2026-07-19 — GPT-5.6 Sol — Correct Gems, MGAP UI, and Prize Mania briefs
+- **Goal:** Apply Itay's corrections quickly and only to the three affected Aug 28 briefs.
+- **Done:** Gems Coupon now has `Inapp` only and embeds the designer-uploaded image from pulse `11415353948`; removed erroneous `store denom`. MGAP has one `MGAP UI` subitem and basic-UI scope only. Prize Mania title/body exclude pricing and use the six visible rewards as the Hook. Updated script, creative standards, product playbook, and Cursor art rule.
+- **Monday:** Updated Gems Coupon `12572051373`, MGAP UI `12572021115`, Prize Mania `12572104209`; live verification ✓ (image embedded in all relevant Reference cells).
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `mm_calendar/creative/PRODUCT_PLAYBOOK.md`, `.cursor/rules/slotomania_monetization_art.mdc`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile ✓; focused Monday mutations ✓; live GraphQL verification ✓.
+- **Notes for next agent:** Designer attachments on the selected source pulse outrank stale CRM3 path prose. Prize Mania pricing is never Creative input.
+
+---
+
+### 2026-07-19 — Auto — Gems coupon: designer PNGs on 11415353948
+
+- **Follow-up to [Fix Gems coupon refs](d103dc3b-fb52-4838-a433-1c82076c2bcf):** Subagent blocked Superbowl parent attachments but limited previews to subitems only (empty Reference). Itay: use **designer arts on pulse 11415353948** (Update + subitems, e.g. `Gems_Coupon_IC_Inapp.png`), not CRM3 path text.
+- **Done:** `gems_coupon_designer_assets()` + Inapp/store filename scoring; docs consolidated in `BRIEF_WRITING_STANDARDS.md` § Gems coupon.
+- **Monday:** `--commit --allow-in-flight --date 2026-08-28` ✓ — **Gems coupon `12572051373`** updated.
+- **Note:** `--rebuild` for **2026-08-06/28/29** still **failed** earlier (Monday API timeout on Aug 6 delete); use per-day apply without `--rebuild` unless Itay wants a retry.
+
+---
+
+- **Goal:** Stop Gems coupon briefs embedding **themed** Monday previews (Superbowl parent attachments / Pre-Easter paths); always **`11415353948`** + **`2026_03_14_Gem_Coupon`** folder; Reference PNGs from **store denom / Inapp** subitems only.
+- **Root cause:** Source **`11415353948`** parent update still had Superbowl CRM3 + PNG; `reference_asset()` scored those ahead of generic folder; `source_reference_path()` could return **`Coupon Center\…Superbowl…`** (not flagged themed).
+- **Done:** `gems_coupon_scoped_reference_assets()`, `GENERIC_GEMS_COUPON_FOLDER` override in `source_reference_path` / `crm3_folder_path`; playbook subitems **`store denom` + `Inapp`**; `superbowl` themed token; docs in `BRIEF_WRITING_STANDARDS.md`; re-applied **2026-08-28** MM **`12511095622`**.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `TEAM_WORKLOG.md`.
+- **Commands run:** dry-run ✓; `--commit --allow-in-flight --date 2026-08-28` ✓ — Monetization-Art **`12572051373`** (Gems coupon) updated among 5 active briefs.
+- **Notes:** Empty **Reference** preview until generic PNGs live on **`11415353948`** subitems — **Reference Link** still points at ready **`2026_03_14_Gem_Coupon`** files. Opt-in themed refs: MM Description **`ALLOW_THEMED_GEMS_COUPON`**.
+
+---
 
 - **Goal:** Agent-complete briefs → **Waiting for MM** (index 15); **Hook** only on Banner/Inapp subitems; Aug 28 Gems coupon → generic **`2026_03_14_Gem_Coupon`** (not Pre-Easter `11621408835`).
 - **Done:** `STATUS_MM_WAITING_FOR_MM`, `asset_allows_hook_row()`, `GENERIC_GEMS_COUPON_FOLDER` + `SOURCE_BY_FAMILY`/`SOURCE_OVERRIDES` `12511095622`; re-applied **2026-08-28** Gems coupon `12572051373`.
