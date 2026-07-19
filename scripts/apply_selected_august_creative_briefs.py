@@ -52,7 +52,17 @@ SOURCE_BY_FAMILY = {
     "winovate": "12407252858",
 }
 
+PIGGY_BREAK_REF_FOLDER = (
+    r"Q:\Slotomania\CRM3\Features\Piggy_2.0\2026\2026_06_17_Piggy_5_Hammers"
+)
+SPINNER_REF_BASE = (
+    r"Q:\Slotomania\CRM3\Features\Spinner_Clash\2026\2026_07_06_Spinner_Clash"
+)
+
 SOURCE_OVERRIDES = {
+    "12464175428": "12448968305",  # Piggy break — same-trigger 5 Hammers ref
+    "12475065098": "12448958742",  # Spinner Clash template
+    "12486310516": "12475732350",  # DD SB + hammers → wheel structure chain
     "12510879320": "11513974436",  # Rolling Supersized
     "12464188536": "12093534228",  # MGAP BOGO
     "12464219580": "11850552580",  # Clan Go 200 badges
@@ -215,6 +225,15 @@ def people_value(ids: list[int]) -> dict[str, Any]:
     }
 
 
+def split_creative_owner_ids(owner_ids: list[int]) -> tuple[list[int], list[int]]:
+    """Creative Traffic `Creative Owner` → Artist (1st) + Copywriter (2nd)."""
+    if not owner_ids:
+        return [], []
+    if len(owner_ids) == 1:
+        return owner_ids[:1], []
+    return owner_ids[:1], owner_ids[1:2]
+
+
 def traffic_assignments(dates: list[str]) -> dict[str, dict[str, Any]]:
     query = """
     query($groups:[String!]) {
@@ -245,11 +264,14 @@ def traffic_assignments(dates: list[str]) -> dict[str, dict[str, Any]]:
         brief_date = columns["dup__of_date"].get("text") or ""
         if not brief_date:
             raise RuntimeError(f"Traffic item {item['id']} {item['name']} has no Brief Date")
+        owner_ids = people_ids(columns["people3"].get("value"))
+        artist_ids, copywriter_ids = split_creative_owner_ids(owner_ids)
         result[target] = {
             "item_id": str(item["id"]),
             "item_name": item["name"],
             "brief_date": brief_date,
-            "artist_ids": people_ids(columns["people3"].get("value")),
+            "artist_ids": artist_ids,
+            "copywriter_ids": copywriter_ids,
             "mm_ids": people_ids(columns["person"].get("value")),
             "mm_tl_ids": people_ids(columns["multiple_person_mkw741g6"].get("value")),
             "creative_tl_ids": people_ids(columns["people_1"].get("value")),
@@ -318,6 +340,15 @@ def source_catalog() -> dict[str, dict[str, Any]]:
 
 def source_for(row: dict[str, str], catalog: dict[str, dict[str, Any]]) -> dict[str, Any]:
     source_id = SOURCE_OVERRIDES.get(row["id"]) or SOURCE_BY_FAMILY.get(family(row["name"]))
+    seen: set[str] = set()
+    while source_id and source_id in SOURCE_OVERRIDES:
+        if source_id in seen:
+            break
+        seen.add(source_id)
+        mapped = SOURCE_OVERRIDES[source_id]
+        if not mapped or mapped == source_id:
+            break
+        source_id = mapped
     if not source_id or source_id not in catalog:
         raise RuntimeError(f"No Creative source/template mapped for {row['name']}")
     return catalog[source_id]
@@ -351,9 +382,103 @@ def source_reference_path(source: dict[str, Any]) -> str:
     for text in texts:
         for line in text.splitlines():
             line = line.strip()
-            if line.startswith(("Q:\\", "/Volumes/CRM3/")):
+            if line.startswith(("Q:\\", "/Volumes/CRM3/", "/Volumes/studios/")):
                 return line
     raise RuntimeError(f"No CRM3 reference path found for source {source['id']} {source['name']}")
+
+
+def crm3_paths_in_text(text: str) -> list[str]:
+    paths: list[str] = []
+    for line in text.splitlines():
+        line = line.strip()
+        if line.startswith(("Q:\\", "/Volumes/CRM3/", "/Volumes/studios/")):
+            paths.append(line)
+    return paths
+
+
+def all_crm3_paths(source: dict[str, Any], asset_name: str | None = None) -> list[str]:
+    paths: list[str] = []
+    for update in source.get("updates") or []:
+        paths.extend(crm3_paths_in_text(update.get("text_body") or ""))
+    for subitem in source.get("subitems") or []:
+        if asset_name and subitem["name"].lower() != asset_name.lower():
+            continue
+        for update in subitem.get("updates") or []:
+            paths.extend(crm3_paths_in_text(update.get("text_body") or ""))
+    if source.get("art_link"):
+        paths.append(str(source["art_link"]))
+    return paths
+
+
+def crm3_path_to_folder(path: str) -> str:
+    path = path.strip().rstrip("\\/")
+    if re.search(r"\.(?:png|jpe?g|webp)$", path, re.I):
+        if "\\" in path:
+            return path.rsplit("\\", 1)[0]
+        return path.rsplit("/", 1)[0]
+    return path
+
+
+def crm3_asset_folder(base: str, asset_name: str | None) -> str:
+    base = base.rstrip("\\/")
+    if not asset_name:
+        return base
+    asset = asset_name.lower()
+    if "banner" in asset and not base.lower().endswith("banner"):
+        return base + "\\Banner"
+    if "inapp" in asset and not base.lower().endswith("inapp"):
+        return base + "\\Inapp"
+    return base
+
+
+def piggy_break_ref_folder(source: dict[str, Any]) -> str:
+    for path in all_crm3_paths(source):
+        if "2026_06_17_Piggy_5_Hammers" in path:
+            return PIGGY_BREAK_REF_FOLDER
+    if source.get("art_link") and "Piggy" in str(source.get("art_link")):
+        return PIGGY_BREAK_REF_FOLDER
+    return ""
+
+
+def crm3_folder_path(source: dict[str, Any], asset_name: str | None = None) -> str:
+    if family(source.get("name") or "") == "piggy" or piggy_break_ref_folder(source):
+        piggy_base = piggy_break_ref_folder(source) or PIGGY_BREAK_REF_FOLDER
+        return crm3_asset_folder(piggy_base, asset_name)
+    if family(source.get("name") or "") == "spinner clash":
+        return crm3_asset_folder(SPINNER_REF_BASE, asset_name)
+    if family(source.get("name") or "") == "daily deal":
+        for path in all_crm3_paths(source):
+            if "Daily_Deal" in path:
+                return crm3_asset_folder(crm3_path_to_folder(path), asset_name)
+        if source.get("art_link"):
+            return crm3_asset_folder(str(source["art_link"]), asset_name)
+    paths = all_crm3_paths(source, asset_name)
+    folders = [crm3_path_to_folder(path) for path in paths]
+    if asset_name:
+        asset_key = asset_name.lower()
+        for folder in folders:
+            if "banner" in asset_key and "banner" in folder.lower():
+                return folder
+            if "inapp" in asset_key and "inapp" in folder.lower():
+                return folder
+            if "winner" in asset_key and "winner" in folder.lower():
+                return folder
+    if folders:
+        return folders[0]
+    paths = all_crm3_paths(source)
+    folders = [crm3_path_to_folder(path) for path in paths]
+    if asset_name:
+        asset_key = asset_name.lower()
+        for folder in folders:
+            if "banner" in asset_key and "banner" in folder.lower():
+                return folder
+            if "inapp" in asset_key and "inapp" in folder.lower():
+                return folder
+    if folders:
+        return folders[0]
+    if source.get("art_link"):
+        return crm3_asset_folder(str(source["art_link"]), asset_name)
+    raise RuntimeError(f"No CRM3 folder path found for source {source['id']} {source['name']}")
 
 
 def load_source_assets(
@@ -444,7 +569,17 @@ def reference_link_html(
     source: dict[str, Any],
     asset_name: str | None = None,
     allow_missing_path: bool = False,
+    folder_only: bool = False,
 ) -> str:
+    if folder_only:
+        try:
+            folder = crm3_folder_path(source, asset_name)
+        except RuntimeError:
+            if not allow_missing_path:
+                raise
+            source_url = f"https://playtika.monday.com/boards/{BOARD}/pulses/{source['id']}"
+            return f'<a href="{source_url}">{source_url}</a>'
+        return f"<code>{esc(folder)}</code>"
     asset = reference_asset(source, asset_name)
     if asset:
         url = esc(asset["url"])
@@ -613,24 +748,30 @@ def create_subitem(parent_id: str, name: str) -> str:
 def canonical_subitem_order(names: list[str]) -> list[str]:
     def rank(name: str, index: int) -> tuple[int, int]:
         key = name.strip().lower()
-        if "inapp" in key and "winners" not in key:
+        if "inapp" in key and "winners" not in key and "journey" not in key:
             return (0, index)
-        if key in {"background", "bg", "theme/bo", "theme / bo"}:
+        if "journey" in key and "inapp" in key:
             return (1, index)
-        if key == "df":
-            return (2, index)
         if (
             key == "dd (in store)"
-            or key.startswith("denom")
-            or key.startswith("big denom")
             or key.startswith("store denom")
+            or key == "denom"
+            or key.startswith("big denom")
         ):
+            return (2, index)
+        if "winner" in key and "inapp" in key:
             return (3, index)
-        if key == "banner":
+        if key in {"background", "bg", "theme/bo", "theme / bo"}:
             return (4, index)
-        if key == "pp banner":
+        if key == "df":
             return (5, index)
-        return (6, index)
+        if key.startswith("denom"):
+            return (6, index)
+        if key == "banner":
+            return (6, index)
+        if key == "pp banner":
+            return (7, index)
+        return (8, index)
 
     return [
         name
@@ -683,9 +824,13 @@ def status_mm_label(row: dict[str, str]) -> str:
 
 
 def assignment_values(assignment: dict[str, Any]) -> dict[str, Any]:
+    copywriter_ids = assignment.get("copywriter_ids")
+    if copywriter_ids is None:
+        _, copywriter_ids = split_creative_owner_ids(assignment.get("artist_ids") or [])
     return {
         "date_mkwj8wwp": {"date": assignment["brief_date"]},
         "multiple_person_mkwetsg8": people_value(assignment["artist_ids"]),
+        "multiple_person_mkwev9a5": people_value(copywriter_ids or []),
         "person": people_value(assignment["mm_ids"]),
         "multiple_person_mkwetd0y": people_value(assignment["mm_tl_ids"]),
         "multiple_person_mkwez377": people_value(assignment["creative_tl_ids"]),
@@ -736,17 +881,328 @@ def concise_requirement(row: dict[str, str]) -> str:
     return title
 
 
+def required_prize_from_row(row: dict[str, str]) -> str:
+    for line in row.get("description", "").splitlines():
+        if re.search(r"prize", line, re.I):
+            match = re.search(r":\s*(.+)$", line.strip())
+            if match:
+                return match.group(1).strip()
+    return concise_requirement(row)
+
+
+def inferred_reference_prize(source: dict[str, Any]) -> str:
+    for path in all_crm3_paths(source):
+        match = re.search(r"Piggy[_\s-]*(\d+)[_\s-]*Hammers", path, re.I)
+        if match:
+            return f"{match.group(1)} Hammers"
+        match = re.search(r"(\d+)\s*Hammers", path, re.I)
+        if match:
+            return f"{match.group(1)} Hammers"
+    for update in source.get("updates") or []:
+        text = update.get("text_body") or ""
+        match = re.search(r"(\d+)\s*RDS", text, re.I)
+        if match:
+            return f"{match.group(1)} RDS"
+    for subitem in source.get("subitems") or []:
+        for update in subitem.get("updates") or []:
+            text = update.get("text_body") or ""
+            match = re.search(r"(\d+)\s*Hammers", text, re.I)
+            if match:
+                return f"{match.group(1)} Hammers"
+            match = re.search(r"(\d+)\s*RDS", text, re.I)
+            if match:
+                return f"{match.group(1)} RDS"
+    return ""
+
+
+def promo_trigger_phrase(row: dict[str, str]) -> str:
+    fam = family(row["name"])
+    return {
+        "piggy": "break piggy",
+        "spinner clash": "Spinner Clash tournament",
+        "daily deal": "DD purchase",
+    }.get(fam, fam or "promo")
+
+
+def is_card_only_reward(row: dict[str, str]) -> bool:
+    blob = f"{normalize_name(row['name'])}\n{row.get('description') or ''}".lower()
+    if re.search(
+        r"\b(pab|hammer|sb\b|coins?|gems?|wheel|rds|ggs|dice|booster|parasheep|"
+        r"superspin|airstrike|shield|figz|blast)\b",
+        blob,
+    ):
+        return False
+    if re.search(r"\+\s*", blob):
+        return False
+    if re.search(r"card.only|card only", blob):
+        return True
+    if re.search(r"\d+\s*★|\d+\*\s*(reg|ace|gold|shiny|wild)", blob):
+        return True
+    return False
+
+
+def reference_match_tier(row: dict[str, str], source: dict[str, Any]) -> str:
+    req = required_prize_from_row(row)
+    ref_prize = inferred_reference_prize(source)
+    if row["label"] == "Prize Change":
+        trigger = promo_trigger_phrase(row)
+        if ref_prize:
+            return f"Same trigger: {trigger}; prize differs: {ref_prize} → {req}"
+        return f"Same feature: {normalize_name(source.get('name') or '')}; prize differs → {req}"
+    if row["label"] == "New theme for promo":
+        return (
+            f"Same mechanic; theme differs: "
+            f"{normalize_name(source.get('name') or '')} → {concise_requirement(row)}"
+        )
+    return ""
+
+
+def normalize_subitem_key(name: str) -> str:
+    key = re.sub(r"\s+", " ", name.strip().lower())
+    key = key.replace("journey/winners", "journey winners")
+    return key
+
+
+def subitem_matches(required: str, existing: str) -> bool:
+    req = normalize_subitem_key(required)
+    cur = normalize_subitem_key(existing)
+    if req == cur:
+        return True
+    if "winner" in req and "winner" in cur and "inapp" in req and "inapp" in cur:
+        return True
+    if req in {"dd (in store)", "store denom"} and cur in {
+        "dd (in store)",
+        "store denom",
+        "dd in store",
+    }:
+        return True
+    if req == "main inapp" and cur.startswith("main") and "inapp" in cur:
+        return True
+    if req == "journey inapp" and "journey" in cur and "inapp" in cur:
+        return True
+    return False
+
+
+def playbook_required_subitems(row: dict[str, str]) -> list[str]:
+    if row["label"] not in {"Prize Change", "New theme for promo", "New promo"}:
+        return []
+    fam = family(row["name"])
+    card_only = is_card_only_reward(row)
+    winners: list[str] = [] if card_only else ["Winners Inapp"]
+    if fam == "piggy":
+        return ["Main Inapp", *winners, "Banner"]
+    if fam == "spinner clash":
+        return ["Main Inapp", "Journey Inapp", *winners, "Banner"]
+    if fam == "daily deal":
+        return ["DD (in store)", *winners]
+    return []
+
+
+def ensure_playbook_subitems(
+    parent_id: str,
+    row: dict[str, str],
+    subitems: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    required = playbook_required_subitems(row)
+    if not required:
+        return subitems
+    result = list(subitems)
+    existing_names = [subitem["name"] for subitem in result]
+    for name in required:
+        if any(subitem_matches(name, existing) for existing in existing_names):
+            continue
+        subitem_id = create_subitem(parent_id, name)
+        result.append({"id": subitem_id, "name": name, "updates": []})
+        existing_names.append(name)
+        clear_subitem_fields(subitem_id)
+        time.sleep(0.35)
+    return result
+
+
+def spinner_prize_lines(row: dict[str, str]) -> list[str]:
+    lines: list[str] = []
+    for line in (row.get("description") or "").splitlines():
+        stripped = line.strip()
+        if re.match(r"^\d+(st|nd|rd|th)?\s*:", stripped, re.I) or re.match(
+            r"^\d+\s*:", stripped
+        ):
+            lines.append(re.sub(r"\s+", " ", stripped))
+        if re.match(r"^\s*\d+(st|nd|rd)\s*:", stripped, re.I):
+            lines.append(re.sub(r"\s+", " ", stripped.lstrip()))
+    if lines:
+        return lines
+    return [
+        line.strip()
+        for line in (row.get("description") or "").splitlines()
+        if re.search(r"★|\*|ace|reg|coins|pack", line, re.I)
+        and line.strip()
+    ][:8]
+
+
+def change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
+    if row["label"] == "Prize Change" and family(row["name"]) == "piggy":
+        ref_prize = inferred_reference_prize(source) or "prior break prize"
+        return f"Break prize: {ref_prize} → {required_prize_from_row(row)}"
+    if row["label"] == "Prize Change":
+        ref_prize = inferred_reference_prize(source)
+        req = required_prize_from_row(row)
+        if family(row["name"]) == "spinner clash":
+            prizes = spinner_prize_lines(row)
+            if prizes:
+                return f"Rank prizes: {' · '.join(prizes)}"
+        if ref_prize:
+            return f"{ref_prize} → {req}"
+    if row["label"] == "New theme for promo":
+        return f"{normalize_name(source.get('name') or '')} → {concise_requirement(row)}"
+    return f"{source['name']} → {concise_requirement(row)}"
+
+
+def numbered_steps_html(steps: list[str]) -> str:
+    items = "".join(f"<li><p>{esc(step)}</p></li>" for step in steps)
+    return f"<ol>{items}</ol>"
+
+
+def what_to_change_html(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
+    change = change_summary(row, source)
+    if row["label"] == "New theme for promo":
+        return numbered_steps_html(
+            [
+                f"Re-theme {asset} per parent Change: {change}.",
+                "Keep mechanic layout, prize placement, and CTA structure matching the reference unless Change says otherwise.",
+                "Do not alter prizes, amounts, or copy unless the parent Change lists them.",
+            ]
+        )
+    req = required_prize_from_row(row)
+    ref_prize = inferred_reference_prize(source) or "reference prize"
+    asset_l = asset.lower()
+    if family(row["name"]) == "piggy" and "winner" in asset_l:
+        return numbered_steps_html(
+            [
+                "Keep winner/results layout, piggy framing, and claim CTA structure matching the reference.",
+                f"Show the break payout the player won: {req} (match Main Inapp PAB treatment).",
+                "Update any prize-count badge or callout on the payout cluster to match 2 PAB.",
+            ]
+        )
+    if family(row["name"]) == "piggy" and "inapp" in asset_l and "winner" not in asset_l:
+        return numbered_steps_html(
+            [
+                "Keep layout unchanged: piggy bank, BREAK ME TODAY FOR headline block, prize pedestal, TAKE A BREAK CTA, and coin framing.",
+                f"Replace break prize art: {ref_prize} → {req} (two PAB shown per standard PAB treatment).",
+                "Update any prize-count badge or callout on the prize cluster to match 2 PAB.",
+                "If footer/fine print names the break reward, update hammer wording to PAB.",
+            ]
+        )
+    if family(row["name"]) == "piggy" and "banner" in asset_l:
+        return numbered_steps_html(
+            [
+                "Keep banner layout, piggy key art, and CTA destination unchanged.",
+                f"Swap visible break prize from {ref_prize} to {req}.",
+                "Update prize callout text or count on the banner if present.",
+            ]
+        )
+    if family(row["name"]) == "spinner clash":
+        prizes = spinner_prize_lines(row)
+        prize_block = "; ".join(prizes) if prizes else req
+        if "main" in asset_l and "journey" not in asset_l and "winner" not in asset_l:
+            return numbered_steps_html(
+                [
+                    "Keep Spinner Clash hub layout, tournament framing, rank ladder structure, and CTA unchanged.",
+                    f"Update visible rank prizes on the main inapp to: {prize_block}.",
+                    "Keep coin amounts in the reference format unless parent Change lists new coin values.",
+                ]
+            )
+        if "journey" in asset_l:
+            return numbered_steps_html(
+                [
+                    "Keep journey/progress frame layout and rank progression structure matching the reference.",
+                    f"Update interim rank prize art/text to the new ladder (top ranks): {prize_block}.",
+                    "Keep coin callouts in the reference style where ranks still pay coins.",
+                ]
+            )
+        if "winner" in asset_l:
+            return numbered_steps_html(
+                [
+                    "Keep winner/results/podium layout and claim CTA matching the reference.",
+                    f"Update the visible payout for the player's finishing rank per parent Change: {prize_block}.",
+                    "Show pack/card art matching the configured rank prizes (Ace packs/cards + coins where listed).",
+                ]
+            )
+        if "banner" in asset_l:
+            return numbered_steps_html(
+                [
+                    "Keep banner layout, Spinner Clash key art, and CTA destination unchanged.",
+                    f"Update top rank callouts on the banner to: {prize_block}.",
+                ]
+            )
+    if family(row["name"]) == "daily deal":
+        if "dd" in asset_l or "store" in asset_l or "denom" in asset_l:
+            return numbered_steps_html(
+                [
+                    "Keep DD store-card layout, coin/gem tiers, central reward slot, and CTA unchanged.",
+                    f"Swap central purchase reward art to: {req}.",
+                    "Update SB badge/callout and hammer count art to match 100% SB + 6 Hammers.",
+                    "Keep pricing tier skin (High) matching the reference structure.",
+                ]
+            )
+        if "winner" in asset_l:
+            return numbered_steps_html(
+                [
+                    "Keep DD winner/claim frame layout matching the reference.",
+                    f"Show the purchased reward payout: {req} (100% SB + 6 Hammers visible).",
+                    "Update hammer count and SB callout on the claim art.",
+                ]
+            )
+    return numbered_steps_html(
+        [
+            f"Apply parent Change to {asset}: {change}.",
+            "Keep all non-prize layout, framing, and CTA structure matching the reference.",
+            "Update prize art, amount badges, callouts, and footer legal lines that name the old prize.",
+        ]
+    )
+
+
+def reference_label_html(
+    source: dict[str, Any],
+    asset: str,
+    row: dict[str, str] | None = None,
+) -> str:
+    ref_date = source_date(source)
+    name = normalize_name(source.get("name") or "")
+    tier = reference_match_tier(row, source) if row else ""
+    prefix = f"{tier}. " if tier else ""
+    return esc(f"{prefix}{ref_date} {name} — {asset}; see attached ref in Monday if needed")
+
+
 def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) -> str:
     del assets
     return table(
         [
             ("Creative Label", esc(row["label"])),
-            ("Change", esc(f"{source['name']} → {concise_requirement(row)}")),
+            ("Change", esc(change_summary(row, source))),
         ]
     )
 
 
 def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
+    if row["label"] in {"Prize Change", "New theme for promo"}:
+        reference_cell = reference_label_html(source, asset, row)
+        reference_png = reference_png_html(source, asset)
+        if reference_png:
+            reference_cell = f"{reference_cell}<br>{reference_png}"
+        rows = [
+            ("What to change", what_to_change_html(row, source, asset)),
+            ("Reference", reference_cell),
+            (
+                "Reference Link",
+                reference_link_html(
+                    source,
+                    asset,
+                    allow_missing_path=row["label"] == "New promo",
+                    folder_only=True,
+                ),
+            ),
+        ]
+        return table(rows)
     rows = [
         ("Task", esc(f"Apply the parent Change to {asset}.")),
         ("Keep", "Match the reference for everything else."),
@@ -996,6 +1452,7 @@ def write_brief(
         time.sleep(4)
         live_item = gql(query, {"ids": [item_id]})["items"][0]
         subitems = live_item.get("subitems") or []
+    subitems = ensure_playbook_subitems(item_id, row, subitems)
     set_columns(BOARD, item_id, parent_values(row, source, target, assignment))
     upsert_update(
         item_id,
@@ -1120,7 +1577,14 @@ def main() -> None:
             if existing_item:
                 assert_brief_editable(str(existing_item["id"]), args.allow_in_flight)
                 source = source_for(row, catalog)
-                for subitem in existing_item.get("subitems") or []:
+                query = "query($ids:[ID!]!){items(ids:$ids){updates(limit:1){id body} subitems{id name updates(limit:1){id body}}}}"
+                live_existing = gql(query, {"ids": [str(existing_item["id"])]})["items"][0]
+                subitems = ensure_playbook_subitems(
+                    str(existing_item["id"]),
+                    row,
+                    live_existing.get("subitems") or [],
+                )
+                for subitem in subitems:
                     clear_subitem_fields(str(subitem["id"]))
                     upsert_update(
                         str(subitem["id"]),
@@ -1134,11 +1598,11 @@ def main() -> None:
                 )
                 upsert_update(
                     str(existing_item["id"]),
-                    existing_item.get("updates") or [],
+                    live_existing.get("updates") or [],
                     parent_body(
                         row,
                         source,
-                        [subitem["name"] for subitem in existing_item.get("subitems") or []],
+                        [subitem["name"] for subitem in subitems],
                     ),
                 )
                 reorder_subitems(str(existing_item["id"]))

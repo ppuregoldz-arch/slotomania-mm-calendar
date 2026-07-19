@@ -1,4 +1,12 @@
-### 2026-07-19 — Auto — Creative brief trigger/prize + winner inapp docs
+### 2026-07-19 — Auto — Rebuild 2026-08-05 Monetization-Art briefs
+
+- **Goal:** Rebuild 2026-08-05 creative briefs with match-tier Reference rows, Winner inapps, playbook subitems, Marina/Yarden Traffic split, consolidated Reuse, MGAP UI - BOGO.
+- **Done:** Enhanced `scripts/apply_selected_august_creative_briefs.py` (match tier, piggy 2026_06_17 folder refs, spinner/DD/piggy What to change, `ensure_playbook_subitems`, source override chain). Monday commit with `--allow-in-flight` (Reuse was Ready - no action needed). Validated Piggy Main Inapp uses What to change · Reference · Reference Link (not Task/Keep).
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `TEAM_WORKLOG.md`.
+- **Commands run:** `apply_selected_august_creative_briefs.py --date 2026-08-05` dry-run ✓; `--commit --allow-in-flight` ✓; ops_tasks n/a.
+- **Notes for next agent:** Monday IDs — Reuse `12550314166`; Piggy `12571759372`; Spinner `12549581866`; DD `12549561473`; MGAP UI `12551108513` (skipped existing). DD subitem order fix in script — re-run apply if store denom should precede Winners Inapp.
+
+---
 
 - **Goal:** Encode Itay-approved training: trigger/prize labeling, CRM3 reference ladder, Main/Journey/Winner inapps, winner inapp requirement.
 - **Done:** Updated `BRIEF_WRITING_STANDARDS.md` (Trigger and prize, CRM3 reference ladder, Inapp types, checklist bullets), `CREATIVE_LABEL_RULES.md` (Prize Change = same trigger; reference ladder cross-ref), `PRODUCT_PLAYBOOK.md` (inapp types + winner rule), `slotomania_monetization_art.mdc` (agent ladder + winner inapp). Committed + pushed per git_sync_rules.
