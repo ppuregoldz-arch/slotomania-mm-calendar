@@ -33,7 +33,7 @@ No other parent Reference, Reference Link, Assets, Skeleton, mechanic prose, or 
 - **`Theme` row:** include when MM name/description states a named theme or explicit `Generic` / `Generic theme`. Value is the theme name only (`Betty Boop`, `Cozy`, `4th of July`, `Generic`). Do **not** invent a theme when the calendar row is variant-only with no theme token.
 - Include only theme name, prizes/amounts, mechanic facts, required format constraints, CTA destination, and reference.
 - Never prescribe palette, colors, decorative motifs, mood, atmosphere, composition, typography, headline/button copy, or quoted copy.
-- Never repeat promo date, due dates, priority, category, status, or internal pricing tier.
+- Never repeat promo date, due dates, priority, category, status, or internal **pricing tier** (H/M/Max pricing, `| H Pricing` suffixes, etc.).
 
 ## Asset table schemas
 
@@ -167,7 +167,7 @@ Parent row stays the hybrid **`Creative Label` + `Change`** summary. Subitem bod
 |---|---|
 | **New theme for promo** | What to change · Reference · Reference Link |
 | **Prize Change** | What to change · Reference · Reference Link |
-| **New promo** | BG · Main Message · Ref · Ref Link |
+| **New promo** | BG · Main Message · Benefits · Reference · Reference Link · **CTA** |
 
 Reuse has no asset subitems (day-level summary only).
 
@@ -183,7 +183,7 @@ Reuse has no asset subitems (day-level summary only).
 
 **Bad (themed DD ref on generic day):** Reference Link `…\Holidays & Events\…` or `…XmasInJuly…` when the DD row is generic Shiny+hammers (Prize Change).
 
-**Good (Rolling + MGAP parent Change):** `Theme: 4th of July → Generic; Add MGAP denom 3 (cycles 2–4) on Rolling ladder; 4 cycles Buy X Get Y, H pricing`
+**Good (Rolling + MGAP parent Change):** `Theme: 4th of July → Generic; Add MGAP denom 3 (cycles 2–4) on Rolling ladder; 4 cycles Buy X Get Y`
 
 **Good (DD Reference Link):** `Q:\Slotomania\CRM3\Features\Daily_Deal\2026\2026_07_09_DD_Hammer_Wheel` (generic hammer/wheel structure — not holiday DD skin).
 
@@ -217,7 +217,7 @@ Example Rolling MGAP denom **What to change** row:
 <tr><td><p>What to change</p></td><td><p>Build MGAP denom 3 (cycles 2–4; new for this Rolling promo).</p></td></tr>
 ```
 
-**New promo** skeletons use the same vertical table (What to change states Itay must complete missing mechanic/prizes) — not Task/Keep.
+**New promo** skeletons use **`BG` or `Main Message` · `Benefits` · `Reference` · `Reference Link` · `CTA`** (vertical) — not Task/Keep and not the Prize Change `What to change` stack.
 
 ## Status and edit safety
 

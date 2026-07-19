@@ -1,3 +1,11 @@
+### 2026-07-19 — Auto — New promo label + CTA template; no pricing in briefs
+
+- **Goal:** Anything that is not Prize Change / New theme for promo → **New promo** brief table with **CTA**; never mention MM pricing tiers in Creative prose.
+- **Done:** `normalize_creative_label()`, `new_promo_subitem_table()`, `strip_pricing_prose()`; Rolling parent Change drops H pricing; docs updated.
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `CREATIVE_LABEL_RULES.md`, `BRIEF_WRITING_STANDARDS.md`, `.cursor/rules/slotomania_monetization_art.mdc`, `TEAM_WORKLOG.md`.
+
+---
+
 ### 2026-07-19 — Auto — Battlesheep/Blast + Decoy brief rules
 
 - **Goal:** Encode Itay rules: no challenge assets/titles unless MM Description defines season challenge; **SKU** row only then; no Decoy Art briefs (single offer only).

@@ -236,10 +236,11 @@ def prize_change_table(
     theme: str = "",
     hook: str | None = None,
     sku: str = "",
+    cta: str = "",
 ) -> str:
     rows: list[tuple[str, str]] = []
     for line in change_lines:
-        rows.append(("What to change", f"<p>{esc(line)}</p>"))
+        rows.append(("What to change", f"<p>{esc(strip_pricing_prose(line))}</p>"))
     if theme:
         rows.append(("Theme", f"<p>{esc(theme)}</p>"))
     if hook:
@@ -248,12 +249,72 @@ def prize_change_table(
         rows.append(("SKU", f"<p>{esc(sku)}</p>"))
     rows.append(("Reference", reference_cell or "<p></p>"))
     rows.append(("Reference Link", reference_link_cell or "<p></p>"))
+    if cta:
+        rows.append(("CTA", f"<p>{esc(cta)}</p>"))
+    return vertical_field_table(rows)
+
+
+def new_promo_subitem_table(
+    asset: str,
+    reference_cell: str,
+    reference_link_cell: str,
+) -> str:
+    """New promo vertical template — skeleton for Itay; always includes CTA row."""
+    key = normalize_subitem_key(asset)
+    rows: list[tuple[str, str]] = []
+    if asset_is_background(asset) or key in {"bg", "background", "theme/bo", "theme / bo"}:
+        rows.append(
+            (
+                "BG",
+                "<p>Skeleton — Itay to complete background / layout for this promo.</p>",
+            )
+        )
+    else:
+        rows.append(
+            (
+                "Main Message",
+                f"<p>Skeleton — Itay to complete main message for {esc(asset)}.</p>",
+            )
+        )
+    rows.append(
+        ("Benefits", "<p>Skeleton — Itay to complete visible benefits / prizes.</p>")
+    )
+    rows.append(("Reference", reference_cell or "<p></p>"))
+    rows.append(("Reference Link", reference_link_cell or "<p></p>"))
+    rows.append(("CTA", "<p>Skeleton — Itay to complete CTA destination / label.</p>"))
     return vertical_field_table(rows)
 
 
 def normalize_name(value: str) -> str:
     value = re.sub(r"^\d{4}-\d{2}-\d{2}\s*\|\s*", "", value).strip()
     return re.sub(r"\s+", " ", value.replace("—", "-").replace("–", "-"))
+
+
+def strip_pricing_prose(text: str) -> str:
+    """Remove MM pricing tiers from Creative brief text (not for Ops/config)."""
+    if not text:
+        return text
+    text = re.sub(r"\s*\|\s*[HML](?:ax)?\s*Pricing\s*", "", text, flags=re.I)
+    text = re.sub(r",?\s*\b[HML](?:ax)?\s+pricing\b", "", text, flags=re.I)
+    text = re.sub(r",?\s*\b(?:high|medium|max)\s+pricing\b", "", text, flags=re.I)
+    text = re.sub(r"\s+", " ", text).strip(" ,;·|-")
+    return text
+
+
+def brief_display_name(row: dict[str, str]) -> str:
+    return strip_pricing_prose(normalize_name(row["name"]))
+
+
+def normalize_creative_label(label: str) -> str:
+    """Brief labels: only Prize Change and New theme for promo use delta tables; else New promo."""
+    label = (label or "").strip()
+    if not label:
+        return ""
+    if label == "Reuse":
+        return label
+    if label in {"Prize Change", "New theme for promo"}:
+        return label
+    return "New promo"
 
 
 def slug(value: str) -> str:
@@ -428,13 +489,14 @@ def fetch_rows(dates: list[str]) -> dict[str, list[dict[str, str]]]:
         normalized = normalize_name(item["name"])
         if re.search(r"lotto\s*-\s*peak", normalized, re.I) or normalized.lower() == "lbp peak":
             continue
-        label = (
+        raw_label = (
             LABEL_OVERRIDES.get(str(item["id"]))
             or columns.get("color_mm4kygty")
             or ("Reuse" if family(item["name"]) == "rlap" else "")
         )
-        if label not in {"Reuse", "Prize Change", "New theme for promo", "New promo"}:
+        if not raw_label:
             raise RuntimeError(f"Missing Creative Label for {item['name']}")
+        label = normalize_creative_label(raw_label)
         description = columns.get("long_text_mkxzgg1v") or ""
         if str(item["id"]) == "12464458902":
             description = "ADS Personal Offer prize: Hammers. The MM row title is authoritative."
@@ -1646,17 +1708,17 @@ def infer_source_theme_name(source: dict[str, Any]) -> str:
     return ""
 
 
-def rolling_cycle_pricing_clause(row: dict[str, str]) -> str:
-    name = normalize_name(row["name"])
-    bits: list[str] = []
+def rolling_cycle_mechanic_clause(row: dict[str, str]) -> str:
+    name = strip_pricing_prose(normalize_name(row["name"]))
     match = re.search(r"(\d+)\s*cycles?", name, re.I)
     if match:
-        bits.append(f"{match.group(1)} cycles Buy X Get Y")
-    if re.search(r"H Pricing|\|\s*H\s*Pricing", name, re.I) or (
-        (row.get("pricing") or "").lower() == "high"
-    ):
-        bits.append("H pricing")
-    return ", ".join(bits)
+        return f"{match.group(1)} cycles Buy X Get Y"
+    return ""
+
+
+def rolling_cycle_pricing_clause(row: dict[str, str]) -> str:
+    """Deprecated alias — pricing must not appear in Creative briefs."""
+    return rolling_cycle_mechanic_clause(row)
 
 
 def short_parent_change(row: dict[str, str], source: dict[str, Any]) -> str:
@@ -1682,7 +1744,7 @@ def short_parent_change(row: dict[str, str], source: dict[str, Any]) -> str:
         if cycle_clause and not any("cycles" in part for part in parts):
             parts.append(cycle_clause)
         if parts:
-            return "; ".join(parts)[:220]
+            return strip_pricing_prose("; ".join(parts))[:220]
         return "Rolling offer creative update"
 
     if fam == "golden spin" and row["label"] == "New theme for promo":
@@ -1692,33 +1754,39 @@ def short_parent_change(row: dict[str, str], source: dict[str, Any]) -> str:
         hook = promo_hook_line(row)
         if hook:
             line = f"{line}; {hook}"
-        return line[:220]
+        return strip_pricing_prose(line)[:220]
 
     if row["label"] == "New theme for promo":
         src = infer_source_theme_name(source) or normalize_name(source.get("name") or "")[:35]
         dst = promo_theme_label(row) or "required theme"
-        return f"Theme: {src} → {dst}"[:220]
+        return strip_pricing_prose(f"Theme: {src} → {dst}")[:220]
+
+    if row["label"] == "New promo":
+        title = brief_display_name(row).split("|", 1)[0].strip()
+        return strip_pricing_prose(
+            f"New promo — Itay to complete mechanic and art direction ({title})."
+        )[:220]
 
     if row["label"] == "Prize Change" and fam == "golden spin":
         hook = promo_hook_line(row)
         dst = promo_theme_label(row)
         if hook and dst:
-            return f"Theme: → {dst}; {hook}"[:220]
+            return strip_pricing_prose(f"Theme: → {dst}; {hook}")[:220]
         if hook:
-            return hook[:220]
+            return strip_pricing_prose(hook)[:220]
 
     if fam in {"battlesheep", "blast"}:
         req = required_prize_from_row(row)
         theme = promo_theme_label(row)
         if row["label"] == "New theme for promo" and theme:
             src = infer_source_theme_name(source) or "prior theme"
-            return f"Theme: {src} → {theme}"[:220]
+            return strip_pricing_prose(f"Theme: {src} → {theme}")[:220]
         if req and len(req) <= 80:
             if theme:
-                return f"{req} · {theme} theme"[:220]
-            return req[:220]
+                return strip_pricing_prose(f"{req} · {theme} theme")[:220]
+            return strip_pricing_prose(req)[:220]
         if theme:
-            return f"{theme} theme"[:220]
+            return strip_pricing_prose(f"{theme} theme")[:220]
 
     return ""
 
@@ -1828,6 +1896,10 @@ def spinner_prize_lines(row: dict[str, str]) -> list[str]:
 
 
 def change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
+    if row["label"] == "New promo":
+        short = short_parent_change(row, source)
+        if short:
+            return short
     if row["label"] == "New theme for promo":
         short = short_parent_change(row, source)
         if short:
@@ -1838,21 +1910,23 @@ def change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
             return short
     if row["label"] == "Prize Change" and family(row["name"]) == "piggy":
         ref_prize = inferred_reference_prize(source) or "prior break prize"
-        return f"Break prize: {ref_prize} → {required_prize_from_row(row)}"
+        return strip_pricing_prose(
+            f"Break prize: {ref_prize} → {required_prize_from_row(row)}"
+        )
     if row["label"] == "Prize Change":
         ref_prize = inferred_reference_prize(source)
         req = required_prize_from_row(row)
         if family(row["name"]) == "spinner clash":
             prizes = spinner_rank_prize_lines(row)
             if prizes:
-                return " · ".join(prizes)
+                return strip_pricing_prose(" · ".join(prizes))
         if ref_prize and req and len(req) <= 72:
-            return f"{ref_prize} → {req}"
+            return strip_pricing_prose(f"{ref_prize} → {req}")
         if req and len(req) <= 72:
-            return req
-    src_name = normalize_name(source.get("name") or "")[:40]
-    dst_name = normalize_name(row["name"]).split("|")[0].strip()[:40]
-    return f"{src_name} → {dst_name}"
+            return strip_pricing_prose(req)
+    src_name = strip_pricing_prose(normalize_name(source.get("name") or "")[:40])
+    dst_name = strip_pricing_prose(normalize_name(row["name"]).split("|")[0].strip()[:40])
+    return strip_pricing_prose(f"{src_name} → {dst_name}")
 
 
 def numbered_steps_html(steps: list[str]) -> str:
@@ -2041,6 +2115,8 @@ def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str
         folder_only=row["label"] in {"Prize Change", "New theme for promo", "New promo"},
         row=row,
     )
+    if row["label"] == "New promo":
+        return new_promo_subitem_table(asset, reference_cell, link_cell)
     lines = what_to_change_lines(row, source, asset)
     if not lines:
         lines = [f"Update {asset} per parent Change."]

@@ -25,7 +25,7 @@
 
 ## Reference selection
 
-**Trigger + prize ladder** (detail in `BRIEF_WRITING_STANDARDS.md`): (1) same trigger + same prize → best reuse/ref; (2) same trigger + different prize → **Prize Change** ref; (3) same feature only → weaker; say so in the brief **Reference** row.
+**Trigger + prize ladder** (agent-internal; do not paste into subitem **Reference**): (1) same trigger + same prize → best reuse/ref; (2) same trigger + different prize → **Prize Change** ref; (3) same feature only → weaker; optional one line in parent **Change** if the gap matters.
 
 1. Prefer an older exact promo match over a newer same-family task with different prizes or theme.
 2. Within the selected exact task, use the newest matching Creative attachment, even if the task is not yet Approved.
@@ -39,16 +39,16 @@
 ## Brief behavior
 
 - **Reuse:** create exactly one day-level Monday item named `REUSE - No Creative Action`. List every Reuse promotion in that item with its promotion title, reuse-from date, Monday source pulse, and CRM3 reference path. Do not create separate per-promo Reuse items or asset subitems. Set the summary item to Completed.
-- **Prize Change:** state the exact visible delta once in the parent Change row; each affected asset subitem points to that parent Change.
-- **New theme for promo:** state the exact theme delta once in the parent Change row; each affected asset subitem points to it and keeps the reference for everything else.
-- **New promo:** leave mechanics and direction for Itay; attach only clearly relevant inspiration.
+- **Prize Change** and **New theme for promo:** use the delta subitem table (`What to change` → optional `Theme` / `Hook` / `SKU` → `Reference` → `Reference Link`). Any other actionable MM label (including explicit **New promo** or legacy/blank variants normalized by the applier) → **New promo** template.
+- **New promo:** vertical subitem table **`BG` or `Main Message` · `Benefits` · `Reference` · `Reference Link` · `CTA`** (skeleton rows for Itay — do not invent mechanics or copy). Parent **Change** states the promo is a new skeleton.
+- **Pricing:** never mention MM **pricing tiers** (H/M/Max pricing, `| H Pricing` in titles, etc.) in parent **Change** or subitem prose — pricing stays in MM/Ops columns only.
 - **MGAP UI:** every real MGAP promotion also gets a separate parent task named `MGAP UI - <variant>` in the same day group, in addition to its regular promo brief or Reuse-summary row. The separate task keeps only MGAP UI subitems. This includes MGAP embedded in another offer (for example a Rolling MGAP ladder), but excludes RLAP/Stash Booster because it replaces the MGAP promo.
 - Theme change takes precedence over simultaneous prize change.
 - Active art-only work leaves both Copy Status and Art Status empty.
 - Brief Due Date and people ownership come from `Creative Traffic` board `18041947639`: `Brief Date`, `Creative Owner`, `Monetization`, `MM TL`, and `TL Owner`. Map `Brief Date` → `Brief Due Date`; `Monetization` → `MM`; `MM TL` → `MM TL`; `TL Owner` → `Creative TL`. Split `Creative Owner` on Monetization-Art: first person → **Artist** (`multiple_person_mkwetsg8`), second person (when present) → **Copywriter** (`multiple_person_mkwev9a5`); a lone `Creative Owner` → Artist only. Do not assign both Traffic owners to Artist.
-- Leave Status Creative empty for every non-Reuse brief. Monetization owns only Status MM: use `Brief Done` for a complete brief, `MM work in progress` for an incomplete New promo skeleton, and `Ready - no action needed` for the Reuse summary. Reuse may set Status Creative to `done`.
+- Leave Status Creative empty for every non-Reuse brief until Creative starts. Monetization owns **Status MM** (`color_mkwes65f`): **`Ready for Brief`** when the agent finished a complete brief (handoff to Creative); **`MM work in progress`** for an incomplete New promo skeleton; **`Ready - no action needed`** for the Reuse summary. Reuse sets Status Creative to `done`.
 - Art Due Date is at least 48 hours before launch. Move Friday/Saturday due dates back to Thursday.
-- Keep briefs short. Use separate **Reference** and **Reference Link** rows: **Reference** states match tier (trigger/prize alignment) and embeds the matching PNG when available; **Reference Link** is the CRM3 folder or exact file path (see `BRIEF_WRITING_STANDARDS.md`).
+- Keep briefs short. Subitem layout and row rules: `BRIEF_WRITING_STANDARDS.md` (vertical tables, **What to change** deltas only, **Reference** = preview only, **Reference Link** = CRM3 folder). Do not use Task/Keep rows for Prize Change or New theme for promo.
 
 ## Known exceptions
 
