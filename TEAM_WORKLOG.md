@@ -1,7 +1,83 @@
-# Team worklog (Cursor agents)
+### 2026-07-19 — Auto — Ops handoff status + times (2026-07-30)
 
-Append a new section at the **top** after each working session.  
-Canonical repo: `/Volumes/studios/Slotomania/CRM2/MM Calendar/Cursor Work`
+- **Goal:** Fix wrongful `More Info required`; machine launch blank times; Win Master Once; DD/WM from title; Spinner Clash 6hr template; refresh Monday 2026-07-30.
+- **Done:** `ops_handoff_sufficient()` + `status_for()` uses composed Description + Name (not raw empty MM Description); `should_omit_times_per_player` for machine launch; Win Master → Once; `compose_spinner_clash_description`; rebuilt spec; **updated 10/10** on Ops board.
+- **Files:** `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `mm_calendar/ops_task_construction.md`, `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/data/ops_tasks/2026-07-30.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py --date 2026-07-30` ✓, `upload_ops_task_monday.py --commit --update-existing --allow-tbd` ✓.
+- **Notes:** Wealthy Wins times blank + Waiting for MM Approval; Win Master + both DDs Waiting (not More Info). No Spinner row on 7/30 — rules ready for future days.
+
+---
+
+### 2026-07-19 — Auto — Time-limited Ops UTC slots (2026-07-30)
+
+- **Goal:** Stable start times for time-limited promos when MM omits clocks; title + Start/End columns; sync 2026-07-30.
+- **Done:** `resolve_ops_production_window()` in `ops_description.py` (MD5 pick among 14:00/16:00/17:00/21:00 UTC, duration from MM text or 1h default); builder + docs; upload matcher falls back to `source_row_name` for renames; **10/10 updated** on Ops board.
+- **Example HH:** `14:00 UTC - HH - Coins & Gems sale on DD purchase` → **2026-07-30 14:00–15:00 UTC** (Monday API 11:00–12:00).
+- **Files:** `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `scripts/upload_ops_task_monday.py`, `mm_calendar/ops_task_construction.md`, `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/data/ops_tasks/2026-07-30.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py --date 2026-07-30` ✓, `upload_ops_task_monday.py --commit --update-existing --allow-tbd` ✓.
+- **Notes:** Gatcha row has warning (no duration in MM — default 1h at 16:00 UTC). Prior fork items (Waiting for MM Approval, machine launch, rolling cycle blanks) unchanged and included in this upload.
+
+---
+
+- **Goal:** M&M Status `Waiting for MM Approval` when config/MCP ready; machine launch checklist; Rolling cycle spacing; refresh 2026-07-30 on Ops board.
+- **Done:** `status_for()` defaults to Waiting after blockers cleared; `compose_machine_launch_description` + rolling blank lines between cycles; rebuilt spec; **updated 10/10** subitems on `2109172490`.
+- **Files:** `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `mm_calendar/ops_task_construction.md`, `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/data/ops_tasks/2026-07-30.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py --date 2026-07-30` ✓, `upload_ops_task_monday.py --commit --update-existing --allow-tbd` ✓ (10 updated).
+- **Notes for Itay:** Review task-by-task: **Win Master / both DDs** still `More Info required` (empty MM Description — add MM text or confirm title-only OK). **Rolling** prose denoms synced; verify SB pay cycles vs economy. **Wealthy Wins** uses standard launch checklist (no Q: paths).
+
+---
+
+### 2026-07-19 — Auto — Ops board 2026-07-30 (10 tasks)
+
+- **Goal:** Build Operation — Monetization subitems for calendar day 2026-07-30 from live MM rows.
+- **Done:** Generated `mm_calendar/data/ops_tasks/2026-07-30.json`; composer fixes for Rolling prose cycles, DD `DD -` prizes, HH/Gatcha (Trigger not sales template), Golden Spin variant, Win Master prize from title. Created day parent + 10 subitems on board `2109172490` with MM relations.
+- **Files:** `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `scripts/upload_ops_task_monday.py`, `mm_calendar/data/ops_tasks/2026-07-30.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py --date 2026-07-30` ✓, `upload_ops_task_monday.py --commit --create-day --allow-tbd` ✓.
+- **Notes:** Excluded Clan-Dash. **Wealthy Wins Machine** still needs MM prize/config detail. Review Rolling SB/cash cycles on Monday if prose mapping needs tweaks.
+
+---
+
+### 2026-07-19 — Auto — Strip internal doc refs from Ops descriptions
+
+- **Goal:** Remove confusing MM/builder boilerplate (Nivi tables, `mm_calendar/` paths, Collector's Album phase lines) from Ops Description text.
+- **Done:** Added `strip_internal_reference_noise` / `finalize_ops_description` in `ops_description.py`; fixed SNL cycle prize parsing; rebuilt `2026-08-05`, `06`, `11`, `28`, `29` specs (descriptions clean; `source_detail` still mirrors raw MM for traceability).
+- **Files:** `scripts/ops_description.py`, `mm_calendar/ops_task_construction.md`, `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/data/ops_tasks/2026-08-{05,06,11,28,29}.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py` (5 dates) ✓; Monday sync n/a (say if you want `--update-existing` push for SNL/Spinner rows).
+- **Notes:** Example fix — SNL Description is now three cycle lines only, no `Full tables: mm_calendar/nivi_collector_album_prizes.md`.
+
+---
+
+### 2026-07-19 — Auto — Main-offer reset + DD Multiple + five-day Ops sync
+
+- **Goal:** Daily Deal defaults to Multiple (not main offer); main offers lead Description with `Reset at 00:00 UTC`; propagate composer rules to rebuilt Aug Ops days.
+- **Done:** Centralized `infer_times_per_player` + main-offer reset in `ops_description.py`. Rebuilt specs and **updated** Monday subitems for 2026-08-05, 06, 11, 28, 29 (descriptions, Times per player, dates unchanged).
+- **Files:** `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `mm_calendar/data/ops_tasks/2026-08-{05,06,11,28,29}.json`, `mm_calendar/ops_task_construction.md`, `.cursor/rules/ops_task_builder.mdc`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py` (5 dates) ✓, `upload_ops_task_monday.py --commit --update-existing --allow-tbd` ✓ ×5.
+- **Notes:** 2026-08-11 Rolling denom list may still need richer MM detail parsing if calendar Description lacks tabbed cycle rows.
+
+---
+
+- **Goal:** Apply Itay's task-by-task writing rules starting with 2026-08-05 (dates/times in columns, Once/Multiple, MGAP/rolling/spinner templates).
+- **Done:** Extended `ops_description.py` (variant promos, rolling denoms, rank prizes for Core tournaments). Builder sets `times_per_player` (main offers + Piggy → Once; else Multiple unless MM text). Rebuilt and **updated** all six 2026-08-05 Ops subitems on Monday (descriptions + columns including Times per player).
+- **Files:** `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `mm_calendar/data/ops_tasks/2026-08-05.json`, `mm_calendar/ops_task_construction.md`, `.cursor/rules/ops_task_builder.mdc`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py --date 2026-08-05` ✓, `upload_ops_task_monday.py --commit --update-existing --allow-tbd` ✓.
+- **Notes for next agent:** Itay will review remaining August days task-by-task; apply same composer rules before bulk rebuild.
+
+---
+
+- **Goal:** Delete existing Operation subitems on five August days and recreate them aligned with live MM calendar + new Description format.
+- **Done:** Refreshed live snapshot; rebuilt specs via `build_ops_tasks_from_live_days.py`. Added `--replace-day` to `upload_ops_task_monday.py` (delete all subitems, then create from spec). Committed replace for 2026-08-05 (6), 06 (8), 11 (8), 28 (9), 29 (11). Relations to MM rows, M&M Status, dates preserved from builder; Operation Status left blank per workflow.
+- **Files:** `scripts/upload_ops_task_monday.py`, `mm_calendar/data/monday_board_live_snapshot.json`, `mm_calendar/data/monday_board_live_by_date.json`, `mm_calendar/data/ops_tasks/2026-08-{05,06,11,28,29}.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `pull_monday_live_snapshot.py` ✓, `build_ops_tasks_from_live_days.py` (5 dates) ✓, `upload_ops_task_monday.py --commit --replace-day --allow-tbd` ✓ ×5.
+- **Notes for next agent:** 28.8 no longer has separate “LBP Extreme stamp” Ops row — live MM has 9 promos that day (LBP peak only). 29.8 now includes **Blast Vegas** from calendar. Task-by-task review with Itay still optional. `--replace-day` is destructive; use only with explicit approval.
+
+---
+
+- **Goal:** Add third Shiny Show in calendar week 1–7 Aug without other board changes; document 3/week HARD in August guidelines.
+- **Done:** Created Monday row `2026-08-02 | Shiny Show JP Symbol | 4*` (Album, Description `Variant: JP Symbol | 4*`, pulse `12571346699`). Refreshed live snapshot + authority 1–15 artifacts. Week 1–7 and 8–14 now each have 3 Shiny Show rows on live board.
+- **Files:** `mm_calendar/monthly_guidelines/2026-08.md`, `mm_calendar/data/monday_board_live_by_date.json`, `mm_calendar/data/monday_board_live_snapshot.json`, `mm_calendar/data/august_2026_monday_days_1-15.json`, `mm_calendar/data/august_2026_monday_authority_1-15.md`, `TEAM_WORKLOG.md`.
+- **Commands run:** Monday create + columns ✓, `pull_monday_live_snapshot.py` ✓, authority regen ✓.
+- **Notes for next agent:** When planning Shiny Show, count rows per calendar week — max 3, not on Monday, one variant per row.
 
 ---
 

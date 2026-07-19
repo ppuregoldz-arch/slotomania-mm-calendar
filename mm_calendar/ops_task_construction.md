@@ -51,15 +51,16 @@ All dated production tasks are **subitems of the matching `YYYY-MM-DD` day paren
 
 Create a task when Ops must configure, open, schedule, rotate, award, target, publish, QA, or close something.
 
-Do not create a task for a calendar-only communication/amplifier row that explicitly requires no Ops config. Current exclusions inherited from the calendar uploader:
+Do not create a task for a calendar-only communication/amplifier row that explicitly requires no Ops config. Default exclusions:
 
 - Status Boost
 - Shiny Collection calendar communications
-- X2 Extreme Stamp
 - X2 GGS
 - Clan-Dash calendar rows
 
-If unsure, generate a review spec with `requires_review: true`; do not silently create a live task.
+**X2 Extreme Stamp:** create a separate Ops task when the MM calendar row is present. Description is **`Segment:` only** (no Variant/Note). Stamp-slot pairing with Rolling belongs in the Rolling task text, not here.
+
+If unsure, generate a review spec with `requires_review: true`; do not silently skip a row Monetization expects on the Ops board.
 
 Season rows create work only on `isFirst`. Daily promos create work on their scheduled day. Backup items are excluded.
 
@@ -93,6 +94,9 @@ The plan-driven builder can draft only what exists in the source plan. Missing e
 - Do not repeat production dates, start/end times, reset times, or date ranges in Description.
 - The Ops board renders API date-times at UTC+3. Compensate the API payload by 3 hours so the visible Start/End values equal the intended UTC schedule (for example, write `08:00` so the board shows `11:00`; write the previous day at `21:00` so the board shows `00:00`).
 - Standard promo window: 11:00 UTC to 11:00 UTC the next day. Time-limited and Night Plan tasks use their exact approved hours.
+- When MM confirms a **time-limited** promo but **does not** state exact start/end clocks, assign start from a **stable** pick (hash of parent day + MM item id) among **14:00, 16:00, 17:00, or 21:00 UTC**. Infer duration from MM text (`for 1 hour`, `5 hours`, etc.); if still unknown, default **1 hour** and record a warning in the spec/worklog.
+- Prefix or embed that UTC start in the Ops subitem **title** (for example `14:00 UTC - HH - Coins & Gems sale on DD purchase`). Do **not** repeat start/end in Description.
+- Do **not** override rows that already carry an explicit title prefix (`HH:MM UTC - …`) or parseable UTC clocks in the MM Description.
 
 ## Naming
 
@@ -111,14 +115,122 @@ Normalize symbols only for readability (`★` may remain `★`). Do not prepend 
 
 Do not explain the product and do not mention Reuse, Prize Change, source tasks, or current deltas in Description. Those belong in M&M Status/reference metadata.
 
+**No internal repo references in Description** — omit paths (`mm_calendar/…`), Nivi prize-table filenames, “Full tables: …”, “Collector's Album phase …” boilerplate, “Configure ranks in LiveOps per …”, and similar agent/calendar notes. Ops only needs segment, prizes, pricing, triggers, and execution fields the team configures in LiveOps.
+
+**Field order is fixed.** Do not repeat pricing inside prize text (no `Central reward`, no `(High Pricing)` in prizes).
+
+### Standard offers (Daily Deal, RYD, Buy All, Decoy, Limited PO, Prize Mania, Counter PO)
+
 ```text
-Prizes: <exact reward/contents; by denom for offers>
-Segment: <confirmed segment; if none, All Users; ADS always uses ADS Segment>
-Pricing: <High / Mid / Max / Low — offers only>
-Trigger: <what the player must do — only when confirmed>
+Reset at 00:00 UTC   ← main offers only; not Daily Deal, RLAP, or ADS
+
+Segment: …
+Prizes: …
+Pricing: …
 ```
 
-Use the same concise schema for Rolling Offer; list its cycle/denom rewards under Prizes. Do not add Config, Actions, Duplicate from, product introductions, `Production`, date/time text, Journey blocks, or dependency boilerplate. Start/End and Once/Multiple remain only in their dedicated columns. Omit Trigger entirely when it is not confirmed.
+Daily Deal uses the same **Prizes / Pricing** shape but **no** reset line and defaults to **Multiple** in Times per player.
+
+### ADS Personal Offer
+
+```text
+Segment: ADS Segment
+Prizes: <exact ad grant — no Pricing line>
+```
+
+### Store / Gem / Coin sales
+
+**Sale** (store vs offers split — name or MM text mentions store/offers):
+
+```text
+Currency: Gems | Coins
+Segment: PU
+Amount: <store%> store | <offers%> offers
+Segment: PRAS
+Amount: <PU+bonus> (<PU>+<bonus>) store | <PU+bonus> (<PU>+<bonus>) offers
+```
+
+Regular segmented **sales**: **+20** on each PU component for **Gems** PRAS; **+25** on each PU component for **Coins** PRAS (unless MM calendar overrides).
+
+**Coupon** (task name contains *coupon* — single PU and PRAS amounts, no store/offers split, no PRAS bonus math):
+
+```text
+Currency: Gems | Coins
+Segment: PU
+Amount: <PU%>
+Segment: PRAS
+Amount: <PRAS%>
+```
+
+Example: `Gems coupon 20%/40%` → PU **20%**, PRAS **40%** (not store 20% / offers 40%).
+
+### RLAP / Stash Booster
+
+```text
+Segment: All Users
+Trigger: Eligible offers: <Daily Deal + main offer names from MM>
+Prize:
+<segmented CZ reward lines from MM — no Pricing>
+```
+
+**Times per player:** leave blank for **Short Term / Mid Term / Season** rows (and other seasonals). Do not set Once/Multiple on those tasks.
+
+### Rolling Offer
+
+```text
+Reset at 00:00 UTC
+
+Segment: <segment>
+Pricing: <High / Mid / Max / Low>
+Denoms:
+Cycle 1:
+<denom#> Pay: <contents>
+<denom#> Free: <contents>
+
+Cycle 2:
+…
+```
+
+Leave a **blank line** between each `Cycle N:` block in Description for readability.
+
+### Machine full launch (new slot)
+
+Follow prior Ops launch tasks (e.g. Sweet Ambrosia / Wild Goddesses / Rich's Riches playbook):
+
+```text
+Segment: All Users
+Action:
+Open the new machine to all players:
+1. Widget — open Main Inapp (Reg / Scrolldown / UV per approved creative)
+2. Add the machine to Figz and Winovate playlist
+3. New Machines DF — Big (Day 1+2) and Small (Day 3)
+4. CTA Reg → machine · UV → app store / Google Play
+```
+
+Art references stay in Monetization-Art / PM — not repo paths in Description.
+
+### Spinner Clash
+
+Match historical Ops (e.g. 2026-05-27): **4 × 6hr tournaments** in 24h, config in economy task, rank **Prize:** lines from MM Name/Description. **Times per player:** **Multiple** (same as recent Ops builds).
+
+### Variant promos (MGAP, Shiny Show, Golden Spin, Dice, LBP / Lotto)
+
+```text
+Segment: <segment>
+Variant: <mechanic variant from MM calendar — not the promo title alone>
+```
+
+### All other promos (Core, MES, Piggy, season rows, etc.)
+
+```text
+Segment: <confirmed segment; if none, All Users>
+Trigger: <what the player must do — omit the whole line if unknown>
+Prize: <single reward or prize bundle — not the promo title>
+```
+
+For tournament / rank features (Spinner Clash, Battlesheep, SNL, Blast, Winovate, etc.), list rank rewards from MM calendar / economy guidelines under **Prize:** (one rank per line when applicable).
+
+Start/End date **and time** live only in the Start date / End date columns (UTC in API; Monday may display local). **Times per player:** **main offers** (Rolling, RYD, Buy All, Decoy, Limited PO, Prize Mania, Counter PO — **not** Daily Deal) and **Piggy** default to **Once**; **Win Master** → **Once**; **Daily Deal** and other promos default to **Multiple** unless MM calendar text says otherwise; **machine full launch** and **Short/Mid Term / Season** → leave **blank**. **Spinner Clash** follows recent Ops precedent (**Multiple**). Main-offer descriptions start with **`Reset at 00:00 UTC`** (then a blank line, then Segment…). Do not repeat dates or Once/Multiple inside Description.
 
 ## Duplicate-from source map
 
@@ -209,14 +321,25 @@ BMFL is exactly 3 cycles and High pricing. Never substitute the deprecated Free1
 ### Ace Heist / PYP mission source
 
 - Ace Heist uses a linear three-mission flow: each completion advances the progress/winner inapp and widget; final completion grants the prize and closes the active journey surfaces.
-- The flow is reusable, but the mission content and values are not. For both Ace Heist and PYP, read the exact current missions from the approved Monday row.
-- Put those current missions in `Trigger` in their approved order. Never copy historical values such as Spin 30/50/100 or Open 5/8 Pods as defaults.
-- If the current Monday row does not define the missions, omit Trigger and flag the handoff as incomplete; do not infer from an older task.
+- The flow is reusable, but the mission content and values are not. For both Ace Heist and PYP, read the exact current missions from the approved Monday row (or approved plan Description when the live row is title-only).
+- Ops Description template:
+
+```text
+Segment: All Users
+Missions:
+1. <mission 1>
+2. <mission 2>
+3. <mission 3>
+Flow: Linear three-mission Ace Heist — after each mission show winner inapp and update widget; after mission 3 grant the final prize and close banner / NF / journey surfaces
+Prize: <final card/reward from row title>
+```
+
+- Put those current missions in numbered **Missions** lines (not a single Trigger line). Never copy historical values such as Spin 30/50/100 or Open 5/8 Pods as defaults unless they appear on the approved row.
 
 ### Golden Spin
 
 - Golden Spin is a coin-value feature, not a Gems feature.
-- Keep that classification internal; Description still contains only Prizes, Segment, and a confirmed Trigger if one exists.
+- Keep that classification internal; Description uses the non-offer schema: Segment, Trigger (if confirmed), Prize.
 
 ### ADS PO
 
@@ -243,8 +366,9 @@ BMFL is exactly 3 cycles and High pricing. Never substitute the deprecated Free1
 
 - **Never write Operation Status** (`dup__of_m_m_status1`). Leave it blank; Ops owns this lifecycle.
 - The agent owns `M&M Status` and may set it according to handoff completeness.
-- Use `M&M Completed` only when Monetization supplied an execution-ready definition.
+- Use **`Waiting for MM Approval`** when Monetization handoff is execution-ready on the **config/MCP** side (calendar `Config`/`MCP` done or not required, Description complete). This replaces **`M&M Completed`** for newly built tasks — Ops still owns Operation Status.
 - Use the most specific current blocker status when one exists: `Missing MCP`, `Missing art`, `Missing Art+Config`, `Missing Config`, `Missing List`, `Missing Test Groups`, `Waiting for economy`, or `More Info required`.
+- **`More Info required`** only when the composed Ops Description still lacks execution-critical fields **and** the MM **Name** cannot supply them (empty Description alone is not enough to block). Use **`Waiting for MM Approval`** when `Config` is Done (or not required) and handoff is sufficient from **Name + Description**, including: **Daily Deal** prizes parsed from the title; **Win Master** prize/trigger from the title (`mes` family); **machine full launch** launch checklist template; **Spinner Clash** rank prizes / tournament copy from Name or Description.
 - Use `Night Plan` for a task explicitly scheduled in the Night Plan window.
 - Use `MM Work in Progress` only when Monetization is actively drafting and no more specific blocker label applies.
 - Never use M&M Status to claim that Ops configured, scheduled, QA'd, or completed the promo.

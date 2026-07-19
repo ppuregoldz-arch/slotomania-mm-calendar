@@ -13,6 +13,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = ROOT / "mm_calendar" / "data" / "monday_board_live_by_date.json"
+PLAN_PATH = ROOT / "mm_calendar" / "data" / "august_2026_plan.json"
 OUTPUT_DIR = ROOT / "mm_calendar" / "data" / "ops_tasks"
 MM_BOARD = "18388590642"
 OPS_BOARD = "2109172490"
@@ -31,7 +32,12 @@ TEMPLATE_GROUPS: dict[str, tuple[str, str]] = {
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from monday_client import gql  # noqa: E402
-from ops_description import compose_description  # noqa: E402
+from ops_description import (  # noqa: E402
+    compose_description,
+    infer_times_per_player,
+    ops_handoff_sufficient,
+    resolve_ops_production_window,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -51,7 +57,7 @@ def family(value: str) -> str:
     text = value.lower()
     rules = [
         ("ads", ("ads po", "po ads")),
-        ("daily deal", ("daily deal",)),
+        ("daily deal", ("daily deal", "dd -", "dd ")),
         ("rolling", ("rolling",)),
         ("mgap", ("mgap",)),
         ("rlap", ("rlap", "stash booster")),
@@ -291,11 +297,74 @@ def should_create(row: dict[str, Any]) -> bool:
     name = row["name"].lower()
     if "backup" in name:
         return False
-    if row["product"] in {"Clan-Dash", "Extreme stamp"}:
+    if row["product"] in {"Clan-Dash"}:
         return False
     if any(term in name for term in ("x2 badges", "x2 dash points", "dash picker")):
         return False
     return True
+
+
+def plan_row_description(target: str, row_name: str) -> str:
+    if not PLAN_PATH.is_file():
+        return ""
+    plan = json.loads(PLAN_PATH.read_text(encoding="utf-8"))
+
+    def canonical(value: str) -> str:
+        text = normalize_name(value).lower().replace("★", "*")
+        return re.sub(r"\s+", " ", text)
+
+    needle = canonical(row_name)
+    for day in plan.get("days") or []:
+        if day.get("iso") != target:
+            continue
+        for item in day.get("items") or []:
+            if canonical(item.get("name") or "") == needle:
+                return (item.get("desc") or "").strip()
+            if "ace heist" in needle and "ace heist" in canonical(item.get("name") or ""):
+                return (item.get("desc") or "").strip()
+    return ""
+
+
+def enrich_rlap_detail(row: dict[str, Any], detail: str, day_rows: list[dict[str, Any]]) -> str:
+    blob = detail or ""
+    if "cz 0" in blob.lower() and "trigger" in blob.lower():
+        return detail
+    dd_name = ""
+    main_name = ""
+    for other in day_rows:
+        if other["id"] == row["id"]:
+            continue
+        name = normalize_name(other["name"])
+        lower = name.lower()
+        if "daily deal" in lower or lower.startswith("dd-"):
+            dd_name = name
+        elif "prize mania" in lower:
+            main_name = name
+        elif (" ryd" in lower or lower.startswith("ryd")) and not main_name:
+            main_name = name
+    if not dd_name:
+        return detail
+    main_label = main_name or "main offer (TBD — confirm on MM calendar)"
+    block = (
+        f"Triggers: {dd_name} + {main_label} (main offer).\n"
+        "CZ 0–159.99: UP TO x24 Coins (full cycle purchase)\n"
+        "CZ 160+: UP TO x36 Coins (full cycle purchase)"
+    )
+    if not blob or blob.startswith("Required mechanic"):
+        return block
+    return f"{blob}\n{block}"
+
+
+def enrich_source_detail(row: dict[str, Any], target: str, day_rows: list[dict[str, Any]]) -> str:
+    detail = sanitize_description(row.get("description") or "")
+    name_lower = row["name"].lower()
+    if "ace heist" in name_lower and "missions:" not in detail.lower():
+        plan_desc = plan_row_description(target, row["name"])
+        if plan_desc:
+            detail = f"{detail}\n{plan_desc}".strip() if detail else plan_desc
+    if "rlap" in name_lower:
+        detail = enrich_rlap_detail(row, detail, day_rows)
+    return detail or "Required mechanic/config details are missing from the MM source."
 
 
 def is_night_plan(row: dict[str, Any]) -> bool:
@@ -318,11 +387,17 @@ def range_end(row: dict[str, Any], target: str) -> str:
     return (date.fromisoformat(last) + timedelta(days=1)).isoformat()
 
 
-def status_for(row: dict[str, Any]) -> str:
+def status_for(
+    row: dict[str, Any],
+    *,
+    task_name: str,
+    detail: str,
+    composed_description: str,
+) -> str:
     if is_night_plan(row):
         return "Night Plan"
-    config = row.get("config_status") or ""
-    label = row.get("creative_label") or ""
+    config = (row.get("config_status") or "").strip()
+    label = (row.get("creative_label") or "").strip()
     if config == "MCP needed":
         return "Missing MCP"
     if label in {"New promo", "New theme for promo", "Prize Change"} and config == "Config needed":
@@ -331,9 +406,15 @@ def status_for(row: dict[str, Any]) -> str:
         return "Missing art"
     if config == "Config needed":
         return "Missing Config"
-    if not row.get("description"):
+    if not ops_handoff_sufficient(
+        task_name=task_name,
+        product=row.get("product") or "",
+        detail=detail,
+        mm_description=row.get("description") or "",
+        composed_description=composed_description,
+    ):
         return "More Info required"
-    return "M&M Completed"
+    return "Waiting for MM Approval"
 
 
 def recent_reference(row: dict[str, Any], target: str, history: list[dict[str, str]]) -> tuple[bool, str]:
@@ -359,23 +440,32 @@ def recent_reference(row: dict[str, Any], target: str, history: list[dict[str, s
     return can_duplicate, f"{best['date']} item {best['id']} ({best['name']})"
 
 
-def build_task(row: dict[str, Any], target: str, history: list[dict[str, str]]) -> dict[str, Any]:
+def build_task(
+    row: dict[str, Any], target: str, history: list[dict[str, str]], day_rows: list[dict[str, Any]]
+) -> dict[str, Any]:
     night = is_night_plan(row)
-    if night:
-        start_date = (date.fromisoformat(target) + timedelta(days=1)).isoformat()
-        end_date = start_date
-        start_time, end_time = "00:00:00", "11:00:00"
-    else:
-        start_date = target
-        end_date = range_end(row, target)
-        start_time = end_time = "11:00:00"
+    detail = enrich_source_detail(row, target, day_rows)
+    timing = resolve_ops_production_window(
+        parent_day=target,
+        row_id=str(row["id"]),
+        name=row["name"],
+        product=row.get("product") or "",
+        detail=detail,
+        night_plan=night,
+        standard_end_date=range_end(row, target),
+    )
+    start_date = timing["start_date"]
+    end_date = timing["end_date"]
+    start_time = timing["start_time"]
+    end_time = timing["end_time"]
+    task_name = timing["task_name"]
+    timing_warnings = timing["warnings"]
     monday_start_date, monday_start_time = monday_api_value(start_date, start_time)
     monday_end_date, monday_end_time = monday_api_value(end_date, end_time)
     reuse, reference = recent_reference(row, target, history)
     template = template_source(row)
-    detail = sanitize_description(row.get("description") or "") or "Required mechanic/config details are missing from the MM source."
     description = compose_description(
-        task_name=normalize_name(row["name"]),
+        task_name=task_name,
         product=row.get("product") or "",
         detail=detail,
         pricing=row.get("pricing") or None,
@@ -394,7 +484,7 @@ def build_task(row: dict[str, Any], target: str, history: list[dict[str, str]]) 
         "source_detail": detail,
         "config_status": row.get("config_status") or None,
         "creative_label": row.get("creative_label") or None,
-        "task_name": normalize_name(row["name"]),
+        "task_name": task_name,
         "product": row.get("product"),
         "pricing": row.get("pricing") or None,
         "template_source": template,
@@ -410,12 +500,21 @@ def build_task(row: dict[str, Any], target: str, history: list[dict[str, str]]) 
         "monday_end_time": monday_end_time,
         "monday_display_offset_hours": MONDAY_DISPLAY_OFFSET_HOURS,
         "due_date": (date.fromisoformat(target) - timedelta(days=2)).isoformat(),
-        "m_and_m_status": status_for(row),
-        "times_per_player": None,
+        "m_and_m_status": status_for(
+            row,
+            task_name=task_name,
+            detail=detail,
+            composed_description=description,
+        ),
+        "times_per_player": infer_times_per_player(
+            task_name=normalize_name(row["name"]),
+            product=row.get("product") or "",
+            detail=detail,
+        ),
         "reuse": reuse,
         "recent_ops_reference": reference,
         "requires_review": False,
-        "warnings": [],
+        "warnings": timing_warnings,
         "description": description,
     }
 
@@ -432,7 +531,7 @@ def main() -> None:
         if len(lbp_rows) >= 2 and any("peak" in row["name"].lower() for row in lbp_rows):
             for row in lbp_rows:
                 row["night_plan_override"] = True
-        tasks = [build_task(row, target, history) for row in rows]
+        tasks = [build_task(row, target, history, rows) for row in rows]
         spec = {
             "schema_version": 2,
             "generated_at": datetime.now(timezone.utc).isoformat(),
