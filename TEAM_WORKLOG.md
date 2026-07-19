@@ -1,4 +1,91 @@
-### 2026-07-19 — Auto — Ops handoff status + times (2026-07-30)
+### 2026-07-19 — GPT-5.6 Sol — Enforce updated Ops title/MES rules
+
+- **Goal:** Ensure every Ops builder applies MM pricing in offer titles, omits calendar dates from Ops titles, and never invents M.E.S subtitles.
+- **Done:** Applied shared helpers to both live-day and plan builders; M.E.S subtitles now require an explicit MM `Sub title` line, otherwise the block stays absent and M&M status is Missing art / Missing Art+Config. Added `validate_ops_task_spec_rules.py`; rebuilt existing specs and validated all.
+- **Files:** `.cursor/rules/ops_task_builder.mdc`, `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `scripts/build_ops_tasks_from_plan.py`, `scripts/validate_ops_task_spec_rules.py`, `mm_calendar/ops_task_construction.md`, Ops task specs.
+- **Commands run:** all existing Ops specs rebuilt ✓, Ops rule validator ✓, Python compilation ✓.
+
+---
+
+### 2026-07-19 — Auto — Ops build 2026-07-26 (Buy All day parent)
+
+- **Done:** `build_ops_tasks_from_live_days.py --date 2026-07-26` → 8 MM-handoff tasks; uploaded to existing Ops parent **`12537481831`** (`--parent-id`, `--commit --update-existing --allow-tbd`). **3** comms subitems unchanged; **11** total. Spec: `mm_calendar/data/ops_tasks/2026-07-26.json`. Upload script: optional `--parent-id` for Buy All day rows.
+
+---
+
+### 2026-07-19 — Auto — RLAP Extreme Stamp 2026-07-22 (existing MM row)
+
+- **Done:** Repurposed canceled Gems row **`12228007041`** → **`00:00 UTC - 2026-07-22 | RLAP`** (MGAP / Stash Booster, X2 Extreme Stamp day, DD+RYD triggers, 35h window → **00:00 UTC 22/7 – 11:00 UTC 23/7**). No new MM item. Buy All Ops **`12393704839`**: updated subitem **`12571711357`** (was partial RLAP). Monday-days parent inactive — skipped.
+
+---
+
+### 2026-07-19 — Auto — Buy All Ops 2026-07-22 Extreme (surgical on user parent)
+
+- **Context:** [Fix 7/22 Ops on existing parent](29af88a7-7da7-47f1-804b-e95eace8e736) identified **`12393704839`** (Buy All, Jul 22 9:00, **17** subs) as the day the user meant; **`12571632753`** (Monday days, 9 subs) is MM-handoff-only from scripts.
+- **Done:** `patch_buy_all_ops_2026_07_22_extreme.py` on **`12393704839`** only — deleted Piggy `12393748162`, Gems pricecut `12393723906`; appended Extreme notes to RYD `12393747008` + DD `12393747637` (kept existing body); created X2 Stamp `12571710855`, X2 RDS `12571657094`, Animative DF `12571653947`. **18** subitems; Winovate / Blast / M.E.S / Social / Limited PO template / badges **untouched**.
+
+---
+
+### 2026-07-19 — Auto — 2026-07-22 RYD fix + full Ops replace (9 tasks)
+
+- **Goal:** MM RYD not Rolling; Ops under existing Monday-days parent (no `--create-day`); exclude On Hold Gems; task titles **RYD - 150% SB**.
+- **Done:** `fix_itay_2026_07_22_ryd_not_rolling.py` ✓; Rolling MM `12571624019` **deleted**; RYD `12225195492` → **RYD - 150% SB** (product RYD). Ops `12571632753`: `--replace-day` → **9** subitems from `ops_tasks/2026-07-22.json` (Gems excluded). Snapshot pull ✓. Separate Buy All parent `12393704839` (17 subs, date **2026-07-22 09:00**) unchanged — not used by `fetch_day_parent`.
+- **Commands run:** fix script ✓, `build_ops_tasks_from_live_days.py --date 2026-07-22` ✓, `upload_ops_task_monday.py … --commit --replace-day --allow-tbd` ✓ (positional spec path; not `--spec`).
+
+---
+
+### 2026-07-19 — Auto — Ops cleanup 2026-07-22 duplicate parent
+
+- **Done:** Deleted empty duplicate Ops day item `12571616395` (0 subitems; leftover from first Extreme apply). Canonical Ops parent remains `12571632753` (**5** subitems: DD, RYD, X2 Stamp, X2 RDS, DF). User screenshot “17” = **MM calendar** promo count, not Ops task count; other Ops tasks (Win Master, Limited PO, M.E.S, …) were removed in rollback and **not** recreated per “no rebuild / don’t touch unprompted rows.”
+
+---
+
+### 2026-07-19 — Auto — Extreme Day 2026-07-22 surgical fix (RYD not Rolling)
+
+- **Done:** MM — deleted Piggy `12571632391`, Rolling row `12571624019`; RYD `12225195492` restored title + Extreme hook; DD/DF pairing text; Gems On Hold unchanged. Ops parent `12571632753` — deleted Rolling sub `12571631845`, created RYD `12571652786`, DD description-only `12571725871`; X2 Stamp/RDS/DF untouched. No `--replace-day`, no full rebuild.
+
+---
+
+### 2026-07-19 — Auto — Extreme Day 2026-07-22 (minimal — other promos untouched)
+
+- **Goal:** Extreme package only: remove Piggy, cancel Gems pricecut, add X2 Stamp + X2 RDS + DF + **new** Rolling (Extreme cycles), X2 pairing on DD — **do not** change RYD / Limited PO / Win Master / M.E.S / badges.
+- **Done:** `scripts/apply_itay_2026_07_22_extreme_day_minimal.py` on MM; Ops **5 subitems only** under new parent `12571632753` (DD, Rolling `12571624019`, X2 Stamp, X2 RDS, DF). RYD `12225195492` unchanged on MM; no Ops for other rows.
+- **Files:** `apply_itay_2026_07_22_extreme_day_minimal.py`, `mm_calendar/data/ops_tasks/2026-07-22.json` (5 tasks), snapshot pull, `TEAM_WORKLOG.md`.
+- **Commands run:** minimal apply ✓, `build_ops_tasks_from_live_days.py --date 2026-07-22` + filter ✓, `upload_ops_task_monday.py --commit --create-day --allow-tbd` ✓.
+
+---
+
+### 2026-07-19 — Auto — Rollback Extreme Day 2026-07-22 (MM + Ops)
+
+- **Goal:** User requested full revert of Extreme Day apply on 2026-07-22.
+- **Done:** `scripts/rollback_itay_2026_07_22_extreme_day.py` — deleted X2 Stamp / X2 RDS / Animative DF rows; restored Gems, RYD, DD; recreated **Piggy** (new id `12571632391`, original `12225277894` not recoverable). Ops day parent `12571616395` + 9 subitems deleted. Removed `ops_tasks/2026-07-22.json`; refreshed live snapshot.
+- **Files:** `scripts/rollback_itay_2026_07_22_extreme_day.py`, `mm_calendar/data/monday_board_live_by_date.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** rollback script ✓, Ops delete ✓, `pull_monday_live_snapshot.py` ✓.
+- **Notes:** MM rows **M.E.S** unchanged on calendar; Ops tasks for M.E.S were removed with the day — rebuild Ops for 22/07 only if needed (without Extreme package).
+
+---
+
+### 2026-07-19 — Auto — Extreme Day 2026-07-22 (MM + Ops)
+
+- **Goal:** Remove Piggy; cancel Gems pricecut; add X2 Extreme Stamp day package (X2 stamp, X2 RDS, DF); wire stamp into Rolling + DD; no Extreme on Limited PO.
+- **Done:** Monday MM board updated via `scripts/apply_itay_2026_07_22_extreme_day.py` — deleted Piggy (`12225277894`); Gems row renamed/canceled (`12228007041`, Config **On Hold**); RYD → **Rolling Offer BXGY 3 cycles H** (`12225195492`) with Extreme pairing in Description; DD (`12225231069`) X2 pairing text; new rows **X2 Extreme Stamp** (`12571603723`), **X2 RDS** (`12571707708`), **Animative DF - Extreme Stamp Day** (`12571622879`). Limited PO unchanged (100% sale, no Extreme). Ops spec `mm_calendar/data/ops_tasks/2026-07-22.json` — **9 tasks** (excluded canceled Gems row); uploaded under new day parent `12571616395` (**9 created**).
+- **Files:** `scripts/apply_itay_2026_07_22_extreme_day.py`, `mm_calendar/data/monday_board_live_by_date.json`, `mm_calendar/data/monday_board_live_snapshot.json`, `mm_calendar/data/ops_tasks/2026-07-22.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `apply_itay_2026_07_22_extreme_day.py` ✓, `pull_monday_live_snapshot.py` ✓, `build_ops_tasks_from_live_days.py --date 2026-07-22` ✓, `upload_ops_task_monday.py --commit --create-day --update-existing --allow-tbd` ✓.
+- **Notes:** MM **Config Status** has no “Canceled” label — used **On Hold** + “- Canceled” in title. **X2 RDS** Ops task is **More Info required** until Ops confirms mechanic copy (MM description added post-build). Rolling cycles are draft BXGY (MCP needed) — validate economy/MCP before go-live. Template-group Ops row **RYD- 150% SB** (`12393747008` under Buy All template parent) was not auto-removed; cancel manually if still referenced.
+
+---
+
+
+- **Goal:** MGAP / X2 Extreme Stamp UI lines in Ops Description; audit-rebuild listed Ops days with current composer rules; sync Monday.
+- **Done:** `append_ui_reminder()` / `ui_reminder_lines()` in `ops_description.py` (MGAP: `don't forget UI` or Extreme+Epic line; X2 Extreme Stamp: `don't forget UI`; X2 GGS composer ready); `should_create()` excludes **x2 GGS** rows (calendar amplifier — no task on rebuilt days). Rebuilt + uploaded **7/7** day specs.
+- **Monday sync:** 2026-07-30 **10 updated**; 2026-08-01 **12 created**; 2026-08-05 **6 updated**; 2026-08-06 **8 updated**; 2026-08-11 **9 updated**; 2026-08-28 **8 updated**; 2026-08-29 **11 updated** (**64** subitems total).
+- **UI spot-check:** MGAP BOGO (08-05), MGAP Bigger (08-28), X2 Extreme Stamp (08-11) descriptions include UI reminders. No `mm_calendar/` paths in composed descriptions (only in `source_detail`).
+- **Files:** `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `mm_calendar/ops_task_construction.md`, `.cursor/rules/ops_task_builder.mdc`, `mm_calendar/data/ops_tasks/2026-07-30.json`, `2026-08-01.json`, `2026-08-05.json`, `2026-08-06.json`, `2026-08-11.json`, `2026-08-28.json`, `2026-08-29.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** `build_ops_tasks_from_live_days.py --date …` ✓ (×7), `upload_ops_task_monday.py --commit --update-existing --allow-tbd` ✓ (×7).
+- **Notes:** 2026-08-01 parent had no prior subitems — upload **created** 12 tasks (includes **Status Boost**; calendar exclusion not yet in `should_create`). X2 GGS on 08-11 not built (excluded). **Missing Config / art / MCP** rows unchanged by design — see summary table in chat.
+
+---
+
 
 - **Goal:** Fix wrongful `More Info required`; machine launch blank times; Win Master Once; DD/WM from title; Spinner Clash 6hr template; refresh Monday 2026-07-30.
 - **Done:** `ops_handoff_sufficient()` + `status_for()` uses composed Description + Name (not raw empty MM Description); `should_omit_times_per_player` for machine launch; Win Master → Once; `compose_spinner_clash_description`; rebuilt spec; **updated 10/10** on Ops board.

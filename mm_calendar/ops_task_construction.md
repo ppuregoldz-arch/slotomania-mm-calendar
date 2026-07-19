@@ -58,7 +58,11 @@ Do not create a task for a calendar-only communication/amplifier row that explic
 - X2 GGS
 - Clan-Dash calendar rows
 
-**X2 Extreme Stamp:** create a separate Ops task when the MM calendar row is present. Description is **`Segment:` only** (no Variant/Note). Stamp-slot pairing with Rolling belongs in the Rolling task text, not here.
+**X2 Extreme Stamp:** create a separate Ops task when the MM calendar row is present. Description is **`Segment:`** plus a **`don't forget UI`** line (no Variant). Stamp-slot pairing with Rolling belongs in the Rolling task text, not here.
+
+**MGAP promotions:** after `Segment` / `Variant`, include a UI reminder in Description — use **`Make sure to set UI for both Extreme + Epic`** when the mechanic applies to both tiers; otherwise **`don't forget UI`** (same voice as historical MGAP UI subitems).
+
+**X2 GGS:** default calendar-only exclusion (no Ops task). Composer supports UI lines if a task is ever generated.
 
 If unsure, generate a review spec with `requires_review: true`; do not silently skip a row Monetization expects on the Ops board.
 
@@ -222,6 +226,18 @@ Variant: <mechanic variant from MM calendar — not the promo title alone>
 
 ### All other promos (Core, MES, Piggy, season rows, etc.)
 
+**M.E.S / MES** — use the dated template voice. **Sub title** comes **only** from an explicit `Sub title - …` line in MM Description (never from the row Name). If MM has no Sub title (Win Master, Spin Zone, and other types reuse prior art as-is), **omit** the Sub title block and set **M&M Status** to **Missing art** (or **Missing Art+Config** when Config is also needed).
+
+```text
+Segment: <segment>
+banner - open M.E.S
+
+Sub title - <only when MM Description includes it>
+
+Prize:
+<missions / milestones from MM Description>
+```
+
 ```text
 Segment: <confirmed segment; if none, All Users>
 Trigger: <what the player must do — omit the whole line if unknown>
@@ -230,7 +246,7 @@ Prize: <single reward or prize bundle — not the promo title>
 
 For tournament / rank features (Spinner Clash, Battlesheep, SNL, Blast, Winovate, etc.), list rank rewards from MM calendar / economy guidelines under **Prize:** (one rank per line when applicable).
 
-Start/End date **and time** live only in the Start date / End date columns (UTC in API; Monday may display local). **Times per player:** **main offers** (Rolling, RYD, Buy All, Decoy, Limited PO, Prize Mania, Counter PO — **not** Daily Deal) and **Piggy** default to **Once**; **Win Master** → **Once**; **Daily Deal** and other promos default to **Multiple** unless MM calendar text says otherwise; **machine full launch** and **Short/Mid Term / Season** → leave **blank**. **Spinner Clash** follows recent Ops precedent (**Multiple**). Main-offer descriptions start with **`Reset at 00:00 UTC`** (then a blank line, then Segment…). Do not repeat dates or Once/Multiple inside Description.
+Start/End date **and time** live only in the Start date / End date columns (UTC in API; Monday may display local). **Ops subitem titles:** use promo name only — no `YYYY-MM-DD` prefix (clock prefix like `00:00 UTC - RLAP` is OK). **Night Plan / 00:00 UTC:** production starts **calendar day + 1** at **00:00 UTC** through **11:00 UTC** that day; Monday Start column shows that date at **12:00 AM** (no display offset shift). **Times per player:** **main offers** (Rolling, RYD, Buy All, Decoy, Limited PO, Prize Mania, Counter PO — **not** Daily Deal) and **Piggy** default to **Once**; **Win Master** → **Once**; **Daily Deal** and other promos default to **Multiple** unless MM calendar text says otherwise; **machine full launch** and **Short/Mid Term / Season** → leave **blank**. **Spinner Clash** follows recent Ops precedent (**Multiple**). Main-offer descriptions start with **`Reset at 00:00 UTC`** (then a blank line, then Segment…). Do not repeat dates or Once/Multiple inside Description.
 
 ## Duplicate-from source map
 
@@ -308,6 +324,7 @@ BMFL is exactly 3 cycles and High pricing. Never substitute the deprecated Free1
 - Exact mechanic: BOGO, Matched, Bigger, Wild Symbols, Guaranteed, etc.
 - A BOGO task must explicitly say the BOGO config must be opened.
 - Include eligible tiers, multiplier/reward mapping, UI/config dependencies, Once/Multiple when known.
+- Description must include the UI reminder line(s) above — do not rely on a separate UI-only subitem unless Ops asks for one.
 
 ### Core / challenge
 
