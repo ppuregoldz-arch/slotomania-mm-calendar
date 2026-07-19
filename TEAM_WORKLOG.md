@@ -1,3 +1,20 @@
+### 2026-07-19 — Auto — Status MM Waiting for MM; Hook scope; Gems coupon ref
+
+- **Goal:** Agent-complete briefs → **Waiting for MM** (index 15); **Hook** only on Banner/Inapp subitems; Aug 28 Gems coupon → generic **`2026_03_14_Gem_Coupon`** (not Pre-Easter `11621408835`).
+- **Done:** `STATUS_MM_WAITING_FOR_MM`, `asset_allows_hook_row()`, `GENERIC_GEMS_COUPON_FOLDER` + `SOURCE_BY_FAMILY`/`SOURCE_OVERRIDES` `12511095622`; re-applied **2026-08-28** Gems coupon `12572051373`.
+- **Files:** `apply_selected_august_creative_briefs.py`, creative docs, `slotomania_monetization_art.mdc`, `TEAM_WORKLOG.md`.
+
+---
+
+### 2026-07-19 — Auto — Follow-up: Non-themed CRM3 references rebuild 6/28/29
+
+- **Goal:** Finish dates the background loop never completed; apply Battlesheep/decoy/pricing/label rules on Monday.
+- **Done:** `--rebuild --commit --allow-in-flight` for **2026-08-06** (Battlesheep `12572019966` → 3 subitems, decoy/challenge/SKU pruned), **2026-08-28** (5 active + MGAP UI), **2026-08-29** (RYD/DD/New promo Stickers). **2026-08-11** already OK from subagent.
+- **Commands run:** `apply_selected_august_creative_briefs.py` loop ✓ exit 0 (~12 min).
+- **Notes:** **2026-08-05** last applied in earlier partial run; re-run if you want latest pricing-stripped **Change** text on Piggy/DD/Spinner.
+
+---
+
 ### 2026-07-19 — Auto — New promo label + CTA template; no pricing in briefs
 
 - **Goal:** Anything that is not Prize Change / New theme for promo → **New promo** brief table with **CTA**; never mention MM pricing tiers in Creative prose.

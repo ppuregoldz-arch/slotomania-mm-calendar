@@ -21,11 +21,13 @@ SUBITEM_BOARD = "18112200937"
 STATUS_MM_COLUMN = "color_mkwes65f"
 STATUS_CREATIVE_COLUMN = "status"
 STATUS_MM_READY_FOR_BRIEF = "Ready for Brief"
+STATUS_MM_WAITING_FOR_MM = "Waiting for MM"
 STATUS_MM_REUSE = "Ready - no action needed"
 STATUS_MM_NEW_PROMO_SKELETON = "MM work in progress"
-# Status MM has duplicate label names; index 4 "Ready for Brief" is deactivated — use index 10.
+# Status MM has duplicate label names; index 4 "Ready for Brief" is deactivated — use index 10 for human-set Ready for Brief.
 STATUS_MM_INDEX = {
     STATUS_MM_READY_FOR_BRIEF: 10,
+    STATUS_MM_WAITING_FOR_MM: 15,
     STATUS_MM_REUSE: 6,
     STATUS_MM_NEW_PROMO_SKELETON: 8,
 }
@@ -55,7 +57,7 @@ SOURCE_BY_FAMILY = {
     "lbp": "12367526035",
     "extreme": "12309916897",
     "snl": "10968800690",
-    "gems coupon": "11621408835",
+    "gems coupon": "11415353948",
     "stickers sources": "11913837798",
     "dice deluxe": "11890715396",
     "ryd": "11727887975",
@@ -112,6 +114,10 @@ GENERIC_DD_HAMMER_WHEEL_FOLDER = (
     r"Q:\Slotomania\CRM3\Features\Daily_Deal\2026\2026_07_09_DD_Hammer_Wheel"
 )
 
+GENERIC_GEMS_COUPON_FOLDER = (
+    r"Q:\Slotomania\CRM3\Features\Gems\2026\2026_03_14_Gem_Coupon"
+)
+
 GENERIC_ROLLING_SUPERSIZED_REF = (
     r"Q:\Slotomania\CRM3\Generic Promotions\Supersize_Wins\2025"
     r"\2025_04_06_Supersized_Wins_X_RO"
@@ -134,6 +140,7 @@ SOURCE_OVERRIDES = {
     "12475750417": "12337043899",  # DD SB wheel structure
     "12475732350": "11223800692",  # DD wheel structure
     "12476427941": "12475750417",  # DD Shiny+hammers wheel — generic SB/hammer structure
+    "12511095622": "11415353948",  # Gems coupon 20%/40% — generic 2026-03-14 (not Pre-Easter)
     "12475100661": "11868921934",  # Generic MES Ace Heist structure
 }
 
@@ -772,6 +779,12 @@ def crm3_folder_path(
         return crm3_asset_folder(SPINNER_REF_BASE, asset_name)
     row_fam = family(row["name"]) if row else ""
     source_fam = family(source.get("name") or "")
+    if row_fam == "gems coupon" or source_fam == "gems coupon":
+        if row and row["label"] == "New theme for promo" and promo_theme_label(row):
+            paths = prefer_generic_crm3_paths(all_crm3_paths(source, asset_name), row)
+            if paths:
+                return crm3_asset_folder(crm3_path_to_folder(paths[0]), asset_name)
+        return crm3_asset_folder(GENERIC_GEMS_COUPON_FOLDER, asset_name)
     if row_fam == "daily deal" or source_fam == "daily deal":
         paths = all_crm3_paths(source, asset_name)
         dd_paths = [
@@ -1286,7 +1299,7 @@ def is_challenge_only_subitem(name: str, row: dict[str, str]) -> bool:
 def status_mm_label(row: dict[str, str]) -> str:
     if row["label"] == "New promo":
         return STATUS_MM_NEW_PROMO_SKELETON
-    return STATUS_MM_READY_FOR_BRIEF
+    return STATUS_MM_WAITING_FOR_MM
 
 
 def status_mm_column_value(label: str) -> dict[str, Any]:
@@ -1946,6 +1959,13 @@ def asset_is_banner(asset: str) -> bool:
     return "banner" in key and "pp banner" not in key
 
 
+def asset_allows_hook_row(asset: str) -> bool:
+    """Hook row only on Banner and Inapp subitems (Itay)."""
+    if asset_is_banner(asset):
+        return True
+    return "inapp" in normalize_subitem_key(asset)
+
+
 def display_change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
     """Short delta for subitem copy — never MM Description dumps."""
     short = short_parent_change(row, source)
@@ -2122,12 +2142,13 @@ def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str
         lines = [f"Update {asset} per parent Change."]
     theme = promo_theme_label(row)
     sku = season_reward_sku(row) if mm_defines_season_challenge(row) else ""
+    hook = promo_hook_line(row) if asset_allows_hook_row(asset) else None
     return prize_change_table(
         lines,
         reference_cell,
         link_cell,
         theme=theme,
-        hook=promo_hook_line(row),
+        hook=hook,
         sku=sku,
     )
 
@@ -2236,7 +2257,7 @@ def mgap_ui_values(
         "color_mky3swe2": {"label": "MGAP"},
         "text_mkwe4jsr": "",
         STATUS_CREATIVE_COLUMN: None,
-        STATUS_MM_COLUMN: status_mm_column_value(STATUS_MM_READY_FOR_BRIEF),
+        STATUS_MM_COLUMN: status_mm_column_value(STATUS_MM_WAITING_FOR_MM),
         **assignment_values(assignment),
     }
 

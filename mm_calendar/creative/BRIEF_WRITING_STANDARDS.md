@@ -199,7 +199,7 @@ Reuse has no asset subitems (day-level summary only).
 
 Parent hybrid: **Creative Label** + **Change** one-liner; add **Theme** parent row when MM names a theme (e.g. `Betty Boop`, `Generic`).
 
-- **`Hook` row:** only when MM name/description states a clear mechanic hook (not every promo). Examples: Golden Spin **`30% Bigger Wedges`** (never “timed gem”); MGAP **`BOGO`**; Rolling **`MGAP denom 3 ladder`**. Place after **Theme** when both exist.
+- **`Hook` row:** only on **Banner** and **Inapp** subitems (not Background, denom, MGAP denom, Theme/BO, etc.). Examples: Golden Spin **`30% Bigger Wedges`**; MGAP **`BOGO`**; Rolling **`MGAP denom 3 ladder`** on banner/inapp only.
 
 Example Golden Spin subitem stack (HTML):
 
@@ -223,7 +223,7 @@ Example Rolling MGAP denom **What to change** row:
 
 - Before any mutation to an existing brief, query **Status MM** (`color_mkwes65f`).
 - Non-blank Status MM means in flight: stop and ask Itay. Use an override only after explicit approval.
-- When the agent finishes a **complete** active brief (Prize Change, New theme for promo, or finished New promo), set **Status MM** = **`Ready for Brief`** — brief is ready to hand to Creative. Leave **Status Creative** (`status`) empty unless Creative/copy has started.
+- When the agent finishes a **complete** active brief (Prize Change, New theme for promo, or finished New promo), set **Status MM** = **`Waiting for MM`** — MM reviews and sets **`Ready for Brief`** when ready for Creative. Leave **Status Creative** (`status`) empty unless Creative/copy has started.
 - **New promo** skeleton still in progress: Status MM = **`MM work in progress`**.
 - Consolidated **Reuse** parent: Status Creative = `done`, Status MM = **`Ready - no action needed`** (unchanged).
 - After writing/recreating each subitem, blank Copy Status (`status` on subitem board), Art Status, TL Approval, and Subject Line on subitems.
