@@ -1,4 +1,12 @@
-### 2026-07-19 — Auto — Rebuild 2026-08-05 Monetization-Art briefs
+### 2026-07-19 — Auto — Fix 2026-08-05 Reuse CRM3 refs (ADS PO + Rolling Supersized)
+
+- **Goal:** Reuse consolidated parent on 2026-08-05 must cite ADS Rewarded Video (not ROOC/paid PO) and generic Supersize_Wins rolling art (not Easter skin).
+- **Done:** `apply_selected_august_creative_briefs.py` — `SOURCE_OVERRIDES` for `12464189091` → PO ADS Cards arts; `12510879320` → generic Supersized Wins base pulse; `REUSE_REFERENCE_FOLDER_OVERRIDES`; ADS/Rolling `crm3_folder_path` + `source_reference_path` guards; reuse table uses CRM3 folder links. Docs: `BRIEF_WRITING_STANDARDS.md`, `overrides.yaml`. Monday Reuse `12550314166` refreshed (`--allow-in-flight`).
+- **Files:** `scripts/apply_selected_august_creative_briefs.py`, `mm_calendar/creative/BRIEF_WRITING_STANDARDS.md`, `mm_calendar/creative/overrides.yaml`, `TEAM_WORKLOG.md`.
+- **Commands run:** dry-run ✓; `apply_selected_august_creative_briefs.py --date 2026-08-05 --commit --allow-in-flight` ✓.
+- **Notes for next agent:** Old reuse links were ROOC PO + `2026_04_04_Easter_RO_Supersized`; new folders `Rewarded_Video` + `2025_04_06_Supersized_Wins_X_RO`. Apply also re-upserted Piggy/Spinner/DD active briefs (same IDs as prior session).
+
+---
 
 - **Goal:** Rebuild 2026-08-05 creative briefs with match-tier Reference rows, Winner inapps, playbook subitems, Marina/Yarden Traffic split, consolidated Reuse, MGAP UI - BOGO.
 - **Done:** Enhanced `scripts/apply_selected_august_creative_briefs.py` (match tier, piggy 2026_06_17 folder refs, spinner/DD/piggy What to change, `ensure_playbook_subitems`, source override chain). Monday commit with `--allow-in-flight` (Reuse was Ready - no action needed). Validated Piggy Main Inapp uses What to change · Reference · Reference Link (not Task/Keep).

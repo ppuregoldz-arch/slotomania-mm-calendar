@@ -58,12 +58,20 @@ PIGGY_BREAK_REF_FOLDER = (
 SPINNER_REF_BASE = (
     r"Q:\Slotomania\CRM3\Features\Spinner_Clash\2026\2026_07_06_Spinner_Clash"
 )
+ADS_REWARDED_VIDEO_REF = (
+    r"Q:\Slotomania\CRM3\Generic Promotions\Rewarded_Video"
+)
+GENERIC_ROLLING_SUPERSIZED_REF = (
+    r"Q:\Slotomania\CRM3\Generic Promotions\Supersize_Wins\2025"
+    r"\2025_04_06_Supersized_Wins_X_RO"
+)
 
 SOURCE_OVERRIDES = {
     "12464175428": "12448968305",  # Piggy break — same-trigger 5 Hammers ref
     "12475065098": "12448958742",  # Spinner Clash template
     "12486310516": "12475732350",  # DD SB + hammers → wheel structure chain
-    "12510879320": "11513974436",  # Rolling Supersized
+    "12464189091": "10904501949",  # ADS PO 2* Reg — Cards arts (not ROOC / paid PO)
+    "12510879320": "18333371364",  # Rolling Supersized — generic Supersize_Wins base art
     "12464188536": "12093534228",  # MGAP BOGO
     "12464219580": "11850552580",  # Clan Go 200 badges
     "12464261622": "10933889405",  # ADS Gems
@@ -75,6 +83,11 @@ SOURCE_OVERRIDES = {
     "12475750417": "12337043899",  # DD SB wheel structure
     "12475732350": "11223800692",  # DD wheel structure
     "12475100661": "11868921934",  # Generic MES Ace Heist structure
+}
+
+REUSE_REFERENCE_FOLDER_OVERRIDES = {
+    "12464189091": ADS_REWARDED_VIDEO_REF,
+    "12510879320": GENERIC_ROLLING_SUPERSIZED_REF,
 }
 
 LABEL_OVERRIDES = {
@@ -101,6 +114,8 @@ MGAP_UI_OVERRIDES = {
         "source_id": "12093534228",
         "change": "Existing MGAP BOGO UI → current MGAP BOGO UI.",
         "mechanic": "BOGO MGAP.",
+        "skip_brief": True,
+        "skip_reason": "MGAP BOGO UI already shipped — no new UI brief.",
     },
     "12547639977": {
         "name": "MGAP UI - Rolling MGAP Ladder",
@@ -143,6 +158,32 @@ def table(rows: list[tuple[str, str]]) -> str:
         f"<tr><td><p><strong>{esc(key)}</strong></p></td><td><p>{value}</p></td></tr>"
         for key, value in rows
     ) + "</tbody></table>"
+
+
+def prize_change_table(
+    change_lines: list[str],
+    reference_cell: str,
+    reference_link_cell: str,
+) -> str:
+    header = (
+        "<thead><tr>"
+        "<th><p><strong>What to change</strong></p></th>"
+        "<th><p><strong>Reference</strong></p></th>"
+        "<th><p><strong>Reference Link</strong></p></th>"
+        "</tr></thead>"
+    )
+    ref_plain = reference_cell.split("<br>", 1)[0]
+    body_parts: list[str] = []
+    for index, line in enumerate(change_lines):
+        ref = reference_cell if index == 0 else ref_plain
+        body_parts.append(
+            "<tr>"
+            f"<td><p>{esc(line)}</p></td>"
+            f"<td>{ref}</td>"
+            f"<td>{reference_link_cell}</td>"
+            "</tr>"
+        )
+    return f"<table>{header}<tbody>{''.join(body_parts)}</tbody></table>"
 
 
 def normalize_name(value: str) -> str:
@@ -374,8 +415,25 @@ def source_date(source: dict[str, Any]) -> str:
 
 
 def source_reference_path(source: dict[str, Any]) -> str:
+    if is_ads_po_source(source):
+        art = source.get("art_link") or ""
+        if art and "Rewarded_Video" in str(art):
+            return str(art)
+        for path in all_crm3_paths(source):
+            if "Rewarded_Video" in path:
+                return crm3_path_to_folder(path)
+    if "supersized" in (source.get("name") or "").lower():
+        generic = generic_rolling_supersized_folder(all_crm3_paths(source))
+        if generic:
+            return generic
     if source.get("art_link"):
-        return str(source["art_link"])
+        art = str(source["art_link"])
+        if "easter_ro_supersized" not in art.lower():
+            return art
+        generic = generic_rolling_supersized_folder(all_crm3_paths(source))
+        if generic:
+            return generic
+        return art
     texts = [update.get("text_body") or "" for update in source.get("updates") or []]
     for subitem in source.get("subitems") or []:
         texts.extend(update.get("text_body") or "" for update in subitem.get("updates") or [])
@@ -440,7 +498,52 @@ def piggy_break_ref_folder(source: dict[str, Any]) -> str:
     return ""
 
 
+def is_ads_po_source(source: dict[str, Any]) -> bool:
+    name = (source.get("name") or "").lower()
+    return "po ads" in name or "ads po" in name
+
+
+def is_non_ads_po_crm3_path(path: str) -> bool:
+    lowered = path.lower()
+    if "rewarded_video" in lowered.replace("\\", "/"):
+        return False
+    blocked = (
+        "/rooc",
+        "\\rooc",
+        "/personal_offer",
+        "\\personal_offer",
+        "/double_po",
+        "\\double_po",
+        "holidays & events",
+    )
+    return any(token in lowered for token in blocked)
+
+
+def generic_rolling_supersized_folder(paths: list[str]) -> str:
+    for path in paths:
+        if "supersized_wins_x_ro" in path.lower().replace("\\", "/"):
+            return crm3_path_to_folder(path)
+    return ""
+
+
 def crm3_folder_path(source: dict[str, Any], asset_name: str | None = None) -> str:
+    if is_ads_po_source(source):
+        art = source.get("art_link") or ""
+        if art and "Rewarded_Video" in str(art):
+            return crm3_asset_folder(str(art), asset_name)
+        paths = all_crm3_paths(source, asset_name)
+        for path in paths:
+            if "Rewarded_Video" in path:
+                return crm3_asset_folder(crm3_path_to_folder(path), asset_name)
+        filtered = [path for path in paths if not is_non_ads_po_crm3_path(path)]
+        folders = [crm3_path_to_folder(path) for path in filtered]
+        if folders:
+            return folders[0]
+    if "supersized" in (source.get("name") or "").lower():
+        paths = all_crm3_paths(source, asset_name)
+        generic = generic_rolling_supersized_folder(paths)
+        if generic:
+            return crm3_asset_folder(generic, asset_name)
     if family(source.get("name") or "") == "piggy" or piggy_break_ref_folder(source):
         piggy_base = piggy_break_ref_folder(source) or PIGGY_BREAK_REF_FOLDER
         return crm3_asset_folder(piggy_base, asset_name)
@@ -608,13 +711,20 @@ def reuse_evidence(
             ),
         }
     source = source_for(row, catalog)
-    try:
-        link = reference_link_html(source)
-    except RuntimeError:
-        link = "No exact Creative reference found — prior live date confirmed."
+    folder_override = REUSE_REFERENCE_FOLDER_OVERRIDES.get(row["id"])
+    if folder_override:
+        link = f"<code>{esc(folder_override)}</code>"
+    else:
+        try:
+            link = reference_link_html(source, folder_only=True)
+        except RuntimeError:
+            link = "No exact Creative reference found — prior live date confirmed."
+    reference = reference_png_html(source)
+    if folder_override and reference and re.search(r"rooc|easter_rolling", reference, re.I):
+        reference = ""
     return {
         "date": source_date(source),
-        "reference": reference_png_html(source),
+        "reference": reference,
         "link": link,
     }
 
@@ -983,18 +1093,33 @@ def subitem_matches(required: str, existing: str) -> bool:
     return False
 
 
+def spinner_rank_prize_lines(row: dict[str, str]) -> list[str]:
+    lines: list[str] = []
+    for raw in (row.get("description") or "").splitlines():
+        stripped = raw.strip()
+        match = re.match(
+            r"^(\d+(?:st|nd|rd|th))\s*:\s*(.+)$",
+            stripped,
+            re.I,
+        )
+        if match:
+            lines.append(f"{match.group(1)}: {match.group(2).strip()}")
+    return lines
+
+
 def playbook_required_subitems(row: dict[str, str]) -> list[str]:
     if row["label"] not in {"Prize Change", "New theme for promo", "New promo"}:
         return []
     fam = family(row["name"])
-    card_only = is_card_only_reward(row)
-    winners: list[str] = [] if card_only else ["Winners Inapp"]
+    winners: list[str] = []
+    if fam == "piggy":
+        winners = ["Winners Inapp"]
+    if fam == "spinner clash":
+        return ["Main Inapp", "Journey Inapp", "Banner"]
     if fam == "piggy":
         return ["Main Inapp", *winners, "Banner"]
-    if fam == "spinner clash":
-        return ["Main Inapp", "Journey Inapp", *winners, "Banner"]
     if fam == "daily deal":
-        return ["DD (in store)", *winners]
+        return ["store denom"]
     return []
 
 
@@ -1019,24 +1144,27 @@ def ensure_playbook_subitems(
     return result
 
 
+def prune_non_playbook_subitems(
+    parent_id: str,
+    row: dict[str, str],
+    subitems: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    required = playbook_required_subitems(row)
+    if not required:
+        return subitems
+    kept: list[dict[str, Any]] = []
+    for subitem in subitems:
+        if any(subitem_matches(name, subitem["name"]) for name in required):
+            kept.append(subitem)
+            continue
+        delete_item(str(subitem["id"]))
+        print(f"REMOVED {parent_id} subitem {subitem['name']!r} (not in playbook scope)")
+        time.sleep(0.25)
+    return kept
+
+
 def spinner_prize_lines(row: dict[str, str]) -> list[str]:
-    lines: list[str] = []
-    for line in (row.get("description") or "").splitlines():
-        stripped = line.strip()
-        if re.match(r"^\d+(st|nd|rd|th)?\s*:", stripped, re.I) or re.match(
-            r"^\d+\s*:", stripped
-        ):
-            lines.append(re.sub(r"\s+", " ", stripped))
-        if re.match(r"^\s*\d+(st|nd|rd)\s*:", stripped, re.I):
-            lines.append(re.sub(r"\s+", " ", stripped.lstrip()))
-    if lines:
-        return lines
-    return [
-        line.strip()
-        for line in (row.get("description") or "").splitlines()
-        if re.search(r"★|\*|ace|reg|coins|pack", line, re.I)
-        and line.strip()
-    ][:8]
+    return spinner_rank_prize_lines(row)
 
 
 def change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
@@ -1047,9 +1175,9 @@ def change_summary(row: dict[str, str], source: dict[str, Any]) -> str:
         ref_prize = inferred_reference_prize(source)
         req = required_prize_from_row(row)
         if family(row["name"]) == "spinner clash":
-            prizes = spinner_prize_lines(row)
+            prizes = spinner_rank_prize_lines(row)
             if prizes:
-                return f"Rank prizes: {' · '.join(prizes)}"
+                return " · ".join(prizes)
         if ref_prize:
             return f"{ref_prize} → {req}"
     if row["label"] == "New theme for promo":
@@ -1062,103 +1190,40 @@ def numbered_steps_html(steps: list[str]) -> str:
     return f"<ol>{items}</ol>"
 
 
-def what_to_change_html(row: dict[str, str], source: dict[str, Any], asset: str) -> str:
-    change = change_summary(row, source)
-    if row["label"] == "New theme for promo":
-        return numbered_steps_html(
-            [
-                f"Re-theme {asset} per parent Change: {change}.",
-                "Keep mechanic layout, prize placement, and CTA structure matching the reference unless Change says otherwise.",
-                "Do not alter prizes, amounts, or copy unless the parent Change lists them.",
-            ]
-        )
+def what_to_change_lines(row: dict[str, str], source: dict[str, Any], asset: str) -> list[str]:
     req = required_prize_from_row(row)
-    ref_prize = inferred_reference_prize(source) or "reference prize"
+    ref_prize = inferred_reference_prize(source) or "prior prize"
     asset_l = asset.lower()
-    if family(row["name"]) == "piggy" and "winner" in asset_l:
-        return numbered_steps_html(
-            [
-                "Keep winner/results layout, piggy framing, and claim CTA structure matching the reference.",
-                f"Show the break payout the player won: {req} (match Main Inapp PAB treatment).",
-                "Update any prize-count badge or callout on the payout cluster to match 2 PAB.",
-            ]
-        )
-    if family(row["name"]) == "piggy" and "inapp" in asset_l and "winner" not in asset_l:
-        return numbered_steps_html(
-            [
-                "Keep layout unchanged: piggy bank, BREAK ME TODAY FOR headline block, prize pedestal, TAKE A BREAK CTA, and coin framing.",
-                f"Replace break prize art: {ref_prize} → {req} (two PAB shown per standard PAB treatment).",
-                "Update any prize-count badge or callout on the prize cluster to match 2 PAB.",
-                "If footer/fine print names the break reward, update hammer wording to PAB.",
-            ]
-        )
-    if family(row["name"]) == "piggy" and "banner" in asset_l:
-        return numbered_steps_html(
-            [
-                "Keep banner layout, piggy key art, and CTA destination unchanged.",
-                f"Swap visible break prize from {ref_prize} to {req}.",
-                "Update prize callout text or count on the banner if present.",
-            ]
-        )
-    if family(row["name"]) == "spinner clash":
-        prizes = spinner_prize_lines(row)
-        prize_block = "; ".join(prizes) if prizes else req
-        if "main" in asset_l and "journey" not in asset_l and "winner" not in asset_l:
-            return numbered_steps_html(
-                [
-                    "Keep Spinner Clash hub layout, tournament framing, rank ladder structure, and CTA unchanged.",
-                    f"Update visible rank prizes on the main inapp to: {prize_block}.",
-                    "Keep coin amounts in the reference format unless parent Change lists new coin values.",
-                ]
-            )
-        if "journey" in asset_l:
-            return numbered_steps_html(
-                [
-                    "Keep journey/progress frame layout and rank progression structure matching the reference.",
-                    f"Update interim rank prize art/text to the new ladder (top ranks): {prize_block}.",
-                    "Keep coin callouts in the reference style where ranks still pay coins.",
-                ]
-            )
-        if "winner" in asset_l:
-            return numbered_steps_html(
-                [
-                    "Keep winner/results/podium layout and claim CTA matching the reference.",
-                    f"Update the visible payout for the player's finishing rank per parent Change: {prize_block}.",
-                    "Show pack/card art matching the configured rank prizes (Ace packs/cards + coins where listed).",
-                ]
-            )
-        if "banner" in asset_l:
-            return numbered_steps_html(
-                [
-                    "Keep banner layout, Spinner Clash key art, and CTA destination unchanged.",
-                    f"Update top rank callouts on the banner to: {prize_block}.",
-                ]
-            )
-    if family(row["name"]) == "daily deal":
-        if "dd" in asset_l or "store" in asset_l or "denom" in asset_l:
-            return numbered_steps_html(
-                [
-                    "Keep DD store-card layout, coin/gem tiers, central reward slot, and CTA unchanged.",
-                    f"Swap central purchase reward art to: {req}.",
-                    "Update SB badge/callout and hammer count art to match 100% SB + 6 Hammers.",
-                    "Keep pricing tier skin (High) matching the reference structure.",
-                ]
-            )
-        if "winner" in asset_l:
-            return numbered_steps_html(
-                [
-                    "Keep DD winner/claim frame layout matching the reference.",
-                    f"Show the purchased reward payout: {req} (100% SB + 6 Hammers visible).",
-                    "Update hammer count and SB callout on the claim art.",
-                ]
-            )
-    return numbered_steps_html(
-        [
-            f"Apply parent Change to {asset}: {change}.",
-            "Keep all non-prize layout, framing, and CTA structure matching the reference.",
-            "Update prize art, amount badges, callouts, and footer legal lines that name the old prize.",
+    fam = family(row["name"])
+
+    if fam == "piggy" and "winner" in asset_l:
+        return [
+            f"Show break payout: {req}.",
+            "Match PAB art from Main Inapp.",
         ]
-    )
+    if fam == "piggy" and "inapp" in asset_l and "winner" not in asset_l:
+        return [
+            f"Break prize: {ref_prize} → {req}.",
+            "Count badge: 2 PAB.",
+        ]
+    if fam == "piggy" and "banner" in asset_l:
+        return [f"Banner prize: {ref_prize} → {req}."]
+
+    if fam == "spinner clash":
+        ranks = spinner_rank_prize_lines(row)
+        if ranks:
+            if "banner" in asset_l:
+                return [f"Banner — {line}" for line in ranks]
+            return [f"Show {line}" for line in ranks]
+        return [f"Update rank prizes to: {req}."]
+
+    if fam == "daily deal" and (
+        "dd" in asset_l or "store" in asset_l or "denom" in asset_l
+    ):
+        return [f"Store reward: {req}."]
+
+    change = change_summary(row, source)
+    return [f"{asset}: {change}."]
 
 
 def reference_label_html(
@@ -1167,10 +1232,12 @@ def reference_label_html(
     row: dict[str, str] | None = None,
 ) -> str:
     ref_date = source_date(source)
+    if row and family(row["name"]) == "piggy":
+        return esc(f"{ref_date} Piggy break 5 Hammers — {asset}")
+    if row and family(row["name"]) == "spinner clash":
+        return esc(f"{ref_date} Spinner Clash — {asset}")
     name = normalize_name(source.get("name") or "")
-    tier = reference_match_tier(row, source) if row else ""
-    prefix = f"{tier}. " if tier else ""
-    return esc(f"{prefix}{ref_date} {name} — {asset}; see attached ref in Monday if needed")
+    return esc(f"{ref_date} {name} — {asset}")
 
 
 def parent_body(row: dict[str, str], source: dict[str, Any], assets: list[str]) -> str:
@@ -1189,20 +1256,17 @@ def subitem_body(row: dict[str, str], source: dict[str, Any], asset: str) -> str
         reference_png = reference_png_html(source, asset)
         if reference_png:
             reference_cell = f"{reference_cell}<br>{reference_png}"
-        rows = [
-            ("What to change", what_to_change_html(row, source, asset)),
-            ("Reference", reference_cell),
-            (
-                "Reference Link",
-                reference_link_html(
-                    source,
-                    asset,
-                    allow_missing_path=row["label"] == "New promo",
-                    folder_only=True,
-                ),
-            ),
-        ]
-        return table(rows)
+        link_cell = reference_link_html(
+            source,
+            asset,
+            allow_missing_path=row["label"] == "New promo",
+            folder_only=True,
+        )
+        return prize_change_table(
+            what_to_change_lines(row, source, asset),
+            reference_cell,
+            link_cell,
+        )
     rows = [
         ("Task", esc(f"Apply the parent Change to {asset}.")),
         ("Keep", "Match the reference for everything else."),
@@ -1387,6 +1451,7 @@ def apply_mgap_ui_tasks(
     groups: dict[str, str],
     catalog: dict[str, dict[str, Any]],
     commit: bool,
+    allow_in_flight: bool = False,
 ) -> int:
     total = 0
     for target, specs in specs_by_date.items():
@@ -1398,6 +1463,32 @@ def apply_mgap_ui_tasks(
             for item in items_in_group(group_id)
         } if group_id else {}
         for spec in specs:
+            if spec.get("skip_brief"):
+                reason = spec.get("skip_reason") or "UI already ready"
+                existing_item = existing.get(spec["name"])
+                if not commit:
+                    if existing_item:
+                        print(
+                            f"{target} DELETE skip_brief: {spec['name']} "
+                            f"({reason})"
+                        )
+                    else:
+                        print(f"{target} SKIP brief: {spec['name']} ({reason})")
+                    continue
+                if existing_item:
+                    assert_brief_editable(
+                        str(existing_item["id"]),
+                        allow_in_flight=allow_in_flight,
+                    )
+                    delete_item(str(existing_item["id"]))
+                    print(
+                        f"{target} DELETED {spec['name']} "
+                        f"({existing_item['id']}) — {reason}"
+                    )
+                    existing.pop(spec["name"], None)
+                else:
+                    print(f"{target} SKIP brief: {spec['name']} ({reason})")
+                continue
             action = "SKIP existing" if spec["name"] in existing else "CREATE"
             if not commit:
                 print(
@@ -1453,6 +1544,7 @@ def write_brief(
         live_item = gql(query, {"ids": [item_id]})["items"][0]
         subitems = live_item.get("subitems") or []
     subitems = ensure_playbook_subitems(item_id, row, subitems)
+    subitems = prune_non_playbook_subitems(item_id, row, subitems)
     set_columns(BOARD, item_id, parent_values(row, source, target, assignment))
     upsert_update(
         item_id,
@@ -1495,6 +1587,7 @@ def main() -> None:
             groups,
             catalog,
             args.commit,
+            args.allow_in_flight,
         )
         if not args.commit:
             print("DRY RUN - no Monday changes made.")
@@ -1523,7 +1616,7 @@ def main() -> None:
                 source = source_for(row, catalog)
                 print(f"  {row['label']:<19} {normalize_name(row['name'])} <- {source_date(source)} {source['name']}")
         print("\nStandalone MGAP UI tasks:")
-        apply_mgap_ui_tasks(mgap_specs, assignments, groups, catalog, False)
+        apply_mgap_ui_tasks(mgap_specs, assignments, groups, catalog, False, False)
         print("\nDRY RUN - no Monday changes made.")
         return
     for target in dates:
@@ -1635,7 +1728,9 @@ def main() -> None:
                         "color_mkwes65f": {"label": status_mm_label(match)},
                     },
                 )
-    apply_mgap_ui_tasks(mgap_specs, assignments, groups, catalog, True)
+    apply_mgap_ui_tasks(
+        mgap_specs, assignments, groups, catalog, True, args.allow_in_flight
+    )
     print(f"CONSOLIDATED Reuse and created/updated {total} active Creative briefs across {len(dates)} dates.")
 
 

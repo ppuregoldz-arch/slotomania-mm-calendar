@@ -36,7 +36,10 @@ global:
 
 traffic_column_mapping:
   Brief Date: Brief Due Date
-  Creative Owner: Artist
+  Creative Owner:
+    artist: Artist
+    copywriter: Copywriter
+    split_rule: "When people3 has two persons: first → Artist, second → Copywriter; one person → Artist only"
   Monetization: MM
   MM TL: MM TL
   TL Owner: Creative TL
@@ -45,6 +48,8 @@ instance_label_overrides:
   "12464188536":
     label: reuse
     evidence: "Operation - Monetization item 11869424484 live 2026-05-30"
+    mgap_ui_skip_brief: true
+    mgap_ui_skip_reason: "MGAP BOGO UI already shipped — no standalone UI brief"
   "12464318775":
     label: reuse
     evidence: "Operation - Monetization item 12113633298 live 2026-05-29"
@@ -61,6 +66,8 @@ promotions:
     po_expansion: "Personal Offer"
     player_flow: "Selected users watch an ad and receive the prize"
     purchase_required: false
+    reuse_crm3_root: "Q:\\Slotomania\\CRM3\\Generic Promotions\\Rewarded_Video"
+    reuse_reference_must_not_use: ["Personal_Offer", "ROOC", "Double_PO", "Holidays & Events"]
     dynamic_fields: ["coin_quantity"]
     dynamic_field_change_label: reuse
 
