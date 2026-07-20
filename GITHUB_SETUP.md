@@ -42,11 +42,20 @@ python3 scripts/github_push_origin.py
 unset GITHUB_TOKEN
 ```
 
-## Optional hardening (still public read)
+## Required department hardening
 
-- **Settings → General:** disable Wiki if unused.  
-- **Settings → Pull Requests:** restrict who can push to matching branches (branch protection on `main` for non-admins).  
-- Never commit `.cursor/monday.env`, `.cursor/mcp.json`, or other secrets (already in `.gitignore`).
+Repository files now provide `.github/CODEOWNERS`, a Pull Request template, a tool-improvement Issue form, and the `Department tooling smoke` workflow.
+
+Configure **Settings → Rules → Rulesets** for `main`:
+
+- require a Pull Request;
+- require at least one approval;
+- require CODEOWNERS review;
+- require the `Department tooling smoke / validate` status check;
+- block force pushes and branch deletion;
+- restrict direct pushes to the repository owner/maintainers.
+
+Keep Issues enabled so department members can submit Tool improvement forms. Never commit `.cursor/monday.env`, `.cursor/mcp.json`, or other secrets.
 
 ## Local vs team canonical copy
 

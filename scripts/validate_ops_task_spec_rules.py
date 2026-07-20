@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from datetime import datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,7 +17,9 @@ from ops_description import (  # noqa: E402
     is_mes_board_task,
     mes_subtitle_from_mm,
     mes_subtitle_missing,
+    parse_duration_hours,
     promo_family,
+    task_name_has_explicit_utc_prefix,
     title_mentions_pricing,
 )
 
@@ -35,6 +38,65 @@ OFFER_FAMILIES_NEED_PRICING = frozenset(
         "rolling_offer",
     }
 )
+
+
+def monday_api_value(day: str, clock: str) -> tuple[str, str]:
+    intended = datetime.fromisoformat(f"{day}T{clock}")
+    shifted = intended - timedelta(hours=3)
+    return shifted.date().isoformat(), shifted.time().isoformat(timespec="seconds")
+
+
+def validate_timing_task(task: dict) -> list[str]:
+    errors: list[str] = []
+    name = task.get("task_name") or ""
+    source_name = task.get("source_row_name") or name
+    detail = task.get("source_detail") or ""
+    start_date = task.get("start_date")
+    start_time = task.get("start_time")
+    end_date = task.get("end_date")
+    end_time = task.get("end_time")
+
+    if all((start_date, start_time)):
+        expected = monday_api_value(start_date, start_time)
+        actual = (task.get("monday_start_date"), task.get("monday_start_time"))
+        if actual != expected:
+            errors.append(
+                f"Monday Start must compensate UTC+3: {name!r} -> {actual}, expected {expected}"
+            )
+    if all((end_date, end_time)):
+        expected = monday_api_value(end_date, end_time)
+        actual = (task.get("monday_end_date"), task.get("monday_end_time"))
+        if actual != expected:
+            errors.append(
+                f"Monday End must compensate UTC+3: {name!r} -> {actual}, expected {expected}"
+            )
+
+    if task.get("m_and_m_status") == "Night Plan":
+        if (start_time, end_time) != ("00:00:00", "11:00:00"):
+            errors.append(f"Night Plan must run 00:00–11:00 UTC: {name!r}")
+
+    duration = parse_duration_hours(detail)
+    source_has_clock = task_name_has_explicit_utc_prefix(source_name) or bool(
+        re.search(r"\b\d{1,2}:\d{2}\s*UTC\b", detail, re.I)
+    )
+    if duration == 24 and not source_has_clock:
+        if (start_time, end_time) != ("11:00:00", "11:00:00"):
+            errors.append(f"24-hour promo must run Promo Time to Promo Time: {name!r}")
+
+    if is_mes_board_task(source_name) and not source_has_clock and not re.search(
+        r"\btime[- ]limited\b", detail, re.I
+    ):
+        if (start_time, end_time) != ("11:00:00", "11:00:00"):
+            errors.append(f"MES reward duration changed production window: {name!r}")
+
+    if (
+        task_name_has_explicit_utc_prefix(source_name)
+        and source_name.strip().lower().startswith("00:00 utc")
+        and duration is None
+        and (start_time, end_time) != ("00:00:00", "11:00:00")
+    ):
+        errors.append(f"00:00 task without duration must end at Promo Time: {name!r}")
+    return errors
 
 
 def validate_task(task: dict) -> list[str]:
@@ -77,7 +139,7 @@ def validate_task(task: dict) -> list[str]:
         elif mm_sub not in desc:
             errors.append(f"MES Description missing MM Sub title line: {name!r}")
         source_milestones = re.findall(
-            r"^(?:\d+(?:st|nd|rd|th)?\s+milestone|milestone\s+(\d+))\s*:?",
+            r"^(?:\d+(?:st|nd|rd|th)?\s+milestone(?!s)|milestone\s+(\d+))\s*:?",
             detail,
             re.I | re.M,
         )
@@ -109,6 +171,8 @@ def main() -> None:
         day_errors: list[str] = []
         for task in spec.get("tasks") or []:
             day_errors.extend(validate_task(task))
+            if spec.get("timing_contract_version", 0) >= 2:
+                day_errors.extend(validate_timing_task(task))
         if day_errors:
             print(f"\n{path.name}:")
             for err in day_errors:

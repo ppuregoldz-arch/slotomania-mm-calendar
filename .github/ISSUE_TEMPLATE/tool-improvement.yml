@@ -1,0 +1,62 @@
+name: Tool improvement
+description: Propose a correction or improvement to a shared MM Cursor tool
+title: "[Tool improvement] "
+body:
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool
+      options:
+        - Calendar Planning
+        - Calendar Forecast
+        - Brief Maker
+        - OPS Monday Creator
+        - Shared platform/governance
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: Exact input or request
+      description: Include dates, scope, source rows, and relevant IDs without credentials.
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current output or behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected output or behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Authority or evidence
+      description: Link an approved Monday row, canonical document, live instruction, or validated analysis.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: external
+    attributes:
+      label: External systems
+      options:
+        - label: This report concerns a Monday write.
+        - label: This report concerns DWH data or a forecast.
+        - label: This report contains no credentials or secret values.
+          required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Risk if unchanged
+      description: Explain whether this can affect logic, economy, Creative, Ops, or external writes.

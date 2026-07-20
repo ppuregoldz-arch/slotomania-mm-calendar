@@ -4,6 +4,16 @@
 
 This package provides a generalized data assistant for SM analysis, aligned with cross-studio standards and adapted to SM data structures and business logic.
 
+## Department Cursor tools
+
+For the shared Calendar Planning, Calendar Forecast, Brief Maker, and OPS Monday Creator workflows, start with:
+
+- `DEPARTMENT_CURSOR_START.md`
+- `DEPARTMENT_TOOL_CONTRACTS.md`
+- project Skills under `.cursor/skills/`
+
+Contributions use `CONTRIBUTING.md`, GitHub Issues, Pull Requests, CODEOWNERS review, and automated smoke checks.
+
 ## Package Purpose
 
 Enable any SM stakeholder to perform rigorous analysis with:

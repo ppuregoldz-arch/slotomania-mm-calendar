@@ -1,0 +1,44 @@
+name: Department tooling smoke
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile protected tooling
+        run: |
+          python3 -m py_compile \
+            scripts/validate_department_tooling.py \
+            scripts/ops_description.py \
+            scripts/build_ops_tasks_from_live_days.py \
+            scripts/upload_ops_task_monday.py \
+            scripts/validate_ops_task_spec_rules.py
+
+      - name: Validate shared Cursor tools
+        run: python3 scripts/validate_department_tooling.py
+
+      - name: Validate Ops specifications
+        run: python3 scripts/validate_ops_task_spec_rules.py
+
+      - name: Validate performance knowledge base
+        run: python3 scripts/validate_promo_knowledge_base.py
+
+      - name: Check forecast scorer parity
+        run: python3 scripts/scorer.py

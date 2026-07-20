@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "skills": {
+    "mm-calendar-planning": {
+      "path": ".cursor/skills/mm-calendar-planning/SKILL.md",
+      "required_references": [
+        "mm_calendar/00_GUIDELINES_ITAY.md",
+        "mm_calendar/BUILD_CALENDAR_ROUTER.md",
+        "mm_calendar/LEARNINGS_MONTH.md",
+        ".cursor/rules/mm_calendar_builder.mdc"
+      ]
+    },
+    "mm-calendar-forecast": {
+      "path": ".cursor/skills/mm-calendar-forecast/SKILL.md",
+      "required_references": [
+        "mm_calendar/measurement/SOURCE_INVENTORY.md",
+        "mm_calendar/prediction/PREDICTION_AND_OPTIMIZATION.md",
+        "mm_calendar/prediction/BACKTEST_RESULTS.md"
+      ]
+    },
+    "mm-brief-maker": {
+      "path": ".cursor/skills/mm-brief-maker/SKILL.md",
+      "required_references": [
+        "mm_calendar/creative/LEARNINGS_BRIEFS.md",
+        "mm_calendar/creative/BRIEF_WRITING_STANDARDS.md",
+        "mm_calendar/creative/PRODUCT_PLAYBOOK.md",
+        ".cursor/rules/slotomania_monetization_art.mdc"
+      ]
+    },
+    "mm-ops-monday-creator": {
+      "path": ".cursor/skills/mm-ops-monday-creator/SKILL.md",
+      "required_references": [
+        "mm_calendar/LEARNINGS_OPS.md",
+        "mm_calendar/ops_task_construction.md",
+        "mm_calendar/ops_board_schema.md",
+        ".cursor/rules/ops_task_builder.mdc"
+      ]
+    }
+  },
+  "forecast_policy": {
+    "revenue": "calibrated_range",
+    "paying_users": "baseline_range_no_family_adjustment",
+    "gems": "insufficient_evidence_without_separate_validation",
+    "coins_wager": "insufficient_evidence_without_separate_validation"
+  },
+  "ops_timing_cases": [
+    {
+      "name": "MES reward durations do not change production timing",
+      "input": {
+        "parent_day": "2026-07-24",
+        "row_id": "mes-golden",
+        "name": "MES - Christmas in July",
+        "product": "Core",
+        "detail": "3 milestones\nmilestone 1\nPrize - Lil Genie for 24 hours\nmilestone 2\nPrize - Dice Booster 6 hours",
+        "night_plan": false,
+        "standard_end_date": "2026-07-26"
+      },
+      "expected": {
+        "task_name": "MES - Christmas in July",
+        "start_date": "2026-07-24",
+        "start_time": "11:00:00",
+        "end_date": "2026-07-26",
+        "end_time": "11:00:00"
+      }
+    },
+    {
+      "name": "24-hour promo uses Promo Time",
+      "input": {
+        "parent_day": "2026-07-24",
+        "row_id": "sale-golden",
+        "name": "Gems Sale - up to 40%/60%",
+        "product": "Gems",
+        "detail": "for 24 hours",
+        "night_plan": false,
+        "standard_end_date": "2026-07-25"
+      },
+      "expected": {
+        "task_name": "Gems Sale - up to 40%/60%",
+        "start_date": "2026-07-24",
+        "start_time": "11:00:00",
+        "end_date": "2026-07-25",
+        "end_time": "11:00:00"
+      }
+    },
+    {
+      "name": "Midnight task without duration ends at Promo Time",
+      "input": {
+        "parent_day": "2026-07-24",
+        "row_id": "ryd-golden",
+        "name": "00:00 UTC - RYD with 200% SB",
+        "product": "RYD",
+        "detail": "Required mechanic/config details are missing from the MM source.",
+        "night_plan": false,
+        "standard_end_date": "2026-07-25"
+      },
+      "expected": {
+        "task_name": "00:00 UTC - RYD with 200% SB",
+        "start_date": "2026-07-24",
+        "start_time": "00:00:00",
+        "end_date": "2026-07-24",
+        "end_time": "11:00:00"
+      }
+    },
+    {
+      "name": "Night Plan runs D+1 midnight to Promo Time",
+      "input": {
+        "parent_day": "2026-07-25",
+        "row_id": "night-golden",
+        "name": "Night Plan - 4 plasma balls",
+        "product": "Offers & coin sale",
+        "detail": "players will get 4 plasma balls instead of 2",
+        "night_plan": true,
+        "standard_end_date": "2026-07-26"
+      },
+      "expected": {
+        "task_name": "00:00 UTC - Night Plan - 4 plasma balls",
+        "start_date": "2026-07-26",
+        "start_time": "00:00:00",
+        "end_date": "2026-07-26",
+        "end_time": "11:00:00"
+      }
+    }
+  ]
+}

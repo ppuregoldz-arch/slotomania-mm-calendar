@@ -46,6 +46,17 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Update only long_text on existing matched tasks; never create or rename",
     )
+    parser.add_argument(
+        "--replace-day",
+        action="store_true",
+        help="Delete all existing subitems under the day parent, then create from spec (requires --commit)",
+    )
+    parser.add_argument(
+        "--parent-id",
+        type=str,
+        default="",
+        help="Ops day parent pulse id (e.g. Buy All YYYY-MM-DD row); skips Monday-days name lookup",
+    )
     return parser.parse_args()
 
 
@@ -91,7 +102,12 @@ def fetch_day_parent(day: str) -> dict[str, Any] | None:
           items_page(limit: 500) {
             items {
               id name
-              subitems { id name }
+              subitems {
+                id name
+                column_values(ids: ["board_relation_mkzvrve9"]) {
+                  ... on BoardRelationValue { linked_items { id } }
+                }
+              }
             }
           }
         }
@@ -102,6 +118,24 @@ def fetch_day_parent(day: str) -> dict[str, Any] | None:
     groups = data["boards"][0]["groups"]
     items = groups[0]["items_page"]["items"] if groups else []
     return next((item for item in items if item["name"].strip() == day), None)
+
+
+def fetch_parent_by_id(item_id: str) -> dict[str, Any] | None:
+    query = """
+    query ($id: ID!) {
+      items(ids: [$id]) {
+        id name
+        subitems {
+          id name
+          column_values(ids: ["board_relation_mkzvrve9"]) {
+            ... on BoardRelationValue { linked_items { id } }
+          }
+        }
+      }
+    }
+    """
+    items = gql(query, {"id": item_id})["items"]
+    return items[0] if items else None
 
 
 def create_day_parent(day: str) -> dict[str, Any]:
@@ -149,6 +183,15 @@ def set_columns(*, board_id: str, item_id: str, values: dict[str, Any]) -> None:
     )
 
 
+def delete_subitem(item_id: str) -> None:
+    query = """
+    mutation ($item: ID!) {
+      delete_item(item_id: $item) { id }
+    }
+    """
+    gql(query, {"item": item_id})
+
+
 def rename_subitem(item_id: str, name: str) -> None:
     query = """
     mutation ($board: ID!, $item: ID!, $name: String!) {
@@ -176,8 +219,12 @@ def column_values(task: dict[str, Any]) -> dict[str, Any]:
         "long_text": {"text": task["description"]},
         "status": {"label": task["m_and_m_status"]},
     }
-    if task.get("times_per_player"):
-        values["times_per_player__1"] = {"labels": [task["times_per_player"]]}
+    if "times_per_player" in task:
+        label = task.get("times_per_player")
+        if label:
+            values["times_per_player__1"] = {"labels": [label]}
+        else:
+            values["times_per_player__1"] = {"labels": []}
     if task.get("due_date"):
         values["date_mkp4d99c"] = {"date": task["due_date"]}
     if task.get("source_mm_item_id"):
@@ -193,8 +240,17 @@ def print_dry_run(spec: dict[str, Any], parent: dict[str, Any] | None) -> None:
     existing = {
         normalized_name(item["name"]): item for item in (parent or {}).get("subitems", [])
     }
+    existing_by_source: dict[str, dict[str, Any]] = {}
+    for item in (parent or {}).get("subitems", []):
+        for column in item.get("column_values") or []:
+            for linked in column.get("linked_items") or []:
+                existing_by_source[str(linked["id"])] = item
     for index, task in enumerate(spec["tasks"], start=1):
         match = existing.get(normalized_name(task["task_name"]))
+        if not match and task.get("source_mm_item_id"):
+            match = existing_by_source.get(str(task["source_mm_item_id"]))
+        if not match and task.get("source_row_name"):
+            match = existing.get(normalized_name(task["source_row_name"]))
         action = "UPDATE" if match else "CREATE"
         print(
             f"\n[{index}/{len(spec['tasks'])}] {action}: {task['task_name']}"
@@ -222,13 +278,39 @@ def commit(spec: dict[str, Any], parent: dict[str, Any] | None, args: argparse.N
             )
         parent = create_day_parent(spec["parent_day"])
         print(f"Created day parent {spec['parent_day']} ({parent['id']})")
+    deleted = 0
+    if args.replace_day:
+        if args.description_only:
+            raise SystemExit("--replace-day cannot be used with --description-only")
+        for sub in list(parent.get("subitems") or []):
+            delete_subitem(sub["id"])
+            deleted += 1
+            print(f"DELETED: {sub['name']} ({sub['id']})")
+        parent["subitems"] = []
     existing = {
         normalized_name(item["name"]): item for item in parent.get("subitems", [])
     }
+    existing_by_source: dict[str, dict[str, Any]] = {}
+    for item in parent.get("subitems", []):
+        for column in item.get("column_values") or []:
+            for linked in column.get("linked_items") or []:
+                existing_by_source[str(linked["id"])] = item
+
+    def match_existing(task: dict[str, Any]) -> dict[str, Any] | None:
+        hit = existing.get(normalized_name(task["task_name"]))
+        if hit:
+            return hit
+        source_id = str(task.get("source_mm_item_id") or "")
+        if source_id and source_id in existing_by_source:
+            return existing_by_source[source_id]
+        source_row = task.get("source_row_name") or ""
+        if source_row:
+            return existing.get(normalized_name(source_row))
+        return None
+
     created = updated = skipped = 0
     for task in spec["tasks"]:
-        key = normalized_name(task["task_name"])
-        match = existing.get(key)
+        match = match_existing(task)
         if args.description_only:
             if not match:
                 raise SystemExit(
@@ -270,7 +352,8 @@ def commit(spec: dict[str, Any], parent: dict[str, Any] | None, args: argparse.N
                 values=column_values(task),
             )
         print(f"{action}: {task['task_name']} ({item_id})")
-    print(f"Done: created {created}, updated {updated}, skipped {skipped}; deleted 0.")
+        existing[normalized_name(task["task_name"])] = {"id": item_id, "name": task["task_name"]}
+    print(f"Done: created {created}, updated {updated}, skipped {skipped}; deleted {deleted}.")
 
 
 def main() -> None:
@@ -279,13 +362,19 @@ def main() -> None:
         raise SystemExit("--create-day is valid only with --commit")
     if args.description_only and (not args.commit or not args.update_existing):
         raise SystemExit("--description-only requires --commit --update-existing")
+    if args.replace_day and args.update_existing:
+        raise SystemExit("--replace-day creates fresh subitems; do not pass --update-existing")
     spec = json.loads(args.spec.read_text(encoding="utf-8"))
-    if args.commit:
-        validate_spec(spec, allow_tbd=args.allow_tbd)
-    parent = fetch_day_parent(spec.get("parent_day") or "")
+    if args.parent_id:
+        parent = fetch_parent_by_id(args.parent_id.strip())
+        if parent is None:
+            raise SystemExit(f"Parent item {args.parent_id} not found")
+    else:
+        parent = fetch_day_parent(spec.get("parent_day") or "")
     if not args.commit:
         print_dry_run(spec, parent)
         return
+    validate_spec(spec, allow_tbd=args.allow_tbd)
     commit(spec, parent, args)
 
 

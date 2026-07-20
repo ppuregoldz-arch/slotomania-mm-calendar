@@ -1,0 +1,22 @@
+# Replace or extend this owner with department domain teams as they are created.
+* @ppuregoldz-arch
+
+# Shared agent law and entry points
+/.cursor/rules/ @ppuregoldz-arch
+/.cursor/skills/ @ppuregoldz-arch
+/AGENTS.md @ppuregoldz-arch
+/DEPARTMENT_CURSOR_START.md @ppuregoldz-arch
+/DEPARTMENT_TOOL_CONTRACTS.md @ppuregoldz-arch
+
+# Canonical MM knowledge and engines
+/mm_calendar/00_GUIDELINES_ITAY.md @ppuregoldz-arch
+/mm_calendar/monthly_guidelines/ @ppuregoldz-arch
+/mm_calendar/creative/ @ppuregoldz-arch
+/mm_calendar/measurement/ @ppuregoldz-arch
+/mm_calendar/prediction/ @ppuregoldz-arch
+/mm_calendar/LEARNINGS_*.md @ppuregoldz-arch
+/scripts/ @ppuregoldz-arch
+
+# Governance
+/.github/ @ppuregoldz-arch
+/CONTRIBUTING.md @ppuregoldz-arch

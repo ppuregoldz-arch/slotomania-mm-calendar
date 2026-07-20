@@ -62,17 +62,30 @@ def promo_family(name: str, product: str = "", detail: str = "") -> str:
         ("season_blast", ("blast", "mid term", "short term", "album handover")),
         (
             "sales_store",
-            ("coin sale", "gems sale", "gem sale", "coupon", "store denom", "biggest store"),
+            (
+                "coin sale",
+                "coins sale",
+                "gems sale",
+                "gem sale",
+                "coupon",
+                "store denom",
+                "biggest store",
+            ),
         ),
     ]
-    texts = [
-        f" {normalize_name(name)} {product} ".lower(),
-        f" {detail[:300]} ".lower(),
-    ]
-    for text in texts:
-        for family_name, aliases in rules:
-            if any(has_alias(text, alias) for alias in aliases):
-                return family_name
+    name_text = f" {normalize_name(name)} ".lower()
+    product_text = f" {product} ".lower()
+    detail_text = f" {detail[:300]} ".lower()
+    for family_name, aliases in rules:
+        # "Offers & coin sale" is a broad Monday Product label used by
+        # Fortune Dip, Jumbo Giveaway, and other non-sale mechanics. Only an
+        # explicit sale/coupon phrase in Name or Description makes sales_store.
+        texts = (name_text, detail_text) if family_name == "sales_store" else (
+            f"{name_text}{product_text}",
+            detail_text,
+        )
+        if any(has_alias(text, alias) for text in texts for alias in aliases):
+            return family_name
     return "other"
 
 
@@ -435,8 +448,60 @@ def format_pras_amount(store_pct: int, offers_pct: int, currency: str) -> str:
     )
 
 
+def explicit_sale_segments(task_name: str, detail: str) -> list[tuple[str, str]]:
+    """Read exact audience percentages from MM; otherwise use title PU/PRAS order."""
+    segments: list[tuple[str, str]] = []
+    segment_labels = {
+        "pu": "PU",
+        "pras": "PRAS",
+        "ic": "IC",
+        "dpu": "DPU",
+        "npu": "NPU",
+        "dormant": "Dormant",
+        "dormants": "Dormants",
+        "npu & dormant": "NPU & Dormant",
+        "npu & dormants": "NPU & Dormants",
+    }
+    for raw in (detail or "").splitlines():
+        line = raw.strip()
+        match = re.match(
+            r"^(pu|pras|ic|dpu|npu(?:\s*&\s*dormants?)?|dormants?)\s*[-:]\s*"
+            r"(?P<upto>up\s+to\s+)?(?P<amount>\d+)\s*%?\s*$",
+            line,
+            re.I,
+        )
+        if not match:
+            continue
+        raw_label = re.sub(r"\s+", " ", match.group(1).lower())
+        label = segment_labels.get(raw_label, match.group(1).upper())
+        prefix = "Up to " if match.group("upto") else ""
+        segments.append((label, f"{prefix}{match.group('amount')}%"))
+    if segments:
+        return segments
+
+    blob = f"{task_name}\n{detail}"
+    if not re.search(r"\bstore\b|\boffers?\b", blob, re.I):
+        match = re.search(
+            r"\bup\s+to\s+(\d+)\s*%?\s*/\s*(\d+)\s*%",
+            blob,
+            re.I,
+        )
+        if match:
+            return [
+                ("PU", f"Up to {match.group(1)}%"),
+                ("PRAS", f"Up to {match.group(2)}%"),
+            ]
+    return []
+
+
 def compose_sales_store_description(task_name: str, detail: str) -> str:
     currency = sales_currency(task_name, detail)
+    explicit_segments = explicit_sale_segments(task_name, detail)
+    if explicit_segments:
+        lines = [f"Currency: {currency}"]
+        for segment, amount in explicit_segments:
+            lines.extend([f"Segment: {segment}", f"Amount: {amount}"])
+        return finalize_ops_description("\n".join(lines).strip())
     if is_coupon_task(task_name, detail):
         coupon = parse_coupon_percents(task_name, detail)
         if coupon:
@@ -539,13 +604,19 @@ def infer_times_per_player(*, task_name: str, product: str = "", detail: str = "
 
 
 def sales_currency(task_name: str, detail: str) -> str:
-    blob = f"{task_name}\n{detail}".lower()
-    if re.search(r"\bgems?\s+sale\b|\bgems\b", blob) and "coin" not in blob.split("gems")[0][-20:]:
-        if "coin" in blob and "gems sale" not in blob:
-            return "Coins and Gems"
-    if "gems" in blob:
+    name = normalize_name(task_name).lower()
+    blob = f"{name}\n{detail}".lower()
+    if re.search(r"\bcoins?\s+sale\b", name):
+        return "Coins"
+    if re.search(r"\bgems?\s+sale\b", name):
         return "Gems"
-    if "coin" in blob:
+    has_gems = bool(re.search(r"\bgems?\b", blob))
+    has_coins = bool(re.search(r"\bcoins?\b", blob))
+    if has_gems and has_coins:
+        return "Coins and Gems"
+    if has_gems:
+        return "Gems"
+    if has_coins:
         return "Coins"
     return "Not specified in MM source"
 
@@ -767,6 +838,14 @@ def trigger_value(task_name: str, family: str, detail: str) -> str:
         return "Player completes the configured Shiny Show requirement"
     if family == "lbp_lotto":
         return "Eligible player participates during the scheduled Lotto/LBP window"
+    if "winnergize" in lower:
+        match = re.search(
+            r"players?\s+who\s+will\s+purchase\s+(.+?)\s+will\s+get\b",
+            clean_detail(detail),
+            re.I,
+        )
+        if match:
+            return f"Purchase {match.group(1).strip()}"
     return "Not specified in MM source"
 
 
@@ -1078,7 +1157,12 @@ def ops_handoff_sufficient(
     composed_description: str = "",
 ) -> bool:
     """True when Ops can work from MM Name (+ optional Description) without More Info."""
-    if (mm_description or "").strip():
+    mm_body = clean_detail(mm_description or "")
+    duration_only = bool(
+        mm_body
+        and re.fullmatch(r"(?:for\s+)?\d+(?:\.\d+)?\s*(?:hours?|hrs?|days?)", mm_body, re.I)
+    )
+    if mm_body and not duration_only:
         return True
     if is_machine_launch_task(task_name, product):
         return True
@@ -1256,9 +1340,25 @@ def promotion_prize(task_name: str, family: str, detail: str) -> str:
     if labeled:
         return sanitize_prize_text("; ".join(dict.fromkeys(labeled)))
     lower = task_name.lower()
+    if "winnergize" in lower:
+        match = re.search(
+            r"will\s+get\s+(.+?\bback)(?:\s+for\b|[.;]|$)",
+            clean_detail(detail),
+            re.I,
+        )
+        if match:
+            return sanitize_prize_text(match.group(1))
+    if "gemback" in lower:
+        match = re.search(r"\b(\d+)\s*%", task_name)
+        if match:
+            return f"{match.group(1)}% Gemback"
+    match = re.search(r"players?\s+will\s+get\s+(.+)", clean_detail(detail), re.I)
+    if match:
+        return sanitize_prize_text(match.group(1).strip().rstrip("."))
     if "piggy" in lower and " for " in lower:
         return sanitize_prize_text(task_name.split(" for ", 1)[1])
     norm = normalize_name(task_name)
+    norm = re.sub(r"^night\s+plan\s*-\s*", "", norm, flags=re.I)
     if "win master" in norm.lower():
         match = re.search(r"win master\s+(?:for\s+)?(.+)$", norm, re.I)
         if match:
@@ -1284,7 +1384,7 @@ def promotion_prize(task_name: str, family: str, detail: str) -> str:
         norm,
         re.I,
     ):
-        return sanitize_prize_text(name_payload(task_name, family))
+        return sanitize_prize_text(name_payload(norm, family))
     return "Not specified in MM source"
 
 
@@ -1364,6 +1464,12 @@ def mes_semantic_lines(detail: str) -> list[str]:
         line = raw.strip()
         if not line:
             continue
+        if re.fullmatch(r"\d+\s+milestones?", line, re.I) or re.match(
+            r"^milestones?,\s*missions?\s+and\s+prizes?\s*:?\s*$",
+            line,
+            re.I,
+        ):
+            continue
         milestone = MES_MILESTONE_RE.match(line)
         if milestone:
             number = milestone.group("ordinal") or milestone.group("number")
@@ -1372,12 +1478,6 @@ def mes_semantic_lines(detail: str) -> list[str]:
             remainder = milestone.group("remainder").strip()
             if remainder:
                 current["missions"].append(remainder)
-            continue
-        if re.fullmatch(r"\d+\s+milestones?", line, re.I) or re.match(
-            r"^milestones?,\s*missions?\s+and\s+prizes?\s*:?\s*$",
-            line,
-            re.I,
-        ):
             continue
         prize = MES_PRIZE_RE.match(line)
         if prize:
@@ -1448,6 +1548,7 @@ def compose_description(
 ) -> str:
     """Compose Ops Description field order and labels for Monetization handoff."""
     _ = (reference, reuse, template_source, missing, config_status, creative_label, night_plan)
+    task_name = ops_task_short_name(task_name)
     family = promo_family(task_name, product, detail)
     segment = segment_value(task_name, detail, family)
 
@@ -1625,7 +1726,10 @@ def parse_detail_utc_start(text: str) -> tuple[str | None, str | None]:
 def parse_duration_hours(text: str) -> float | None:
     blob = text or ""
     patterns = (
-        r"\bfor\s+(?P<n>\d+(?:\.\d+)?)\s*hours?\b",
+        # A production duration must be stated at the start of the MM text or
+        # on its own line. This deliberately ignores reward durations such as
+        # "Prize: Lil Genie for 24 hours" inside an MES milestone.
+        r"(?:^|\n)\s*for\s+(?P<n>\d+(?:\.\d+)?)\s*hours?\b",
         r"\b(?P<n>\d+(?:\.\d+)?)\s*hours?\s+(?:time[- ]limited|window|duration)\b",
         r"\b(?P<n>\d+(?:\.\d+)?)\s*hours?\s+in\s+detail\b",
     )
@@ -1659,7 +1763,14 @@ def is_time_limited_promo(name: str, product: str, detail: str) -> bool:
         return True
     if re.search(r"\bhappy hour\b", text):
         return True
-    if parse_duration_hours(text) is not None and family not in MAIN_OFFER_FAMILIES:
+    duration = parse_duration_hours(text)
+    # A 24-hour row follows the normal Promo-Time-to-Promo-Time window.
+    # Only shorter explicit execution durations get a generated time slot.
+    if (
+        duration is not None
+        and 0 < duration < 24
+        and family not in MAIN_OFFER_FAMILIES
+    ):
         return True
     return False
 
@@ -1695,6 +1806,15 @@ def resolve_ops_production_window(
     if title_start:
         hours = parse_duration_hours(timing_blob)
         if hours is None:
+            if title_start == "00:00:00":
+                return {
+                    "task_name": f"00:00 UTC - {short_name}",
+                    "start_date": parent_day,
+                    "end_date": parent_day,
+                    "start_time": "00:00:00",
+                    "end_time": "11:00:00",
+                    "warnings": warnings,
+                }
             hours = 1.0
             warnings.append(
                 "Task title includes UTC start time but MM source has no duration; default 1h window."
@@ -1721,6 +1841,15 @@ def resolve_ops_production_window(
         else:
             hours = parse_duration_hours(timing_blob)
             if hours is None:
+                if detail_start == "00:00:00":
+                    return {
+                        "task_name": f"00:00 UTC - {short_name}",
+                        "start_date": start_date,
+                        "end_date": start_date,
+                        "start_time": "00:00:00",
+                        "end_time": "11:00:00",
+                        "warnings": warnings,
+                    }
                 hours = 1.0
                 warnings.append(
                     "MM description includes UTC start time but no end/duration; default 1h window."

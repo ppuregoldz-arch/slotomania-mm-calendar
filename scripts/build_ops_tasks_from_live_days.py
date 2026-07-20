@@ -481,12 +481,11 @@ def build_task(
         detail=detail,
     )
     timing_warnings = timing["warnings"]
-    if night:
-        monday_start_date, monday_start_time = start_date, start_time
-        monday_end_date, monday_end_time = end_date, end_time
-    else:
-        monday_start_date, monday_start_time = monday_api_value(start_date, start_time)
-        monday_end_date, monday_end_time = monday_api_value(end_date, end_time)
+    # Monday renders API date-times at UTC+3. Compensate every task,
+    # including midnight/Night Plan, so the visible board clock is the
+    # intended UTC execution time.
+    monday_start_date, monday_start_time = monday_api_value(start_date, start_time)
+    monday_end_date, monday_end_time = monday_api_value(end_date, end_time)
     reuse, reference = recent_reference(row, target, history)
     template = template_source(row)
     description = compose_description(
@@ -559,6 +558,7 @@ def main() -> None:
         tasks = [build_task(row, target, history, rows) for row in rows]
         spec = {
             "schema_version": 2,
+            "timing_contract_version": 2,
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "source_plan": "Live MM calendar board 18388590642",
             "board_id": OPS_BOARD,

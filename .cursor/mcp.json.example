@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "sm-dwh": {
+      "command": "REPLACE_WITH_OWNER_PROVIDED_COMMAND",
+      "args": [
+        "REPLACE_WITH_OWNER_PROVIDED_ARGUMENT"
+      ],
+      "env": {
+        "SM_DWH_CREDENTIAL": "SET_LOCALLY_AND_NEVER_COMMIT"
+      }
+    }
+  }
+}
