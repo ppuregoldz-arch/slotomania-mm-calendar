@@ -22,6 +22,10 @@
   - other promos: Segment, optional Trigger, Prize;
   - use product-specific schemas only where documented.
 - **No duplicated metadata:** Keep dates/times in Start/End columns and Once/Multiple in its dedicated column. Do not repeat them in Description.
+- **Promo Time:** `11:00 UTC`. Standard and 24-hour promos run Promo Time to Promo Time.
+- **Midnight:** A `00:00 UTC` task with no explicit duration ends at Promo Time. Night Plan runs D+1 `00:00–11:00 UTC`.
+- **Monday clock rendering:** Monday displays API timestamps at UTC+3, so apply the −3-hour payload compensation to every task, including Night Plan (`21:00` previous day → visible `00:00`; `08:00` → visible `11:00`).
+- **MES timing:** Durations inside milestone prizes are reward durations, not production timing. MES stays Promo Time to Promo Time unless MM explicitly gives a production clock or says time-limited.
 - **Lotto peak + LBP:** Calendar parent D creates two separate Night Plan tasks. Both run on D+1 from `00:00` to `11:00 UTC`.
 - **LBP timing:** LBP is the overnight Promo Time window, not an arbitrary two-hour period after 12:00 UTC.
 - **X2 Extreme Stamp:** When an explicit MM row exists, create a separate task with Segment plus `don't forget UI`. Pairing details belong in the related offer task.

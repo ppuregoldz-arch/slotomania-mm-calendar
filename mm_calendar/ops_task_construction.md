@@ -93,16 +93,19 @@ The plan-driven builder can draft only what exists in the source plan. Missing e
 
 ## Time rules
 
-- August 2026 Promo Time is **11:00 UTC**.
+- **Promo Time is 11:00 UTC.** A standard calendar-day task starts at Promo Time and ends at Promo Time on the next day.
 - A standard calendar-day task runs from `YYYY-MM-DD 11:00 UTC` to the following day at `11:00 UTC`.
 - An inclusive calendar range ends at 11:00 UTC on the day after its final listed date.
 - Night Plan uses `00:00–11:00 UTC` on the date following its calendar-day parent.
 - Never copy the historical March `12:00 UTC` convention into August.
 - Write scheduling dates and exact clock times only into `date_mm0f8tdb` and `date_mm0fr8sp`.
 - Do not repeat production dates, start/end times, reset times, or date ranges in Description.
-- The Ops board renders API date-times at UTC+3. Compensate the API payload by 3 hours so the visible Start/End values equal the intended UTC schedule (for example, write `08:00` so the board shows `11:00`; write the previous day at `21:00` so the board shows `00:00`).
+- The Ops board renders API date-times at UTC+3. Compensate **every** API payload by 3 hours, including Night Plan and other midnight tasks, so the visible Start/End values equal the intended UTC schedule (write `08:00` so the board shows `11:00`; write the previous day at `21:00` so the board shows `00:00`).
 - Standard promo window: 11:00 UTC to 11:00 UTC the next day. Time-limited and Night Plan tasks use their exact approved hours.
-- When MM confirms a **time-limited** promo but **does not** state exact start/end clocks, assign start from a **stable** pick (hash of parent day + MM item id) among **14:00, 16:00, 17:00, or 21:00 UTC**. Infer duration from MM text (`for 1 hour`, `5 hours`, etc.); if still unknown, default **1 hour** and record a warning in the spec/worklog.
+- A 24-hour promo with no explicit clock runs **Promo Time to Promo Time**; do not assign it a random time-limited start.
+- An MES reward duration (for example `Lil Genie for 24 hours` or `Dice Booster 6 hours`) is a **prize duration**, never the MES production window. Without an explicit production clock/time-limited instruction, MES runs Promo Time to Promo Time.
+- A task explicitly starting at `00:00 UTC` with no stated duration ends at Promo Time (`11:00 UTC`), not one hour later.
+- When MM confirms a **shorter-than-24-hour time-limited** promo but **does not** state exact start/end clocks, assign start from a **stable** pick (hash of parent day + MM item id) among **14:00, 16:00, 17:00, or 21:00 UTC**. Infer duration from MM text (`for 1 hour`, `5 hours`, etc.); if still unknown, default **1 hour** and record a warning in the spec/worklog.
 - Prefix or embed that UTC start in the Ops subitem **title** (for example `14:00 UTC - HH - Coins & Gems sale on DD purchase`). Do **not** repeat start/end in Description.
 - Do **not** override rows that already carry an explicit title prefix (`HH:MM UTC - …`) or parseable UTC clocks in the MM Description.
 
@@ -255,7 +258,7 @@ Prize: <single reward or prize bundle — not the promo title>
 
 For tournament / rank features (Spinner Clash, Battlesheep, SNL, Blast, Winovate, etc.), list rank rewards from MM calendar / economy guidelines under **Prize:** (one rank per line when applicable).
 
-Start/End date **and time** live only in the Start date / End date columns (UTC in API; Monday may display local). **Ops subitem titles:** use promo name only — no `YYYY-MM-DD` prefix (clock prefix like `00:00 UTC - RLAP` is OK). **Night Plan / 00:00 UTC:** production starts **calendar day + 1** at **00:00 UTC** through **11:00 UTC** that day; Monday Start column shows that date at **12:00 AM** (no display offset shift). **Times per player:** **main offers** (Rolling, RYD, Buy All, Decoy, Limited PO, Prize Mania, Counter PO — **not** Daily Deal) and **Piggy** default to **Once**; **Win Master** → **Once**; **Daily Deal** and other promos default to **Multiple** unless MM calendar text says otherwise; **machine full launch** and **Short/Mid Term / Season** → leave **blank**. **Spinner Clash** follows recent Ops precedent (**Multiple**). Main-offer descriptions start with **`Reset at 00:00 UTC`** (then a blank line, then Segment…). Do not repeat dates or Once/Multiple inside Description.
+Start/End date **and time** live only in the Start date / End date columns. **Ops subitem titles:** use promo name only — no `YYYY-MM-DD` prefix (clock prefix like `00:00 UTC - RLAP` is OK). **Night Plan:** production starts **calendar day + 1** at **00:00 UTC** through **11:00 UTC** that day. To make Monday visibly show 00:00–11:00, write the API values with the same −3-hour compensation used for every other task (previous day 21:00 through 08:00). A non-Night-Plan task explicitly titled `00:00 UTC` runs on its stated calendar date through 11:00 when no other duration is supplied. **Times per player:** **main offers** (Rolling, RYD, Buy All, Decoy, Limited PO, Prize Mania, Counter PO — **not** Daily Deal) and **Piggy** default to **Once**; **Win Master** → **Once**; **Daily Deal** and other promos default to **Multiple** unless MM calendar text says otherwise; **machine full launch** and **Short/Mid Term / Season** → leave **blank**. **Spinner Clash** follows recent Ops precedent (**Multiple**). Main-offer descriptions start with **`Reset at 00:00 UTC`** (then a blank line, then Segment…). Do not repeat dates or Once/Multiple inside Description.
 
 ## Duplicate-from source map
 

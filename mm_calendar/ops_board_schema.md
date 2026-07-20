@@ -105,7 +105,7 @@ These are the columns an automated task writer uses.
 
 Operation Status labels: `In Progress`, `Done`, `Missing Config`, `To Do`, `Risk`, `More Info required`, `QA Done`, `Scheduled`, `QA in Progress`, `Ready for QA`, `On hold`, `Missing art`, `Internal`, `Ready for Payment`, `Canceled`, `QA'd, needs ATTN`, `Ready to publish`, `Missing Art+config`, `No Action required`, `Missing List`, `Payment canceled`, `Missing MCP`, `General Issue with Promo`.
 
-Operational writers must leave Operation Status blank; Ops owns it. Date-column `time` values are written in UTC. Monday may render them in the viewer's local timezone (for example, 11:00 UTC appears as 14:00 at UTC+3).
+Operational writers must leave Operation Status blank; Ops owns it. Monday renders API date-times at UTC+3 on this board, so writers must subtract three hours from **every** payload—including midnight/Night Plan—to make the visible board clock equal the intended UTC time. Example: intended visible `00:00` is sent as previous-day `21:00`; intended visible Promo Time `11:00` is sent as `08:00`.
 
 M&M Status labels include: `Operations in Progress`, `Done`, `Missing Config`, `Operations To Do`, `Risk`, `More Info required`, `Internal Task`, `M&M Completed`, `Waiting for MM Approval`, `QA in Progress`, `Ready for QA`, `On hold`, `Missing art`, `Fill in LOR&A`, `Backup`, `Waiting for economy`, `M&M Delay`, `Ready to publish`, `MM Work in Progress`, `M&M Change`, `Cancelled`, `Missing Art+Config`, `Missing MCP`, `Missing List`, `Missing Test Groups`, `Postponed`, `Night Plan`, `After Promo`, `Ready for internal`, `MM in progress`.
 

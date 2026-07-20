@@ -1,3 +1,22 @@
+### 2026-07-20 — GPT-5.6 Sol — Correct Jul 24–25 Ops timing
+- **Goal:** Correct every Jul 24–25 Ops clock after Itay identified MES, midnight sale, RYD, and Night Plan timing errors; make the timing contract permanent.
+- **Done:** Fixed three root causes: MES reward durations no longer become production duration; 24-hour promos run Promo Time-to-Promo Time; `00:00 UTC` without duration ends at Promo Time; every Monday timestamp—including Night Plan—now receives the required −3h API compensation. Added source-MM-relation matching so renamed timed tasks update in place. Rebuilt both specs, updated all 21 existing Ops subitems without creating/deleting anything, and verified every visible Start/End, MM relation, title, and blank Operation Status directly from Monday.
+- **Corrected live examples:** MES `12574865765` visibly `2026-07-24 11:00 → 2026-07-26 11:00`; Coin Sale `12574865532` visibly `2026-07-25 00:00 → 11:00`; RYD `12574872826` visibly `2026-07-24 00:00 → 11:00`; Jul 25 Night Plan tasks `12574890076` / `12574866505` visibly `2026-07-26 00:00 → 11:00`.
+- **Files:** `scripts/ops_description.py`, `scripts/build_ops_tasks_from_live_days.py`, `scripts/upload_ops_task_monday.py`, `scripts/validate_ops_task_spec_rules.py`, `mm_calendar/data/ops_tasks/2026-07-24.json`, `mm_calendar/data/ops_tasks/2026-07-25.json`, `mm_calendar/ops_task_construction.md`, `mm_calendar/ops_board_schema.md`, `mm_calendar/LEARNINGS_OPS.md`, `.cursor/rules/ops_task_builder.mdc`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile + timing regression checks ✓; Jul 24/25 rebuild ✓; Ops validator (12 specs) ✓; Monday dry-run/update-existing ✓; direct live verification 21/21 ✓.
+- **Notes for next agent:** Promo Time is permanently 11:00 UTC. API payloads are −3h only to make Monday visibly show that UTC clock. CRM3 mirror remains pending while `/Volumes/studios/Slotomania/CRM3/MM Calendar` is unmounted.
+
+---
+
+### 2026-07-20 — GPT-5.6 Sol — Build July 24–25 Ops handoffs
+- **Goal:** Build and publish Operation - Monetization tasks for 2026-07-24 and 2026-07-25 from the live MM board.
+- **Done:** Generated 12 tasks for Jul 24 and 9 for Jul 25; corrected sale-family classification, exact PU/PRAS sale parsing, Coins-vs-Gems detection, MES milestone parsing, timed-title leakage, Winnergize/Gemback/Night Plan prize extraction, and the MES validator's plural-summary count; uploaded add-only under the existing Buy All dated parents (`12571349412`, `12537440350`) while preserving their existing tasks; directly verified all 21 MM relations and blank Operation Status values.
+- **Files:** `scripts/ops_description.py`, `scripts/validate_ops_task_spec_rules.py`, `mm_calendar/data/ops_tasks/2026-07-24.json`, `mm_calendar/data/ops_tasks/2026-07-25.json`, `TEAM_WORKLOG.md`.
+- **Commands run:** Python compile/focused composer checks ✓; `build_ops_tasks_from_live_days.py` (Jul 24, Jul 25) ✓; `validate_ops_task_spec_rules.py` (12 specs) ✓; Monday dry-runs ✓; Monday add-only sync ✓ (12 + 9 created); direct relation/status verification ✓.
+- **Notes for next agent:** Jul 24 source rows Quest and Christmas remain `More Info required`; Battlesheep remains `Missing Config`; Jul 25 Jumbo Giveaway remains `More Info required`. No unsupported values were invented and no existing subitems were deleted or overwritten. CRM3 mirror was unavailable because `/Volumes/studios/Slotomania/CRM3/MM Calendar` was not mounted.
+
+---
+
 ### 2026-07-19 — GPT-5.6 Sol — Close learning-audit drift
 - **Goal:** Apply the confirmed follow-ups from the Creative, Ops, and month-planning audits.
 - **Done:** Corrected MGAP to exactly 2/week and removed Clan Pack from ADS; clarified LBP parent D vs production D+1; aligned Creative Reference, Reference Link, `Waiting for MM`, and themed Gems opt-in rules; documented August authority refresh, Size Large, Config due −2, destructive Ops replacement, and historical-ref precedence; excluded canceled/On Hold rows in the live Ops builder.
